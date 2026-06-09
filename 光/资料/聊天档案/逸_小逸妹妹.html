@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>微信聊天记录 - 小逸妹妹</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:linear-gradient(180deg,#0f0c29 0%,#1a1a2e 50%,#16213e 100%);color:#eee;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;display:flex;flex-direction:column;align-items:center;padding:30px 20px;min-height:100vh}
+.header{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);padding:25px 40px;border-radius:20px;margin-bottom:30px;text-align:center;border:1px solid rgba(255,255,255,.1);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.header h1{font-size:1.8em;font-weight:700;margin-bottom:8px;background:linear-gradient(135deg,#a8edea,#fed6e3);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header p{opacity:.7;font-size:.9em}
+.chat-container{width:100%;max-width:800px}
+.date-divider{text-align:center;margin:20px 0;color:rgba(255,255,255,.4);font-size:.78em;position:relative}
+.date-divider::before,.date-divider::after{content:'';position:absolute;top:50%;width:30%;height:1px;background:rgba(255,255,255,.1)}
+.date-divider::before{left:0}.date-divider::after{right:0}
+.msg{display:flex;margin:8px 0;gap:10px}
+.msg.me{flex-direction:row-reverse}
+.avatar{width:38px;height:38px;border-radius:8px;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;font-size:.8em;font-weight:700;flex-shrink:0}
+.avatar.me{background:linear-gradient(135deg,#43c6ac,#191654)}
+.bubble-wrap{max-width:65%;display:flex;flex-direction:column}
+.msg.me .bubble-wrap{align-items:flex-end}
+.bubble{padding:10px 14px;border-radius:16px;font-size:.92em;line-height:1.5;word-break:break-word;white-space:pre-wrap}
+.bubble.them{background:rgba(255,255,255,.1);border-radius:16px 16px 16px 4px}
+.bubble.me{background:linear-gradient(135deg,#43c6ac,#191654);border-radius:16px 16px 4px 16px}
+.bubble.system{background:transparent;color:rgba(255,255,255,.4);font-size:.8em;text-align:center;padding:4px 10px;font-style:italic}
+.bubble.meta{opacity:.6;font-style:italic}
+.time{font-size:.68em;color:rgba(255,255,255,.3);margin-top:4px;padding:0 4px}
+.stats{margin-top:30px;background:rgba(255,255,255,.05);padding:16px 24px;border-radius:12px;font-size:.85em;opacity:.7;text-align:center;border:1px solid rgba(255,255,255,.08)}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>💬 小逸妹妹</h1>
+  <p>聊天记录 · 共 436 条</p>
+</div>
+<div class="chat-container">
+<div class="date-divider">2026年03月01日</div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">以上是打招呼的訊息</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我通過了你的朋友驗證請求，現在我們可以開始聊天了</div><div class="time">00:30</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">哥哥</div><div class="time">00:33</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你还没睡吗</div><div class="time">00:33</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;你已回收一則訊息&lt;/content&gt;&lt;revoketime&gt;0&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你终于通过了</div><div class="time">00:34</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">00:34</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接/文件]</div><div class="time">00:34</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我睡得比较晚</div><div class="time">00:34</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">[吃西瓜]</div><div class="time">00:34</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">抱歉啊哥哥，我刚才在回别人消息</div><div class="time">00:34</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哈哈</div><div class="time">00:34</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">00:34</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">可以可以，很多哥哥会让自己很安心</div><div class="time">00:34</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">干嘛！都是朋友啦</div><div class="time">00:35</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;「小逸」已回收一則訊息&lt;/content&gt;&lt;revoketime&gt;0&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">00:35</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">👍</div><div class="time">00:35</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你是妹妹吧</div><div class="time">00:35</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">为什么性别是男的</div><div class="time">00:35</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">是吗？</div><div class="time">00:35</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">哪有性别啊</div><div class="time">00:35</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">微信的性别</div><div class="time">00:36</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">点开自己头像</div><div class="time">00:36</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">这个在哪改</div><div class="time">00:36</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">设置</div><div class="time">00:36</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">个人资料</div><div class="time">00:36</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">性别</div><div class="time">00:36</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">没有呀哥哥我这也不显示</div><div class="time">00:37</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[3]</div><div class="time">00:37</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">手机性能差吧</div><div class="time">00:37</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">啊</div><div class="time">00:37</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">这个号是我哥哥用剩下的</div><div class="time">00:37</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">感觉是未成年保护之类的</div><div class="time">00:38</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">是吗</div><div class="time">00:38</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">好吧</div><div class="time">00:38</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">更多里面有吗</div><div class="time">00:38</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我知道了</div><div class="time">00:38</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">可能是老版本微信</div><div class="time">00:38</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">是吗</div><div class="time">00:38</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我看一下</div><div class="time">00:39</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">8.0.79</div><div class="time">00:39</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你那个是多少</div><div class="time">00:39</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">8.0.69</div><div class="time">00:39</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">啊</div><div class="time">00:39</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接/文件]</div><div class="time">00:39</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我这个是0.15</div><div class="time">00:40</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[3]</div><div class="time">00:40</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接/文件]</div><div class="time">00:41</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">好妹妹</div><div class="time">00:41</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">改了</div><div class="time">00:41</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我以前都没注意过哎</div><div class="time">00:41</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哈哈哈🤣</div><div class="time">00:41</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我想有个妹妹而不是弟弟</div><div class="time">00:41</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">[吃西瓜]</div><div class="time">00:42</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我这也不显示</div><div class="time">00:42</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;「小逸」已回收一則訊息&lt;/content&gt;&lt;revoketime&gt;0&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">00:42</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">[旺柴]</div><div class="time">00:42</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">哥哥我睡觉了</div><div class="time">00:43</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">困</div><div class="time">00:43</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">晚安晚安</div><div class="time">00:43</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">过两天来找我</div><div class="time">00:43</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">亲亲</div><div class="time">00:43</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">嗯嗯</div><div class="time">00:43</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">00:43</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">好吧</div><div class="time">00:44</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你还是喜欢男生性别</div><div class="time">00:44</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">？</div><div class="time">00:44</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">没改吗</div><div class="time">00:45</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[3]</div><div class="time">00:45</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">这次呢</div><div class="time">00:45</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">OK了</div><div class="time">00:45</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">🥰</div><div class="time">00:45</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;「小逸」已回收一則訊息&lt;/content&gt;&lt;revoketime&gt;0&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">好哦</div><div class="time">00:46</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我睡觉了哥哥</div><div class="time">00:46</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">00:46</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">00:46</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我醒了哥哥</div><div class="time">08:24</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">早啊</div><div class="time">09:31</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">今天搬家啊</div><div class="time">09:31</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">早哥哥</div><div class="time">09:31</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接/文件]</div><div class="time">09:32</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[链接/文件]</div><div class="time">09:35</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[链接/文件]</div><div class="time">09:35</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">哥哥你干嘛呢</div><div class="time">10:16</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">哥哥我出门了</div><div class="time">11:25</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我刚在补觉</div><div class="time">11:37</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哈哈哈</div><div class="time">11:37</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">好哦</div><div class="time">11:37</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">明天下午来找我好不好</div><div class="time">19:00</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">19:00</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">啊…哥哥</div><div class="time">19:00</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">后天你就快走了妹妹</div><div class="time">19:00</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">不是周三开学吗</div><div class="time">19:00</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">对呀</div><div class="time">19:02</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">那你是不见我咯</div><div class="time">19:05</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">哥哥你到现在连照片都还没有发我…</div><div class="time">19:06</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哈哈</div><div class="time">19:08</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">还是先再软件上聊吧</div><div class="time">19:08</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">哥哥你还是怕是吗？</div><div class="time">19:08</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">看软件吧</div><div class="time">19:10</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我觉得微信上有点尴尬</div><div class="time">19:10</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">嗯</div><div class="time">19:11</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">19:18</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">19:19</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">19:21</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">怎么啦</div><div class="time">19:21</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">好尴尬</div><div class="time">19:21</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">等以后放假吧</div><div class="time">19:22</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">没事的哥哥</div><div class="time">19:22</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">嗯嗯</div><div class="time">19:22</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[3]</div><div class="time">22:42</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">还在学习吗</div><div class="time">22:42</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">人还不少啊</div><div class="time">22:42</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">刚出来</div><div class="time">22:42</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">刚才要闭馆了</div><div class="time">22:43</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">好哦</div><div class="time">22:43</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">22:49</div></div></div>
+<div class="date-divider">2026年03月02日</div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">15:53</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">心情如何</div><div class="time">15:53</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">666</div><div class="time">15:56</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">还好呀，我出了趟门，有点冷，我看朋友圈河北下大雪了</div><div class="time">15:57</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哦哦</div><div class="time">16:00</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[3]</div><div class="time">16:01</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">谁这么变态</div><div class="time">16:01</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">16:01</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我私信很多人都这样</div><div class="time">16:02</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我都没理他们</div><div class="time">16:02</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">猥琐死了</div><div class="time">16:02</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">😮‍💨</div><div class="time">16:02</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">妹妹我还是很担心你的</div><div class="time">16:03</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">嗯？担心什么</div><div class="time">16:03</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">被变态一直骚扰</div><div class="time">16:03</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">16:03</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">一直被变态骚扰</div><div class="time">16:03</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我又没理他们哥哥</div><div class="time">16:04</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">咋还换着说</div><div class="time">16:04</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">16:04</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哈哈哈</div><div class="time">16:04</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你能分辨清楚这两句话的区别嘛</div><div class="time">16:04</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我刚才感觉语序不对</div><div class="time">16:04</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">这咋分，哥哥你别欺负我学习不好[心碎]</div><div class="time">16:05</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哎呀哎呀算啦</div><div class="time">16:07</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">开心度过最后的时光吧</div><div class="time">16:07</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">16:07</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">刚发的动态删了😧</div><div class="time">16:08</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">嗯那个图没批好</div><div class="time">16:08</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">OK</div><div class="time">16:11</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">嗯嗯</div><div class="time">16:11</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">妹妹有点像李金铭</div><div class="time">16:12</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">一个女明星</div><div class="time">16:12</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">16:12</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我去搜一下</div><div class="time">16:12</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哈哈</div><div class="time">16:12</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我说的是感觉</div><div class="time">16:12</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">可能你自己觉得不太像</div><div class="time">16:12</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">嗯嗯没事</div><div class="time">16:13</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">好冷啊</div><div class="time">19:38</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">北京这</div><div class="time">19:38</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">对呀，我今天出门就是冷</div><div class="time">19:38</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">河北不是还下大雪了</div><div class="time">19:38</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你多穿点儿</div><div class="time">19:38</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">昨天晚上北京本来也说下雪嘞</div><div class="time">19:38</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接/文件]</div><div class="time">19:39</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你在学校里看不了手机吗？</div><div class="time">19:39</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">嗯，学校不让带</div><div class="time">19:39</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我要交老师</div><div class="time">19:39</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">嗯嗯好吧</div><div class="time">19:40</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">19:40</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">好惨一妹妹</div><div class="time">19:40</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我真的不想开学…</div><div class="time">19:41</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">各位家长、孩子们：
+[煙花]大家好！万象更新，马年启航，寒假已近尾声，我们即将开启返校收心模式啦！[煙花]
+⚠️返校时间：
+    3月4日（周三）下午15:00-17:00
+    请家长们配合，不请假，按时到校。
+温馨提示如下：
+[太陽]1【查作业】
+请孩子们对照寒假作业清单，仔细检查各科作业是否按时、按质完成。还没完成的孩子，请及时查漏补缺。还未在小程序提交作业的同学请及时提交。
+[太陽]2【理仪表】
+请检查个人仪容仪表，不烫发染发，不允许美甲。禁止佩戴项链、手链、耳环等装饰品。
+[太陽]3【整物品】
+洗净校服，收拾好新学期需要用的文具、课本、假期作业等学习用品；床上三件套，校园卡，衣服，鞋等个人用品。
+[太陽]4【调作息】
+请调整好生物钟，按照上学作息时间表早睡早起，充分休息。请家长们协助孩子们调整生物钟，尽可能与上学时间同步。
+[太陽]5【定目标】
+制定新学期的学习目标，让我们一起为了实现目标而努力奋斗！
+    愿家长朋友们与老师们积极配合，帮孩子们顺利开启新学期的学习生活！
+㊗️孩子们新学期马到成功，勇往直前，学有所成。</div><div class="time">19:41</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">发通知了…</div><div class="time">19:41</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我心口闷的要死</div><div class="time">19:41</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">[心碎]</div><div class="time">19:41</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">19:41</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">19:42</div></div></div>
+<div class="date-divider">2026年03月03日</div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">元宵节快乐</div><div class="time">20:45</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">20:45</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">元宵节快乐哥哥</div><div class="time">21:00</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">吃汤圆了吗</div><div class="time">21:00</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">没吃</div><div class="time">21:10</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">21:10</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">学校没有吗？</div><div class="time">21:10</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[3]</div><div class="time">21:15</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">好了现在吃了</div><div class="time">21:16</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">好哦</div><div class="time">21:16</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">21:17</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接/文件]</div><div class="time">21:39</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[链接/文件]</div><div class="time">22:11</div></div></div>
+<div class="date-divider">2026年03月20日</div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">Hi</div><div class="time">10:49</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我刚放假</div><div class="time">10:49</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">好哦</div><div class="time">11:00</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">快回家吧</div><div class="time">11:01</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">没上课吗</div><div class="time">11:02</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我上课呀</div><div class="time">11:03</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">[吃西瓜]</div><div class="time">11:03</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你还给我发消息呢</div><div class="time">11:03</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">怎么啦</div><div class="time">11:05</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哥哥都会</div><div class="time">11:05</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">是吗(^.^)</div><div class="time">11:07</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我去买烟啊</div><div class="time">11:07</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">嗯？</div><div class="time">11:07</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你要抽烟</div><div class="time">11:07</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">一直都抽的</div><div class="time">11:07</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哦哦好吧</div><div class="time">11:08</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">这么漂亮的妹妹</div><div class="time">11:08</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">没想到呢</div><div class="time">11:08</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">哈哈哈哈哈哈</div><div class="time">11:09</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">哥哥要给我报备烟钱啊</div><div class="time">11:10</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">11:10</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">11:10</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你抽的啥</div><div class="time">11:10</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">纯境</div><div class="time">11:11</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哦哦</div><div class="time">11:27</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">亲亲😘</div><div class="time">11:31</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我嘴里全烟味</div><div class="time">11:32</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">11:32</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">又没说现在亲</div><div class="time">11:33</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">等你来找哥哥</div><div class="time">11:33</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">11:33</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">11:34</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哥哥等你两周了</div><div class="time">11:34</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">嗯？</div><div class="time">11:35</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">对啊</div><div class="time">11:40</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">想你想了两周了</div><div class="time">11:40</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">嘻嘻</div><div class="time">11:40</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">行呗</div><div class="time">11:41</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">什么时候来找哥哥</div><div class="time">11:41</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我看看吧</div><div class="time">11:41</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">额</div><div class="time">11:48</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">唉</div><div class="time">11:50</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">就当妹妹骗哥哥了吧</div><div class="time">11:51</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">👋</div><div class="time">11:51</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">？</div><div class="time">11:51</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">11:56</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">12:04</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">咋了这是</div><div class="time">12:04</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">大后天你不又要走了吗</div><div class="time">12:05</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">[心碎]</div><div class="time">12:05</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">别提了我刚放假</div><div class="time">12:05</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">💔</div><div class="time">12:05</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">🥺</div><div class="time">12:57</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">咋了哥哥</div><div class="time">13:06</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">想听你叫哥哥</div><div class="time">13:09</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">13:10</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">哥哥</div><div class="time">13:10</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">语音好嘛🥺</div><div class="time">13:10</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">No</div><div class="time">13:11</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me"> 好吧</div><div class="time">13:14</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">去哪玩了吗</div><div class="time">17:13</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">[笑臉]</div><div class="time">21:33</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">不理我是吧🤕</div><div class="time">22:32</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">没去哪玩</div><div class="time">22:35</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">咋还没睡</div><div class="time">22:35</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">工作💼</div><div class="time">22:55</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接/文件]</div><div class="time">22:55</div></div></div>
+<div class="date-divider">2026年03月21日</div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">[笑臉]</div><div class="time">00:01</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">13:56</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我写作业哩</div><div class="time">13:58</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[3]</div><div class="time">13:58</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">明天有空嘛</div><div class="time">14:02</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哥哥也可以带着你把作业写完</div><div class="time">14:02</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我明天就回学校了</div><div class="time">14:02</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">可是</div><div class="time">14:03</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">唉</div><div class="time">14:03</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">别见哥哥啦</div><div class="time">14:03</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">而且最近有个男生在追我</div><div class="time">14:03</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">对我挺好的</div><div class="time">14:03</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">嗯</div><div class="time">14:04</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">把我删了吧</div><div class="time">14:04</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">14:07</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">等待是最没用的</div><div class="time">14:08</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">祝你幸福</div><div class="time">14:08</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">嗯</div><div class="time">14:08</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">14:08</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你真删啊</div><div class="time">14:09</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">不删</div><div class="time">14:09</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[链接/文件]</div><div class="time">14:09</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">想留就留着</div><div class="time">14:11</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">其实是想删就删</div><div class="time">14:14</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我不会那样</div><div class="time">14:15</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">一声不吭把人删了多少是不礼貌的</div><div class="time">14:15</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">那如果你放暑假了呢</div><div class="time">14:18</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">而且现在你也没接受他啊</div><div class="time">14:18</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">14:18</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你就死心塌地了</div><div class="time">14:24</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">啥</div><div class="time">14:26</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[链接/文件]</div><div class="time">14:27</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我看他态度吧</div><div class="time">14:27</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">要是真心对我好</div><div class="time">14:27</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我就接受呗</div><div class="time">14:28</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接/文件]</div><div class="time">14:29</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接/文件]</div><div class="time">14:31</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">14:31</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[链接/文件]</div><div class="time">14:32</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[链接/文件]</div><div class="time">14:32</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">小逸让哥哥一直等着</div><div class="time">14:34</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我受够了等待</div><div class="time">14:34</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你所谓的安排</div><div class="time">14:34</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你喜欢我啥</div><div class="time">14:35</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">一种自由的人格</div><div class="time">14:38</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">但是你难道不认为</div><div class="time">14:39</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">喜欢是一种感觉吗</div><div class="time">14:39</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我一天天在学校里面跟个畜生一样，自由啥</div><div class="time">14:39</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">刻意地把感觉说出来</div><div class="time">14:39</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">反而是一种束缚</div><div class="time">14:39</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接/文件]</div><div class="time">14:39</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">没有</div><div class="time">14:40</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">可能没听懂吧</div><div class="time">14:40</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我解释一下</div><div class="time">14:40</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你说的是外界的不可抗因素</div><div class="time">14:40</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我说的是你本身</div><div class="time">14:41</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">嗯对</div><div class="time">14:41</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">行，我知道了</div><div class="time">14:41</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我喜欢的不太可能是外在的</div><div class="time">14:41</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你没必要载在我身上，我又不是什么太好的人</div><div class="time">14:42</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你所说的不好</div><div class="time">14:42</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">反而是特立独行之处</div><div class="time">14:42</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">反而是有魅力的地方</div><div class="time">14:42</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你就这么喜欢我？</div><div class="time">14:43</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">可惜不知道你怎么想</div><div class="time">14:44</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我没咋想</div><div class="time">14:48</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你连我名字都不知道</div><div class="time">14:48</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你没问我</div><div class="time">14:48</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">习惯性格也都没说过</div><div class="time">14:48</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">就说喜欢我</div><div class="time">14:48</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我也不知道你咋想的</div><div class="time">14:50</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">喜欢总要付出一点吧</div><div class="time">14:50</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哎呀，冒冒失失的</div><div class="time">14:52</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">之前在软件上</div><div class="time">14:53</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">妹妹你一直想见我</div><div class="time">14:53</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;你已回收一則訊息&lt;/content&gt;&lt;revoketime&gt;0&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">还说什么</div><div class="time">14:53</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">不吃颜的</div><div class="time">14:53</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">喜欢的是我这个人</div><div class="time">14:53</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">14:53</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;「逸」已回收一則訊息&lt;/content&gt;&lt;revoketime&gt;0&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">软件我早卸载了，那两天就是无聊下载的</div><div class="time">14:56</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你就当我发神经了</div><div class="time">14:57</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我不要</div><div class="time">14:57</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">那我也发神经</div><div class="time">14:58</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">🤕</div><div class="time">15:01</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你还知道我多大吗？</div><div class="time">15:02</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">十五六吗</div><div class="time">15:03</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你多大</div><div class="time">15:03</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">刚19</div><div class="time">15:03</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你没谈过恋爱？</div><div class="time">15:04</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">🤔你为什么会这么问</div><div class="time">15:04</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你给我的感觉不想谈过恋爱</div><div class="time">15:05</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">可能给比我年龄小的你</div><div class="time">15:05</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我会表现出幼稚的一面吧</div><div class="time">15:06</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">行</div><div class="time">15:07</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">15:07</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">所以你会因此讨厌我吗</div><div class="time">15:08</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">没</div><div class="time">15:10</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">21:44</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">做完家教了</div><div class="time">21:44</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">行</div><div class="time">21:45</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">行</div><div class="time">21:48</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[3]</div><div class="time">22:53</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">这个味不好喝</div><div class="time">22:53</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[3]</div><div class="time">22:53</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">这个还行</div><div class="time">22:53</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我记得有点苦</div><div class="time">22:53</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">没有吧</div><div class="time">22:54</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[43]</div><div class="time">22:54</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你看我萌不</div><div class="time">22:54</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">22:54</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">丑萌</div><div class="time">22:56</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哈哈哈</div><div class="time">22:56</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">这大叔特效</div><div class="time">22:56</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">…</div><div class="time">22:56</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">滚蛋</div><div class="time">22:57</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">[再見]</div><div class="time">22:57</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">没说你丑</div><div class="time">22:57</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">。。。</div><div class="time">22:57</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我说特效</div><div class="time">22:57</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">嘿嘿嘿</div><div class="time">22:57</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">[害羞]</div><div class="time">22:58</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">没事啊</div><div class="time">22:58</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我开玩笑呢</div><div class="time">22:58</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">妹妹当然是美美滴</div><div class="time">22:58</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">😚</div><div class="time">22:58</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">每天会学校了</div><div class="time">22:59</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">假期好短…</div><div class="time">22:59</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我难受…</div><div class="time">22:59</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">😮‍💨</div><div class="time">23:01</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我以为双休呢</div><div class="time">23:01</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">🥺</div><div class="time">23:04</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你咋光用Emoji</div><div class="time">23:05</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">那不用了。。。</div><div class="time">23:06</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我这个手机看着可奇怪了</div><div class="time">23:06</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[3]</div><div class="time">23:06</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[3]</div><div class="time">23:06</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">还真是</div><div class="time">23:07</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">昂</div><div class="time">23:07</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">看我的好看嘛[吃西瓜]</div><div class="time">23:07</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them"> 你这个好看</div><div class="time">23:07</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我这个丑</div><div class="time">23:07</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">死手机</div><div class="time">23:07</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">[吃西瓜]人好看就行</div><div class="time">23:08</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">23:09</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">彳亍呗</div><div class="time">23:09</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">明早吗</div><div class="time">23:10</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">下午</div><div class="time">23:10</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">我是住宿舍生早回去半天</div><div class="time">23:10</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">那还不是双休</div><div class="time">23:12</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">[歐耶]</div><div class="time">23:12</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">哎呦，我这不想上学</div><div class="time">23:12</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">唉</div><div class="time">23:15</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哥哥明天上午要做家教</div><div class="time">23:15</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">去呗</div><div class="time">23:15</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">十点半到十二点</div><div class="time">23:15</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哥哥想见妹妹[難受]</div><div class="time">23:18</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">见我干啥</div><div class="time">23:18</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哥哥都等了两周了</div><div class="time">23:19</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">你看你又说这</div><div class="time">23:20</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">23:20</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">不说了</div><div class="time">23:20</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">嗯</div><div class="time">23:20</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接/文件]</div><div class="time">23:23</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">23:23</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">没，就是现拍的</div><div class="time">23:24</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">又看了看👀</div><div class="time">23:25</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">小可爱哦</div><div class="time">23:26</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them meta">[47]</div><div class="time">23:26</div></div></div>
+<div class="date-divider">2026年03月22日</div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">💤</div><div class="time">01:06</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[47]</div><div class="time">11:33</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">咋了</div><div class="time">11:34</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">送别一下你</div><div class="time">11:34</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="bubble them">[心碎]</div><div class="time">11:35</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;你已回收一則訊息&lt;/content&gt;&lt;revoketime&gt;0&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">好可怜的小逸</div><div class="time">11:42</div></div></div></div>
+<div class="stats">时间跨度: 2026-03-01 ~ 2026-03-22 &nbsp;|&nbsp; 我: 240 条 &nbsp;|&nbsp; 小逸妹妹: 188 条</div>
+</body></html>

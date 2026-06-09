@@ -1,0 +1,175 @@
+﻿{
+    "version":  "v6",
+    "updated_at":  "2026-04-29T01:47:07",
+    "output_html":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\slideshow_v6.html",
+    "output_dir":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6",
+    "expected_pages":  15,
+    "change":  "page_7_replaced_with_user_supplied_image",
+    "pages":  [
+                  {
+                      "page":  1,
+                      "target":  "p001_x48.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p001_x48.png",
+                      "output_sha256":  "7E8DD610C7222800701B2DE5695850117F020D1C0751651FCEB32B4828B33643",
+                      "operation":  "copy_existing_version_source",
+                      "source_label":  "v5",
+                      "source_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p001_x48.png",
+                      "source_sha256":  "7E8DD610C7222800701B2DE5695850117F020D1C0751651FCEB32B4828B33643"
+                  },
+                  {
+                      "page":  2,
+                      "target":  "p002_x49.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p002_x49.png",
+                      "output_sha256":  "5785DF60B77388AD2D689CB0480FF0EF9B45E041C65344FEDDEFB62AE5949469",
+                      "operation":  "composite_horizontal_trimmed",
+                      "source_label":  "v5-left + v2-right",
+                      "sources":  [
+                                      {
+                                          "path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p002_x49.png",
+                                          "label":  "v5-left",
+                                          "sha256":  "89E4BBBAAE70D108B91CF124FF16094D1B864C5324D41D681FCDD7FF725C5200"
+                                      },
+                                      {
+                                          "path":  "D:\\虚拟C盘\\slideshow_v2_extracted\\image_03.png",
+                                          "label":  "v2-right",
+                                          "sha256":  "63B4711B9CD2629533FC21083102DFB0DC48AC26DECD4EBBD296642D18147496"
+                                      }
+                                  ],
+                      "reason":  "Existing V6 composite retained."
+                  },
+                  {
+                      "page":  3,
+                      "target":  "p003_x50.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p003_x50.png",
+                      "output_sha256":  "2ADFBF1A370898D3F8571A47529695552054FBFE4CA0164F085D2DA24B12DA15",
+                      "operation":  "copy_existing_version_source",
+                      "source_label":  "v5",
+                      "source_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p003_x50.png",
+                      "source_sha256":  "2ADFBF1A370898D3F8571A47529695552054FBFE4CA0164F085D2DA24B12DA15"
+                  },
+                  {
+                      "page":  4,
+                      "target":  "p004_x51.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p004_x51.png",
+                      "output_sha256":  "7718D9E4FADADD6BF4F6DE3CCB39C16D7AF6293112C2930B4D36DE989732389A",
+                      "operation":  "copy_existing_version_source",
+                      "source_label":  "v5",
+                      "source_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p004_x51.png",
+                      "source_sha256":  "7718D9E4FADADD6BF4F6DE3CCB39C16D7AF6293112C2930B4D36DE989732389A"
+                  },
+                  {
+                      "page":  5,
+                      "target":  "p005_x52.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p005_x52.png",
+                      "output_sha256":  "50295EE59D5C9931692DE4798E965041C989532032D732BACE1BD904D82BC8A2",
+                      "operation":  "copy_existing_version_source",
+                      "source_label":  "v5",
+                      "source_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p005_x52.png",
+                      "source_sha256":  "50295EE59D5C9931692DE4798E965041C989532032D732BACE1BD904D82BC8A2"
+                  },
+                  {
+                      "page":  6,
+                      "target":  "p006_x53.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p006_x53.png",
+                      "output_sha256":  "D92A6860FD51F14692E8D3D84E300EEAA8DA93CF21362959D61E0118D06687B5",
+                      "operation":  "copy_existing_version_source",
+                      "source_label":  "v5",
+                      "source_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p006_x53.png",
+                      "source_sha256":  "D92A6860FD51F14692E8D3D84E300EEAA8DA93CF21362959D61E0118D06687B5"
+                  },
+                  {
+                      "page":  7,
+                      "target":  "p007_x54.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p007_x54.png",
+                      "output_sha256":  "0CBE0D7425E3D92B5C3C99B6BBC28782710EE7E07D2F2E0BDEDC6A96F04C0DF0",
+                      "operation":  "replace_image_in_place",
+                      "source_label":  "user-supplied-image",
+                      "source_path":  "D:\\虚拟C盘\\9dfbfbf8-cde5-43f6-a2e7-7a80a602ea6e.jpg",
+                      "source_sha256":  "4D18F8CBC58C3B3E13F6A0E87D7AC129848CBE07922AC5973F97A29CEF41BF04",
+                      "backup_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v6_edits\\p007_x54_before_user_replacement_20260429_014707.png",
+                      "backup_sha256":  "F05FC4DCA8864AE4067BC06B33354C22E7E0F53E47DC64CF3EB8D7CC6983C11B",
+                      "source_copy":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v6_edits\\p007_x54_user_source_20260429_014707.jpg",
+                      "reason":  "User requested V6 page 7 reference be replaced with the supplied image."
+                  },
+                  {
+                      "page":  8,
+                      "target":  "p008_x55.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p008_x55.png",
+                      "output_sha256":  "608511583DE83A8750D23E0E6BD0FAF0A1546207A25065CAB5421651E947EE82",
+                      "operation":  "copy_existing_version_source",
+                      "source_label":  "v2",
+                      "source_path":  "D:\\虚拟C盘\\slideshow_v2_extracted\\p008_x55.png",
+                      "source_sha256":  "608511583DE83A8750D23E0E6BD0FAF0A1546207A25065CAB5421651E947EE82"
+                  },
+                  {
+                      "page":  9,
+                      "target":  "p009_x56.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p009_x56.png",
+                      "output_sha256":  "FC9B77DC46D4325F1066D4063F14B1D92B1E336BE8AA78BEE0874F562864B1FE",
+                      "operation":  "copy_existing_version_source",
+                      "source_label":  "v5",
+                      "source_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p009_x56.png",
+                      "source_sha256":  "FC9B77DC46D4325F1066D4063F14B1D92B1E336BE8AA78BEE0874F562864B1FE"
+                  },
+                  {
+                      "page":  10,
+                      "target":  "p010_x57.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p010_x57.png",
+                      "output_sha256":  "21F66B908B80E58B1FD7FB9C5D84CBA0FCD580697042B0FB46D0A7563224BAD8",
+                      "operation":  "copy_existing_version_source",
+                      "source_label":  "v5",
+                      "source_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p010_x57.png",
+                      "source_sha256":  "21F66B908B80E58B1FD7FB9C5D84CBA0FCD580697042B0FB46D0A7563224BAD8"
+                  },
+                  {
+                      "page":  11,
+                      "target":  "p011_x58.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p011_x58.png",
+                      "output_sha256":  "66D57192029E13246DBFA9B7D64CD30A73F9B67568BAD32CB67042E87ECD3B62",
+                      "operation":  "copy_existing_version_source",
+                      "source_label":  "v5",
+                      "source_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p011_x58.png",
+                      "source_sha256":  "66D57192029E13246DBFA9B7D64CD30A73F9B67568BAD32CB67042E87ECD3B62"
+                  },
+                  {
+                      "page":  12,
+                      "target":  "p012_x59.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p012_x59.png",
+                      "output_sha256":  "ED6A4FC4ACD0374D5C35D5C28B070748CA357AA8F44F3EC635FDC1561DAE8618",
+                      "operation":  "copy_existing_version_source",
+                      "source_label":  "v5",
+                      "source_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p012_x59.png",
+                      "source_sha256":  "ED6A4FC4ACD0374D5C35D5C28B070748CA357AA8F44F3EC635FDC1561DAE8618"
+                  },
+                  {
+                      "page":  13,
+                      "target":  "p013_x60.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p013_x60.png",
+                      "output_sha256":  "78B73BFB2B68CFFC1ED02530C47F0A0DFED470ADCA51724D45FF9E68C4DA862F",
+                      "operation":  "copy_existing_version_source",
+                      "source_label":  "v5",
+                      "source_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p013_x60.png",
+                      "source_sha256":  "78B73BFB2B68CFFC1ED02530C47F0A0DFED470ADCA51724D45FF9E68C4DA862F"
+                  },
+                  {
+                      "page":  14,
+                      "target":  "p014_x61.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p014_x61.png",
+                      "output_sha256":  "DED836463207DB0A56C7807018DC6F4F63907F30D598BEE2B43A668F0081FA1B",
+                      "operation":  "copy_existing_version_source",
+                      "source_label":  "v5",
+                      "source_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p014_x61.png",
+                      "source_sha256":  "DED836463207DB0A56C7807018DC6F4F63907F30D598BEE2B43A668F0081FA1B"
+                  },
+                  {
+                      "page":  15,
+                      "target":  "p015_x62.png",
+                      "output_path":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p015_x62.png",
+                      "output_sha256":  "B41460B5B3923BDD7CB6040C7D1AF330AD3CB1E8706233C2CB51FECBA5A003C6",
+                      "operation":  "copy_existing_version_source",
+                      "source_label":  "v2",
+                      "source_path":  "D:\\虚拟C盘\\slideshow_v2_extracted\\p015_x62.png",
+                      "source_sha256":  "B41460B5B3923BDD7CB6040C7D1AF330AD3CB1E8706233C2CB51FECBA5A003C6"
+                  }
+              ]
+}

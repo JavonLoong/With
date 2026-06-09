@@ -1,0 +1,18 @@
+{
+  "page": "p014_x61",
+  "layout": "one-illu",
+  "section_tag": "执行路径",
+  "page_title": "打造三大「金标准」样板章节",
+  "cards": [
+    {
+      "key": "执行路径",
+      "title": "三大样板章节",
+      "desc": "固体力学·梁弯曲 / 流体力学·伯努利与损失项 / 大学物理·动量与能量守恒",
+      "featured": false,
+      "illu_bbox_pct": [0.02, 0.20, 0.34, 0.80]
+    }
+  ],
+  "quote": "每章必须包含交付物：知识地图 · 推导审计 · 错题切片 · 复测报告。",
+  "quote_emphasis": ["知识地图", "推导审计", "错题切片", "复测报告"],
+  "notes": "三个 Mission Dashboard 卡片 + 底部 bar 与勾选框"
+}

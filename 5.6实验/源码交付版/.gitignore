@@ -1,0 +1,44 @@
+# Video and Media files
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Large Data & Array files
+*.npz
+*.npy
+*.h5
+*.mat
+
+# Archives
+*.zip
+*.tar.gz
+*.tar
+*.rar
+*.7z
+
+# Processed output (Optional: comment out if you want to track small CSVs)
+# *.csv
+# *.png
+# *.jpg
+
+# Python related
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.env
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE and OS files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

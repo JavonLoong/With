@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第七章作业（3）更简写答案</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <style>
+    body {
+      margin: 0;
+      background: #f6f7fb;
+      color: #111827;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      line-height: 1.7;
+    }
+    main {
+      width: 820px;
+      max-width: calc(100vw - 44px);
+      margin: 28px auto;
+      padding: 30px 40px 42px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    }
+    h1 {
+      margin: 0 0 24px;
+      text-align: center;
+      font-size: 26px;
+    }
+    h2 {
+      margin: 30px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #dbe4f0;
+      font-size: 21px;
+    }
+    p {
+      margin: 7px 0;
+      font-size: 16px;
+    }
+    .note {
+      color: #4b5563;
+    }
+    .answer {
+      margin: 12px 0;
+      padding: 10px 14px;
+      border-left: 5px solid #1f5f9f;
+      background: #f2f7fc;
+      font-weight: 600;
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      margin: 0.58em 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>第七章作业（3）更简写答案</h1>
+  <p class="note">默认空气：\(\gamma=1.4,\ R=287\ \mathrm{J/(kg\cdot K)}\)。</p>
+
+  <h2>1. 书 7.19</h2>
+  <p>已知</p>
+  \[
+  \frac{A_e}{A_T}=2.005,\quad p_b=1.0\times10^5\ \mathrm{Pa},\quad p_0=1.36\times10^6\ \mathrm{Pa}
+  \]
+  <p>喉部临界：</p>
+  \[
+  A_T=A^*,\qquad \frac{A_e}{A^*}=2.005
+  \]
+  <p>查超声速支：</p>
+  \[
+  M_e\approx2.20
+  \]
+  <p>由</p>
+  \[
+  \frac{p_0}{p_e}=(1+0.2M_e^2)^{3.5}
+  \]
+  <p>得</p>
+  \[
+  p_e\approx1.27\times10^5\ \mathrm{Pa}
+  \]
+  <p>因 \(p_e>p_b\)，所以管外继续膨胀。由</p>
+  \[
+  \frac{p_0}{p_b}=(1+0.2M_b^2)^{3.5}
+  \]
+  <p>得 \(M_b\approx2.35\)。</p>
+  \[
+  \alpha=\nu(M_b)-\nu(M_e)
+  \approx35.62^\circ-31.73^\circ
+  \]
+  <div class="answer">
+    \[
+    \boxed{p_e\approx1.27\times10^5\ \mathrm{Pa}},\qquad
+    \boxed{\alpha\approx3.9^\circ}
+    \]
+  </div>
+
+  <h2>2. 书 7.20</h2>
+  <p>已知</p>
+  \[
+  \frac{A_e}{A_T}=11.91,\quad p_{01}=7.0\times10^5\ \mathrm{Pa},\quad
+  p_b=2.26\times10^5\ \mathrm{Pa},\quad T_{01}=500\ \mathrm{K}
+  \]
+  <p>先假设全程等熵：</p>
+  \[
+  \frac{A_e}{A^*}=11.91
+  \]
+  <p>查超声速支：</p>
+  \[
+  M_e\approx4.12,\qquad p_e\approx3.94\times10^3\ \mathrm{Pa}
+  \]
+  <p>因为 \(p_e\ll p_b\)，不能全程等熵。若激波在出口：</p>
+  \[
+  p_{2e}\approx7.73\times10^4\ \mathrm{Pa}<p_b
+  \]
+  <p>所以激波在管内。解得：</p>
+  <div class="answer">
+    \[
+    \boxed{\frac{A_s}{A_T}\approx4.24},\quad
+    \boxed{M_{asf}\approx3.00},\quad
+    \boxed{M_e\approx0.150},\quad
+    \boxed{T_e\approx498\ \mathrm{K}}
+    \]
+  </div>
+
+  <h2>3. 书 7.21</h2>
+  <p>已知</p>
+  \[
+  A=1.686A_{T1},\quad A_s=0.822A,\quad A_e=4.130A,\quad
+  A=0.2\ \mathrm{m^2},\quad T_0=288\ \mathrm{K},\quad p_b=100\ \mathrm{kPa}
+  \]
+  <p>第一喉部临界：</p>
+  \[
+  A_{T1}=A_1^*
+  \]
+  <p>工作段：</p>
+  \[
+  \frac{A}{A_1^*}=1.686
+  \]
+  <p>查超声速支：</p>
+  \[
+  \boxed{M_A\approx2.00}
+  \]
+  <p>第一喉部面积：</p>
+  \[
+  A_{T1}=\frac{0.2}{1.686}=0.1186\ \mathrm{m^2}
+  \]
+  <p>激波截面：</p>
+  \[
+  A_s=0.822A=0.1644\ \mathrm{m^2},\qquad
+  \frac{A_s}{A_{T1}}=1.386
+  \]
+  <p>查超声速支：</p>
+  \[
+  M_1\approx1.75
+  \]
+  <p>正激波后：</p>
+  \[
+  M_2^2=\frac{1+0.2M_1^2}{1.4M_1^2-0.2}
+  \]
+  \[
+  M_2\approx0.628,\qquad \frac{p_{02}}{p_{01}}\approx0.835
+  \]
+  <p>第二喉部最小面积：</p>
+  \[
+  A_{T2,\min}=A_{T1}\frac{p_{01}}{p_{02}}
+  =\frac{0.1186}{0.835}
+  \]
+  \[
+  \boxed{A_{T2,\min}\approx0.142\ \mathrm{m^2}}
+  \]
+  <p>出口面积：</p>
+  \[
+  A_e=4.130A=0.826\ \mathrm{m^2}
+  \]
+  \[
+  \frac{A_e}{A_2^*}
+  =\frac{0.826}{0.142}
+  \approx5.81
+  \]
+  <p>查亚声速支：</p>
+  \[
+  \boxed{M_e\approx0.100}
+  \]
+  <p>出口压力等于背压：</p>
+  \[
+  p_e=p_b=100\ \mathrm{kPa}
+  \]
+  \[
+  p_{02}=p_e(1+0.2M_e^2)^{3.5}
+  \approx100.7\ \mathrm{kPa}
+  \]
+  \[
+  p_0=p_{01}=\frac{p_{02}}{0.835}
+  \]
+  \[
+  \boxed{p_0\approx1.21\times10^5\ \mathrm{Pa}}
+  \]
+  <p>质量流量：</p>
+  \[
+  \dot m=0.0404\frac{A_{T1}p_0}{\sqrt{T_0}}
+  =0.0404\frac{0.1186\times1.206\times10^5}{\sqrt{288}}
+  \]
+  <div class="answer">
+    \[
+    \boxed{\dot m\approx34.1\ \mathrm{kg/s}}
+    \]
+  </div>
+
+  <h2>4. 自编喷管题</h2>
+  <p>已知</p>
+  \[
+  A_t=10\ \mathrm{cm^2},\quad A_e=30\ \mathrm{cm^2},\quad p_0=300\ \mathrm{kPa}
+  \]
+  \[
+  \frac{A_e}{A_t}=3,\qquad A_t=A^*
+  \]
+  <p>查超声速支：</p>
+  \[
+  M_{e1}\approx2.64
+  \]
+  <p>激波前出口压力：</p>
+  \[
+  p_1=\frac{p_0}{(1+0.2M_{e1}^2)^{3.5}}
+  \approx14.2\ \mathrm{kPa}
+  \]
+  <p>出口正激波：</p>
+  \[
+  \frac{p_2}{p_1}\approx7.95,\qquad
+  p_2\approx112.8\ \mathrm{kPa}
+  \]
+  <p>喉部压力：</p>
+  \[
+  p_t=p^*=0.528p_0\approx158.5\ \mathrm{kPa}
+  \]
+  <p>压差计读数：</p>
+  \[
+  h=\frac{|p_t-p_2|}{\rho_{Hg}g}
+  =\frac{(158.5-112.8)\times10^3}{13600\times9.81}
+  \]
+  <div class="answer">
+    \[
+    \boxed{h\approx0.343\ \mathrm{m}=34.3\ \mathrm{cmHg}}
+    \]
+  </div>
+  <p>若 \(p_b=100\ \mathrm{kPa}\)，则</p>
+  \[
+  14.2\ \mathrm{kPa}<100\ \mathrm{kPa}<112.8\ \mathrm{kPa}
+  \]
+  <p>所以激波不在管内，而在管外。</p>
+  <div class="answer">
+    \[
+    \boxed{\text{会出现激波，位置在管外。}}
+    \]
+  </div>
+</main>
+</body>
+</html>

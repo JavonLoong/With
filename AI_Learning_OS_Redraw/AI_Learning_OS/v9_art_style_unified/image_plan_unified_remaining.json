@@ -1,0 +1,146 @@
+{
+  "version": "v9-style-unified",
+  "expected_pages": 14,
+  "images": [
+    {
+      "page": 1,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "封面主视觉：人工智能学习操作系统的手绘工程封套",
+      "prompt_path": "prompts/p001_style_unified.txt",
+      "negative_prompt_path": "prompts/unified_negative.txt",
+      "output": "generated/p001_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 2,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "问题诊断：把刷题错觉拆成可观察的认知断层",
+      "prompt_path": "prompts/p002_style_unified.txt",
+      "negative_prompt_path": "prompts/unified_negative.txt",
+      "output": "generated/p002_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 3,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "范式转移：传统答题工具与认知引擎的对照",
+      "prompt_path": "prompts/p003_style_unified.txt",
+      "negative_prompt_path": "prompts/unified_negative.txt",
+      "output": "generated/p003_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 4,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "系统架构：六个模块构成持续循环",
+      "prompt_path": "prompts/p004_style_unified.txt",
+      "negative_prompt_path": "prompts/unified_negative.txt",
+      "output": "generated/p004_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 5,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "预编译：公式、前提、适用条件与常见误用的血缘树",
+      "prompt_path": "prompts/p005_style_unified.txt",
+      "negative_prompt_path": "prompts/unified_negative.txt",
+      "output": "generated/p005_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 6,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "互动内化：建立直觉、公式推导、题目应用的三层过滤",
+      "prompt_path": "prompts/p006_style_unified.txt",
+      "negative_prompt_path": "prompts/unified_negative.txt",
+      "output": "generated/p006_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 7,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "错题手术：把表面错题解剖成归因卡",
+      "prompt_path": "prompts/p007_style_unified.txt",
+      "negative_prompt_path": "prompts/unified_negative.txt",
+      "output": "generated/p007_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 8,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "考试模拟：五维度变式压力测试",
+      "prompt_path": "prompts/p008_style_unified.txt",
+      "negative_prompt_path": "prompts/unified_negative.txt",
+      "output": "generated/p008_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 9,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "记忆调度：基于错因数据的间隔复习轨道",
+      "prompt_path": "prompts/p009_style_unified.txt",
+      "negative_prompt_path": "prompts/unified_negative.txt",
+      "output": "generated/p009_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 10,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "课程适配器：通用认知引擎与学科模块的插接",
+      "prompt_path": "prompts/p010_style_unified.txt",
+      "negative_prompt_path": "prompts/unified_negative.txt",
+      "output": "generated/p010_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 11,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "适配器矩阵：固体力学、流体力学、大学物理三类场景",
+      "prompt_path": "prompts/p011_style_unified.txt",
+      "negative_prompt_path": "prompts/unified_negative.txt",
+      "output": "generated/p011_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 12,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "全景图谱：学习者与知识网络的数字孪生",
+      "prompt_path": "prompts/p012_style_unified.txt",
+      "negative_prompt_path": "prompts/unified_negative.txt",
+      "output": "generated/p012_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 14,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "执行路径：三章样板的流水线与检查机制",
+      "prompt_path": "prompts/p014_style_unified.txt",
+      "negative_prompt_path": "prompts/unified_negative.txt",
+      "output": "generated/p014_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 15,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "结尾宣言：学习过程可见、可控、可验证、可迭代",
+      "prompt_path": "prompts/p015_style_unified.txt",
+      "negative_prompt_path": "prompts/unified_negative.txt",
+      "output": "generated/p015_style_unified.png",
+      "key_slot": "rotated"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+﻿file,exists,bytes,note
+analyze_standing_wave_8_5.py,True,42826,root output
+standing_wave_cn_report.md,True,2690,root output
+standing_wave_summary_cn.csv,True,962,root output
+standing_wave_judgement_cn.png,True,188168,root output
+wave_peak_measurement.png,True,657157,root output
+xt_raw_incident_reflected_panels.png,True,1453332,root output
+reflection_strength.png,True,146904,root output
+ruler_calibration_diagnostic.png,True,628198,root output
+surface_waterline_check.png,True,557258,root output
+frame_inspection_contact.png,True,1447618,root output
+waterline_eta_xt.csv,True,9128336,root output
+waterline_eta_xt.npz,True,1555798,root output
+ruler_calibration_samples.csv,True,1352,root output
+fft_directional_summary.csv,True,518,root output
+reflection_window_metrics.csv,True,10447,root output
+peak_measurements.csv,True,7748,root output
+analysis_manifest.csv,True,906,root output

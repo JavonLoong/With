@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>样张 B：统一现代模板 (p002)</title>
+<style>
+  :root {
+    --fg: #0a0a0a;
+    --muted: #71717a;
+    --accent: #6b3fa0;
+    --accent-soft: #ede9fe;
+    --line: #e4e4e7;
+    --bg: #fafafa;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px;
+    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--fg);
+  }
+  .label {
+    width: 1280px; margin: 0 auto 12px; font-size: 13px; color: var(--muted);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .label b { color: var(--fg); font-size: 15px; }
+
+  .slide {
+    width: 1280px; aspect-ratio: 16/9;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px -12px rgba(0,0,0,.12);
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 36px 48px 28px;
+  }
+  /* 头部：章节标记 + 主问题 */
+  .head { display: flex; align-items: baseline; gap: 16px; }
+  .head .tag {
+    font-size: 12px; font-weight: 600; letter-spacing: 2px;
+    color: var(--accent); text-transform: uppercase;
+    padding: 4px 10px; background: var(--accent-soft); border-radius: 999px;
+  }
+  .head h1 {
+    margin: 0; font-size: 26px; font-weight: 700; letter-spacing: 0.5px;
+  }
+
+  /* 中部：双列卡片 */
+  .grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    margin-top: 22px; min-height: 0;
+  }
+  .card {
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 20px 24px;
+    display: flex; flex-direction: column;
+    background: #fff;
+    overflow: hidden;
+  }
+  .card.featured { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+  .card .ckey {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--muted);
+    text-transform: uppercase;
+  }
+  .card.featured .ckey { color: var(--accent); }
+  .card h2 {
+    margin: 4px 0 4px; font-size: 22px; font-weight: 700;
+  }
+  .card .desc {
+    font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 8px;
+  }
+  .card .illu {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    min-height: 0;
+  }
+  .card .illu img {
+    max-width: 100%; max-height: 100%;
+    object-fit: contain;
+  }
+
+  /* 底部 quote bar */
+  .quote {
+    margin-top: 20px;
+    background: linear-gradient(90deg, var(--accent-soft), #fff);
+    border-left: 4px solid var(--accent);
+    padding: 14px 22px;
+    font-size: 16px; line-height: 1.6; color: var(--fg);
+    border-radius: 0 8px 8px 0;
+  }
+  .quote .em { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="label">
+  <b>样张 B · 统一现代模板</b>
+  <span>HTML 渲染：章节标记 + 卡片标题 + 描述 + 底部 quote · AI 重画：两块结构插图</span>
+</div>
+
+<div class="slide">
+  <header class="head">
+    <span class="tag">02 · 问题诊断</span>
+    <h1>为什么"刷题感觉对了"，考试还是失分？</h1>
+  </header>
+
+  <section class="grid">
+    <article class="card">
+      <div class="ckey">现象侧</div>
+      <h2>"能力错觉"循环</h2>
+      <div class="desc">看答案能懂 → 感觉已掌握 → 题目条件一变 → 方法立即失效。一闭环就是认知陷阱。</div>
+      <div class="illu"><img src="assets/p002_left_loop.png" alt="能力错觉循环"></div>
+    </article>
+
+    <article class="card featured">
+      <div class="ckey">本质侧</div>
+      <h2>隐藏的认知复杂度</h2>
+      <div class="desc">从"知识/结论"到能用，需要前提假设、物理模型、边界条件、推理链条四类隐性认知。</div>
+      <div class="illu"><img src="assets/p002_right_iso.png" alt="隐藏的认知复杂度"></div>
+    </article>
+  </section>
+
+  <footer class="quote">
+    传统学习聚焦"<span class="em">结论输入</span>"，而理工科真正的痛点在于"<span class="em">条件判断与推演路径</span>"的<span class="em">断裂</span>。
+  </footer>
+</div>
+
+</body>
+</html>

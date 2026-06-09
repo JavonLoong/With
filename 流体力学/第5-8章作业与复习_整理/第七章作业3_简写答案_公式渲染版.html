@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第七章作业（3）简写答案</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <style>
+    body {
+      margin: 0;
+      background: #f6f7fb;
+      color: #111827;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      line-height: 1.75;
+    }
+    main {
+      width: 920px;
+      max-width: calc(100vw - 48px);
+      margin: 32px auto;
+      padding: 34px 42px 48px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+    }
+    h1 {
+      margin: 0 0 28px;
+      text-align: center;
+      font-size: 28px;
+    }
+    h2 {
+      margin: 34px 0 14px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #dbe4f0;
+      font-size: 22px;
+    }
+    h3 {
+      margin: 24px 0 10px;
+      font-size: 18px;
+    }
+    p {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+    .answer {
+      margin: 14px 0;
+      padding: 12px 16px;
+      border-left: 5px solid #1f5f9f;
+      background: #f2f7fc;
+      font-weight: 600;
+    }
+    .warn {
+      margin: 14px 0;
+      padding: 12px 16px;
+      border-left: 5px solid #a86700;
+      background: #fff7e8;
+    }
+    .note {
+      color: #4b5563;
+    }
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .result-card {
+      padding: 10px 12px;
+      border: 1px solid #dbe4f0;
+      background: #f8fafc;
+    }
+    mjx-container[jax="SVG"][display="true"] {
+      margin: 0.7em 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <h1>第七章作业（3）简写答案</h1>
+  <p class="note">默认空气取 \(\gamma=1.4,\ R=287\ \mathrm{J/(kg\cdot K)}\)。</p>
+
+  <h2>1. 书 7.19</h2>
+  <p>已知</p>
+  \[
+  \frac{A_e}{A_T}=2.005,\qquad
+  p_b=1.0\times10^5\ \mathrm{Pa},\qquad
+  p_0=1.36\times10^6\ \mathrm{Pa}
+  \]
+  <p>喉部临界，所以</p>
+  \[
+  A_T=A^*
+  \]
+  <p>故</p>
+  \[
+  \frac{A_e}{A^*}=2.005
+  \]
+  <p>查拉瓦尔喷管面积比公式的超声速支：</p>
+  \[
+  M_e\approx2.20
+  \]
+  <p>出口压力：</p>
+  \[
+  \frac{p_0}{p_e}=(1+0.2M_e^2)^{3.5}
+  \]
+  <p>代入得</p>
+  \[
+  p_e\approx1.27\times10^5\ \mathrm{Pa}
+  \]
+  <p>因为 \(p_e>p_b\)，所以气流在管外继续膨胀。管外膨胀后压力降至 \(p_b\)，由</p>
+  \[
+  \frac{p_0}{p_b}=(1+0.2M_b^2)^{3.5}
+  \]
+  <p>得</p>
+  \[
+  M_b\approx2.35
+  \]
+  <p>普朗特-迈耶膨胀角：</p>
+  \[
+  \alpha=\nu(M_b)-\nu(M_e)
+  \]
+  \[
+  \nu(2.35)\approx35.62^\circ,\qquad
+  \nu(2.20)\approx31.73^\circ
+  \]
+  <div class="answer">
+    \[
+    \boxed{p_e\approx1.27\times10^5\ \mathrm{Pa}},\qquad
+    \boxed{\alpha\approx3.9^\circ}
+    \]
+  </div>
+
+  <h2>2. 书 7.20</h2>
+  <p>已知</p>
+  \[
+  \frac{A_e}{A_T}=11.91,\qquad
+  p_{01}=7.0\times10^5\ \mathrm{Pa},\qquad
+  p_b=2.26\times10^5\ \mathrm{Pa},\qquad
+  T_{01}=500\ \mathrm{K}
+  \]
+  <p>若全程等熵膨胀，由 \(\frac{A_e}{A^*}=11.91\) 查超声速支得</p>
+  \[
+  M_e\approx4.12
+  \]
+  <p>此时出口压力</p>
+  \[
+  p_e\approx3.94\times10^3\ \mathrm{Pa}
+  \]
+  <p>远小于背压 \(p_b\)，故不能全程等熵。若激波恰在出口，激波后压力约为</p>
+  \[
+  p_{2e}\approx7.73\times10^4\ \mathrm{Pa}
+  \]
+  <p>仍小于 \(p_b=2.26\times10^5\ \mathrm{Pa}\)，因此激波必须进入管内。</p>
+  <p>解得激波位置、激波前马赫数和出口状态：</p>
+  <div class="answer">
+    \[
+    \boxed{\frac{A_s}{A_T}\approx4.24},\qquad
+    \boxed{M_{asf}\approx3.00},\qquad
+    \boxed{M_e\approx0.150},\qquad
+    \boxed{T_e\approx498\ \mathrm{K}}
+    \]
+  </div>
+
+  <h2>3. 书 7.21</h2>
+  <p>题面按教材图读为</p>
+  \[
+  A=1.686A_{T1},\qquad
+  A_s=0.822A,\qquad
+  A_e=4.130A,\qquad
+  A=0.2\ \mathrm{m^2},\qquad
+  T_0=288\ \mathrm{K},\qquad
+  p_b=100\ \mathrm{kPa}
+  \]
+  <div class="warn">
+    扫描图最左侧的 \(A=\) 不清楚；这里按“工作段面积 \(A\)”与题意解释为 \(A=1.686A_{T1}\)。如果教材原图第一项不是这个，后面数值会整体变化。
+  </div>
+
+  <h3>（1）工作段马赫数</h3>
+  <p>第一喉部临界，\(A_{T1}=A_1^*\)。工作段面积比为</p>
+  \[
+  \frac{A}{A_1^*}=\frac{A}{A_{T1}}=1.686
+  \]
+  <p>查面积比公式超声速支：</p>
+  \[
+  \boxed{M_A\approx2.00}
+  \]
+
+  <h3>（2）扩压段第二喉部面积 \(A_{T2}\) 的最小值</h3>
+  <p>第一喉部面积：</p>
+  \[
+  A_{T1}=\frac{A}{1.686}=\frac{0.2}{1.686}\approx0.1186\ \mathrm{m^2}
+  \]
+  <p>激波所在截面积：</p>
+  \[
+  A_s=0.822A=0.822\times0.2=0.1644\ \mathrm{m^2}
+  \]
+  <p>激波前按等熵流从 \(A_{T1}\) 推到 \(A_s\)：</p>
+  \[
+  \frac{A_s}{A_{T1}}=0.822\times1.686\approx1.386
+  \]
+  <p>查面积比公式超声速支：</p>
+  \[
+  M_1\approx1.75
+  \]
+  <p>正激波后：</p>
+  \[
+  M_2^2=\frac{1+0.2M_1^2}{1.4M_1^2-0.2},\qquad
+  M_2\approx0.628
+  \]
+  <p>激波总压损失：</p>
+  \[
+  \frac{p_{02}}{p_{01}}\approx0.835
+  \]
+  <p>总温不变，质量流量在第一喉部和第二喉部临界状态下相等：</p>
+  \[
+  \dot m=C\frac{p_{01}A_{T1}}{\sqrt{T_0}}
+  =C\frac{p_{02}A_{T2,\min}}{\sqrt{T_0}}
+  \]
+  \[
+  A_{T2,\min}=A_{T1}\frac{p_{01}}{p_{02}}
+  =\frac{0.1186}{0.835}
+  \approx0.142\ \mathrm{m^2}
+  \]
+  <div class="answer">
+    \[
+    \boxed{A_{T2,\min}\approx0.142\ \mathrm{m^2}}
+    \]
+  </div>
+
+  <h3>（3）出口马赫数</h3>
+  <p>激波后到出口取亚声速等熵支。由于</p>
+  \[
+  A_e=4.130A=0.826\ \mathrm{m^2},\qquad
+  A_2^*=A_{T2,\min}\approx0.142\ \mathrm{m^2}
+  \]
+  <p>所以</p>
+  \[
+  \frac{A_e}{A_2^*}=\frac{0.826}{0.142}\approx5.81
+  \]
+  <p>查面积比公式亚声速支：</p>
+  \[
+  \boxed{M_e\approx0.100}
+  \]
+
+  <h3>（4）前室总压 \(p_0\)</h3>
+  <p>出口压力等于背压：</p>
+  \[
+  p_e=p_b=100\ \mathrm{kPa}
+  \]
+  <p>激波后出口段等熵：</p>
+  \[
+  \frac{p_{02}}{p_e}=(1+0.2M_e^2)^{3.5}
+  \]
+  <p>代入 \(M_e\approx0.100\)：</p>
+  \[
+  p_{02}\approx100.7\ \mathrm{kPa}
+  \]
+  <p>又 \(\frac{p_{02}}{p_{01}}\approx0.835\)，所以</p>
+  \[
+  p_0=p_{01}=\frac{p_{02}}{0.835}\approx120.6\ \mathrm{kPa}
+  \]
+  <div class="answer">
+    \[
+    \boxed{p_0\approx1.21\times10^5\ \mathrm{Pa}}
+    \]
+  </div>
+
+  <h3>（5）质量流量</h3>
+  <p>第一喉部临界流量：</p>
+  \[
+  \dot m=0.0404\frac{A_{T1}p_0}{\sqrt{T_0}}
+  \]
+  <p>代入</p>
+  \[
+  A_{T1}\approx0.1186\ \mathrm{m^2},\qquad
+  p_0\approx1.206\times10^5\ \mathrm{Pa},\qquad
+  T_0=288\ \mathrm{K}
+  \]
+  <p>得</p>
+  \[
+  \dot m
+  \approx0.0404\frac{0.1186\times1.206\times10^5}{\sqrt{288}}
+  \approx34.1\ \mathrm{kg/s}
+  \]
+
+  <div class="answer">
+    <p>书 7.21 答案汇总：</p>
+    <div class="result-grid">
+      <div class="result-card">\(\boxed{M_A\approx2.00}\)</div>
+      <div class="result-card">\(\boxed{A_{T2,\min}\approx0.142\ \mathrm{m^2}}\)</div>
+      <div class="result-card">\(\boxed{M_e\approx0.100}\)</div>
+      <div class="result-card">\(\boxed{p_0\approx1.21\times10^5\ \mathrm{Pa}}\)</div>
+      <div class="result-card">\(\boxed{\dot m\approx34.1\ \mathrm{kg/s}}\)</div>
+    </div>
+  </div>
+
+  <h2>4. 自编喷管题</h2>
+  <p>已知</p>
+  \[
+  A_t=10\ \mathrm{cm^2},\qquad
+  A_e=30\ \mathrm{cm^2},\qquad
+  p_0=300\ \mathrm{kPa}
+  \]
+  <p>故 \(\frac{A_e}{A_t}=3\)，喉部临界 \(A_t=A^*\)。由面积比公式查超声速支：</p>
+  \[
+  M_{e1}\approx2.64
+  \]
+  <p>激波前出口压力：</p>
+  \[
+  p_1=\frac{p_0}{(1+0.2M_{e1}^2)^{3.5}}\approx14.2\ \mathrm{kPa}
+  \]
+  <p>出口处有正激波，正激波压力比约为</p>
+  \[
+  \frac{p_2}{p_1}\approx7.95
+  \]
+  <p>故下游大容器压力为</p>
+  \[
+  p_2\approx112.8\ \mathrm{kPa}
+  \]
+  <p>喉部压力为</p>
+  \[
+  p_t=p^*=0.528p_0\approx158.5\ \mathrm{kPa}
+  \]
+  <p>U 形压差计读数：</p>
+  \[
+  h=\frac{|p_t-p_2|}{\rho_{Hg}g}
+  =\frac{(158.5-112.8)\times10^3}{13600\times9.81}
+  \]
+  <div class="answer">
+    \[
+    \boxed{h\approx0.343\ \mathrm{m}=34.3\ \mathrm{cmHg}}
+    \]
+  </div>
+  <p>若下游大容器压力 \(p_b=100\ \mathrm{kPa}\)，而出口正激波所需背压约 \(112.8\ \mathrm{kPa}\)，故正激波不在管内。</p>
+  <p>又全程等熵时出口压力约 \(14.2\ \mathrm{kPa}\)，而 \(100\ \mathrm{kPa}>14.2\ \mathrm{kPa}\)，所以气流出管后需要压缩调整，会在管外出现激波。</p>
+  <div class="answer">
+    \[
+    \boxed{\text{会出现激波，位置在管外。}}
+    \]
+  </div>
+</main>
+</body>
+</html>

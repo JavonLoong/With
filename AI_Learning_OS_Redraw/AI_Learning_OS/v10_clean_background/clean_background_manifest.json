@@ -1,0 +1,146 @@
+{
+  "version": "v10-clean-background-from-v8",
+  "created_at": "2026-05-01T14:12:36",
+  "base_html": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\成品ppt_内容艺术全重绘版.html",
+  "discarded_html": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\??ppt_???????.html",
+  "output_html": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\成品ppt_内容艺术全重绘_净背景版.html",
+  "expected_pages": 15,
+  "method": "Return to the previous full-redraw version and remove dirty paper/wall background feel by document-cleanup processing; page 11 replaced with clean same-content v6 source because dirty wall artifacts were embedded in the v8 generated image.",
+  "pages": [
+    {
+      "page": 1,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p001_human_art.png",
+      "source_sha256": "8E37EB5100993A8497B9534E830768EF0EA1AA31B9EA623236FDFD877AF03AA9",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p001_clean_bg.jpg",
+      "output_sha256": "330E1D173499D58175FFCE43DB1EB623E4F2A4D79DB2581514631184C8ED3830",
+      "note": "cleaned from previous full redraw source"
+    },
+    {
+      "page": 2,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p002_art_cn.png",
+      "source_sha256": "F150F555F6414944A03E5E398ABE1BDE406F53DA35FF95FB65869200D4624BF4",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p002_clean_bg.jpg",
+      "output_sha256": "6E933DCA714631F11F3F25DEB711BD1E1BC0AE76B18AF593D0D6AFEC2311649A",
+      "note": "cleaned from previous full redraw source"
+    },
+    {
+      "page": 3,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p003_human_art.png",
+      "source_sha256": "072CFFDAA952A48618F19F60A8C2F78F51E47A0816E10429AEC1A2CB0EDE21DA",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p003_clean_bg.jpg",
+      "output_sha256": "29A000F178295FC62EDA0426AA2E9F7ACE67854DE9BAA7BE8A8DC7EAF1072D0F",
+      "note": "cleaned from previous full redraw source"
+    },
+    {
+      "page": 4,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p004_human_art.png",
+      "source_sha256": "BD218998A2EEBC282FE0A832E95F65C698C7FE4B2D88C93D2E71C940FFA744AC",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p004_clean_bg.jpg",
+      "output_sha256": "CB7E452DFA4E1E7C7F5091466F072C10F456FFA0DEF142EC2D6F0BE5C5BEA1F2",
+      "note": "cleaned from previous full redraw source"
+    },
+    {
+      "page": 5,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p005_art.png",
+      "source_sha256": "469005EBB297A9C0BDB7AF7B1AB788B548AF2C0A6118CE62990537124AE1AF38",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p005_clean_bg.jpg",
+      "output_sha256": "BD100EBCB5EA9737A38A6666A4A3C068B7F93CFE05A576691BB283C4A1D6C8A2",
+      "note": "cleaned from previous full redraw source"
+    },
+    {
+      "page": 6,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p006_human_art.png",
+      "source_sha256": "3CB35337F107E3E02B8A32FACAAD471DEF5000846C3644796B8D17AA3099227A",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p006_clean_bg.jpg",
+      "output_sha256": "1689D48CB8209BC31CA322F0F9EC6E0D71B3CF8F5580CA233C12EBC21924825A",
+      "note": "cleaned from previous full redraw source"
+    },
+    {
+      "page": 7,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p007_art_sample.png",
+      "source_sha256": "0CF282BAB5CA8672F2D2B62B5999F18D475D88A38F3E32FC5BDFC89D507E7F13",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p007_clean_bg.jpg",
+      "output_sha256": "496C50EE12A40C5181F19CE6DF1E4BBE467557643D66C2475452516CB4FA5C64",
+      "note": "cleaned from previous full redraw source"
+    },
+    {
+      "page": 8,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p008_art.png",
+      "source_sha256": "50C0CF50932CC70886387BDE1CF42F84E7D220A2F1281491FF44277E8EBB2DF1",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p008_clean_bg.jpg",
+      "output_sha256": "566C1E1D8C8EADD1863DDD9B0A63C9DFBDD8896C2959023EF44E00192D4CA169",
+      "note": "cleaned from previous full redraw source"
+    },
+    {
+      "page": 9,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p009_art_cn.png",
+      "source_sha256": "C59189FA78BAE247C6F6E4EB3FA5CC01FF4FC1918AC0CDBE390C69744029D7E8",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p009_clean_bg.jpg",
+      "output_sha256": "8253BCFDF0185606BC158112D809740209670F50468636E389A48F7DF899A652",
+      "note": "cleaned from previous full redraw source"
+    },
+    {
+      "page": 10,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p010_human_art.png",
+      "source_sha256": "846149AFF3A8450075E0F0C547FC4380521B03D4B0C8067BEA63A7AB2CB2551C",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p010_clean_bg.jpg",
+      "output_sha256": "84BA356CC5CEE69CDBAA313062B5159D2244798853FEBCD097FF1082A1D8C0CD",
+      "note": "cleaned from previous full redraw source"
+    },
+    {
+      "page": 11,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6\\p011_x58.png",
+      "source_sha256": "66D57192029E13246DBFA9B7D64CD30A73F9B67568BAD32CB67042E87ECD3B62",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p011_clean_bg.jpg",
+      "output_sha256": "BF90163FE1FAA2353A55C6C88809374F2DAB3A07750C7C8A7BADD58A70B1170E",
+      "note": "page 11 uses the clean v6 same-content card source to avoid the discarded dirty wall background"
+    },
+    {
+      "page": 12,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p012_art.png",
+      "source_sha256": "EA446D08D9350B8EFB5F2A8D2F3C5C948F1782BEB6EAF367064F77A414192772",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p012_clean_bg.jpg",
+      "output_sha256": "3A8F967794D2E3D600DE1232D6F531954F428AA974150EEBFB829B6ADA37CAF5",
+      "note": "cleaned from previous full redraw source"
+    },
+    {
+      "page": 13,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p013_human_art.png",
+      "source_sha256": "399AC0C605F63D72B0DCC7C20E5DC05BA0195ADCB59E67648BD629D8EFD647AF",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p013_clean_bg.jpg",
+      "output_sha256": "48E5BAF1519F0E7FCF66B725E8E8330028B70AB99C1A5C54BD1B837D942E5CFF",
+      "note": "cleaned from previous full redraw source"
+    },
+    {
+      "page": 14,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p014_art.png",
+      "source_sha256": "A2E4E1802DCBAA049F41B727A902422848E0377DA951F4EE18E8AA10A11DD6AD",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p014_clean_bg.jpg",
+      "output_sha256": "F1FB0F15337A6DDECB5794A26CBB8EE6BC68FCA4A50FFB04FC52E1058623C509",
+      "note": "cleaned from previous full redraw source"
+    },
+    {
+      "page": 15,
+      "operation": "background_cleanup_from_previous_version",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p015_human_art.png",
+      "source_sha256": "B73A68B628CBCA41CF5BD5846972020143C49555DD79CD4E0BD1C6F3A91BB7DD",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v10_clean_background\\generated_clean\\p015_clean_bg.jpg",
+      "output_sha256": "5402636D236497B2C1770D3371A38EB0E0B73264DFC6A54C111AD2C3FD3E1286",
+      "note": "cleaned from previous full redraw source"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "version": "v12-refined-non-ai-pages",
+  "expected_pages": 7,
+  "images": [
+    {
+      "page": 2,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "???????????",
+      "prompt_path": "prompts/p002_refined_non_ai.txt",
+      "negative_prompt_path": "prompts/shared_negative.txt",
+      "output": "generated/p002_refined_non_ai.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 3,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "??????????????????",
+      "prompt_path": "prompts/p003_refined_non_ai.txt",
+      "negative_prompt_path": "prompts/shared_negative.txt",
+      "output": "generated/p003_refined_non_ai.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 4,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "??????????????????",
+      "prompt_path": "prompts/p004_refined_non_ai.txt",
+      "negative_prompt_path": "prompts/shared_negative.txt",
+      "output": "generated/p004_refined_non_ai.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 6,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "?????????????????????",
+      "prompt_path": "prompts/p006_refined_non_ai.txt",
+      "negative_prompt_path": "prompts/shared_negative.txt",
+      "output": "generated/p006_refined_non_ai.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 7,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "???????????????????",
+      "prompt_path": "prompts/p007_refined_non_ai.txt",
+      "negative_prompt_path": "prompts/shared_negative.txt",
+      "output": "generated/p007_refined_non_ai.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 9,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "???????????????",
+      "prompt_path": "prompts/p009_refined_non_ai.txt",
+      "negative_prompt_path": "prompts/shared_negative.txt",
+      "output": "generated/p009_refined_non_ai.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 10,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "????????????????????",
+      "prompt_path": "prompts/p010_refined_non_ai.txt",
+      "negative_prompt_path": "prompts/shared_negative.txt",
+      "output": "generated/p010_refined_non_ai.png",
+      "key_slot": "rotated"
+    }
+  ]
+}

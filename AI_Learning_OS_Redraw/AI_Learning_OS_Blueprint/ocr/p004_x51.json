@@ -1,0 +1,26 @@
+{
+  "title": "AI_Learning_OS 核心架构全景图",
+  "labels": [
+    "AI_Learning_OS 核心架构全景图",
+    "知识不再停留在静态文本中，而是在闭环中持续生长与验证。",
+    "输入端",
+    "处理端",
+    "输出端",
+    "01_预编译\n(Pre_Compilation)",
+    "02_互动内化\n(Interactive_Internalization)",
+    "03_错题手术\n(Error_Surgery)",
+    "04_考试模拟\n(Exam_Simulation)",
+    "05_记忆调度\n(Memory_Scheduler)",
+    "底层基座",
+    "06_课程适配器 (Course_Adapters)"
+  ],
+  "decorative_codes": [
+    "169",
+    "169",
+    "340",
+    "258",
+    "34",
+    "- 0 %"
+  ],
+  "structure": "该图展示了AI学习系统的核心架构，通过莫比乌斯环状的流水线展示了从预编译到记忆调度的闭环处理流程，并由底层的课程适配器提供支撑。"
+}

@@ -1,0 +1,60 @@
+{
+  "video": "D:\\虚拟C盘\\5.6实验\\4.4\\6.mp4",
+  "frame_count_total": 136,
+  "frame_count_valid": 136,
+  "invalid_frame_indices": [],
+  "fps": 29.0,
+  "duration_s": 4.655172413793103,
+  "width_px": 1280,
+  "height_px": 720,
+  "px_per_cm": 30.158212938850028,
+  "cm_per_px": 0.033158463401914404,
+  "px_per_cm_diagnostic_spread": 0.08,
+  "field_width_cm": 42.40967469104852,
+  "waterline_roi_y0_px": 57,
+  "waterline_roi_y1_px": 316,
+  "waterline_repaired_cells": 11597,
+  "period_band_cm": [
+    12.0,
+    36.0
+  ],
+  "global_autocorr_period_cm": 28.582595452450217,
+  "global_autocorr_period_mad_cm": 1.4589723896842308,
+  "global_autocorr_period_frame_count": 113,
+  "recommended_average_cm": 16.041409171569423,
+  "recommended_average_std_cm": 2.2570514312678496,
+  "recommended_average_median_cm": 15.882903969516999,
+  "recommended_average_mad_cm": 1.9563493407129506,
+  "recommended_average_source": "direct_peak_weighted_trimmed_mean",
+  "fallback_best_spacing_weighted_average_cm": 19.208771569170484,
+  "recommended_average_used_frames": 41,
+  "direct_peak_weighted_average_cm": 16.041409171569423,
+  "direct_peak_median_cm": 15.882903969516999,
+  "direct_peak_frames_used": 41,
+  "direct_peak_interval_sample_average_cm": 17.421004510501255,
+  "direct_peak_interval_sample_median_cm": 16.06527551822753,
+  "direct_peak_interval_sample_count": 88,
+  "calibration_diagnostic": {
+    "ruler_y0": 410,
+    "ruler_y1": 448,
+    "label_px_per_cm": 30.063279312539137,
+    "last_y0": 414,
+    "last_y1": 451
+  },
+  "video_meta": {
+    "codec": "hevc",
+    "pix_fmt": "yuv420p(tv, bt709)",
+    "audio_codec": "aac",
+    "fps": 29.0,
+    "source_size": [
+      1280,
+      720
+    ],
+    "size": [
+      1280,
+      720
+    ],
+    "rotate": 0.0,
+    "duration": 4.71
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "version": "v8",
+  "expected_pages": 8,
+  "images": [
+    {
+      "page": 1,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "将封面主视觉重绘为更有人工手稿感的系统说明书封套",
+      "prompt_path": "prompts/p001_human_art.txt",
+      "negative_prompt_path": "prompts/remaining_negative.txt",
+      "output": "generated/p001_human_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 3,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "将传统答题工具与认知引擎的对照表重绘为人工咨询手稿",
+      "prompt_path": "prompts/p003_human_art.txt",
+      "negative_prompt_path": "prompts/remaining_negative.txt",
+      "output": "generated/p003_human_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 4,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "将六模块循环流程重绘为手工拼贴式系统路线图",
+      "prompt_path": "prompts/p004_human_art.txt",
+      "negative_prompt_path": "prompts/remaining_negative.txt",
+      "output": "generated/p004_human_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 6,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "将三遍过滤法重绘为剖开的学习实验装置",
+      "prompt_path": "prompts/p006_human_art.txt",
+      "negative_prompt_path": "prompts/remaining_negative.txt",
+      "output": "generated/p006_human_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 10,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "将通用认知引擎与学科插件重绘为工程图册式模块底座",
+      "prompt_path": "prompts/p010_human_art.txt",
+      "negative_prompt_path": "prompts/remaining_negative.txt",
+      "output": "generated/p010_human_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 11,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "将三大学科卡片重绘为实验室墙上的手绘课题海报",
+      "prompt_path": "prompts/p011_human_art.txt",
+      "negative_prompt_path": "prompts/remaining_negative.txt",
+      "output": "generated/p011_human_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 13,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "将当前状态到下一步优化的桥梁图重绘为人工工程现场草图",
+      "prompt_path": "prompts/p013_human_art.txt",
+      "negative_prompt_path": "prompts/remaining_negative.txt",
+      "output": "generated/p013_human_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 15,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "将结尾宣言页重绘为手工装裱的宣言卡片",
+      "prompt_path": "prompts/p015_human_art.txt",
+      "negative_prompt_path": "prompts/remaining_negative.txt",
+      "output": "generated/p015_human_art.png",
+      "key_slot": "rotated"
+    }
+  ]
+}

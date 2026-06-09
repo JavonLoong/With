@@ -1,0 +1,156 @@
+{
+  "version": "v8",
+  "expected_pages": 15,
+  "images": [
+    {
+      "page": 1,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "remaining full redraw: human sketch title block",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\p001_human_art.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\remaining_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p001_human_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 2,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "approved v7 redraw: problem diagnosis wheel",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\prompts\\p002_art.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\prompts\\selected_redraw_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p002_art_cn.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 3,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "remaining full redraw: cognition engine contrast",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\p003_human_art.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\remaining_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p003_human_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 4,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "remaining full redraw: six-module route map",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\p004_human_art.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\remaining_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p004_human_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 5,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "approved v7 redraw: formula genealogy",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\prompts\\p005_art.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\prompts\\selected_redraw_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p005_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 6,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "remaining full redraw: three-pass filter device",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\p006_human_art.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\remaining_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p006_human_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 7,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "user-approved v7 page 7 reference style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\prompts\\p007_art_prompt.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\prompts\\p007_art_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p007_art_sample.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 8,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "approved v7 redraw: variant pressure engine",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\prompts\\p008_art.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\prompts\\selected_redraw_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p008_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 9,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "approved v7 redraw: dynamic spaced repetition",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\prompts\\p009_art.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\prompts\\selected_redraw_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p009_art_cn.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 10,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "remaining full redraw: discipline adapter core",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\p010_human_art.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\remaining_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p010_human_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 11,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "remaining full redraw: physics adapter matrix",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\p011_human_art.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\remaining_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p011_human_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 12,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "approved v7 redraw: learner digital twin map",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\prompts\\p012_art.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\prompts\\selected_redraw_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p012_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 13,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "remaining full redraw: executable bridge",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\p013_human_art.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\remaining_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p013_human_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 14,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "approved v7 redraw: gold-standard chapter pipeline",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\prompts\\p014_art.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\prompts\\selected_redraw_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p014_art.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 15,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "remaining full redraw: closing manifesto card",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\p015_human_art.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\prompts\\remaining_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v8_art_full_redraw\\generated\\p015_human_art.png",
+      "key_slot": "rotated"
+    }
+  ]
+}

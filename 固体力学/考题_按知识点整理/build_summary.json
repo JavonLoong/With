@@ -1,0 +1,24 @@
+{
+  "files": 41,
+  "entries": 256,
+  "status_counts": {
+    "ok": 28,
+    "image_needs_ocr": 10,
+    "pdf_text_empty_or_scanned": 2,
+    "docx_failed": 1
+  },
+  "topic_counts": {
+    "T3": 23,
+    "T2": 55,
+    "T4": 20,
+    "T1": 29,
+    "UNCLASSIFIED": 56,
+    "T7": 3,
+    "IMAGE_NEEDS_OCR": 10,
+    "T6": 23,
+    "T9": 29,
+    "T5": 6,
+    "EXTRACT_FAILED": 1,
+    "T8": 1
+  }
+}

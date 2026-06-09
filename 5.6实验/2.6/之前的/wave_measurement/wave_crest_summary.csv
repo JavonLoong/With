@@ -1,0 +1,9 @@
+﻿video,category,distance_range_cm,n,mean_cm,median_cm,std_cm,px_per_cm
+4.mp4,local_adjacent_ripples,6-10,11,7.809,7.933,0.799,31.65
+4.mp4,main_broad_crests,23-26,7,24.423,24.628,0.412,31.65
+5.mp4,short_local_ripples,6-10,9,7.372,7.65,0.714,35.387
+5.mp4,clearer_local_crests,10-14,7,11.728,11.869,1.176,35.387
+5.mp4,main_broad_crests,23-26,3,24.506,24.513,0.233,35.387
+6.mp4,short_secondary_ripples,6-10,22,8.459,8.801,1.238,30.16
+6.mp4,clearer_local_crests,12-17,32,13.9,13.825,1.296,30.16
+6.mp4,main_broad_crests,18-23,5,19.854,20.151,1.596,30.16

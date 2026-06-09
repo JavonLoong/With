@@ -1,0 +1,17 @@
+﻿metric,value
+decoded_frames,67
+fps,29.000144
+duration_s,2.310333
+last_frame_time_s,2.275851
+px_per_cm,33.000000
+practical_px_per_cm_uncertainty,1.000000
+broad_distance_count,6
+broad_distance_median_cm,27.363636
+broad_distance_calibration_low_cm,26.558824
+broad_distance_calibration_high_cm,28.218750
+broad_distance_mean_cm,27.010101
+broad_distance_std_cm,0.770119
+dominant_fft_frequency_hz,2.164190
+dominant_fft_wavelength_cm,38.787879
+directional_energy_ratio,0.012067
+local_crest_feature_count,16

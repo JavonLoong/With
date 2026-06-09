@@ -1,0 +1,95 @@
+{
+  "sample": "20良",
+  "input_video": "D:\\虚拟C盘\\新建文件夹\\好\\20良\\annotated_peak_detection.mp4",
+  "output_dir": "D:\\虚拟C盘\\学习\\good_wave_method_trial\\20良",
+  "frames": 121,
+  "fps": 29.0,
+  "duration_s": 4.172413793103448,
+  "width_px": 1280,
+  "height_px": 720,
+  "px_per_cm": 31.75,
+  "px_per_cm_source": "cli_override",
+  "analysis_width_cm": 35.87401580810547,
+  "wavelength_band_cm": [
+    5.0,
+    15.0
+  ],
+  "low_reflection_window_s": [
+    2.793103448275862,
+    3.5172413793103448
+  ],
+  "low_reflection_ratio_median": 0.44586658477783203,
+  "low_reflection_ratio_mean": 0.44984254240989685,
+  "fft_incident_wavelength_cm": 11.968498433383399,
+  "incident_direction": "+x/right",
+  "full_reflection_to_incident_energy_ratio": 0.6703506146001751,
+  "direct_autocorr_wavelength_cm": 5.007871627807617,
+  "direct_autocorr_mad_cm": 0.0,
+  "incident_autocorr_wavelength_cm": 11.102356910705566,
+  "incident_autocorr_mad_cm": 0.9921255111694336,
+  "direct_peak_spacing_median_cm": 7.149606704711914,
+  "direct_peak_spacing_mad_cm": 1.3070869445800781,
+  "direct_peak_spacing_n": 114,
+  "incident_peak_spacing_median_cm": 7.212597370147705,
+  "incident_peak_spacing_mad_cm": 1.543306589126587,
+  "incident_peak_spacing_n": 132,
+  "surface_extraction": {
+    "surface_y_bounds_px": [
+      57,
+      208
+    ],
+    "frames_using_red_overlay": 121,
+    "frames_total": 121,
+    "repaired_fraction": 0.03842329545454545,
+    "mean_reliability": 0.883400022983551
+  },
+  "calibration": {
+    "px_per_cm": 31.75,
+    "source": "cli_override",
+    "auto_estimate_for_reference": {
+      "px_per_cm": 32.0,
+      "source": "ruler_fft",
+      "ruler_center_y_px": 410,
+      "diagnostic_rows": [
+        {
+          "ruler_center_y_px": 410,
+          "strip_y0_px": 405,
+          "strip_y1_px": 416,
+          "period_px_per_cm": 32.0,
+          "strength": 8426.607189966486,
+          "used": true
+        },
+        {
+          "ruler_center_y_px": 410,
+          "strip_y0_px": 402,
+          "strip_y1_px": 419,
+          "period_px_per_cm": 32.0,
+          "strength": 5155.43144721721,
+          "used": true
+        },
+        {
+          "ruler_center_y_px": 410,
+          "strip_y0_px": 398,
+          "strip_y1_px": 423,
+          "period_px_per_cm": 36.57142857142857,
+          "strength": 2430.2829563213068,
+          "used": false
+        },
+        {
+          "ruler_center_y_px": 410,
+          "strip_y0_px": 394,
+          "strip_y1_px": 427,
+          "period_px_per_cm": 36.57142857142857,
+          "strength": 2347.349543331355,
+          "used": false
+        }
+      ]
+    }
+  },
+  "method_notes": [
+    "Waterline extracted per frame from the visible red surface overlay, falling back to green-edge detection.",
+    "eta(x,t) is relative vertical waterline displacement after per-frame and slow spatial detrending.",
+    "Incident/reflected components are separated by 2D FFT sign of temporal frequency times spatial wavenumber.",
+    "Wavelength estimates use low-reflection-window autocorrelation and adjacent peak/trough spacings."
+  ]
+}

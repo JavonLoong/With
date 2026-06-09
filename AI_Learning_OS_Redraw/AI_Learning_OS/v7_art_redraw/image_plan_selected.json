@@ -1,0 +1,66 @@
+{
+  "version": "v7-selected-art-redraw",
+  "expected_pages": 6,
+  "images": [
+    {
+      "page": 2,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "把普通刷题循环图重绘为答案表面感仪器与认知裂缝装置。",
+      "prompt_path": "prompts/p002_art.txt",
+      "negative_prompt_path": "prompts/selected_redraw_negative.txt",
+      "output": "generated/p002_art.png",
+      "key_slot": "primary"
+    },
+    {
+      "page": 5,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "把公式树状图重绘为公式植物标本与血缘谱系装置。",
+      "prompt_path": "prompts/p005_art.txt",
+      "negative_prompt_path": "prompts/selected_redraw_negative.txt",
+      "output": "generated/p005_art.png",
+      "key_slot": "primary"
+    },
+    {
+      "page": 8,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "把变式列表/蜂窝图重绘为变式压力舱与理解压测装置。",
+      "prompt_path": "prompts/p008_art.txt",
+      "negative_prompt_path": "prompts/selected_redraw_negative.txt",
+      "output": "generated/p008_art.png",
+      "key_slot": "primary"
+    },
+    {
+      "page": 9,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "把间隔重复卡片图重绘为记忆天文台与复习轨道仪。",
+      "prompt_path": "prompts/p009_art.txt",
+      "negative_prompt_path": "prompts/selected_redraw_negative.txt",
+      "output": "generated/p009_art.png",
+      "key_slot": "primary"
+    },
+    {
+      "page": 12,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "把中心节点网络图重绘为学习数字孪生舱与知识星图。",
+      "prompt_path": "prompts/p012_art.txt",
+      "negative_prompt_path": "prompts/selected_redraw_negative.txt",
+      "output": "generated/p012_art.png",
+      "key_slot": "primary"
+    },
+    {
+      "page": 14,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "把三块板路线图重绘为样板章节工坊与标准铸造台。",
+      "prompt_path": "prompts/p014_art.txt",
+      "negative_prompt_path": "prompts/selected_redraw_negative.txt",
+      "output": "generated/p014_art.png",
+      "key_slot": "primary"
+    }
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "version": "v9-unified-manuscript-style",
+  "created_at": "2026-05-01T13:03:10",
+  "base_html": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\成品ppt_内容艺术全重绘版.html",
+  "output_html": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\成品ppt_统一手稿风格版.html",
+  "expected_pages": 15,
+  "style_reference": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png",
+  "style_reference_sha256": "399AC0C605F63D72B0DCC7C20E5DC05BA0195ADCB59E67648BD629D8EFD647AF",
+  "style_goal": "match page 13: off-white paper, black hand-drawn engineering sketch, restrained purple annotations, human-made academic manuscript feel",
+  "pages": [
+    {
+      "page": 1,
+      "operation": "redraw",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p001_style_unified.png",
+      "source_sha256": "A5A189D3B10320E7F8E5E6413C9945A2EFE462857AF970B06F96D647FB26491F",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p001_style_unified.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\p001_v6_source.png",
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "redrawn to match page 13 hand-drawn paper sketch style"
+      }
+    },
+    {
+      "page": 2,
+      "operation": "redraw",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p002_style_unified.png",
+      "source_sha256": "7201CC94901B90DEF587FDB766ED22FEF11B4FB95174180229BAC9743C8F6C24",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p002_style_unified.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\p002_v6_source.png",
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "redrawn to match page 13 hand-drawn paper sketch style"
+      }
+    },
+    {
+      "page": 3,
+      "operation": "redraw",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p003_style_unified.png",
+      "source_sha256": "FF2F41A01D5F78274D383B57AE2840000B31CCC0CE36F33B9942298165BF0495",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p003_style_unified.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\p003_v6_source.png",
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "redrawn to match page 13 hand-drawn paper sketch style"
+      }
+    },
+    {
+      "page": 4,
+      "operation": "redraw",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p004_style_unified.png",
+      "source_sha256": "2573AAD54D3BCAD101CAD11916DE510E63C976EA237F2FC697D44E93D7A79D24",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p004_style_unified.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\p004_v6_source.png",
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "redrawn to match page 13 hand-drawn paper sketch style"
+      }
+    },
+    {
+      "page": 5,
+      "operation": "redraw",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p005_style_unified.png",
+      "source_sha256": "9E2C32A1D7D4BAC24C59DB8E344E2AB0CEA931595196566BCD02275904B4B8AA",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p005_style_unified.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\p005_v6_source.png",
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "redrawn to match page 13 hand-drawn paper sketch style"
+      }
+    },
+    {
+      "page": 6,
+      "operation": "redraw",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p006_style_unified.png",
+      "source_sha256": "B152EDF1337236928BE78A34E9CD1743C76488E790231F14A10E517B935E910C",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p006_style_unified.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\p006_v6_source.png",
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "redrawn to match page 13 hand-drawn paper sketch style"
+      }
+    },
+    {
+      "page": 7,
+      "operation": "redraw",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p007_style_unified.png",
+      "source_sha256": "A1E49BAAE4D0D6A958B887C5E1C5D0BBB24958A5B142EC5E3E50B8A4999B3979",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p007_style_unified.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\p007_v6_source.png",
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "redrawn to match page 13 hand-drawn paper sketch style"
+      }
+    },
+    {
+      "page": 8,
+      "operation": "redraw",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p008_style_unified.png",
+      "source_sha256": "F4E71ADD9D0A81774DC378EC154DB2E6C80F3CB1F1BBD3907600988BEA070C23",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p008_style_unified.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\p008_v6_source.png",
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "redrawn to match page 13 hand-drawn paper sketch style"
+      }
+    },
+    {
+      "page": 9,
+      "operation": "redraw",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p009_style_unified.png",
+      "source_sha256": "65F34440A7CCB83126A49438E4E867C9524777B84D8923BFD6D80BC5B750BB88",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p009_style_unified.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\p009_v6_source.png",
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "redrawn to match page 13 hand-drawn paper sketch style"
+      }
+    },
+    {
+      "page": 10,
+      "operation": "redraw",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p010_style_unified.png",
+      "source_sha256": "27AF24E4C1374752E170ECACE54AEDB02E54D474DC563177114F9DD50344900B",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p010_style_unified.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\p010_v6_source.png",
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "redrawn to match page 13 hand-drawn paper sketch style"
+      }
+    },
+    {
+      "page": 11,
+      "operation": "redraw",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p011_style_unified.png",
+      "source_sha256": "28D6294172DE4CE49A8782BCE186D8BE89FEFFB55F48F767C7A7A9A1D4EAB225",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p011_style_unified.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\p011_v6_source.png",
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "redrawn to match page 13 hand-drawn paper sketch style"
+      }
+    },
+    {
+      "page": 12,
+      "operation": "redraw",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p012_style_unified.png",
+      "source_sha256": "B12CA34DC2D71D6DC2993A624C2BC32354ECF68BC78EC0DA80F31C46007B3370",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p012_style_unified.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\p012_v6_source.png",
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "redrawn to match page 13 hand-drawn paper sketch style"
+      }
+    },
+    {
+      "page": 13,
+      "operation": "style_reference_retain",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png",
+      "source_sha256": "399AC0C605F63D72B0DCC7C20E5DC05BA0195ADCB59E67648BD629D8EFD647AF",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\style_master.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "style reference page retained"
+      }
+    },
+    {
+      "page": 14,
+      "operation": "redraw",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p014_style_unified.png",
+      "source_sha256": "664F85120158190578186060C36C6328BF71529100D7367A66DEB7A717A8C8C2",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p014_style_unified.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\p014_v6_source.png",
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "redrawn to match page 13 hand-drawn paper sketch style"
+      }
+    },
+    {
+      "page": 15,
+      "operation": "redraw",
+      "source_label": "nano-banana-pro",
+      "source": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p015_style_unified.png",
+      "source_sha256": "93909E85C3326B1BAC411D1388B8E05FBB3CACE150746E552FBF297C84CF2A73",
+      "mime": "image/jpeg",
+      "generation": {
+        "model": "gemini-3-pro-image-preview",
+        "key_slot": "rotated",
+        "visual_authoring": "nano-banana-pro",
+        "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p015_style_unified.txt",
+        "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+        "source_images": [
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\p015_v6_source.png",
+          "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png"
+        ],
+        "generation_reason": "redrawn to match page 13 hand-drawn paper sketch style"
+      }
+    }
+  ]
+}

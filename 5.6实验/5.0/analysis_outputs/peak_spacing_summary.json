@@ -1,0 +1,81 @@
+{
+  "video": "D:\\虚拟C盘\\5.6实验\\5.0\\a75c530c575b8e744ff1fec22571591e.mp4",
+  "frame_count": 111,
+  "fps": 30.0,
+  "duration_s": 3.7,
+  "frame_size": [
+    1280,
+    720
+  ],
+  "px_per_cm": 33.2,
+  "analysis_roi": {
+    "x0": 20,
+    "x1": 1260,
+    "surface_y0": 70,
+    "surface_y1": 255
+  },
+  "high_confidence_direct_spacing_cm": {
+    "n": 2,
+    "n_after_iqr_filter": 2,
+    "mean": 25.045180722891565,
+    "median": 25.045180722891565,
+    "std": 0.5324599255922783,
+    "min": 24.66867469879518,
+    "max": 25.421686746987948,
+    "q1": 24.856927710843372,
+    "q3": 25.233433734939755
+  },
+  "high_or_medium_estimated_spacing_cm": {
+    "n": 81,
+    "n_after_iqr_filter": 78,
+    "mean": 28.763129440840277,
+    "median": 30.09036144578313,
+    "std": 4.924255478732798,
+    "min": 15.963855421686745,
+    "max": 36.50602409638554,
+    "q1": 25.421686746987948,
+    "q3": 32.34939759036144
+  },
+  "track_model_frame_spacing_cm": {
+    "n": 75,
+    "n_after_iqr_filter": 73,
+    "mean": 26.795267254499148,
+    "median": 26.293947325554832,
+    "std": 1.0273691713040491,
+    "min": 25.409773780123896,
+    "max": 29.554977622230528,
+    "q1": 26.072424738852646,
+    "q3": 27.536095534621907
+  },
+  "track_crossing_spacing_cm": {
+    "n": 20,
+    "n_after_iqr_filter": 19,
+    "mean": 26.464024781493208,
+    "median": 26.456726514457085,
+    "std": 0.4803232028097699,
+    "min": 25.256560213237833,
+    "max": 27.33018532818135,
+    "q1": 26.15156514679542,
+    "q3": 26.76551359383314
+  },
+  "best_frame_spacing_cm": {
+    "n": 77,
+    "n_after_iqr_filter": 75,
+    "mean": 26.74859828032294,
+    "median": 26.289945108170258,
+    "std": 1.0542120385259222,
+    "min": 24.66867469879518,
+    "max": 29.554977622230528,
+    "q1": 26.066350567103516,
+    "q3": 27.52771052661691
+  },
+  "most_reasonable_average_cm": 26.464024781493208,
+  "most_reasonable_average_basis": "dominant crest tracking across frames; crossing-period x median-speed estimate",
+  "outputs": {
+    "csv": "D:\\虚拟C盘\\5.6实验\\5.0\\analysis_outputs\\peak_spacing_by_frame.csv",
+    "track_csv": "D:\\虚拟C盘\\5.6实验\\5.0\\analysis_outputs\\crest_track_summary.csv",
+    "plot_spacing": "D:\\虚拟C盘\\5.6实验\\5.0\\analysis_outputs\\peak_spacing_over_time.png",
+    "plot_best_spacing": "D:\\虚拟C盘\\5.6实验\\5.0\\analysis_outputs\\best_peak_spacing_over_time.png",
+    "plot_amplitude": "D:\\虚拟C盘\\5.6实验\\5.0\\analysis_outputs\\surface_amplitude_over_time.png"
+  }
+}

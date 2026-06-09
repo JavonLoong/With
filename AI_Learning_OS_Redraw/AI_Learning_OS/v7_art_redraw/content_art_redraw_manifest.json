@@ -1,0 +1,73 @@
+{
+    "version":  "v7-content-art-redraw",
+    "created_at":  "2026-05-01T12:10:07",
+    "base_html":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\成品ppt_艺术版.html",
+    "output_html":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\成品ppt_内容艺术重绘版.html",
+    "replaced_pages":  [
+                           2,
+                           5,
+                           7,
+                           8,
+                           9,
+                           12,
+                           14
+                       ],
+    "replacements":  [
+                         {
+                             "page":  2,
+                             "operation":  "redraw",
+                             "source_label":  "nano-banana-pro",
+                             "source":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p002_art_cn.png",
+                             "sha256":  "F150F555F6414944A03E5E398ABE1BDE406F53DA35FF95FB65869200D4624BF4",
+                             "model":  "gemini-3-pro-image-preview"
+                         },
+                         {
+                             "page":  5,
+                             "operation":  "redraw",
+                             "source_label":  "nano-banana-pro",
+                             "source":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p005_art.png",
+                             "sha256":  "469005EBB297A9C0BDB7AF7B1AB788B548AF2C0A6118CE62990537124AE1AF38",
+                             "model":  "gemini-3-pro-image-preview"
+                         },
+                         {
+                             "page":  7,
+                             "operation":  "redraw",
+                             "source_label":  "nano-banana-pro",
+                             "source":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p007_art_sample.png",
+                             "sha256":  "0CF282BAB5CA8672F2D2B62B5999F18D475D88A38F3E32FC5BDFC89D507E7F13",
+                             "model":  "gemini-3-pro-image-preview"
+                         },
+                         {
+                             "page":  8,
+                             "operation":  "redraw",
+                             "source_label":  "nano-banana-pro",
+                             "source":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p008_art.png",
+                             "sha256":  "50C0CF50932CC70886387BDE1CF42F84E7D220A2F1281491FF44277E8EBB2DF1",
+                             "model":  "gemini-3-pro-image-preview"
+                         },
+                         {
+                             "page":  9,
+                             "operation":  "redraw",
+                             "source_label":  "nano-banana-pro",
+                             "source":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p009_art_cn.png",
+                             "sha256":  "C59189FA78BAE247C6F6E4EB3FA5CC01FF4FC1918AC0CDBE390C69744029D7E8",
+                             "model":  "gemini-3-pro-image-preview"
+                         },
+                         {
+                             "page":  12,
+                             "operation":  "redraw",
+                             "source_label":  "nano-banana-pro",
+                             "source":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p012_art.png",
+                             "sha256":  "EA446D08D9350B8EFB5F2A8D2F3C5C948F1782BEB6EAF367064F77A414192772",
+                             "model":  "gemini-3-pro-image-preview"
+                         },
+                         {
+                             "page":  14,
+                             "operation":  "redraw",
+                             "source_label":  "nano-banana-pro",
+                             "source":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v7_art_redraw\\generated\\p014_art.png",
+                             "sha256":  "A2E4E1802DCBAA049F41B727A902422848E0377DA951F4EE18E8AA10A11DD6AD",
+                             "model":  "gemini-3-pro-image-preview"
+                         }
+                     ]
+}

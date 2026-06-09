@@ -1,0 +1,18 @@
+﻿项目,数值,单位/说明
+px_per_cm,23.264675,px/cm
+px_per_cm_std_diagnostic,0.460572,诊断散布，非严格统计误差
+label_px_per_cm,23.365714,210--160 cm 标号线性拟合
+tick_period_fft_px,23.272727,直尺周期 FFT 诊断
+tick_period_ac_px,23.000000,直尺周期自相关诊断
+fit_rmse_px,4.605725,标号拟合残差 RMS
+ruler_band_y0,542,px
+ruler_band_y1,609,px
+tick_kind,直尺 1 cm 周期刻度，210--160 cm 标号校验,使用背景直尺
+
+label_cm,x_px,residual_px
+210.0,61.00,1.476
+200.0,293.00,-0.181
+190.0,531.00,4.162
+180.0,751.00,-9.495
+170.0,994.00,-0.152
+160.0,1232.00,4.190

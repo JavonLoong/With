@@ -1,0 +1,18 @@
+{
+  "page": "p003_x50",
+  "layout": "one-illu",
+  "section_tag": "01 · 范式转移",
+  "page_title": "从「答案生成器」到「认知引擎」",
+  "cards": [
+    {
+      "key": "四维对比",
+      "title": "传统 AI vs AI_Learning_OS",
+      "desc": "AI 角色 / 学习产出 / 成功指标 / 错题处理 — 同一件事，两种本质。",
+      "featured": false,
+      "illu_bbox_pct": [0.02, 0.165, 0.98, 0.95]
+    }
+  ],
+  "quote": "把单点解答升级为可调用、可复盘、可迭代的完整闭环。",
+  "quote_emphasis": ["单点解答", "完整闭环"],
+  "notes": "对比矩阵 4x3 表格，整体作为一张大插图"
+}

@@ -257,6 +257,15 @@
       border-radius: var(--radius);
     }
     .dual-block h3 { margin: 0 0 8px; font-size: 17px; letter-spacing: 0; }
+    .exercise-note {
+      margin-top: 14px;
+      border: 1px solid #d8c7a2;
+      border-left: 4px solid var(--accent-2);
+      border-radius: var(--radius);
+      background: #fff8e8;
+      padding: 12px 14px;
+    }
+    .exercise-note h3 { margin: 0 0 8px; font-size: 17px; letter-spacing: 0; }
     .visual {
       margin: 0;
       min-height: 160px;
@@ -284,13 +293,13 @@
     .content h3 { font-size: 18px; border-left: 4px solid var(--accent); padding-left: 10px; }
     .content p { margin: 10px 0; }
     .content code {
-      background: #edf2f7;
+      background: transparent;
       color: #0f172a;
-      border: 1px solid #d8dee9;
-      border-radius: 5px;
-      padding: 1px 5px;
+      border: 0;
+      border-radius: 0;
+      padding: 0;
       font-family: Consolas, "Cascadia Mono", monospace;
-      font-size: .92em;
+      font-size: .96em;
     }
     .diagram-text {
       overflow: auto;
@@ -376,6 +385,7 @@
         <nav>
           <a href="#course-map"><span>课程/PPT目录</span><small>按课件查漏</small></a>
           <a href="#ppt-topic-map"><span>殷雅俊PPT专题</span><small>专题级锚点</small></a>
+          <a href="#cloud-map"><span>习题课云盘</span><small>录屏/课件源</small></a>
           <a href="#exam-map"><span>考试高频目录</span><small>按题型刷题</small></a>
           <a href="#cross-map"><span>PPT-考试交叉</span><small>双线对照</small></a>
           <a href="#sprint-map"><span>考前冲刺查漏</span><small>A/B/C 优先级</small></a>
@@ -437,6 +447,19 @@
         <div class="table-wrap"><table>
           <thead><tr><th>专题</th><th>PPT 主题</th><th>回到章节</th><th>考试线</th><th>复习动作</th></tr></thead>
           <tbody><tr><td id="ppt-p1">P1</td><td>殷雅俊第1专题：材料力学概论</td><td><a href="#ch01">CH01</a></td><td>T9</td><td>基本假设、研究对象、强度/刚度/稳定语言</td></tr><tr><td id="ppt-p2">P2</td><td>殷雅俊第2专题：拉伸与压缩</td><td><a href="#ch03">CH03</a></td><td>T5</td><td>轴力图、拉压应力、变形、轴向静不定</td></tr><tr><td id="ppt-p3">P3</td><td>殷雅俊第3专题：连接件工程假定</td><td><a href="#ch05">CH05</a></td><td>T6</td><td>剪切面、挤压面、连接件许用应力校核</td></tr><tr><td id="ppt-p4">P4</td><td>殷雅俊第4专题：圆轴扭转</td><td><a href="#ch05">CH05</a></td><td>T6</td><td>扭矩图、扭转剪应力、扭转角、刚度校核</td></tr><tr><td id="ppt-p5">P5</td><td>殷雅俊第5专题：剪力图与弯矩图</td><td><a href="#ch02">CH02</a></td><td>T1</td><td>支反力、截面法、q-V-M 关系和跳跃规则</td></tr><tr><td id="ppt-p6">P6</td><td>殷雅俊第6专题：截面几何性质</td><td><a href="#ch04">CH04</a></td><td>T2</td><td>形心、惯性矩、平行移轴、抗弯截面系数</td></tr><tr><td id="ppt-p7">P7</td><td>殷雅俊第7专题：梁应力与强度</td><td><a href="#ch04">CH04</a></td><td>T2</td><td>弯曲正应力、梁剪应力、危险截面与危险点</td></tr><tr><td id="ppt-p8">P8</td><td>殷雅俊第8专题：梁位移与刚度</td><td><a href="#ch08">CH08</a></td><td>T3</td><td>挠曲线、积分法、叠加法、刚度校核</td></tr><tr><td id="ppt-p9">P9</td><td>殷雅俊第9专题：应力状态与强度理论</td><td><a href="#ch06">CH06</a></td><td>T4</td><td>莫尔圆、主应力、强度理论、组合变形</td></tr><tr><td id="ppt-p10">P10</td><td>殷雅俊第10专题：压杆稳定</td><td><a href="#ch09">CH09</a></td><td>T7</td><td>有效长度、Euler 临界力、柔度和稳定设计</td></tr><tr><td id="ppt-p11">P11</td><td>殷雅俊第11专题：能量法</td><td><a href="#ch10">CH10</a></td><td>T3</td><td>应变能、卡氏定理、单位载荷法、静不定辅助</td></tr></tbody>
+        </table></div>
+      </section>
+    
+      
+      <section class="index-section" id="cloud-map">
+        <div class="section-title">
+          <p class="eyebrow">Exercise Class Cloud</p>
+          <h2>习题课录屏与云盘资料源</h2>
+          <p>已登记清华云盘分享目录。当前只下载并解析了体积较小的 `习题课1.pdf`；录屏和参考书作为外部资料源列入索引，避免把大文件无差别拉入本地。</p>
+        </div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>类型</th><th>路径</th><th>大小/字节</th><th>更新时间</th></tr></thead>
+          <tbody><tr><td>dir</td><td>/弹性力学参考书/</td><td>-</td><td>2026-02-27T16:19:41+08:00</td></tr><tr><td>file</td><td>/弹性力学参考书/Elasticity-Barber.pdf</td><td>8916900</td><td>2026-02-27T16:19:34+08:00</td></tr><tr><td>file</td><td>/弹性力学参考书/Theory_of_Elasticity-Landau.pdf</td><td>22922543</td><td>2026-02-27T16:19:36+08:00</td></tr><tr><td>file</td><td>/弹性力学参考书/Theory_of_Elasticity-Timoshenko.pdf</td><td>19511269</td><td>2026-02-27T16:19:39+08:00</td></tr><tr><td>file</td><td>/弹性力学参考书/弹性力学(第5版上册)-徐芝纶.pdf</td><td>43902279</td><td>2026-02-27T16:19:31+08:00</td></tr><tr><td>file</td><td>/弹性力学参考书/弹性力学教程-王敏中.pdf</td><td>12961351</td><td>2026-02-27T16:19:32+08:00</td></tr><tr><td>file</td><td>/弹性力学参考书/弹性理论基础(第2版)-陆明万,罗学富.pdf</td><td>12857163</td><td>2026-02-27T16:19:41+08:00</td></tr><tr><td>dir</td><td>/材料力学参考书/</td><td>-</td><td>2026-02-27T16:19:13+08:00</td></tr><tr><td>file</td><td>/材料力学参考书/Mechanics_of_Materials-Timoshenko.pdf</td><td>54207565</td><td>2026-02-27T16:19:13+08:00</td></tr><tr><td>file</td><td>/材料力学参考书/材料力学(第3版)-范钦珊,殷雅俊,唐靖林.pdf</td><td>72868348</td><td>2026-02-27T16:19:07+08:00</td></tr><tr><td>file</td><td>/习题课1.pdf</td><td>1027908</td><td>2026-04-18T21:02:58+08:00</td></tr><tr><td>file</td><td>/习题课1_1080p.mp4</td><td>342126555</td><td>2026-04-18T21:00:20+08:00</td></tr><tr><td>file</td><td>/习题课1_720p.mp4</td><td>216006195</td><td>2026-04-18T21:00:31+08:00</td></tr></tbody>
         </table></div>
       </section>
     
@@ -505,6 +528,7 @@
             <ul><li>先用课程线补概念和公式来源</li><li>再用考试线决定刷题顺序</li><li>最后用错题线回到对应 PPT 小节复盘</li></ul>
           </div>
         </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -575,6 +599,7 @@
             <ul><li>概念题和选择题常考基本假设</li><li>计算题开头必须说明构件模型和校核目标</li><li>作为所有题型的答题语言库</li></ul>
           </div>
         </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -656,6 +681,7 @@
             <ul><li>几乎所有综合题第一步</li><li>剪力图/弯矩图单独成题概率高</li><li>错在支反力或符号会整题连锁失分</li></ul>
           </div>
         </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -739,6 +765,7 @@
             <ul><li>基础计算题常见</li><li>可与静不定、温度应力组合</li><li>注意分段面积和拉压符号</li></ul>
           </div>
         </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -823,6 +850,7 @@
             <ul><li>弯曲强度设计几乎必备</li><li>常与剪弯图、截面选择结合</li><li>几何量单位和 y 取值是高频坑</li></ul>
           </div>
         </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -903,6 +931,7 @@
             <ul><li>扭转强度刚度题常见</li><li>连接件小题常以剪切/挤压面积设陷阱</li><li>梁剪应力常作为弯曲强度补充</li></ul>
           </div>
         </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -991,6 +1020,7 @@
             <ul><li>弯扭组合和强度理论前置</li><li>主应力/最大剪应力公式必须会</li><li>应变花若出现通常是区分度题</li></ul>
           </div>
         </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -1079,6 +1109,7 @@
             <ul><li>综合题最后校核环节</li><li>常与第 6 章主应力联动</li><li>准则选错会导致结论全错</li></ul>
           </div>
         </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -1162,6 +1193,7 @@
             <ul><li>挠度/转角题常见</li><li>可与静不定和能量法互相替代</li><li>边界条件是第一失分点</li></ul>
           </div>
         </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -1248,6 +1280,12 @@
             <ul><li>常以独立小题出现</li><li>弱轴和有效长度是核心</li><li>先判 Euler 适用再算 Pcr</li></ul>
           </div>
         </div>
+        
+        <div class="exercise-note">
+          <h3>习题课补充线</h3>
+          <ul><li>习题课1第 17-18 页把屈曲写成能量/刚度问题：总势能含拉伸、弯曲和外力势，临界条件可理解为 <code>det(K0+P*KG)=0</code>。</li><li>对压杆稳定的复习不要只背 Euler 公式，还要理解“平衡路径失稳”和刚度退化。</li></ul>
+        </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -1332,6 +1370,12 @@
             <ul><li>位移计算高频替代路线</li><li>静不定求多余约束力常用</li><li>单位载荷方向和内力函数必须写清</li></ul>
           </div>
         </div>
+        
+        <div class="exercise-note">
+          <h3>习题课补充线</h3>
+          <ul><li>习题课1第 11-12 页用能量视角推导柔度系数：<code>delta_ij=int Mi(x)Mj(x)/(EI) dx</code>，并强调 <code>delta_ij=delta_ji</code>。</li><li>单位载荷法和力法的共同底层是：外力产生内力分布，位移来自内力分布的能量积分。</li></ul>
+        </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -1416,6 +1460,12 @@
             <ul><li>综合计算题常见</li><li>不能只列平衡</li><li>协调方程写错会整题失控</li></ul>
           </div>
         </div>
+        
+        <div class="exercise-note">
+          <h3>习题课补充线</h3>
+          <ul><li>习题课1第 8-13 页集中讲超静定：超静定次数 <code>s=r-n</code>，解除多余约束后用位移协调 <code>Delta_i=Delta_iP+sum delta_ij X_j=0</code> 求多余力。</li><li>习题课1第 14-15 页补充位移法和刚度矩阵：全体节点自由度作为未知量，平衡可写成势能最小化或 <code>Kx=b</code>，这是有限元的雏形。</li></ul>
+        </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -1499,6 +1549,7 @@
             <ul><li>多为小题或附加题</li><li>冲击题必须先求静位移</li><li>最后仍回到强度校核</li></ul>
           </div>
         </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -1586,6 +1637,7 @@
             <ul><li>概念和小计算均可能</li><li>不要用静强度代替疲劳强度</li><li>平均应力和应力幅要先拆清</li></ul>
           </div>
         </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -1669,6 +1721,7 @@
             <ul><li>多为概念或简单代入</li><li>核心是方向性和时间效应</li><li>不能按各向同性材料盲算</li></ul>
           </div>
         </div>
+        
       </section>
     
           <details open class="chapter-body">
@@ -1760,6 +1813,7 @@
             <ul><li>用于确认公式、章节和图示没有偏离课程/考试目标</li></ul>
           </div>
         </div>
+        
       </section>
     
           <details open class="chapter-body">

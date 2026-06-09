@@ -1,0 +1,6 @@
+﻿metric,value,unit,note
+incident_direction,向右(+x),,f*k<0
+global_reflection_ratio_fft,0.0407549784,energy ratio,全局方向分支能量比，仅作方向分离诊断
+fft_diagnostic_lambda,37.3209119397,cm,短视频且视场不足两倍主波长；该 2D FFT 波长只作方向/频带诊断，不作为最终高精度波长。
+fft_diagnostic_frequency,2.0800781250,Hz,入射分支主峰频率
+stable_window_reflection_ratio_median,0.0190646583,energy ratio,在入射能量足够的候选窗口中，选择反射/入射能量比中位数最低且波动较小的窗口。

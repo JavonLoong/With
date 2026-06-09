@@ -1,0 +1,28 @@
+{
+  "title": "",
+  "labels": [
+    "“能力错觉”循环",
+    "隐藏的认知复杂度",
+    "1 看答案能懂",
+    "Trapped State:\nCognitive Stagnation Loop",
+    "2 感觉已掌握",
+    "3 题目条件变化",
+    "4 方法失效/不会做",
+    "A 前提假设",
+    "B 物理模型",
+    "知识",
+    "结论",
+    "C 边界条件",
+    "D 推理链条",
+    "传统学习聚焦“结论输入”，而理工科真正的痛点在于“条件判断与推演路径”的断裂。"
+  ],
+  "decorative_codes": [
+    "[SYS_REQ: INITIAL_CONDITIONS]",
+    "[MODEL_TYPE: CORE_PHYSICS]",
+    "[LIMIT_PARAMS: CONSTRAINTS]",
+    "[LOGIC_PATH: DERIVATION_FLOW]",
+    "SCALE 1: 1",
+    "EXPLODED VIEW: SYSTEM DEPTH"
+  ],
+  "structure": "该图采用左右对比结构，左侧展示了学习中常见的“能力错觉”恶性循环，右侧通过爆炸视图拆解了知识背后的认知复杂度，底部总结了理工科学习的痛点。"
+}

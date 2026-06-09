@@ -1,0 +1,185 @@
+{
+  "pdf": "C:\\Users\\15410\\CascadeProjects\\AI_Learning_OS_Redraw\\AI_Learning_OS_Blueprint.pdf",
+  "pages": [
+    {
+      "page": 1,
+      "page_render": "page_001.png",
+      "embedded_images": [
+        {
+          "file": "p001_x48.jpeg",
+          "xref": 48,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "page_render": "page_002.png",
+      "embedded_images": [
+        {
+          "file": "p002_x49.jpeg",
+          "xref": 49,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "page": 3,
+      "page_render": "page_003.png",
+      "embedded_images": [
+        {
+          "file": "p003_x50.jpeg",
+          "xref": 50,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "page": 4,
+      "page_render": "page_004.png",
+      "embedded_images": [
+        {
+          "file": "p004_x51.jpeg",
+          "xref": 51,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "page": 5,
+      "page_render": "page_005.png",
+      "embedded_images": [
+        {
+          "file": "p005_x52.jpeg",
+          "xref": 52,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "page": 6,
+      "page_render": "page_006.png",
+      "embedded_images": [
+        {
+          "file": "p006_x53.jpeg",
+          "xref": 53,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "page": 7,
+      "page_render": "page_007.png",
+      "embedded_images": [
+        {
+          "file": "p007_x54.jpeg",
+          "xref": 54,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "page": 8,
+      "page_render": "page_008.png",
+      "embedded_images": [
+        {
+          "file": "p008_x55.jpeg",
+          "xref": 55,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "page": 9,
+      "page_render": "page_009.png",
+      "embedded_images": [
+        {
+          "file": "p009_x56.jpeg",
+          "xref": 56,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "page": 10,
+      "page_render": "page_010.png",
+      "embedded_images": [
+        {
+          "file": "p010_x57.jpeg",
+          "xref": 57,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "page": 11,
+      "page_render": "page_011.png",
+      "embedded_images": [
+        {
+          "file": "p011_x58.jpeg",
+          "xref": 58,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "page": 12,
+      "page_render": "page_012.png",
+      "embedded_images": [
+        {
+          "file": "p012_x59.jpeg",
+          "xref": 59,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "page": 13,
+      "page_render": "page_013.png",
+      "embedded_images": [
+        {
+          "file": "p013_x60.jpeg",
+          "xref": 60,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "page": 14,
+      "page_render": "page_014.png",
+      "embedded_images": [
+        {
+          "file": "p014_x61.jpeg",
+          "xref": 61,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    },
+    {
+      "page": 15,
+      "page_render": "page_015.png",
+      "embedded_images": [
+        {
+          "file": "p015_x62.jpeg",
+          "xref": 62,
+          "width": 1376,
+          "height": 768
+        }
+      ]
+    }
+  ]
+}

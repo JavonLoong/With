@@ -1,0 +1,63 @@
+{
+  "video": {
+    "frames": 881,
+    "fps": 30.0,
+    "duration_s": 29.366666666666667,
+    "width": 960,
+    "height": 540
+  },
+  "method_parameters": {
+    "px_per_cm": 18.7,
+    "calibration_note": "Estimated from the visible ruler grid for this clip; 1 cm is about 18.7 px.",
+    "surface_roi_px": {
+      "x1": 20,
+      "x2": 940,
+      "y1": 170,
+      "y2": 360
+    },
+    "local_wave_trend_window_px": 401,
+    "peak_prominence_threshold_px": 3.0,
+    "peak_min_distance_px": 220,
+    "valid_spacing_range_cm": [
+      18.0,
+      28.0
+    ]
+  },
+  "valid_frame_count": 492,
+  "valid_interval_count": 523,
+  "interval_spacing_cm_stats": {
+    "n": 523,
+    "mean": 21.223095878365253,
+    "median": 21.176470588235293,
+    "std": 1.4182340164124974,
+    "q1": 20.53475935828877,
+    "q3": 21.764705882352942,
+    "trimmed_mean_10pct": 21.15145559200031,
+    "min": 18.128342245989305,
+    "max": 27.860962566844922
+  },
+  "frame_mean_spacing_cm_stats": {
+    "n": 492,
+    "mean": 21.274020694752405,
+    "median": 21.22994652406417,
+    "std": 1.4195251161530134,
+    "q1": 20.58823529411765,
+    "q3": 21.764705882352942,
+    "trimmed_mean_10pct": 21.19554005266158,
+    "min": 18.128342245989305,
+    "max": 27.860962566844922
+  },
+  "stable_frame_mean_spacing_cm_stats_time_ge_18s_peak_count_ge_2": {
+    "n": 299,
+    "mean": 21.39824370003398,
+    "median": 21.336898395721924,
+    "std": 1.1858654456098114,
+    "q1": 20.6951871657754,
+    "q3": 22.032085561497325,
+    "trimmed_mean_10pct": 21.385048927152905,
+    "min": 18.342245989304814,
+    "max": 27.272727272727273
+  },
+  "recommended_average_cm": 21.336898395721924,
+  "recommended_average_rule": "Median of per-frame valid mean spacings for stable frames (time >= 18.0 s and at least 2 detected peaks), matching the 7.0 analysis-output format so each frame has equal weight."
+}

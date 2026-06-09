@@ -1,0 +1,156 @@
+{
+  "version": "v9-style-unified",
+  "expected_pages": 15,
+  "images": [
+    {
+      "page": 1,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "redrawn to match page 13 hand-drawn paper sketch style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p001_style_unified.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p001_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 2,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "redrawn to match page 13 hand-drawn paper sketch style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p002_style_unified.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p002_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 3,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "redrawn to match page 13 hand-drawn paper sketch style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p003_style_unified.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p003_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 4,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "redrawn to match page 13 hand-drawn paper sketch style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p004_style_unified.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p004_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 5,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "redrawn to match page 13 hand-drawn paper sketch style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p005_style_unified.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p005_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 6,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "redrawn to match page 13 hand-drawn paper sketch style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p006_style_unified.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p006_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 7,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "redrawn to match page 13 hand-drawn paper sketch style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p007_style_unified.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p007_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 8,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "redrawn to match page 13 hand-drawn paper sketch style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p008_style_unified.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p008_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 9,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "redrawn to match page 13 hand-drawn paper sketch style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p009_style_unified.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p009_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 10,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "redrawn to match page 13 hand-drawn paper sketch style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p010_style_unified.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p010_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 11,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "redrawn to match page 13 hand-drawn paper sketch style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p011_style_unified.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p011_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 12,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "redrawn to match page 13 hand-drawn paper sketch style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p012_style_unified.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p012_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 13,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "style reference page retained",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\style_master.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\refs\\style_reference_p013.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 14,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "redrawn to match page 13 hand-drawn paper sketch style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p014_style_unified.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p014_style_unified.png",
+      "key_slot": "rotated"
+    },
+    {
+      "page": 15,
+      "model": "gemini-3-pro-image-preview",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "redrawn to match page 13 hand-drawn paper sketch style",
+      "prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\p015_style_unified.txt",
+      "negative_prompt_path": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\prompts\\unified_negative.txt",
+      "output": "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v9_art_style_unified\\generated\\p015_style_unified.png",
+      "key_slot": "rotated"
+    }
+  ]
+}

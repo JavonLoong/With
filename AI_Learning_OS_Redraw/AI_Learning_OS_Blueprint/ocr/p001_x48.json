@@ -1,0 +1,25 @@
+{
+  "title": "AI_Learning_OS：面向硬核理工科的学习操作系统",
+  "labels": [
+    "AI_Learning_OS：面向硬核理工科的学习操作系统",
+    "从“生成答案的工具”到“可控、可验、可迭代的长期陪跑系统”",
+    "INTERFACE",
+    "DATA MODULES",
+    "VISUALIZATION LAYER",
+    "KNOWLEDGE GRAPH ENGINE",
+    "LOGIC VALIDATION UNIT",
+    "CONTROLLED GENERATION CORE",
+    "ITERATIVE FEEDBACK LOOP",
+    "PROCESS",
+    "VERIFY",
+    "STRUCTURED KNOWLEDGE BASE",
+    "ADAPTIVE NODE FRAMEWORK",
+    "LONG TERM MEMORY STORAGE",
+    "SYSTEM KERNEL v1.0",
+    "系统版本：v1.0 架构蓝图"
+  ],
+  "decorative_codes": [
+    "v1.0"
+  ],
+  "structure": "该图展示了一个三层递进的系统架构，从底层的知识存储与内核，到中层的逻辑验证与反馈循环，最终支撑起顶层的交互与可视化界面。"
+}

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>微信聊天记录 - 眠人派对</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:linear-gradient(180deg,#0f0c29 0%,#1a1a2e 50%,#16213e 100%);
+     color:#eee;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+     display:flex;flex-direction:column;align-items:center;padding:30px 20px;min-height:100vh}
+.header{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);
+         padding:25px 40px;border-radius:20px;margin-bottom:30px;text-align:center;
+         border:1px solid rgba(255,255,255,.1);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.header h1{font-size:1.8em;font-weight:700;margin-bottom:8px;
+            background:linear-gradient(135deg,#a8edea,#fed6e3);
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header p{opacity:.7;font-size:.9em}
+.chat-container{width:100%;max-width:800px}
+.date-divider{text-align:center;margin:20px 0;color:rgba(255,255,255,.4);
+               font-size:.78em;position:relative}
+.date-divider::before,.date-divider::after{content:'';position:absolute;top:50%;
+  width:30%;height:1px;background:rgba(255,255,255,.1)}
+.date-divider::before{left:0}.date-divider::after{right:0}
+.msg{display:flex;margin:8px 0;gap:10px}
+.msg.me{flex-direction:row-reverse}
+.avatar{width:38px;height:38px;border-radius:8px;background:linear-gradient(135deg,#667eea,#764ba2);
+         display:flex;align-items:center;justify-content:center;font-size:.8em;
+         font-weight:700;flex-shrink:0}
+.avatar.me{background:linear-gradient(135deg,#43c6ac,#191654)}
+.bubble-wrap{max-width:65%;display:flex;flex-direction:column}
+.msg.me .bubble-wrap{align-items:flex-end}
+.sender-name{font-size:.72em;color:rgba(255,255,255,.5);margin-bottom:3px;padding:0 4px}
+.bubble{padding:10px 14px;border-radius:16px;font-size:.92em;line-height:1.5;
+         word-break:break-word;white-space:pre-wrap}
+.bubble.them{background:rgba(255,255,255,.1);border-radius:16px 16px 16px 4px}
+.bubble.me{background:linear-gradient(135deg,#43c6ac,#191654);border-radius:16px 16px 4px 16px}
+.bubble.system{background:transparent;color:rgba(255,255,255,.4);font-size:.8em;
+                text-align:center;padding:4px 10px;font-style:italic}
+.bubble.meta{opacity:.6;font-style:italic}
+.time{font-size:.68em;color:rgba(255,255,255,.3);margin-top:4px;padding:0 4px}
+.stats{margin-top:30px;background:rgba(255,255,255,.05);padding:16px 24px;
+        border-radius:12px;font-size:.85em;opacity:.7;text-align:center;
+        border:1px solid rgba(255,255,255,.08)}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>💬 眠人派对</h1>
+  <p>聊天记录 · 共 220 条 · 由本地数据库导出</p>
+</div>
+<div class="chat-container">
+<div class="date-divider">2026年03月19日</div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">眠人派对剛剛把你新增到通訊錄，現在可以開始聊天了。</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">我是眠人派对</div><div class="time">21:33</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">以上是打招呼的訊息，&lt;_wc_custom_link_ href="weixin://setting/sayhello"&gt;使用常用打招呼內容&lt;/_wc_custom_link_&gt;介紹自己。</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">你已新增了 眠人派对</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[表情包]</div><div class="time">21:36</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[表情包]</div><div class="time">21:36</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">感觉自己还是对ai没有特别了解呢[掩面]</div><div class="time">21:39</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">差的还是有点多哈哈</div><div class="time">21:39</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">感觉你很厉害啊 也是大二就研究的很全面了</div><div class="time">21:39</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 国内国外各有优势吧</div><div class="time">21:40</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我们都倾向于用Openai，Google以及X的ai</div><div class="time">21:40</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 哎呀没有啦</div><div class="time">21:40</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">只是想让自己不落后于时代</div><div class="time">21:41</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我们用AI，还是得看用的哪些功能</div><div class="time">21:41</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">前后文理解，图片生成与理解，长文本阅读等等</div><div class="time">21:42</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">我是学艺术的 用的大多都是出效果图的ai</div><div class="time">21:42</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 这些确实好用</div><div class="time">21:43</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">成图的话大香蕉挺好的[旺柴]</div><div class="time">21:43</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">而且出错的话是比较少</div><div class="time">21:43</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 哦哦</div><div class="time">21:43</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">哈哈是的 用banana pro</div><div class="time">21:43</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">对，提示词的训练我更多倾向与代码和目标导向的指令</div><div class="time">21:44</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">不知道能不能帮上你在艺术方面的应用</div><div class="time">21:45</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 这个我有点不明白 可以仔细讲讲吗[呲牙]</div><div class="time">21:45</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">可以啊</div><div class="time">21:46</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我代码在提示词的应用其实倾向于被称为vibe coding</div><div class="time">21:47</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">我之前出图的方法是先把要求列出来然后交给chatgpt让他帮我生成给banana的出图指令</div><div class="time">21:47</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 有一点了解vibe coding</div><div class="time">21:48</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 对</div><div class="time">21:48</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你这很聪明了</div><div class="time">21:48</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">用AI指导AI</div><div class="time">21:48</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">诶呀</div><div class="time">21:49</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">但是一般提示词丰富之后可能和最初设想有一些偏差</div><div class="time">21:49</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">夸的我都有点不好意思了</div><div class="time">21:49</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哈哈哈</div><div class="time">21:49</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">聪明伶俐[吃西瓜]</div><div class="time">21:49</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 这个怎么说呢</div><div class="time">21:51</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 没有没有 照你们差远了</div><div class="time">21:51</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">我这个就自己研究玩玩</div><div class="time">21:52</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">我这个专业有点不太行 跟房地产挂钩 市场太差了 正好对ai有兴趣想研究研究能不能转行呢</div><div class="time">21:53</div></div></div>
+<div class="date-divider">2026年03月20日</div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">唉终于忙完了</div><div class="time">00:15</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">建筑设计学吗</div><div class="time">00:16</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">还是环境艺术设计或者城市设计</div><div class="time">00:17</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">这么晚[掩面]</div><div class="time">00:22</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">环境设计</div><div class="time">00:22</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">在看简历啊</div><div class="time">00:23</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">房地产基本要完蛋了属于是</div><div class="time">00:23</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 哦哦</div><div class="time">00:23</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 我看评论区大家都挺厉害的</div><div class="time">00:24</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[表情包]</div><div class="time">00:24</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">大势已去了</div><div class="time">00:24</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 对，所以要优中选优</div><div class="time">00:24</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">真正有能力而且有执行力，服从度的才是我们要的</div><div class="time">00:25</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">还担任hr一职</div><div class="time">00:26</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">虽然才大二</div><div class="time">00:26</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">但是已经有HR的经验了</div><div class="time">00:26</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">hhh</div><div class="time">00:26</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 确实毕竟只有想法但难落地也很难实现目标</div><div class="time">00:26</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 可以可以超越全国90%大学生了</div><div class="time">00:27</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">其实在清华已经超过99％了</div><div class="time">00:27</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[表情包]</div><div class="time">00:29</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 我以为清华的同学普遍都很早就开始实习或者创业之类的</div><div class="time">00:30</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">不是</div><div class="time">00:30</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我表述有误</div><div class="time">00:30</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我的意思是考上清华已经超过99%了</div><div class="time">00:30</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[表情包]</div><div class="time">00:31</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">哈哈哈哈哈</div><div class="time">00:31</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">确实呢</div><div class="time">00:31</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">感觉平时非常难接触到</div><div class="time">00:32</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[表情包]</div><div class="time">00:32</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">嗯？</div><div class="time">00:32</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我怎么身边都是</div><div class="time">00:32</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">哈哈哈哈哈哈</div><div class="time">00:33</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">实力吧可能是</div><div class="time">00:33</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[表情包]</div><div class="time">00:33</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[表情包]</div><div class="time">00:33</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">面试结果咋样呢</div><div class="time">00:35</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">估计留下一部分人了吧</div><div class="time">00:35</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">留下了一个</div><div class="time">00:35</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">考察一个</div><div class="time">00:35</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">还有一个没来得及联系</div><div class="time">00:36</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[表情包]</div><div class="time">00:36</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">居然只留下来一个吗</div><div class="time">00:36</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">很严谨了</div><div class="time">00:37</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哈哈哈</div><div class="time">00:37</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你知道更重要的是什么吗</div><div class="time">00:38</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">什么呢</div><div class="time">00:40</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">😄</div><div class="time">00:40</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我们吸引了很多投资人</div><div class="time">00:40</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">做生意的话我觉得最重要的是稳定性高吧</div><div class="time">00:42</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">所以你们要找执行力强的</div><div class="time">00:42</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">可以落地的</div><div class="time">00:43</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">对，你很聪明</div><div class="time">00:43</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我们面试一个人会长达40分钟</div><div class="time">00:44</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">考察的会很严谨吧</div><div class="time">00:45</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">对</div><div class="time">00:46</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你要知道</div><div class="time">00:46</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">尤其是计算机的技术</div><div class="time">00:46</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">简历上很容易吹嘘</div><div class="time">00:46</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">是的</div><div class="time">00:47</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">毕竟在外身份都是可包装的</div><div class="time">00:47</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哈哈哈</div><div class="time">00:47</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">话是这么说的</div><div class="time">00:47</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">但是我们考察的时候会看做的项目，是否能在github表现</div><div class="time">00:48</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">以及非项目的经历的真实工作内容</div><div class="time">00:48</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 这个能简单解释一下吗</div><div class="time">00:50</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">其实有点听不懂了</div><div class="time">00:51</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[表情包]</div><div class="time">00:51</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哈哈</div><div class="time">00:52</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">就是做出来比较厉害的东西，一般都是能放在github这个平台上展示的</div><div class="time">00:52</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我们可以通过项目的代码和表现形式来看他的能力</div><div class="time">00:52</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">原来是这样</div><div class="time">00:54</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">懂了</div><div class="time">00:54</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 非项目经历怎么说呢</div><div class="time">00:55</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">是因为项目是团队做的</div><div class="time">00:55</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">比如说实习</div><div class="time">00:55</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 嗯对</div><div class="time">00:55</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">有可以挂名的成分吗</div><div class="time">00:55</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">对</div><div class="time">00:56</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">只要参与进来了</div><div class="time">00:56</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">基本都能说自己做了主要部分</div><div class="time">00:56</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">这太扯了</div><div class="time">00:56</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">全都这么说基本[掩面]</div><div class="time">00:56</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">这样面试的话晚上和周末基本不能休息了</div><div class="time">00:57</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">没有啊</div><div class="time">00:58</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我们更重要是前期</div><div class="time">00:58</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">看简历</div><div class="time">00:58</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">原来是这样</div><div class="time">00:59</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">你明天有早八吗</div><div class="time">00:59</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你要睡了吗</div><div class="time">01:00</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">我明天有早八</div><div class="time">01:00</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">要不然起不来了哈哈</div><div class="time">01:00</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[表情包]</div><div class="time">01:00</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哈哈，晚安～</div><div class="time">01:00</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">早点睡吧</div><div class="time">01:00</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[表情包]</div><div class="time">01:01</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">好的</div><div class="time">01:01</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">你们会参加什么竞赛之类的吗</div><div class="time">09:27</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">最近我们工作室要参加比赛 我还是负责人 感觉团队这方面很难弄呢[掩面]</div><div class="time">09:29</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 美赛、数学、力学、软件</div><div class="time">10:09</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[表情包]</div><div class="time">10:12</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 哪里难弄了🤔</div><div class="time">10:12</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">也是招募吗？</div><div class="time">10:12</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">其实是带工作室成员一起参加</div><div class="time">10:12</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">我其实挺讨厌弄团体赛的</div><div class="time">10:13</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">队员很抽象 不是招募来的</div><div class="time">10:13</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">执行力特别差也听不懂话</div><div class="time">10:13</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">唉那很难受了</div><div class="time">10:13</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">但是老师要求也没办法</div><div class="time">10:13</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">就是有一种不会带团队只能干到死的感觉</div><div class="time">10:14</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">但是带团队队员也都是匹配来的</div><div class="time">10:14</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">一般你们怎么分配任务呢</div><div class="time">10:15</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">这啥工作室啊🤔</div><div class="time">10:15</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">我们这种属于设计类工作室</div><div class="time">10:16</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 会先进行Brainstorming</div><div class="time">10:16</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">接外包设计工作 全套设计方案整合 还有比赛之类的</div><div class="time">10:16</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 唉我对艺术类不太了解，本科阶段进工作室是普遍现象啊</div><div class="time">10:17</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 会不会有不配合的现象呢</div><div class="time">10:20</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我感觉在这里就表现出来了</div><div class="time">10:20</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">但是大多数都是熟人参赛</div><div class="time">10:20</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 我们工作室基本都是同班同学</div><div class="time">10:21</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">现在既然换不了的话，我想一想</div><div class="time">10:21</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">大家都认为是同级的我没必要听你的</div><div class="time">10:21</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">包括我负责人这个职位虽然说是老师定的 但大家也不会当回事</div><div class="time">10:22</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你需要做的工作以及收益是什么呢</div><div class="time">10:23</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">做不好老师会拿你试问吗</div><div class="time">10:23</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">我现在和老师接触也是把大家都拆开个人做然后去投 </div><div class="time">10:24</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">每个人都是队长把再把大家名字卷起来投</div><div class="time">10:25</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 负责核心思路 派发任务 以及督促执行</div><div class="time">10:26</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">目前没有收益 奖金我们学校发下来慢 而且外包项目的话去工地量尺 图纸 建模老师不直接和我对接</div><div class="time">10:28</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">我负责后期效果图制作还有文本类工作</div><div class="time">10:29</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 老师也基本知道工作室成员情况 不会拿我试问</div><div class="time">10:29</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">把每个人的任务直接列在一个共享文档里，截止日期写出来吧</div><div class="time">10:34</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[表情包]</div><div class="time">10:35</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">我团队算我一共六个人</div><div class="time">10:36</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">有三个是一个寝室</div><div class="time">10:37</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">剩下两个男孩</div><div class="time">10:37</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 其实这种最麻烦 大家都什么都不想干然后还想分一杯羹</div><div class="time">10:37</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 我们四个是一个寝室 没表达清楚</div><div class="time">10:38</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">在寝室里几乎很难做到信息阻隔 </div><div class="time">10:39</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">有些老师找我对接他们会问我去干什么 我一般只说去干杂事</div><div class="time">10:41</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 这个确实</div><div class="time">10:42</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">但是对于我们而言反而是便利吧</div><div class="time">10:42</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">有什么事随时讨论</div><div class="time">10:42</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 这个比赛的周期是多少呢？</div><div class="time">10:43</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">到6月中旬</div><div class="time">10:44</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哦哦</div><div class="time">10:45</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 我发现其实普遍像我们这种不是特别好的学校 大家基本都是在混</div><div class="time">10:45</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">可以设置一个固定组会的时间，然后在这个时候进行讨论，其他时间不刻意讨论这个事情</div><div class="time">10:46</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">我就连看书也会被嘲笑装文艺的那种人</div><div class="time">10:46</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">[掩面]</div><div class="time">10:46</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">看得出来，你很想做好，负好责任</div><div class="time">10:48</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 唉，怎么是这种环境呢</div><div class="time">10:48</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 如果说大家普遍没有什么思考能力 那是不是我可以直接决定总核心然后让大家去做呢</div><div class="time">10:48</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">我只要和老师沟通好核心</div><div class="time">10:49</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 其实很多二本学校都这样啦[捂脸] 挺拉的</div><div class="time">10:49</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;你回收了一則訊息&lt;/content&gt;&lt;revoketime&gt;1773975051&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 这里</div><div class="time">10:50</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 对啊，我刚才就在说</div><div class="time">10:51</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 谬赞了属于是 我更想服务好老师获得想要的资源 对于其他成员我基本属于懒得理这种情况</div><div class="time">10:51</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">其实核心你也可以和老师先大致交流然后自己补充，一定程度上省去和组员的沟通</div><div class="time">10:51</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 确实呢</div><div class="time">10:53</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">感觉你是很标准的T人啊哈哈哈</div><div class="time">10:53</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">我周边很难有人能讲出解决问题方法</div><div class="time">10:55</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">我共情能力有待提高🥺</div><div class="time">10:56</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">遇到问题能第一时间能想办法真的很厉害呢</div><div class="time">10:56</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">只是能够想一些办法，也会尽力的往感同身受的方向靠拢，但是还是有些难度哈哈哈</div><div class="time">10:56</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 哈哈哈对人来说我偏向了解 因为真正能共情和理解很难 人和人经历也不同</div><div class="time">10:58</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">只要了解他可能会做出这样的事情就好了[呲牙]</div><div class="time">10:58</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 目的很明确啊，那和老师交流的会不会多一些好，把brainstorming放到和老师的交流上</div><div class="time">10:58</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[链接] 确实</div><div class="time">10:59</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] OKOK</div><div class="time">11:02</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">和聪明的人聊天就是感觉很轻松呢哈哈</div><div class="time">11:03</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">不需要重复的讲</div><div class="time">11:03</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">[呲牙]</div><div class="time">11:03</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哈哈哈，你舒服就好</div><div class="time">11:04</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 我说话表达能力不是很强 还能包容我🥹</div><div class="time">11:06</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them">学到了好多新东西哈哈</div><div class="time">11:08</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">[旺柴]那就多多交流哈哈哈</div><div class="time">11:10</div></div></div>
+<div class="msg them"><div class="avatar them">眠</div><div class="bubble-wrap"><div class="bubble them meta">[表情包]</div><div class="time">11:12</div></div></div></div>
+<div class="stats">时间跨度: 2026-03-19 ~ 2026-03-20 &nbsp;|&nbsp; 我: 102 条 &nbsp;|&nbsp; 眠人派对: 114 条</div>
+</body></html>

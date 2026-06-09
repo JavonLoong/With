@@ -1,0 +1,26 @@
+﻿{
+    "version":  "v6",
+    "output_dir":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6",
+    "page_sources":  {
+                         "1":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p001_x48.png",
+                         "3":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p003_x50.png",
+                         "4":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p004_x51.png",
+                         "5":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p005_x52.png",
+                         "6":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p006_x53.png",
+                         "7":  "D:\\虚拟C盘\\9dfbfbf8-cde5-43f6-a2e7-7a80a602ea6e.jpg",
+                         "8":  "D:\\虚拟C盘\\slideshow_v2_extracted\\p008_x55.png",
+                         "9":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p009_x56.png",
+                         "10":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p010_x57.png",
+                         "11":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p011_x58.png",
+                         "12":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p012_x59.png",
+                         "13":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p013_x60.png",
+                         "14":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p014_x61.png",
+                         "15":  "D:\\虚拟C盘\\slideshow_v2_extracted\\p015_x62.png",
+                         "2":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p002_x49.png + D:\\虚拟C盘\\slideshow_v2_extracted\\image_03.png"
+                     },
+    "page2_composite":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\v6_edits\\p002_x49_v6_left_v5_right_v2_trimmed.png",
+    "page2_trimmed_sources":  {
+                                  "left":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v5\\p002_x49.png",
+                                  "right":  "D:\\虚拟C盘\\slideshow_v2_extracted\\image_03.png"
+                              }
+}

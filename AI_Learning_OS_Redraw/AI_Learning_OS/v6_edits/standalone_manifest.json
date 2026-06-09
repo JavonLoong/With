@@ -1,0 +1,85 @@
+﻿{
+    "version":  "v6-standalone",
+    "created_at":  "2026-04-29T01:51:10",
+    "source_html":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\slideshow_v6.html",
+    "standalone_html":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\slideshow_v6_standalone.html",
+    "source_image_dir":  "D:\\虚拟C盘\\AI_Learning_OS_Redraw\\AI_Learning_OS\\output_v6",
+    "embedded_images":  [
+                            {
+                                "Name":  "p001_x48.png",
+                                "Bytes":  2201046,
+                                "Sha256":  "7E8DD610C7222800701B2DE5695850117F020D1C0751651FCEB32B4828B33643"
+                            },
+                            {
+                                "Name":  "p002_x49.png",
+                                "Bytes":  1813047,
+                                "Sha256":  "5785DF60B77388AD2D689CB0480FF0EF9B45E041C65344FEDDEFB62AE5949469"
+                            },
+                            {
+                                "Name":  "p003_x50.png",
+                                "Bytes":  2368173,
+                                "Sha256":  "2ADFBF1A370898D3F8571A47529695552054FBFE4CA0164F085D2DA24B12DA15"
+                            },
+                            {
+                                "Name":  "p004_x51.png",
+                                "Bytes":  1473123,
+                                "Sha256":  "7718D9E4FADADD6BF4F6DE3CCB39C16D7AF6293112C2930B4D36DE989732389A"
+                            },
+                            {
+                                "Name":  "p005_x52.png",
+                                "Bytes":  1643950,
+                                "Sha256":  "50295EE59D5C9931692DE4798E965041C989532032D732BACE1BD904D82BC8A2"
+                            },
+                            {
+                                "Name":  "p006_x53.png",
+                                "Bytes":  2853659,
+                                "Sha256":  "D92A6860FD51F14692E8D3D84E300EEAA8DA93CF21362959D61E0118D06687B5"
+                            },
+                            {
+                                "Name":  "p007_x54.png",
+                                "Bytes":  681999,
+                                "Sha256":  "0CBE0D7425E3D92B5C3C99B6BBC28782710EE7E07D2F2E0BDEDC6A96F04C0DF0"
+                            },
+                            {
+                                "Name":  "p008_x55.png",
+                                "Bytes":  1270257,
+                                "Sha256":  "608511583DE83A8750D23E0E6BD0FAF0A1546207A25065CAB5421651E947EE82"
+                            },
+                            {
+                                "Name":  "p009_x56.png",
+                                "Bytes":  2535609,
+                                "Sha256":  "FC9B77DC46D4325F1066D4063F14B1D92B1E336BE8AA78BEE0874F562864B1FE"
+                            },
+                            {
+                                "Name":  "p010_x57.png",
+                                "Bytes":  1741029,
+                                "Sha256":  "21F66B908B80E58B1FD7FB9C5D84CBA0FCD580697042B0FB46D0A7563224BAD8"
+                            },
+                            {
+                                "Name":  "p011_x58.png",
+                                "Bytes":  2460971,
+                                "Sha256":  "66D57192029E13246DBFA9B7D64CD30A73F9B67568BAD32CB67042E87ECD3B62"
+                            },
+                            {
+                                "Name":  "p012_x59.png",
+                                "Bytes":  1836566,
+                                "Sha256":  "ED6A4FC4ACD0374D5C35D5C28B070748CA357AA8F44F3EC635FDC1561DAE8618"
+                            },
+                            {
+                                "Name":  "p013_x60.png",
+                                "Bytes":  1060498,
+                                "Sha256":  "78B73BFB2B68CFFC1ED02530C47F0A0DFED470ADCA51724D45FF9E68C4DA862F"
+                            },
+                            {
+                                "Name":  "p014_x61.png",
+                                "Bytes":  2619247,
+                                "Sha256":  "DED836463207DB0A56C7807018DC6F4F63907F30D598BEE2B43A668F0081FA1B"
+                            },
+                            {
+                                "Name":  "p015_x62.png",
+                                "Bytes":  1470932,
+                                "Sha256":  "B41460B5B3923BDD7CB6040C7D1AF330AD3CB1E8706233C2CB51FECBA5A003C6"
+                            }
+                        ],
+    "reason":  "Single-file standalone HTML with all slide images embedded as data URIs."
+}

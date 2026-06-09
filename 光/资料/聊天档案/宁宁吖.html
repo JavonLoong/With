@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>微信聊天记录 - 宁宁吖</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:linear-gradient(180deg,#0f0c29 0%,#1a1a2e 50%,#16213e 100%);color:#eee;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;display:flex;flex-direction:column;align-items:center;padding:30px 20px;min-height:100vh}
+.header{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);padding:25px 40px;border-radius:20px;margin-bottom:30px;text-align:center;border:1px solid rgba(255,255,255,.1);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.header h1{font-size:1.8em;font-weight:700;margin-bottom:8px;background:linear-gradient(135deg,#a8edea,#fed6e3);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header p{opacity:.7;font-size:.9em}
+.chat-container{width:100%;max-width:800px}
+.date-divider{text-align:center;margin:20px 0;color:rgba(255,255,255,.4);font-size:.78em;position:relative}
+.date-divider::before,.date-divider::after{content:'';position:absolute;top:50%;width:30%;height:1px;background:rgba(255,255,255,.1)}
+.date-divider::before{left:0}.date-divider::after{right:0}
+.msg{display:flex;margin:8px 0;gap:10px}
+.msg.me{flex-direction:row-reverse}
+.avatar{width:38px;height:38px;border-radius:8px;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;font-size:.8em;font-weight:700;flex-shrink:0}
+.avatar.me{background:linear-gradient(135deg,#43c6ac,#191654)}
+.bubble-wrap{max-width:65%;display:flex;flex-direction:column}
+.msg.me .bubble-wrap{align-items:flex-end}
+.bubble{padding:10px 14px;border-radius:16px;font-size:.92em;line-height:1.5;word-break:break-word;white-space:pre-wrap}
+.bubble.them{background:rgba(255,255,255,.1);border-radius:16px 16px 16px 4px}
+.bubble.me{background:linear-gradient(135deg,#43c6ac,#191654);border-radius:16px 16px 4px 16px}
+.bubble.system{background:transparent;color:rgba(255,255,255,.4);font-size:.8em;text-align:center;padding:4px 10px;font-style:italic}
+.bubble.meta{opacity:.6;font-style:italic}
+.time{font-size:.68em;color:rgba(255,255,255,.3);margin-top:4px;padding:0 4px}
+.stats{margin-top:30px;background:rgba(255,255,255,.05);padding:16px 24px;border-radius:12px;font-size:.85em;opacity:.7;text-align:center;border:1px solid rgba(255,255,255,.08)}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>💬 宁宁吖</h1>
+  <p>聊天记录 · 共 29 条</p>
+</div>
+<div class="chat-container">
+<div class="date-divider">2025年01月05日</div>
+<div class="msg them"><div class="avatar them">宁</div><div class="bubble-wrap"><div class="bubble them">我通过了你的朋友验证请求，现在我们可以开始聊天了</div><div class="time">13:46</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">你好</div><div class="time">15:59</div></div></div>
+<div class="msg them"><div class="avatar them">宁</div><div class="bubble-wrap"><div class="bubble them">你好宝宝</div><div class="time">16:03</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">请问姐姐我可以在这里和你聊些什么，我看当时加您微信的时候说的是不让聊黄聊骚</div><div class="time">16:24</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">或者还是有某些福利么[悠闲]</div><div class="time">16:25</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">[调皮]</div><div class="time">16:29</div></div></div>
+<div class="msg them"><div class="avatar them">宁</div><div class="bubble-wrap"><div class="bubble them">有福利哦</div><div class="time">16:30</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">让弟弟看看</div><div class="time">16:31</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">[疑问]</div><div class="time">16:36</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">是脱敏训练么？</div><div class="time">16:40</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">？？？、</div><div class="time">17:13</div></div></div>
+<div class="msg them"><div class="avatar them">宁</div><div class="bubble-wrap"><div class="bubble them">下倒模了么</div><div class="time">17:13</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">下了</div><div class="time">17:13</div></div></div>
+<div class="msg them"><div class="avatar them">宁</div><div class="bubble-wrap"><div class="bubble them">发订单截图哦宝宝</div><div class="time">17:16</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">必须是姐姐你的倒模么</div><div class="time">17:17</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me meta">[3]</div><div class="time">17:18</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">[疑问][疑问][疑问]</div><div class="time">17:25</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">？？？</div><div class="time">17:30</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">发货啦</div><div class="time">17:32</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">？？？</div><div class="time">17:57</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">？？？</div><div class="time">19:03</div></div></div>
+<div class="msg them"><div class="avatar them">宁</div><div class="bubble-wrap"><div class="bubble them meta">[链接/文件]</div><div class="time">19:33</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">不一样吗</div><div class="time">19:38</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">这不是硅胶做的么</div><div class="time">19:38</div></div></div>
+<div class="msg them"><div class="avatar them">宁</div><div class="bubble-wrap"><div class="bubble them">不一样哦</div><div class="time">19:39</div></div></div>
+<div class="msg them"><div class="avatar them">宁</div><div class="bubble-wrap"><div class="bubble them">这个不是倒模没有福利哈</div><div class="time">19:39</div></div></div>
+<div class="date-divider">2025年01月06日</div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">哦</div><div class="time">00:42</div></div></div>
+<div class="msg me"><div class="avatar me">我</div><div class="bubble-wrap"><div class="bubble me">私密照之类的呢？</div><div class="time">00:43</div></div></div>
+<div class="msg them"><div class="avatar them">宁</div><div class="bubble-wrap"><div class="bubble them">买倒模才有哦宝宝</div><div class="time">15:26</div></div></div></div>
+<div class="stats">时间跨度: 2025-01-05 ~ 2025-01-06 &nbsp;|&nbsp; 我: 20 条 &nbsp;|&nbsp; 宁宁吖: 9 条</div>
+</body></html>

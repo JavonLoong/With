@@ -1,0 +1,18 @@
+{
+    "global_defaults": {
+        "ruler_roi": [0.55, 0.78],
+        "waterline_roi": [0.32, 0.68],
+        "reflection_window_s": 0.9
+    },
+    "group_overrides": {
+        "1.6": {
+            "waterline_roi": [0.30, 0.70]
+        },
+        "10.0": {
+            "ruler_roi": [0.60, 0.80]
+        },
+        "2.6": {
+            "description": "2.6 Hz 工况特殊调整示例 (按需修改)"
+        }
+    }
+}

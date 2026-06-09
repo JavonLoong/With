@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>样张 A：1:1 还原原 PPT 排版 (p002)</title>
+<style>
+  :root {
+    --fg: #18181b;
+    --muted: #6b7280;
+    --accent: #6b3fa0;
+    --line: #d4d4d8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px;
+    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f4f4f5; color: var(--fg);
+  }
+  .slide {
+    width: 1280px; aspect-ratio: 16/9;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 12px 40px -12px rgba(0,0,0,.15);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 40px 56px 32px;
+  }
+  /* 顶部双列标题 */
+  .col-titles {
+    display: grid; grid-template-columns: 1fr 1px 1fr;
+    gap: 0; align-items: end;
+  }
+  .col-title {
+    text-align: center;
+    font-size: 30px; font-weight: 700; letter-spacing: 1px;
+    padding-bottom: 18px;
+  }
+  .divider { background: var(--fg); width: 1px; height: 100%; }
+  /* 中间双列结构插图 */
+  .col-content {
+    display: grid; grid-template-columns: 1fr 1px 1fr;
+    align-items: center; min-height: 0;
+    padding: 8px 0;
+  }
+  .col-content .panel {
+    display: flex; align-items: center; justify-content: center;
+    height: 100%; padding: 0 16px;
+  }
+  .col-content img {
+    max-width: 100%; max-height: 100%;
+    object-fit: contain;
+  }
+  .col-content .vline { background: var(--fg); width: 1px; height: 100%; }
+  /* 底部 quote */
+  .quote {
+    border: 1.5px solid var(--fg);
+    padding: 14px 24px;
+    font-size: 18px; line-height: 1.5;
+    text-align: center;
+    margin-top: 12px;
+  }
+  .quote .em { color: var(--accent); font-weight: 600; }
+  /* 顶部样张说明 */
+  .label {
+    width: 1280px; margin: 0 auto 12px; font-size: 13px; color: var(--muted);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .label b { color: var(--fg); font-size: 15px; }
+</style>
+</head>
+<body>
+
+<div class="label">
+  <b>样张 A · 1:1 还原原 PPT 排版</b>
+  <span>HTML 渲染：列标题 + 底部 quote · AI 重画：两块结构插图</span>
+</div>
+
+<div class="slide">
+  <header class="col-titles">
+    <div class="col-title">"能力错觉"循环</div>
+    <div class="divider"></div>
+    <div class="col-title">隐藏的认知复杂度</div>
+  </header>
+
+  <section class="col-content">
+    <div class="panel"><img src="assets/p002_left_loop.png" alt="能力错觉循环"></div>
+    <div class="vline"></div>
+    <div class="panel"><img src="assets/p002_right_iso.png" alt="隐藏的认知复杂度"></div>
+  </section>
+
+  <footer class="quote">
+    传统学习聚焦"<span class="em">结论输入</span>"，而理工科真正的痛点在于"<span class="em">条件判断与推演路径</span>"的<span class="em">断裂</span>。
+  </footer>
+</div>
+
+</body>
+</html>

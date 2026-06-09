@@ -1,0 +1,6 @@
+﻿label,label_name,predicted_count,ratio
+0,Health,103,20.00%
+1,Chipped,103,20.00%
+2,Miss,123,23.88%
+3,Root,108,20.97%
+4,Surface,78,15.15%

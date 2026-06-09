@@ -1,0 +1,16 @@
+{
+  "version": "v7-art-sample",
+  "expected_pages": 1,
+  "images": [
+    {
+      "page": 7,
+      "model": "nano-banana-pro",
+      "visual_authoring": "nano-banana-pro",
+      "page_goal": "将第 7 页错题诊断主视觉从普通示意图重绘为具有高级艺术感的学术手稿展陈草图，同时保留错题、箭头、五层归因卡和紫色核心层。",
+      "prompt_path": "prompts/p007_art_prompt.txt",
+      "negative_prompt_path": "prompts/p007_art_negative.txt",
+      "output": "generated/p007_art_sample.png",
+      "key_slot": "primary"
+    }
+  ]
+}

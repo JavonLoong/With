@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "video": "8b5f4cdec73a03c1e7ed911633b86d5b.mp4",
+    "reported_frame_count": 168,
+    "decoded_frame_count": 168,
+    "fps": 30.0,
+    "width": 1280,
+    "height": 720,
+    "duration_s": 5.6
+  },
+  "calibration": {
+    "method": "background_ruler_tick_autocorrelation",
+    "ruler_y1": 454,
+    "ruler_y2": 488,
+    "px_per_cm": 29.964149928144586,
+    "px_per_cm_mean": 29.933083829691967,
+    "px_per_cm_std": 0.06405007953771398,
+    "samples": 12
+  },
+  "summary": {
+    "video": "8b5f4cdec73a03c1e7ed911633b86d5b.mp4",
+    "experiment_folder": "10.0",
+    "decoded_frames": 168,
+    "fps": 30.0,
+    "duration_s": 5.6,
+    "field_width_cm": 39.38039299728824,
+    "px_per_cm": 29.964149928144586,
+    "px_per_cm_std": 0.06405007953771398,
+    "calibration_method": "background_ruler_tick_autocorrelation",
+    "incident_direction": "right",
+    "global_reflection_energy_ratio": 0.52362702023557,
+    "global_reflection_amplitude_ratio": 0.7236207710089381,
+    "selected_window_start_s": 1.6,
+    "selected_window_end_s": 3.566666666666667,
+    "selected_reflection_energy_ratio": 0.03027460692562923,
+    "selected_reflection_amplitude_ratio": 0.1739959968666786,
+    "fft_incident_lambda_cm": 34.174171550188476,
+    "fft_incident_period_s": 0.4740740740740741,
+    "fft_secondary_lambda_cm": 27.33933724015078,
+    "fft_secondary_to_main_power": 0.10389496556754323,
+    "fft_status": "诊断值；短视频/视场有限，不作为唯一最终波长",
+    "direct_broad_peak_distance_cm": 24.000903359222985,
+    "direct_broad_peak_distance_std_cm": 4.681985646702335,
+    "direct_broad_peak_distance_n": 6,
+    "direct_local_peak_distance_cm": 10.494021862742535,
+    "direct_local_peak_distance_std_cm": 1.7904905521756955,
+    "direct_local_peak_distance_n": 18,
+    "incident_profile_peak_distance_cm": 23.023809804158446,
+    "incident_profile_peak_distance_std_cm": 3.501701297192802,
+    "incident_profile_peak_distance_n": 9,
+    "judgement": "低反射窗口内反射弱，可用于行波波长测量；全片后段反射明显，整体解释需考虑驻波/反射"
+  }
+}

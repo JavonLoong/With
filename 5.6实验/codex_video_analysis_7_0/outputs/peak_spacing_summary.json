@@ -1,0 +1,63 @@
+{
+  "video": {
+    "frames": 171,
+    "fps": 29.000035802513338,
+    "duration_s": 5.896544444444444,
+    "width": 1280,
+    "height": 720
+  },
+  "method_parameters": {
+    "px_per_cm": 31.75,
+    "calibration_note": "Estimated from ruler: 20 cm spans about 635 px between the 190 and 170 cm marks, so 31.75 px/cm.",
+    "surface_roi_px": {
+      "x1": 20,
+      "x2": 1260,
+      "y1": 150,
+      "y2": 360
+    },
+    "local_wave_trend_window_px": 401,
+    "peak_prominence_threshold_px": 1.2,
+    "peak_min_distance_px": 150,
+    "valid_spacing_range_cm": [
+      5.0,
+      15.0
+    ]
+  },
+  "valid_frame_count": 74,
+  "valid_interval_count": 200,
+  "interval_spacing_cm_stats": {
+    "n": 200,
+    "mean": 8.739527559055118,
+    "median": 8.834645669291339,
+    "std": 1.9757888957194656,
+    "q1": 6.889763779527559,
+    "q3": 9.826771653543307,
+    "trimmed_mean_10pct": 8.613385826771653,
+    "min": 5.102362204724409,
+    "max": 14.204724409448819
+  },
+  "frame_mean_spacing_cm_stats": {
+    "n": 74,
+    "mean": 8.836348159182805,
+    "median": 8.782152230971128,
+    "std": 1.3062803103848302,
+    "q1": 8.056430446194225,
+    "q3": 9.446194225721785,
+    "trimmed_mean_10pct": 8.756211723534557,
+    "min": 5.716535433070867,
+    "max": 14.141732283464567
+  },
+  "stable_frame_mean_spacing_cm_stats_time_ge_4s_peak_count_ge_3": {
+    "n": 54,
+    "mean": 8.744726353650236,
+    "median": 8.822834645669293,
+    "std": 0.8595907220130738,
+    "q1": 8.088582677165356,
+    "q3": 9.435695538057743,
+    "trimmed_mean_10pct": 8.76908852302553,
+    "min": 6.661417322834645,
+    "max": 10.929133858267717
+  },
+  "recommended_average_cm": 8.822834645669293,
+  "recommended_average_rule": "Median of per-frame valid mean spacings for stable frames (time >= 4.0 s and at least 3 detected peaks), so each frame has equal weight and onset/outlier intervals are suppressed."
+}

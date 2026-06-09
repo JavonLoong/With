@@ -1,0 +1,18 @@
+{
+  "page": "p001_x48",
+  "layout": "cover",
+  "section_tag": "AI · COGNITIVE OS",
+  "page_title": "AI_Learning_OS",
+  "cards": [
+    {
+      "key": "",
+      "title": "",
+      "desc": "",
+      "featured": false,
+      "illu_bbox_pct": [0.0, 0.0, 1.0, 1.0]
+    }
+  ],
+  "quote": "打造面向高强度理工科学习的个人操作系统",
+  "quote_emphasis": ["高强度理工科", "操作系统"],
+  "notes": "封面页，纯文字"
+}

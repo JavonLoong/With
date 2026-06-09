@@ -1,0 +1,18 @@
+{
+  "page": "p010_x57",
+  "layout": "one-illu",
+  "section_tag": "06 · 课程适配器",
+  "page_title": "桥接通用引擎与专业学科",
+  "cards": [
+    {
+      "key": "插槽接入",
+      "title": "固体力学 / 流体力学 / 大学物理 接入 OS_Core",
+      "desc": "通用学习方法必须转化为学科操作规则：先建模 → 判断条件 → 选公式 → 检验答案。",
+      "featured": false,
+      "illu_bbox_pct": [0.02, 0.13, 0.98, 0.74]
+    }
+  ],
+  "quote": "通用学习方法必须转化为具体的学科操作规则。",
+  "quote_emphasis": ["学科操作规则"],
+  "notes": "插槽适配器隐喻：3 学科卡片插入中心 OS_Core"
+}

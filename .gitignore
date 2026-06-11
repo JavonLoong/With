@@ -19,6 +19,7 @@
 !**/*.woff2
 !**/*.ttf
 !**/*.otf
+!**/*.tex
 
 # Raw reference materials and binary/courseware packages
 **/*.pdf

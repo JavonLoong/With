@@ -42,7 +42,7 @@
 \definecolor{infoc}{HTML}{00695C}
 \definecolor{infobg}{HTML}{E0F2F1}
 \newcommand{\chap}[1]{\vspace{0.35pt}{\fontsize{6.55}{6.78}\selectfont\bfseries\color{white}\colorbox{h1}{\strut\;#1\;}}\par\vspace{0.15pt}}
-\newcommand{\tagsec}[3]{\par\noindent\vspace{0.10pt}{\fontsize{5.05}{5.24}\selectfont\bfseries\color{#1}\colorbox{#1}{\color{white}\fontsize{4.00}{4.14}\selectfont #2}\,#3}\ }
+\newcommand{\tagsec}[3]{\vspace{0.10pt}{\fontsize{5.05}{5.24}\selectfont\bfseries\color{#1}\colorbox{#1}{\color{white}\fontsize{4.00}{4.14}\selectfont #2}\,#3}\par}
 \newcommand{\realq}[1]{\tagsec{realc}{真题}{#1}}
 \newcommand{\subq}[1]{\tagsec{subc}{子题}{#1}}
 \newcommand{\varq}[1]{\tagsec{varc}{变式}{#1}}
@@ -907,6 +907,7 @@ $u/U=\sin(\pi\eta/2)$ & $\delta^*/\theta\approx2.66,\ C_D\approx1.31/\sqrt{Re_L}
 
 \newpage
 \chap{母题2 理想不可压无旋势流：基本流、镜像、圆柱、环量}
+\renewcommand{\tagsec}[3]{\par\noindent\vspace{0.10pt}{\fontsize{5.05}{5.24}\selectfont\bfseries\color{#1}\colorbox{#1}{\color{white}\fontsize{4.00}{4.14}\selectfont #2}\,#3}\ }
 \mview{\key{母题总览}：看见不可压无旋、$\phi/\psi$、源汇涡、镜像、圆柱/机翼，用势流叠加。首写$\phi=\sum\phi_i$或$\psi=\sum\psi_i$。顺序：边界流线/驻点$\to V\to p$；合力用压力积分。检查：壁面不穿透、$\psi=C$、伯努利是否可全场用。}
 \schemepotential
 \infoh{势流信息库A 基础公式和数学运算}
@@ -1049,6 +1050,7 @@ $\Gamma=\oint\bm V\cdot d\bm l$。库塔--儒可夫斯基$L'=\rho U\Gamma$。点
 若是理想势流，压力积分阻力为0；若题给$C_D$，阻力$D=C_D(0.5\rho U^2)A_{\rm front}$，面积取迎风面积。
 
 \chap{母题3 可压缩等熵流与Laval喷管}
+\renewcommand{\tagsec}[3]{\vspace{0.10pt}{\fontsize{5.05}{5.24}\selectfont\bfseries\color{#1}\colorbox{#1}{\color{white}\fontsize{4.00}{4.14}\selectfont #2}\,#3}\par}
 \mview{\key{母题总览}：看见$p_0,T_0,M,A^*,p_b$或喷管，先判等熵/阻塞。首写$T_0/T,p_0/p,A/A^*,\dot m$。顺序：压比/面积比$\to M\to p,T,\rho,V,\dot m$。检查：亚/超声支路、$p_b\ne p_e$、$0.528$只属于空气临界。}
 \schemelaval
 \infoh{可压/Laval信息库A 基础公式和数学运算}
@@ -1088,7 +1090,10 @@ T^*&=0.833T_0=416.7K,\quad p^*=0.528p_0=158.5kPa\\
 \end{aligned}}
 \errq{检查：$p_0$用Pa，$T_0$用K；有背压时先判阻塞，不能默认最大流量。}
 \realq{真题[4]：15cm汞柱Laval喷管，求$p_b$/激波位置/设计汞柱高}
-\begin{center}\begin{tikzpicture}[>=Latex,scale=0.43,every node/.style={font=\tiny}]
+\par\noindent\begin{minipage}{\linewidth}
+\vspace*{-5pt}
+\centering
+\begin{tikzpicture}[>=Latex,scale=0.50,every node/.style={font=\tiny}]
 \draw[thick] (-0.1,0.72).. controls (0.95,0.55) and (1.15,0.25)..(1.85,0.24).. controls (2.7,0.23) and (2.9,0.62)..(4.1,0.78);
 \draw[thick] (-0.1,-0.72).. controls (0.95,-0.55) and (1.15,-0.25)..(1.85,-0.24).. controls (2.7,-0.23) and (2.9,-0.62)..(4.1,-0.78);
 \draw[->,blue] (-0.45,0)--(0.4,0); \node at (0.35,1.10){$p_0=300$kPa,$T_0=373$K};
@@ -1097,9 +1102,11 @@ T^*&=0.833T_0=416.7K,\quad p^*=0.528p_0=158.5kPa\\
 \draw[thick] (1.85,-0.25)--(1.85,-1.35)--(2.35,-1.35)--(2.35,-0.55);
 \draw[thick] (4.05,-0.35)--(4.05,-1.15)--(2.55,-1.15)--(2.55,-0.55);
 \draw[blue] (1.88,-1.18)--(2.32,-1.18); \draw[blue] (2.58,-0.86)--(4.02,-0.86);
-\draw[<->] (2.45,-1.18)--(2.45,-0.86); \node[right] at (2.46,-1.02){$h=15$cm Hg};
+\draw[<->] (2.45,-1.18)--(2.45,-0.86); \node[right] at (2.60,-1.02){$h=15$cm Hg};
 \node at (4.65,0){下游气源$p_b$};
-\end{tikzpicture}\end{center}\vspace{-3pt}
+\end{tikzpicture}
+\vspace*{-5pt}
+\end{minipage}
 题干压缩：空气过连接两个\key{大型气源}的Laval喷管；喉部--下游气源接汞柱压差计，左侧喉部端汞面较低；$p_0=300$kPa，$T_0=100^\circ$C，$A_t=10$cm$^2$，$A_e=30$cm$^2$，$h=15$cm。求：1 $p_b$；2 是否有正激波及位置；3 设计超声速工况的$h$。
 \subq{第一问：由喉部临界压+汞柱反推下游背压}
 落笔：喉部为最小截面，若阻塞则$M_t=1,A_t=A^*,p_t=p^*$；喉部不能算出$M_t>1$。本题按阻塞估算：

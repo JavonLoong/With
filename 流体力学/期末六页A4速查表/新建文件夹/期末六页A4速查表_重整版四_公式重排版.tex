@@ -1119,22 +1119,39 @@ p_t=p^*=0.5283p_0=0.5283\times300=158.5\ {\rm kPa}\\
 \subq{第二问：用面积比生成两支出口态，再用三临界背压判激波}
 因已阻塞，$A_t=A^*$，故$A_e/A^*=A_e/A_t=3$：
 \fmlb{\frac{A_e}{A_t}=\frac1{Ma_e}\left(\frac{5+Ma_e^2}{6}\right)^3=3}
-查表/迭代得两支：$M_{e,sub}=0.197,\ M_{e,sup}=2.637$。用等熵压强式求两端界：
+查表/迭代得两支：$Ma_{e,1}=0.197,\ Ma_{e,2}=2.637$。用等熵压强式求两端界：
 \fmlb{\begin{gathered}
 p_{b1}=p_0/(1+0.2Ma_{e,1}^2)^{3.5}=291.95\ {\rm kPa}\\
 p_{b3}=p_0/(1+0.2Ma_{e,2}^2)^{3.5}=14.19\ {\rm kPa}\\
 p_{b2}=p_{b3}\{1+\tfrac{2\gamma}{\gamma+1}(Ma_{e,2}^2-1)\}=112.79\ {\rm kPa}
 \end{gathered}}
 判定句直接写：$p_{b2}<p_b=138.5<p_{b1}$，故\key{喷管内有正激波}；且$p_b>p_{b2}$，背压高于“出口正激波”所需后压，所以激波被推到\key{出口上游的扩张段内}。
-\formq{三临界背压区间：这题以及同类Laval背压题都按这个判}
-\par\noindent \begin{tabular}{|p{0.22\linewidth}|p{0.69\linewidth}|}\hline
-$p_b>p_{b1}$ & 全管亚声速或未完全阻塞，扩张段减速升压\\ \hline
-$p_{b2}<p_b<p_{b1}$ & 管内正激波；$p_b$越高，激波越靠上游\\ \hline
-$p_b=p_{b2}$ & 正激波刚好在出口面\\ \hline
-$p_{b3}<p_b<p_{b2}$ & 管内等熵超声速到出口，管外压缩/斜激波\\ \hline
-$p_b=p_{b3}$ & 设计工况，全管等熵超声速，$p_e=p_b$\\ \hline
-$p_b<p_{b3}$ & 欠膨胀，出口外膨胀波\\ \hline
-\end{tabular}
+\formq{三临界背压数轴：同类Laval背压题均按此数轴判定}
+\par\noindent\begin{minipage}{\linewidth}
+\vspace*{2pt}
+\centering
+\begin{tikzpicture}[>=Latex, scale=0.74, every node/.style={font=\fontsize{4.8}{5.8}\selectfont}]
+% Axis line
+\draw[->, thick] (0,0) -- (6.0,0) node[right] {$p_b$};
+
+% Ticks and points
+\filldraw[red] (1.5,0) circle (1.8pt) node[below=2pt, black] {$p_{b3}$};
+\filldraw[blue] (3.3,0) circle (1.8pt) node[below=2pt, black] {$p_{b2}$};
+\filldraw[OliveGreen] (5.1,0) circle (1.8pt) node[below=2pt, black] {$p_{b1}$};
+
+% Regions text above the line
+\node[above=2pt, align=center] at (0.75,0) {\key{欠膨胀}\\(出口外膨胀波)};
+\node[above=2pt, align=center] at (2.4,0) {\key{过膨胀}\\(出口外斜激波)};
+\node[above=2pt, align=center] at (4.2,0) {\key{管内正激波}\\(越右越靠喉部)};
+\node[above=2pt, align=center] at (5.7,0) {\key{全亚声速}\\(未完全阻塞)};
+
+% Ticks text below
+\node[below=10pt, align=center, red] at (1.5,0) {\textbf{等熵设计}};
+\node[below=10pt, align=center, blue] at (3.3,0) {\textbf{出口面激波}};
+\node[below=10pt, align=center, OliveGreen] at (5.1,0) {\textbf{喉部刚达声速}};
+\end{tikzpicture}
+\vspace*{-1pt}
+\end{minipage}
 \subq{第三问：设计超声速工况汞柱高度}
 设计工况就是出口超声速等熵且$p_b=p_{b3}=14.19$kPa，喉部仍$p_t=p^*=158.5$kPa：
 \fmlb{\begin{aligned}

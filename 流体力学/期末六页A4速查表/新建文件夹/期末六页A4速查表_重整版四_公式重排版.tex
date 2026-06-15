@@ -910,14 +910,15 @@ $u/U=\sin(\pi\eta/2)$ & $\delta^*/\theta\approx2.66,\ C_D\approx1.31/\sqrt{Re_L}
 \renewcommand{\tagsec}[3]{\par\noindent\vspace{0.10pt}{\fontsize{5.05}{5.24}\selectfont\bfseries\color{#1}\colorbox{#1}{\color{white}\fontsize{4.00}{4.14}\selectfont #2}\,#3}\ }
 \mview{\key{母题总览}：看见不可压无旋、$\phi/\psi$、源汇涡、镜像、圆柱/机翼，用势流叠加。首写$\phi=\sum\phi_i$或$\psi=\sum\psi_i$。顺序：边界流线/驻点$\to V\to p$；合力用压力积分。检查：壁面不穿透、$\psi=C$、伯努利是否可全场用。}
 \schemepotential
+
 \infoh{势流信息库A 基础公式和数学运算}
 \fmlb{\begin{gathered}
 \nabla\cdot\bm V = \nabla^2\phi = 0,\ \nabla\times\bm V = \bm\Omega = 0\\
 \text{直角：}u_x+v_y+w_z=0,\ \Omega_z=v_x-u_y=-\nabla^2\psi=0\\
-\text{极：}\tfrac{\partial v_r}{\partial r} + \tfrac{v_r}{r} + \tfrac{\partial v_\theta}{r\partial\theta}=0\\
-\text{极无旋：}\Omega_z=\tfrac{\partial v_\theta}{\partial r} + \tfrac{v_\theta}{r} - \tfrac{\partial v_r}{r\partial\theta}=0\\
+\text{极：}\tfrac{\partial v_r}{\partial r} + \tfrac{v_r}{r} + \tfrac{\partial v_\theta}{r\partial\theta}=0,\ \Omega_z=\tfrac{\partial v_\theta}{\partial r} + \tfrac{v_\theta}{r} - \tfrac{\partial v_r}{r\partial\theta}=0\\
 u,v=\phi_x,\phi_y=\psi_y,-\psi_x;\ v_r,v_\theta=\phi_r,r^{-1}\phi_\theta=r^{-1}\psi_\theta,-\psi_r\\
-p+\tfrac12\rho V^2=\text{const},\ C_p=1-(V/U_\infty)^2,\ q'=\psi_2-\psi_1
+p+\tfrac12\rho V^2=\text{const},\ C_p=1-(V/U_\infty)^2,\ q'=\psi_2-\psi_1\\
+\Gamma = \oint \bm V\cdot d\bm l,\ L' = \rho U \Gamma,\ \text{点涡：}v_\theta = \tfrac{\Gamma}{2\pi r},\ v_r=0
 \end{gathered}}
 \par\noindent \renewcommand{\arraystretch}{1.15}\begin{tabular}{|p{0.16\linewidth}|p{0.36\linewidth}|p{0.36\linewidth}|}
 \hline 基元 & $\phi$ & $\psi$\\ \hline
@@ -926,128 +927,77 @@ p+\tfrac12\rho V^2=\text{const},\ C_p=1-(V/U_\infty)^2,\ q'=\psi_2-\psi_1
 点涡 & $\Gamma\theta/(2\pi)$ & $-\Gamma\ln r/(2\pi)$\\ \hline
 偶极 & $M\cos\theta/r$ & $-M\sin\theta/r$\\ \hline
 \end{tabular}\par\noindent \renewcommand{\arraystretch}{1}
-\infoh{势流信息库B 证明链和判定链}
-\textbf{证明有势函数}：无旋$\nabla\times\bm V=0$且单连通$\Rightarrow\oint\bm V\cdot d\bm l=0$，令$\phi=\int \bm V\cdot d\bm r$，故$\bm V=\nabla\phi$；再由不可压$\nabla\cdot\bm V=0$得$\nabla^2\phi=0$。\\
-\textbf{证明有流函数}：二维不可压$u_x+v_y=0$，可令$u=\psi_y,v=-\psi_x$自动满足连续；若再无旋，则$\nabla^2\psi=0$。\\
-\textbf{判定链}：给速度场$\to$算散度/旋度；给壁面$\to$检查$\psi=C$或$\bm V\cdot\bm n=0$；给压力$\to$先求$V^2$再Bernoulli；给升力$\to$先判有无环量。
-\infoh{势流信息库C 常见结论库}
-\par\noindent \renewcommand{\arraystretch}{1.15}\begin{tabular}{|p{0.22\linewidth}|p{0.69\linewidth}|}
-\hline 圆柱绕流 & 均匀流+偶极，壁面$V=2U|\sin\theta|,\ C_p=1-4\sin^2\theta$；无环量$D=L=0$。\\ \hline
-有环量圆柱 & $v_\theta=-2U\sin\theta+\Gamma/(2\pi a)$，$L'=\rho U\Gamma$。\\ \hline
-镜像法 & 固壁要法向速度0；源/汇同号镜像，点涡反号镜像。\\ \hline
-边角流 & $\phi=Ar^n\cos n\theta,\psi=Ar^n\sin n\theta,\ n=\pi/\alpha$，$V\sim r^{n-1}$。\\ \hline
-Rankine半体 & 均匀流+点源，驻点$r=Q/(2\pi U)$，分界流线常取$\psi=Q/2$。\\ \hline
-\end{tabular}\par\noindent \renewcommand{\arraystretch}{1}
-\infoh{势流信息库D 易错检查}
-极坐标速度必须带$1/r$；流线是$\psi=C$不是$\phi=C$；点涡除原点外无旋但环量非零；$\psi$差是单位宽流量；半平面源汇常把$2\pi$改成$\pi$；势流只能给理想压力阻力/升力，真实阻力要看粘性分离或$C_D$；全场Bernoulli只在无旋势流成立。
 
-\subq{圆柱绕流：已知U、a、theta或表面点，求速度、压劢、阻劢/升劢}
+\infoh{势流信息库B 证明与概念库}
+\conceptq{为什么有流函数}二维不可压连续方程$u_x+v_y=0$保证存在$\psi$使$u=\psi_y,v=-\psi_x$。流函数差等于两条流线间单位宽流量。\\
+\conceptq{为什么有势函数}无旋$\nabla\times\bm V=0$且区域单连通时，速度场为某标量势的梯度$\bm V=\nabla\phi$。等势线与流线正交。\\
+\conceptq{连续/流函数/势函数证明}不可压$\nabla\cdot\bm V=0$；二维给$\psi$：$u=\psi_y,\ v=-\psi_x$；无旋给$\phi$：$\bm V=\nabla\phi$；二者合用得$\nabla^2\phi=0,\ \nabla^2\psi=0$。题问“存在性”先写区域单连通/无旋或二维不可压条件。\\
+\conceptq{流函数存在与物理意义}二维不可压：$u_x+v_y=0$。令$u=\psi_y,\ v=-\psi_x$，自动满足连续；反过来连续保证可构造$\psi$。微分式$d\psi=u\,dy-v\,dx$，两流线间单位宽流量$q'=\psi_2-\psi_1$。流线为$\psi=C$，因$d\psi=0\Rightarrow dy/dx=v/u$。\\
+\formq{流函数Poisson方程}二维不可压：$u=\psi_y,v=-\psi_x$。涡量$\Omega=v_x-u_y=-(\psi_{xx}+\psi_{yy})=-\nabla^2\psi$，故$\nabla^2\psi=-\Omega$。
+
+\infoh{势流信息库C 常见结论与物理概念}
+\par\noindent \renewcommand{\arraystretch}{1.15}\begin{tabular}{|p{0.22\linewidth}|p{0.69\linewidth}|}
+\hline 圆柱绕流 & 均匀流+偶极（$M=Ua^2$）。壁面速度 $v_\theta=-2U\sin\theta$，压强 $p=p_\infty+\frac{1}{2}\rho U^2(1-4\sin^2\theta)$。无环量时阻力升力均为0。\\ \hline
+有环量圆柱 & 叠加点涡。壁面速度 $v_\theta=-2U\sin\theta+\Gamma/(2\pi a)$，升力 $L'=\rho U\Gamma$（Kutta-Joukowski）。\\ \hline
+镜像法 & 固壁为流线。源/汇靠直壁：同号镜像；点涡靠直壁：反号镜像。半平面源汇分母常由 $2\pi\to\pi$。\\ \hline
+角域流 & 夹角 $\alpha$，指数 $n=\pi/\alpha$。$\phi=Ar^n\cos n\theta,\psi=Ar^n\sin n\theta$。速度 $V\sim r^{n-1}$。\\ \hline
+Rankine半体 & 均匀流+点源。驻点距源 $r=Q/(2\pi U)$，分界流线为 $\psi=Q/2$。\\ \hline
+\end{tabular}\par\noindent \renewcommand{\arraystretch}{1}
+\conceptq{偶极子物理意义}源汇距离趋零、强度趋无穷但乘积有限，得到偶极。圆柱绕流就是均匀流+偶极，偶极强度$M=Ua^2$。\\
+\conceptq{为什么圆柱理想阻力为0}势流无粘且前后对称，压力积分$x$方向抵消。该结论与现实矛盾，称达朗贝尔佯谬，现实阻力由粘性分离导致。\\
+\conceptq{达朗贝尔佯谬句}“理想不可压无粘定常绕流中，圆柱前后压力分布对称，积分阻力为零；实际阻力来自粘性边界层分离。”\\
+\formq{机翼升力}势流中机翼可由保角变换把圆柱映到翼型；环量由Kutta条件确定；升力公式仍为$L'=\rho U\Gamma$。考试概念题写这个即可。\\
+\idq{图像：圆柱/球外绕}低Re可能Stokes；高Re看分离和阻力系数。理想势流只给压力分布和升力概念，不给真实阻力。\\
+\idq{图里有“圆柱/球绕流”}若是理想势流，压力积分阻力为0；若题给$C_D$，阻力$D=C_D(0.5\rho U^2)A_{\rm front}$，面积取迎风面积。
+
+\infoh{势流信息库D 易错检查与概念}
+极坐标速度偏导别漏 $1/r$；流线为 $\psi=C$ ；点涡除原点外无旋但环量非零；$\psi$之差为单位宽流量；半平面源汇分母常由 $2\pi\to\pi$；全场Bernoulli仅在无旋时成立。\\
+\errq{错13：把流函数当势函数}流线是$\psi=C$，等势线是$\phi=C$，二者正交。速度关系符号不同，特别是$v=-\psi_x$。\\
+\conceptq{空化}局部压力最低处若$p_{\min}\le p_v$发生空化。伯努利题中速度最大点压强最低；泵吸入口高度越大，入口压越低。
+
+\subq{子题一：无环量圆柱绕流 (绕流推导、表面受力、浮起与壁面开孔)}
+\formq{圆柱绕流推导}设$\varphi=(Ar+B/r)\cos\theta$。无穷远给$A=U$；壁面$r=a$不穿透：$v_r=\partial\varphi/\partial r=0$给$B=Ua^2$。所以$\varphi=U(r+a^2/r)\cos\theta$。\\
+\stepq{均匀流绕圆柱推导题}写通解$(Ar+B/r)\cos\theta$。无穷远$A=U$；壁面$r=a$不穿透给$B=Ua^2$。速度和压力见P2。若问流线图，$\psi=U(r-a^2/r)\sin\theta=C$。\\
+\stepq{圆柱绕流：速度与压力}
 \fmlb{\begin{aligned}
 \varphi&=U(r+a^2/r)\cos\theta, & \psi&=U(r-a^2/r)\sin\theta \\
 v_r&=U(1-a^2/r^2)\cos\theta, & v_\theta&=-U(1+a^2/r^2)\sin\theta
 \end{aligned}}
-壁面 $r=a$：$v_r=0,\;v_\theta=-2U\sin\theta$\\\%
-驻点：$\theta=0,\pi$ (速度为0)\\\%
-最大速：$2U$ (在 $	heta=90^\circ,270^\circ$)\\\%
-压强：\fml{p=p_\infty+\frac12\rho(U^2-V^2)}。壁面$p=p_\infty+\frac12\rho U^2(1-4\sin^2\theta)$。
-\stepq{圆柱绕流答题模板}
-写“均匀流+偶极子叠加”。零流线$\psi=0$给$r=a$，故偶极强度$M=Ua^2$（若教材用$M/(2\pi r)$则$M=2\pi Ua^2$）；适用$r\ge a$。求压强先求$V^2=v_r^2+v_\theta^2$；求合力用$dF_x=-p\cos\theta a\,d\theta,dF_y=-p\sin\theta a\,d\theta$。无环量阻力升力均为0；有环量只剩升力$\rho U\Gamma$。
-
-\realq{半圆柱气膜馆15分：圆柱绕流升力}
-题干：半圆柱屋顶/气膜馆，内压$p_{\rm in}=p_0$，远方风速$U$且$p_\infty=p_0$。按全圆柱绕流取上半圆$0\le\theta\le\pi$：$v_r=U(1-a^2/r^2)\cos\theta,\ v_\theta=-U(1+a^2/r^2)\sin\theta$；壁面$V_s=2U\sin\theta$。伯努利得外压$p_{\rm out}=p_0+\frac12\rho U^2(1-4\sin^2\theta)$，净向外压差$p_n=p_{\rm in}-p_{\rm out}=\frac12\rho U^2(4\sin^2\theta-1)$。单位长度升力
+壁面 $r=a$：$v_r=0,\;v_\theta=-2U\sin\theta$。驻点：$\theta=0,\pi$。最大速：$2U$。压强：$p=p_\infty+\frac12\rho(U^2-V^2)$。壁面$p=p_\infty+\frac12\rho U^2(1-4\sin^2\theta)$。\\
+\stepq{圆柱绕流答题模板}写“均匀流+偶极子叠加”。零流线$\psi=0$给$r=a$，故偶极强度$M=Ua^2$（若教材用$M/(2\pi r)$则$M=2\pi Ua^2$）；适用$r\ge a$。求压强先求$V^2=v_r^2+v_\theta^2$；求合力用$dF_x=-p\cos\theta a\,d\theta,dF_y=-p\sin\theta a\,d\theta$。无环量阻力升力均为0。\\
+\realq{半圆柱气膜馆：圆柱绕流升力}题干：半圆柱屋顶/气膜馆，内压$p_{\rm in}=p_0$，远方风速$U$且$p_\infty=p_0$。按全圆柱绕流取上半圆$0\le\theta\le\pi$：$v_r=U(1-a^2/r^2)\cos\theta,\ v_\theta=-U(1+a^2/r^2)\sin\theta$；壁面$V_s=2U\sin\theta$。伯努利得外压$p_{\rm out}=p_0+\frac12\rho U^2(1-4\sin^2\theta)$，净向外压差$p_n=p_{\rm in}-p_{\rm out}=\frac12\rho U^2(4\sin^2\theta-1)$。单位长度升力
 \fml{F_L'=\int_0^\pi p_n\sin\theta\,a\,d\theta=\frac12\rho U^2a(4\cdot\frac43-2)=\frac53\rho U^2a}
-代$a=5{\rm m},U=10{\rm m/s},\rho=1.29$：$F_L'=1.08\times10^3{\rm N/m}$，方向向上；若总长为$L$，总升力乘$L$。易错：半圆积分不是全圆；若$p_{\rm in}\ne p_0$，另加$2a(p_{\rm in}-p_0)$。
+代$a=5{\rm m},U=10{\rm m/s},\rho=1.29$：$F_L'=1.08\times10^3{\rm N/m}$，方向向上；若总长为$L$，总升力乘$L$。易错：半圆积分不是全圆；若$p_{\rm in}\ne p_0$，另加$2a(p_{\rm in}-p_0)$。\\
+\stepq{半圆柱屋顶受升力}绕半圆柱用镜像等价全圆柱绕流的一半。表面速度$V_\theta=2U_\infty\sin\theta$。压力$p=p_\infty+\frac12\rho(U_\infty^2-V_\theta^2)$。升力为压力竖直分量积分；若有开孔使内外压相等，令表面$p(\theta)=p_{\rm in}$解孔位。\\
+\stepq{半圆柱/圆柱浮起}无穷远均匀流绕圆柱或半圆柱，用圆柱绕流速度分布求表面压力，再对压力积分求升力。若有重力和浮力，临界浮起条件：流体动力升力+浮力=重力。\\
+\stepq{半圆柱水底浮起}水深环境加静压，但动力压差由绕流速度给。半圆柱受力=静水浮力+动压积分。临界$U_\infty$由上浮力=重力求。若题说内部压强与上压强一样，内外静压抵消，只剩动力压。\\
+\stepq{水下半圆球/半圆柱开孔}轴对称势流用给定流函数/势函数，开孔使压力等于外界时，先求表面压力分布$p=p_\infty+\frac12\rho(U^2-V_s^2)$，令$p=p_{\rm in}$解角度。
 
-\varq{有环量/升力}
-圆柱+点涡：$v_\theta=-2U\sin\theta+\Gamma/(2\pi a)$。升力：\fml{L'=\rho U\Gamma}。理想无粘绕流阻力$D=0$。
+\subq{子题二：有环量圆柱绕流 (及速度环量积分)}
+\varq{有环量/升力}圆柱+点涡：$v_\theta=-2U\sin\theta+\Gamma/(2\pi a)$。升力：$L'=\rho U\Gamma$。理想无粘绕流阻力$D=0$。\\
+\varq{模板：圆柱有环量流程}总速度壁面$v_\theta=-2U\sin\theta+\Gamma/(2\pi a)$。停滞点令$v_\theta=0$。压力系数$C_p=1-(v_\theta/U)^2$。升力用$L'=\rho U\Gamma$。\\
+\subq{点涡/源汇压力：已知Γ或Q and半径，求速度与压强差}点涡$V_\theta=\Gamma/(2\pi r)$，伯努利给$p(r)=C-\frac12\rho\Gamma^2/(4\pi^2r^2)$，越靠中心压强越低。源汇有径向速度，压力同样按$V^2$比较。\\
+\stepq{环形路径速度环量}定常平面流，若给$v_r=ar,v_\theta=0$，沿半圆/环形路径的速度环量$\Gamma=\int\bm V\cdot d\bm l$。径向段$d\bm l=dr\bm e_r$有贡献；圆弧段$d\bm l=rd\theta\bm e_\theta$无贡献。按箭头方向分段积分$ar\,dr$。
 
-\stepq{镜像法/边角}
-固壁为流线，要求法向速度为0。源/汇靠直壁：同号镜像；点涡靠直壁：反号镜像。半平面源汇常见$2\pi\to\pi$。\\
-边角：若$\varphi=Ar^n\cos n\theta,\psi=Ar^n\sin n\theta$，壁面$\psi=0$，夹角$\alpha$满足$n=\pi/\alpha$。$V\sim r^{n-1}$。
-\quickq{源汇/驻点常用算式}
-源+均匀流：$v_r=U\cos\theta+Q/(2\pi r)$，$v_\theta=-U\sin\theta$。驻点在$\theta=\pi$，$r=Q/(2\pi U)$。过驻点分界流线$\psi=Q/2$。源汇对：两个源汇距离给出时，写总$\psi$后令$\psi=C$画物体轮廓；速度由偏导，不要凭图猜。
+\subq{子题三：壁面镜像法与叠加流动 (及卵形、半体与最大速度)}
+\stepq{镜像法/边角}固壁为流线，要求法向速度为0。源/汇靠直壁：同号镜像；点涡靠直壁：反号镜像。半平面源汇常见$2\pi\to\pi$。\\
+\quickq{源汇/驻点常用算式}源+均匀流：$v_r=U\cos\theta+Q/(2\pi r)$，$v_\theta=-U\sin\theta$。驻点在$\theta=\pi$，$r=Q/(2\pi U)$。过驻点分界流线$\psi=Q/2$。源汇对：两个源汇距离给出时，写总$\psi$后令$\psi=C$画物体轮廓；速度由偏导，不要凭图猜。\\
+\stepq{点源靠壁最大速度}壁面上点源/点汇用镜像。壁面速度由总势函数求导，令$dv/dx=0$找最大速度。给最大速度反求距离$a$或源强$q$。\\
+\stepq{壁面点源最大速度}点源距壁$a$，镜像同号。壁面切向速度由两个源叠加得到，常形如$u(x)=q x/[\pi(x^2+a^2)]$，令$du/dx=0$得$x=a$处最大，$u_{\max}=q/(2\pi a)$或按题定义$q/(2\pi)$修正。\\
+\stepq{点源/点汇/点涡叠加题}先定强度符号：源$+Q$，汇$-Q$，逆时针涡$+\Gamma$。总流函数相加。驻点令速度为0；边界是过驻点的流线。墙面问题先镜像再叠加。\\
+\formq{Rankine卵形}均匀流+源汇对。物体边界为过驻点的闭合流线。长宽由驻点位置和分界流线确定，考试通常只需写总$\psi$并说明。
 
-\formq{给速度场求势/流函数例式}
-若$u=3x^2-3y^2,\;v=-6xy$：$u_y=-6y,v_x=-6y$，无旋；$\varphi=\int u dx=x^3-3xy^2+C$。$\psi_y=u\Rightarrow \psi=3x^2y-y^3+g(x)$，由$-\psi_x=v$得$g'=0$。
-\subq{点涡/源汇压力：已知Γ或Q和半径，求速度与压强差}
-点涡$V_\theta=\Gamma/(2\pi r)$，伯努利给$p(r)=C-\frac12\rho\Gamma^2/(4\pi^2r^2)$，越靠中心压强越低。源汇有径向速度，压力同样按$V^2$比较。
-\subq{边角势流：已知夹角alpha与边界，求速度奇异性/势函数指数n}
-角域$\alpha$内势流解常取$n=\pi/\alpha$。若$\alpha<\pi$，$n>1$，角点速度趋0；若$\alpha>\pi$，$n<1$，角点速度趋无穷，物理上需粘性修正。
-% ==================== SECTION 3 ====================
-% ---- 母题2归位：势流/圆柱/镜像/环量 ----
-\formq{圆柱绕流推导}
-设$\varphi=(Ar+B/r)\cos\theta$。无穷远给$A=U$；壁面$r=a$不穿透：$v_r=\partial\varphi/\partial r=0$给$B=Ua^2$。所以$\varphi=U(r+a^2/r)\cos\theta$。
-\formq{速度场/连续/有旋/无旋/剪切板}
-速度场题做四连：散度判不可压、旋度判无旋、积分求$\phi$、积分求$\psi$。剪切板/两层流体不是势流，转N--S简化。
-\conceptq{达朗贝尔佯谬句}
-“理想不可压无粘定常绕流中，圆柱前后压力分布对称，积分阻力为零；实际阻力来自粘性边界层分离。”
-\stepq{半圆柱/圆柱浮起}
-无穷远均匀流绕圆柱或半圆柱，用圆柱绕流速度分布求表面压力，再对压力积分求升力。若有重力和浮力，临界浮起条件：流体动力升力+浮力=重力。
-\stepq{点源靠壁最大速度}
-壁面上点源/点汇用镜像。壁面速度由总势函数求导，令$dv/dx=0$找最大速度。给最大速度反求距离$a$或源强$q$。
-\stepq{水下半圆球/半圆柱开孔}
-轴对称势流用给定流函数/势函数，开孔使压力等于外界时，先求表面压力分布$p=p_\infty+\frac12\rho(U^2-V_s^2)$，令$p=p_{\rm in}$解角度。
+\subq{子题四：角域/边角势流}
+\subq{边角势流：已知夹角alpha与边界，求速度奇异性/势函数指数n}角域$\alpha$内势流解常取$n=\pi/\alpha$。若$\alpha<\pi$，$n>1$，角点速度趋0；若$\alpha>\pi$，$n<1$，角点速度趋无穷，物理上需粘性修正。\\
+\stepq{边角流动题}夹角$\alpha$，$n=\pi/\alpha$。$\varphi=Ar^n\cos n\theta$，$\psi=Ar^n\sin n\theta$。速度$V=nAr^{n-1}$。若$\alpha=120^\circ=2\pi/3$，$n=3/2$。
 
-\idq{理想流体/势流题干模型压缩}
-\stepq{环形路径速度环量}
-定常平面流，若给$v_r=ar,v_\theta=0$，沿半圆/环形路径的速度环量$\Gamma=\int\bm V\cdot d\bm l$。径向段$d\bm l=dr\bm e_r$有贡献；圆弧段$d\bm l=rd\theta\bm e_\theta$无贡献。按箭头方向分段积分$ar\,dr$。
-\formq{势流方程推导}
-不可压$\nabla\cdot\bm V=0$且无旋$\bm V=\nabla\varphi$，故$\nabla^2\varphi=0$。二维不可压定义$\psi$后，同样$\nabla^2\psi=-\omega_z$，无旋时$\nabla^2\psi=0$。
-\stepq{均匀流绕圆柱推导题}
-写通解$(Ar+B/r)\cos\theta$。无穷远$A=U$；壁面$r=a$不穿透给$B=Ua^2$。速度和压力见P2。若问流线图，$\psi=U(r-a^2/r)\sin\theta=C$。
-\stepq{点源/点汇/点涡叠加题}
-先定强度符号：源$+Q$，汇$-Q$，逆时针涡$+\Gamma$。总流函数相加。驻点令速度为0；边界是过驻点的流线。墙面问题先镜像再叠加。
-\stepq{边角流动题}
-夹角$\alpha$，$n=\pi/\alpha$。$\varphi=Ar^n\cos n\theta$，$\psi=Ar^n\sin n\theta$。速度$V=nAr^{n-1}$。若$\alpha=120^\circ=2\pi/3$，$n=3/2$。
-\idq{势流应用题干模型压缩}
-\stepq{半圆柱屋顶受升力}
-绕半圆柱用镜像等价全圆柱绕流的一半。表面速度$V_\theta=2U_\infty\sin\theta$。压力$p=p_\infty+\frac12\rho(U_\infty^2-V_\theta^2)$。升力为压力竖直分量积分；若有开孔使内外压相等，令表面$p(\theta)=p_{\rm in}$解孔位。
-\stepq{半圆柱水底浮起}
-水深环境加静压，但动力压差由绕流速度给。半圆柱受力=静水浮力+动压积分。临界$U_\infty$由上浮力=重力求。若题说内部压强与上压强一样，内外静压抵消，只剩动力压。
-\stepq{壁面点源最大速度}
-点源距壁$a$，镜像同号。壁面切向速度由两个源叠加得到，常形如$u(x)=q x/[\pi(x^2+a^2)]$，令$du/dx=0$得$x=a$处最大，$u_{\max}=q/(2\pi a)$或按题定义$q/(2\pi)$修正。
-\formq{流函数Poisson方程}
-二维不可压：$u=\psi_y,v=-\psi_x$。涡量$\Omega=v_x-u_y=-(\psi_{xx}+\psi_{yy})=-\nabla^2\psi$，故$\nabla^2\psi=-\Omega$。
-\formq{速度场+势函数}
-题面给$u,v$并问势/流：先算连续和旋度。若只满足连续，只有$\psi$；若只满足无旋，只有$\varphi$；两者都满足才都有。
-\conceptq{空化}
-局部压力最低处若$p_{\min}\le p_v$发生空化。伯努利题中速度最大点压强最低；泵吸入口高度越大，入口压越低。
-\formq{势流基本关系}
-直角：$u=\phi_x=\psi_y,v=\phi_y=-\psi_x$。极坐标：$v_r=\phi_r=\psi_\theta/r$，$v_\theta=\phi_\theta/r=-\psi_r$。无旋不可压：$\nabla^2\phi=\nabla^2\psi=0$。
-\subq{圆柱绕流：已知U、a、theta或表面点，求速度、压力、阻力/升力}
-$v_r=U(1-a^2/r^2)\cos\theta$，$v_\theta=-U(1+a^2/r^2)\sin\theta$。壁面$V=2U|\sin\theta|$，$C_p=1-4\sin^2\theta$。
-\quickq{环量升力}
-$\Gamma=\oint\bm V\cdot d\bm l$。库塔--儒可夫斯基$L'=\rho U\Gamma$。点涡$v_\theta=\Gamma/(2\pi r)$。
-\errq{错13：把流函数当势函数}
-流线是$\psi=C$，等势线是$\phi=C$，二者正交。速度关系符号不同，特别是$v=-\psi_x$。
-\stepq{标准解模板：势流}
-解：该流动不可压无旋，故存在$\phi,\psi$且满足Laplace方程。由基本流叠加得总$\psi$。固壁为流线$\psi=C$。由速度关系求$V$，由伯努利求$p$。
-\formq{Rankine卵形}
-均匀流+源汇对。物体边界为过驻点的闭合流线。长宽由驻点位置和分界流线确定，考试通常只需写总$\psi$并说明。
-\conceptq{偶极子物理意义}
-源汇距离趋零、强度趋无穷但乘积有限，得到偶极。圆柱绕流就是均匀流+偶极，偶极强度$M=Ua^2$。
-\formq{机翼升力}
-势流中机翼可由保角变换把圆柱映到翼型；环量由Kutta条件确定；升力公式仍为$L'=\rho U\Gamma$。考试概念题写这个即可。
-\conceptq{为什么有流函数}
-二维不可压连续方程$u_x+v_y=0$保证存在$\psi$使$u=\psi_y,v=-\psi_x$。流函数差等于两条流线间单位宽流量。
-\conceptq{为什么有势函数}
-无旋$\nabla\times\bm V=0$且区域单连通时，速度场为某标量势的梯度$\bm V=\nabla\phi$。等势线与流线正交。
-\conceptq{为什么圆柱理想阻力为0}
-势流无粘且前后对称，压力积分$x$方向抵消。该结论与现实矛盾，称达朗贝尔佯谬，现实阻力由粘性分离导致。
-\stepq{模板：势流叠加流程}
-列出各基元$\psi_i$，总$\psi=\sum\psi_i$。物体边界通常为某条$\psi=C$。驻点令$\nabla\phi=0$或速度分量为0。压力由伯努利，合力由积分。
-\varq{模板：圆柱有环量流程}
-总速度壁面$v_\theta=-2U\sin\theta+\Gamma/(2\pi a)$。停滞点令$v_\theta=0$。压力系数$C_p=1-(v_\theta/U)^2$。升力用$L'=\rho U\Gamma$。
-\idq{图像：圆柱/球外绕}
-低Re可能Stokes；高Re看分离和阻力系数。理想势流只给压力分布和升力概念，不给真实阻力。
-\idq{题干给$\phi,\psi,\Gamma$、源汇、圆柱、壁面}
-势流叠加。先写基本流，再用边界条件定常数；压力用Bernoulli，升力用$L'=\rho U\Gamma$，理想势流阻力为0。
-\conceptq{连续/流函数/势函数证明}
-不可压$\nabla\cdot\bm V=0$；二维给$\psi$：$u=\psi_y,\ v=-\psi_x$；无旋给$\phi$：$\bm V=\nabla\phi$；二者合用得$\nabla^2\phi=0,\ \nabla^2\psi=0$。题问“存在性”先写区域单连通/无旋或二维不可压条件。
-\conceptq{流函数存在与物理意义}
-二维不可压：$u_x+v_y=0$。令$u=\psi_y,\ v=-\psi_x$，自动满足连续；反过来连续保证可构造$\psi$。微分式$d\psi=u\,dy-v\,dx$，两流线间单位宽流量$q'=\psi_2-\psi_1$。流线为$\psi=C$，因$d\psi=0\Rightarrow dy/dx=v/u$。
-\idq{图里有“圆柱/球绕流”}
-若是理想势流，压力积分阻力为0；若题给$C_D$，阻力$D=C_D(0.5\rho U^2)A_{\rm front}$，面积取迎风面积。
+\subq{子题五：速度场求势/流函数、存在性与推导}
+\formq{给速度场求势/流函数例式}若$u=3x^2-3y^2,\;v=-6xy$：$u_y=-6y,v_x=-6y$，无旋；$\varphi=\int u dx=x^3-3xy^2+C$。$\psi_y=u\Rightarrow \psi=3x^2y-y^3+g(x)$，由$-\psi_x=v$得$g'=0$。\\
+\formq{速度场/连续/有旋/无旋/剪切板}速度场题做四连：散度判不可压、旋度判无旋、积分求$\phi$、积分求$\psi$。剪切板/两层流体不是势流，转N--S简化。\\
+\formq{速度场+势函数}题面给$u,v$并问势/流：先算连续和旋度。若只满足连续，只有$\psi$；若只满足无旋，只有$\varphi$；两者都满足才都有。\\
+\formq{势流方程推导}不可压$\nabla\cdot\bm V=0$且无旋$\bm V=\nabla\varphi$，故$\nabla^2\varphi=0$。二维不可压定义$\psi$后，同样$\nabla^2\psi=-\omega_z$，无旋时$\nabla^2\psi=0$。\\
+\stepq{标准解模板：势流}解：该流动不可压无旋，故存在$\phi,\psi$且满足Laplace方程。由基本流叠加得总$\psi$。固壁为流线$\psi=C$。由速度关系求$V$，由伯努利求$p$。\\
+\stepq{模板：势流叠加流程}列出各基元$\psi_i$，总$\psi=\sum\psi_i$。物体边界通常为某条$\psi=C$。驻点令$\nabla\phi=0$ or 速度分量为0。压力由伯努利，合力由积分。
 
 \chap{母题3 可压缩等熵流与Laval喷管}
 \renewcommand{\tagsec}[3]{\vspace{0.10pt}{\fontsize{5.05}{5.24}\selectfont\bfseries\color{#1}\colorbox{#1}{\color{white}\fontsize{4.00}{4.14}\selectfont #2}\,#3}\par}

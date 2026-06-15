@@ -105,20 +105,28 @@
 \node at (5.65,0.55){平板边界层};
 \end{tikzpicture}\end{center}\vspace{-3pt}}
 \newcommand{\schemepotential}{\begin{center}\begin{tikzpicture}[>=Latex,scale=0.58,every node/.style={font=\tiny}]
-\draw[->] (-0.2,0)--(1.8,0) node[right]{$x$};
-\draw[->] (0,-0.8)--(0,0.8) node[above]{$y$};
-\foreach \y in {-0.45,0,0.45}{\draw[->,blue] (-0.05,\y)--(0.75,\y);}
-\draw[thick] (1.05,0) circle (0.35);
-\node at (1.05,-0.65){圆柱};
-\draw[->,red] (2.35,0)--(3.1,0); \node at (2.25,0){源};
-\draw[<- ,red] (3.8,0)--(4.55,0); \node at (4.65,0){汇};
-\draw[thick] (2.75,-0.55).. controls (3.2,-0.9) and (3.75,-0.9)..(4.15,-0.55);
-\draw[thick] (2.75,0.55).. controls (3.2,0.9) and (3.75,0.9)..(4.15,0.55);
-\node at (3.45,-1.05){源汇/Rankine体};
-\draw[thick] (5.2,-0.8)--(5.2,0.8);
-\draw[fill=black] (5.75,0) circle (0.04); \node[right] at (5.78,0){涡};
-\draw[fill=black] (4.65,0) circle (0.04); \node[left] at (4.62,0){镜像};
-\node at (5.2,-1.05){壁面镜像};
+% 1. 圆柱绕流
+\draw[->, gray, very thin] (-0.2,0)--(1.5,0) node[right]{$x$};
+\draw[->, gray, very thin] (0.65,-0.7)--(0.65,0.7) node[above]{$y$};
+\draw[blue, ->] (-0.1,0.35) .. controls (0.3,0.5) and (1.0,0.5) .. (1.4,0.35);
+\draw[blue, ->] (-0.1,-0.35) .. controls (0.3,-0.5) and (1.0,-0.5) .. (1.4,-0.35);
+\draw[blue, ->] (-0.1,0) -- (0.3,0);
+\draw[blue, ->] (1.0,0) -- (1.4,0);
+\draw[thick, fill=gray!10] (0.65,0) circle (0.3);
+\node at (0.65,-0.9){圆柱绕流};
+
+% 2. Rankine体
+\draw[thick, fill=gray!10] (2.9,0) ellipse (0.75 and 0.38);
+\draw[fill=red] (2.55,0) circle (0.03) node[below]{\tiny 源};
+\draw[fill=blue] (3.25,0) circle (0.03) node[below]{\tiny 汇};
+\node at (2.9,-0.9){Rankine卵};
+
+% 3. 壁面镜像
+\draw[thick] (4.6,-0.7)--(4.6,0.7);
+\foreach \y in {-0.6,-0.4,-0.2,0,0.2,0.4,0.6}{\draw (4.6,\y)--(4.5,\y-0.1);}
+\draw[fill=black] (5.15,0) circle (0.04) node[right]{涡};
+\draw[fill=gray] (4.05,0) circle (0.04) node[left]{镜像};
+\node at (4.6,-0.9){壁面镜像};
 \end{tikzpicture}\end{center}\vspace{-3pt}}
 \newcommand{\schemelaval}{\begin{center}\begin{tikzpicture}[>=Latex,scale=0.58,every node/.style={font=\tiny}]
 \draw[thick] (0,0.7).. controls (1.0,0.55) and (1.2,0.25)..(2.0,0.25).. controls (2.8,0.25) and (3.0,0.65)..(4.2,0.8);
@@ -903,12 +911,10 @@ $u/U=\sin(\pi\eta/2)$ & $\delta^*/\theta\approx2.66,\ C_D\approx1.31/\sqrt{Re_L}
 \schemepotential
 \infoh{势流信息库A 基础公式和数学运算}
 \fmlb{\begin{gathered}
-\nabla\cdot\bm V=0,\quad \nabla\times\bm V=0,\quad \bm V=\nabla\phi\\
-\nabla^2\phi=0,\quad \nabla^2\psi=-\Omega_z\\
-u=\phi_x=\psi_y,\quad v=\phi_y=-\psi_x\\
-v_r=\phi_r=\psi_\theta/r,\quad v_\theta=\phi_\theta/r=-\psi_r\\
-p=p_\infty+\tfrac12\rho(U_\infty^2-V^2)\\
-C_p=1-(V/U_\infty)^2,\quad q'=\psi_2-\psi_1
+\nabla\cdot\bm V=0,\ \nabla\times\bm V=0,\ \bm V=\nabla\phi,\ \nabla^2\phi=0\\
+\nabla^2\psi=-\Omega_z,\ u=\phi_x=\psi_y,\ v=\phi_y=-\psi_x\\
+v_r=\phi_r=\psi_\theta/r,\ v_\theta=\phi_\theta/r=-\psi_r\\
+p=p_\infty+\tfrac12\rho(U_\infty^2-V^2),\ C_p=1-(V/U_\infty)^2,\ q'=\psi_2-\psi_1
 \end{gathered}}
 \renewcommand{\arraystretch}{0.58}\begin{tabular}{|p{0.16\linewidth}|p{0.36\linewidth}|p{0.36\linewidth}|}
 \hline 基元 & $\phi$ & $\psi$\\ \hline

@@ -41,8 +41,9 @@
 \definecolor{quickc}{HTML}{AD1457}
 \definecolor{infoc}{HTML}{00695C}
 \definecolor{infobg}{HTML}{E8F5E9}
-\newcommand{\chap}[1]{\vspace{0.35pt}{\fontsize{6.55}{6.78}\selectfont\bfseries\color{white}\colorbox{h1}{\strut\;#1\;}}\par\vspace{0.15pt}}
-\newcommand{\tagsec}[3]{\vspace{0.10pt}{\fontsize{5.05}{5.24}\selectfont\bfseries\color{#1}\colorbox{#1}{\color{white}\fontsize{4.00}{4.14}\selectfont #2}\,#3}\par}
+\definecolor{subbg}{HTML}{E3F2FD}
+\newcommand{\chap}[1]{\vspace{0.35pt}\colorbox{subbg}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{6.55}{6.78}\selectfont\bfseries\color{h1}#1\end{minipage}}\par\vspace{0.15pt}}
+\newcommand{\tagsec}[3]{\vspace{0.10pt}\colorbox{subbg}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{5.05}{5.24}\selectfont\bfseries\color{#1}\colorbox{#1}{\color{white}\fontsize{4.00}{4.14}\selectfont #2}\,\color{black}#3\end{minipage}}\par}
 \newcommand{\realq}[1]{\tagsec{realc}{真题}{#1}}
 \newcommand{\subq}[1]{\tagsec{subc}{子题}{#1}}
 \newcommand{\varq}[1]{\tagsec{varc}{变式}{#1}}
@@ -2430,7 +2431,6 @@ Bernoulli沿流线：由Euler方程沿流线积分；若还无旋，则积分常
 
 \end{multicols}
 \end{document}
-
 
 
 

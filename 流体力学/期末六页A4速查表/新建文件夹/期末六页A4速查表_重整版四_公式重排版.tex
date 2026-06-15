@@ -137,26 +137,27 @@
 \draw[red,thick] (3.0,-0.55)--(3.0,0.55); \node[red] at (3.22,0.72){正激波?};
 \node at (2.2,1.12){Laval喷管};
 \end{tikzpicture}\end{center}\vspace{-3pt}}
-\newcommand{\schemeshock}{\begin{center}\begin{tikzpicture}[>=Latex,scale=0.55,every node/.style={font=\fontsize{4.8}{5.8}\selectfont}]
+\newcommand{\schemeshock}{\begin{center}\begin{tikzpicture}[>=Latex,scale=0.62,every node/.style={font=\fontsize{4.8}{5.8}\selectfont}]
 % Left: Oblique Shock
 \draw[thick] (0,0) -- (0.8,0) -- (2.2,0.5);
-\draw[thick] (0,0) -- (2.2,0); % base line for angles
-\draw[red, thick] (0.8,0) -- (2.0,1.0) node[right] {斜激波};
-\draw[->, blue] (0.1,0.3) -- (0.7,0.3) node[midway, above] {$Ma_1$};
-\draw[->, blue] (1.2,0.35) -- (1.8,0.55) node[midway, above] {$Ma_2$};
-% Angle annotations
-\draw[thin] (1.4,0) arc (0:20:0.6) node[right=1pt] {$\theta$};
-\draw[thin] (1.7,0) arc (0:40:0.9) node[above right] {$\beta$};
+\draw[dashed, gray] (0.8,0) -- (2.2,0); % base line for angles
+\draw[red, thick] (0.8,0) -- (2.0,0.9);
+\node[red, above right] at (2.0,0.9) {斜激波};
+\draw[->, blue, thick] (0.1,0.2) -- (0.7,0.2) node[midway, above=1pt] {$Ma_1$};
+\draw[->, blue, thick] (1.4,0.36) -- (2.0,0.58) node[midway, above=1pt] {$Ma_2$};
+% Angle annotations (corners at 0.8,0)
+\draw[thin] (1.4,0) arc (0:20:0.6); \node at (1.55,0.10) {$\theta$};
+\draw[thin] (1.7,0) arc (0:37:0.9); \node at (1.85,0.32) {$\beta$};
 
 % Right: Expansion Fan
 \draw[thick] (3.2,0) -- (4.0,0) -- (5.2,-0.5);
 \draw[red, thin] (4.0,0) -- ++(0:1.1);
-\draw[red, thin] (4.0,0) -- ++(-8:1.1);
-\draw[red, thin] (4.0,0) -- ++(-16:1.1);
-\draw[red, thin] (4.0,0) -- ++(-24:1.1);
-\node[red, right] at (4.9,-0.1) {膨胀扇 $\delta$};
-\draw[->, blue] (3.3,0.3) -- (3.9,0.3) node[midway, above] {$Ma_1$};
-\draw[->, blue] (4.4,-0.2) -- (5.0,-0.45) node[midway, above] {$Ma_2$};
+\draw[red, thin] (4.0,0) -- ++(-7:1.1);
+\draw[red, thin] (4.0,0) -- ++(-15:1.1);
+\draw[red, thin] (4.0,0) -- ++(-23:1.1);
+\node[red, right] at (5.15,-0.05) {膨胀扇 $\delta$};
+\draw[->, blue, thick] (3.3,0.2) -- (3.9,0.2) node[midway, above=1pt] {$Ma_1$};
+\draw[->, blue, thick] (4.5,-0.2) -- (5.1,-0.42) node[midway, below left] {$Ma_2$};
 \end{tikzpicture}\end{center}\vspace{-3pt}}
 \newcommand{\schemeviscous}{\begin{center}\begin{tikzpicture}[>=Latex,scale=0.58,every node/.style={font=\tiny}]
 \draw[blue] (0,0)--(0,1.0); \draw[blue] (0.6,0)--(0.6,1.0);

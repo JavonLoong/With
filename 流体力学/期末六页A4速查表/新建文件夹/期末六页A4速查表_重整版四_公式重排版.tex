@@ -1043,17 +1043,42 @@ T^*&=0.833T_0=416.7K,\quad p^*=0.528p_0=158.5kPa\\
 \par\noindent\begin{minipage}{\linewidth}
 \vspace*{-5pt}
 \centering
-\begin{tikzpicture}[>=Latex,scale=0.50,every node/.style={font=\tiny}]
+\begin{tikzpicture}[>=Latex,scale=0.68,every node/.style={font=\fontsize{4.8}{5.8}\selectfont}]
+% Nozzle outline
 \draw[thick] (-0.1,0.72).. controls (0.95,0.55) and (1.15,0.25)..(1.85,0.24).. controls (2.7,0.23) and (2.9,0.62)..(4.1,0.78);
 \draw[thick] (-0.1,-0.72).. controls (0.95,-0.55) and (1.15,-0.25)..(1.85,-0.24).. controls (2.7,-0.23) and (2.9,-0.62)..(4.1,-0.78);
-\draw[->,blue] (-0.45,0)--(0.4,0); \node at (0.35,1.10){$p_0=300$kPa,$T_0=373$K};
-\draw[dashed] (1.85,-0.5)--(1.85,0.5); \node at (1.85,-0.72){$A_t=10$cm$^2$};
-\draw[dashed] (3.95,-0.9)--(3.95,0.9); \node at (4.12,1.05){$A_e=30$cm$^2$};
-\draw[thick] (1.85,-0.25)--(1.85,-1.35)--(2.35,-1.35)--(2.35,-0.55);
-\draw[thick] (4.05,-0.35)--(4.05,-1.15)--(2.55,-1.15)--(2.55,-0.55);
-\draw[blue] (1.88,-1.18)--(2.32,-1.18); \draw[blue] (2.58,-0.86)--(4.02,-0.86);
-\draw[<->] (2.45,-1.18)--(2.45,-0.86); \node[right] at (2.60,-1.02){$h=15$cm Hg};
-\node at (4.65,0){下游气源$p_b$};
+
+% Centerline
+\draw[dashed, gray] (-0.1,0) -- (4.1,0);
+
+% Upstream inflow arrow
+\draw[->,blue,thick] (-0.5,0) -- (0.0,0) node[midway,above=1pt] {空气流入};
+
+% U-tube Mercury Fill (drawn first so lines are on top)
+\fill[gray!30] (1.75,-1.5) -- (1.95,-1.5) -- (1.95,-1.6) -- (3.95,-1.6) -- (3.95,-1.1) -- (4.15,-1.1) -- (4.15,-1.8) -- (1.75,-1.8) -- cycle;
+
+% Mercury Surfaces
+\draw[blue, thick] (1.75,-1.5) -- (1.95,-1.5);
+\draw[blue, thick] (3.95,-1.1) -- (4.15,-1.1);
+
+% U-tube Outline
+\draw[thick] (1.75,-0.24) -- (1.75,-1.8);
+\draw[thick] (1.95,-0.24) -- (1.95,-1.6);
+\draw[thick] (3.95,-0.78) -- (3.95,-1.6);
+\draw[thick] (4.15,-0.78) -- (4.15,-1.8);
+\draw[thick] (1.75,-1.8) -- (4.15,-1.8);
+\draw[thick] (1.95,-1.6) -- (3.95,-1.6);
+
+% Height dimension
+\draw[dashed, ultra thin] (1.95,-1.5) -- (2.95,-1.5);
+\draw[dashed, ultra thin] (3.95,-1.1) -- (2.95,-1.1);
+\draw[<->] (2.95,-1.5) -- (2.95,-1.1) node[midway,right] {$h=15$cm Hg};
+
+% Labels
+\node[left, align=right] at (-0.1,0.4) {$p_0=300$kPa\\$T_0=373$K};
+\node[above] at (1.85,0.24) {$A_t=10\text{cm}^2$};
+\node[above] at (4.0,0.78) {$A_e=30\text{cm}^2$};
+\node[right] at (4.1,0) {下游气源 $p_b$};
 \end{tikzpicture}
 \vspace*{-5pt}
 \end{minipage}

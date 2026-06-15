@@ -411,19 +411,69 @@ Moody：输入$Re,\varepsilon/d$读$\lambda$；物性表：水温给出时查$\r
 先从上游自由液面到危险最高点列能量，求该点绝压$p_{\rm abs}$；再和汽化压$p_v$比较。虹吸最高点不是出口，危险点通常在最高处或泵入口，必须把表压转绝压。
 \idq{母题1图像关键词}
 大水面、油箱、水池、管径变化、弯头、阀门、入口/出口、泵、水轮机、压力表、U管、突然扩大/缩小、喷嘴、射流、法兰、支座。出现这些图，优先按“PVZ闭合$Q,p,H$，必要时接CV动量或查Moody”处理。
-\subq{完整模板：泵吸水安装高度/防汽蚀}
-题干给$Q,d,L,\zeta,\varepsilon,p_v$，问泵中心比水面高多少。取吸水池自由面0到泵入口B：\\
-\fmlb{z_0+\frac{p_a}{\rho g}=z_B+\frac{p_B}{\rho g}+\frac{V^2}{2g}+h_f+\sum h_\zeta,\quad p_B\ge p_v+\Delta p_{\rm safe}}
-先算$V=Q/A$、$Re=Vd/\nu$、$\lambda$、$h_f$和局损，再令$p_B$取最低允许值反解$z_B-z_0$。若题给压力表读数，要先确认表压/绝压；若题说“比汽化压大20kPa”，这是绝压安全余量。
-\subq{完整模板：水轮机管路输出功率}
-上游水面到下游截面/水面列PVZ，水轮机在方程右边扣除：\\
-\fmlb{H_T=z_1-z_2+\frac{p_1-p_2}{\rho g}+\frac{V_1^2-V_2^2}{2g}-h_f-\sum h_\zeta,\quad P_{\rm out}=\eta\rho gQH_T}
-若下游有压力表，压力表截面还有速度头；若下游是大水池自由面，$p_g=0,V\approx0$。功率单位W，最后可化kW。
-\subq{完整模板：弯管/喷嘴/法兰支座力}
-先用PVZ或连续求各截面$V_i,Q,p_i$；取管内流体为CV。\\
-\fmlb{R_x+p_1A_1n_{1x}+p_2A_2n_{2x}=\rho Q(V_{2x}-V_{1x}),\quad
-R_y+p_1A_1n_{1y}+p_2A_2n_{2y}=\rho Q(V_{2y}-V_{1y})}
-$R$是管壁对流体的力；题问支座/法兰受力通常取$-R$。自由出口表压为0；入口压力不能漏；速度方向必须按图分解。
+\subq{子题：离心泵最大安装高度计算（防汽蚀）}
+离心泵吸水管用镀锌钢管 ($e=0.15$ mm, $L=6$ m, $D=100$ mm). 进口弯头 $\zeta_{\rm bend}=0.29$, 入口底阀 $\zeta_{\rm valve}=2.5$, 进口损失 $\zeta_{\rm in}=0.5$. 流量 $Q=50$ m$^3$/h. 水温 $20^\circ$C (查得 $p_v=2.34$ kPa, $\rho=998.2$ kg/m$^3$, $\nu=1.0\times 10^{-6}$ m$^2$/s). 当地大气压 $p_a=101.3$ kPa. 要求泵入口压力至少比汽化压大 $20$ kPa. 求最大安装高度 $h$ (防汽蚀)。\\
+\hfill\begin{tikzpicture}[>=Latex,scale=0.3,baseline=(current bounding box.center)]
+\draw[thick] (-1,0) -- (3,0);
+\fill[blue!10] (-1,-1) rectangle (3,0);
+\node at (1,-0.5) {\fontsize{3.5}{4.5}\selectfont 水池};
+\draw[thick] (1,0) -- (1,2) -- (2.5,2);
+\draw[thick, fill=gray!20] (2.5,1.7) rectangle (3.3,2.3);
+\node at (2.9,2.0) {\fontsize{3.5}{4.5}\selectfont 泵};
+\draw[<->, dashed] (0,0) -- (0,2.0) node[left, pos=0.5]{\fontsize{3.5}{4.5}\selectfont $h$};
+\node at (1.5,1.0) [right]{\fontsize{3.5}{4.5}\selectfont 吸水管};
+\end{tikzpicture}
+\\
+公式与计算链：
+1. 算流速：$V = \frac{4Q}{\pi D^2} = \frac{4 \cdot (50/3600)}{\pi \cdot 0.1^2} = 1.768$ m/s, $V^2/(2g) = 0.159$ m.
+2. 算雷诺数：$Re = \frac{VD}{\nu} = 1.768\times 10^5$. 相对粗糙度 $e/D = 0.0015$.
+3. 查摩阻：由 Colebrook 方程算得 $\lambda = 0.0229$.
+4. 算总损失：$h_f = \lambda \frac{L}{D} \frac{V^2}{2g} = 0.219$ m. $h_{\rm loc} = (\zeta_{\rm bend}+\zeta_{\rm valve}+\zeta_{\rm in})\frac{V^2}{2g} = (0.29+2.5+0.5)\cdot 0.159 = 0.525$ m. 则总损失 $h_L = h_f + h_{\rm loc} = 0.744$ m.
+5. 列能量方程并代入汽蚀约束：$p_B \ge p_v + 20$ kPa = $22.34$ kPa（绝压）.
+   $h_{\max} = \frac{p_a - p_B}{\rho g} - \frac{V^2}{2g} - h_L = \frac{101300 - 22340}{998.2 \cdot 9.8} - 0.159 - 0.744 = 7.17$ m.
+
+\subq{子题：水轮机管路输出功率计算}
+水轮机管路中, 斜管 $D_1=20$ cm, $L_1=30$ m, 速度 $V_1=2.0$ m/s. 水平管 $D_2=30$ cm, $L_2=15$ m, 测得下游截面表压 $p_2=70$ kPa. 忽略局部损失, 铸铁管粗糙度 $e=0.25$ mm, 水温 $10^\circ$C ($\nu=1.3\times 10^{-6}$ m$^2$/s). 联立求水轮机输出功率 (效率 $\eta=0.85$, 高差 $z_1 - z_2 = 25$ m)。\\
+\hfill\begin{tikzpicture}[>=Latex,scale=0.3,baseline=(current bounding box.center)]
+\draw[thick] (-1,2) -- (1,2);
+\fill[blue!10] (-1,1) rectangle (1,2);
+\draw[thick] (0,2) -- (0,0.5) -- (2,-0.5) -- (4,-0.5);
+\draw[thick, fill=gray!20] (2,-0.8) rectangle (2.8,-0.2);
+\node at (2.4,-0.5) {\fontsize{3.5}{4.5}\selectfont T};
+\draw[<->, dashed] (-0.5,2) -- (-0.5,-0.5) node[left, pos=0.5]{\fontsize{3.5}{4.5}\selectfont $z_1-z_2$};
+\node at (0.6,1.0) {\fontsize{3.5}{4.5}\selectfont 斜管};
+\node at (3.5,-0.2) {\fontsize{3.5}{4.5}\selectfont 水平管};
+\end{tikzpicture}
+\\
+公式与计算链：
+1. 算流量与水平管速：$Q = A_1 V_1 = 0.0628$ m$^3$/s. $V_2 = V_1 \frac{D_1^2}{D_2^2} = 0.889$ m/s, $V_2^2/(2g) = 0.040$ m.
+2. 算两段 $Re$ 与 $\lambda$：
+   $Re_1 = \frac{V_1 D_1}{\nu} = 3.08\times 10^5$, $e/D_1 = 0.00125 \Rightarrow \lambda_1 = 0.0215$.
+   $Re_2 = \frac{V_2 D_2}{\nu} = 2.05\times 10^5$, $e/D_2 = 0.00083 \Rightarrow \lambda_2 = 0.020$.
+3. 算沿程损失：$h_{f1} = \lambda_1 \frac{L_1}{D_1}\frac{V_1^2}{2g} = 0.658$ m, $h_{f2} = \lambda_2 \frac{L_2}{D_2}\frac{V_2^2}{2g} = 0.040$ m. 总损失 $h_L = 0.698$ m.
+4. 列能量方程求水头：$z_1 + 0 + 0 = z_2 + \frac{p_2}{\rho g} + \frac{V_2^2}{2g} + h_L + H_T \Rightarrow H_T = (z_1 - z_2) - \frac{p_2}{\rho g} - \frac{V_2^2}{2g} - h_L = 25 - \frac{70000}{1000 \cdot 9.8} - 0.040 - 0.698 = 17.12$ m.
+5. 输出功率：$P_{\rm out} = \eta \rho g Q H_T = 0.85 \cdot 1000 \cdot 9.8 \cdot 0.0628 \cdot 17.12 = 8.96$ kW.
+
+\subq{子题：变径 $90^\circ$ 弯管受力分析（CV动量）}
+变径 $90^\circ$ 弯管, 入口直径 $D_1=300$ mm, 出口直径 $D_2=150$ mm, 入口表压 $p_1=150$ kPa. 流量 $Q=0.1$ m$^3$/s, 水密度 $\rho=1000$ kg/m$^3$. 忽略弯管自身重力和水力损失, 求水流对弯管的作用力 $F_x, F_y$。\\
+\hfill\begin{tikzpicture}[>=Latex,scale=0.3,baseline=(current bounding box.center)]
+\draw[thick] (0,1) -- (2,1) arc (90:0:1) -- (3,-1);
+\draw[thick] (0,0) -- (1,0) arc (90:0:1) -- (2,-1);
+\draw[->, blue, thick] (-0.8,0.5) -- (-0.1,0.5) node[left=-1pt, pos=0]{\fontsize{3.5}{4.5}\selectfont $V_1, p_1$};
+\draw[->, blue, thick] (2.5,-1.1) -- (2.5,-1.8) node[right=-1pt, pos=1]{\fontsize{3.5}{4.5}\selectfont $V_2, p_2$};
+\end{tikzpicture}
+\\
+公式与计算链：
+1. 算速度：$V_1 = \frac{4Q}{\pi D_1^2} = 1.415$ m/s, $V_2 = \frac{4Q}{\pi D_2^2} = 5.659$ m/s.
+2. 算出口表压：由能量方程 $p_2 = p_1 - \frac{1}{2}\rho(V_2^2 - V_1^2) = 150000 - 500 \cdot (5.659^2 - 1.415^2) = 135.0$ kPa.
+3. 取流体为控制体 (CV), 列分量动量方程 (设 $x$ 向流入, $y$ 向流出)：
+   $x\text{向：}\quad p_1 A_1 - F_{gx} = \rho Q (0 - V_1) \Rightarrow F_{gx} = p_1 A_1 + \rho Q V_1$.
+   代入：$A_1 = 0.0707$ m$^2$, $p_1 A_1 = 10605$ N, $\rho Q V_1 = 141.5$ N $\Rightarrow F_{gx} = 10.75$ kN.
+   $y\text{向：}\quad 0 - p_2 A_2 + F_{gy} = \rho Q (V_2 - 0) \Rightarrow F_{gy} = p_2 A_2 + \rho Q V_2$.
+   代入：$A_2 = 0.0177$ m$^2$, $p_2 A_2 = 2385$ N, $\rho Q V_2 = 566$ N $\Rightarrow F_{gy} = 2.95$ kN.
+4. 流体对管作用力为管对流体受力 $F_{gx}, F_{gy}$ 的反力：
+   $F_x = -F_{gx} = -10.75$ kN, $F_y = -F_{gy} = -2.95$ kN.
+
 \subq{完整模板：串并联管网最小过程分}
 串联：$Q$相同，$V_i$不同，$h_L=\sum(\lambda_iL_i/d_i+\sum\zeta_i)V_i^2/(2g)$。并联：上下游节点水头差相同，$h_{L,a}=h_{L,b}$，且$Q=Q_a+Q_b$。若题给粗糙度，湍流支路每条都要独立查$\lambda_i$。
 \subq{完整模板：孔板/文丘里/皮托与流量计}
@@ -1467,23 +1517,7 @@ $A_t$是几何最小面积；$A^*$是临界面积。阻塞时二者相等，未�
 \fi
 
 
-\subq{子题八：一维定常正激波状态计算}
-作业代表题：定常正激波。原题：空气（$\gamma=1.4$）以马赫数 $Ma_1 = 2.0$, 静压 $p_1 = 100$ kPa, 静温 $T_1 = 300$ K 流过正激波。求波后马赫数 $Ma_2$, 静压 $p_2$, 静温 $T_2$ 和总压损失 $\Delta p_0$。\\
-公式链：
-1. 波后马赫数：$Ma_2 = \sqrt{\frac{1 + 0.2Ma_1^2}{1.4Ma_1^2 - 0.2}} = \sqrt{\frac{1 + 0.2 \cdot 4}{1.4 \cdot 4 - 0.2}} = \sqrt{\frac{1.8}{5.4}} \approx 0.577$。
-2. 静压比与静压：$\frac{p_2}{p_1} = \frac{7Ma_1^2 - 1}{6} = \frac{7 \cdot 4 - 1}{6} = 4.5$。则 $p_2 = 4.5 \times 100 = 450$ kPa。
-3. 密度比与静温：$\frac{\rho_2}{\rho_1} = \frac{6Ma_1^2}{Ma_1^2 + 5} = \frac{6 \cdot 4}{4 + 5} = 2.667$。静温 $T_2 = T_1 \cdot \frac{p_2/p_1}{\rho_2/\rho_1} = 300 \cdot \frac{4.5}{2.667} = 506.25$ K。
-4. 总压损失计算：波前总压 $p_{01} = p_1 (1 + 0.2Ma_1^2)^{3.5} = 100 \cdot (1.8)^{3.5} = 782.4$ kPa。
-   波后总压 $p_{02} = p_{01} \cdot 0.72 = 563.3$ kPa。总压损失 $\Delta p_0 = p_{01} - p_{02} = 219.1$ kPa。
-
-\subq{子题九：运动正激波与撞墙反射计算}
-作业代表题：撞墙反射。原题：一运动正激波在静止空气（$p_1 = 100$ kPa, $T_1 = 300$ K）中以速度 $V_s = 680$ m/s 向前传播。撞击垂直墙壁后发生反射。求入射波后气流速度 $V_2$, 绝对压力 $p_2$ 及反射波后的压力 $p_3$。\\
-公式链：
-1. 声速及入射波前相对马赫数：空气声速 $a_1 = \sqrt{\gamma R T_1} = 347.2$ m/s。入射波马赫数 $Ma_1 = V_s / a_1 = 680 / 347.2 = 1.959$。
-2. 相对波后气流：波后相对马赫数 $Ma_{r2} = \sqrt{\frac{1+0.2Ma_1^2}{1.4Ma_1^2-0.2}} = 0.585$。
-   波后温度 $T_2 = T_1 \frac{(1+0.2Ma_1^2)(1.4Ma_1^2-0.2)}{1.2^2 Ma_1^2} = 492$ K，波后相对速度 $V_{r2} = Ma_{r2} \sqrt{\gamma R T_2} = 260$ m/s。
-3. 绝对速度与压力：绝对速度 $V_2 = V_s - V_{r2} = 420$ m/s。绝对压力 $p_2 = p_1 \frac{7Ma_1^2-1}{6} = 431$ kPa。
-4. 反射压力：$p_3 = p_2 + (p_2-p_1) \cdot \frac{8\times 1.4 \times Ma_1^2 + 1.6}{2\times 1.4 \times Ma_1^2 + 2.4} \approx 431 + 331 \cdot 3.1 \approx 1457$ kPa。
+% Normal shocks moved to Mother 4
 
 \chap{母题4 二维超声速波系：斜激波与Prandtl-Meyer膨胀波}
 \mview{\key{母题总览}：研究超声速来流绕压缩外角、膨胀凸角或绕流的波系结构。看见偏转角/凹角/凸角/绕折线壁面流动，用本母题。首写：偏转角为压缩（凹角）$\Rightarrow$斜激波；为膨胀（凸角）$\Rightarrow$膨胀扇。检查：斜激波后 $p_0$ 降，膨胀波内 $p_0$ 不变；斜激波后不一定为亚声速。}
@@ -1495,30 +1529,111 @@ Ma_{n1} &= Ma_1\sin\beta,\quad Ma_2=\frac{Ma_{n2}}{\sin(\beta-\theta)},\quad \mu
 \nu(Ma) &= \sqrt{6}\tan^{-1}\sqrt{(Ma^2-1)/6} - \tan^{-1}\sqrt{Ma^2-1}
 \end{aligned}}
 
-\subq{子题一：单道斜激波（斜楔压缩）流动计算}
-作业代表题：斜楔激波。原题：超声速来流 $M_1 = 2.0$, 静压 $p_1 = 100$ kPa, 静温 $T_1 = 300$ K 绕倾角 $\theta = 10^\circ$ 的楔体流动。试求斜激波倾角 $\beta$, 波后马赫数 $M_2$ 及波后压力 $p_2$。\\
-公式链：
-1. 确定激波角：由 $M_1 = 2.0, \theta = 10^\circ$ 查曲线，得到弱斜激波解 $\beta \approx 39.3^\circ$。
-2. 法向波前马赫数：$M_{n1} = M_1 \sin\beta = 2.0 \cdot \sin(39.3^\circ) = 1.267$。
-3. 法向波后马赫数：$M_{n2} = \sqrt{\frac{1 + 0.2 M_{n1}^2}{1.4 M_{n1}^2 - 0.2}} = 0.804$。
-4. 波后真实马赫数：$M_2 = \frac{M_{n2}}{\sin(\beta-\theta)} = \frac{0.804}{\sin(39.3^\circ - 10^\circ)} = 1.64$。
-5. 波后压力：$p_2 = p_1 \cdot \frac{7 M_{n1}^2 - 1}{6} = 170.5$ kPa。
+\subq{子题一：一维定常正激波状态计算}
+空气（$\gamma=1.4$）以马赫数 $Ma_1 = 2.5$, 静压 $p_1 = 30$ kPa, 静温 $T_1 = 298$ K 流过正激波。求波后马赫数 $Ma_2$, 静压 $p_2$, 静温 $T_2$, 速度 $V_2$ 和总压损失 $\Delta p_0$。\\
+\hfill\begin{tikzpicture}[>=Latex,scale=0.35,baseline=(current bounding box.center)]
+\draw[thick] (0,0.5) -- (3,0.5);
+\draw[thick] (0,-0.5) -- (3,-0.5);
+\draw[red, line width=1.2pt] (1.5,-0.5) -- (1.5,0.5) node[above=-1pt]{\fontsize{3.5}{4.5}\selectfont 正激波};
+\draw[->, blue, thick] (0.2,0) -- (1.2,0) node[above=-1.5pt, pos=0.5]{\fontsize{3.5}{4.5}\selectfont $M_1=2.5$};
+\draw[->, blue, thick] (1.8,0) -- (2.8,0) node[above=-1.5pt, pos=0.5]{\fontsize{3.5}{4.5}\selectfont $M_2$};
+\node at (0.7, -0.3) {\fontsize{3.5}{4.5}\selectfont 状态1};
+\node at (2.3, -0.3) {\fontsize{3.5}{4.5}\selectfont 状态2};
+\end{tikzpicture}
+\\
+公式与计算链：
+1. 波后马赫数：$Ma_2 = \sqrt{\frac{1 + 0.2Ma_1^2}{1.4Ma_1^2 - 0.2}} = \sqrt{\frac{1.8}{8.55}} = 0.513$。
+2. 静压与速度：$p_2 = p_1 \frac{7Ma_1^2 - 1}{6} = 30 \cdot 7.125 = 213.8$ kPa。
+3. 密度比与温度：$\frac{\rho_2}{\rho_1} = \frac{6Ma_1^2}{Ma_1^2 + 5} = 3.333$。$T_2 = T_1 \frac{p_2/p_1}{\rho_2/\rho_1} = 298 \cdot \frac{7.125}{3.333} = 637.3$ K。
+4. 速度：$a_2 = \sqrt{\gamma R T_2} = 506$ m/s $\Rightarrow V_2 = Ma_2 \cdot a_2 = 260$ m/s。
+5. 总压损失：$p_{01} = p_1 (1 + 0.2Ma_1^2)^{3.5} = 512.6$ kPa，$p_{02} = p_{01} \cdot 0.499 = 255.8$ kPa $\Rightarrow \Delta p_0 = 256.8$ kPa。
 
-\subq{子题二：Prandtl-Meyer膨胀扇（凸角膨胀）流动计算}
-作业代表题：凸角膨胀波。原题：超声速来流 $M_1 = 1.5$, 静压 $p_1 = 100$ kPa, 静温 $T_1 = 300$ K 绕折角 $\delta = 14.5^\circ$ 的凸角流动。试求波后马赫数 $M_2$, 压力 $p_2$ 及温度 $T_2$。\\
-公式链：
+\subq{子题二：运动正激波与撞墙反射计算}
+一运动正激波在静止空气（$p_1 = 100$ kPa, $T_1 = 300$ K）中以速度 $V_s = 680$ m/s 向前传播。撞击垂直墙壁后发生反射。求入射波后气流速度 $V_2$, 绝对压力 $p_2$ 及反射波后的压力 $p_3$。\\
+\hfill\begin{tikzpicture}[>=Latex,scale=0.35,baseline=(current bounding box.center)]
+\draw[thick] (3,-0.5) -- (3,0.5) node[above=-1pt]{\fontsize{3.5}{4.5}\selectfont 墙};
+\draw[thick, fill=gray!30] (3,-0.5) rectangle (3.2,0.5);
+\draw[red, line width=1.0pt] (1.0,-0.5) -- (1.0,0.5) node[above=-1pt]{\fontsize{3.5}{4.5}\selectfont $V_s$};
+\draw[red, line width=1.0pt, dashed] (2.0,-0.5) -- (2.0,0.5) node[above=-1pt]{\fontsize{3.5}{4.5}\selectfont $V_R$};
+\draw[->, blue, thick] (0.2,0) -- (0.8,0) node[above=-1.5pt, pos=0.5]{\fontsize{3.5}{4.5}\selectfont $V_2$};
+\node at (0.5, -0.3) {\fontsize{3.5}{4.5}\selectfont (2)};
+\node at (1.5, -0.3) {\fontsize{3.5}{4.5}\selectfont (1) 静止};
+\node at (2.5, -0.3) {\fontsize{3.5}{4.5}\selectfont (3) 反射};
+\end{tikzpicture}
+\\
+公式与计算链：
+1. 入射波前相对马赫数：$a_1 = \sqrt{\gamma R T_1} = 347.2$ m/s。$Ma_1 = V_s / a_1 = 1.959$。
+2. 相对波后气流：波后相对马赫数 $Ma_{r2} = \sqrt{\frac{1+0.2Ma_1^2}{1.4Ma_1^2-0.2}} = 0.585$。
+   波后温度 $T_2 = T_1 \frac{(1+0.2Ma_1^2)(1.4Ma_1^2-0.2)}{1.2^2 Ma_1^2} = 492$ K，波后相对速度 $V_{r2} = Ma_{r2} \sqrt{\gamma R T_2} = 260$ m/s。
+3. 绝对速度与压力：绝对速度 $V_2 = V_s - V_{r2} = 420$ m/s。绝对压力 $p_2 = p_1 \frac{7Ma_1^2-1}{6} = 431$ kPa。
+4. 反射压力：$p_3 = p_2 + (p_2-p_1) \cdot \frac{8\times 1.4 \times Ma_1^2 + 1.6}{2\times 1.4 \times Ma_1^2 + 2.4} \approx 431 + 331 \cdot 3.1 \approx 1457$ kPa。
+
+\subq{子题三：单道斜激波（斜楔压缩）流动计算}
+超声速来流 $M_1 = 2.5$, 静压 $p_1 = 85$ kPa, 静温 $T_1 = 298$ K 绕倾角 $\theta = 10^\circ$ 的楔体流动。试求斜激波倾角 $\beta$, 波后马赫数 $M_2$, 压力 $p_2$ 及温度 $T_2$。\\
+\hfill\begin{tikzpicture}[>=Latex,scale=0.35,baseline=(current bounding box.center)]
+\draw[thick] (0,0) -- (1.5,0) -- (4,0.44);
+\draw[dashed, gray] (1.5,0) -- (4,0);
+\draw[red, thick] (1.5,0) -- (3.5,1.25);
+\draw[->, blue, thick] (0.2,0.3) -- (1.2,0.3) node[above=-1pt, pos=0.5]{\fontsize{3.5}{4.5}\selectfont $M_1=2.5$};
+\draw[->, blue, thick] (2.2,0.5) -- (3.2,0.7) node[above=-1.5pt, pos=0.5]{\fontsize{3.5}{4.5}\selectfont $M_2$};
+\draw[thin] (2.5,0) arc (0:10:1.0) node[right=-1pt]{\fontsize{3.5}{4.5}\selectfont $\theta$};
+\draw[thin] (2.2,0) arc (0:32:0.7) node[above right=-2pt]{\fontsize{3.5}{4.5}\selectfont $\beta$};
+\end{tikzpicture}
+\\
+公式与计算链：
+1. 确定激波角：由 $M_1 = 2.5, \theta = 10^\circ$ 查 $\theta-\beta-M$ 关系（或解方程）得弱斜激波解 $\beta \approx 31.85^\circ$。
+2. 法向波前马赫数：$M_{n1} = M_1 \sin\beta = 2.5 \cdot \sin(31.85^\circ) = 1.319$。
+3. 法向波后马赫数：$M_{n2} = \sqrt{\frac{1 + 0.2 M_{n1}^2}{1.4 M_{n1}^2 - 0.2}} = 0.776$。
+4. 波后真实马赫数：$M_2 = \frac{M_{n2}}{\sin(\beta-\theta)} = \frac{0.776}{\sin(21.85^\circ)} = 2.086$。
+5. 波后压力：$p_2 = p_1 \cdot \frac{7 M_{n1}^2 - 1}{6} = 85 \cdot 1.864 = 158.4$ kPa。
+6. 波后温度：$\frac{\rho_2}{\rho_1} = \frac{6 M_{n1}^2}{M_{n1}^2 + 5} = 1.549 \Rightarrow T_2 = T_1 \frac{p_2/p_1}{\rho_2/\rho_1} = 298 \cdot 1.203 = 358.5$ K。
+
+\subq{子题四：Prandtl-Meyer膨胀扇（凸角膨胀）流动计算}
+超声速来流 $M_1 = 1.5$, 静压 $p_1 = 100$ kPa, 静温 $T_1 = 300$ K 绕折角 $\delta = 14.5^\circ$ 的凸角流动。试求波后马赫数 $M_2$, 压力 $p_2$ 及温度 $T_2$。\\
+\hfill\begin{tikzpicture}[>=Latex,scale=0.35,baseline=(current bounding box.center)]
+\draw[thick] (0,0.5) -- (1.5,0.5) -- (3.5,-0.02);
+\draw[dashed, gray] (1.5,0.5) -- (3.5,0.5);
+\foreach \a in {41.8, 33.0, 24.0, 15.5} {
+  \draw[red, thin] (1.5,0.5) -- ++(\a:1.6);
+}
+\draw[->, blue, thick] (0.2,0.8) -- (1.2,0.8) node[above=-1.5pt, pos=0.5]{\fontsize{3.5}{4.5}\selectfont $M_1=1.5$};
+\draw[->, blue, thick] (2.4,0.1) -- (3.4,-0.16) node[below=1pt, pos=0.5]{\fontsize{3.5}{4.5}\selectfont $M_2$};
+\draw[thin] (2.2,0.5) arc (0:-14.5:0.7) node[right=1pt]{\fontsize{3.5}{4.5}\selectfont $\delta$};
+\node[red] at (2.6, 1.4) {\fontsize{3.5}{4.5}\selectfont 膨胀扇};
+\end{tikzpicture}
+\\
+公式与计算链：
 1. 计算来流 PM 角度：$\nu_1 = \nu(M_1=1.5) = \sqrt{6}\tan^{-1}\sqrt{(1.5^2-1)/6} - \tan^{-1}\sqrt{1.5^2-1} \approx 11.9^\circ$。
 2. 计算波后 PM 角度：$\nu_2 = \nu_1 + \delta = 11.9^\circ + 14.5^\circ = 26.4^\circ$。
 3. 反求波后马赫数：由 $\nu_2 = 26.4^\circ$ 查表反解得 $M_2 = 2.0$。
 4. 计算等熵波后压力：$p_2 = p_1 \left[ \frac{1+0.2M_1^2}{1+0.2M_2^2} \right]^{3.5} = 100 \cdot \left[ \frac{1.45}{1.80} \right]^{3.5} \approx 47.0$ kPa。
 5. 计算等熵波后温度：$T_2 = T_1 \frac{1+0.2M_1^2}{1+0.2M_2^2} = 300 \cdot \frac{1.45}{1.80} \approx 241.7$ K。
 
-\subq{子题三：超声速绕双凸极/接触面交汇计算}
-作业代表题：多波交汇。原题：超声速流交汇，已知两侧折角引起的反射偏转或接触面交汇。\\
-公式链：
-1. 接触面（Slipstream）边界条件：两侧交汇静压相等 $p_{2a}=p_{2b}$，且流动方向平行 $\theta_a = \theta_b$。
-2. 规律：利用两侧弱斜激波/PM膨胀关系，各段逐步推进，可得最终压力与流向。
+\subq{子题五：Laval管外膨胀角与欠膨胀计算}
+Laval喷管出口面积比 $A_e/A_t = 1.5$, 滞止压力 $p_0 = 500$ kPa, 背压 $p_b = 50$ kPa. 证明出口发生管外膨胀并求出口压力 $p_e$ 与膨胀角 $\Delta\nu$。\\
+\hfill\begin{tikzpicture}[>=Latex,scale=0.35,baseline=(current bounding box.center)]
+\draw[thick] (0,0.6) -- (1.5,0.4) -- (1.5,1.2);
+\draw[thick] (0,-0.6) -- (1.5,-0.4) -- (1.5,-1.2);
+\draw[dashed, gray] (1.5,0.4) -- (3,0.4);
+\draw[dashed, gray] (1.5,-0.4) -- (3,-0.4);
+\foreach \a in {-10, -20, -30} {
+  \draw[red, thin] (1.5,0.4) -- ++(\a:1.5);
+}
+\foreach \a in {10, 20, 30} {
+  \draw[red, thin] (1.5,-0.4) -- ++(\a:1.5);
+}
+\draw[->, blue, thick] (0.2,0) -- (1.2,0) node[above=-1.5pt, pos=0.5]{\fontsize{3.5}{4.5}\selectfont $M_e$};
+\draw[->, blue, thick] (2.0,0.1) -- (2.8,0.2) node[above=-1.5pt, pos=0.5]{\fontsize{3.5}{4.5}\selectfont $M_b$};
+\end{tikzpicture}
+\\
+公式与计算链：
+1. 确定出口马赫数：由 $A_e/A^* = 1.5$ 查等熵超声速支得 $M_e = 1.86$。
+2. 算出口压力：$p_e = p_0 (1 + 0.2 M_e^2)^{-3.5} = 500 \cdot (1 + 0.2 \cdot 1.86^2)^{-3.5} = 79.2$ kPa.
+3. 判断欠膨胀：因为 $p_e = 79.2$ kPa $> p_b = 50$ kPa，所以出口发生欠膨胀，气流在出口外继续等熵膨胀。
+4. 算最终马赫数：等熵 $p_{0b} = p_0 = 500$ kPa，由 $p_{0b}/p_b = 500/50 = 10 \Rightarrow (1+0.2M_b^2)^{3.5} = 10 \Rightarrow M_b = 2.157$。
+5. 算膨胀角：$\Delta\nu = \nu(M_b) - \nu(M_e) = \nu(2.157) - \nu(1.86) = 30.88^\circ - 22.42^\circ = 8.46^\circ$。
 
+\subq{子题六：超声速绕双凸极/接触面交汇计算}
 \chap{母题5 粘性管流：N-S简化、层流解析、管路压损与小球沉降}
 \mview{\key{母题总览}：看见黏度、管径、板距、流量、水头损失、粗糙度或小球沉降，判定为粘性流动。第一步：算雷诺数 $Re = Vd/\nu$ 判定层流（$Re < 2300$）或湍流（$Re > 4000$）。第二步：层流求解析速度分布（从简化 N-S 积分两次并用无滑移边界求常数）；湍流或管路计算求摩擦阻力（利用 Moody 图 $\lambda$ 或 $\lambda = 64/Re$ 算沿程与局部损失，并用能量方程联立）。}
 \schemeviscous
@@ -1572,10 +1687,16 @@ Ma_{n1} &= Ma_1\sin\beta,\quad Ma_2=\frac{Ma_{n2}}{\sin(\beta-\theta)},\quad \mu
    * 在液膜自由表面 $y=H$ 无剪力：$\left.\frac{du}{dy}\right|_{y=H} = 0 \Rightarrow -\frac{\rho g \sin\theta}{\mu} H + C_1 = 0 \Rightarrow C_1 = \frac{\rho g \sin\theta}{\mu} H$。
 3. \key{代回整理速度与流量}：速度为 $u(y) = \frac{\rho g \sin\theta}{\mu} \left( Hy - \frac{1}{2}y^2 \right)$。积分求单位宽流量 $q = \int_0^H u\,dy = \frac{\rho g \sin\theta\,H^3}{3\mu}$。
 
-\subq{Hagen-Poiseuille 圆管层流计算：已知 L, d, $\mu$, $\rho$ 及流量 Q，求压降与壁面剪力}
-1. \key{验证层流}：算流速 $V = \frac{4Q}{\pi d^2}$，算雷诺数 $Re = \frac{\rho V d}{\mu}$。若 $Re < 2300$，则为层流。
-2. \key{计算压降 $\Delta p$}：带入公式：$\Delta p = \frac{128 \mu L Q}{\pi d^4} = \frac{32 \mu L V}{d^2}$。
-3. \key{求壁面剪应力 $\tau_w$}：带入力平衡公式（或者剪力公式）：$\tau_w = \frac{d\Delta p}{4L} = \frac{8\mu V}{d}$。
+\subq{子题：Hagen-Poiseuille 圆管层流计算}
+输送 SAE 30 机油 ($\rho = 888$ kg/m$^3$, $\mu = 0.29$ Pa$\cdot$s) 的圆管长 $L=100$ m, 直径 $d=50$ mm, 流量 $Q = 1.2$ L/s ($0.0012$ m$^3$/s). 试验证流动状态，并计算沿程压降 $\Delta p$ 与管壁剪应力 $\tau_w$。\\
+公式与计算链：
+1. 验证流态：平均流速 $V = \frac{4Q}{\pi d^2} = 0.611$ m/s.
+   雷诺数 $Re = \frac{\rho V d}{\mu} = \frac{888 \cdot 0.611 \cdot 0.05}{0.29} = 93.6 < 2300$, 确为层流。
+2. 计算沿程压降：
+   $\Delta p = \frac{128 \mu L Q}{\pi d^4} = \frac{128 \cdot 0.29 \cdot 100 \cdot 0.0012}{\pi \cdot 0.05^4} = 226.9$ kPa.
+3. 计算壁面剪应力：
+   $\tau_w = \frac{d\Delta p}{4L} = \frac{0.05 \cdot 226860}{400} = 28.36$ Pa.
+   (或由剪切力公式 $\tau_w = \frac{8\mu V}{d} = 28.36$ Pa).
 
 \subq{小球低雷诺数沉降：已知球径 d、小球密度 $\rho_s$、流体密度 $\rho$ 与黏度 $\mu$，求沉降终速}
 1. \key{列受力平衡求终速}：匀速下落时重力 - 浮力 = 阻力：$(\rho_s - \rho) g \frac{\pi d^3}{6} = 3\pi \mu d U_t \Rightarrow U_t = \frac{(\rho_s - \rho) g d^2}{18\mu}$。

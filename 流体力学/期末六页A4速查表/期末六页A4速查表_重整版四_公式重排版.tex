@@ -43,10 +43,11 @@
 \definecolor{infobg}{HTML}{E8F5E9}
 \definecolor{subbg}{HTML}{E3F2FD}
 \newcommand{\chap}[1]{\vspace{0.35pt}\colorbox{subbg}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{6.55}{6.78}\selectfont\bfseries\color{h1}#1\end{minipage}}\par\vspace{0.15pt}}
-\newcommand{\tagsec}[3]{\vspace{0.10pt}\colorbox{subbg}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{5.05}{5.24}\selectfont\bfseries\color{#1}\colorbox{#1}{\color{white}\fontsize{4.00}{4.14}\selectfont #2}\,\color{black}#3\end{minipage}}\par}
-\newcommand{\realq}[1]{\tagsec{realc}{真题}{#1}}
-\newcommand{\subq}[1]{\tagsec{subc}{子题}{#1}}
-\newcommand{\varq}[1]{\tagsec{varc}{变式}{#1}}
+\newcommand{\tagsec}[3]{\vspace{0.10pt}{\fontsize{5.05}{5.24}\selectfont\bfseries\color{#1}\colorbox{#1}{\color{white}\fontsize{4.00}{4.14}\selectfont #2}\,#3}\par}
+\newcommand{\tagsecbg}[3]{\vspace{0.10pt}\colorbox{subbg}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{5.05}{5.24}\selectfont\bfseries\color{#1}\colorbox{#1}{\color{white}\fontsize{4.00}{4.14}\selectfont #2}\,\color{black}#3\end{minipage}}\par}
+\newcommand{\realq}[1]{\tagsecbg{realc}{真题}{#1}}
+\newcommand{\subq}[1]{\tagsecbg{subc}{子题}{#1}}
+\newcommand{\varq}[1]{\tagsecbg{varc}{变式}{#1}}
 \newcommand{\idq}[1]{\tagsec{idc}{识别}{#1}}
 \newcommand{\stepq}[1]{\tagsec{stepc}{步骤}{#1}}
 \newcommand{\formq}[1]{\tagsec{formc}{公式链}{#1}}
@@ -2431,7 +2432,6 @@ Bernoulli沿流线：由Euler方程沿流线积分；若还无旋，则积分常
 
 \end{multicols}
 \end{document}
-
 
 
 

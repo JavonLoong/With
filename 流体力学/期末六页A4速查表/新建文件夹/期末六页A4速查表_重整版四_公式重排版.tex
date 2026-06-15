@@ -1594,149 +1594,39 @@ Ma_{n1} &= Ma_1\sin\beta,\quad Ma_2=\frac{Ma_{n2}}{\sin(\beta-\theta)},\quad \mu
    z_1 + \frac{p_a}{\rho g} + 0 = z_2 + \frac{p_2}{\rho g} + \frac{V^2}{2g} + h_f + h_{\zeta} \Rightarrow h = z_2 - z_1 \le \frac{p_a - p_v}{\rho g} - \frac{V^2}{2g} - h_f - h_{\zeta}
    \]
 
-\chap{母题6 边界层、外绕流阻力、综合收口}
+\chap{母题6 边界层、外绕流阻力、综合相似}
 \mview{\key{母题总览}：看见平板外流、$\delta,C_f,C_D$、阻力、分离、模型试验，用边界层/外绕/相似。首写$Re_x/Re_L$或$\pi$群。顺序：判层湍$\to \delta,C_f\to D$；相似先选主导准则。检查：湿面积/迎风面积、局部/平均系数、逆压梯度分离。}
 \schemebl
 \infoh{边界层/外绕信息库A 基础公式和数学运算}
-平板：$Re_x=Ux/\nu,\ Re_L=UL/\nu$。高$Re$零压梯度边界层：
-\[
-u_x+v_y=0,\quad uu_x+vu_y=\nu u_{yy},\quad p_y=0
-\]
-层流Blasius：$\delta=5x/\sqrt{Re_x}$，$c_f=0.664/\sqrt{Re_x}$，$\bar C_f=1.328/\sqrt{Re_L}$。湍流平板：$\delta=0.37x/Re_x^{1/5}$，$\bar C_f=0.074/Re_L^{1/5}$；转捩修正$\bar C_f=0.074/Re_L^{1/5}-1742/Re_L$。阻力：$D=C(0.5\rho U^2)A$。
-\infoh{边界层/外绕信息库B 证明链和判定链}
-\textbf{平板流程链}：题给$U,L,\nu,b\to Re_L$；与$Re_{cr}$比判层/湍/转捩；选$\delta,\bar C_f$；用湿表面积算摩擦阻力；功率$P=DU$。\\
-\textbf{动量积分链}：给速度剖面$f(\eta)$，先算$\delta^*=\delta\int(1-f)d\eta$、$\theta=\delta\int f(1-f)d\eta$；再用$\tau_w/(\rho U^2)=d\theta/dx$。\\
-\textbf{外绕阻力链}：球/圆柱/钝体先算$Re$，查$C_D$，用迎风面积；平板摩擦用$C_f$和湿面积。\\
-\textbf{相似链}：列变量$\to$选重复变量$\rho,V,L\to$写$\pi$数；重力主导保$Fr$，粘性主导保$Re$，高速气体保$Ma$。
-\infoh{边界层/外绕信息库C 常见结论库}
-名义厚度$\delta$是$u=0.99U$处；位移厚度$\delta^*$表示排挤外流的等效厚度；动量厚度$\theta$表示动量亏损厚度。逆压梯度$dp/dx>0$使边界层增厚并可能分离，$\tau_w=0$是分离临界。流线型小迎角常摩擦阻力主导；钝体分离后压差阻力主导。平板若未说明双面，先按题图/文字判断，不能自动乘2。
+\fmlb{\begin{aligned}
+&Re_x = Ux/\nu,\quad Re_L = UL/\nu,\quad D/Dt = \partial_t + u\partial_x + v\partial_y + w\partial_z\\
+&\text{Prandtl控制方程：} u_x+v_y=0,\quad uu_x+vu_y=\nu u_{yy},\quad p_y=0\\
+&\text{层流Blasius：} \delta=5x/\sqrt{Re_x},\quad c_f=0.664/\sqrt{Re_x},\quad \bar C_f=1.328/\sqrt{Re_L}\\
+&\text{湍流平板：} \delta=0.37x/Re_x^{1/5},\quad \bar C_f=0.074/Re_L^{1/5}\\
+&\text{转捩修正：} \bar C_f=0.074/Re_L^{1/5}-1742/Re_L \quad (\text{临界 } Re_{cr}=5\times 10^5)\\
+&\text{排挤厚度：} \delta^* = \int_0^\delta (1-u/U) dy,\quad \text{动量厚度：} \theta = \int_0^\delta \frac{u}{U}(1-u/U) dy\\
+&\text{Von Karman积分：} \tau_w = \rho U^2 \frac{d\theta}{dx},\quad \tau_w = \mu \left(\frac{\partial u}{\partial y}\right)_{y=0}\\
+&\text{阻力/功率：} D = \bar C_f \cdot \frac{1}{2}\rho U^2 A \quad (\text{双面 } A=2Lb),\quad P = DU\\
+&\text{Stokes小球阻力：} D = 3\pi \mu d U = 6\pi \mu a U \quad (Re<1,\ d=2a)\\
+&\text{钝体外绕阻力：} D = C_D \cdot \frac{1}{2}\rho U^2 A \quad (A \text{ 为迎风面积 }\pi d^2/4)
+\end{aligned}}
+
+\infoh{边界层/外绕信息库B 证明链与判定链}
+* \key{平板边界层流程}：求 $Re_L = UL/\nu$ $\to$ 对比 $Re_{cr}$ 判层/湍/转捩 $\to$ 选 $\bar C_f, \delta(L)$ $\to$ 摩擦力 $D = \bar C_f \frac{1}{2}\rho U^2 A$ （单双面） $\to$ 功率 $P=DU$。
+* \key{动量积分法推导}：给剖面 $u/U=f(\eta)$，令 $\eta=y/\delta \Rightarrow dy=\delta d\eta$ $\to$ 积分求比值 $\delta^*/\delta = \int_0^1(1-f)d\eta$, $\theta/\delta = \int_0^1 f(1-f)d\eta$ $\to$ 由 $\tau_w = \mu (\partial u/\partial y)_0 = \rho U^2 d\theta/dx$ 列关于 $\delta(x)$ 的微分方程并求解。
+* \key{相似与量纲分析}：确定变量数 $n$ 与基本量纲数 $r \Rightarrow \pi$ 群数为 $n-r$ $\to$ 选择 $\rho, V, L$ 为重复变量，其余变量 $X$ 组成 $\pi = X \rho^a V^b L^c$ 解指数。重力主导用 Froude 相似 ($Fr$)，粘性主导用 Reynolds 相似 ($Re$)。
+
+\infoh{边界层/外绕信息库C 常见结论与答题句}
+* \key{分离答题句}：因逆压梯度 $dp/dx>0$ 使近壁流体减速，壁面速度梯度 $\partial u/\partial y|_w$ 降至零并反向，边界层发生分离。尾流区压强骤降导致压差阻力急剧增大。
+* \key{位移与动量厚度意义}：排挤厚度 $\delta^*$ 表示由于边界层粘性减速导致主流等效外移的距离；动量厚度 $\theta$ 表示边界层内动量亏损的折算厚度。
+* \key{流线型与钝体阻力}：流线型物体以壁面剪切摩擦阻力为主，钝体以分离后的压差阻力为主。高 $Re$ 时物面外部可近似为无粘势流，靠壁层必须用边界层方程。
+
 \infoh{边界层/外绕信息库D 易错检查}
-$x$是从前缘到该点，$L$是整板长度；问尾部厚度取$x=L$。局部$c_f$只算局部壁剪，求总阻力用平均$\bar C_f$。平板面积用湿表面积，球/圆柱阻力用迎风面积。空气$160$km/h要先化$m/s$。给$Re_{cr}$必须先算$x_{cr}$，不能直接全层流或全湍流。$C_D$、$C_L$、$C_f$不是同一个系数。
-\formq{Prandtl 边界层/Blasius}
-高$Re$且无或很小分离：边界层外场Euler，内流动Prandtl/动量积分。
-\fmlb{u_x+v_y=0,\qquad uu_x+vu_y=\nu u_{yy},\qquad p_y=0}
-壁面无滑移，外缘$u\to U(x)$。$Re_x=Ux/\nu,\ Re_L=UL/\nu$。
-\fmlb{\begin{aligned}
-\text{层流：}&\quad \delta=5x/\sqrt{Re_x},\qquad \bar C_f=1.328/\sqrt{Re_L}\\
-\text{湍流：}&\quad \bar C_f=0.074/Re_L^{1/5}\\
-\text{转捩：}&\quad \bar C_f=0.074/Re_L^{1/5}-1742/Re_L\\
-\text{阻力：}&\quad D=\bar C_f\frac12\rho U^2A,\qquad P=DU
-\end{aligned}}
+* $x$ 必须从板前缘起算，问板尾厚度取 $x=L$。
+* 局部摩擦系数 $c_f$ 只用于计算局部剪切应力，求整板阻力必须用平均系数 $\bar C_f$。
+* 迎风面积 $A_{\rm front}$ 用于球/圆柱等外绕阻力，湿面积 $A_{\rm wet}$ 用于平板摩擦。
+* 火车等车速 $160$ km/h 等必须换算为 $m/s$。
 
-\formq{位移/动量厚度/Von Karman}
-\fmlb{\begin{aligned}
-\delta^*&=\int_0^\delta(1-u/U)\,dy\\
-\theta&=\int_0^\delta(u/U)(1-u/U)\,dy
-\end{aligned}}
-\fmlb{\begin{aligned}
-\frac{\tau_w}{\rho U^2}&=\frac{d\theta}{dx}\qquad(dp/dx=0)\\
-\frac{\tau_w}{\rho U^2}&=\frac{d\theta}{dx}
-+\frac{2\theta+\delta^*}{U}\frac{dU}{dx}
-\end{aligned}}
-给$u/U=f(\eta),\eta=y/\delta$：把$dy=\delta d\eta$代入积分。
-\stepq{常见剖面直接用}
-\fmlb{\begin{array}{c|c|c}
-u/U & \delta^* & \theta\\ \hline
-\eta & \delta/2 & \delta/6\\
-2\eta-\eta^2 & \delta/3 & 2\delta/15
-\end{array}}
-若题给幂律$u/U=\eta^{1/n}$，先代$\eta$积分，不要展开成$y$。
-
-\subq{作业代表题：书10.2 平板层流油流}
-原题：油$\mu=0.731$Pa·s，$\rho=925$kg/m$^3$，以$U=0.6$m/s流过光滑平板$L=0.5$m，$b=0.15$m，求最大边界层厚度和阻力。公式选择：先判$Re_L$，全层流用Blasius平均式，题未说单面/双面时按原答案两面面积$2Lb$。
-\fmlb{\begin{aligned}
-\nu&=\mu/\rho=7.90\times10^{-4},\quad Re_L=UL/\nu=3.80\times10^2\\
-\delta_{\max}&=5L/\sqrt{Re_L}=0.128{\rm m},\quad
-\bar C_f=1.328/\sqrt{Re_L}=0.0682\\
-D&=\bar C_f(0.5\rho U^2)(2Lb)=1.7{\rm N}
-\end{aligned}}
-\subq{作业代表题：书10.3 位移厚度/动量厚度}
-原题给层流剖面：(1)$u/U=y/\delta$；(2)$u/U=\frac32(y/\delta)-\frac12(y/\delta)^3$，求$\delta^*,\theta$。公式选择：令$\eta=y/\delta$，只在$0\sim1$积分。
-\fmlb{\begin{aligned}
-\delta^*&=\delta\int_0^1(1-f)d\eta,\qquad
-\theta=\delta\int_0^1f(1-f)d\eta\\
-f=\eta&:\quad \delta^*=\delta/2,\quad \theta=\delta/6\\
-f=\frac32\eta-\frac12\eta^3&:\quad \delta^*=3\delta/8,\quad \theta=39\delta/280
-\end{aligned}}
-\subq{作业代表题：书10.5 正弦剖面+动量积分}
-原题：$u/U_e=a+b\sin(cy/\delta)$，用动量积分求$\delta^*/\theta$和$C_D$。边界条件$u(0)=0,u(\delta)=U_e,u_y(\delta)=0$：
-\fmlb{\begin{aligned}
-a&=0,\ c=\pi/2,\ b=1,\quad f=\sin(\pi\eta/2)\\
-\delta^*&=\delta(1-2/\pi),\quad \theta=\delta(2/\pi-1/2)\\
-\delta^*/\theta&=\frac{1-2/\pi}{2/\pi-1/2}=2.66\\
-\tau_w&=\mu U_e\frac{\pi}{2\delta},\quad
-\tau_w/(\rho U_e^2)=d\theta/dx\\
-C_D&=2\theta(L)/L=1.31/\sqrt{Re_L}
-\end{aligned}}
-\subq{作业代表题：书10.10 火车摩擦阻力功率}
-原题：流线型火车$L=110$m，等效单面宽$8.25$m，$U=160$km/h，空气$\rho=1.22,\mu=1.79\times10^{-5}$，$Re_{cr}=5\times10^5$，求层流维持长度和功率。
-\fmlb{\begin{aligned}
-U&=44.44,\quad S=110\times8.25=907.5\\
-x_{cr}&=Re_{cr}\mu/(\rho U)=0.165{\rm m}\\
-Re_L&=\rho UL/\mu=3.33\times10^8\\
-\bar C_f&=0.074/Re_L^{1/5}-1742/Re_L=0.001456\\
-D&=\bar C_f(0.5\rho U^2)S=1.59\times10^3{\rm N}\\
-P&=DU=70.8{\rm kW}
-\end{aligned}}
-\subq{作业代表题：平板空气/水单面阻力比较}
-原题：$U=2.5$m/s，$L=0.5$m，$b=3$m，$Re_{cr}=5\times10^5$；空气$\rho=1.2,\nu=1.5\times10^{-5}$，水$\rho=998,\nu=1.005\times10^{-6}$，求单面阻力和尾部厚度。
-\fmlb{\begin{aligned}
-A&=Lb=1.5\\
-\text{空气: }Re_L&=8.33\times10^4<Re_{cr},\
-\bar C_f=1.328/\sqrt{Re_L}=0.00460\\
-D_a&=0.0259{\rm N},\quad
-\delta_a=5L/\sqrt{Re_L}=8.66{\rm mm}\\
-\text{水: }Re_L&=1.24\times10^6,\ x_{cr}=Re_{cr}\nu/U=0.201{\rm m}\\
-\bar C_f&=0.074/Re_L^{1/5}-1742/Re_L=0.00307\\
-D_w&=14.4{\rm N},\quad
-\delta_w=0.37L/Re_L^{1/5}=11.2{\rm mm}
-\end{aligned}}
-\stepq{平板题统一流程}
-1 算$Re_L$判全层流/转捩/湍流。2 选$\bar C_f,\delta(L)$。3 阻力面积分清单面$Lb$、双面$2Lb$、湿表面积。4 给速度剖面先积分$\delta^*,\theta$，再用Karman动量积分。
-
-\stepq{分离与阻力}
-逆压梯度$dp/dx>0$使边界层减速增厚；$\partial u/\partial y|_w=0$为分离临界。摩擦阻力来自$\tau_w$；压差阻力来自分离尾流。
-\idq{外绕流阻力判断}
-流线型小迎角：摩擦阻力为主；钝体/分离明显：压差阻力为主。高$Re$物面外可近似无粘，用Euler/伯努利；靠壁必须用边界层。
-
-% 旧全局收口表：内容已拆到母题1/2/6/7，不再放在母题6下造成跨题型混杂。
-\iffalse
-\quickq{高频收口模型}
-\par\noindent \renewcommand{\arraystretch}{1.15}\begin{tabular}{|p{0.22\linewidth}|p{0.69\linewidth}|}
-\hline 速度场连续 & 算$u_x+v_y+w_z$\\ \hline
-有旋 & $\Omega_z=v_x-u_y$，$\omega_z=\Omega_z/2$\\ \hline
-流线 & $dx/u=dy/v$，非定常先代$t=t_0$\\ \hline
-势/流函数 & 先验无旋/不可压，再积分\\ \hline
-小孔出流 & $V=\sqrt{2gH}$，$Q=\mu A\sqrt{2gH}$\\ \hline
-皮托管 & $V=\sqrt{2(p_0-p)/\rho}$\\ \hline
-U管差压 & $\Delta p=(\rho_m-\rho)g\Delta h$\\ \hline
-维数分析 & $n$个量、$k$个基本量纲，得$n-k$个$\pi$数\\ \hline
-\end{tabular}\par\noindent \renewcommand{\arraystretch}{1}
-\fi
-
-\iffalse
-\stepq{过程分最小骨架}
-先写“该题属于……模型”，再写控制方程、边界条件、代入顺序。比如：“定常一维绝热等熵流，由$M$求滞止量，由面积比求另一截面$M$，再由等熵式求$p,T,\rho,V$。”这能拿框架分。
-\fi
-\stepq{Von Karman边界层积分模板}
-无压梯度平板：$\tau_w=\rho U^2d\theta/dx$。若假定剖面含未知$\delta(x)$，先算$\theta=C\delta$，再由$\tau_w=\mu(\partial u/\partial y)_0$得到微分方程，积分求$\delta(x)$。
-\stepq{阻力系数换算}
-局部$c_f=\tau_w/(0.5\rho U^2)$；平均$\bar C_f=D/(0.5\rho U^2A)$。层流局部$c_f=0.664/\sqrt{Re_x}$；平均$\bar C_f=1.328/\sqrt{Re_L}$。不要把局部当平均。
-\errq{边界层题检查}
-$x$用从前缘量的距离；$L$用整块板长度；$A$是湿表面积；双面板乘2。若题给临界$Re_{cr}$，先算转捩位置$x_{cr}=Re_{cr}\nu/U$。
-\errq{交卷前检查}
-看见“平均时均速度”就是$\bar u$，不是中心最大速度；看见“壁面最大厚度”通常是$x=L$处$\delta$；看见“平板阻力”要用平均摩擦系数，不是尾部局部值。
-\stepq{外流阻力典型量}
-球/圆柱阻力常写$D=C_D(0.5\rho U^2)A$，$A$为迎风面积。Stokes小球$Re<1$：$D=3\pi\mu dU$。高Re钝体以压差阻力为主，不能只算摩擦。
-\stepq{边界层分离答题句}
-“由于逆压梯度，近壁流体动能不足，壁面速度梯度降为零并反向，边界层发生分离，尾流区压力降低，压差阻力增大。”
-\iffalse
-\errq{公式许可检查}
-许可：静水$V=0$；Bernoulli定常/不可压/无粘/同流线；H--P层流充分发展；等熵无摩擦无激波；激波/PM超声速分段；边界层高$Re$；应力$P\bm n$。分段：跨泵/水轮/局损/变径/激波，换截面/基准/$V$/$p_0$/$H$。
-\stepq{查书优先级}
-可带教材时，优先查：正/斜激波表、PM函数表、Moody图、面积--马赫数表、阻力系数图。速查表负责告诉你该查哪个表和查完怎么接公式。
-\fi
-% ---- 母题6归位：边界层/外绕阻力/相似 ----
 \subq{子题六：平板层流边界层计算（Blasius）}
 作业代表题：10.2 平板层流油流。原题：油 $\mu = 0.731$ Pa·s, $\rho = 925$ kg/m$^3$, 流速 $U = 0.6$ m/s, 板长 $L = 0.5$ m, 宽 $b = 0.15$ m, 求最大边界层厚度 $\delta_{\max}$ 和双面摩擦阻力 $D$。\\
 公式链：
@@ -1825,42 +1715,52 @@ $x$用从前缘量的距离；$L$用整块板长度；$A$是湿表面积；双�
 点涡$v_\theta=\Gamma/(2\pi r)$，原点外无旋但环量非零；强迫涡$v_\theta=\omega r$，$\Omega_z=2\omega$，自由面$z=\omega^2r^2/(2g)+C$；自由涡$v_\theta=C/r$，$p/\rho+\frac12v^2+gz=C$。平面方程$F=0$的单位法向$\bm n=\pm\nabla F/|\nabla F|$；圆柱面$y^2+z^2=R^2$法向$(0,y/R,z/R)$。
 \infoh{场变量信息库D 易错检查}
 应力张量题不是直接取矩阵元素，必须先算$\bm t_n=P\bm n$。流线不是迹线：定常时可同，非定常通常不同。二维不可压不等于无旋；有$\psi$不代表有$\phi$。证明题要先写适用条件，不能只抄结论。
-\subq{应力张量指定平面：给$P$和单位法向$\bm n$，求应力矢量、法向/切向分量、夹角}
-\fmlb{\bm t_n=P\bm n,\quad \sigma_n=\bm t_n\cdot\bm n=\bm n^TP\bm n,\quad
-\bm\tau=\bm t_n-\sigma_n\bm n,\quad
-\tau=\sqrt{\bm t_n\cdot\bm t_n-\sigma_n^2},\quad
-\cos\alpha=\sigma_n/|\bm t_n|}
-若题给平面方程，先由$\nabla F$单位化得$\bm n$；若题问垂直/切向投影，必须写向量形式，最后再给大小。
-\subq{速度场小题：判连续、有旋、流线、迹线、加速度}
-连续：算$u_x+v_y+w_z$。有旋：算$\Omega_z=v_x-u_y$或三维旋度。流线：定常二维用$dy/dx=v/u$；也可先找$\psi$，流线$\psi=C$。迹线：解$dx/dt=u(x,y,t),dy/dt=v(x,y,t)$，非定常题不能拿流线代替迹线。
-\subq{静水压闸门/曲面/浮力：求合力、压力中心、铰链力}
-平面合力$F=\rho gh_CA$；倾斜平面沿板坐标$y_D=y_C+I_C/(y_CA)$，竖直深度$h_C=y_C\sin\theta$。曲面分解：水平分力等于竖直投影面静水压力，竖直分力等于压力体水重。浮力$F_B=\rho gV_{\rm disp}$，$V_{\rm disp}$为排开体积；漂浮时$G=F_B$。
-\subq{常用几何：静水压和量纲题会用}
-圆$A=\pi d^2/4,\ I_C=\pi d^4/64$；矩形$A=bh,\ I_C=bh^3/12$；三角形$A=bh/2,\ I_C=bh^3/36$；半圆$A=\pi R^2/2,\ y_C=4R/(3\pi)$。量纲法：变量$n$个、基本量纲$r$个，则$\pi$群$n-r$个；常选$\rho,V,L$作重复变量。
-
-\subq{母题7题干入口：看见关键词后第一行写什么}
-\par\noindent \begin{tabular}{|p{0.28\linewidth}|p{0.66\linewidth}|}\hline
-速度场$u,v,w$ & 先算$\nabla\cdot\bm V$判不可压，再算$\nabla\times\bm V$判有旋；若求流线写$dx/u=dy/v=dz/w$。\\\hline
-应力张量$P$+平面 & 先求单位法向$\bm n$，再写$\bm t=P\bm n$，随后分解法向/切向。\\\hline
-闸门/铰链/拉杆 & 先求$F=\rho gh_CA$和压力中心，再对铰点取矩。\\\hline
-曲面/圆弧面 & 水平分力取竖直投影压力；竖直分力取压力体水重。\\\hline
-浮体/漂浮 & 浮力$F_B=\rho gV_{\rm disp}$；平衡时重力=浮力，稳定看$G$与$M$。\\\hline
-加速/旋转容器 & 写$\nabla p=\rho(\bm g-\bm a)$；自由面垂直等效重力。\\\hline
-\end{tabular}
 \conceptq{母题7高频证明句}
-应力张量对称：无体偶力时微元角动量平衡，故$p_{xy}=p_{yx}$等，独立分量由9个变6个。\\
-Laplace来源：不可压$\nabla\cdot\bm V=0$且无旋$\bm V=\nabla\phi$，故$\nabla^2\phi=0$；二维流函数有$\nabla^2\psi=-\Omega_z$。\\
-Bernoulli沿流线：由Euler方程沿流线积分；若还无旋，则积分常数全场相同。\\
+应力张量对称：无体偶力时微元角动量平衡，故 $p_{xy}=p_{yx}$ 等，独立分量由 9 个变 6 个。\\
+Laplace来源：不可压 $\nabla\cdot\bm V=0$ 且无旋 $\bm V=\nabla\phi$，故 $\nabla^2\phi=0$；二维流函数有 $\nabla^2\psi=-\Omega_z$。\\
+Bernoulli沿流线：由 Euler 方程沿流线积分；若还无旋，则积分常数全场相同。\\
 压力中心低于形心：静水压随深度增大，下部压力权重大，所以合力作用点比形心深。
-\stepq{母题7标准模板：速度场}
-1 连续：$\nabla\cdot\bm V=0?$ 2 有旋：$\nabla\times\bm V=0?$ 3 若不可压，找$\psi$；若无旋，找$\phi$。4 流线$\psi=C$或$dy/dx=v/u$；迹线必须解$dx/dt=u,dy/dt=v$。5 加速度用材料导数。
-\stepq{母题7标准模板：静水压}
-1 画自由液面和形心深度$h_C$。2 平面力$F=\rho gh_CA$。3 压力中心用$I_C/(y_CA)$修正。4 曲面拆$F_H,F_V$。5 铰链/拉杆题最后对铰点列力矩。
-\stepq{母题7标准模板：相对平衡/涡面}
-水平加速：$gdz+adx=0,\ \tan\alpha=a/g$。竖直加速向上用$g+a$，向下用$g-a$。强迫涡自由面$z=\omega^2r^2/(2g)+C$；自由涡用$p/\rho+v_\theta^2/2+gz=C$。
-\errq{母题7易错收口}
-非定常流线不等于迹线；有流函数不代表无旋；有势函数才代表无旋。压力中心公式里的$y$是沿板面坐标，深度要乘$\sin\theta$。曲面竖直分力方向看压力体位置。应力夹角若$\sigma_n<0$，说明法向应力为压应力，夹角大小用绝对值说明。
 
+\subq{子题一：三维应力张量与任意平面上的应力分析}
+作业代表题：应力张量。原题：已知某流场中一点处的应力张量为 $P = \begin{pmatrix} 2 & 1 & 0 \\ 1 & -3 & 2 \\ 0 & 2 & 1 \end{pmatrix}$ kPa，求通过该点且平行于平面 $x+y+z=0$ 的平面上的应力矢量、法向应力、切向应力及应力矢量与法线的夹角。\\
+公式链：
+1. 求单位法向量：由平面方程得 $\bm n = \frac{1}{\sqrt{3}}(1, 1, 1)^T$。
+2. 计算应力矢量：$\bm t_n = P \bm n = \frac{1}{\sqrt{3}} \begin{pmatrix} 2&1&0\\1&-3&2\\0&2&1 \end{pmatrix} \begin{pmatrix} 1\\1\\1 \end{pmatrix} = \begin{pmatrix} \sqrt{3} \\ 0 \\ \sqrt{3} \end{pmatrix}$ kPa，大小 $|\bm t_n| = \sqrt{6}$ kPa。
+3. 计算法向应力：$\sigma_n = \bm t_n \cdot \bm n = 2$ kPa（拉应力）。
+4. 计算切向应力大小：$\tau = \sqrt{|\bm t_n|^2 - \sigma_n^2} = \sqrt{6 - 4} = \sqrt{2}$ kPa $\approx 1.414$ kPa。
+5. 计算夹角：$\cos\alpha = \sigma_n / |\bm t_n| = 2/\sqrt{6} = \sqrt{2/3} \Rightarrow \alpha = 35.26^\circ$。
+
+\subq{子题二：速度场运动学性质判定（连续、有旋、流线与迹线）}
+作业代表题：流线与迹线。原题：已知二维流场速度为 $u=x/(1+t)$，$v=y$，求：(1) $t=0$ 时通过 $(1,1)$ 的流线；(2) $t=0$ 时刻从 $(1,1)$ 出发的迹线。\\
+公式链：
+1. 连续性与有旋性判定：$\nabla\cdot\bm V = u_x+v_y = 1/(1+t) + 1 \ne 0$（可压）；$\Omega_z = v_x-u_y = 0$（无旋）。
+2. 计算 $t=0$ 时的流线：代入 $t=0$ 得 $u=x, v=y$。流线微分方程 $dy/dx = v/u = y/x \Rightarrow y = Cx$。过 $(1,1)$ 得 $y = x$。
+3. 计算迹线：迹线微分方程 $dx/dt = u = x/(1+t) \Rightarrow x(t) = C_1(1+t)$；$dy/dt = v = y \Rightarrow y(t) = C_2 e^t$。
+4. 带入初始条件：$t=0$ 时 $x=1, y=1 \Rightarrow C_1=1, C_2=1$。消去参量 $t$：$t = x-1 \Rightarrow y = e^{x-1}$。
+
+\subq{子题三：平面静水总压力与铰链力矩计算}
+作业代表题：倾斜闸门。原题：一矩形闸门宽 $b=2$ m，高 $h=3$ m，与水平面夹角 $\theta=45^\circ$，顶端位于水深 $h_0=1$ m 处。求闸门所受静水总压力 $F$ 及压力中心 $y_D$，若顶端设铰链，求底端开启所需的拉力 $T$。\\
+公式链：
+1. 沿板坐标形心位置：顶端 inclined 坐标 $y_0 = h_0 / \sin 45^\circ = 1.414$ m，形心 $y_C = y_0 + h/2 = 2.914$ m。
+2. 计算形心深度：$h_C = y_C \sin 45^\circ = 2.06$ m。
+3. 计算总压力：$F = \rho g h_C A = 1000 \times 9.8 \times 2.06 \times (2\times 3) = 121.1$ kN。
+4. 压力中心：$y_D = y_C + \frac{I_C}{y_C A} = 2.914 + \frac{2 \times 3^3 / 12}{2.914 \times 6} = 3.171$ m。与顶端距离 $d = y_D - y_0 = 1.757$ m。
+5. 开启力矩平衡：以铰点求矩 $F \cdot d = T \cdot h \Rightarrow T = 121.1 \times 1.757 / 3 = 70.9$ kN。
+
+\subq{子题四：曲面静水总压力计算（水平与竖直分量）}
+作业代表题：圆弧闸门。原题：一半径 $R=1$ m，长 $L=2$ m 的四分之一圆弧闸门，水深 $H=2$ m（刚好淹没圆弧顶）。求闸门所受的水平分力 $F_H$、竖直分力 $F_V$ 及合力 $F$。\\
+公式链：
+1. 水平分力：投影面高 $h_y=R=1$ m，形心深 $h_C = H - R/2 = 1.5$ m。$F_H = \rho g h_C (R L) = 1000 \times 9.8 \times 1.5 \times 2 = 29.4$ kN。
+2. 竖直分力：压力体体积 $V = L \cdot (H \cdot R - \frac{1}{4}\pi R^2) = 2 \times (2 - 0.785) = 2.43$ m$^3$。$F_V = \rho g V = 23.8$ kN（方向向上）。
+3. 合力及夹角：$F = \sqrt{F_H^2 + F_V^2} = 37.8$ kN。指向圆心，与水平夹角 $\alpha = \tan^{-1}(F_V/F_H) = 39.0^\circ$。
+
+\subq{子题五：旋转液体自由面与相对平衡}
+作业代表题：旋转筒。原题：开口圆筒半径 $R=0.5$ m，盛水高度 $h_0=0.8$ m。若绕中心轴以 $\omega = 10$ rad/s 旋转，求自由面方程及水面最大和最小高度。\\
+公式链：
+1. 自由面抛物面方程：$z = \frac{\omega^2 r^2}{2g} + z_0 = 5.10 r^2 + z_0$。
+2. 中心最低高度 $z_0$：由旋转前后体积守恒：$\pi R^2 h_0 = \int_0^R 2\pi r z(r) dr \Rightarrow h_0 = z_0 + \frac{\omega^2 R^2}{4g}$。
+3. 计算数值：$z_0 = 0.8 - \frac{10^2 \times 0.25}{4 \times 9.8} = 0.162$ m。
+4. 边缘最高高度：$z(R) = z_0 + \frac{\omega^2 R^2}{2g} = 0.162 + 1.276 = 1.438$ m。
 
 \end{multicols}
 \end{document}

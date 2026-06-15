@@ -159,18 +159,53 @@
 \draw[->, blue, thick] (3.3,0.2) -- (3.9,0.2) node[midway, above=1pt] {$Ma_1$};
 \draw[->, blue, thick] (4.5,-0.2) -- (5.1,-0.42) node[midway, below left] {$Ma_2$};
 \end{tikzpicture}\end{center}\vspace{-3pt}}
-\newcommand{\schemeviscous}{\begin{center}\begin{tikzpicture}[>=Latex,scale=0.58,every node/.style={font=\tiny}]
-\draw[blue] (0,0)--(0,1.0); \draw[blue] (0.6,0)--(0.6,1.0);
-\draw[thick] (0,1.0)--(0.6,1.0).. controls (1.2,1.0) and (1.2,0.3)..(1.9,0.3)--(3.3,0.3);
-\draw[thick] (0,0)--(0.6,0).. controls (1.2,0) and (1.2,0.2)..(1.9,0.1)--(3.3,0.1);
-\draw[->] (0.3,0.5)--(1.0,0.5); \node at (0.3,1.22){水面};
-\node[circle,draw,inner sep=1pt] at (2.25,0.2){P};
-\draw[<->] (2.25,0.2)--(2.25,-0.55); \node[right] at (2.25,-0.18){$h$};
-\node at (1.65,-0.85){吸水泵/汽蚀};
-\draw[thick] (4.05,0)--(5.75,0); \draw[thick] (4.05,0.65)--(5.75,0.65);
-\draw[->,red] (4.1,0.65)--(5.2,0.65); \node at (5.35,0.83){$U$};
-\draw[blue,thick] (4.1,0).. controls (4.8,0.25) and (5.2,0.48)..(5.75,0.65);
-\node at (4.95,-0.25){Couette/Poiseuille};
+\newcommand{\schemeviscous}{\begin{center}\begin{tikzpicture}[>=Latex,scale=0.85,every node/.style={font=\fontsize{4.8}{5.8}\selectfont}]
+% ==================== LEFT: PUMP CAVITATION ====================
+% Water in pool
+\fill[blue!10] (-0.3,0) rectangle (0.5,0.7);
+\draw[blue, thick] (-0.3,0.7) -- (0.5,0.7);
+\node[blue, above, font=\fontsize{4}{5}\selectfont] at (0.1,0.7) {水面};
+% Pool wall
+\draw[thick] (-0.3,1.0) -- (-0.3,0) -- (0.5,0) -- (0.5,0.4);
+% Suction pipe
+\draw[thick] (0.05,0.2) -- (0.05,0.95) coordinate(A) .. controls (0.05,1.15) and (0.3,1.15) .. (0.5,1.15) -- (1.3,1.15);
+\draw[thick] (0.25,0.2) -- (0.25,0.85) coordinate(B) .. controls (0.25,0.95) and (0.35,0.95) .. (0.5,0.95) -- (1.3,0.95);
+% Pump circle
+\draw[thick, fill=white] (1.5,1.05) circle (0.22);
+\node[font=\fontsize{4.5}{5.5}\selectfont] at (1.5,1.05) {泵P};
+% Inflow arrow inside pool
+\draw[->, blue!70, thick] (0.15,0.05) -- (0.15,0.35);
+% Reference lines for h
+\draw[dashed, gray, ultra thin] (-0.3,0.7) -- (2.1,0.7);
+\draw[dashed, gray, ultra thin] (1.5,1.05) -- (2.1,1.05);
+\draw[<->, >=Stealth, thin] (2.0,0.7) -- (2.0,1.05) node[midway, right] {$h$};
+\node[below] at (0.8, -0.1) {吸水泵安装高度/汽蚀};
+
+% ==================== RIGHT: COUETTE / POISEUILLE ====================
+% Bottom plate (fixed)
+\draw[line width=1pt] (3.6,0) -- (5.6,0);
+\foreach \x in {3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.2, 5.4, 5.6}
+  \draw[ultra thin] (\x, 0) -- (\x-0.08, -0.08);
+% Top plate (moving)
+\draw[line width=1pt] (3.6,1.0) -- (5.6,1.0);
+\foreach \x in {3.6, 3.8, 4.0, 4.2, 4.4, 4.6, 4.8, 5.0, 5.2, 5.4, 5.6}
+  \draw[ultra thin] (\x, 1.0) -- (\x+0.08, 1.08);
+% Wall velocity U
+\draw[->, red, thick] (4.4, 1.15) -- (5.2, 1.15) node[right=1pt] {$U$};
+% Reference line u=0
+\draw[dashed, gray] (4.0,0) -- (4.0,1.0);
+\node[below, gray] at (4.0,0) {$u=0$};
+% Velocity profile (combination of linear and parabolic)
+\draw[blue, thick] (4.0,0) .. controls (4.5, 0.3) and (4.8, 0.7) .. (5.0,1.0);
+% Velocity vector arrows
+\draw[->, blue!60, thin] (4.0, 0.2) -- (4.23, 0.2);
+\draw[->, blue!60, thin] (4.0, 0.4) -- (4.45, 0.4);
+\draw[->, blue!60, thin] (4.0, 0.6) -- (4.68, 0.6);
+\draw[->, blue!60, thin] (4.0, 0.8) -- (4.86, 0.8);
+% Labels
+\draw[<->, >=Stealth, thin] (3.3,0) -- (3.3,1.0) node[midway, left] {$h$};
+\node[blue, right] at (4.5, 0.45) {$u(y)$};
+\node[below] at (4.6, -0.1) {Couette/Poiseuille流};
 \end{tikzpicture}\end{center}\vspace{-3pt}}
 \newcommand{\schemebl}{\begin{center}\begin{tikzpicture}[>=Latex,scale=0.58,every node/.style={font=\tiny}]
 \draw[thick] (0,0)--(3.4,0); \draw[->,blue] (-0.2,0.55)--(0.7,0.55); \node at (0.15,0.82){$U$};
@@ -1208,6 +1243,24 @@ $p_e,p_b$ & $p_e$为出口截面内静压，$p_b$为外界/下游背压；二者
 $A_t,A_e,A^*$ & 喉部、出口、临界面积；阻塞时最小截面$A_t=A^*$\\ \hline
 $M,\mu,\beta,\theta$ & 马赫数、马赫角、斜激波角、气流偏转角；粘度$\mu$另看单位\\ \hline
 \end{tabular}
+
+\infoh{可压/Laval信息库E 扩展分析：管路激波与出口外波系}
+\stepq{Laval背压八状态判定与变化规律}
+背压从高到低：1 不流动 $\to$ 2 全亚声速 $\to$ 3 喉部临界达声速（最大流量阻塞开始） $\to$ 4 扩张段内有正激波（越右越靠出口） $\to$ 5 出口面正激波 $\to$ 6 出口外斜激波（过膨胀，$p_e < p_b$） $\to$ 7 设计等熵状态（$p_e = p_b$） $\to$ 8 出口外膨胀扇（欠膨胀，$p_e > p_b$）。质量流量一旦阻塞后，再降低背压其值固定不变。
+\varq{Laval管内正激波计算步骤与分段链}
+给激波位置 $A_s/A_t$：
+1. \key{波前段}：以原总压 $p_{01}=p_0$ 等熵膨胀，由面积比 $A_s/A^*$ 取\key{超声速支}求得波前马赫数 $Ma_1$，再算 $p_1, T_1$。
+2. \key{过波段}：利用正激波关系式求波后 $Ma_2, p_2, T_2$ 及新总压 $p_{02}$（$p_{02}<p_0$）。
+3. \key{波后段}：以新总压 $p_{02}$ 进行亚声速等熵流动直到出口。此时波后临界面积变大：$A^*_2 = A_s / (A/A^*)_{Ma_2}$。由出口面积比 $A_e/A^*_2$ 取\key{亚声速支}求得出口 $Ma_e$，进而求得 $p_e$。若在实际管内，则有出口静压 $p_e=p_b$。
+\varq{Laval出口外膨胀（欠膨胀）计算步骤}
+已知 $A_e/A_t, p_0, p_b$：
+1. 由 $A_e/A^*$ 取\key{超声速支}求得出口面等熵马赫数 $Ma_e$，等熵公式算得出口压力 $p_e$。
+2. 若 $p_e > p_b$，射流流出出口后需继续等熵膨胀，即为管外膨胀。
+3. 由最终总压与背压比 $p_0/p_b$ 求得射流最终马赫数 $Ma_b$。
+4. 气流在出口边缘偏转的转角为：$\alpha = \nu(Ma_b) - \nu(Ma_e)$（利用 Prandtl-Meyer 膨胀函数）。
+\stepq{U型压差计连接喉部的正激波题型提示}
+当U型压差计连接喉部与下游背压时，$p_t - p_b = \rho_{\rm Hg}gh$（若考虑压差计中水柱，则需修正密度差 $\rho_{\rm Hg}-\rho$）。若喉部阻塞，$p_t = p^* = 0.528p_0$，则可直接求得背压 $p_b$ 并用以判定激波的存在与位置。
+
 \errq{母题3统一检查}
 所有可压题最后检查四件事：1 压强是否绝压；2 $T$是否K；3 $Ma<1$还是$Ma>1$支路是否写明；4 是否跨激波，若跨激波则后续等熵计算必须换用新的$p_{02}$。
 \iffalse
@@ -1414,7 +1467,7 @@ $A_t$是几何最小面积；$A^*$是临界面积。阻塞时二者相等，未�
 \fi
 
 \chap{母题4 二维超声速波系：斜激波与膨胀波}
-\mview{\key{母题总览}：研究超声速流绕外角、凸角或绕流的波系结构。看见偏转角/凹角/凸角/绕折线壁面流动，用本母题。首写：偏转角为压缩（凹角）$\Rightarrow$斜激波；为膨胀（凸角）$\Rightarrow$膨胀扇。检查：斜激波后 $p_0$ 降，膨胀波内 $p_0$ 不变；斜激波后不一定为亚声速。}
+\mview{\key{母题总览}：研究超声速来流绕压缩外角、膨胀凸角或绕流的波系结构。看见偏转角/凹角/凸角/绕折线壁面流动，用本母题。首写：偏转角为压缩（凹角）$\Rightarrow$斜激波；为膨胀（凸角）$\Rightarrow$膨胀扇。检查：斜激波后 $p_0$ 降，膨胀波内 $p_0$ 不变；斜激波后不一定为亚声速。}
 \schemeshock
 \infoh{激波/PM信息库A 基础公式和数学运算}
 \subq{正激波：已知波前M1，求波后M2、压力、温度、总压损失}
@@ -1476,321 +1529,80 @@ $Ma_1=1.5\Rightarrow Ma_2=0.701,\ p_2/p_1=2.46,\ p_{02}/p_{01}=0.93$ \\
 $Ma_1=2.0\Rightarrow Ma_2=0.577,\ p_2/p_1=4.50,\ p_{02}/p_{01}=0.72$ \\
 $Ma_1=3.0\Rightarrow Ma_2=0.475,\ p_2/p_1=10.33,\ p_{02}/p_{01}=0.33$
 
-\chap{母题5 粘性管流：N-S、H-P、Couette、管内压损}
-\mview{\key{母题总览}：看见黏度、充分发展、圆管、两平板、油膜、粗糙度，先判层/湍和边界条件。首写简化N--S或机械能损失。顺序：$Re\to$层流解析/H--P或Moody$\lambda\to h_L,\Delta p,\tau,Q$。检查：充分发展、层流才用H--P、速度剖面与平均速度别混。}
+\chap{母题5 粘性管流：N-S简化、层流解析、管路压损与小球沉降}
+\mview{\key{母题总览}：看见黏度、管径、板距、流量、水头损失、粗糙度或小球沉降，判定为粘性流动。第一步：算雷诺数 $Re = Vd/\nu$ 判定层流（$Re < 2300$）或湍流（$Re > 4000$）。第二步：层流求解析速度分布（从简化 N-S 积分两次并用无滑移边界求常数）；湍流或管路计算求摩擦阻力（利用 Moody 图 $\lambda$ 或 $\lambda = 64/Re$ 算沿程与局部损失，并用能量方程联立）。}
 \schemeviscous
-\infoh{粘性管流信息库A 基础公式和数学运算}
-$\nu=\mu/\rho,\ Re=Vd/\nu=\rho Vd/\mu$。不可压牛顿流体：
-\[
-\rho\frac{D\bm V}{Dt}=-\nabla p+\mu\nabla^2\bm V+\rho\bm g,\quad
-\tau_{ij}=-p\delta_{ij}+\mu(u_{i,j}+u_{j,i})
-\]
-单向充分发展：惯性项常消失，主方程化为$\mu u''=$常数。圆管层流：
-\[
-Q=\frac{\pi R^4}{8\mu}\!\left(-\frac{dp}{dx}\right),\quad
-\Delta p=\frac{32\mu L\bar u}{d^2},\quad
-\lambda=\frac{64}{Re}
-\]
-管路损失：$h_f=\lambda(L/d)V^2/(2g),\ h_\zeta=\zeta V^2/(2g)$。壁律：$u_\tau=\sqrt{\tau_w/\rho},\ y^+=yu_\tau/\nu$。
-\infoh{粘性管流信息库B 证明链和判定链}
-\textbf{N--S简化链}：定常$\to\partial_t=0$；不可压$\to\nabla\cdot\bm V=0$；充分发展$\to\partial u/\partial x=0$；平行单向流$\to$只留一个速度分量；代边界条件积分两次。\\
-\textbf{H--P证明链}：取圆管微元，压差力$=\tau$剪力；得$\tau(r)=-r(dp/dx)/2$，再由$\tau=\mu du/dr$积分，得到抛物线、$Q$和$\lambda=64/Re$。\\
-\textbf{Couette判定链}：无压差$\to$线性；有压差/重力$\to$线性+抛物线；两层流体$\to$界面速度连续、剪应力连续。\\
-\textbf{粗糙管判定链}：先$Re$，层流粗糙度无效；湍流才用$\varepsilon/d$查Moody或Colebrook。\\
-\textbf{小球终速判定链}：终速时$G-F_B-D=0$；$Re<1$用Stokes，题给$C_D$用二次阻力。
-\infoh{粘性管流信息库C 常见结论库}
-层流圆管$u_{\max}=2\bar u$；平板Poiseuille$\bar u=2u_{\max}/3$；圆管壁剪$\tau_w=R\Delta p/(2L)=8\mu\bar u/d$。圆管流态：$Re<2300$层流，$2300\sim4000$过渡，$>4000$通常湍流。近壁分区：$y^+<5$粘性底层，$5<y^+<30$缓冲层，$y^+>30$对数/湍流区。粗糙度反推：先由能量方程求$\lambda$，再由$Re,\lambda$反查$\varepsilon/d$。
-\infoh{粘性管流信息库D 易错检查}
-不要把$\mu$和$\nu$混用；mm$^2$/s要化成$m^2$/s。平均速度$\bar u$不是中心最大速度。H--P只适用层流、圆管、充分发展；湍流不可套抛物线。局部损失速度用元件所在管段速度。竖直/斜管若用普通$p$易漏重力，改用$p^*=p+\rho gz$。Stokes沉降必须回查$Re<1$；题给$C_D$时通常不再用粘度。
-\stepq{N-S 简化}
-不可压牛顿流体：$\rho D\bm V/Dt=-\nabla p+\mu\nabla^2\bm V+\rho\bm g$。定常$\partial_t=0$；单向流只保留$u$；充分发展$\partial u/\partial x=0$；平行流惯性项常为0。\\
-\warn{大题先写假设，再积分两次，再代边界条件。}
+\infoh{粘性管流信息库A 基础公式与简化原理}
+* \key{牛顿剪切力与雷诺数}：$\tau = \mu \frac{du}{dy},\quad Re = \frac{Vd}{\nu} = \frac{\rho Vd}{\mu}$。水力直径：$d_h = \frac{4A}{\chi}$（$A$ 截面积，$\chi$ 润湿周长）。
+* \key{N-S 方程简化（平行单向充分发展流）}：流向为 $x$，速度仅有 $u(y)$，惯性项全部消失，方程简化为：
+  \[
+  \mu \frac{d^2u}{dy^2} = \frac{dp}{dx} - \rho g_x = \frac{dp^*}{dx}\quad \text{(其中 } p^* = p + \rho gz \text{ 为广义压强，} z \text{ 轴向上为正)}
+  \]
+* \key{Hagen-Poiseuille 圆管层流}：速度分布为抛物线 $u(r) = U_{\max}(1 - r^2/R^2)$，其中 $U_{\max} = 2V$。
+  \[
+  Q = \frac{\pi d^4 \Delta p}{128\mu L},\quad \Delta p = \frac{32\mu LV}{d^2},\quad \lambda = \frac{64}{Re},\quad \tau_w = \frac{d\Delta p}{4L} = \frac{8\mu V}{d}
+  \]
+* \key{管路水头损失}：沿程损失 $h_f = \lambda \frac{L}{d} \frac{V^2}{2g}$，局部损失 $h_{\zeta} = \zeta \frac{V^2}{2g}$。完全粗糙管阻力与 $Re$ 无关，只取决于相对粗糙度 $\varepsilon/d$。
+* \key{Stokes 低雷诺数阻力}：若 $Re = \frac{\rho Ud}{\mu} < 1$，球形颗粒受阻力 $D = 3\pi \mu d U$，阻力系数 $C_D = 24/Re$。
 
-\stepq{H-P 圆管层流}
-\fmlb{\begin{aligned}
-u(r)&=\frac{1}{4\mu}\left(-\frac{dp}{dx}\right)(R^2-r^2)\\
-u_{\max}&=2\bar u,\qquad
-Q=\frac{\pi R^4}{8\mu}\left(-\frac{dp}{dx}\right)\\
-\Delta p&=\frac{8\mu LQ}{\pi R^4},\qquad
-\lambda=\frac{64}{Re}\\
-\tau_w&=\frac{R\Delta p}{2L}=\frac{8\mu\bar u}{d}
-\end{aligned}}
-\stepq{广义压强写法}
-有重力沿管时，用$p^*=p+\rho gz$。H--P可写成$u(r)=\frac{1}{4\mu}(-dp^*/dx)(R^2-r^2)$。斜管、竖管不要漏掉$\rho g$项。
+\infoh{粘性管流信息库B 常见概念与常考判断}
+* \key{完全发展流动}：圆管充分发展流动中，速度分布沿轴向不变（$\partial u/\partial x = 0$），压强梯度为常数（$dp/dx = C$），沿程损失反映壁面摩阻。
+* \key{湍流壁律分区}：摩擦速度 $u_\tau = \sqrt{\tau_w/\rho}$，无量纲高度 $y^+ = y u_\tau/\nu$。粘性底层（$y^+ < 5$，粘性主导，速度线性分布）、过渡缓冲层（$5 \le y^+ \le 30$）、对数律区（$y^+ > 30$，湍流剪切主导）。
+* \key{雷诺应力与混合长度}：雷诺应力 $-\rho \overline{u'v'}$ 源于湍流脉动的动量输运；总剪应力为分子粘性剪应力与雷诺剪应力之和。混合长度假设 $\tau_t = \rho l^2 |du/dy| (du/dy)$，近壁 $l = \kappa y$。
+* \key{数值模拟方法}：DNS（直接解 N-S，解析全尺度，最贵）；LES（解析大涡，模型化小涡）；RANS（雷诺时均，对雷诺应力建模，最常用）。
 
-\subq{平板Couette：已知板距h、上板速度U、$\mu$，求速度和剪应力}
-无压差：
-\fmlb{u=Uy/h,\qquad \tau=\mu U/h}
-有压力梯度/重力分量：
-\fmlb{\mu\frac{d^2u}{dy^2}=\frac{dp}{dx}-\rho g_x}
-倾斜平板若$u(0)=0,u(H)=-U_0,u(H/2)=0$，且
-\fmlb{\mu u''+\rho g\sin\theta=0,\qquad
-U_0=\frac{\rho g\sin\theta\,H^2}{4\mu}}
+\infoh{粘性管流信息库C 解题食谱与步骤（一步步带入指导）}
 
-\subq{两层Couette：已知h1,h2,mu1,mu2,U，求两层速度和剪力}
-\fmlb{\tau=\frac{U}{h_1/\mu_1+h_2/\mu_2}
-=\frac{U\mu_1\mu_2}{\mu_2h_1+\mu_1h_2}}
-\fmlb{\begin{cases}
-u_1=\tau y/\mu_1, & 0\le y\le h_1\\
-u_2=u_1(h_1)+\tau(y-h_1)/\mu_2, & h_1\le y\le h_1+h_2
-\end{cases}}
+\subq{平板 Couette 流（纯剪切流）：已知上板速 U、板距 h、黏度 $\mu$，求速度、流量和剪力}
+1. \key{写速度分布}：直接带入线性公式：$u(y) = U \frac{y}{h}$（$y=0$ 为下板，$y=h$ 为上板）。
+2. \key{求单位宽度流量 $q$}：$q = \int_0^h u\,dy = \frac{1}{2} U h$。若已知板宽 $b$，总流量 $Q = q b = \frac{1}{2} U h b$。
+3. \key{求壁面剪应力}：由牛顿内摩擦定律，全场剪应力恒定：$\tau = \mu \frac{du}{dy} = \mu \frac{U}{h}$。壁面受力 $F = \tau A = \mu \frac{U}{h} A$。
 
-\formq{管路损失/管内压损}
-\fmlb{h_f=\lambda\frac{L}{d}\frac{V^2}{2g},\qquad
-h_\zeta=\zeta\frac{V^2}{2g}}
-粗糙度只通过$\varepsilon/d$影响$\lambda$；层流$\lambda=64/Re$与粗糙度无关。\\
-\fmlb{\frac1{\sqrt\lambda}=-2\log_{10}
-\left(\frac{\varepsilon}{3.7d}+\frac{2.51}{Re\sqrt\lambda}\right)}
-无Moody图时用Colebrook试算；完全粗糙区近似只看$\varepsilon/d$。反求粗糙度：先由能量方程求$\lambda$，再由$Re,\lambda$查Moody反读$\varepsilon/d$；完全粗糙近似$1/\sqrt{\lambda}=-2\log_{10}(\varepsilon/3.7d)$。\\
-吸水泵：
-\fmlb{h=\frac{p_a-p_B}{\rho g}-\frac{V^2}{2g}
--\left(\lambda\frac{L}{d}+\sum\zeta\right)\frac{V^2}{2g}}
-水轮机：
-\fmlb{\begin{aligned}
-H_T&=z_1-z_2+\frac{p_1-p_2}{\rho g}
-+\frac{V_1^2-V_2^2}{2g}-h_f-\sum h_\zeta\\
-P&=\rho gQH_T
-\end{aligned}}
-\stepq{管路题统一流程}
-1 由$Q$算各段$V=4Q/(\pi d^2)$。2 算$Re=Vd/\nu$判层/湍。3 层流$\lambda=64/Re$；湍流用Moody/题给提示。4 各段$h_f$相加，弯头阀门用$\sum h_\zeta$。5 能量方程求$p,H_p,H_T$。
+\subq{平板 Poiseuille 流（压差流）：已知两固定板距 h、压降 $\Delta p/L$（或 $dp/dx$）、黏度 $\mu$，求速度分布与流量}
+1. \key{求速度分布}：直接带入抛物线公式：$u(y) = \frac{1}{2\mu} \left( -\frac{dp}{dx} \right) y (h-y)$，其中 $-\frac{dp}{dx} = \frac{\Delta p}{L}$。
+2. \key{求最大速度}：在中心线 $y = h/2$ 处速度最大：$u_{\max} = \frac{h^2}{8\mu} \left( -\frac{dp}{dx} \right)$。
+3. \key{求平均速度与单位宽流量}：平均速度 $\bar{u} = \frac{2}{3}u_{\max}$；单位宽度流量 $q = \bar{u}h = \frac{h^3}{12\mu} \left( -\frac{dp}{dx} \right)$。
+4. \key{求壁面剪应力}：代入 $y=0$ 得壁剪应力大小 $\tau_w = \frac{h}{2} \left( -\frac{dp}{dx} \right)$。
 
-\subq{作业代表题：圆管湍流近壁三层}
-原题：$d=50$mm圆管，截面平均时均速度$\bar u_m=1.7$m/s，$\nu=1.006$mm$^2$/s，求线性底层、缓冲层、完全湍流区厚度；提示$\bar u_m/u_\tau=2.5\ln(Ru_\tau/\nu)+1.75$。\\
-公式选择：这是\key{湍流壁律}，不是H--P层流抛物线。先由平均速度反求摩擦速度，再用$y^+$分层。
-\fmlb{\begin{aligned}
-R&=0.025{\rm m},\quad \nu=1.006\times10^{-6}\\
-\frac{1.7}{u_\tau}&=2.5\ln\frac{0.025u_\tau}{1.006\times10^{-6}}+1.75\\
-u_\tau&=0.0818{\rm m/s}\\
-y^+&=yu_\tau/\nu,\quad
-y_5=\frac{5\nu}{u_\tau}=0.0615{\rm mm},\quad
-y_{30}=\frac{30\nu}{u_\tau}=0.369{\rm mm}
-\end{aligned}}
-结果：线性底层$0<y<0.0615$mm；缓冲层$0.0615<y<0.369$mm，厚$0.3075$mm；完全湍流区$0.369<y<25$mm，厚$24.63$mm。
+\subq{平板 Couette-Poiseuille 结合流：已知上板速 U、板距 h、压降 $dp/dx$、黏度 $\mu$，求流速最大值和壁面受力}
+1. \key{写出叠加速度公式}：$u(y) = U \frac{y}{h} + \frac{1}{2\mu} \left( -\frac{dp}{dx} \right) y (h-y)$。
+2. \key{求最大流速位置}：对 $y$ 求导并令其为 $0$：$\frac{du}{dy} = \frac{U}{h} + \frac{1}{2\mu} \left( -\frac{dp}{dx} \right) (h-2y) = 0$，解出 $y_m = \frac{h}{2} + \frac{\mu U}{h(-dp/dx)}$。若 $y_m \in [0, h]$，则最大速度为 $u(y_m)$。
+3. \key{求流量}：叠加两项的流量：$q = \frac{1}{2}Uh + \frac{h^3}{12\mu}\left(-\frac{dp}{dx}\right)$。
+4. \key{求壁面剪力}：求导算剪应力分布 $\tau(y) = \mu \frac{du}{dy} = \mu \frac{U}{h} + \frac{1}{2}\left(-\frac{dp}{dx}\right)(h-2y)$。代入下壁 $y=0$ 得 $\tau_1 = \mu \frac{U}{h} + \frac{h}{2}\left(-\frac{dp}{dx}\right)$；代入上壁 $y=h$ 得 $\tau_2 = \mu \frac{U}{h} - \frac{h}{2}\left(-\frac{dp}{dx}\right)$。
 
-\stepq{常见模型模板}
-\varq{泵最大安装高度}
-算$Q,V,Re,\varepsilon/d\to\lambda$；入口压力要求$p_B\ge p_v+\Delta p_{\text{safe}}$；代入求$h_{\max}$。
-\varq{水轮机功率}
-各段算$Re,\lambda,h_f$；能量方程含$H_T$；$P=\rho gQH_T$。
-\varq{滑动轴承/油膜}
-$du/dy\approx V/t$；$\tau=\mu V/t$；$F=\tau A$；$P=FV$。
-\varq{吸水泵高度/汽蚀}
-起点选水面，终点选泵入口中心。入口阀、弯头、沿程损失全在右侧；泵入口最低绝压$p_B=p_v+20{\rm kPa}$。粗糙度用于$\varepsilon/d$查$\lambda$。
-\varq{水轮机输出功率}
-从上游水面到下游压力表截面列能量；不同直径分段算$V,Re,\lambda,h_f$。压力表给表压，水面表压为0；输出功率$P=\rho gQH_T$。
-\stepq{平板Poiseuille}
-两固定板距$h$，定常充分发展：$\mu u''=dp/dx$。边界$u(0)=u(h)=0$，得$u=\frac{1}{2\mu}(-dp/dx)y(h-y)$，$u_{\max}=\frac{h^2}{8\mu}(-dp/dx)$，$\bar u=2u_{\max}/3$。
-\subq{Couette--Poiseuille：已知U、dp/dx、h、$\mu$，求速度分布和流量}
-上板$U$、下板0、同时有压差：$u=Uy/h+\frac{1}{2\mu}(-dp/dx)y(h-y)$。零剪切位置由$du/dy=0$；流量$Q=b\int_0^h udy$。
-\subq{练习：SAE30油，$h=6$mm，$\mu=0.29$，上板$U=3$m/s，$dp/dx=-1.6\times10^5$Pa/m}
-方程与边界：$\mu u''=dp/dx,\ u(0)=0,\ u(h)=U$。速度：
-$u=Uy/h+\frac{1}{2\mu}(-dp/dx)y(h-y)=2155.17y-275862y^2$。\\
-最大速：$u'=2155.17-551724y=0$，故$y_m=3.91$mm，$u_{\max}=4.21$m/s。剪应力：
-$\tau_{xy}=\mu u'=625-1.6\times10^5y$ Pa。下板受流体$625$Pa向$+x$；上壁处$\tau_{xy}(h)=-335$Pa，表示壁面对流体剪力向$-x$，故流体对上板为$335$Pa向$+x$（若题只问流体内剪应力符号，写$-335$Pa）。
-\formq{层流/湍流判定}
-圆管$Re<2300$层流，$Re>4000$通常湍流。非圆管用水力直径$d_h=4A/P_w$。层流有解析速度分布；湍流多用经验阻力系数，不能套H--P抛物线。
-\formq{压力降与剪力平衡}
-圆管受力平衡：$\Delta p\,\pi R^2=\tau_w(2\pi RL)$，故$\tau_w=R\Delta p/(2L)$。这条可推很多壁面剪应力题。
-\stepq{管内层流竖直流}
-沿$z$向上流，能驱动流动的是$-\frac{dp}{dz}-\rho g$。若速度分布已知，由H--P反推$dp/dz$；题问“沿轴向压降”要说明是否含重力项，常用$p^*=p+\rho gz$避免漏项。
-\stepq{层流解析题通用套路}
-两平行板/两层流体：主方程都是$\mu u''=$常数。边界：固壁无滑移；两流体交界速度连续、剪应力连续。先解速度，再求剪应力$\tau=\mu u'$，最后代数值。
-\idq{泵/汽蚀判断}
-入口绝压必须大于汽化压加安全余量。若算得$p_B<p_v+\Delta p$，就汽蚀。吸水高度越大、流速越大、管越长、局部损失越大，越容易汽蚀。
-\quickq{局部损失系数}
-入口、弯头、阀门、出口统一写$h_\zeta=\zeta V^2/(2g)$。若不同管径，局部损失用该局部元件所在管段速度，不能全用一个$V$。
-% ==================== SECTION 6 ====================
-% ---- 母题5归位：N-S/H-P/Couette/管内粘性 ----
-\stepq{粘性流动、管流、边界层模型速解}
-\formq{N--S简化四句话}
-牛顿不可压：$\tau_{ij}=-p\delta_{ij}+\mu(u_{i,j}+u_{j,i})$，$\rho D\bm V/Dt=-\nabla p+\mu\nabla^2\bm V+\rho\bm g$。定常去$\partial_t$，充分发展去$\partial_x$，单向只留一个速度；小$Re$时惯性项可删。
-\stepq{平板间层流}
-$\mu u''=dp/dx$。无压差Couette：$u=Uy/h$。无动板Poiseuille：$u=\frac{1}{2\mu}(-dp/dx)y(h-y)$。两者叠加：$u=Uy/h+\frac{1}{2\mu}(-dp/dx)y(h-y)$。
-\subq{两层Couette型：已知两层厚度/黏度和上板U，求tau与u1,u2}
-下层厚$h_1,\mu_1$，上层厚$h_2,\mu_2$，上板速度$U$。剪应力常数：$\tau=U/(h_1/\mu_1+h_2/\mu_2)$。速度分段线性，交界速度连续，剪应力连续。
-\subq{倾斜平板层流：已知H、theta、mu、rho及边界速度，求U0和壁面剪力}
-沿板方向无压差，重力分量驱动：$\mu u''+\rho g\sin\theta=0$。积分两次，用$u(0)=0,u(H)=-U_0,u(H/2)=0$求常数和$U_0$。剪应力$\tau=\mu u'$，上下壁代$y=0,H$。
-\subq{圆管H-P：已知$\mu$,D,L,$\Delta p$或Q，求速度分布/流量/压降}
-速度抛物线，$u_{\max}=2\bar u$。$Q=\pi R^4\Delta p/(8\mu L)$，$\Delta p=32\mu L\bar u/d^2$，$\lambda=64/Re$。壁剪$\tau_w=8\mu\bar u/d$。
-\stepq{管道湍流壁律}
-$u_\tau=\sqrt{\tau_w/\rho}$。线性底层$u^+=y^+$，缓冲层$5<y^+<30$，对数层$u^+=2.5\ln y^+ +5.5$。圆管平均$\bar u/u_\tau=2.5\ln(Ru_\tau/\nu)+1.75$。
-\stepq{管内边界层厚度题}
-线性底层厚度$y_5=5\nu/u_\tau$；缓冲层外缘$y_{30}=30\nu/u_\tau$；完全湍流核心从$y^+>30$开始。若题问“离壁距离”，$y=R-r$。
-\subq{小球沉降终速总入口：低速Stokes / 给$C_D$二次阻力}
-看到“小球下沉/终速”，首写匀速平衡：\key{$G-F_B-D=0$}。再分支：若$Re<1$或题说低速黏性，用Stokes；若题给$C_D$或钝体高速，用二次阻力。
-\fmlb{\begin{aligned}
-\text{低速Stokes: }&
-D=3\pi\mu dU,\quad
-U=\frac{(\rho_s-\rho)gd^2}{18\mu}\\
-\text{给}C_D\text{: }&
-D=C_D\frac12\rho U^2A_f,\quad A_f=\pi d^2/4\\
-&U=\sqrt{\frac{4(\rho_s-\rho)gd}{3C_D\rho}}
-=\sqrt{\frac{4(SG-1)gd}{3C_D}}
-\end{aligned}}
-\realq{光滑铝球在水中下沉终速}
-原题：$d=2$cm光滑铝球，$SG=2.7$，$20^\circ$C静水中下沉，基于迎风面积$C_D=0.5$，求终速。本题$C_D$已给，\warn{不用水粘度，不用Stokes}：
-\fmlb{\begin{aligned}
-v_t&=\sqrt{\frac{4(2.7-1)9.81(0.02)}{3(0.5)}}=0.943{\rm m/s}
-\end{aligned}}
-\errq{小球终速检查}
-$SG=\rho_s/\rho_w$；迎风面积是最大投影圆$\pi d^2/4$，不是球表面积；低速分支代完后必须核验$Re<1$。
-\stepq{N-S简化/H-P/Couette/两层流体/Stokes}
-层流解析题：写N--S简化，积分两次，代边界条件。两层流体写速度连续和剪应力连续。小球$Re<1$用Stokes。
-\stepq{边界层/壁律/泵吸水/水轮机}
-壁律题：由$\bar u/u_\tau$求$u_\tau$再算$y^+$。泵吸水：水面到泵入口列能量+汽蚀压强约束。水轮机：上游到下游扣损失，功率$P=\eta\rho gQH_T$。
-\quickq{管内湍流壁律厚度}
-已知$d,\bar u,\nu$：先$R=d/2,Re=\bar ud/\nu$。由$\bar u/u_\tau=2.5\ln(Ru_\tau/\nu)+1.75$迭代$u_\tau$；线性底层$y_5=5\nu/u_\tau$，缓冲外缘$y_{30}=30\nu/u_\tau$，壁剪$\tau_w=\rho u_\tau^2$。
-\stepq{“小球Re<1”}
-直接Stokes阻力；若问沉降终速，重力-浮力=阻力；若问阻力系数，$C_D=24/Re$。
-\stepq{“无压差Couette”}
-速度线性，剪应力常数。若有压力梯度，速度为线性+抛物线。若两层流体，剪应力在两层相等。
-\quickq{管流损失句}
-“沿程损失反映壁面摩擦，局部损失反映流道突变、阀门、弯头等引起的附加耗能；二者均以速度头表示。”
-\varq{粘性圆管入口发展}
-若题问“完全发展前的边界层厚度”，用边界层概念；若题问“完全发展层流压降”，用H--P。入口段不能直接套抛物线速度分布。
-\conceptq{LES/DNS/RANS概念}
-DNS解全尺度N--S，最贵；LES解析大涡、模型小涡；RANS对时均方程建模雷诺应力，工程最常用。考试多为概念判断。
-\conceptq{雷诺应力}
-$-\rho\overline{u_i'u_j'}$来自湍流脉动动量输运，不是分子粘性应力。近壁湍流总剪应力=分子粘性剪应力+雷诺剪应力。
-\errq{混合长度}
-Prandtl混合长度假设$\tau_t=\rho l^2|du/dy|du/dy$，近壁$l=\kappa y$，可推对数律。只需知道它是湍流半经验模型。
-\subq{平板Couette流量：已知U、h、宽度b，求单位宽流量q或总Q}
-下板固定，上板$U_0$，间距$h$，无压差：
-\fmlb{\begin{aligned}
-u&=U_0y/h\\
-q&=\int_0^h u\,dy=U_0h/2\\
-Q&=bU_0h/2
-\end{aligned}}
-若有压差，叠加抛物线项。
-\idq{粘性流动题干模型压缩}
-\stepq{圆管层流压降}
-给$\rho,\mu,d,V,L$，先$Re$判层流：
-\fmlb{\Delta p=\lambda\frac{L}{d}\frac{\rho V^2}{2},\qquad
-\lambda=\frac{64}{Re},\qquad
-\Delta p=\frac{32\mu LV}{d^2}}
-\stepq{小球Stokes阻力}
-Stokes阻力$F=3\pi\mu dU$。若求沉降速度：$(\rho_s-\rho)g\pi d^3/6=3\pi\mu dU$。若求阻力系数：$C_D=24/Re$。
-\stepq{两层流体剪切}
-把两层看成“剪切阻力串联”：
-\fmlb{\begin{aligned}
-U&=\tau(h_1/\mu_1+h_2/\mu_2)\\
-\tau&=\frac{U}{h_1/\mu_1+h_2/\mu_2}\\
-u_1&=\tau y/\mu_1,\qquad
-u_2=u_1(h_1)+\tau(y-h_1)/\mu_2
-\end{aligned}}
-\stepq{小球低Re终速}
-通常仍用Stokes。若问阻力或终速，先算$Re=\rho Ud/\mu$核验$<1$，再套。若结果导致$Re$不小，说明假设不自洽。
-\errq{管内层流三方向}
-三种方向分别写：
-\fmlb{\begin{cases}
-\text{水平：}& dp/dx=-32\mu V/d^2\\
-\text{向上：}& -dp/dz=32\mu V/d^2+\rho g\\
-\text{向下：}& -dp/dz=32\mu V/d^2-\rho g
-\end{cases}}
-向下竖直时可能压力沿流向升高。
-\subq{倾斜平板层流：已知H、$\theta$、$\mu$、$\rho$及边界条件，求速度和剪力}
-\fmlb{\begin{aligned}
-\mu u''+\rho g\sin\theta&=0\\
-u&=-\frac{\rho g\sin\theta}{2\mu}y^2+C_1y+C_2
-\end{aligned}}
-代边界和$u(H/2)=0$，求上板速度和壁面剪应力。
-\conceptq{物面条件证明}
-静止固壁无滑移$\bm V=0$。涡通量提示：$\bm\Omega\cdot\bm n=0$来自壁面速度为零且不可穿透，考试写物理解释：固壁上速度无切向变化导致法向涡量为零。
-\formq{圆管湍流平均速度公式}
-\fmlb{\begin{aligned}
-\bar u/u_\tau&=2.5\ln(Ru_\tau/\nu)+1.75\\
-\tau_w&=\rho u_\tau^2,\qquad
-\lambda=8(u_\tau/\bar u)^2
-\end{aligned}}
-第一式用于题给平均速度反解摩擦速度。
-\formq{“求剪应力”}
-牛顿流体简单剪切$\tau=\mu du/dy$。圆管壁剪可由速度梯度或受力平衡。湍流总剪应力还含雷诺应力，题若是壁面，壁面脉动速度为0，壁剪仍由粘性梯度给。
-\stepq{湍流壁律+管内厚度}
-给平均速度求$u_\tau$通常需要迭代；算出$u_\tau$后所有厚度都由$y^+=yu_\tau/\nu$反解。线性底层到5，缓冲到30。
-\subq{Stokes沉降：已知d、rhos、rho、mu，求终速并校验Re}
-小球终速题一定先写受力平衡：重力-浮力-阻力=0。若题给终速求黏度，反解$\mu$。最后核验$Re<1$。
-\stepq{雷诺平均}
-速度$u=\bar u+u'$，$\overline{u'}=0$，但$\overline{u'v'}$不为0。RANS方程多出雷诺应力项，需要模型封闭。
-\formq{剪应力}
-\fmlb{\begin{aligned}
-\text{简单剪切：}&\quad \tau=\mu\,du/dy\\
-\text{圆管层流：}&\quad \tau(r)=r\Delta p/(2L),\quad \tau_w=R\Delta p/(2L)\\
-\text{平板边界层：}&\quad \tau_w=0.5\rho U^2 c_f
-\end{aligned}}
-\stepq{Stokes}
-\fmlb{D=3\pi\mu dU,\qquad C_D=24/Re,\qquad
-U_t=\frac{(\rho_s-\rho)gd^2}{18\mu}}
-\stepq{流程G：给层流解析}
-1 写N--S假设：定常、不可压、单向、充分发展。2 化成$\mu u''=$常数。3 积分两次。4 代无滑移/交界条件。5 求$Q,\tau,\Delta p$。
-\errq{错5：H--P用于湍流}
-H--P抛物线只适用于层流充分发展圆管。湍流用摩阻系数/壁律，不能说$u_{\max}=2\bar u$。
-\stepq{标准解模板：N--S层流}
-解：定常、不可压、充分发展、单向流，$u=u(y)$或$u(r)$。N--S化为$\mu u''=\cdots$。积分两次得通解。边界无滑移/剪应力连续求常数。最后求$Q,\tau$。
-\conceptq{为什么两层流体剪应力连续}
-交界面没有质量和表面力奇异时，切向力平衡要求两侧剪应力相等；同时无滑移要求速度连续。
-\conceptq{为什么H--P抛物线}
-圆管层流充分发展时压力梯度为常数，粘性扩散方程在圆柱坐标积分两次，边界无滑移，得到$r^2$抛物线。
-\conceptq{为什么Stokes阻力与速度一次方成正比}
-低Re时惯性项可忽略，N--S线性化，粘性力主导，因此阻力与速度成正比而不是平方。
-\conceptq{为什么圆管湍流用壁律}
-湍流N--S时均后出现未知雷诺应力，不能直接解析闭合；近壁实验显示无量纲速度分布具有通用壁律。
-\quickq{H--P压降速算}
-$\Delta p=32\mu LV/d^2$。直径减半，压降增为4倍（同平均速度）；同流量下$V\sim1/d^2$，压降$\sim1/d^4$。
-\quickq{壁律厚度速算}
-若$u_\tau=0.1$m/s，水$\nu=10^{-6}$，线性底层$y_5=5\times10^{-5}$m，缓冲层外$y_{30}=3\times10^{-4}$m。
-\quickq{Stokes终速速算}
-$U=(\rho_s-\rho)gd^2/(18\mu)$。直径增10倍，终速增100倍；但需重新检查$Re<1$。
-\formq{圆管层流剪应力}
-壁面剪应力$\tau_w=8\mu\bar u/d$。直径越小剪应力越大；粘度越大剪应力越大。
-\stepq{模板：弯管流程}
-先用连续得$Q,A,V$。假设支座对流体反力$R_x,R_y$。列$x,y$动量，包含压力力$pA$和重力（若不可忽略）。解得$R$，题问管道受力则$-R$。
-\stepq{模板：圆管层流流程}
-由受力或N--S得$\frac1r\frac{d}{dr}(rdu/dr)=\frac1\mu dp/dx$。有限性使$r=0$处常数不发散，壁面$u(R)=0$。得到$u(r)$后积分求$Q$。
-\stepq{模板：平板Couette流程}
-方程$\mu u''=dp/dx$。通解$u=(dp/dx)y^2/(2\mu)+C_1y+C_2$。边界$u(0)=0,u(h)=U$。若给流量或中点速度，再解$dp/dx$或$U$。
-\stepq{模板：两层流流程}
-两层各有$u_i=A_iy+B_i$。四条件：下壁、上壁、交界速度连续、交界剪应力连续。若无压差，剪应力常数，直接用阻力串联公式。
-\stepq{模板：Stokes小球流程}
-写$Re=\rho Ud/\mu<1$，故用Stokes。受力平衡：$G-F_B-D=0$。代$G=\rho_sg\pi d^3/6$，$F_B=\rho g\pi d^3/6$，$D=3\pi\mu dU$。
-\stepq{粘性解析题骨架}
-写N--S简化假设和边界条件。即使积分错，假设和边界条件也有分。
-\stepq{小球低Re阻力}
-$D=3\pi\mu dU$；若给$C_D$，低Re可写$24/Re$。
-\stepq{小球二次阻力终速}
-若题给$C_D$且$Re$不小：$(\rho_s-\rho)g\pi d^3/6=C_D(0.5\rho U^2)(\pi d^2/4)$，故$U=\sqrt{4(\rho_s-\rho)gd/(3C_D\rho)}$。
-\stepq{圆管层流流量}
-$Q=\pi R^4\Delta p/(8\mu L)$。半径误差影响四次方，注意用$R$不是$d$。
-\stepq{管内平均/最大速度}
-$\bar u=Q/A$。层流最大速度$2\bar u$；湍流最大速度与平均速度关系需经验式，不用2。
-\formq{壁面剪应力}
-由速度剖面求$\tau_w=\mu(\partial u/\partial y)_{y=0}$。边界层题不要用管流$\lambda$，除非题是管内。
-\stepq{两板间流量}
-$q=\int_0^hu\,dy$，若$u=Uy/h$，$q=Uh/2$每单位宽。
-\formq{薄板两侧油膜剪力}
-薄板速度$U$、面积$A$，两侧固定壁间隙$h_1,h_2$：$F=\mu AU(1/h_1+1/h_2)$。一侧则只取对应项。
-\stepq{活塞/环隙油膜}
-小间隙$\delta=(D-d)/2$，接触面积$S=\pi Dl$。线性剪切：$\tau=F/S=\mu v/\delta$，故$v=F\delta/(\mu S)$。
-\formq{两层流体剪力}
-等效“粘性电阻”$h_1/\mu_1+h_2/\mu_2$，剪应力$\tau=U/(h_1/\mu_1+h_2/\mu_2)$，$F=\tau A$。
-\conceptq{雷诺应力符号}
-RANS中$-\rho\overline{u'v'}$像附加剪应力。若$\overline{u'v'}<0$，雷诺剪应力为正。
-\lookq{粘性/阻力查表入口}
-\par\noindent \begin{tabular}{|p{0.31\linewidth}|p{0.28\linewidth}|p{0.33\linewidth}|}\hline
-题眼 & 查书/图 & 查完怎么接\\\hline
-粗糙管$\varepsilon/d$ & Moody图 & $h_f=\lambda L V^2/(2gd)$\\\hline
-阀门弯头 & 局部$\zeta$表 & $h_\zeta=\zeta V^2/(2g)$\\\hline
-汽蚀/水温 & 物性表 & 用$p_v,\nu,\rho$列吸水能量\\\hline
-球/圆柱/车 & $C_D-Re$图 & $D=C_D(0.5\rho U^2)A$\\\hline
-压力中心 & 面积惯性矩表 & $y_D=y_C+I_C/(y_CA)$\\\hline
-\end{tabular}
-\stepq{模板：Stokes}
-终速$U=(\rho_s-\rho)gd^2/(18\mu)$。代完后算$Re=\rho Ud/\mu$检查。
-\idq{图里有“圆管层流”}
-H--P必须满足充分发展层流。若题给入口段/发展段，不要直接套抛物线；若给壁面剪切力，可由$\tau_w=d\Delta p/(4L)$反推压降。
-\stepq{一维N--S/H--P骨架}
-定常、充分发展、一个速度分量，通常剩
-\fmlb{\mu u''+\rho g_x-\frac{dp}{dx}=0,\quad \frac1r\frac d{dr}(r\mu du/dr)=dp/dx}
-圆管结论：$u=(-dp/dx)(R^2-r^2)/(4\mu)$，$Q=\pi R^4\Delta p/(8\mu L)$，$\tau_w=d\Delta p/(4L)$。
+\subq{两层流体剪切流动：已知厚度 $h_1,h_2$、黏度 $\mu_1,\mu_2$、上板速 U，求剪应力与界面速度}
+1. \key{求全场恒定剪应力 $\tau$}：阻力串联：$\tau = \frac{U}{h_1/\mu_1 + h_2/\mu_2} = \frac{U \mu_1 \mu_2}{\mu_2 h_1 + \mu_1 h_2}$。
+2. \key{求交界面速度 $U_i$}：代入下层：$U_i = \tau \frac{h_1}{\mu_1} = U \frac{\mu_2 h_1}{\mu_2 h_1 + \mu_1 h_2}$。
+3. \key{写出分段速度分布}：下层（$0\le y \le h_1$）：$u_1(y) = \tau \frac{y}{\mu_1}$；上层（$h_1 \le y \le h_1+h_2$）：$u_2(y) = U_i + \tau \frac{y-h_1}{\mu_2}$。
+
+\subq{倾斜平板重力流（如液膜下落）：已知倾角 $\theta$、液膜厚 H、黏度 $\mu$、密度 $\rho$，求速度分布与流量}
+1. \key{建立微分方程并积分两次}：沿壁面单向重力流（无压差）：$\mu \frac{d^2u}{dy^2} + \rho g \sin\theta = 0 \Rightarrow u(y) = -\frac{\rho g \sin\theta}{2\mu} y^2 + C_1 y + C_2$。
+2. \key{代入边界条件求常数}：
+   * 在壁面 $y=0$ 无滑移：$u(0) = 0 \Rightarrow C_2 = 0$。
+   * 在液膜自由表面 $y=H$ 无剪力：$\left.\frac{du}{dy}\right|_{y=H} = 0 \Rightarrow -\frac{\rho g \sin\theta}{\mu} H + C_1 = 0 \Rightarrow C_1 = \frac{\rho g \sin\theta}{\mu} H$。
+3. \key{代回整理速度与流量}：速度为 $u(y) = \frac{\rho g \sin\theta}{\mu} \left( Hy - \frac{1}{2}y^2 \right)$。积分求单位宽流量 $q = \int_0^H u\,dy = \frac{\rho g \sin\theta\,H^3}{3\mu}$。
+
+\subq{Hagen-Poiseuille 圆管层流计算：已知 L, d, $\mu$, $\rho$ 及流量 Q，求压降与壁面剪力}
+1. \key{验证层流}：算流速 $V = \frac{4Q}{\pi d^2}$，算雷诺数 $Re = \frac{\rho V d}{\mu}$。若 $Re < 2300$，则为层流。
+2. \key{计算压降 $\Delta p$}：带入公式：$\Delta p = \frac{128 \mu L Q}{\pi d^4} = \frac{32 \mu L V}{d^2}$。
+3. \key{求壁面剪应力 $\tau_w$}：带入力平衡公式（或者剪力公式）：$\tau_w = \frac{d\Delta p}{4L} = \frac{8\mu V}{d}$。
+
+\subq{小球低雷诺数沉降：已知球径 d、小球密度 $\rho_s$、流体密度 $\rho$ 与黏度 $\mu$，求沉降终速}
+1. \key{列受力平衡求终速}：匀速下落时重力 - 浮力 = 阻力：$(\rho_s - \rho) g \frac{\pi d^3}{6} = 3\pi \mu d U_t \Rightarrow U_t = \frac{(\rho_s - \rho) g d^2}{18\mu}$。
+2. \key{带入验证雷诺数}：算出 $U_t$ 后，必须带入验证 $Re = \frac{\rho U_t d}{\mu}$。若 $Re < 1$ 则公式成立，沉降速度确为 $U_t$；若 $Re > 1$，则必须用阻力系数 $C_D$ 查图迭代。
+
+\subq{圆管湍流近壁三层厚度计算：已知管径 d、平均流速 V、黏度 $\nu$，求粘性底层和缓冲层厚度}
+1. \key{求摩擦速度 $u_\tau$}：代入并迭代求解方程：$\frac{V}{u_\tau} = 2.5 \ln\left( \frac{R u_\tau}{\nu} \right) + 1.75$（其中 $R = d/2$），解出 $u_\tau$。
+2. \key{计算粘性底层厚度 $y_{\text{sub}}$}：令 $y^+ = 5 \Rightarrow y_{\text{sub}} = \frac{5\nu}{u_\tau}$。
+3. \key{计算缓冲层外缘厚度 $y_{\text{buf}}$}：令 $y^+ = 30 \Rightarrow y_{\text{buf}} = \frac{30\nu}{u_\tau}$。
+
+\subq{汽蚀与泵最大安装高度：已知泵流量 Q、吸水管长 L、管径 d、摩擦阻力、大气压 $p_a$ 和汽化压 $p_v$，求最大高度 h}
+1. \key{求流速与阻力系数}：$V = \frac{4Q}{\pi d^2}$，由 $Re = \frac{Vd}{\nu}$ 和 $\varepsilon/d$ 确定沿程阻力系数 $\lambda$。
+2. \key{计算总水头损失}：沿程水头损失 $h_f = \lambda \frac{L}{d}\frac{V^2}{2g}$，局部水头损失 $h_{\zeta} = \sum \zeta \frac{V^2}{2g}$。
+3. \key{列能量方程并带入临界汽蚀限制}：从吸水池面 $1$ 到泵入口 $2$ 列能量方程，令泵入口压强 $p_2 \ge p_v + \Delta p_{\text{safe}}$（不给安全余量时默认为 $p_v$）：
+   \[
+   z_1 + \frac{p_a}{\rho g} + 0 = z_2 + \frac{p_2}{\rho g} + \frac{V^2}{2g} + h_f + h_{\zeta} \Rightarrow h = z_2 - z_1 \le \frac{p_a - p_v}{\rho g} - \frac{V^2}{2g} - h_f - h_{\zeta}
+   \]
 
 \chap{母题6 边界层、外绕流阻力、综合收口}
 \mview{\key{母题总览}：看见平板外流、$\delta,C_f,C_D$、阻力、分离、模型试验，用边界层/外绕/相似。首写$Re_x/Re_L$或$\pi$群。顺序：判层湍$\to \delta,C_f\to D$；相似先选主导准则。检查：湿面积/迎风面积、局部/平均系数、逆压梯度分离。}

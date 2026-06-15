@@ -482,7 +482,7 @@ $p/\rho g$单位是m。能量方程每一项都用m时，泵扬程$H_p$也是m�
 “湍流时速度可分解为时均量和脉动量，脉动相关产生雷诺应力，工程上常通过经验摩擦系数或壁律求解。”
 \idq{题图识别+查表+公式链}
 \idq{题图一眼选模型}
-\renewcommand{\arraystretch}{0.80}\begin{tabular}{|p{0.30\linewidth}|p{0.62\linewidth}|}
+\renewcommand{\arraystretch}{0.80}\begin{tabular}{|p{0.22\linewidth}|p{0.70\linewidth}|}
 \hline U管/压差计 & 同高同压链；$\Delta p=(\rho_m-\rho)g\Delta h$；振荡$T=2\pi\sqrt{L/2g}$\\ \hline
 闸门/曲面 & 平面$F=\rho gh_CA,\;y_D=y_C+I_C/(y_CA)$；曲面$F_x=$投影，$F_y=$压力体\\ \hline
 弯管/喷嘴 & 取管内流体CV：$\sum\bm F=\rho Q(\bm V_2-\bm V_1)$；题问管受力最后取反\\ \hline
@@ -928,7 +928,7 @@ p=p_\infty+\tfrac12\rho(U_\infty^2-V^2),\ C_p=1-(V/U_\infty)^2,\ q'=\psi_2-\psi_
 \textbf{证明有流函数}：二维不可压$u_x+v_y=0$，可令$u=\psi_y,v=-\psi_x$自动满足连续；若再无旋，则$\nabla^2\psi=0$。\\
 \textbf{判定链}：给速度场$\to$算散度/旋度；给壁面$\to$检查$\psi=C$或$\bm V\cdot\bm n=0$；给压力$\to$先求$V^2$再Bernoulli；给升力$\to$先判有无环量。
 \infoh{势流信息库C 常见结论库}
-\renewcommand{\arraystretch}{0.72}\begin{tabular}{|p{0.31\linewidth}|p{0.60\linewidth}|}
+\renewcommand{\arraystretch}{0.72}\begin{tabular}{|p{0.22\linewidth}|p{0.69\linewidth}|}
 \hline 圆柱绕流 & 均匀流+偶极，壁面$V=2U|\sin\theta|,\ C_p=1-4\sin^2\theta$；无环量$D=L=0$。\\ \hline
 有环量圆柱 & $v_\theta=-2U\sin\theta+\Gamma/(2\pi a)$，$L'=\rho U\Gamma$。\\ \hline
 镜像法 & 固壁要法向速度0；源/汇同号镜像，点涡反号镜像。\\ \hline
@@ -1062,7 +1062,7 @@ p_0/p=(1+0.2M^2)^{3.5},\quad \rho_0/\rho=(1+0.2M^2)^{2.5}
 \textbf{阻塞判定链}：质量流量$\dot m(M)$对$M$求极值，最大点$M=1$，故最小面积截面若达到$M=1$则阻塞；继续降背压只改变下游波系，不增大$\dot m$。\\
 \textbf{背压判定链}：收缩管比$p_b/p_0$和0.528；Laval先判$A_t=A^*$，再由$A_e/A_t$求两支$M_e$，得$p_{b1},p_{b3}$，再用出口正激波得$p_{b2}$，把实际$p_b$放入区间。
 \infoh{可压/Laval信息库C 常见结论库}
-\renewcommand{\arraystretch}{0.72}\begin{tabular}{|p{0.28\linewidth}|p{0.63\linewidth}|}
+\renewcommand{\arraystretch}{0.72}\begin{tabular}{|p{0.22\linewidth}|p{0.69\linewidth}|}
 \hline 亚声速面积效应 & 收缩加速、扩张减速升压。\\ \hline
 超声速面积效应 & 扩张加速降压、收缩减速升压；Laval靠扩张段得到超声速。\\ \hline
 收缩喷管 & 未阻塞$p_e=p_b$；阻塞时出口$M=1,p_e=p^*$，$\dot m$最大。\\ \hline
@@ -1114,7 +1114,7 @@ p_{b2}=p_{b3}\{1+\tfrac{2\gamma}{\gamma+1}(M_{sup}^2-1)\}=112.79\ {\rm kPa}
 \end{gathered}}
 判定句直接写：$p_{b2}<p_b=138.5<p_{b1}$，故\key{喷管内有正激波}；且$p_b>p_{b2}$，背压高于“出口正激波”所需后压，所以激波被推到\key{出口上游的扩张段内}。
 \formq{三临界背压区间：这题以及同类Laval背压题都按这个判}
-\begin{tabular}{|p{0.28\linewidth}|p{0.63\linewidth}|}\hline
+\begin{tabular}{|p{0.22\linewidth}|p{0.69\linewidth}|}\hline
 $p_b>p_{b1}$ & 全管亚声速或未完全阻塞，扩张段减速升压\\ \hline
 $p_{b2}<p_b<p_{b1}$ & 管内正激波；$p_b$越高，激波越靠上游\\ \hline
 $p_b=p_{b2}$ & 正激波刚好在出口面\\ \hline
@@ -1217,7 +1217,7 @@ n=\frac{\gamma+1}{2(\gamma-1)}
 $A/A^*>1$通常有亚声速/超声速两支。$A/A^*=3$时可写“由面积--马赫式/表查得$M_{\rm sub}$或$M_{\rm sup}$”。收缩管最多到$M=1$；Laval扩张段可超声速。
 
 \subq{Laval背压状态：已知$p_0$,$T_0$,$A_e$/$A_t$,$p_b$，求出口状态/是否激波}
-\renewcommand{\arraystretch}{0.90}\begin{tabular}{|p{0.30\linewidth}|p{0.61\linewidth}|}
+\renewcommand{\arraystretch}{0.90}\begin{tabular}{|p{0.22\linewidth}|p{0.69\linewidth}|}
 \hline 背压高 & 全管亚声速，$p_e=p_b$，未阻塞\\ \hline
 喉部$M=1$ & 阻塞，$\dot m$最大\\ \hline
 扩张段正激波 & 波前超声速，波后亚声速，$p_0$降\\ \hline
@@ -1408,7 +1408,7 @@ M_{n1}=M_1\sin\beta,\quad M_2=\frac{M_{n2}}{\sin(\beta-\theta)},\quad
 \textbf{斜激波判定链}：只让法向速度分量经历正激波，切向分量不变；所以先算$M_{n1}=M_1\sin\beta$，再用正激波表，最后用几何关系还原$M_2$。\\
 \textbf{PM判定链}：超声速流遇凸角/扩张，连续弱扰动等熵展开，$\nu(M)$随$M$增大；压缩角不用PM，转斜激波。
 \infoh{激波/PM信息库C 常见结论库}
-\renewcommand{\arraystretch}{0.72}\begin{tabular}{|p{0.28\linewidth}|p{0.63\linewidth}|}
+\renewcommand{\arraystretch}{0.72}\begin{tabular}{|p{0.22\linewidth}|p{0.69\linewidth}|}
 \hline 正激波 & 波后必亚声速；$p,T,\rho$升，$M,V$降，$p_0$损失。\\ \hline
 斜激波 & 弱解常用；若偏转角过大，无附体斜激波，形成脱体激波。\\ \hline
 PM膨胀 & $M$增大，$p,T,\rho$下降，$p_0,T_0$不变。\\ \hline
@@ -2058,7 +2058,7 @@ D_w&=14.4{\rm N},\quad
 % 旧全局收口表：内容已拆到母题1/2/6/7，不再放在母题6下造成跨题型混杂。
 \iffalse
 \quickq{高频收口模型}
-\renewcommand{\arraystretch}{0.90}\begin{tabular}{|p{0.30\linewidth}|p{0.61\linewidth}|}
+\renewcommand{\arraystretch}{0.90}\begin{tabular}{|p{0.22\linewidth}|p{0.69\linewidth}|}
 \hline 速度场连续 & 算$u_x+v_y+w_z$\\ \hline
 有旋 & $\Omega_z=v_x-u_y$，$\omega_z=\Omega_z/2$\\ \hline
 流线 & $dx/u=dy/v$，非定常先代$t=t_0$\\ \hline

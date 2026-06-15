@@ -137,15 +137,26 @@
 \draw[red,thick] (3.0,-0.55)--(3.0,0.55); \node[red] at (3.22,0.72){正激波?};
 \node at (2.2,1.12){Laval喷管};
 \end{tikzpicture}\end{center}\vspace{-3pt}}
-\newcommand{\schemeshock}{\begin{center}\begin{tikzpicture}[>=Latex,scale=0.58,every node/.style={font=\tiny}]
-\draw[->,blue] (-0.2,0.45)--(1.0,0.45); \node at (0.4,0.7){$Ma_1>1$};
-\draw[thick] (1.0,0)--(2.6,0);
-\draw[thick] (1.0,0)--(2.6,0.55); \node at (2.25,0.78){楔角$\theta$};
-\draw[red,thick] (1.0,0)--(1.75,1.05); \node[red] at (1.42,1.08){$\beta$};
-\draw[->,blue] (1.9,0.36)--(2.75,0.65); \node at (2.65,0.35){$Ma_2$};
-\draw[thick] (3.4,0)--(5.0,0); \draw[thick] (3.4,0)--(5.0,-0.55);
-\foreach \a in {0.0,0.18,0.36,0.54}{\draw[red] (3.4,0)--(4.25,-\a);}
-\node at (4.35,-0.85){膨胀扇$\delta$};
+\newcommand{\schemeshock}{\begin{center}\begin{tikzpicture}[>=Latex,scale=0.55,every node/.style={font=\fontsize{4.8}{5.8}\selectfont}]
+% Left: Oblique Shock
+\draw[thick] (0,0) -- (0.8,0) -- (2.2,0.5);
+\draw[thick] (0,0) -- (2.2,0); % base line for angles
+\draw[red, thick] (0.8,0) -- (2.0,1.0) node[right] {斜激波};
+\draw[->, blue] (0.1,0.3) -- (0.7,0.3) node[midway, above] {$Ma_1$};
+\draw[->, blue] (1.2,0.35) -- (1.8,0.55) node[midway, above] {$Ma_2$};
+% Angle annotations
+\draw[thin] (1.4,0) arc (0:20:0.6) node[right=1pt] {$\theta$};
+\draw[thin] (1.7,0) arc (0:40:0.9) node[above right] {$\beta$};
+
+% Right: Expansion Fan
+\draw[thick] (3.2,0) -- (4.0,0) -- (5.2,-0.5);
+\draw[red, thin] (4.0,0) -- ++(0:1.1);
+\draw[red, thin] (4.0,0) -- ++(-8:1.1);
+\draw[red, thin] (4.0,0) -- ++(-16:1.1);
+\draw[red, thin] (4.0,0) -- ++(-24:1.1);
+\node[red, right] at (4.9,-0.1) {膨胀扇 $\delta$};
+\draw[->, blue] (3.3,0.3) -- (3.9,0.3) node[midway, above] {$Ma_1$};
+\draw[->, blue] (4.4,-0.2) -- (5.0,-0.45) node[midway, above] {$Ma_2$};
 \end{tikzpicture}\end{center}\vspace{-3pt}}
 \newcommand{\schemeviscous}{\begin{center}\begin{tikzpicture}[>=Latex,scale=0.58,every node/.style={font=\tiny}]
 \draw[blue] (0,0)--(0,1.0); \draw[blue] (0.6,0)--(0.6,1.0);
@@ -334,8 +345,16 @@ $A=\pi d^2/4,\ V_i=Q/A_i,\ \dot m=\rho Q$。圆管$Re=Vd/\nu=\rho Vd/\mu$；层�
 同一静止连通液体同高同压。若压差计液密度$\rho_m$、管内液密度$\rho$：常用$\Delta p=(\rho_m-\rho)g\Delta h$。接到管路能量方程时，压力表给表压可直接用$p_g/(\rho g)$；汽蚀/气体必须转绝压。
 \subq{泵吸水高度：已知$Q,d,L,\zeta,\varepsilon,p_v$，求$z_B-z_0$}
 从吸水池水面到泵入口列能量，不含泵项：\fml{0+0+z_0=p_B/(\rho g)+V^2/(2g)+z_B+h_f+\sum h_\zeta}。约束$p_B\ge p_v+\Delta p_{\rm safe}$，越高越危险。顺序：$Q\to V\to Re,\varepsilon/d\to\lambda\to h_{\max}$。
-\subq{弯管/喷嘴/法兰受力：已知$p,Q,A,\alpha$，求支座或螺栓力}
-先由连续/能量求$V,Q$，再取管内流体为CV：\fml{\sum\bm F=\sum_{\rm out}\rho Q\bm V-\sum_{\rm in}\rho Q\bm V}。入口压力推入控制体，出口对大气表压为0；求管壁/法兰受力时，最后对流体受力取反。
+\subq{弯管/分流管受力分析模板：求壁面/支座反力}
+1. \key{求流速与压强}：由连续性 $Q=A_1V_1=A_2V_2$ 与能量方程求出端面的 $V, p$（表压）。\\
+2. \key{取控制体(CV)}：包围管内流体。压力力 $F_p = pA$ 永远\warn{推向CV内部}（指向流体）。\\
+3. \key{列分量动量方程}（以 $x$ 向流入，弯角 $\theta$ 出流为例）：
+\fmlb{\begin{aligned}
+x\text{向：}\quad p_1A_1 - p_2A_2\cos\theta + R_x &= \rho Q(V_2\cos\theta - V_1)\\
+y\text{向：}\quad 0 - p_2A_2\sin\theta + R_y &= \rho Q(V_2\sin\theta - 0)
+\end{aligned}}
+若为分流管，右侧动量增量项写为各分支之和：$\sum \rho Q_i V_{ix} - \rho Q_1 V_{1x}$。\\
+4. \key{求管壁受力}：解出流体受管力 $R_x, R_y$ 后，流体对管壁作用力 $F_{x,y} = -R_{x,y}$（大小相等方向相反）。
 \subq{喷口射流/冲板：已知$V,Q$或水头，求反力/功率}
 自由射流出口$p_e=p_a$。固定正撞$F=\rho QV$；动板速度$u$用相对速度，$F=\rho A(V-u)^2$，功率$P=Fu$。斜板必须分解速度方向，不能只用标量。
 \formq{管路外壳公式链}
@@ -1041,9 +1060,9 @@ T^*&=0.833T_0=416.7K,\quad p^*=0.528p_0=158.5kPa\\
 \errq{检查：$p_0$用Pa，$T_0$用K；有背压时先判阻塞，不能默认最大流量。}
 \realq{真题[4]：15cm汞柱Laval喷管，求$p_b$/激波位置/设计汞柱高}
 \par\noindent\begin{minipage}{\linewidth}
-\vspace*{-5pt}
+\vspace*{2pt}
 \centering
-\begin{tikzpicture}[>=Latex,scale=0.68,every node/.style={font=\fontsize{4.8}{5.8}\selectfont}]
+\begin{tikzpicture}[>=Latex,scale=0.48,every node/.style={font=\fontsize{4.8}{5.8}\selectfont}]
 % Nozzle outline
 \draw[thick] (-0.1,0.72).. controls (0.95,0.55) and (1.15,0.25)..(1.85,0.24).. controls (2.7,0.23) and (2.9,0.62)..(4.1,0.78);
 \draw[thick] (-0.1,-0.72).. controls (0.95,-0.55) and (1.15,-0.25)..(1.85,-0.24).. controls (2.7,-0.23) and (2.9,-0.62)..(4.1,-0.78);
@@ -1055,32 +1074,34 @@ T^*&=0.833T_0=416.7K,\quad p^*=0.528p_0=158.5kPa\\
 \draw[->,blue,thick] (-0.5,0) -- (0.0,0) node[midway,above=1pt] {空气流入};
 
 % U-tube Mercury Fill (drawn first so lines are on top)
-\fill[gray!30] (1.75,-1.5) -- (1.95,-1.5) -- (1.95,-1.6) -- (3.95,-1.6) -- (3.95,-1.1) -- (4.15,-1.1) -- (4.15,-1.8) -- (1.75,-1.8) -- cycle;
+\fill[gray!30] (1.75,-1.1) -- (1.95,-1.1) -- (1.95,-1.2) -- (3.95,-1.2) -- (3.95,-0.9) -- (4.15,-0.9) -- (4.15,-1.4) -- (1.75,-1.4) -- cycle;
 
 % Mercury Surfaces
-\draw[blue, thick] (1.75,-1.5) -- (1.95,-1.5);
-\draw[blue, thick] (3.95,-1.1) -- (4.15,-1.1);
+\draw[blue, thick] (1.75,-1.1) -- (1.95,-1.1);
+\draw[blue, thick] (3.95,-0.9) -- (4.15,-0.9);
 
 % U-tube Outline
-\draw[thick] (1.75,-0.24) -- (1.75,-1.8);
-\draw[thick] (1.95,-0.24) -- (1.95,-1.6);
-\draw[thick] (3.95,-0.78) -- (3.95,-1.6);
-\draw[thick] (4.15,-0.78) -- (4.15,-1.8);
-\draw[thick] (1.75,-1.8) -- (4.15,-1.8);
-\draw[thick] (1.95,-1.6) -- (3.95,-1.6);
+\draw[thick] (1.75,-0.24) -- (1.75,-1.4);
+\draw[thick] (1.95,-0.24) -- (1.95,-1.2);
+\draw[thick] (3.95,-0.78) -- (3.95,-1.2);
+\draw[thick] (4.15,-0.78) -- (4.15,-1.4);
+\draw[thick] (1.75,-1.4) -- (4.15,-1.4);
+\draw[thick] (1.95,-1.2) -- (3.95,-1.2);
 
-% Height dimension
-\draw[dashed, ultra thin] (1.95,-1.5) -- (2.95,-1.5);
-\draw[dashed, ultra thin] (3.95,-1.1) -- (2.95,-1.1);
-\draw[<->] (2.95,-1.5) -- (2.95,-1.1) node[midway,right] {$h=15$cm Hg};
+% Inward pointing dimension arrows (游标卡尺夹紧式)
+\draw[dashed, ultra thin] (1.95,-1.1) -- (2.95,-1.1);
+\draw[dashed, ultra thin] (3.95,-0.9) -- (2.95,-0.9);
+\draw[->] (2.95,-0.6) -- (2.95,-0.9);
+\draw[->] (2.95,-1.4) -- (2.95,-1.1);
+\node[right] at (3.0,-1.0) {$h=15\text{cm Hg}$};
 
 % Labels
-\node[left, align=right] at (-0.1,0.4) {$p_0=300$kPa\\$T_0=373$K};
+\node[left, align=right] at (-0.1,0.4) {$p_0=300\text{kPa}$\\$T_0=373\text{K}$};
 \node[above] at (1.85,0.24) {$A_t=10\text{cm}^2$};
 \node[above] at (4.0,0.78) {$A_e=30\text{cm}^2$};
 \node[right] at (4.1,0) {下游气源 $p_b$};
 \end{tikzpicture}
-\vspace*{-5pt}
+\vspace*{3pt}
 \end{minipage}
 题干压缩：空气过连接两个\key{大型气源}的Laval喷管；喉部--下游气源接汞柱压差计，左侧喉部端汞面较低；$p_0=300$kPa，$T_0=100^\circ$C，$A_t=10$cm$^2$，$A_e=30$cm$^2$，$h=15$cm。求：1 $p_b$；2 是否有正激波及位置；3 设计超声速工况的$h$。
 \subq{第一问：由喉部临界压+汞柱反推下游背压}

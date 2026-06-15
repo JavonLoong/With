@@ -170,7 +170,7 @@
 \draw[red,thick] (3.45,-0.18).. controls (4.0,-0.7) and (4.6,-0.7)..(4.95,-0.18);
 \node at (4.1,-0.95){圆柱分离尾流};
 \end{tikzpicture}\end{center}\vspace{-3pt}}
-\newcommand{\pvzfig}{\par\vspace{-4pt}\noindent\hfill\begin{tikzpicture}[>=Latex,scale=.22,every node/.style={font=\tiny},baseline=(current bounding box.center)]
+\newcommand{\pvzfig}{\par\vspace{-4pt}\noindent\hfill\begin{tikzpicture}[>=Latex,scale=.35,every node/.style={font=\tiny},baseline=(current bounding box.center)]
 \draw[fill=gray!15,draw=black] (0,0) rectangle (.9,1.45);\draw[fill=gray!15,draw=black] (4.4,0) rectangle (5.25,.85);
 \draw[dashed] (.1,1.2)--(5.1,1.2);\draw[dashed] (.1,.45)--(5.1,.45);
 \draw[thick] (.9,.36)--(2.15,.36)--(2.15,.54)--(.9,.54);\draw[thick] (2.15,.28)--(4.4,.28)--(4.4,.62)--(2.15,.62);
@@ -181,7 +181,7 @@
 
 % ==================== PAGE 1 ====================
 \begin{multicols}{3}
-\chap{母题1 管路机械能综合：两油箱变径突扩管15分题}
+\chap{母题1 管路机械能综合\\两油箱变径突扩管15分题}
 \mview{\key{母题定位}：这题足够做母题。它覆盖大水面简化、管径变化、局部损失、沿程损失、层流/湍流判定、点压强、液面差反推。看见“水池/油箱/管道/阀/弯头/突扩/泵/水轮机/粗糙度”，先归到本母题。}
 \pvzfig
 \idq{题干完整骨架}
@@ -317,7 +317,7 @@ $A=\pi d^2/4,\ V_i=Q/A_i,\ \dot m=\rho Q$。圆管$Re=Vd/\nu=\rho Vd/\mu$；层�
 结果检查：水头单位m，压强Pa，功率W；若$Re<2300$还写Moody，或把$m^3/h$当$m^3/s$，基本直接错。%
 }
 
-\chap{母题1配套扩展：管路题常见外壳}
+\chap{母题1配套扩展\\管路题常见外壳}
 \mview{\key{只接母题1}：题图仍是水池/油箱/管道/泵/阀/弯头/喷嘴/压差计，但问法换成压力、反力、汽蚀、功率或查表。先用连续和机械能闭合$V,Q,p,H$，再接CV动量或查表。}
 \subq{U管/压差计：已知读数，求压差或接入能量方程}
 同一静止连通液体同高同压。若压差计液密度$\rho_m$、管内液密度$\rho$：常用$\Delta p=(\rho_m-\rho)g\Delta h$。接到管路能量方程时，压力表给表压可直接用$p_g/(\rho g)$；汽蚀/气体必须转绝压。
@@ -916,7 +916,7 @@ $u/U=\sin(\pi\eta/2)$ & $\delta^*/\theta\approx2.66,\ C_D\approx1.31/\sqrt{Re_L}
 \fi
 
 \newpage
-\chap{母题2 理想不可压无旋势流：基本流、镜像、圆柱、环量}
+\chap{母题2 理想不可压无旋势流\\基本流、镜像、圆柱、环量}
 \mview{\key{母题总览}：看见不可压无旋、$\phi/\psi$、源汇涡、镜像、圆柱/机翼，用势流叠加。首写$\phi=\sum\phi_i$或$\psi=\sum\psi_i$。顺序：边界流线/驻点$\to V\to p$；合力用压力积分。检查：壁面不穿透、$\psi=C$、伯努利是否可全场用。}
 \schemepotential
 \infoh{势流信息库A 基础公式和数学运算}
@@ -1061,7 +1061,7 @@ $\Gamma=\oint\bm V\cdot d\bm l$。库塔--儒可夫斯基$L'=\rho U\Gamma$。点
 \idq{图里有“圆柱/球绕流”}
 若是理想势流，压力积分阻力为0；若题给$C_D$，阻力$D=C_D(0.5\rho U^2)A_{\rm front}$，面积取迎风面积。
 
-\chap{母题3 可压缩等熵流与Laval喷管}
+\chap{母题3 可压缩等熵流\\与Laval喷管}
 \mview{\key{母题总览}：看见$p_0,T_0,M,A^*,p_b$或喷管，先判等熵/阻塞。首写$T_0/T,p_0/p,A/A^*,\dot m$。顺序：压比/面积比$\to M\to p,T,\rho,V,\dot m$。检查：亚/超声支路、$p_b\ne p_e$、$0.528$只属于空气临界。}
 \schemelaval
 \infoh{可压/Laval信息库A 基础公式和数学运算}
@@ -1435,7 +1435,7 @@ $p_b$是外界/下游压力，不一定等于喷管出口内压$p_e$。只有全
 $A_t$是几何最小面积；$A^*$是临界面积。阻塞时二者相等，未阻塞时不能乱等。
 \fi
 
-\chap{母题4 正激波、斜激波、膨胀波}
+\chap{母题4 正激波、斜激波\\与膨胀波}
 \mview{\key{母题总览}：看见超声速压缩/凸角膨胀/激波图/Laval内激波，先定波型。首写：正激波用$M_1$，斜激波用$M_{n1}=M_1\sin\beta$，PM用$\nu(M_2)-\nu(M_1)$。顺序：波前等熵$\to$波关系$\to$波后等熵。检查：激波$p_0$降，PM$p_0$不变。}
 \schemeshock
 \infoh{激波/PM信息库A 基础公式和数学运算}
@@ -1683,7 +1683,7 @@ $M_1,\theta\to\beta$。若表无精确值，用线性插值。读到$\beta$后�
 \formq{势函数/流函数/阻塞/激波}
 无旋$\nabla\times\bm V=0\Rightarrow\bm V=\nabla\phi$；不可压再得$\nabla^2\phi=0$。二维不可压可用$u=\psi_y,v=-\psi_x$，$\Delta\psi$为单位宽流量。喉部$M=1$后阻塞，降背压不再增大$\dot m$。激波=绝热不可逆压缩：$p,T,\rho$升，$M$降，$T_0$不变，$p_0$降，熵增造成波阻；斜激波退化：$\beta=\mu$为马赫波、$\beta=90^\circ$为正激波；凸角用PM膨胀，$p_0$不变。
 
-\chap{母题5 粘性管流：N-S、H-P、Couette、管内压损}
+\chap{母题5 粘性管流\\N-S、H-P、Couette、管内压损}
 \mview{\key{母题总览}：看见黏度、充分发展、圆管、两平板、油膜、粗糙度，先判层/湍和边界条件。首写简化N--S或机械能损失。顺序：$Re\to$层流解析/H--P或Moody$\lambda\to h_L,\Delta p,\tau,Q$。检查：充分发展、层流才用H--P、速度剖面与平均速度别混。}
 \schemeviscous
 \infoh{粘性管流信息库A 基础公式和数学运算}
@@ -2021,7 +2021,7 @@ H--P必须满足充分发展层流。若题给入口段/发展段，不要直接
 \fmlb{\mu u''+\rho g_x-\frac{dp}{dx}=0,\quad \frac1r\frac d{dr}(r\mu du/dr)=dp/dx}
 圆管结论：$u=(-dp/dx)(R^2-r^2)/(4\mu)$，$Q=\pi R^4\Delta p/(8\mu L)$，$\tau_w=d\Delta p/(4L)$。
 
-\chap{母题6 边界层、外绕流阻力、综合收口}
+\chap{母题6 边界层、外绕流阻力\\与综合收口}
 \mview{\key{母题总览}：看见平板外流、$\delta,C_f,C_D$、阻力、分离、模型试验，用边界层/外绕/相似。首写$Re_x/Re_L$或$\pi$群。顺序：判层湍$\to \delta,C_f\to D$；相似先选主导准则。检查：湿面积/迎风面积、局部/平均系数、逆压梯度分离。}
 \schemebl
 \infoh{边界层/外绕信息库A 基础公式和数学运算}
@@ -2366,7 +2366,7 @@ $Eu,C_p,\sigma_c$ & 压力系数$C_p=(p-p_\infty)/(0.5\rho V^2)$；汽蚀$\sigma
 \errq{最后一遍单位/符号检查}
 $p$用Pa，表压题可写表压，气体状态方程和汽蚀必须用绝压；$T$用K；$\mu$动力粘度Pa$\cdot$s，$\nu=\mu/\rho$运动粘度m$^2$/s；$\lambda$是管摩阻，$\zeta$是局部损失，$C_D$是外绕阻力，$C_f$是壁面摩擦；$A_{\rm wet}$湿表面积，$A_{\rm front}$迎风面积。
 
-\chap{母题7 场变量、应力张量、静水压与证明小题}
+\chap{母题7 场变量、应力张量\\静水压与证明小题}
 \mview{\key{母题定位}：看见速度场$u,v,w$、应力张量$P$、给定平面法向$\bm n$、闸门/曲面/浮体、或“证明存在势函数/流函数/伯努利条件”，归到本母题。先判模型，再写最短公式链。}
 \infoh{场变量信息库A 基础公式和数学运算}
 \infotxt{%

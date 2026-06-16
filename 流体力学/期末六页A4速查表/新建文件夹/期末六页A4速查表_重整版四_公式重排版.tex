@@ -366,7 +366,10 @@ $A=\pi d^2/4,\ V_i=Q/A_i,\ \dot m=\rho Q$。圆管$Re=Vd/\nu=\rho Vd/\mu$；层�
 \subq{U管/压差计：已知读数，求压差或接入能量方程}
 同一静止连通液体同高同压。若压差计液密度$\rho_m$、管内液密度$\rho$：常用$\Delta p=(\rho_m-\rho)g\Delta h$。接到管路能量方程时，压力表给表压可直接用$p_g/(\rho g)$；汽蚀/气体必须转绝压。
 \subq{泵吸水高度：已知$Q,d,L,\zeta,\varepsilon,p_v$，求$z_B-z_0$}
-从吸水池水面到泵入口列能量，不含泵项：\fml{0+0+z_0=p_B/(\rho g)+V^2/(2g)+z_B+h_f+\sum h_\zeta}。约束$p_B\ge p_v+\Delta p_{\rm safe}$，越高越危险。顺序：$Q\to V\to Re,\varepsilon/d\to\lambda\to h_{\max}$。
+从吸水池水面至泵入口列能量（无泵）：
+\fmlb{0+0+z_0=\frac{p_B}{\rho g}+\frac{V^2}{2g}+z_B+h_f+\sum h_\zeta}
+约束 $p_B\ge p_v+\Delta p_{\rm safe}$，越高越危险。\\
+顺序：$Q\to V\to Re,\varepsilon/d\to\lambda\to h_{\max}$。
 \subq{弯管/喷嘴/法兰受力：已知$p,Q,A,\alpha$，求支座或螺栓力}
 先由连续/能量求$V,Q$，再取管内流体为CV：\fml{\sum\bm F=\sum_{\rm out}\rho Q\bm V-\sum_{\rm in}\rho Q\bm V}。入口压力推入控制体，出口对大气表压为0；求管壁/法兰受力时，最后对流体受力取反。
 \subq{喷口射流/冲板：已知$V,Q$或水头，求反力/功率}

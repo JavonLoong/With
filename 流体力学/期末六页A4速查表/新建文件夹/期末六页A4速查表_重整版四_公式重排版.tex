@@ -438,11 +438,13 @@ h_{f2} = \lambda_2 \frac{L_2}{D_2} \frac{V_2^2}{2g} = 0.041\text{ m} \Rightarrow
 问$Q$：两自由液面列PVZ，未知只留$Q$，把$V_i=Q/A_i$代入损失项。问$p_A$：选最近已知压力截面到A点，不要跨全系统。问$h$或安装高度：先给最低允许压强，再反推高程。问$P$：先求扬程/水头$H$，再$P=\rho gQH$并乘/除效率。问$F$：先PVZ得$V,p$，再CV动量。
 \formq{母题1答案骨架}
 \fmlb{\begin{aligned}
-&1.\ A_i=\pi d_i^2/4,\quad V_i=Q/A_i,\quad Re_i=V_id_i/\nu\\
-&2.\ h_L=\sum \lambda_i(L_i/d_i)V_i^2/(2g)+\sum\zeta_iV_i^2/(2g)+\sum(V_1-V_2)^2/(2g)\\
-&3.\ z_1+p_1/(\rho g)+V_1^2/(2g)+H_p
-=z_2+p_2/(\rho g)+V_2^2/(2g)+H_T+h_L\\
-&4.\ \sum F_x=\rho Q(V_{2x}-V_{1x}),\quad \sum F_y=\rho Q(V_{2y}-V_{1y})
+&1.\ A_i = \pi d_i^2 / 4,\quad V_i = Q/A_i,\quad Re_i = V_i d_i / \nu \\
+&2.\ h_L = \sum \lambda_i \frac{L_i}{d_i} \frac{V_i^2}{2g} + \sum \zeta_i \frac{V_i^2}{2g} \\
+&\quad\quad + \frac{(V_1 - V_2)^2}{2g} \\
+&3.\ z_1 + \frac{p_1}{\rho g} + \frac{V_1^2}{2g} + H_p \\
+&\quad\quad = z_2 + \frac{p_2}{\rho g} + \frac{V_2^2}{2g} + H_T + h_L \\
+&4.\ \sum F_x = \rho Q(V_{2x} - V_{1x}) \\
+&\quad \sum F_y = \rho Q(V_{2y} - V_{1y})
 \end{aligned}}
 第4行用于弯管/喷嘴反力题，求管或支座受力时对流体受力取反。
 \subq{压力线/能量线题：画HGL/EGL或判断哪里压强最低}

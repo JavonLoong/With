@@ -391,7 +391,7 @@ Moody：输入$Re,\varepsilon/d$读$\lambda$；物性表：水温给出时查$\r
 \subq{孔板/文丘里/皮托管：已知压差，求流速或流量}
 皮托管：$V=C\sqrt{2\Delta p/\rho}$。孔板/文丘里理想式：$Q=A_0\sqrt{2\Delta p/[\rho(1-\beta^4)]}$，实际乘流量系数$C$。压差计读数先换$\Delta p$，再代流量式。
 \subq{非恒定小孔/短管出流：求水位时间}
-列瞬时出流$Q=C_dA_o\sqrt{2gH}$，再接水池面积方程$A_t\,dH/dt=-Q$。若容器截面积恒定：积分$\int_{H_1}^{H_2}dH/\sqrt{H}=-C_dA_o\sqrt{2g}\,t/A_t$。
+列瞬时出流$Q=C_dA_o\sqrt{2gH}$，再接水池面积方程$A_t\,dH/dt=-Q$。若容器截面积恒定：积分$\int_{H_1}^{H_2}dH/\sqrt{H}=-C_dA_o\sqrt{2g}\,t/A_t$。堰流无上部约束，闸孔出流受上部刚性约束，以 $e/H \le 0.65$ 划分。
 \subq{普通池底放水管/虹吸管：求是否汽蚀或最大高度}
 先从上游自由液面到危险最高点列能量，求该点绝压$p_{\rm abs}$；再和汽化压$p_v$比较。虹吸最高点不是出口，危险点通常在最高处或泵入口，必须把表压转绝压。
 \idq{母题1图像关键词}
@@ -1816,7 +1816,7 @@ Q=\frac{\pi R^4}{8\mu}\!\left(-\frac{dp}{dx}\right),\quad
 \Delta p=\frac{32\mu L\bar u}{d^2},\quad
 \lambda=\frac{64}{Re}
 \]
-管路损失：$h_f=\lambda(L/d)V^2/(2g),\ h_\zeta=\zeta V^2/(2g)$。壁律：$u_\tau=\sqrt{\tau_w/\rho},\ y^+=yu_\tau/\nu$。
+管路损失：$h_f=\lambda(L/d)V^2/(2g),\ h_\zeta=\zeta V^2/(2g)$。壁律：$u_\tau=\sqrt{\tau_w/\rho},\ y^+=yu_\tau/\nu$。当量直径 $d_e = 4 R_h = 4 A / \chi$（水力半径 $R_h = A / \chi$）。水击：流速突变由流体可压缩性与管壁弹性引起，用慢关阀、调压塔防护。
 }
 \infoh{粘性管流信息库B 证明链和判定链}
 \infotxt{%
@@ -1828,7 +1828,7 @@ Q=\frac{\pi R^4}{8\mu}\!\left(-\frac{dp}{dx}\right),\quad
 }
 \infoh{粘性管流信息库C 常见结论库}
 \infotxt{%
-层流圆管$u_{\max}=2\bar u$；平板Poiseuille$\bar u=2u_{\max}/3$；圆管壁剪$\tau_w=R\Delta p/(2L)=8\mu\bar u/d$。圆管流态：$Re<2300$层流，$2300\sim4000$过渡，$>4000$通常湍流。近壁分区：$y^+<5$粘性底层，$5<y^+<30$缓冲层，$y^+>30$对数/湍流区。粗糙度反推：先由能量方程求$\lambda$，再由$Re,\lambda$反查$\varepsilon/d$。\\
+层流圆管$u_{\max}=2\bar u$；平板Poiseuille$\bar u=2u_{\max}/3$；圆管壁剪$\tau_w=R\Delta p/(2L)=8\mu\bar u/d$。圆管流态：$Re<2300$层流，$2300\sim4000$过渡，$>4000$通常湍流。近壁分区：$y^+<5$粘性底层，$5<y^+<30$缓冲层，$y^+>30$对数/湍流区。数值模拟：DNS无近似计算量大仅低Re；LES解大涡/SGS模型近小涡（中）；RANS时均化/模型闭合（小最实用）。粗糙度反推：先由能量方程求$\lambda$，再由$Re,\lambda$反查$\varepsilon/d$。\\
 流速测量：HWFA（热线，King1914，热散失）；LDA（激光多普勒，Yeh1964，多普勒频移，无接触）；PDPA（相位多普勒，1989，粒径与速度）；PIV（粒子图像，1993，全场测速）。
 }
 \infoh{粘性管流信息库D 易错检查}
@@ -2154,13 +2154,13 @@ u_x+v_y=0,\quad uu_x+vu_y=\nu u_{yy},\quad p_y=0
 \infoh{边界层/外绕信息库B 证明链和判定链}
 \infotxt{%
 \textbf{平板流程链}：题给$U,L,\nu,b\to Re_L$；与$Re_{cr}$比判层/湍/转捩；选$\delta,\bar C_f$；用湿表面积算摩擦阻力；功率$P=DU$。\\
-\textbf{动量积分链}：给速度剖面$f(\eta)$，先算$\delta^*=\delta\int(1-f)d\eta$、$\theta=\delta\int f(1-f)d\eta$；再用$\tau_w/(\rho U^2)=d\theta/dx$。\\
+\textbf{动量积分链}：给速度剖面$f(\eta)$，先算$\delta^*=\delta\int(1-f)d\eta$、$\theta=\delta\int f(1-f)d\eta$；再用$\tau_w/(\rho U^2)=d\theta/dx$。平板层流阻力求解：由剖面求 $\theta,\tau_w$ 与 $\delta$ 关系，代入卡门方程积分求出 $\delta(x)$，进而求摩擦力。\\
 \textbf{外绕阻力链}：球/圆柱/钝体先算$Re$，查$C_D$，用迎风面积；平板摩擦用$C_f$和湿面积。\\
 \textbf{相似链}：列变量$\to$选重复变量$\rho,V,L\to$写$\pi$数；重力主导保$Fr$，粘性主导保$Re$，高速气体保$Ma$。
 }
 \infoh{边界层/外绕信息库C 常见结论库}
 \infotxt{%
-名义厚度$\delta$是$u=0.99U$处；位移厚度$\delta^*$表示排挤外流的等效厚度；动量厚度$\theta$表示动量亏损厚度。逆压梯度$dp/dx>0$使边界层增厚并可能分离，$\tau_w=0$是分离临界。流线型小迎角常摩擦阻力主导；钝体分离后压差阻力主导。平板若未说明双面，先按题图/文字判断，不能自动乘2。
+名义厚度$\delta$是$u=0.99U$处；排挤厚度$\delta^*$和动量损失厚度$\theta$均显著小于 $\delta$。逆压梯度$dp/dx>0$使边界层增厚并可能分离，$\tau_w=0$是分离临界。卡门涡街脱落频率 $f = St \frac{U}{d}$。流线型小迎角常摩擦阻力主导；钝体分离后压差阻力主导。平板若未说明双面，先按题图/文字判断，不能自动乘2。
 }
 \infoh{边界层/外绕信息库D 易错检查}
 \infotxt{%
@@ -2492,7 +2492,7 @@ $p$用Pa，表压题可写表压，气体状态方程和汽蚀必须用绝压；
 
 \infoh{场变量与静水压核心概念与证明}
 \infotxt{%
-梯度$\nabla f=(f_x,f_y,f_z)$；散度$\nabla\cdot\bm V=u_x+v_y+w_z$（不可压流为0）；旋度$\nabla\times\bm V=(w_y-v_z,\ u_z-w_x,\ v_x-u_y)$（无旋为0，$\bm V=\nabla\phi$，满足$\nabla^2\phi=0$）。二维不可压有流函数：$u=\psi_y,v=-\psi_x$，流线满足$dy/dx=v/u$或$\psi=C$。材料导数$D/Dt=\partial_t+u\partial_x+v\partial_y+w\partial_z$。强迫涡自由面：$z=\omega^2r^2/(2g)+C$。应力矢量$\bm t_n=P\bm n$，法向应力$\sigma_n=\bm t_n\cdot\bm n$，切向应力大小$\tau=\sqrt{|\bm t_n|^2-\sigma_n^2}$。平面闸门力$F=\rho gh_CA$；压力中心$y_p=y_C+I_C/(y_CA)$；曲面分力：$F_H=\rho gh_{Cx}A_x$（竖直投影），$F_V=\rho gV$（压力体水重）。应力张量对称：无体偶力时微元角动量平衡（故$p_{xy}=p_{yx}$）。压力中心低于形心：静水压随深度增大，下部压力权重大。
+梯度$\nabla f=(f_x,f_y,f_z)$；散度$\nabla\cdot\bm V=u_x+v_y+w_z$（不可压流为0）；旋度$\nabla\times\bm V=(w_y-v_z,\ u_z-w_x,\ v_x-u_y)$（无旋为0，$\bm V=\nabla\phi$，满足$\nabla^2\phi=0$）。等温大气气压随高度呈指数级下降（$p=p_0 e^{-gz/RT}$）。刚体旋转有速度梯度但剪切应变率为0。二维不可压有流函数：$u=\psi_y,v=-\psi_x$，流线满足$dy/dx=v/u$或$\psi=C$。材料导数$D/Dt=\partial_t+u\partial_x+v\partial_y+w\partial_z$。强迫涡自由面：$z=\omega^2r^2/(2g)+C$。应力矢量$\bm t_n=P\bm n$，法向应力$\sigma_n=\bm t_n\cdot\bm n$，切向应力大小$\tau=\sqrt{|\bm t_n|^2-\sigma_n^2}$。平面闸门力$F=\rho gh_CA$；压力中心$y_p=y_C+I_C/(y_CA)$；曲面分力：$F_H=\rho gh_{Cx}A_x$（竖直投影），$F_V=\rho gV$（压力体水重）。应力张量对称：无体偶力时微元角动量平衡（故$p_{xy}=p_{yx}$）。压力中心低于形心：静水压随深度增大，下部压力权重大。
 }
 
 \subq{应力张量：$P = \begin{pmatrix} -7 & 0 & 2 \\ 0 & -5 & 0 \\ 2 & 0 & -4 \end{pmatrix}$ kPa，$\bm n = (\frac{2}{3}, -\frac{2}{3}, \frac{1}{3})^T$}

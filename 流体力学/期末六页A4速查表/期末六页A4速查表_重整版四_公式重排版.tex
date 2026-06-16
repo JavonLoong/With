@@ -2489,67 +2489,37 @@ $p$用Pa，表压题可写表压，气体状态方程和汽蚀必须用绝压；
 
 \chap{母题7 场变量、应力张量\\静水压与证明小题}
 \mview{\key{母题定位}：看见速度场$u,v,w$、应力张量$P$、给定平面法向$\bm n$、闸门/曲面/浮体、或“证明存在势函数/流函数/伯努利条件”，归到本母题。先判模型，再写最短公式链。}
-\infoh{场变量信息库A 基础公式和数学运算}
+
+\infoh{场变量与静水压核心概念与证明}
 \infotxt{%
-梯度$\nabla f=(f_x,f_y,f_z)$；散度$\nabla\cdot\bm V=u_x+v_y+w_z$；旋度$\nabla\times\bm V=(w_y-v_z,\ u_z-w_x,\ v_x-u_y)$。二维旋度$\Omega_z=v_x-u_y$，角速度$\omega_z=\Omega_z/2$。材料导数$D/Dt=\partial_t+u\partial_x+v\partial_y+w\partial_z$；$a_x=u_t+uu_x+vu_y+wu_z$，其余分量同理。柱坐标常用：$\nabla\cdot\bm V=\frac1r\partial(rv_r)/\partial r+\frac1r\partial v_\theta/\partial\theta+\partial v_z/\partial z$。
+梯度$\nabla f=(f_x,f_y,f_z)$；散度$\nabla\cdot\bm V=u_x+v_y+w_z$（不可压流为0）；旋度$\nabla\times\bm V=(w_y-v_z,\ u_z-w_x,\ v_x-u_y)$（无旋为0，$\bm V=\nabla\phi$，满足$\nabla^2\phi=0$）。二维不可压有流函数：$u=\psi_y,v=-\psi_x$，流线满足$dy/dx=v/u$或$\psi=C$。材料导数$D/Dt=\partial_t+u\partial_x+v\partial_y+w\partial_z$。强迫涡自由面：$z=\omega^2r^2/(2g)+C$。应力矢量$\bm t_n=P\bm n$，法向应力$\sigma_n=\bm t_n\cdot\bm n$，切向应力大小$\tau=\sqrt{|\bm t_n|^2-\sigma_n^2}$。平面闸门力$F=\rho gh_CA$；压力中心$y_p=y_C+I_C/(y_CA)$；曲面分力：$F_H=\rho gh_{Cx}A_x$（竖直投影），$F_V=\rho gV$（压力体水重）。应力张量对称：无体偶力时微元角动量平衡（故$p_{xy}=p_{yx}$）。压力中心低于形心：静水压随深度增大，下部压力权重大。
 }
-\infoh{场变量信息库B 证明链和判定链}
-\infotxt{%
-不可压判定：$\nabla\cdot\bm V=0$；二维不可压可令$u=\psi_y,\ v=-\psi_x$。无旋判定：$\nabla\times\bm V=0$；无旋可令$\bm V=\nabla\phi$。势流满足$\nabla^2\phi=0$，二维不可压流函数满足$\nabla^2\psi=-\Omega_z$，无旋时$\nabla^2\psi=0$。Bernoulli从Euler沿流线积分；定常、不可压、无粘、保守体力下沿流线成立，无旋时可全场用。
-}
-\infoh{场变量信息库C 常见结论库}
-\infotxt{%
-点涡$v_\theta=\Gamma/(2\pi r)$，原点外无旋但环量非零；强迫涡$v_\theta=\omega r$，$\Omega_z=2\omega$，自由面$z=\omega^2r^2/(2g)+C$；自由涡$v_\theta=C/r$，$p/\rho+\frac12v^2+gz=C$。平面方程$F=0$的单位法向$\bm n=\pm\nabla F/|\nabla F|$；圆柱面$y^2+z^2=R^2$法向$(0,y/R,z/R)$。
-}
-\infoh{场变量信息库D 易错检查}
-\infotxt{%
-应力张量题不是直接取矩阵元素，必须先算$\bm t_n=P\bm n$。流线不是迹线：定常时可同，非定常通常不同。二维不可压不等于无旋；有$\psi$不代表有$\phi$。证明题要先写适用条件，不能只抄结论。
-}
-\subq{真题：应力张量与指定平面应力矢量计算}
-流体某点应力张量为 $P = \begin{pmatrix} -7 & 0 & 2 \\ 0 & -5 & 0 \\ 2 & 0 & -4 \end{pmatrix}$（单位 kPa），某受压面外法向为 $\bm n = (\frac{2}{3}, -\frac{2}{3}, \frac{1}{3})^T$。求该面上的应力矢量 $\bm t_n$、法向应力标量 $\sigma_n$、法向与切向应力分量 $\bm t_N,\bm t_T$ 及大小 $\tau$，以及夹角 $\alpha$。\\
-解：1. 应力矢量：$\bm t_n = P \bm n = (-4, 10/3, 0)^T$ kPa。
-2. 法向应力：$\sigma_n = \bm t_n \cdot \bm n = -44/9 \approx -4.89$ kPa (压应力)。法向分量 $\bm t_N = \sigma_n \bm n = (-3.26, 3.26, -1.63)^T$ kPa。
-3. 切向分量：$\bm t_T = \bm t_n - \sigma_n \bm n = (-0.74, 0.07, 1.63)^T$ kPa。大小 $\tau = |\bm t_T| = 1.79$ kPa。
-4. 夹角：$\cos\alpha = \sigma_n/|\bm t_n| = \frac{-4.89}{\sqrt{16+100/9}} = -0.939 \Rightarrow \alpha \approx 159.9^\circ$。
-\subq{速度场小题：判连续、有旋、流线、迹线、加速度}
-连续：算$u_x+v_y+w_z$。有旋：算$\Omega_z=v_x-u_y$或三维旋度。流线：定常二维用$dy/dx=v/u$；也可先找$\psi$，流线$\psi=C$。迹线：解$dx/dt=u(x,y,t),dy/dt=v(x,y,t)$，非定常题不能拿流线代替迹线。
-\subq{真题：倾斜平面闸门静水总压力与铰链拉力计算}
-水池侧壁有倾斜矩形平板闸门，宽 $b=2$m，长 $L=3$m，倾角 $\theta=60^\circ$。铰链设于顶端（水深 $h_1=1$m处），底端由水平拉线拉住，求静水压力 $F$、压力中心沿板长坐标 $y_p$ 及拉线张力 $T$。\\
-解：1. 顶端沿板面距水面交线为 $y_1 = h_1/\sin 60^\circ = 1.155$m。
-形心沿板面坐标 $y_C = y_1 + L/2 = 2.655$m。形心深度 $h_C = y_C \sin 60^\circ = 2.30$m。
-2. 静水总压力（闸门面积 $A = b \times L = 6$m$^2$）：
-\fmlb{F = \rho g h_C A = 1000 \times 9.81 \times 2.30 \times 6 = 135.4\text{ kN}}
-3. 压力中心（矩形 $I_C = \frac{b L^3}{12} = 4.5$m$^4$）：
-\fmlb{y_p = y_C + \frac{I_C}{y_C A} = 2.655 + \frac{4.5}{2.655 \times 6} = 2.938\text{ m}}
-压力中心至铰链距离 $L_p = y_p - y_1 = 1.783$m。
-4. 铰链力矩平衡（拉力 $T$ 的垂直力臂为 $L \sin 60^\circ = 2.60$m）：
-\fmlb{\sum M_{\text{hinge}} = F \times L_p - T \times (L \sin 60^\circ) = 0 \Rightarrow T = \frac{135.4 \times 1.783}{3 \sin 60^\circ} = 92.9\text{ kN}}
+
+\subq{应力张量：$P = \begin{pmatrix} -7 & 0 & 2 \\ 0 & -5 & 0 \\ 2 & 0 & -4 \end{pmatrix}$ kPa，$\bm n = (\frac{2}{3}, -\frac{2}{3}, \frac{1}{3})^T$}
+解：1. $\bm t_n = P \bm n = (-4, 10/3, 0)^T$ kPa。2. $\sigma_n = \bm t_n \cdot \bm n = -4.89$ kPa (压)。法向分量 $\bm t_N = \sigma_n \bm n = (-3.26, 3.26, -1.63)^T$ kPa。3. 切向分量 $\bm t_T = \bm t_n - \bm t_N = (-0.74, 0.07, 1.63)^T$，大小 $\tau = |\bm t_T| = 1.79$ kPa。4. $\cos\alpha = \sigma_n/|\bm t_n| = -0.939 \Rightarrow \alpha = 159.9^\circ$。
+
+\subq{倾斜闸门：宽 $b=2$, 长 $L=3$, $\theta=60^\circ$。顶在水深 $h_1=1$（铰链在顶）}
+解：1. 顶距水面交线 $y_1 = h_1/\sin 60^\circ = 1.155$。形心坐标 $y_C = y_1 + L/2 = 2.655$，形心深度 $h_C = y_C \sin 60^\circ = 2.30$。2. 总压力：$F = \rho g h_C A = 135.4\text{ kN}$。3. 压力中心：$y_p = y_C + I_C/(y_C A) = 2.655 + 4.5/(2.655 \times 6) = 2.938$。离顶距 $L_p = y_p - y_1 = 1.783$。4. 力矩平衡：$F \times L_p - T \times (L \sin 60^\circ) = 0 \Rightarrow T = 92.9\text{ kN}$。
+
 \subq{常用几何：静水压和量纲题会用}
 圆$A=\pi d^2/4,\ I_C=\pi d^4/64$；矩形$A=bh,\ I_C=bh^3/12$；三角形$A=bh/2,\ I_C=bh^3/36$；半圆$A=\pi R^2/2,\ y_C=4R/(3\pi)$。量纲法：变量$n$个、基本量纲$r$个，则$\pi$群$n-r$个；常选$\rho,V,L$作重复变量。
 
-\subq{母题7题干入口：看见关键词后第一行写什么}
-{\centering\begin{tabular}{|>{\centering\arraybackslash}p{0.28\linewidth}|>{\centering\arraybackslash}p{0.66\linewidth}|}\hline
-速度场$u,v,w$ & 先算$\nabla\cdot\bm V$判不可压，再算$\nabla\times\bm V$判有旋；若求流线写$dx/u=dy/v=dz/w$。\\\hline
-应力张量$P$+平面 & 先求单位法向$\bm n$，再写$\bm t=P\bm n$，随后分解法向/切向。\\\hline
-闸门/铰链/拉杆 & 先求$F=\rho gh_CA$和压力中心，再对铰点取矩。\\\hline
-曲面/圆弧面 & 水平分力取竖直投影压力；竖直分力取压力体水重。\\\hline
-浮体/漂浮 & 浮力$F_B=\rho gV_{\rm disp}$；平衡时重力=浮力，稳定看$G$与$M$。\\\hline
-加速/旋转容器 & 写$\nabla p=\rho(\bm g-\bm a)$；自由面垂直等效重力。\\\hline
-\end{tabular}\par}
-\conceptq{母题7高频证明句}
-应力张量对称：无体偶力时微元角动量平衡，故$p_{xy}=p_{yx}$等，独立分量由9个变6个。\\
-Laplace来源：不可压$\nabla\cdot\bm V=0$且无旋$\bm V=\nabla\phi$，故$\nabla^2\phi=0$；二维流函数有$\nabla^2\psi=-\Omega_z$。\\
-Bernoulli沿流线：由Euler方程沿流线积分；若还无旋，则积分常数全场相同。\\
-压力中心低于形心：静水压随深度增大，下部压力权重大，所以合力作用点比形心深。
-\stepq{母题7标准模板：速度场}
-1 连续：$\nabla\cdot\bm V=0?$ 2 有旋：$\nabla\times\bm V=0?$ 3 若不可压，找$\psi$；若无旋，找$\phi$。4 流线$\psi=C$或$dy/dx=v/u$；迹线必须解$dx/dt=u,dy/dt=v$。5 加速度用材料导数。
-\stepq{母题7标准模板：静水压}
-1 画自由液面和形心深度$h_C$。2 平面力$F=\rho gh_CA$。3 压力中心用$I_C/(y_CA)$修正。4 曲面拆$F_H,F_V$。5 铰链/拉杆题最后对铰点列力矩。
-\stepq{母题7标准模板：相对平衡/涡面}
-水平加速：$gdz+adx=0,\ \tan\alpha=a/g$。竖直加速向上用$g+a$，向下用$g-a$。强迫涡自由面$z=\omega^2r^2/(2g)+C$；自由涡用$p/\rho+v_\theta^2/2+gz=C$。
-\errq{母题7易错收口}
-非定常流线不等于迹线；有流函数不代表无旋；有势函数才代表无旋。压力中心公式里的$y$是沿板面坐标，深度要乘$\sin\theta$。曲面竖直分力方向看压力体位置。应力夹角若$\sigma_n<0$，说明法向应力为压应力，夹角大小用绝对值说明。
+\stepq{解题步骤与易错点}
+速度场：连续（$\nabla\cdot\bm V=0$）、有旋（$\nabla\times\bm V=0$）；不可压找$\psi$，无旋找$\phi$；迹线必须积分。闸门：算$h_C\to F\to y_p\to$力矩。相对平衡：加速沿倾角$\tan\alpha=a/g$，旋转面$z=\omega^2r^2/(2g)+C$。注意：迹线不等于流线；有流函数不一定无旋。
 
+\infoh{选择与判断题高频概念秒杀库（防坑指南）}
+\infotxt{%
+\textbf{激波前后物性}：通过正激波（相对静止）：静压$p\uparrow$、静密$\rho\uparrow$、静温$T\uparrow$、静焓$h\uparrow$；总温$T_0$、总焓$h_0$不变（绝热流）；总压$p_0\downarrow$（有熵增）；临界截面积$A^*$不变（流率守恒，考试以此为准）。如果是斜激波，切向速度$V_t$不变，法向速度减速。\\
+\textbf{连续性方程}：连续性方程$\partial_t \rho + \nabla\cdot(\rho \bm V)=0$源自质量守恒（运动学规律），不涉及粘性或力，故\warn{粘性流体与理想流体的连续性方程形式完全相同}。\\
+\textbf{低Re小球绕流}：当$Re<1$（Stokes流）时，流动中惯性力极微弱，核心是\warn{忽略了流体质点的加速度}（即忽略主导惯性项），但绝对没有忽略流体粘性（粘性是主导项）。\\
+\textbf{流函数与势函数}：1. 只要是二维不可压流动（定常与否、有无粘性均可），\warn{必然存在流函数 $\psi$}。2. 只有无旋流动才存在势函数 $\phi$。3. 有流函数不一定有势函数（可能有旋）；有势函数不一定有流函数（可能三维）。\\
+\textbf{层流与湍流}：1. 雷诺数$Re$是惯性力与粘性力之比，能在一定程度上反映粘性流体流动特征。2. 转捩雷诺数受管壁粗糙度和外界扰动影响，不是确定的常数。3. 湍流时均化后引入了雷诺应力项，其时均连续和动量方程均\warn{不封闭}，必须引入湍流模型。\\
+\textbf{流线与迹线}：流线是同一时刻不同质点速度切线（$dx/u=dy/v=dz/w$）；迹线是同一质点在不同时刻的轨迹（$dx/dt=u$）。定常流动中流线与迹线重合，非定常时通常不重合。\\
+\textbf{Bernoulli方程条件}：沿流线成立条件：定常、不可压、无粘性、保守质量力（如重力）；无旋时可全场成立。\\
+\textbf{流动分离条件}：必要条件：存在逆压梯度（即$dp/dx>0$）；充分条件（分离判据）：壁面剪力降为零（$\tau_w=0$）。\\
+\textbf{阻力危机}：圆柱/球等钝体在临界$Re$附近，边界层由层流转捩为湍流，动量增加，抗逆压梯度能力增强，分离点后移，尾流变窄，压差阻力突降，总阻力系数$C_D$骤减。\\
+\textbf{水击（水锤）}：阀门突然关闭引起管内流速骤变，导致压强交替升降。最大压强变化$\Delta p = \rho c \Delta v$，$c$为水击波速。
+}
 
 \end{multicols}
 \end{document}

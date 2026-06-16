@@ -62,7 +62,7 @@
 \newcommand{\dbsection}[1]{\vspace{0.45pt}{\fontsize{5.8}{6.0}\selectfont\bfseries\color{white}\colorbox{infoc}{\strut\;#1\;}}\par\vspace{0.15pt}}
 \newcommand{\dbblock}[1]{\par\noindent\colorbox{infobg}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{4.85}{5.05}\selectfont #1\end{minipage}}\par\vspace{0.10pt}}
 \newcommand{\infoh}[1]{\vspace{0.10pt}{\fontsize{5.05}{5.24}\selectfont\bfseries\color{white}\colorbox{infoc}{\strut\;#1\;}}\par}
-\newcommand{\infotxt}[1]{\colorbox{infobg}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{4.82}{5.02}\selectfont #1\end{minipage}}\par\vspace{0.10pt}}
+\newcommand{\infotxt}[1]{{\fontsize{4.82}{5.02}\selectfont #1}\par\vspace{2.0pt}}
 \newcommand{\sect}[1]{\subq{#1}}
 \newcommand{\exm}[1]{\varq{#1}}
 \newcommand{\mview}[1]{\colorbox{bgw}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{4.88}{5.04}\selectfont #1\end{minipage}}\par\vspace{0.15pt}}
@@ -2602,8 +2602,8 @@ $p$用Pa，表压题可写表压，气体状态方程和汽蚀必须用绝压；
 {\fontspec{SimSun}③} 圆管完全发展段中速度剖面恒定，\warn{沿程压力梯度 $\frac{dp}{dx}$ 为常数}。\\
 {\fontspec{SimSun}④} \key{光滑管替换与阻力控制}：总阻力损失等于沿程阻力 $h_f = \lambda \frac{l}{d}\frac{v^2}{2g}$ 与局部阻力 $h_j = \zeta \frac{v^2}{2g}$ 之和。若阀门、弯头等局部阻力占主导（$h_j \gg h_f$），或流动本身处于水力光滑区（摩擦系数 $\lambda$ 仅与 $Re$ 有关，与管壁粗糙度无关），则更换光滑管对减小阻力、增加流量几乎无用。\\
 4. \key{当量直径与动力相似}：\\
-{\fontspec{SimSun}①} 当量直径 $d_e = 4 R_h = 4 A / \chi$（水力半径 $R_h = A / \chi$，即过流面积比湿周），作用是将非圆截面折算为圆管阻力计算。\\
-{\fontspec{SimSun}②} 重力主导选 Fr 相似，粘性主导选 Re 相似。\\
+{\fontspec{SimSun}①} \key{当量直径} $d_e = 4 R_h = 4 A / \chi$（其中 $R_h = A / \chi$ 是水力半径，$A$ 为过流断面积，希腊字母 $\chi$ 为湿周 [即流体与壁面接触的周长]），作用是将非圆截面折算为圆管进行阻力计算。\\
+{\fontspec{SimSun}②} \key{相似准则}：重力起主导作用时选取无量纲数弗劳德数相似（$Fr = V/\sqrt{gl}$，其物理意义为惯性力与重力之比）；粘性力起主导作用时选取无量纲数雷诺数相似（$Re = \rho V l/\mu$，惯性力与粘性力之比）。两者均为无量纲数（无单位）。\\
 {\fontspec{SimSun}③} 模型试验中通常无法在普通风洞/水槽中\warn{同时满足雷诺数 $Re$ 与弗劳德数 $Fr$ 相似}（因两者的速度缩放比例要求冲突）。\\
 {\fontspec{SimSun}④} 量纲分析中只要选取的重复变量在量纲上相互独立即可（如可取 $\rho,V,L$ 或 $p,V,L$）。\\
 {\fontspec{SimSun}⑤} 阻力平方区自模化时阻力系数与 Re 无关。\\

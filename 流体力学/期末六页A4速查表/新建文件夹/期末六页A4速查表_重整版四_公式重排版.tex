@@ -42,6 +42,9 @@
 \definecolor{infoc}{HTML}{00695C}
 \definecolor{infobg}{HTML}{D2ECD3}
 \definecolor{subbg}{HTML}{B9D7FF}
+\definecolor{redbg}{HTML}{FFEBEE}
+\newcommand{\redinfotxt}[1]{\colorbox{redbg}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{4.82}{5.02}\selectfont #1\end{minipage}}\par\vspace{0.10pt}}
+\newcommand{\fmlbred}[1]{\par\noindent\colorbox{redbg}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\centering\fontsize{5.12}{5.42}\selectfont\ensuremath{\displaystyle #1}\end{minipage}}\par\vspace{0.10pt}}
 \newcommand{\chap}[1]{\vspace{0.35pt}\colorbox{h1}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{9.00}{9.30}\selectfont\bfseries\color{white}#1\end{minipage}}\par\vspace{0.15pt}}
 \newcommand{\tagsec}[3]{\vspace{0.10pt}{\fontsize{5.05}{5.24}\selectfont\bfseries\color{#1}\colorbox{#1}{\color{white}\fontsize{4.00}{4.14}\selectfont #2}\,#3}\par}
 \newcommand{\tagsecbg}[3]{\vspace{0.10pt}\colorbox{subbg}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{5.05}{5.24}\selectfont\bfseries\color{#1}\colorbox{#1}{\color{white}\fontsize{4.00}{4.14}\selectfont #2}\,\color{black}#3\end{minipage}}\par}
@@ -2171,26 +2174,26 @@ $x$是从前缘到该点，$L$是整板长度；问尾部厚度取$x=L$。局部
 \text{转捩：}&\quad \bar C_f=0.074/Re_L^{1/5}-1742/Re_L\\
 \text{阻力：}&\quad D=\bar C_f\frac12\rho U^2A,\qquad P=DU
 \end{aligned}}
-
-\formq{位移/动量厚度/Von Karman}
-\fmlb{\color{warnc}\begin{aligned}
+}
+\infoh{位移/动量厚度/Von Karman}
+\redinfotxt{%
+\fmlbred{\begin{aligned}
 \delta^*&=\int_0^\delta(1-u/U)\,dy\\
 \theta&=\int_0^\delta(u/U)(1-u/U)\,dy
 \end{aligned}}
-\fmlb{\color{warnc}\begin{aligned}
+\fmlbred{\begin{aligned}
 \frac{\tau_w}{\rho U^2}&=\frac{d\theta}{dx}\qquad(dp/dx=0)\\
 \frac{\tau_w}{\rho U^2}&=\frac{d\theta}{dx}
 +\frac{2\theta+\delta^*}{U}\frac{dU}{dx}
 \end{aligned}}
 给$u/U=f(\eta),\eta=y/\delta$：把$dy=\delta d\eta$代入积分。
 \stepq{常见剖面直接用}
-\fmlb{\begin{array}{c|c|c}
+\fmlbred{\begin{array}{c|c|c}
 u/U & \delta^* & \theta\\ \hline
 \eta & \delta/2 & \delta/6\\
 2\eta-\eta^2 & \delta/3 & 2\delta/15
 \end{array}}
 若题给幂律$u/U=\eta^{1/n}$，先代$\eta$积分，不要展开成$y$。
-
 }
 \subq{作业代表题：书10.2 平板层流油流}
 原题：油$\mu=0.731$Pa·s，$\rho=925$kg/m$^3$，以$U=0.6$m/s流过光滑平板$L=0.5$m，$b=0.15$m，求最大边界层厚度和阻力。公式选择：先判$Re_L$，全层流用Blasius平均式，题未说单面/双面时按原答案两面面积$2Lb$。
@@ -2260,8 +2263,10 @@ D_w&=14.4{\rm N},\quad
 \stepq{平板题统一流程}
 1 算$Re_L$判全层流/转捩/湍流。2 选$\bar C_f,\delta(L)$。3 阻力面积分清单面$Lb$、双面$2Lb$、湿表面积。4 给速度剖面先积分$\delta^*,\theta$，再用Karman动量积分。
 
+\redinfotxt{%
 \stepq{分离与阻力}
-\warn{必要条件：逆压梯度$dp/dx>0$（或速度减小）；充分条件（分离判据）：壁面剪力$\tau_w=0$（即$\partial u/\partial y|_w=0$）。}摩擦阻力来自$\tau_w$；压差阻力来自分离尾流。
+\warn{必要条件：逆压梯度$dp/dx>0$（或速度减小）；充分条件（分离判据）：壁面剪力$\tau_w=0$（即$\partial u/\partial y|_w=0$）。}摩擦阻力来自$\tau_w$；压差阻力来分尾流。
+}
 \idq{外绕流阻力判断}
 流线型小迎角：摩擦阻力为主；钝体/分离明显：压差阻力为主。高$Re$物面外可近似无粘，用Euler/伯努利；靠壁必须用边界层。
 

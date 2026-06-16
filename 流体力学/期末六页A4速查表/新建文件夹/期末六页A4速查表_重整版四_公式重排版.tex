@@ -2173,11 +2173,11 @@ $x$是从前缘到该点，$L$是整板长度；问尾部厚度取$x=L$。局部
 \end{aligned}}
 
 \formq{位移/动量厚度/Von Karman}
-\fmlb{\begin{aligned}
+\fmlb{\color{warnc}\begin{aligned}
 \delta^*&=\int_0^\delta(1-u/U)\,dy\\
 \theta&=\int_0^\delta(u/U)(1-u/U)\,dy
 \end{aligned}}
-\fmlb{\begin{aligned}
+\fmlb{\color{warnc}\begin{aligned}
 \frac{\tau_w}{\rho U^2}&=\frac{d\theta}{dx}\qquad(dp/dx=0)\\
 \frac{\tau_w}{\rho U^2}&=\frac{d\theta}{dx}
 +\frac{2\theta+\delta^*}{U}\frac{dU}{dx}
@@ -2261,7 +2261,7 @@ D_w&=14.4{\rm N},\quad
 1 算$Re_L$判全层流/转捩/湍流。2 选$\bar C_f,\delta(L)$。3 阻力面积分清单面$Lb$、双面$2Lb$、湿表面积。4 给速度剖面先积分$\delta^*,\theta$，再用Karman动量积分。
 
 \stepq{分离与阻力}
-逆压梯度$dp/dx>0$使边界层减速增厚；$\partial u/\partial y|_w=0$为分离临界。摩擦阻力来自$\tau_w$；压差阻力来自分离尾流。
+\warn{必要条件：逆压梯度$dp/dx>0$（或速度减小）；充分条件（分离判据）：壁面剪力$\tau_w=0$（即$\partial u/\partial y|_w=0$）。}摩擦阻力来自$\tau_w$；压差阻力来自分离尾流。
 \idq{外绕流阻力判断}
 流线型小迎角：摩擦阻力为主；钝体/分离明显：压差阻力为主。高$Re$物面外可近似无粘，用Euler/伯努利；靠壁必须用边界层。
 

@@ -536,7 +536,7 @@ $p/\rho g$单位是m。能量方程每一项都用m时，泵扬程$H_p$也是m�
 “湍流时速度可分解为时均量和脉动量，脉动相关产生雷诺应力，工程上常通过经验摩擦系数或壁律求解。”
 \idq{题图识别+查表+公式链}
 \idq{题图一眼选模型}
-\renewcommand{\arraystretch}{0.67}{\centering\begin{tabular}{|p{0.30\linewidth}|p{0.62\linewidth}|}
+\renewcommand{\arraystretch}{0.67}{\centering\begin{tabular}{|>{\centering\arraybackslash}p{0.30\linewidth}|>{\centering\arraybackslash}p{0.62\linewidth}|}
 \hline U管/压差计 & 同高同压链；$\Delta p=(\rho_m-\rho)g\Delta h$；振荡$T=2\pi\sqrt{L/2g}$\\ \hline
 闸门/曲面 & 平面$F=\rho gh_CA,\;y_D=y_C+I_C/(y_CA)$；曲面$F_x=$投影，$F_y=$压力体\\ \hline
 弯管/喷嘴 & 取管内流体CV：$\sum\bm F=\rho Q(\bm V_2-\bm V_1)$；题问管受力最后取反\\ \hline
@@ -926,7 +926,7 @@ $D\rho/Dt=\partial\rho/\partial t+u\rho_x+v\rho_y+w\rho_z$。当地：同一点�
 \stepq{孔板/自由射流}
 孔板节流：流通面积缩小，速度升高、静压降低，同时有局部损失，实际流量需乘流量系数。自由射流：出口后$p\approx p_a$，用横截面动量通量$\int\rho u^2dA$守恒/近似守恒，卷吸使射流宽度增大、中心速度衰减。
 \quickq{常见速度剖面结果/1/n指数律}
-{\centering\begin{tabular}{|p{0.42\linewidth}|p{0.52\linewidth}|}\hline
+{\centering\begin{tabular}{|>{\centering\arraybackslash}p{0.42\linewidth}|>{\centering\arraybackslash}p{0.52\linewidth}|}\hline
 $u/U=\eta$ & $\delta^*=\delta/2,\ \theta=\delta/6,\ H=3$\\\hline
 $u/U=\frac32\eta-\frac12\eta^3$ & $\delta^*=3\delta/8,\ \theta=39\delta/280,\ H=35/13$\\\hline
 $u/U=\eta^{1/n}$；1/6律取$n=6$ & $\delta^*=\delta/(n+1),\ \theta=n\delta/[(n+1)(n+2)]$\\\hline
@@ -964,43 +964,49 @@ $u/U=\sin(\pi\eta/2)$ & $\delta^*/\theta\approx2.66,\ C_D\approx1.31/\sqrt{Re_L}
 \mview{\key{母题总览}：看见不可压无旋、$\phi/\psi$、源汇涡、镜像、圆柱/机翼，用势流叠加。首写$\phi=\sum\phi_i$或$\psi=\sum\psi_i$。顺序：边界流线/驻点$\to V\to p$；合力用压力积分。检查：壁面不穿透、$\psi=C$、伯努利是否可全场用。}
 \schemepotential
 \infoh{势流信息库A 基础公式和数学运算}
-\infotxt{%
 \fmlb{\begin{gathered}
-\nabla\cdot\bm V=0,\quad \nabla\times\bm V=0,\quad
-\bm V=\nabla\phi,\quad \nabla^2\phi=0,\quad \nabla^2\psi=-\Omega_z\\
-u=\phi_x=\psi_y,\quad v=\phi_y=-\psi_x,\quad
-v_r=\phi_r=\psi_\theta/r,\quad v_\theta=\phi_\theta/r=-\psi_r\\
-p=p_\infty+\tfrac12\rho(U_\infty^2-V^2),\quad C_p=1-(V/U_\infty)^2,\quad q'=\psi_2-\psi_1
+\nabla\cdot\bm V = \nabla^2\phi = 0,\ \nabla\times\bm V = \bm\Omega = 0\\
+\text{直角：}u_x+v_y+w_z=0,\ \Omega_z=v_x-u_y=-\nabla^2\psi=0\\
+\text{极：}\tfrac{\partial v_r}{\partial r} + \tfrac{v_r}{r} + \tfrac{\partial v_\theta}{r\partial\theta}=0,\ \Omega_z=\tfrac{\partial v_\theta}{\partial r} + \tfrac{v_\theta}{r} - \tfrac{\partial v_r}{r\partial\theta}=0\\
+u,v=\phi_x,\phi_y=\psi_y,-\psi_x;\ v_r,v_\theta=\phi_r,r^{-1}\phi_\theta=r^{-1}\psi_\theta,-\psi_r\\
+p+\tfrac12\rho V^2=\text{const},\ C_p=1-(V/U_\infty)^2,\ q'=\psi_2-\psi_1\\
+\Gamma = \oint \bm V\cdot d\bm l,\ L' = \rho U \Gamma,\ \text{点涡：}v_\theta = \tfrac{\Gamma}{2\pi r},\ v_r=0
 \end{gathered}}
-\renewcommand{\arraystretch}{0.58}{\centering\begin{tabular}{|p{0.16\linewidth}|p{0.36\linewidth}|p{0.36\linewidth}|}
+\par\noindent \renewcommand{\arraystretch}{1.15}{\centering\begin{tabular}{|>{\centering\arraybackslash}p{0.18\linewidth}|>{\centering\arraybackslash}p{0.35\linewidth}|>{\centering\arraybackslash}p{0.35\linewidth}|}
 \hline 基元 & $\phi$ & $\psi$\\ \hline
 均匀流 & $Ur\cos\theta$ & $Ur\sin\theta$\\ \hline
 源/汇 & $\pm Q\ln r/(2\pi)$ & $\pm Q\theta/(2\pi)$\\ \hline
 点涡 & $\Gamma\theta/(2\pi)$ & $-\Gamma\ln r/(2\pi)$\\ \hline
 偶极 & $M\cos\theta/r$ & $-M\sin\theta/r$\\ \hline
 \end{tabular}\par}\renewcommand{\arraystretch}{1}
-}
-\infoh{势流信息库B 证明链和判定链}
-\infotxt{%
-\textbf{证明有势函数}：无旋$\nabla\times\bm V=0$且单连通$\Rightarrow\oint\bm V\cdot d\bm l=0$，令$\phi=\int \bm V\cdot d\bm r$，故$\bm V=\nabla\phi$；再由不可压$\nabla\cdot\bm V=0$得$\nabla^2\phi=0$。\\
-\textbf{证明有流函数}：二维不可压$u_x+v_y=0$，可令$u=\psi_y,v=-\psi_x$自动满足连续；若再无旋，则$\nabla^2\psi=0$。\\
-\textbf{判定链}：给速度场$\to$算散度/旋度；给壁面$\to$检查$\psi=C$或$\bm V\cdot\bm n=0$；给压力$\to$先求$V^2$再Bernoulli；给升力$\to$先判有无环量。
-}
-\infoh{势流信息库C 常见结论库}
-\infotxt{%
-\renewcommand{\arraystretch}{0.58}{\centering\begin{tabular}{|p{0.31\linewidth}|p{0.60\linewidth}|}
-\hline 圆柱绕流 & 均匀流+偶极，壁面$V=2U|\sin\theta|,\ C_p=1-4\sin^2\theta$；无环量$D=L=0$。\\ \hline
-有环量圆柱 & $v_\theta=-2U\sin\theta+\Gamma/(2\pi a)$，$L'=\rho U\Gamma$。\\ \hline
-镜像法 & 固壁要法向速度0；源/汇同号镜像，点涡反号镜像。\\ \hline
-边角流 & $\phi=Ar^n\cos n\theta,\psi=Ar^n\sin n\theta,\ n=\pi/\alpha$，$V\sim r^{n-1}$。\\ \hline
-Rankine半体 & 均匀流+点源，驻点$r=Q/(2\pi U)$，分界流线常取$\psi=Q/2$。\\ \hline
-\end{tabular}\par}\renewcommand{\arraystretch}{1}
-}
-\infoh{势流信息库D 易错检查}
-\infotxt{%
-极坐标速度必须带$1/r$；流线是$\psi=C$不是$\phi=C$；点涡除原点外无旋但环量非零；$\psi$差是单位宽流量；半平面源汇常把$2\pi$改成$\pi$；势流只能给理想压力阻力/升力，真实阻力要看粘性分离或$C_D$；全场Bernoulli只在无旋势流成立。
 
-}
+\infoh{势流信息库B 证明与概念库}
+\conceptq{为什么有流函数}二维不可压连续方程$u_x+v_y=0$保证存在$\psi$使$u=\psi_y,v=-\psi_x$。流函数差等于两条流线间单位宽流量。\\
+\conceptq{为什么有势函数}无旋$\nabla\times\bm V=0$且区域单连通时，速度场为某标量势的梯度$\bm V=\nabla\phi$。等势线与流线正交。\\
+\conceptq{连续/流函数/势函数证明}不可压$\nabla\cdot\bm V=0$；二维给$\psi$：$u=\psi_y,\ v=-\psi_x$；无旋给$\phi$：$\bm V=\nabla\phi$；二者合用得$\nabla^2\phi=0,\ \nabla^2\psi=0$。题问“存在性”先写区域单连通/无旋或二维不可压条件。\\
+\conceptq{流函数存在与物理意义}二维不可压：$u_x+v_y=0$。令$u=\psi_y,\ v=-\psi_x$，自动满足连续；反过来连续保证可构造$\psi$。微分式$d\psi=u\,dy-v\,dx$，两流线间单位宽流量$q'=\psi_2-\psi_1$。流线为$\psi=C$，因$d\psi=0\Rightarrow dy/dx=v/u$。\\
+\formq{流函数Poisson方程}二维不可压：$u=\psi_y,v=-\psi_x$。涡量$\Omega=v_x-u_y=-(\psi_{xx}+\psi_{yy})=-\nabla^2\psi$，故$\nabla^2\psi=-\Omega$。
+
+\infoh{势流信息库C 常见结论与物理概念}
+\par\noindent \renewcommand{\arraystretch}{1.15}{\centering\begin{tabular}{|>{\centering\arraybackslash}p{0.22\linewidth}|>{\centering\arraybackslash}p{0.69\linewidth}|}
+\hline 圆柱绕流 & 均匀流+偶极（$M=Ua^2$）。壁面速度 $v_\theta=-2U\sin\theta$，压强 $p=p_\infty+\frac{1}{2}\rho U^2(1-4\sin^2\theta)$。无环量时阻力升力均为0。\\ \hline
+有环量圆柱 & 叠加点涡。壁面速度 $v_\theta=-2U\sin\theta+\Gamma/(2\pi a)$，升力 $L'=\rho U\Gamma$（Kutta-Joukowski）。\\ \hline
+镜像法 & 固壁为流线。源/汇靠直壁：同号镜像；点涡靠直壁：反号镜像。半平面源汇分母常由 $2\pi\to\pi$。\\ \hline
+角域流 & 夹角 $\alpha$，指数 $n=\pi/\alpha$。$\phi=Ar^n\cos n\theta,\psi=Ar^n\sin n\theta$。速度 $V\sim r^{n-1}$。\\ \hline
+Rankine半体 & 均匀流+点源。驻点距源 $r=Q/(2\pi U)$，分界流线为 $\psi=Q/2$。\\ \hline
+\end{tabular}\par}\renewcommand{\arraystretch}{1}
+\conceptq{偶极子物理意义}源汇距离趋零、强度趋无穷 but 乘积有限，得到偶极。圆柱绕流就是均匀流+偶极，偶极强度$M=Ua^2$。\\
+\conceptq{为什么圆柱理想阻力为0}势流无粘且前后对称，压力积分$x$方向抵消。该结论与现实矛盾，称达朗贝尔佯谬，现实阻力由粘性分离导致。\\
+\conceptq{达朗贝尔佯谬句}“理想不可压无粘定常绕流中，圆柱前后压力分布对称，积分阻力为零；实际阻力来自粘性边界层分离。”\\
+\formq{机翼升力}势流中机翼可由保角变换把圆柱映到翼型；环量由Kutta条件确定；升力公式仍为$L'=\rho U\Gamma$。考试概念题写这个即可。\\
+\idq{图像：圆柱/球外绕}低Re可能Stokes；高Re看分离和阻力系数。理想势流只给压力分布和升力概念，不给真实阻力。\\
+\idq{图里有“圆柱/球绕流”}若是理想势流，压力积分阻力为0；若题给$C_D$，阻力$D=C_D(0.5\rho U^2)A_{\rm front}$，面积取迎风面积。
+
+\infoh{势流信息库D 易错检查与概念}
+极坐标速度偏导别漏 $1/r$；流线为 $\psi=C$ ；点涡除原点外无旋但环量非零；$\psi$之差为单位宽流量；半平面源汇分母常由 $2\pi\to\pi$；全场Bernoulli仅在无旋时成立。\\
+\errq{错13：把流函数当势函数}流线是$\psi=C$，等势线是$\phi=C$，二者正交。速度关系符号不同，特别是$v=-\psi_x$。\\
+\conceptq{空化}局部压力最低处若$p_{\min}\le p_v$发生空化。伯努利题中速度最大点压强最低；泵吸入口高度越大，入口压越低。
+
 \subq{圆柱绕流：已知U、a、theta或表面点，求速度、压力、阻力/升力}
 \fml{\varphi=U(r+a^2/r)\cos\theta,\quad \psi=U(r-a^2/r)\sin\theta}\\
 $v_r=U(1-a^2/r^2)\cos\theta$，$v_\theta=-U(1+a^2/r^2)\sin\theta$。\\
@@ -1109,39 +1115,34 @@ $\Gamma=\oint\bm V\cdot d\bm l$。库塔--儒可夫斯基$L'=\rho U\Gamma$。点
 \mview{\key{母题总览}：看见$p_0,T_0,M,A^*,p_b$或喷管，先判等熵/阻塞。首写$T_0/T,p_0/p,A/A^*,\dot m$。顺序：压比/面积比$\to M\to p,T,\rho,V,\dot m$。检查：亚/超声支路、$p_b\ne p_e$、$0.528$只属于空气临界。}
 \schemelaval
 \infoh{可压/Laval信息库A 基础公式和数学运算}
-\infotxt{%
 \fmlb{\begin{gathered}
-p=\rho RT,\quad a=\sqrt{\gamma RT},\quad M=V/a,\quad T_0/T=1+0.2M^2\\
-p_0/p=(1+0.2M^2)^{3.5},\quad \rho_0/\rho=(1+0.2M^2)^{2.5}
+p=\rho RT,\quad a=\sqrt{\gamma RT},\quad Ma=V/a,\quad T_0/T=1+0.2Ma^2\\
+p_0/p=(1+0.2Ma^2)^{3.5},\quad \rho_0/\rho=(1+0.2Ma^2)^{2.5}
 \end{gathered}}
 \fmlb{\begin{gathered}
-\frac{T^*}{T_0}=0.833,\quad \frac{p^*}{p_0}=0.528,\quad \frac{\rho^*}{\rho_0}=0.634,\quad M=1,\ A=A^*\\
-\frac{A}{A^*}=\frac1M\left(\frac{5+M^2}{6}\right)^3,\quad A/A^*>1\Rightarrow M<1\text{或}M>1\\
-\dot m=\rho VA=ApM\sqrt{\gamma/(RT)}
-=A p_0\sqrt{\gamma/(RT_0)}M(1+0.2M^2)^{-3}\\
+\frac{T^*}{T_0}=0.833,\quad \frac{p^*}{p_0}=0.528,\quad \frac{\rho^*}{\rho_0}=0.634,\quad Ma=1,\ A=A^*\\
+\frac{A}{A^*}=\frac1{Ma}\left(\frac{5+Ma^2}{6}\right)^3,\quad A/A^*>1\Rightarrow Ma<1\text{或}Ma>1\\
+\dot m=\rho VA=ApMa\sqrt{\gamma/(RT)} = A p_0\sqrt{\gamma/(RT_0)}Ma(1+0.2Ma^2)^{-3}\\
 \dot m_{\max}=0.0404A^*p_0/\sqrt{T_0}\quad(\text{空气，}p_0{\rm Pa},T_0{\rm K})
 \end{gathered}}
-}
+
 \infoh{可压/Laval信息库B 证明链和判定链}
-\infotxt{%
-\textbf{等熵关系证明链}：能量给$T_0=T+V^2/(2c_p)$，代$V=Ma,\ a^2=\gamma RT,\ c_p=\gamma R/(\gamma-1)$得$T_0/T=1+(\gamma-1)M^2/2$；再用等熵$p/\rho^\gamma=C,\ p=\rho RT$得$p_0/p=(T_0/T)^{\gamma/(\gamma-1)}$。\\
-\textbf{阻塞判定链}：质量流量$\dot m(M)$对$M$求极值，最大点$M=1$，故最小面积截面若达到$M=1$则阻塞；继续降背压只改变下游波系，不增大$\dot m$。\\
-\textbf{背压判定链}：收缩管比$p_b/p_0$和0.528；Laval先判$A_t=A^*$，再由$A_e/A_t$求两支$M_e$，得$p_{b1},p_{b3}$，再用出口正激波得$p_{b2}$，把实际$p_b$放入区间。
-}
+\textbf{等熵关系证明链}：能量给$T_0=T+V^2/(2c_p)$，代$V=Ma,\ a^2=\gamma RT,\ c_p=\gamma R/(\gamma-1)$得$T_0/T=1+(\gamma-1)Ma^2/2$；再用等熵$p/\rho^\gamma=C,\ p=\rho RT$得$p_0/p=(T_0/T)^{\gamma/(\gamma-1)}$。\\
+\textbf{阻塞判定链}：质量流量$\dot m(Ma)$对$Ma$求极值，最大点$Ma=1$，故最小面积截面若达到$Ma=1$则阻塞；继续降背压只改变下游波系，不增大$\dot m$。\\
+\textbf{背压判定链}：收缩管比$p_b/p_0$和0.528；Laval先判$A_t=A^*$，再由$A_e/A_t$求两支$Ma_e$，得$p_{b1},p_{b3}$，再用出口正激波得$p_{b2}$，把实际$p_b$放入区间。
+
 \infoh{可压/Laval信息库C 常见结论库}
-\infotxt{%
-\renewcommand{\arraystretch}{0.58}{\centering\begin{tabular}{|p{0.28\linewidth}|p{0.63\linewidth}|}
+\par\noindent \renewcommand{\arraystretch}{1.15}{\centering\begin{tabular}{|>{\centering\arraybackslash}p{0.25\linewidth}|>{\centering\arraybackslash}p{0.66\linewidth}|}
 \hline 亚声速面积效应 & 收缩加速、扩张减速升压。\\ \hline
 超声速面积效应 & 扩张加速降压、收缩减速升压；Laval靠扩张段得到超声速。\\ \hline
-收缩喷管 & 未阻塞$p_e=p_b$；阻塞时出口$M=1,p_e=p^*$，$\dot m$最大。\\ \hline
+收缩喷管 & 未阻塞$p_e=p_b$；阻塞时出口$Ma=1,p_e=p^*$，$\dot m$最大。\\ \hline
 Laval背压 & 高背压全亚；再降喉部阻塞；管内激波向出口移动；设计时全管等熵；更低欠膨胀。\\ \hline
 跨正激波 & $T_0$不变、$p_0$下降；后续等熵计算必须换$p_{02}$。\\ \hline
 \end{tabular}\par}\renewcommand{\arraystretch}{1}
-}
+
 \infoh{可压/Laval信息库D 易错检查}
-\infotxt{%
-$p_0,T_0$是滞止量，$p,T$是静量；$p_b$是外界背压，$p_e$是出口内压，二者不总相等。$A_t$是几何喉部，阻塞时才等于$A^*$。$0.528$只表示空气$M=1$临界静压比，不是所有喉部/出口/背压比。面积--马赫数有亚/超两支，必须写明支路。压强用绝压，温度用K；液体管路Bernoulli/H--P不能直接套到可压喷管。
-}
+$p_0,T_0$是滞止量，$p,T$是静量；$p_b$是外界背压，$p_e$是出口内压，二者不总相等。$A_t$是几何喉部，阻塞时才等于$A^*$。$0.528$只表示空气$Ma=1$临界静压比，不是所有喉部/出口/背压比。面积--马赫数有亚/超两支，必须写明支路。压强用绝压，温度用K；液体管路Bernoulli/H--P不能直接套到可压喷管。
+
 \realq{真题：Laval喷管最大质量流量，给$p_0,T_0,A_t$求$\dot m_{\max}$}
 原题：$T_0=500$K、$p_0=300$kPa的大容器接Laval喷管，$A_t=0.06{\rm m^2}$，定常等熵，求最大质量流量。写法：大容器$V\approx0$，故给定$p,T$就是$p_0,T_0$；最大流量$\Rightarrow$喉部阻塞$M_t=1,A_t=A^*$，\warn{不用液体Bernoulli/H--P}。
 \fmlb{\begin{aligned}
@@ -1209,15 +1210,32 @@ p_{b3}=p_0/(1+0.2M_{sup}^2)^{3.5}=14.19\ {\rm kPa}\\
 p_{b2}=p_{b3}\{1+\tfrac{2\gamma}{\gamma+1}(M_{sup}^2-1)\}=112.79\ {\rm kPa}
 \end{gathered}}
 判定句直接写：$p_{b2}<p_b=138.5<p_{b1}$，故\key{喷管内有正激波}；且$p_b>p_{b2}$，背压高于“出口正激波”所需后压，所以激波被推到\key{出口上游的扩张段内}。
-\formq{三临界背压区间：这题以及同类Laval背压题都按这个判}
-{\centering\begin{tabular}{|p{0.28\linewidth}|p{0.63\linewidth}|}\hline
-$p_b>p_{b1}$ & 全管亚声速或未完全阻塞，扩张段减速升压\\ \hline
-$p_{b2}<p_b<p_{b1}$ & 管内正激波；$p_b$越高，激波越靠上游\\ \hline
-$p_b=p_{b2}$ & 正激波刚好在出口面\\ \hline
-$p_{b3}<p_b<p_{b2}$ & 管内等熵超声速到出口，管外压缩/斜激波\\ \hline
-$p_b=p_{b3}$ & 设计工况，全管等熵超声速，$p_e=p_b$\\ \hline
-$p_b<p_{b3}$ & 欠膨胀，出口外膨胀波\\ \hline
-\end{tabular}\par}
+\formq{三临界背压数轴：同类Laval背压题均按此数轴判定}
+\par\noindent\begin{minipage}{\linewidth}
+\vspace*{2pt}
+\centering
+\begin{tikzpicture}[>=Latex, scale=0.74, every node/.style={font=\fontsize{4.8}{5.8}\selectfont}]
+% Axis line
+\draw[->, thick] (0,0) -- (6.0,0) node[right] {$p_b$};
+
+% Ticks and points
+\filldraw[red] (1.5,0) circle (1.8pt) node[below=2pt, black] {$p_{b3}$};
+\filldraw[blue] (3.3,0) circle (1.8pt) node[below=2pt, black] {$p_{b2}$};
+\filldraw[OliveGreen] (5.1,0) circle (1.8pt) node[below=2pt, black] {$p_{b1}$};
+
+% Regions text above the line
+\node[above=2pt, align=center] at (0.75,0) {\key{欠膨胀}\\(出口外膨胀波)};
+\node[above=2pt, align=center] at (2.4,0) {\key{过膨胀}\\(出口外斜激波)};
+\node[above=2pt, align=center] at (4.2,0) {\key{管内正激波}\\(越右越靠喉部)};
+\node[above=2pt, align=center] at (5.7,0) {\key{全亚声速}\\(未完全阻塞)};
+
+% Ticks text below
+\node[below=10pt, align=center, red] at (1.5,0) {\textbf{等熵设计}};
+\node[below=10pt, align=center, blue] at (3.3,0) {\textbf{出口面激波}};
+\node[below=10pt, align=center, OliveGreen] at (5.1,0) {\textbf{喉部刚达声速}};
+\end{tikzpicture}
+\vspace*{-1pt}
+\end{minipage}
 \subq{第三问：设计超声速工况汞柱高度}
 设计工况就是出口超声速等熵且$p_b=p_{b3}=14.19$kPa，喉部仍$p_t=p^*=158.5$kPa：
 \fmlb{\begin{aligned}
@@ -1293,7 +1311,7 @@ M_1=\frac{V_1}{\sqrt{\gamma RT_1}}\Rightarrow T_0,p_0}
 \subq{子题：弹性模量/密度变化，题干给液体$E$或气体等温压缩}
 液体小压缩：$E=-dp/(dV/V)=dp/(d\rho/\rho)$，故$\Delta\rho/\rho=\Delta p/E$，压强用Pa。气体等温：$p/\rho=RT$，故$\rho_2/\rho_1=p_2/p_1$。气体等熵声速：$a=\sqrt{\gamma RT}$；液体声速近似$a=\sqrt{K/\rho}$。
 \symq{母题3符号表：考试中最容易混的量}
-{\centering\begin{tabular}{|p{0.21\linewidth}|p{0.70\linewidth}|}\hline
+{\centering\begin{tabular}{|>{\centering\arraybackslash}p{0.21\linewidth}|>{\centering\arraybackslash}p{0.70\linewidth}|}\hline
 $p_0,T_0$ & 滞止量，等熵段不变；正激波后$p_0$降、$T_0$不变\\ \hline
 $p_e,p_b$ & $p_e$为出口截面内静压，$p_b$为外界/下游背压；二者不总相等\\ \hline
 $A_t,A_e,A^*$ & 喉部、出口、临界面积；阻塞时最小截面$A_t=A^*$\\ \hline
@@ -1335,7 +1353,7 @@ n=\frac{\gamma+1}{2(\gamma-1)}
 $A/A^*>1$通常有亚声速/超声速两支。$A/A^*=3$时可写“由面积--马赫式/表查得$M_{\rm sub}$或$M_{\rm sup}$”。收缩管最多到$M=1$；Laval扩张段可超声速。
 
 \subq{Laval背压状态：已知$p_0$,$T_0$,$A_e$/$A_t$,$p_b$，求出口状态/是否激波}
-\renewcommand{\arraystretch}{0.76}{\centering\begin{tabular}{|p{0.30\linewidth}|p{0.61\linewidth}|}
+\renewcommand{\arraystretch}{0.76}{\centering\begin{tabular}{|>{\centering\arraybackslash}p{0.30\linewidth}|>{\centering\arraybackslash}p{0.61\linewidth}|}
 \hline 背压高 & 全管亚声速，$p_e=p_b$，未阻塞\\ \hline
 喉部$M=1$ & 阻塞，$\dot m$最大\\ \hline
 扩张段正激波 & 波前超声速，波后亚声速，$p_0$降\\ \hline
@@ -1482,7 +1500,7 @@ $T_0=T+V^2/(2c_p)$。理想气$c_p=\gamma R/(\gamma-1)$。与$T_0/T=1+0.2M^2$等
 \lookq{可压查表小表}
 空气$A/A^*$：$M=0.5:1.34,\ 0.8:1.04,\ 1:1,\ 1.5:1.18,\ 2:1.69,\ 2.5:2.64,\ 3:4.23$。PM：$M=2:\nu\approx26.4^\circ,\ M=3:\nu\approx49.8^\circ$。无表时写查表输入和后续回代。
 \lookq{可压缩题查表入口}
-{\centering\begin{tabular}{|p{0.29\linewidth}|p{0.29\linewidth}|p{0.34\linewidth}|}\hline
+{\centering\begin{tabular}{|>{\centering\arraybackslash}p{0.29\linewidth}|>{\centering\arraybackslash}p{0.29\linewidth}|>{\centering\arraybackslash}p{0.34\linewidth}|}\hline
 题眼 & 查书/表 & 查完怎么接\\\hline
 $p_0/p,T_0/T$ & 等熵表 & 得$M$后算$p,T,\rho,V$\\\hline
 $A/A^*$ & 面积--马赫表 & 先判亚/超支，再接等熵\\\hline
@@ -1508,42 +1526,62 @@ $A_t$是几何最小面积；$A^*$是临界面积。阻塞时二者相等，未�
 \mview{\key{母题总览}：看见超声速压缩/凸角膨胀/激波图/Laval内激波，先定波型。首写：正激波用$M_1$，斜激波用$M_{n1}=M_1\sin\beta$，PM用$\nu(M_2)-\nu(M_1)$。顺序：波前等熵$\to$波关系$\to$波后等熵。检查：激波$p_0$降，PM$p_0$不变。}
 \schemeshock
 \infoh{激波/PM信息库A 基础公式和数学运算}
-\infotxt{%
+\conceptq{正激波：已知波前Ma1，求波后Ma2、压力、温度、总压损失}
 \fmlb{\begin{gathered}
-M_2^2=\frac{1+(\gamma-1)M_1^2/2}{\gamma M_1^2-(\gamma-1)/2},\quad
-\frac{p_2}{p_1}=1+\frac{2\gamma}{\gamma+1}(M_1^2-1)\\
-\frac{\rho_2}{\rho_1}=\frac{(\gamma+1)M_1^2}{(\gamma-1)M_1^2+2},\quad
-\frac{T_2}{T_1}=(p_2/p_1)/(\rho_2/\rho_1)
+Ma_2^2 = \frac{1 + \frac{\gamma-1}{2} Ma_1^2}{\gamma Ma_1^2 - \frac{\gamma-1}{2}} = \frac{1 + 0.2Ma_1^2}{1.4Ma_1^2 - 0.2}\quad (\text{空气})\\
+\frac{p_2}{p_1} = 1 + \frac{2\gamma}{\gamma+1}(Ma_1^2 - 1) = \frac{7Ma_1^2 - 1}{6}\quad (\text{空气})\\
+\frac{\rho_2}{\rho_1} = \frac{(\gamma+1)Ma_1^2}{(\gamma-1)Ma_1^2 + 2} = \frac{6Ma_1^2}{Ma_1^2 + 5}\quad (\text{空气})\\
+\frac{T_2}{T_1} = (p_2/p_1)/(\rho_2/\rho_1),\quad \frac{p_{02}}{p_{01}} = \frac{p_2}{p_1} \left(\frac{1+0.2Ma_2^2}{1+0.2Ma_1^2}\right)^{3.5}
 \end{gathered}}
+\conceptq{斜激波与PM膨胀波基础公式}
 \fmlb{\begin{gathered}
-M_{n1}=M_1\sin\beta,\quad M_2=\frac{M_{n2}}{\sin(\beta-\theta)},\quad
-\mu=\sin^{-1}(1/M)\\
-\delta=\nu(M_2)-\nu(M_1),\quad
-\nu_{\rm air}(M)=\sqrt6\tan^{-1}\sqrt{(M^2-1)/6}\\
--\tan^{-1}\sqrt{M^2-1}
+Ma_{n1} = Ma_1\sin\beta,\quad Ma_2 = \frac{Ma_{n2}}{\sin(\beta-\theta)},\quad \mu = \sin^{-1}(1/Ma)\\
+\tan\theta = 2\cot\beta \frac{Ma_1^2\sin^2\beta - 1}{Ma_1^2(\gamma + \cos2\beta) + 2}\\
+\nu(Ma) = \sqrt{\frac{\gamma+1}{\gamma-1}}\tan^{-1}\sqrt{\frac{\gamma-1}{\gamma+1}(Ma^2-1)} - \tan^{-1}\sqrt{Ma^2-1}\\
+\text{空气：}\quad \nu(Ma) = \sqrt6\tan^{-1}\sqrt{(Ma^2-1)/6} - \tan^{-1}\sqrt{Ma^2-1}
 \end{gathered}}
-}
-\infoh{激波/PM信息库B 证明链和判定链}
-\infotxt{%
-\textbf{正激波证明链}：在固结于激波的坐标系中，用一维质量、法向动量、能量守恒，加理想气体状态方程，消去速度和密度，得到$M_2,p_2/p_1,\rho_2/\rho_1,T_2/T_1$；过程绝热但不可逆，所以$T_0$不变、$p_0$下降。\\
-\textbf{斜激波判定链}：只让法向速度分量经历正激波，切向分量不变；所以先算$M_{n1}=M_1\sin\beta$，再用正激波表，最后用几何关系还原$M_2$。\\
-\textbf{PM判定链}：超声速流遇凸角/扩张，连续弱扰动等熵展开，$\nu(M)$随$M$增大；压缩角不用PM，转斜激波。
-}
-\infoh{激波/PM信息库C 常见结论库}
-\infotxt{%
-\renewcommand{\arraystretch}{0.58}{\centering\begin{tabular}{|p{0.28\linewidth}|p{0.63\linewidth}|}
-\hline 正激波 & 波后必亚声速；$p,T,\rho$升，$M,V$降，$p_0$损失。\\ \hline
-斜激波 & 弱解常用；若偏转角过大，无附体斜激波，形成脱体激波。\\ \hline
-PM膨胀 & $M$增大，$p,T,\rho$下降，$p_0,T_0$不变。\\ \hline
-Laval内激波 & 波前等熵到$M_1$，过波得$M_2,p_{02}$，波后用新总压等熵到出口。\\ \hline
-管外波 & $p_e>p_b$欠膨胀$\to$管外膨胀；$p_e<p_b$过膨胀$\to$管外压缩/斜激波。\\ \hline
-\end{tabular}\par}\renewcommand{\arraystretch}{1}
-}
-\infoh{激波/PM信息库D 易错检查}
-\infotxt{%
-正激波后一定$M_2<1$，斜激波后不一定；斜激波压力比只用$M_{n1}$，不能把$M_1$直接代正激波式；PM只用于膨胀，压缩不能用PM函数；激波后不能沿用波前$p_{01}$；表格角度多为度，计算器确认DEG；给$M_2$也不能直接算全部，静量仍要接波前$p_1,T_1,\rho_1$。
 
-}
+\infoh{激波/PM信息库B 判定链与计算流程}
+\stepq{斜激波计算流程}
+1. 已知 $Ma_1$ 和 $\theta$，查 $\theta-\beta-Ma$ 曲线或用公式迭代求得波角 $\beta$ (通常取弱激波解)；\\
+2. 计算等效法向入口马赫数 $Ma_{n1} = Ma_1\sin\beta$；\\
+3. 利用正激波关系求出法向波后马赫数 $Ma_{n2}$ 以及压强比 $p_2/p_1$、温度比 $T_2/T_1$ 等；\\
+4. 还原斜激波后真实马赫数 $Ma_2 = Ma_{n2}/\sin(\beta-\theta)$。\\
+\stepq{Prandtl-Meyer 膨胀波计算流程}
+1. 已知 $Ma_1$ 和壁面转角 $\delta$ (膨胀角)，计算波后 PM 函数值 $\nu(Ma_2) = \nu(Ma_1) + \delta$；\\
+2. 利用 $\nu(Ma)$ 关系式或查表求得波后马赫数 $Ma_2$；\\
+3. 由于膨胀波为等熵过程，故滞止量 $p_0, T_0$ 不变；\\
+4. 由等熵关系式求出波后静压 $p_2 = p_0/(1+0.2Ma_2^2)^{3.5}$ 和静温 $T_2 = T_0/(1+0.2Ma_2^2)$。
+
+\infoh{激波/PM信息库C 难点大综合与常考物理问答}
+\subq{激波反射与交汇波系分析（多波计算）}
+多波交汇或反射时，逐道波更新状态：每过一道斜激波用斜激波关系，每过一道膨胀波用 PM 等熵膨胀。接触面两侧静压相等 ($p_2=p_3$) 且气流方向一致 ($\theta_2=\theta_3$)。\\
+\subq{运动正激波与撞墙反射}
+坐标系固结在激波上，将运动激波转化为定常激波。反射波需满足墙面不穿透边界条件，即反射波后流体相对墙壁静止 ($V_3=0$)。\\
+\subq{脱体激波判定}
+若偏转角 $\theta > \theta_{\max}$，斜激波无法附着在前缘，形成脱体弓形激波。此时前缘附近为正激波。\\
+\conceptq{概念简答：激波与膨胀波物理特征}
+激波为超声速流受压阻碍产生的有限强度间断，是强非等熵过程，滞止温度 $T_0$ 不变，滞止压强 $p_0$ 下降 (熵增造成波阻)；而膨胀波是无数连续微弱扰动的叠加，为等熵过程，$p_0, T_0$ 保持不变。
+
+\infoh{激波/PM信息库D 速查小表格}
+\lookq{小查表：空气等熵/PM函数关系表}
+{\centering\renewcommand{\arraystretch}{1.15}\begin{tabular}{|c|c|c|c|c|}
+\hline $Ma$ & $T_0/T$ & $p_0/p$ & $A/A^*$ & $\nu(^\circ)$ \\ \hline
+0.5 & 1.05 & 1.19 & 1.34 & -- \\ \hline
+1.0 & 1.20 & 1.89 & 1.00 & 0 \\ \hline
+1.5 & 1.45 & 3.67 & 1.18 & 11.9 \\ \hline
+2.0 & 1.80 & 7.82 & 1.69 & 26.4 \\ \hline
+2.5 & 2.25 & 17.1 & 2.64 & 39.1 \\ \hline
+3.0 & 2.80 & 36.7 & 4.23 & 49.8 \\ \hline
+\end{tabular}\par}\renewcommand{\arraystretch}{1}
+\lookq{小查表：空气正激波对照表}
+{\centering\renewcommand{\arraystretch}{1.15}\begin{tabular}{|c|c|c|c|}
+\hline $Ma_1$ & $Ma_2$ & $p_2/p_1$ & $p_{02}/p_{01}$ \\ \hline
+1.5 & 0.701 & 2.46 & 0.93 \\ \hline
+2.0 & 0.577 & 4.50 & 0.72 \\ \hline
+3.0 & 0.475 & 10.33 & 0.33 \\ \hline
+\end{tabular}\par}\renewcommand{\arraystretch}{1}
+
 \subq{正激波：已知波前M1或面积位置，求M2、p2、T2、总压损失}
 \fmlb{\begin{gathered}
 M_2^2=\frac{1+\frac{\gamma-1}{2}M_1^2}{\gamma M_1^2-\frac{\gamma-1}{2}}\\
@@ -2073,7 +2111,7 @@ $q=\int_0^hu\,dy$，若$u=Uy/h$，$q=Uh/2$每单位宽。
 \conceptq{雷诺应力符号}
 RANS中$-\rho\overline{u'v'}$像附加剪应力。若$\overline{u'v'}<0$，雷诺剪应力为正。
 \lookq{粘性/阻力查表入口}
-{\centering\begin{tabular}{|p{0.31\linewidth}|p{0.28\linewidth}|p{0.33\linewidth}|}\hline
+{\centering\begin{tabular}{|>{\centering\arraybackslash}p{0.31\linewidth}|>{\centering\arraybackslash}p{0.28\linewidth}|>{\centering\arraybackslash}p{0.33\linewidth}|}\hline
 题眼 & 查书/图 & 查完怎么接\\\hline
 粗糙管$\varepsilon/d$ & Moody图 & $h_f=\lambda L V^2/(2gd)$\\\hline
 阀门弯头 & 局部$\zeta$表 & $h_\zeta=\zeta V^2/(2g)$\\\hline
@@ -2222,7 +2260,7 @@ D_w&=14.4{\rm N},\quad
 % 旧全局收口表：内容已拆到母题1/2/6/7，不再放在母题6下造成跨题型混杂。
 \iffalse
 \quickq{高频收口模型}
-\renewcommand{\arraystretch}{0.76}{\centering\begin{tabular}{|p{0.30\linewidth}|p{0.61\linewidth}|}
+\renewcommand{\arraystretch}{0.76}{\centering\begin{tabular}{|>{\centering\arraybackslash}p{0.30\linewidth}|>{\centering\arraybackslash}p{0.61\linewidth}|}
 \hline 速度场连续 & 算$u_x+v_y+w_z$\\ \hline
 有旋 & $\Omega_z=v_x-u_y$，$\omega_z=\Omega_z/2$\\ \hline
 流线 & $dx/u=dy/v$，非定常先代$t=t_0$\\ \hline
@@ -2416,7 +2454,7 @@ $Re_L=UL/\nu$，若给$Re_{cr}$则$x_{cr}=Re_{cr}\nu/U$，$L<x_{cr}$全层流，
 \stepq{Buckingham $\pi$/相似准则流程}
 1列变量含待求量；2数基本量纲$k$，得$n-k$个$\pi$；3选重复变量：量纲独立、不含待求量、覆盖$M,L,T$；4令$\pi=X\rho^aV^bL^c$解$a,b,c$；5模型换算先写几何相似，再按主导力取准则。
 \fmlb{\pi_F=F/(\rho V^2L^2)=\Phi(Re,Fr,We,Ma,Sr,\sigma_c,\epsilon/L)}
-{\centering\begin{tabular}{|p{0.27\linewidth}|p{0.66\linewidth}|}\hline
+{\centering\begin{tabular}{|>{\centering\arraybackslash}p{0.27\linewidth}|>{\centering\arraybackslash}p{0.66\linewidth}|}\hline
 $Re$ & 粘性/管流/边界层；同流体$V_rL_r=1$\\\hline
 $Fr$ & 自由面/重力波/船模；$V_r=\sqrt{L_r}$\\\hline
 $Ma$ & 可压缩/声速/激波；低速不可压可忽略\\\hline
@@ -2476,7 +2514,7 @@ $p$用Pa，表压题可写表压，气体状态方程和汽蚀必须用绝压；
 圆$A=\pi d^2/4,\ I_C=\pi d^4/64$；矩形$A=bh,\ I_C=bh^3/12$；三角形$A=bh/2,\ I_C=bh^3/36$；半圆$A=\pi R^2/2,\ y_C=4R/(3\pi)$。量纲法：变量$n$个、基本量纲$r$个，则$\pi$群$n-r$个；常选$\rho,V,L$作重复变量。
 
 \subq{母题7题干入口：看见关键词后第一行写什么}
-{\centering\begin{tabular}{|p{0.28\linewidth}|p{0.66\linewidth}|}\hline
+{\centering\begin{tabular}{|>{\centering\arraybackslash}p{0.28\linewidth}|>{\centering\arraybackslash}p{0.66\linewidth}|}\hline
 速度场$u,v,w$ & 先算$\nabla\cdot\bm V$判不可压，再算$\nabla\times\bm V$判有旋；若求流线写$dx/u=dy/v=dz/w$。\\\hline
 应力张量$P$+平面 & 先求单位法向$\bm n$，再写$\bm t=P\bm n$，随后分解法向/切向。\\\hline
 闸门/铰链/拉杆 & 先求$F=\rho gh_CA$和压力中心，再对铰点取矩。\\\hline

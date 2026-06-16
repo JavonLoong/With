@@ -228,6 +228,7 @@
 \chap{母题1 管路机械能综合\\两油箱变径突扩管15分题}
 \mview{\key{母题定位}：这题足够做母题。它覆盖大水面简化、管径变化、局部损失、沿程损失、层流/湍流判定、点压强、液面差反推。看见“水池/油箱/管道/阀/弯头/突扩/泵/水轮机/粗糙度”，先归到本母题。}
 \pvzfig
+\conceptq{流体物理性质}表面张力：液滴内外压差$\Delta p=2\sigma/R$；泡$\Delta p=4\sigma/R$；液柱$\Delta p=\sigma/R$。毛细上升高度$h=\frac{2\sigma\cos\theta}{\rho g R}$（水与干净玻璃$\theta\approx 0$，水银$\theta\approx 140^\circ$）。
 \idq{题干完整骨架}
 两油箱液面差$h=0.5$m，左液面到管轴$H=1.0$m；前段$D_1=0.1$m，后段$D_2=0.4$m，中间突扩；入口$k_e=0.5$，出口$k_d=1.0$；油$s=0.9,\mu=0.04$。问：(a)短管忽略沿程，求$Q,p_A,p_B$；(b)长管给$Q=0.006$m$^3$/s，$L_1=50$m，$L_2=100$m，$\varepsilon=0.046$mm，求所需液面差。
 \stepq{落笔流程：先液面到液面，再液面到管内点}
@@ -984,6 +985,7 @@ p+\tfrac12\rho V^2=\text{const},\ C_p=1-(V/U_\infty)^2,\ q'=\psi_2-\psi_1\\
 点涡 & $\Gamma\theta/(2\pi)$ & $-\Gamma\ln r/(2\pi)$\\ \hline
 偶极 & $M\cos\theta/r$ & $-M\sin\theta/r$\\ \hline
 \end{tabular}\par}\renewcommand{\arraystretch}{1}
+\conceptq{三维基元势流}三维点源：$\phi=-\frac{Q}{4\pi r}$，速度$v_r=\frac{Q}{4\pi r^2}$。三维偶极子：$\phi=\frac{m\cos\theta}{4\pi r^2}$，速度$v_r=-\frac{m\cos\theta}{2\pi r^3},v_\theta=-\frac{m\sin\theta}{4\pi r^3}$。\\
 
 \infoh{势流信息库B 证明与概念库}
 \conceptq{为什么有流函数}二维不可压连续方程$u_x+v_y=0$保证存在$\psi$使$u=\psi_y,v=-\psi_x$。流函数差等于两条流线间单位宽流量。\\
@@ -1823,7 +1825,8 @@ Q=\frac{\pi R^4}{8\mu}\!\left(-\frac{dp}{dx}\right),\quad
 }
 \infoh{粘性管流信息库C 常见结论库}
 \infotxt{%
-层流圆管$u_{\max}=2\bar u$；平板Poiseuille$\bar u=2u_{\max}/3$；圆管壁剪$\tau_w=R\Delta p/(2L)=8\mu\bar u/d$。圆管流态：$Re<2300$层流，$2300\sim4000$过渡，$>4000$通常湍流。近壁分区：$y^+<5$粘性底层，$5<y^+<30$缓冲层，$y^+>30$对数/湍流区。粗糙度反推：先由能量方程求$\lambda$，再由$Re,\lambda$反查$\varepsilon/d$。
+层流圆管$u_{\max}=2\bar u$；平板Poiseuille$\bar u=2u_{\max}/3$；圆管壁剪$\tau_w=R\Delta p/(2L)=8\mu\bar u/d$。圆管流态：$Re<2300$层流，$2300\sim4000$过渡，$>4000$通常湍流。近壁分区：$y^+<5$粘性底层，$5<y^+<30$缓冲层，$y^+>30$对数/湍流区。粗糙度反推：先由能量方程求$\lambda$，再由$Re,\lambda$反查$\varepsilon/d$。\\
+流速测量：HWFA（热线，King1914，热散失）；LDA（激光多普勒，Yeh1964，多普勒频移，无接触）；PDPA（相位多普勒，1989，粒径与速度）；PIV（粒子图像，1993，全场测速）。
 }
 \infoh{粘性管流信息库D 易错检查}
 \infotxt{%

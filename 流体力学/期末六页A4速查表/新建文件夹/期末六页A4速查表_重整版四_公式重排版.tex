@@ -62,7 +62,7 @@
 \newcommand{\dbsection}[1]{\vspace{0.45pt}{\fontsize{5.8}{6.0}\selectfont\bfseries\color{white}\colorbox{infoc}{\strut\;#1\;}}\par\vspace{0.15pt}}
 \newcommand{\dbblock}[1]{\par\noindent\colorbox{infobg}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{4.85}{5.05}\selectfont #1\end{minipage}}\par\vspace{0.10pt}}
 \newcommand{\infoh}[1]{\vspace{0.10pt}{\fontsize{5.05}{5.24}\selectfont\bfseries\color{white}\colorbox{infoc}{\strut\;#1\;}}\par}
-\newcommand{\infotxt}[1]{{\fontsize{4.82}{5.02}\selectfont #1}\par\vspace{2.0pt}}
+\newcommand{\infotxt}[1]{\colorbox{infobg}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{4.82}{5.02}\selectfont #1\end{minipage}}\par\vspace{0.10pt}}
 \newcommand{\sect}[1]{\subq{#1}}
 \newcommand{\exm}[1]{\varq{#1}}
 \newcommand{\mview}[1]{\colorbox{bgw}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{4.88}{5.04}\selectfont #1\end{minipage}}\par\vspace{0.15pt}}
@@ -2514,7 +2514,7 @@ $p$用Pa，表压题可写表压，气体状态方程和汽蚀必须用绝压；
 {\fontspec{SimSun}①} 任何流体处于静止或平衡状态下\warn{都不能承受切应力}，一旦受剪切力必产生连续变形。\\
 {\fontspec{SimSun}②} 液体的粘度随温度升高而\warn{降低}，气体的粘度随温度升高而\warn{增加}。\\
 {\fontspec{SimSun}③} \warn{理想流体}是为方便而人为引入的\warn{理想模型}（真实流体都有粘），动力粘度/速度变化率极小时剪应力可忽略。\\
-{\fontspec{SimSun}④} 理想流体压力是\warn{唯一的表面力}，大小与方向无关，垂直于作用面并指向内法线方向。\\
+{\fontspec{SimSun}④} 理想流体压力是\warn{唯一的表面力}，大小 with 与方向无关，垂直于作用面并指向内法线方向。\\
 {\fontspec{SimSun}⑤} 粘性流体压力是\warn{三个主应力的算术平均值的负值}（即 $p = -(\sigma_x+\sigma_y+\sigma_z)/3$），忽略流体粘性时粘性流体的压力就蜕化为理想流体的压力。\\
 {\fontspec{SimSun}⑥} 水滴与水中气泡内部压强总是大于外部（$\Delta p = 2\sigma/R$），极细测压管读数（液面高度）不直接是真实静压，须修正毛细上升（$h = \frac{4\sigma}{\rho g d}$）。\\
 {\fontspec{SimSun}⑦} 牙膏、油漆、煤泥水低于屈服应力时不流动，属于宾汉塑性流体。\\
@@ -2524,7 +2524,9 @@ $p$用Pa，表压题可写表压，气体状态方程和汽蚀必须用绝压；
 {\fontspec{SimSun}③} 在非定常流场中，从空间固定点连续释放染料所形成的线是\warn{脉线}（而非流线或迹线）。\\
 {\fontspec{SimSun}④} \key{流体线}：由流体中同一时刻的一线流体质点所构成的线（染色质点随时间增长变形形成的抛物线代表流体线，而非流线或速度分布）。\\
 {\fontspec{SimSun}⑤} 在定常流动中时变加速度为零，但迁移（位变）加速度 $(\bm V\cdot\nabla)\bm V$ 不一定为零，故质点总加速度 $\bm a = \frac{d\bm V}{dt} = \frac{\partial \bm V}{\partial t} + (\bm V\cdot\nabla)\bm V$ 不恒为零。\\
-{\fontspec{SimSun}⑥} 刚体旋转虽然存在速度梯度 $\nabla\bm V \neq 0$，但相邻质点间无相对运动，故变形速率（应变率）为 0，不产生粘性切应力（自转角速度为涡量的一半，即 $\bm\omega = \frac{1}{2}\nabla\times\bm V$）。\\
+{\fontspec{SimSun}⑥} 刚体旋转虽然存在速度梯度 $\nabla\bm V \neq 0$，但相邻质点间无相对运动，故变形速率（应变率）为 0，不产生粘性切应力（自转角速度为涡量的一半，即 $\bm\omega = \frac{1}{2}\nabla\times\bm V$）。
+}
+\infotxt{%
 3. \key{三大基本方程基本概念}：\\
 {\fontspec{SimSun}①} 连续性方程 $\nabla\cdot\bm V=0$ \warn{适合不可压缩流体的任何流动}（有粘/无粘、定常/非定常均成立）。\\
 {\fontspec{SimSun}②} 动量方程中的外力包含粘性切应力，\warn{既适用于理想流体，也适用于粘性流体}。\\
@@ -2554,7 +2556,9 @@ $p$用Pa，表压题可写表压，气体状态方程和汽蚀必须用绝压；
 {\fontspec{SimSun}③} 流函数存在与否与有无粘性、有旋无旋、定常/非定常均无关。\\
 2. \key{势函数存在条件}：\\
 {\fontspec{SimSun}①} 仅当流动\warn{无旋}（旋度 $\nabla\times\bm V=0$）时存在势函数 $\phi$。\\
-{\fontspec{SimSun}②} 源于无旋的数学定义，其存在性\warn{与维数、压缩性、粘性、定常/非定常均无关}。\\
+{\fontspec{SimSun}②} 源于无旋的数学定义，其存在性\warn{与维数、压缩性、粘性、定常/非定常均无关}。
+}
+\infotxt{%
 3. \key{混淆要点对比表}：\\
 \begin{tabular}{p{2.2cm}|c|c} \hline
 流动类别 & 流函数 $\psi$ & 势函数 $\phi$ \\ \hline
@@ -2576,7 +2580,9 @@ $p$用Pa，表压题可写表压，气体状态方程和汽蚀必须用绝压；
 1. \key{声速与马赫数}：\\
 {\fontspec{SimSun}①} 声速 $a=\sqrt{\gamma RT}$ 仅是温度的函数。\\
 {\fontspec{SimSun}②} 马赫数 $Ma=V/a$ 反映可压缩程度，当 $Ma < 0.3$ 时可近似为不可压缩流动。\\
-{\fontspec{SimSun}③} 微弱扰动的声波传播是\warn{等熵过程}（极快、变化微小，来不及热交换的无摩擦绝热过程）；而强扰动的激波（如正激波）过程是\warn{非等熵过程}，激波后熵增加、滞止压力下降（即 $s_2 > s_1, p_{02} < p_{01}$）。\\
+{\fontspec{SimSun}③} 微弱扰动的声波传播是\warn{等熵过程}（极快、变化微小，来不及热交换的无摩擦绝热过程）；而强扰动的激波（如正激波）过程是\warn{非等熵过程}，激波后熵增加、滞止压力下降（即 $s_2 > s_1, p_{02} < p_{01}$）。
+}
+\infotxt{%
 2. \key{气体动力流动与波}：\\
 {\fontspec{SimSun}①} 微弱扰动线在超声速流（$Ma>1$）中形成的线为\warn{马赫线}（其半顶角为马赫角 $\alpha = \arcsin(1/Ma)$）。\\
 {\fontspec{SimSun}②} 扰动只能传向马赫锥内部，外部为未扰动区。亚声速中扰动传向全场。\\
@@ -2600,7 +2606,9 @@ $p$用Pa，表压题可写表压，气体状态方程和汽蚀必须用绝压；
 {\fontspec{SimSun}①} Couette流（剪切驱动：靠板移动带动，无压梯度，速度呈线性）；Poiseuille流（压力驱动：靠压强差推动，板静止，速度呈抛物线）。\\
 {\fontspec{SimSun}②} 两层粘性流体交界面上，流速连续（$u_1=u_2$，无滑移）且剪应力连续（$\tau_1=\tau_2 = \mu_1 \frac{\partial u_1}{\partial y} = \mu_2 \frac{\partial u_2}{\partial y}$，应力平衡）。\\
 {\fontspec{SimSun}③} 圆管完全发展段中速度剖面恒定，\warn{沿程压力梯度 $\frac{dp}{dx}$ 为常数}。\\
-{\fontspec{SimSun}④} \key{光滑管替换与阻力控制}：总阻力损失等于沿程阻力 $h_f = \lambda \frac{l}{d}\frac{v^2}{2g}$ 与局部阻力 $h_j = \zeta \frac{v^2}{2g}$ 之和。若阀门、弯头等局部阻力占主导（$h_j \gg h_f$），或流动本身处于水力光滑区（摩擦系数 $\lambda$ 仅与 $Re$ 有关，与管壁粗糙度无关），则更换光滑管对减小阻力、增加流量几乎无用。\\
+{\fontspec{SimSun}④} \key{光滑管替换与阻力控制}：总阻力损失等于沿程阻力 $h_f = \lambda \frac{l}{d}\frac{v^2}{2g}$ 与局部阻力 $h_j = \zeta \frac{v^2}{2g}$ 之和。若阀门、弯头等局部阻力占主导（$h_j \gg h_f$），或流动本身处于水力光滑区（摩擦系数 $\lambda$ 仅与 $Re$ 有关，与管壁粗糙度无关），则更换光滑管对减小阻力、增加流量几乎无用。
+}
+\infotxt{%
 4. \key{当量直径与动力相似}：\\
 {\fontspec{SimSun}①} \key{当量直径} $d_e = 4 R_h = 4 A / \chi$（其中 $R_h = A / \chi$ 是水力半径，$A$ 为过流断面积，希腊字母 $\chi$ 为湿周 [即流体与壁面接触的周长]），作用是将非圆截面折算为圆管进行阻力计算。\\
 {\fontspec{SimSun}②} \key{相似准则}：重力起主导作用时选取无量纲数弗劳德数相似（$Fr = V/\sqrt{gl}$，其物理意义为惯性力与重力之比）；粘性力起主导作用时选取无量纲数雷诺数相似（$Re = \rho V l/\mu$，惯性力与粘性力之比）。两者均为无量纲数（无单位）。\\
@@ -2613,11 +2621,13 @@ $p$用Pa，表压题可写表压，气体状态方程和汽蚀必须用绝压；
 \infoh{选择判断秒杀库-5. (第9章) 湍流}
 \infotxt{%
 1. \key{转捩与稳定性}：\\
-{\fontspec{SimSun}①} 流态由层流向湍流转捩的临界雷诺数受壁面粗糙度和外界干扰影响，\warn{不是确定的常数}。\\
+{\fontspec{SimSun}①} 流态由层流向湍流转捩的临界雷诺数受壁面粗糙度、外界扰动、噪声等影响，非确定常数。管内流动存在下临界雷诺数 $Re_{cr} \approx 2300$，低于此值时任何湍流脉动都会衰减并恢复为层流（流动绝对稳定）；上临界雷诺数受实验扰动控制极不确定。\\
 2. \key{雷诺应力与混合长度}：\\
 {\fontspec{SimSun}①} RANS方程因脉动应力不封闭。紊流圆管中总切应力沿断面呈线性分布。\\
 {\fontspec{SimSun}②} Prandtl\key{混合长度理论的物理意义}：将湍流中微团的脉动与气体分子的运动相比拟。\\
-{\fontspec{SimSun}③} 假定流动微团横向移动混合长度 $l$ 后与周围流体混合并传递时均物理量。\\
+{\fontspec{SimSun}③} 假定流动微团横向移动混合长度 $l$ 后与周围流体混合并传递时均物理量。
+}
+\infotxt{%
 3. \key{数值模拟方法对比}：\\
 {\fontspec{SimSun}①} \warn{DNS（直接模拟）}不加近似，网格极密，计算量最大，仅适合低Re。\\
 {\fontspec{SimSun}②} \warn{LES（大涡模拟）}大涡求解，小涡使用SGS模型近似，计算量中等。\\
@@ -2627,15 +2637,16 @@ $p$用Pa，表压题可写表压，气体状态方程和汽蚀必须用绝压；
 \infoh{选择判断秒杀库-6. (第10章) 边界层理论基础}
 \infotxt{%
 1. \key{边界层外界线与摩擦阻力}：\\
-{\fontspec{SimSun}①} 由名义厚度 $\delta$ 标定的外界线不是流线。排挤厚度 $\delta^*$ 和动量损失厚度 $\theta$ 均显著小于 $\delta$。\\
+{\fontspec{SimSun}①} 边界层名义外界线（$u/U = 0.99$ 处）不是流线，因为外部流体不断卷入边界层内。排挤厚度 $\delta^* = \int_0^\delta (1 - \frac{u}{U}) dy$ 表示因粘性减速导致外部势流被向外排挤的位移；动量损失厚度 $\theta = \int_0^\delta \frac{u}{U}(1 - \frac{u}{U}) dy$ 表示动量流损失的等效厚度。对于平板层流， $\delta^* \approx 0.34\delta$，$\theta \approx 0.13\delta$，均显著小于名义厚度 $\delta$。\\
 {\fontspec{SimSun}②} \key{摩擦阻力定义}：当物体与流体有相对运动时与流体接触的物体表面要受到流体剪应力作用，剪应力的合力称为摩擦阻力。\\
 2. \key{流动分离与卡门涡街}：\\
 {\fontspec{SimSun}①} 绕流钝体两侧边界层因逆压与粘性脱流形成卡门涡街，其频率 $f = St \frac{U}{d}$，阻力危机前 $St \approx 0.2$。\\
 {\fontspec{SimSun}②} 流动分离的两个条件：存在逆压梯度区；壁面及粘性对流体的阻滞作用。\\
-{\fontspec{SimSun}③} 高Re流线体后部仍会出现逆压区，在大攻角等工况下仍可能发生分离。\\
+{\fontspec{SimSun}③} 高Re流线体后部仍会出现逆压区，在大攻角等工况下仍可能发生分离。
+}
+\infotxt{%
 3. \key{阻力危机}：\\
 {\fontspec{SimSun}①} 球/圆柱在临界 $Re$ 附近边界层由层流转捩为湍流，抗逆压梯度能力增强，分离点后移、尾迹变窄，使\warn{阻力系数 $C_D$ 骤降}。
 }
-
 \end{multicols*}
 \end{document}

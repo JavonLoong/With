@@ -1,0 +1,192 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[UTF8,scheme=chinese]{ctex}
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.markings,patterns}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\newtcolorbox{problembox}[1]{
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title=#1,
+    boxrule=1.5pt,
+    arc=4pt,
+    breakable
+}
+
+\begin{document}
+
+\title{\textbf{收缩-扩张喷管充气过程与正激波分析解题指南}}
+\author{流体力学复习资料}
+\date{\today}
+\maketitle
+
+\section{题目描述}
+容器a、b间用收缩-扩张管连通。超大容器a中 $p_0 = 1000\text{ kPa}, T_0 = 500\text{ K}$，b容器体积为 $V_b = 100\text{ m}^3$，喷管喉部面积 $A_t = 0.07\text{ m}^2$。若想得到出口截面马赫数为 2 的等熵流动，问：
+
+\begin{enumerate}
+    \item 设计喷管出口截面 $A_e$ 和环境背压 $p_b$；
+    \item 随着空气的填充，容器b中背压升高。当出口截面恰好存在一道正激波时，b中的背压为多少？
+    \item 若b中空气恒温 $20.0^\circ\text{C}$，求 1-2 状态过渡之间所需的时间。
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=1.8, >=stealth]
+  % 容器 a
+  \draw[thick, fill=blue!5] (-3.5,-1.2) rectangle (-1.5,1.2);
+  \node at (-2.5,0.4) {\textbf{超大容器 a}};
+  \node[align=left, font=\small] at (-2.5,-0.3) {$p_0 = 1000\text{ kPa}$\\$T_0 = 500\text{ K}$};
+
+  % 容器 b
+  \draw[thick, fill=green!5] (1.5,-1.2) rectangle (3.5,1.2);
+  \node at (2.5,0.4) {\textbf{容器 b}};
+  \node[align=left, font=\small] at (2.5,-0.3) {$V_b = 100\text{ m}^3$\\$T_b = 20.0^\circ\text{C}$};
+
+  % 喷管上壁面
+  \draw[very thick] (-1.5,0.7) to[out=0,in=180] (0,0.3) to[out=0,in=180] (1.5,0.5);
+  % 喷管下壁面
+  \draw[very thick] (-1.5,-0.7) to[out=0,in=180] (0,-0.3) to[out=0,in=180] (1.5,-0.5);
+
+  % 喉部标注 (Throat)
+  \draw[dashed, gray] (0,-0.3) -- (0,0.3);
+  \node[below, font=\small] at (0,-0.3) {喉部 $A_t$};
+  \node[above, font=\small] at (0,0.3) {$Ma = 1.0$};
+
+  % 出口面标注 (Exit)
+  \draw[dashed, gray] (1.5,-0.5) -- (1.5,0.5);
+  \node[below right, font=\small] at (1.5,-0.5) {出口 $A_e$};
+
+  % 正激波在出口面 (第2问场景)
+  \draw[red, line width=2pt] (1.5,-0.5) -- (1.5,0.5);
+  \node[red, above, font=\small] at (1.5,0.5) {正激波 (Normal Shock)};
+
+  % 气流方向箭头
+  \draw[->, thick] (-1.0,0) -- (-0.2,0);
+  \draw[->, thick] (0.2,0) -- (1.2,0);
+  \node[above, font=\small] at (0.7,0) {$Ma \to 2.0$};
+
+\end{tikzpicture}
+\caption{容器填充系统与喷管出口截面正激波示意图}
+\label{fig:nozzle_schematic}
+\end{figure}
+
+\newpage
+
+\section{详细解答与解析步骤}
+
+\subsection{第一问：设计出口截面 $A_e$ 和环境背压 $p_b$}
+为了使喷管内部实现定常等熵膨胀，并在出口处恰好达到超声速马赫数 $Ma_e = 2.0$：
+\begin{enumerate}
+    \item \textbf{出口截面与喉部面积之比 $A_e / A_t$ (等熵面积-马赫数关系式)}：
+    对于空气（$\gamma = 1.4$），面积比公式为：
+    \begin{equation}
+        \frac{A_e}{A_t} = \frac{1}{Ma_e} \left[ \frac{2}{\gamma + 1} \left( 1 + \frac{\gamma - 1}{2} Ma_e^2 \right) \right]^{\frac{\gamma + 1}{2(\gamma - 1)}} = \frac{1}{Ma_e} \left[ \frac{5}{6} \left( 1 + 0.2 Ma_e^2 \right) \right]^3
+    \end{equation}
+    将 $Ma_e = 2.0$ 代入计算：
+    \begin{equation}
+        \frac{A_e}{A_t} = \frac{1}{2} \left[ \frac{5}{6} \left( 1 + 0.2 \times 2^2 \right) \right]^3 = \frac{1}{2} \left[ \frac{5}{6} \times 1.8 \right]^3 = \frac{1}{2} \times 1.5^3 = 1.6875
+    \end{equation}
+    已知喉部面积 $A_t = 0.07\text{ m}^2$，则设计出口截面面积为：
+    \begin{equation}
+        A_e = 1.6875 \times A_t = 1.6875 \times 0.07 = \mathbf{0.118125\text{ m}^2}
+    \end{equation}
+
+    \item \textbf{等熵设计背压 $p_b$}：
+    在此完全膨胀等熵流状态下，环境背压 $p_b$ 必须与等熵出口静压 $p_e$ 严格相等：
+    \begin{equation}
+        p_{b,1} = p_e = \frac{p_0}{\left(1 + 0.2 Ma_e^2\right)^{3.5}}
+    \end{equation}
+    将 $p_0 = 1000\text{ kPa}$ 且 $Ma_e = 2.0$ 代入：
+    \begin{equation}
+        p_{b,1} = \frac{1000}{(1 + 0.2 \times 4)^{3.5}} = \frac{1000}{1.8^{3.5}} = \frac{1000}{7.8244} \approx \mathbf{127.80\text{ kPa}}
+    \end{equation}
+\end{enumerate}
+
+\subsection{第二问：当出口截面恰好存在正激波时的背压}
+随着空气的填充，容器b中的压力（背压）升高。当背压升高到某临界值时，正激波会被从喷管外侧“压入”，并恰好悬停在喷管的出口截面 $A_e$ 处。
+此时：
+\begin{itemize}
+    \item 激波前（出口内侧）：气流仍然为等熵超声速流，马赫数 $Ma_1 = Ma_e = 2.0$，静压 $p_1 = p_e = 127.80\text{ kPa}$；
+    \item 激波后（出口外侧）：气流跃升为亚声速，其静压突变为 $p_2$。
+\end{itemize}
+容器b的背压 $p_{b,2}$ 此时等于激波后的静压 $p_2$。
+
+根据正激波压强比公式（$\gamma = 1.4$）：
+\begin{equation}
+    \frac{p_2}{p_1} = 1 + \frac{2\gamma}{\gamma + 1}\left( Ma_1^2 - 1 \right) = \frac{2\gamma Ma_1^2 - (\gamma - 1)}{\gamma + 1}
+\end{equation}
+代入 $Ma_1 = 2.0$ 进行计算：
+\begin{equation}
+    \frac{p_b}{p_e} = \frac{2 \times 1.4 \times 2^2 - 0.4}{2.4} = \frac{11.2 - 0.4}{2.4} = \frac{10.8}{2.4} = 4.5
+\end{equation}
+因此，恰好存在正激波时的容器b中背压为：
+\begin{equation}
+    p_{b,2} = 4.5 \times p_1 = 4.5 \times 127.80\text{ kPa} = \mathbf{575.12\text{ kPa}}
+\end{equation}
+
+\newpage
+
+\subsection{第三步：求 1-2 状态过渡之间所需的时间}
+
+\subsubsection{1. 临界流动（Choked Flow）判断}
+在背压从状态 1 ($p_{b,1} = 127.80\text{ kPa}$) 升高到状态 2 ($p_{b,2} = 575.12\text{ kPa}$) 的全过程中：
+由于激波始终位于出口面（状态 2）或出口面外侧（状态 1），喷管内部从收缩段到喉部、再到扩张段的超声速流动完全没有受到任何扰动。
+因此，\textbf{喉部截面始终保持临界马赫数 $Ma_t = 1.0$（喷管处于临界临塞 choked 状态）}。
+
+因为超大容器a的状态（$p_0, T_0$）以及喉部面积 $A_t$ 均恒定不变，所以在整个填充过程中，通过喉部进入容器b的质量流量 $\dot{m}$ 是一个\textbf{恒定常数}。
+
+\subsubsection{2. 计算临界质量流量 $\dot{m}$}
+临界流量计算公式为：
+\begin{equation}
+    \dot{m} = \frac{p_0 A_t}{\sqrt{T_0}} \sqrt{\frac{\gamma}{R} \left( \frac{2}{\gamma + 1} \right)^{\frac{\gamma + 1}{\gamma - 1}}}
+\end{equation}
+代入空气常数 $\gamma = 1.4$，$R = 287\text{ J/(kg}\cdot\text{K)}$：
+\begin{equation}
+    \dot{m} = 0.68473 \times \frac{p_0 A_t}{\sqrt{R T_0}}
+\end{equation}
+代入已知数值 $p_0 = 1000 \times 10^3\text{ Pa}$，$T_0 = 500\text{ K}$，$A_t = 0.07\text{ m}^2$：
+\begin{equation}
+    \dot{m} = 0.68473 \times \frac{10^6 \times 0.07}{\sqrt{287 \times 500}} = \frac{47931.1}{\sqrt{143500}} = \frac{47931.1}{378.814} \approx \mathbf{126.53\text{ kg/s}}
+\end{equation}
+
+\subsubsection{3. 计算容器b内空气的质量变化 $\Delta m$}
+容器b体积 $V_b = 100\text{ m}^3$ 保持不变，填充空气过程中温度恒定在 $T_b = 20.0^\circ\text{C} = 293.15\text{ K}$。
+根据理想气体状态方程，容器b内空气质量与压力的关系为 $m = \frac{p V_b}{R T_b}$。
+
+在状态 1 到状态 2 期间，空气压力的增加值为：
+\begin{equation}
+    \Delta p = p_{b,2} - p_{b,1} = 575.12\text{ kPa} - 127.80\text{ kPa} = 447.32\text{ kPa} = 4.4732 \times 10^5\text{ Pa}
+\end{equation}
+因此，容器b内流入的空气总质量变化量为：
+\begin{equation}
+    \Delta m = \frac{\Delta p \cdot V_b}{R T_b} = \frac{4.4732 \times 10^5 \times 100}{287 \times 293.15} = \frac{4.4732 \times 10^7}{84134.05} \approx \mathbf{531.67\text{ kg}}
+\end{equation}
+
+\subsubsection{4. 计算所需填充时间 $\Delta t$}
+由于质量流量 $\dot{m}$ 恒定不变，质量增加与时间呈线性关系：
+\begin{equation}
+    \Delta t = \frac{\Delta m}{\dot{m}} = \frac{531.67\text{ kg}}{126.53\text{ kg/s}} \approx \mathbf{4.20\text{ s}}
+\end{equation}
+
+\begin{tcolorbox}[colback=green!5!white, colframe=green!60!black, title=最终结果总结]
+\begin{itemize}
+    \item \textbf{出口截面设计值}：$A_e = 0.1181\text{ m}^2$；等熵设计背压 $p_{b,1} = 127.80\text{ kPa}$。
+    \item \textbf{出口正激波临界背压}：$p_{b,2} = 575.12\text{ kPa}$。
+    \item \textbf{状态 1 至状态 2 所需充气时间}：$\Delta t = \mathbf{4.20\text{ s}}$。
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}

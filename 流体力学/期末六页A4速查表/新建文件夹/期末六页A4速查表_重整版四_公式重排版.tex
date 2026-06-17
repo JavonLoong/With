@@ -440,6 +440,13 @@ Moody：输入$Re,\varepsilon/d$读$\lambda$；物性表：水温给出时查$\r
 列瞬时出流$Q=C_dA_o\sqrt{2gH}$，再接水池面积方程$A_t\,dH/dt=-Q$。若容器截面积恒定：积分$\int_{H_1}^{H_2}dH/\sqrt{H}=-C_dA_o\sqrt{2g}\,t/A_t$。堰流无上部约束，闸孔出流受上部刚性约束，以 $e/H \le 0.65$ 划分。
 \subq{普通池底放水管/虹吸管：求是否汽蚀或最大高度}
 先从上游自由液面到危险最高点列能量，求该点绝压$p_{\rm abs}$；再和汽化压$p_v$比较。虹吸动力为重力势能差，但跨越最高点靠大气压支撑，最高点相对高差理论上限为大气压水柱高（10.3m，防空化通常小于7-8m）。空化（气蚀）成因：流速极高使静压降至饱和蒸汽压以下产生汽泡，在压强高处溃灭时微射流会破坏壁面。
+\subq{气球受风：已知浮力、风速、$C_D$和拉绳，求绳角或风阻}
+画自由体图：竖直方向浮力$F_B=\rho_{\rm air}gV_{\rm ball}$向上，重力$W=(m_{\rm ball}+m_{\rm He})g$向下；水平方向风阻$D=C_D(0.5\rho_{\rm air}U^2)A_f$（$A_f=\pi d^2/4$为迎风面积）。绳张力$T$沿绳向下偏风向。平衡：
+\fmlb{\begin{aligned}
+T\cos\alpha&=F_B-W,\quad T\sin\alpha=D\\
+\tan\alpha&=\frac{D}{F_B-W}=\frac{C_D(0.5\rho U^2)A_f}{(\rho_{\rm air}-\rho_{\rm He})gV-m_{\rm ball}g}
+\end{aligned}}
+绳角$\alpha$从竖直量起。检查：$\rho_{\rm He}\approx0.164$kg/m$^3$，$\rho_{\rm air}\approx1.225$kg/m$^3$；浮力体积是球体积$\pi d^3/6$。
 \idq{母题1图像关键词}
 大水面、油箱、水池、管径变化、弯头、阀门、入口/出口、泵、水轮机、压力表、U管、突然扩大/缩小、喷嘴、射流、法兰、支座。出现这些图，优先按“PVZ闭合$Q,p,H$，必要时接CV动量或查Moody”处理。
 \subq{真题：离心泵吸水安装高度与防汽蚀计算}
@@ -1535,6 +1542,18 @@ $M=2$，$\mu=30^\circ$；$M=3$，$\mu\approx19.5^\circ$；$M=1.5$，$\mu\approx4
 气体$M<0.3$时密度变化通常小于约5\%，可近似不可压；液体通常不可压，除非题明确弹性模量/水击。
 \stepq{模板：Laval喷管流程}
 写明“喉部达到临界则$A_t=A^*$”。面积比求出口$M_e$，等熵求$p_e$。比较$p_e$与$p_b$判断设计/过膨胀/欠膨胀。若管内激波，分三段。
+\subq{可压缩喷管受力：已知$p_0,T_0,A_{\rm in},A_e,p_b$，求喷管壁对流体的力}
+取喷管内流体为控制体。入口截面压力力$p_{\rm in}A_{\rm in}$（推入），出口$p_eA_e$（推出），壁面作用力$R_x$：
+\fmlb{R_x+p_{\rm in}A_{\rm in}-p_eA_e=\dot m(V_e-V_{\rm in})}
+若入口速度可忽略（$V_{\rm in}\approx0,p_{\rm in}\approx p_0$）：
+\fmlb{R_x=\dot m V_e-(p_0A_{\rm in}-p_eA_e)}
+\warn{所有压力用表压或同时用绝压}。出口若非设计态$p_e\ne p_b$，$p_e$仍由管内等熵/激波定。若出口外大气$p_a$作用在外壁，用表压最方便。
+\subq{Laval向有限容器充气：已知$p_0,T_0,V_{\rm tank}$，求充气时间}
+容器初压$p_i$、终压$p_f$，喉部面积$A^*$。喷管阻塞时$\dot m=\dot m_{\max}=$常数：
+\fmlb{\dot m_{\max}=0.0404\frac{A^*p_0}{\sqrt{T_0}}\quad(\text{空气})}
+容器等温充气质量守恒：$dm_{\rm tank}/dt=\dot m_{\max}$。若容器温度$T_{\rm tank}$恒定：
+\fmlb{\frac{dp}{dt}=\frac{RT_{\rm tank}}{V_{\rm tank}}\dot m_{\max},\quad t=\frac{V_{\rm tank}(p_f-p_i)}{RT_{\rm tank}\dot m_{\max}}}
+阻塞条件：只要$p_{\rm tank}/p_0<0.528$，$\dot m$恒定；当$p_{\rm tank}$升高到$p_0\times0.528$以上时不再阻塞，$\dot m$减小，需分段积分。若绝热模型则需数值迭代。
 \stepq{喷管题骨架}
 写等熵三公式和临界0.528；再写“先判阻塞，再算$M$”。不要直接乱代数。
 \stepq{文丘里不可压流量}
@@ -1834,6 +1853,19 @@ $M_1,\theta\to\beta$。若表无精确值，用线性插值。读到$\beta$后�
 超声速来流撞楔尖，前方斜线是斜激波，楔角是流动偏转角$\theta$，斜线角是波角$\beta$。
 \quickq{图像：凹角/凸角}
 超声速流遇凹角压缩，画斜激波；遇凸角膨胀，画膨胀扇。亚声速不画马赫波。
+\subq{纹影图波角识别：已知图中线角度，求$M$或偏转角}
+纹影图三类线：(1)\textbf{马赫线/波}：极弱扰动，角$\mu=\sin^{-1}(1/M)$。(2)\textbf{斜激波}：角$\beta>\mu$，由$M_1,\theta$关系决定，是激波面与来流方向的夹角。(3)\textbf{膨胀扇}：由首波（$\mu_1$）和尾波（$\mu_2$）张开的扇形区域。\\
+\warn{图题读角步骤}：先从图中量出波与来流方向夹角$\alpha_{\rm img}$。若是马赫波，$M=1/\sin\alpha_{\rm img}$；若是斜激波，$\beta=\alpha_{\rm img}$，结合楔角$\theta$（壁面偏转角）查表得$M_1$。
+\subq{菱形翼/双楔翼：已知攻角$\alpha$、半角$\varepsilon$、弦长$c$，求升力与阻力}
+上下表面各经历不同偏转角：前缘上表面膨胀$\theta_1=\varepsilon-\alpha$（若$\varepsilon>\alpha$），下表面压缩$\theta_2=\varepsilon+\alpha$；用斜激波或PM求出四个面板的压力$p_1$（前上）、$p_2$（前下）、$p_3$（后上）、$p_4$（后下）。\\
+积分力（弦长为$c$，前/后半弦长各为$c/2$）：
+\fmlb{\begin{aligned}
+\text{法向力 } N'&=(p_2+p_4-p_1-p_3)\frac{c}{2}\\
+\text{轴向力 } A'&=(p_1+p_2-p_3-p_4)\frac{c}{2}\tan\varepsilon\\
+\text{升阻力 } L'&=N'\cos\alpha-A'\sin\alpha,\quad D'=N'\sin\alpha+A'\cos\alpha
+\end{aligned}}
+注：若无摩擦阻力，此$D'$即为波阻力。对称零攻角时$L'=0, D'=2(p_{\rm front}-p_{\rm rear})\frac{c}{2}\tan\varepsilon$。
+
 
 \idq{图里有“正激波”}
 波前必须超声速，波后亚声速。过波$p,T,\rho$升，$M$降，$T_0$不变，$p_0$下降；后面若继续等熵，用新的$p_{02}$。
@@ -2632,8 +2664,8 @@ $p$用Pa，表压题可写表压，气体状态方程和汽蚀必须用绝压；
 {\fontspec{SimSun}②} 扰动只能传向马赫锥内部，外部为未扰动区。亚声速中扰动传向全场。\\
 {\fontspec{SimSun}③} 激波后压力、温度、密度骤升，\warn{流速由超声速骤降为亚声速}。激波仅在超声速流动中可能产生。\\
 3. \key{喷管核心结论}：\\
-{\fontspec{SimSun}①} \key{加速原理}：由面速关系 $\frac{dA}{A} = (Ma^2-1)\frac{dV}{V}$ 决定。亚声速（$Ma<1$）在渐缩段（$dA<0$）加速；若想进一步加速至超声速（$Ma>1$），必须先在喉部（$dA=0$）达到声速 $Ma=1$（临界），再在渐扩段（$dA>0$）继续加速。故渐缩喷管出口最大只能达声速，渐缩渐扩（拉瓦尔）喷管出口可达超声速。\\
-{\fontspec{SimSun}②} \key{临界流量}：最大质量流量（$\dot{m}_{\text{max}} = K \frac{p_0 A^*}{\sqrt{T_0}}$）唯一由喉部面积 $A^*$ 和上游滞止状态（即静止容器内的滞止压强 $p_0$ 和滞止温度 $T_0$）决定。喉部一旦达到声速（阻塞），下游扰动无法逆上传播，因此即使下游管道存在激波或出口有膨胀波，也不改变此最大流量。
+{\fontspec{SimSun}①} \key{加速原理}：由面速关系 $\frac{dA}{A} = (Ma^2-1)\frac{dV}{V}$ 决定。亚声速（$Ma<1$）在渐缩段加速；若想进一步加速至超声速（$Ma>1$），必须先在喉部达到声速 $Ma=1$（临界），再在渐扩段继续加速。\\
+{\fontspec{SimSun}②} \key{临界流量与设计}：空气最大质量流量公式 $\dot{m}_{\text{max}} \approx 0.0404 \frac{p_0 A^*}{\sqrt{T_0}}$（$R=287$），唯一由喉部面积 $A^*$ 和上游滞止状态（$p_0, T_0$）决定。设计背压 $p_{b3} = \frac{p_0}{(1+0.2 Ma_e^2)^{3.5}}$；出口截面存在正激波时背压为 $p_{b2} = p_{b3} \left[ 1 + \frac{2\gamma}{\gamma+1}(Ma^2 - 1) \right]$。
 }
 
 \infoh{选择判断秒杀库-4. (第8章) 粘性流体力学基础}
@@ -2650,7 +2682,8 @@ $p$用Pa，表压题可写表压，气体状态方程和汽蚀必须用绝压；
 {\fontspec{SimSun}①} Couette流（剪切驱动：靠板移动带动，无压梯度，速度呈线性）；Poiseuille流（压力驱动：靠压强差推动，板静止，速度呈抛物线）。\\
 {\fontspec{SimSun}②} 两层粘性流体交界面上，流速连续（$u_1=u_2$，无滑移）且剪应力连续（$\tau_1=\tau_2 = \mu_1 \frac{\partial u_1}{\partial y} = \mu_2 \frac{\partial u_2}{\partial y}$，应力平衡）。\\
 {\fontspec{SimSun}③} 圆管完全发展段中速度剖面恒定，\warn{沿程压力梯度 $\frac{dp}{dx}$ 为常数}。\\
-{\fontspec{SimSun}④} \key{光滑管替换与阻力控制}：总阻力损失等于沿程阻力 $h_f = \lambda \frac{l}{d}\frac{v^2}{2g}$ 与局部阻力 $h_j = \zeta \frac{v^2}{2g}$ 之和。若阀门、弯头等局部阻力占主导（$h_j \gg h_f$），或流动本身处于水力光滑区（摩擦系数 $\lambda$ 仅与 $Re$ 有关，与管壁粗糙度无关），则更换光滑管对减小阻力、增加流量几乎无用。
+{\fontspec{SimSun}④} \key{倾斜板间流动}：重力与滑动壁面（以速度 $U_0$ 滑动）混合驱动，沿斜面向下流动，N-S方程为 $\mu \frac{d^2u}{dy^2} + \rho g \sin\theta = 0$，其零剪切力点 $\tau = 0$ 必落在下半区域 $y \in (0, H/2)$；\\
+{\fontspec{SimSun}⑤} \key{光滑管替换与阻力控制}：总阻力损失等于沿程阻力 $h_f = \lambda \frac{l}{d}\frac{v^2}{2g}$ 与局部阻力 $h_j = \zeta \frac{v^2}{2g}$ 之和。若阀门、弯头等局部阻力占主导（$h_j \gg h_f$），或流动本身处于水力光滑区（摩擦系数 $\lambda$ 仅与 $Re$ 有关，与管壁粗糙度无关），则更换光滑管对减小阻力、增加流量几乎无用。
 }
 \infotxt{%
 4. \key{当量直径与动力相似}：\\

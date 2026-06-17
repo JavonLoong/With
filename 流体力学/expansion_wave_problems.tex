@@ -90,18 +90,21 @@
 \section{普朗特-迈耶膨胀波解题“万能模板”与几何图景}
 为了使学习者能够“一题通一类”，本节将所有涉及普朗特-迈耶等熵膨胀波（凸角膨胀、翼型表面绕流、喷管出口射流）的计算题，提炼为一套通用的\textbf{四步解题流程}与\textbf{几何画图防错法}。
 
+\section{普朗特-迈耶膨胀波解题“万能模板”与几何图景}
+为了使学习者能够“一题通一类”，本节将所有涉及普朗特-迈耶等熵膨胀波（凸角膨胀、翼型表面绕流、喷管出口射流）的计算题，提炼为一套通用的\textbf{五步解题流程}与\textbf{几何画图防错法}。
+
 \begin{tcolorbox}[
     colback=red!5!white,
     colframe=red!75!black,
-    title=\textbf{普朗特-迈耶等熵膨胀波解题“四步走”通用流程},
+    title=\textbf{普朗特-迈耶等熵膨胀波解题“五步走”通用流程},
     fonttitle=\bfseries,
     boxrule=1.5pt,
     arc=4pt
 ]
-无论物理场景如何多变，求解膨胀波问题均严格遵循以下四个步骤：
+无论物理场景如何多变，求解膨胀波问题均严格遵循以下五个步骤：
 \begin{enumerate}
     \item \textbf{【第一步：求初态 PM 函数值 $\nu(Ma_1)$】} \\
-    根据给定的来流马赫数 $Ma_1$，代入 PM 函数公式（或查气动力学表）求得来流的函数值 $\nu(Ma_1)$（角度制）。
+    根据给定的来流马赫数 $Ma_1$，代入 PM 函数公式求得来流的函数值 $\nu(Ma_1)$（角度制）。
     
     \item \textbf{【第二步：根据气流偏转角 $\theta$ 计算终态 $\nu(Ma_2)$】} \\
     根据几何壁面或边界偏转角 $\theta$，计算波后的 PM 函数值：
@@ -113,43 +116,92 @@
     \item \textbf{【第三步：反查/求解波后马赫数 $Ma_2$】} \\
     根据算出的 $\nu(Ma_2)$，通过反查气动力学表或解 PM 函数方程求得波后马赫数 $Ma_2$。
     
-    \item \textbf{【第四步：利用等熵比值关系计算热力学参数】} \\
-    由于膨胀波为等熵过程，总压和总温保持守恒（$p_{02}=p_{01}$，$T_{02}=T_{01}$）。直接利用初末态马赫数通过以下关系式计算波后的压强、温度与速度：
+    \item \textbf{【第四步：利用等熵比值关系计算波后压强与温度】} \\
+    由于膨胀波为等熵过程，总压和总温保持守恒（$p_{02}=p_{01}$，$T_{02}=T_{01}$）。利用初末态马赫数通过以下等熵比值公式计算波后静压 $p_2$ 和静温 $T_2$：
     \begin{equation}
-        p_2 = p_1 \left( \frac{1 + 0.2 Ma_1^2}{1 + 0.2 Ma_2^2} \right)^{3.5}, \quad T_2 = T_1 \frac{1 + 0.2 Ma_1^2}{1 + 0.2 Ma_2^2}, \quad V_2 = Ma_2 \sqrt{\gamma R T_2}
+        p_2 = p_1 \left( \frac{1 + 0.2 Ma_1^2}{1 + 0.2 Ma_2^2} \right)^{3.5}, \quad T_2 = T_1 \frac{1 + 0.2 Ma_1^2}{1 + 0.2 Ma_2^2}
     \end{equation}
+    
+    \item \textbf{【第五步：计算马赫角并确定膨胀扇几何边界（核心考点）】} \\
+    利用马赫角公式求出波前、波后局部马赫角（马赫线与局部流速的夹角）：
+    \begin{equation}
+        \mu_1 = \arcsin\left(\frac{1}{Ma_1}\right), \quad \mu_2 = \arcsin\left(\frac{1}{Ma_2}\right)
+    \end{equation}
+    进而确定前缘马赫线与后缘马赫线在绝对空间中（以水平来流为 $0^\circ$）的倾角及膨胀扇的总几何宽度 $\Delta\phi$。
 \end{enumerate}
 \end{tcolorbox}
 
-\subsection{几何画图与马赫线角度的“加减法”口诀}
-在画图题或求波向时，最容易在角度的正负号上出错。请熟记以下几何图景法则（以水平来流方向为参考基准 $0^\circ$）：
+\subsection{几何图景与马赫线角度的“绝对坐标”变换}
+在画图题中，前缘/后缘马赫线的绝对偏转角是必考的。以下是直观的几何关系分析与画图参考（以水平来流方向为参考基准 $0^\circ$）：
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=2.2, >=stealth]
+  % 绘制折角壁面
+  \draw[very thick, fill=gray!10] (-2,0) -- (0,0) -- (1.8,{-1.8*tan(15)}) -- (1.8,-1) -- (-2,-1) -- cycle;
+  \draw[very thick] (-2,0) -- (0,0) -- (1.8,{-1.8*tan(15)});
+  
+  % 水平线（未扰动流动方向）
+  \draw[dashed, gray] (0,0) -- (2,0) node[right, black] {水平参考线 ($0^\circ$)};
+  
+  % 波前马赫线
+  \draw[red, ultra thick] (0,0) -- ({1.8*cos(40)}, {1.8*sin(40)}) node[above right, red] {前缘马赫线 (Head Wave): $\alpha_{\text{head}} = \mu_1$};
+  \draw[->, red] (0.5,0) arc (0:40:0.5);
+  \node[red] at (0.7,0.18) {$\mu_1$};
+  
+  % 下游壁面延长线
+  \draw[dashed, blue] (0,0) -- ({1.8*cos(-15)}, {1.8*sin(-15)});
+  
+  % 波后马赫线
+  \draw[red, ultra thick] (0,0) -- ({1.8*cos(13)}, {1.8*sin(13)}) node[right, red] {后缘马赫线 (Tail Wave): $\alpha_{\text{tail}} = \mu_2 - \theta$};
+  
+  % 标注角度
+  % 壁面折弯角 \theta = 15
+  \draw[<->] (1.3,0) arc (0:-15:1.3);
+  \node at (1.45,-0.12) {$\theta$};
+  
+  % 波后马赫角 \mu_2 是相对于下游壁面的角度
+  \draw[->, red] (0.8,-0.2) arc (-15:13:0.8);
+  \node[red] at (0.9,-0.02) {$\mu_2$};
+  
+  % 后缘绝对角度 \alpha_{tail}
+  \draw[->, darkgray] (1.0,0) arc (0:13:1.0);
+  \node[darkgray] at (1.15,0.1) {$\alpha_{\text{tail}}$};
+
+  % 膨胀扇总宽度 \Delta\phi
+  \draw[<->, purple, thick] ({1.2*cos(40)}, {1.2*sin(40)}) arc (40:13:1.2);
+  \node[purple] at (1.1,0.5) {$\Delta\phi = \theta + \mu_1 - \mu_2$};
+\end{tikzpicture}
+\caption{普朗特-迈耶膨胀波绝对角度与相对角度的几何图景关系}
+\label{fig:guide_angles}
+\end{figure}
 
 \begin{enumerate}
-    \item \textbf{波前马赫角（$\mu_1$）与波后马赫角（$\mu_2$）的本质}：
-    局部马赫角永远是马赫线与\textbf{该位置局部气流方向}的夹角。
-    \begin{itemize}
-        \item 波前气流是水平的，所以前缘马赫线（Head Wave）与水平方向夹角就是 $\mu_1 = \arcsin(1/Ma_1)$。
-        \item 波后气流已经顺着壁面偏转了 $\theta$，所以后缘马赫线（Tail Wave）与偏转后的壁面（流动方向）夹角是 $\mu_2 = \arcsin(1/Ma_2)$。
-    \end{itemize}
+    \item \textbf{前缘马赫线（Head Wave）绝对夹角 $\alpha_{\text{head}}$}：
+    它是膨胀扇的起点。由于波前气流是水平的，前缘线与水平线夹角直接等于波前马赫角：
+    \begin{equation}
+        \alpha_{\text{head}} = \mu_1 = \arcsin\left(\frac{1}{Ma_1}\right)
+    \end{equation}
 
-    \item \textbf{绝对角度的加减法判定口诀}：
+    \item \textbf{后缘马赫线（Tail Wave）绝对夹角 $\alpha_{\text{tail}}$}：
+    它是膨胀扇的终点。由于气流在壁面偏转后已经以偏角 $\theta$ 向下流动，后缘线与下游壁面（波后流向）的夹角为 $\mu_2 = \arcsin(1/Ma_2)$。
+    我们在绝对坐标系中计算它的角度时，需要进行“加减法”：
     \begin{itemize}
-        \item \textbf{下游壁面向下弯曲（如图\ref{fig:p1}）}：下游壁面在 $- \theta$ 方向。后缘马赫线指向下方壁面的外侧（上方），所以它的绝对角度（与水平线夹角）被壁面“往下拉”了，即：
+        \item \textbf{气流向下偏转（凹折角，如图\ref{fig:guide_angles}）}：下游流向为 $-\theta$，后缘马赫线向上偏，与水平线绝对夹角为：
         \begin{equation}
             \alpha_{\text{tail}} = \mu_2 - \theta
         \end{equation}
-        \item \textbf{下游壁面向上弯曲}：下游壁面在 $+ \theta$ 方向。后缘马赫线指向下方壁面的外侧（上方），绝对角度被“往上推”了，即：
+        \item \textbf{气流向上偏转}：下游流向为 $+\theta$，后缘马赫线向上偏，与水平线绝对夹角为：
         \begin{equation}
             \alpha_{\text{tail}} = \mu_2 + \theta
         \end{equation}
     \end{itemize}
 
-    \item \textbf{膨胀扇的宽度（扇面几何夹角 $\Delta \phi$）}：
-    膨胀扇在空间中扫过的总夹角永远等于：
+    \item \textbf{膨胀扇在空间中扫过的几何宽度 $\Delta\phi$}：
+    它是前缘线与后缘线的几何夹角。无论气流向上还是向下偏转，其大小恒等于：
     \begin{equation}
-        \Delta \phi = \theta + \mu_1 - \mu_2
+        \Delta\phi = \alpha_{\text{head}} - \alpha_{\text{tail}} = \mu_1 - (\mu_2 - \theta) = \theta + \mu_1 - \mu_2
     \end{equation}
-    \textit{物理记忆法：气流转过 $\theta$ 相当于把膨胀扇的后缘往外推了 $\theta$ 角度，所以整个扇形面积被“撑大”了 $\theta$。}
 \end{enumerate}
 
 \newpage

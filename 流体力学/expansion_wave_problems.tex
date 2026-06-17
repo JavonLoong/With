@@ -1,0 +1,710 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.markings}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={流体力学：普朗特-迈耶膨胀波习题汇总及完整解答},
+}
+
+% 定义优美的标题和排版样式
+\title{\Huge \textbf{流体力学：普朗特-迈耶膨胀波习题汇总与完整解答}}
+\author{\large 编写人：Antigravity \quad 适用课程：流体力学 / 空气动力学}
+\date{\today}
+
+% 自定义题目框
+\newtcolorbox{questionbox}[2][]{
+  colback=red!3!white,
+  colframe=red!60!black,
+  fonttitle=\bfseries,
+  title={#2},
+  boxrule=1pt,
+  arc=3pt,
+  halign title=flush left,
+  #1
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+本篇文档精心挑选并整理了流体力学教学中关于\textbf{普朗特-迈耶（Prandtl-Meyer）膨胀波（膨胀扇）}的5道典型计算题。题目涵盖单凸角膨胀绕流、超声速机翼表面流动、拉瓦尔喷管出口管外欠膨胀射流、斜击波与膨胀波组合波系、以及多级折角流场边界匹配等核心知识点。每道题目均附有详尽的物理分析、数学公式推导、数值计算步骤以及TikZ高精度矢量流场示意图，旨在帮助学习者深入掌握膨胀波的物理特征及其在超声速流动中的实际应用。
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{普朗特-迈耶膨胀波基本理论与关系式}
+在进行习题求解前，首先总结定常、无粘、完全气体通过普朗特-迈耶（Prandtl-Meyer）膨胀波（以空气为例，比热比 $\gamma = 1.4$）的基本物理特征与计算关系式：
+\begin{enumerate}
+    \item \textbf{等熵流动性质}：
+    普朗特-迈耶膨胀波是由无数条微弱的马赫波组成的连续膨胀扇。与非等熵的击波不同，气流通过膨胀波的过程为\textbf{等熵过程}。
+    因此，流动中气流的\textbf{滞止温度 $T_0$} 和\textbf{滞止压强 $p_0$} （总压）在波前、波中及波后均保持恒定：
+    \begin{equation}
+        T_{01} = T_{02} = T_0, \quad p_{01} = p_{02} = p_0
+    \end{equation}
+    波后的静压 $p_2$、静温 $T_2$ 和密度 $\rho_2$ 均可通过等熵关系式直接由波后马赫数 $Ma_2$ 算得。
+
+    \item \textbf{普朗特-迈耶函数（PM函数）}：
+    气流的偏转角（转角） $\theta$ 与马赫数 $Ma$ 之间的关系由普朗特-迈耶函数 $\nu(Ma)$ 决定。对于 $\gamma = 1.4$ 的空气，其表达式为：
+    \begin{equation}
+        \nu(Ma) = \sqrt{6} \arctan \sqrt{\frac{Ma^2 - 1}{6}} - \arctan \sqrt{Ma^2 - 1}
+    \end{equation}
+    其中 $\nu(Ma)$ 的单位为弧度，在工程查表和实际计算中通常将其转换为角度（$^\circ$）。
+    
+    当气流绕凸角转过偏转角 $\theta$ 时，波后与波前的关系满足：
+    \begin{equation}
+        \nu(Ma_2) = \nu(Ma_1) + \theta
+    \end{equation}
+
+    \item \textbf{马赫角与膨胀扇几何}：
+    流场中任意位置的局部马赫角 $\mu$ 定义为：
+    \begin{equation}
+        \mu = \arcsin\left(\frac{1}{Ma}\right)
+    \end{equation}
+    在绕凸角膨胀绕流中：
+    \begin{itemize}
+        \item \textbf{前缘马赫线（Head Wave）}：膨胀扇的起点，它与波前流动方向的夹角为波前马赫角 $\mu_1 = \arcsin(1/Ma_1)$。
+        \item \textbf{后缘马赫线（Tail Wave）}：膨胀扇的终点，它与波后流动方向（即下游壁面方向）的夹角为波后马赫角 $\mu_2 = \arcsin(1/Ma_2)$。
+        \item \textbf{膨胀扇的夹角（宽度） $\Delta \phi$}：若壁面向外转过 $\theta$，则前缘马赫线与后缘马赫线之间的几何夹角为：
+        \begin{equation}
+            \Delta \phi = \theta + \mu_1 - \mu_2
+        \end{equation}
+    \end{itemize}
+\end{enumerate}
+
+\newpage
+
+\section{习题集与完整解答}
+
+% --- QUESTION 1 ---
+\begin{questionbox}{题一：凸角膨胀绕流（单级Prandtl-Meyer膨胀波计算）}
+一超声速均匀空气流（$\gamma = 1.4$），其波前马赫数 $Ma_1 = 1.5$，静压 $p_1 = 100\text{ kPa}$，静温 $T_1 = 280\text{ K}$。当该气流流经一偏转角为 $\theta = 12^\circ$ 的凸角时产生普朗特-迈耶膨胀波。求：
+\begin{enumerate}
+    \item 波后的马赫数 $Ma_2$；
+    \item 波后的静压 $p_2$ 和静温 $T_2$；
+    \item 膨胀扇的前缘马赫线和后缘马赫线与波前流动方向的夹角，以及膨胀扇的几何宽度。
+\end{enumerate}
+\end{questionbox}
+
+\subsubsection*{【分析与解答】}
+本题是经典的凸角等熵膨胀绕流问题。气流通过膨胀波发生加速降压，总温总压保持不变。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=2, >=stealth]
+  % 绘制墙壁
+  \draw[very thick, fill=gray!15] (-2.2,0) -- (0,0) -- (2,{-2*tan(12)}) -- (2,-1) -- (-2.2,-1) -- cycle;
+  \draw[very thick] (-2.2,0) -- (0,0) -- (2,{-2*tan(12)});
+  
+  % 绘制前流动
+  \draw[->, blue, ultra thick] (-1.6,0.4) -- (-0.8,0.4) node[above, black] {$Ma_1 = 1.5$};
+  \draw[dashed, gray] (0,0) -- (1.8,0);
+  
+  % 绘制前缘马赫线
+  \draw[red, thick] (0,0) -- ({1.8*cos(41.81)}, {1.8*sin(41.81)}) node[above right, black] {前缘马赫线 (Head Wave)};
+  \draw[->] (0.6,0) arc (0:41.81:0.6);
+  \node at (0.8,0.2) {$\mu_1 = 41.81^\circ$};
+  
+  % 绘制后缘马赫线
+  % 下游壁面在-12 deg，后缘马赫线相对于下游壁面为31.55 deg，所以在绝对空间中为 -12 + 31.55 = 19.55 deg
+  \draw[red, thick] (0,0) -- ({1.8*cos(19.55)}, {1.8*sin(19.55)}) node[right, black] {后缘马赫线 (Tail Wave)};
+  \draw[->] (0.7,0) arc (0:19.55:0.7);
+  \node at (1.1,0.15) {$19.55^\circ$};
+  
+  % 填充膨胀扇
+  \fill[red!10, opacity=0.6] (0,0) -- ({1.7*cos(41.81)}, {1.7*sin(41.81)}) arc (41.81:19.55:1.7) -- cycle;
+  
+  % 绘制后流动
+  \draw[->, blue, ultra thick] (0.8,-0.12) -- ({0.8 + 0.8*cos(-12)}, {-0.12 + 0.8*sin(-12)}) node[below right, black] {$Ma_2 \approx 1.91$};
+  
+  % 绘制壁面偏转角
+  \draw[<->] (1.3,0) arc (0:-12:1.3);
+  \node[right] at (1.3,-0.1) {$\theta = 12^\circ$};
+\end{tikzpicture}
+\caption{题一：凸角膨胀绕流与普朗特-迈耶膨胀扇结构示意图}
+\label{fig:p1}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{求解波后马赫数 $Ma_2$}：
+    首先计算波前马赫数 $Ma_1 = 1.5$ 对应的普朗特-迈耶函数值 $\nu(Ma_1)$。
+    代入公式（3）：
+    \[
+    \nu(1.5) = \sqrt{6} \arctan \sqrt{\frac{1.5^2 - 1}{6}} - \arctan \sqrt{1.5^2 - 1}
+    \]
+    \[
+    \nu(1.5) = \sqrt{6} \arctan \sqrt{\frac{1.25}{6}} - \arctan \sqrt{1.25}
+    \]
+    计算各部分：
+    \[
+    \sqrt{\frac{1.25}{6}} = \sqrt{0.20833} \approx 0.45644, \quad \arctan(0.45644) \approx 0.42817\text{ rad} \approx 24.53^\circ
+    \]
+    \[
+    \sqrt{1.25} \approx 1.11803, \quad \arctan(1.11803) \approx 0.84107\text{ rad} \approx 48.19^\circ
+    \]
+    代入求得角度制下的 $\nu(1.5)$：
+    \[
+    \nu(1.5) = 2.44949 \times 24.532^\circ - 48.190^\circ \approx 60.091^\circ - 48.190^\circ = 11.90^\circ
+    \]
+    
+    气流绕凸角偏转 $\theta = 12^\circ$，故波后的普朗特-迈耶函数值为：
+    \[
+    \nu(Ma_2) = \nu(Ma_1) + \theta = 11.90^\circ + 12^\circ = 23.90^\circ
+    \]
+    
+    根据 $\nu(Ma_2) = 23.90^\circ$，反查普朗特-迈耶表（或通过数值迭代求解公式）：
+    设方程 $\nu(Ma_2) - 23.90^\circ = 0$，解得波后马赫数为：
+    \[
+    Ma_2 \approx 1.911
+    \]
+
+    \item \textbf{求解波后静压 $p_2$ 和静温 $T_2$}：
+    因为流动是等熵的，滞止参数 $p_0$ 和 $T_0$ 在通过膨胀波时保持不变。
+    利用等熵关系式，波前后参数之比为：
+    \[
+    \frac{p_2}{p_1} = \left(\frac{1 + \frac{\gamma-1}{2}Ma_1^2}{1 + \frac{\gamma-1}{2}Ma_2^2}\right)^{\frac{\gamma}{\gamma-1}} = \left(\frac{1 + 0.2 \times 1.5^2}{1 + 0.2 \times 1.911^2}\right)^{3.5}
+    \]
+    代入数值计算：
+    \[
+    1 + 0.2 \times 1.5^2 = 1.45
+    \]
+    \[
+    1 + 0.2 \times 1.911^2 \approx 1 + 0.2 \times 3.652 = 1.730
+    \]
+    故：
+    \[
+    \frac{p_2}{p_1} = \left(\frac{1.45}{1.730}\right)^{3.5} \approx (0.8382)^{3.5} \approx 0.5384
+    \]
+    \[
+    p_2 = 100 \times 0.5384 \approx \mathbf{53.84\text{ kPa}}
+    \]
+    
+    同理求静温 $T_2$：
+    \[
+    \frac{T_2}{T_1} = \frac{1 + 0.2 \times 1.5^2}{1 + 0.2 \times 1.911^2} = \frac{1.45}{1.730} \approx 0.8382
+    \]
+    \[
+    T_2 = 280 \times 0.8382 \approx \mathbf{234.7\text{ K}}
+    \]
+
+    \item \textbf{求解马赫线角度与膨胀扇几何宽度}：
+    \begin{itemize}
+        \item 波前马赫角：
+        \[
+        \mu_1 = \arcsin\left(\frac{1}{Ma_1}\right) = \arcsin\left(\frac{1}{1.5}\right) \approx 41.81^\circ
+        \]
+        因此，前缘马赫线与波前流动方向的夹角即为 \textbf{$41.81^\circ$}。
+        
+        \item 波后马赫角：
+        \[
+        \mu_2 = \arcsin\left(\frac{1}{Ma_2}\right) = \arcsin\left(\frac{1}{1.911}\right) \approx 31.55^\circ
+        \]
+        后缘马赫线与下游壁面方向（波后流动方向）的夹角为 $\mu_2 = 31.55^\circ$。
+        由于下游壁面相对于波前流动方向偏转了 $-12^\circ$（向下），因此后缘马赫线与波前流动方向的夹角为：
+        \[
+        \alpha_{\text{tail}} = \mu_2 - \theta = 31.55^\circ - 12^\circ = \mathbf{19.55^\circ}
+        \]
+        
+        \item 膨胀扇的几何宽度（夹角） $\Delta \phi$ 为：
+        \[
+        \Delta \phi = \mu_1 - \alpha_{\text{tail}} = \theta + \mu_1 - \mu_2 = 12^\circ + 41.81^\circ - 31.55^\circ = \mathbf{22.26^\circ}
+        \]
+    \end{itemize}
+\end{enumerate}
+
+\newpage
+
+% --- QUESTION 2 ---
+\begin{questionbox}{题二：超声速机翼前缘膨胀波（机翼上表面膨胀流分析）}
+在设计一超声速薄机翼时，均匀来流空气的马赫数 $Ma_1 = 2.0$，静压 $p_1 = 50\text{ kPa}$。机翼前缘上表面向外折角 $\theta = 10^\circ$，形成凸角。气流流经该折角时产生 Prandtl-Meyer 膨胀扇。求：
+\begin{enumerate}
+    \item 膨胀波后的马赫数 $Ma_2$ 和静压 $p_2$；
+    \item 膨胀扇在空间中扫过的几何扇形区域夹角（即膨胀扇宽度）。
+\end{enumerate}
+\end{questionbox}
+
+\subsubsection*{【分析与解答】}
+机翼表面的膨胀流是计算超声速机翼气动力（升力和波阻）的基础。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=2, >=stealth]
+  % 绘制机翼前缘几何
+  \draw[very thick, fill=gray!15] (-2,0) -- (0,0) -- (2,{-2*tan(10)}) -- (2,-0.8) -- (-2,-0.8) -- cycle;
+  \draw[very thick] (-2,0) -- (0,0) -- (2,{-2*tan(10)});
+  
+  % 绘制来流
+  \draw[->, blue, ultra thick] (-1.5,0.3) -- (-0.8,0.3) node[above, black] {$Ma_1 = 2.0$};
+  \draw[dashed, gray] (0,0) -- (1.8,0);
+  
+  % 绘制前缘马赫线
+  \draw[red, thick] (0,0) -- ({1.8*cos(30)}, {1.8*sin(30)}) node[above right, black] {前缘线 ($\mu_1 = 30^\circ$)};
+  
+  % 绘制后缘马赫线
+  % 下游在-10 deg，mu2 = 24.79 deg，所以绝对角度为 -10 + 24.79 = 14.79 deg
+  \draw[red, thick] (0,0) -- ({1.8*cos(14.79)}, {1.8*sin(14.79)}) node[right, black] {后缘线 ($\mu_2 = 24.79^\circ$)};
+  
+  % 填充膨胀扇
+  \fill[red!10, opacity=0.6] (0,0) -- ({1.7*cos(30)}, {1.7*sin(30)}) arc (30:14.79:1.7) -- cycle;
+  
+  % 绘制折角
+  \draw[<->] (1.4,0) arc (0:-10:1.4);
+  \node[right] at (1.4,-0.1) {$\theta = 10^\circ$};
+  
+  % 波后流速
+  \draw[->, blue, ultra thick] (0.8,-0.1) -- ({0.8 + 0.8*cos(-10)}, {-0.1 + 0.8*sin(-10)}) node[below right, black] {$Ma_2 \approx 2.385$};
+\end{tikzpicture}
+\caption{题二：超声速机翼上表面前缘膨胀波示意图}
+\label{fig:p2}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{求解波后马赫数 $Ma_2$ 和静压 $p_2$}：
+    查表或计算波前马赫数 $Ma_1 = 2.0$ 对应的 $\nu(Ma_1)$ 值：
+    \[
+    \nu(2.0) = \sqrt{6} \arctan \sqrt{\frac{2.0^2 - 1}{6}} - \arctan \sqrt{2.0^2 - 1} = \sqrt{6} \arctan(0.7071) - \arctan(1.732)
+    \]
+    \[
+    \arctan(0.7071) \approx 35.26^\circ, \quad \arctan(1.732) = 60^\circ
+    \]
+    \[
+    \nu(2.0) = 2.44949 \times 35.264^\circ - 60^\circ \approx 86.38^\circ - 60^\circ = 26.38^\circ
+    \]
+    
+    已知壁面外折角 $\theta = 10^\circ$，波后对应的 $\nu(Ma_2)$ 值为：
+    \[
+    \nu(Ma_2) = \nu(Ma_1) + \theta = 26.38^\circ + 10^\circ = 36.38^\circ
+    \]
+    
+    反查表或解方程 $\nu(Ma_2) = 36.38^\circ$，求得波后马赫数：
+    \[
+    Ma_2 \approx 2.385
+    \]
+    
+    利用等熵流动的压强关系式求解波后静压 $p_2$：
+    \[
+    \frac{p_2}{p_1} = \left(\frac{1 + 0.2 \times 2.0^2}{1 + 0.2 \times 2.385^2}\right)^{3.5} = \left(\frac{1.8}{1 + 0.2 \times 5.688}\right)^{3.5} = \left(\frac{1.8}{2.138}\right)^{3.5} \approx (0.8419)^{3.5} \approx 0.5480
+    \]
+    \[
+    p_2 = 50 \times 0.5480 \approx \mathbf{27.40\text{ kPa}}
+    \]
+
+    \item \textbf{求解膨胀扇的宽度 $\Delta \phi$}：
+    计算波前后马赫角：
+    \[
+    \mu_1 = \arcsin\left(\frac{1}{Ma_1}\right) = \arcsin\left(\frac{1}{2.0}\right) = 30^\circ
+    \]
+    \[
+    \mu_2 = \arcsin\left(\frac{1}{Ma_2}\right) = \arcsin\left(\frac{1}{2.385}\right) \approx 24.79^\circ
+    \]
+    
+    膨胀扇在物理空间中的前缘马赫线与波前流动呈 $30^\circ$ 夹角。
+    后缘马赫线与下游壁面呈 $24.79^\circ$ 夹角，其与波前流动方向的夹角为：
+    \[
+    \alpha_{\text{tail}} = \mu_2 - \theta = 24.79^\circ - 10^\circ = 14.79^\circ
+    \]
+    
+    因此，膨胀扇在空间中扫过的夹角（宽度）为：
+    \[
+    \Delta \phi = \mu_1 - \alpha_{\text{tail}} = \theta + \mu_1 - \mu_2 = 10^\circ + 30^\circ - 24.79^\circ = \mathbf{15.21^\circ}
+    \]
+\end{enumerate}
+
+\newpage
+
+% --- QUESTION 3 ---
+\begin{questionbox}{题三：拉瓦尔喷管出口管外膨胀（欠膨胀超声速射流偏转）}
+一拉瓦尔（Laval）喷管的出口截面积与喉部截面积之比为 $A_e/A_t = 1.69$。该喷管连接一高压气源，其总压（滞止压强） $p_0 = 500\text{ kPa}$。喷管出口排入背压为 $p_b = 50\text{ kPa}$ 的大环境中。假设流动在喷管内为一维无粘等熵流动，且喉部已阻塞。求：
+\begin{enumerate}
+    \item 喷管的设计出口马赫数 $Ma_{e,\text{design}}$ 和设计出口静压 $p_{e,\text{design}}$；
+    \item 判断射流在喷管出口的流动状态（欠膨胀、过膨胀还是匹配）；
+    \item 射流在出口边界由于膨胀而向外侧偏转的角度 $\alpha$。
+\end{enumerate}
+\end{questionbox}
+
+\subsubsection*{【分析与解答】}
+当喷管出口截面压强 $p_e$ 大于外部环境压强 $p_b$ 时，气流无法在管内完成完全膨胀，必须在排出管外后通过膨胀波系继续膨胀，使排出的边界静压与背压相匹配。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=1.5, >=stealth]
+  % 绘制喷管上壁面
+  \draw[very thick, fill=gray!15] (-2.5,1) -- (-1,0.6) -- (0,0.8) -- (0,1.2) -- cycle;
+  \draw[very thick] (-2.5,1) -- (-1,0.6) -- (0,0.8);
+  % 绘制喷管下壁面
+  \draw[very thick, fill=gray!15] (-2.5,-1) -- (-1,-0.6) -- (0,-0.8) -- (0,-1.2) -- cycle;
+  \draw[very thick] (-2.5,-1) -- (-1,-0.6) -- (0,-0.8);
+  
+  % 出口面
+  \draw[dashed, gray] (0,-0.8) -- (0,0.8);
+  
+  % 喉部指示
+  \draw[dashed, gray] (-1,-0.6) -- (-1,0.6);
+  \node at (-1, 0.8) {\small 喉部 $A_t$};
+  \node at (0.3, 0.95) {\small 出口 $A_e$};
+  
+  % 上边膨胀扇
+  \fill[red!10, opacity=0.6] (0,0.8) -- (0.8, 1.2) arc (26.56:8.5:0.9) -- cycle;
+  \draw[red] (0,0.8) -- (0.8, 1.2) node[above right, black] {\small 前缘马赫线};
+  \draw[red] (0,0.8) -- (1.0, 0.95) node[right, black] {\small 后缘马赫线};
+  
+  % 下边膨胀扇
+  \fill[red!10, opacity=0.6] (0,-0.8) -- (0.8, -1.2) arc (-26.56:-8.5:0.9) -- cycle;
+  \draw[red] (0,-0.8) -- (0.8, -1.2);
+  \draw[red] (0,-0.8) -- (1.0, -0.95);
+  
+  % 射流边界偏转
+  \draw[blue, thick, postaction={decorate, decoration={markings, mark=at position 0.6 with {\arrow{>}}}}] (0,0.8) -- (2.0, 0.65) node[above left, black] {\small 射流边界 (自由流线)};
+  \draw[blue, thick] (0,-0.8) -- (2.0, -0.65);
+  \draw[dashed, gray] (0,0.8) -- (2.0,0.8);
+  \draw[<->] (1.5,0.8) arc (0:-4.19:1.5);
+  \node[right] at (1.5, 0.75) {$\alpha = 4.19^\circ$};
+
+  % 来流与去流
+  \draw[->, blue, thick] (-2,0) -- (-1.5,0) node[above, black] {\small $Ma_t=1.0$};
+  \draw[->, blue, thick] (-0.5,0) -- (0.3,0) node[above, black] {\small $Ma_e \approx 2.00$};
+  \draw[->, blue, ultra thick] (0.8,0.2) -- (1.6,0.15) node[above, black] {\small $Ma_b \approx 2.16$};
+\end{tikzpicture}
+\caption{题三：拉瓦尔喷管出口处欠膨胀超声速射流与普朗特-迈耶膨胀波系结构}
+\label{fig:p3}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{求解设计出口马赫数 $Ma_{e,\text{design}}$ 和设计出口静压 $p_{e,\text{design}}$}：
+    喉部已阻塞，即 $A_t = A^*$。
+    已知 $A_e/A^* = 1.69$。对于超声速流动支路，由面积-马赫数关系式：
+    \[
+    \frac{A_e}{A^*} = \frac{1}{Ma_e} \left[ \frac{5 + Ma_e^2}{6} \right]^3 = 1.69
+    \]
+    反解或查等熵表，得到超声速分支下的设计出口马赫数：
+    \[
+    Ma_{e,\text{design}} \approx 2.00
+    \]
+    利用等熵压强公式计算设计出口处的静压：
+    \[
+    p_{e,\text{design}} = \frac{p_0}{\left(1 + 0.2 Ma_{e,\text{design}}^2\right)^{3.5}} = \frac{500}{\left(1 + 0.2 \times 2.0^2\right)^{3.5}} = \frac{500}{1.8^{3.5}} \approx \frac{500}{7.824} \approx \mathbf{63.73\text{ kPa}}
+    \]
+
+    \item \textbf{判断射流流动状态}：
+    由于外界环境背压为 $p_b = 50\text{ kPa}$，而设计出口静压为 $p_{e,\text{design}} = 63.73\text{ kPa}$。
+    显然 $p_{e,\text{design}} > p_b$，说明出口截面压强高于环境压强，气流出喷管后有继续向外膨胀的趋势。
+    因此，射流在出口的流动状态属于\textbf{欠膨胀状态（Under-expanded）}。
+
+    \item \textbf{求解射流边界偏转角 $\alpha$}：
+    射流离开喷管后，在出口边缘两侧拐角处产生普朗特-迈耶膨胀扇，使静压从 $p_e = 63.73\text{ kPa}$ 降至背压 $p_b = 50\text{ kPa}$。
+    由于此管外膨胀波系也是等熵过程，总压仍为 $p_0 = 500\text{ kPa}$。
+    波后（即射流核心区）最终对应的马赫数 $Ma_b$ 满足：
+    \[
+    \frac{p_0}{p_b} = \left(1 + 0.2 Ma_b^2\right)^{3.5} \implies \frac{500}{50} = 10 = \left(1 + 0.2 Ma_b^2\right)^{3.5}
+    \]
+    解得：
+    \[
+    1 + 0.2 Ma_b^2 = 10^{1/3.5} \approx 10^{0.28571} \approx 1.9307
+    \]
+    \[
+    Ma_b = \sqrt{\frac{1.9307 - 1}{0.2}} = \sqrt{4.6535} \approx 2.157
+    \]
+    
+    利用普朗特-迈耶函数计算流动偏转角。
+    首先查表或计算设计出口马赫数 $Ma_e = 2.00$ 对应的 $\nu(Ma_e)$：
+    \[
+    \nu(Ma_e = 2.00) \approx 26.38^\circ
+    \]
+    计算最终膨胀状态下 $Ma_b = 2.157$ 对应的 $\nu(Ma_b)$：
+    \[
+    \nu(2.157) = \sqrt{6} \arctan \sqrt{\frac{2.157^2 - 1}{6}} - \arctan \sqrt{2.157^2 - 1}
+    \]
+    \[
+    2.157^2 - 1 \approx 4.653 - 1 = 3.653
+    \]
+    \[
+    \sqrt{\frac{3.653}{6}} \approx 0.7803, \quad \arctan(0.7803) \approx 37.96^\circ
+    \]
+    \[
+    \sqrt{3.653} \approx 1.9113, \quad \arctan(1.9113) \approx 62.38^\circ
+    \]
+    \[
+    \nu(2.157) = 2.44949 \times 37.962^\circ - 62.383^\circ \approx 92.987^\circ - 62.383^\circ = 30.60^\circ
+    \]
+    
+    根据普朗特-迈耶转弯关系，射流边界向外偏转的倾角为：
+    \[
+    \alpha = \nu(Ma_b) - \nu(Ma_e) = 30.60^\circ - 26.38^\circ = \mathbf{4.22^\circ}
+    \]
+    该角度即为射流边界在离开喷管唇口时向外偏转和扩散的角度。
+\end{enumerate}
+
+\newpage
+
+% --- QUESTION 4 ---
+\begin{questionbox}{题四：斜击波与普朗特-迈耶膨胀波组合流（平板超声速绕流升力计算）}
+一弦长为 $c = 1.0\text{ m}$、展长无限的平板机翼，以迎角 $\alpha = 8^\circ$ 置于均匀超声速来流空气中。已知来流马赫数 $Ma_1 = 2.5$，静压 $p_1 = 100\text{ kPa}$。气流在平板前缘上表面经历普朗特-迈耶膨胀波，在下表面经历附体弱斜击波。求：
+\begin{enumerate}
+    \item 平板上表面的静压 $p_{\text{upper}}$；
+    \item 平板下表面的静压 $p_{\text{lower}}$；
+    \item 平板机翼单位展长（展长 $b=1\text{ m}$）所受到的净升力 $L'$（单位：$\text{kN}$）。
+\end{enumerate}
+\end{questionbox}
+
+\subsubsection*{【分析与解答】}
+本题属于超声速流动的经典平板升力计算，其流场由下表面的斜击波（压缩过程）和上表面的膨胀扇（等熵膨胀过程）组合而成。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=2.2, >=stealth]
+  % 绘制迎角为 8 度的平板
+  \draw[ultra thick, fill=gray!30] (-1.5,{-1.5*tan(8)}) -- (0,0) -- (2,{-2*tan(8)}) -- cycle;
+  \draw[line width=2pt] (0,0) -- (2,{-2*tan(8)});
+  \node at (1.0, {-1.0*tan(8) + 0.15}) {\small 平板机翼 ($c = 1.0\text{ m}$)};
+  
+  % 来流
+  \draw[->, blue, ultra thick] (-1.5,0.2) -- (-0.7,0.2) node[above, black] {$Ma_1 = 2.5$};
+  \draw[dashed, gray] (0,0) -- (1.5,0);
+  
+  % 上表面：普朗特-迈耶膨胀波
+  \fill[red!10, opacity=0.5] (0,0) -- ({1.2*cos(23.58)}, {1.2*sin(23.58)}) arc (23.58:15.58:1.2) -- cycle;
+  \draw[red] (0,0) -- ({1.2*cos(23.58)}, {1.2*sin(23.58)}) node[above, black] {\small 膨胀扇};
+  \draw[red] (0,0) -- ({1.2*cos(15.58)}, {1.2*sin(15.58)});
+  \draw[->, blue, thick] (0.8,{-0.8*tan(8) + 0.25}) -- ({0.8 + 0.6*cos(-8)}, {-0.8*tan(8) + 0.25 + 0.6*sin(-8)}) node[right, black] {\small $p_{\text{upper}}$};
+  
+  % 下表面：斜击波
+  \draw[red, line width=1.5pt] (0,0) -- (1.5,{-1.5*tan(30)});
+  \node[red, right] at (1.3,{-1.3*tan(30)}) {\small 斜击波 ($\beta \approx 30^\circ$)};
+  \draw[->, blue, thick] (0.8,{-0.8*tan(8) - 0.25}) -- ({0.8 + 0.6*cos(-8)}, {-0.8*tan(8) - 0.25 + 0.6*sin(-8)}) node[right, black] {\small $p_{\text{lower}}$};
+  
+  % 迎角标注
+  \draw[<->] (-1.1,{-1.1*tan(8)}) arc (172:180:1.1);
+  \node[left] at (-1.1, 0.05) {$\alpha = 8^\circ$};
+\end{tikzpicture}
+\caption{题四：平板超声速绕流与斜击波/膨胀波组合流场}
+\label{fig:p4}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{求解上表面静压 $p_{\text{upper}}$}：
+    气流绕过前缘，在上表面折转角度 $\theta = \alpha = 8^\circ$。该过程为等熵膨胀过程。
+    首先求波前 $Ma_1 = 2.5$ 对应的 $\nu(Ma_1)$：
+    \[
+    \nu(2.5) = \sqrt{6} \arctan \sqrt{\frac{2.5^2 - 1}{6}} - \arctan \sqrt{2.5^2 - 1} = \sqrt{6} \arctan(0.9354) - \arctan(2.2913)
+    \]
+    \[
+    \arctan(0.9354) \approx 43.09^\circ, \quad \arctan(2.2913) \approx 66.42^\circ
+    \]
+    \[
+    \nu(2.5) = 2.44949 \times 43.092^\circ - 66.422^\circ \approx 105.55^\circ - 66.422^\circ = 39.13^\circ
+    \]
+    
+    上表面膨胀后有：
+    \[
+    \nu(Ma_{\text{upper}}) = \nu(Ma_1) + \theta = 39.13^\circ + 8^\circ = 47.13^\circ
+    \]
+    
+    反查表或求解方程 $\nu(Ma_{\text{upper}}) = 47.13^\circ$，得：
+    \[
+    Ma_{\text{upper}} \approx 2.867
+    \]
+    
+    上表面压力 $p_{\text{upper}}$ 可通过等熵比求得：
+    \[
+    p_{\text{upper}} = p_1 \left( \frac{1 + 0.2 Ma_1^2}{1 + 0.2 Ma_{\text{upper}}^2} \right)^{3.5} = 100 \times \left( \frac{1 + 0.2 \times 2.5^2}{1 + 0.2 \times 2.867^2} \right)^{3.5}
+    \]
+    \[
+    1 + 0.2 \times 2.5^2 = 2.25
+    \]
+    \[
+    1 + 0.2 \times 2.867^2 \approx 1 + 0.2 \times 8.220 = 2.644
+    \]
+    故：
+    \[
+    p_{\text{upper}} = 100 \times \left(\frac{2.25}{2.644}\right)^{3.5} \approx 100 \times 0.5686 = \mathbf{56.86\text{ kPa}}
+    \]
+
+    \item \textbf{求解下表面静压 $p_{\text{lower}}$}：
+    气流在下表面受平板挤压，发生偏转，转角为 $\theta = \alpha = 8^\circ$。该过程为斜击波压缩过程。
+    已知 $Ma_1 = 2.5$，偏转角 $\theta = 8^\circ$。使用 $\theta-\beta-Ma$ 关系式（公式 7）：
+    \[
+    \tan 8^\circ = 2 \cot \beta \frac{2.5^2 \sin^2 \beta - 1}{2.5^2 (1.4 + \cos 2\beta) + 2}
+    \]
+    试算法或查 $\theta-\beta-Ma_1$ 图线弱斜击波解，求得击波角：
+    \[
+    \beta \approx 30.01^\circ
+    \]
+    
+    计算法向波前马赫数 $Ma_{1n}$：
+    \[
+    Ma_{1n} = Ma_1 \sin \beta = 2.5 \sin 30.01^\circ \approx 2.5 \times 0.5001 = 1.250
+    \]
+    
+    由一维正激波压力比关系式求解波后静压 $p_{\text{lower}}$：
+    \[
+    p_{\text{lower}} = p_1 \left[ 1 + \frac{2\gamma}{\gamma+1} \left( Ma_{1n}^2 - 1 \right) \right] = 100 \times \left[ 1 + \frac{2.8}{2.4} \left( 1.250^2 - 1 \right) \right]
+    \]
+    \[
+    p_{\text{lower}} = 100 \times \left[ 1 + 1.1667 \times (1.5625 - 1) \right] \approx 100 \times 1.6563 = \mathbf{165.63\text{ kPa}}
+    \]
+
+    \item \textbf{求解单位展长所受净升力 $L'$}：
+    升力是平板上、下表面静压差在垂直于来流方向的投影分力。
+    对于弦长 $c = 1.0\text{ m}$，展长 $b = 1.0\text{ m}$ 的平板：
+    \[
+    L' = (p_{\text{lower}} - p_{\text{upper}}) \times c \times b \times \cos \alpha
+    \]
+    代入数值：
+    \[
+    L' = (165.63 - 56.86) \times 1.0 \times 1.0 \times \cos 8^\circ
+    \]
+    \[
+    L' = 108.77 \times 0.99027 \approx \mathbf{107.71\text{ kN}}
+    \]
+    (方向垂直于来流向上)。
+\end{enumerate}
+
+\newpage
+
+% --- QUESTION 5 ---
+\begin{questionbox}{题五：折双角绕流边界匹配（斜击波与等熵膨胀波级联计算）}
+一超声速均匀气流，马赫数 $Ma_1 = 2.0$，静压 $p_1 = 100\text{ kPa}$，绕流如图所示的折双角壁面。壁面第一段向上折弯 $\theta_1 = 10^\circ$（凹角），第二段向下折弯 $\theta_2 = 15^\circ$（凸角，即第二段壁面相对于第一段壁面折回并向下倾斜 $5^\circ$）。已知第一段壁面产生附体弱斜击波。求：
+\begin{enumerate}
+    \item 气流经过第一段壁面（区域2）后的马赫数 $Ma_2$ 和静压 $p_2$；
+    \item 气流经过第二段壁面（区域3）后的最终马赫数 $Ma_3$ 和静压 $p_3$。
+\end{enumerate}
+\end{questionbox}
+
+\subsubsection*{【分析与解答】}
+此题是超声速气流连续发生压缩与膨胀的级联流动计算。解决多波相交/级联流场的核心在于\textbf{逐段推进}，即以第一级波后的参数作为第二级波的波前状态。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=2.0, >=stealth]
+  % 绘制折弯壁面几何：
+  % 节点 0: (-2,0)
+  % 拐点 1: (0,0)
+  % 拐点 2: (1.2, {1.2*tan(10)}) = (1.2, 0.2116)
+  % 终点 3: (1.2+1.0, {0.2116 - 1.0*tan(5)}) = (2.2, 0.1241)
+  \draw[very thick, fill=gray!15] (-2,-0.5) -- (-2,0) -- (0,0) -- (1.2, 0.2116) -- (2.5, {0.2116 - 1.3*tan(5)}) -- (2.5,-0.5) -- cycle;
+  \draw[very thick] (-2,0) -- (0,0) node[below] {\small $A$} -- (1.2, 0.2116) node[below] {\small $B$} -- (2.5, {0.2116 - 1.3*tan(5)});
+  
+  % 绘制波1：斜击波
+  \draw[red, line width=1.5pt] (0,0) -- (1.5, {1.5*tan(39.31)});
+  \node[red, above] at (0.8, {0.8*tan(39.31) + 0.1}) {\small 斜击波};
+  
+  % 绘制波2：膨胀波扇
+  % B点位于(1.2, 0.2116)。第二段壁面折弯是-15 deg相对第一段。
+  % 区域2方向是 +10 deg。B点后缘马赫角 mu3 = 27.39 deg relative to region 3 flow (+10-15 = -5 deg)
+  % 区域2的马赫角为 mu2 = arcsin(1/1.64) = 37.5 deg. 
+  % 所以B点的膨胀波前缘相对于水平方向为： 10 + 37.5 = 47.5 deg
+  % 膨胀波后缘相对于水平方向为： -5 + 27.39 = 22.39 deg
+  \fill[red!10, opacity=0.5] (1.2, 0.2116) -- ({1.2 + 1.2*cos(47.5)}, {0.2116 + 1.2*sin(47.5)}) arc (47.5:22.39:1.2) -- cycle;
+  \draw[red] (1.2, 0.2116) -- ({1.2 + 1.2*cos(47.5)}, {0.2116 + 1.2*sin(47.5)}) node[above right, black] {\small 膨胀扇};
+  \draw[red] (1.2, 0.2116) -- ({1.2 + 1.2*cos(22.39)}, {0.2116 + 1.2*sin(22.39)});
+  
+  % 区域标注
+  \node at (-1.0, 0.2) {\textbf{区域 1}};
+  \node at (-1.0, 0.4) {$Ma_1 = 2.0$};
+  \node at (0.5, 0.3) {\textbf{区域 2}};
+  \node at (1.8, 0.5) {\textbf{区域 3}};
+  
+  % 壁面折角标注
+  \draw[dashed, gray] (0,0) -- (1.2,0);
+  \draw[<->] (0.8,0) arc (0:10:0.8);
+  \node[right] at (0.8,0.06) {\small $10^\circ$};
+  
+  \draw[dashed, gray] (1.2, 0.2116) -- ({1.2 + 1.0*cos(10)}, {0.2116 + 1.0*sin(10)});
+  \draw[<->] ({1.2 + 0.8*cos(10)}, {0.2116 + 0.8*sin(10)}) arc (10:-5:0.8);
+  \node[right] at ({1.2 + 0.8*cos(5)}, {0.2116 + 0.8*sin(5)}) {\small $15^\circ$};
+\end{tikzpicture}
+\caption{题五：多折角超声速流动（斜击波压缩与普朗特-迈耶等熵膨胀）级联示意图}
+\label{fig:p5}
+\end{figure}
+
+\begin{enumerate}
+    \item \textbf{一阶折角（区域2）参数求解}：
+    气流在A处折转 $\theta_1 = 10^\circ$（向上压缩），产生一弱斜击波。
+    已知 $Ma_1 = 2.0$，凹折角 $\theta_1 = 10^\circ$。
+    查 $\theta-\beta-Ma$ 曲线或解关系式（公式 7）：
+    \[
+    \tan 10^\circ = 2 \cot \beta \frac{2.0^2 \sin^2 \beta - 1}{2.0^2 (1.4 + \cos 2\beta) + 2}
+    \]
+    求得击波角：
+    \[
+    \beta \approx 39.31^\circ
+    \]
+    
+    法向波前马赫数为：
+    \[
+    Ma_{1n} = Ma_1 \sin \beta = 2.0 \sin 39.31^\circ \approx 1.267
+    \]
+    
+    一维正激波后法向马赫数 $Ma_{2n}$ 为：
+    \[
+    Ma_{2n} = \sqrt{\frac{2 + (\gamma - 1)Ma_{1n}^2}{2\gamma Ma_{1n}^2 - (\gamma - 1)}} = \sqrt{\frac{2 + 0.4 \times 1.267^2}{2.8 \times 1.267^2 - 0.4}} = \sqrt{\frac{2.642}{4.094}} \approx 0.8030
+    \]
+    
+    故区域2的真实流速马赫数为：
+    \[
+    Ma_2 = \frac{Ma_{2n}}{\sin(\beta - \theta_1)} = \frac{0.8030}{\sin(39.31^\circ - 10^\circ)} = \frac{0.8030}{\sin 29.31^\circ} \approx \frac{0.8030}{0.4895} \approx \mathbf{1.64}
+    \]
+    
+    区域2的静压 $p_2$ 满足法向激波压强比：
+    \[
+    p_2 = p_1 \left[ 1 + \frac{2\gamma}{\gamma+1}(Ma_{1n}^2 - 1) \right] = 100 \times \left[ 1 + 1.1667 \times (1.267^2 - 1) \right]
+    \]
+    \[
+    p_2 = 100 \times \left[ 1 + 1.1667 \times 0.6053 \right] \approx 100 \times 1.7062 = \mathbf{170.62\text{ kPa}}
+    \]
+
+    \item \textbf{二阶折角（区域3）最终参数求解}：
+    气流流经B点，由于壁面向外向下弯曲 $\theta_2 = 15^\circ$（凸角膨胀），产生等熵膨胀扇。
+    该级膨胀波的来流为区域2的参数：$Ma_2 = 1.64$，静压 $p_2 = 170.62\text{ kPa}$。
+    
+    首先计算或查表得到 $Ma_2 = 1.64$ 对应的 $\nu(Ma_2)$ 值：
+    \[
+    \nu(1.64) = \sqrt{6} \arctan \sqrt{\frac{1.64^2 - 1}{6}} - \arctan \sqrt{1.64^2 - 1} = \sqrt{6} \arctan(0.5307) - \arctan(1.30)
+    \]
+    \[
+    \arctan(0.5307) \approx 27.95^\circ, \quad \arctan(1.30) \approx 52.43^\circ
+    \]
+    \[
+    \nu(1.64) = 2.44949 \times 27.953^\circ - 52.431^\circ \approx 68.47^\circ - 52.431^\circ = 16.04^\circ
+    \]
+    
+    流动向外偏转 $\theta_2 = 15^\circ$。膨胀后区域3的普朗特-迈耶函数值为：
+    \[
+    \nu(Ma_3) = \nu(Ma_2) + \theta_2 = 16.04^\circ + 15^\circ = 31.04^\circ
+    \]
+    
+    反查表或求解方程 $\nu(Ma_3) = 31.04^\circ$，解得区域3最终马赫数：
+    \[
+    Ma_3 \approx 2.174
+    \]
+    
+    由等熵过程的静压关系式求最终静压 $p_3$：
+    \[
+    \frac{p_3}{p_2} = \left( \frac{1 + 0.2 Ma_2^2}{1 + 0.2 Ma_3^2} \right)^{3.5} = \left( \frac{1 + 0.2 \times 1.64^2}{1 + 0.2 \times 2.174^2} \right)^{3.5}
+    \]
+    \[
+    1 + 0.2 \times 1.64^2 = 1.538
+    \]
+    \[
+    1 + 0.2 \times 2.174^2 \approx 1 + 0.2 \times 4.726 = 1.945
+    \]
+    故：
+    \[
+    p_3 = 170.62 \times \left( \frac{1.538}{1.945} \right)^{3.5} \approx 170.62 \times (0.7907)^{3.5} \approx 170.62 \times 0.4397 \approx \mathbf{75.02\text{ kPa}}
+    \]
+\end{enumerate}
+
+\end{document}

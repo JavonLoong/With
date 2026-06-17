@@ -1,0 +1,249 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[UTF8,scheme=chinese]{ctex}
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.markings,patterns}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\newtcolorbox{problembox}[1]{
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    fonttitle=\bfseries,
+    title=#1,
+    boxrule=1.5pt,
+    arc=4pt,
+    breakable
+}
+
+\begin{document}
+
+\title{\textbf{倾斜平板间粘性流动的N-S方程解析与解题指南}}
+\author{流体力学复习资料}
+\date{\today}
+\maketitle
+
+\section{题目描述}
+在倾角 $\theta = 15^\circ$，板间距 $H = 3\text{ cm}$ 的两个无限大平板之间，有密度 $\rho = 1.25\text{ kg/m}^3$，粘性系数 $\mu = 0.0001\text{ kg/(m}\cdot\text{s)}$ 的液体向下流动。下平板固定，上平板以速度 $U_0$ 向上抽动，沿流动方向无压差驱动（如图\ref{fig:flow_schematic}所示）。
+
+\begin{enumerate}
+    \item 在距离下平板 $\frac{H}{3}$ 处放置一个质量不计的微小粒子，完全跟随当地流体运动，希望粒子所在位置无摩擦应力作用，求 $U_0$ 大小；
+    \item 要满足无摩擦要求，对释放粒子与下平板距离有无限制？请说明理由。
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=2.2, >=stealth]
+  % 倾斜角度 theta = 15
+  \begin{scope}[rotate=-15]
+    % 下平板 (固定，画阴影)
+    \draw[very thick] (-2,0) -- (3,0);
+    \fill[pattern=north east lines, pattern color=gray] (-2,-0.2) rectangle (3,0);
+    \node[below] at (0.5,0) {固定下平板 ($y=0$)};
+
+    % 上平板 (以 U_0 向上运动)
+    \draw[very thick] (-2,2) -- (3,2);
+    \draw[very thick, ->, blue] (1.5,2) -- (-0.5,2) node[above left, blue] {上平板移动速度 $U_0$};
+    \node[above] at (1,2) {滑动上平板 ($y=H$)};
+
+    % 通道高度 H
+    \draw[<->, thick] (-1.5,0) -- (-1.5,2) node[midway, left] {$H = 3\text{ cm}$};
+
+    % 坐标轴
+    \draw[->, thick, darkgray] (-1.8,0) -- (2.5,0) node[right] {$x$ (沿斜面向下)};
+    \draw[->, thick, darkgray] (-1.8,0) -- (-1.8,2.3) node[above] {$y$ (垂直于板面)};
+    \node[below left] at (-1.8,0) {$O$};
+
+    % 重力方向及分量
+    \draw[->, purple, thick] (0.5,1.5) -- (0.5,0.7) node[below] {$\bm{g}$};
+    \draw[->, purple, thick] (0.5,1.5) -- (1.2,1.31) node[midway, above right] {$g\sin\theta$};
+
+    % 粒子位置 y = H/3
+    \draw[dashed, gray] (-2,0.667) -- (3,0.667);
+    \fill[red] (0.8,0.667) circle (2pt) node[above right, red] {微小粒子 ($y = H/3, \tau = 0$)};
+
+    % 速度分布曲线 (抛物线，顶点在 y = H/3)
+    % 曲线方程 x = -0.9 * (y - 0.667)^2 + 0.4
+    % 当 y=0 时，x = -0.9 * 0.444 + 0.4 = 0
+    % 当 y=2 时，x = -0.9 * 1.778 + 0.4 = -1.2
+    \draw[domain=0:2, smooth, variable=\t, teal, ultra thick] plot ({-0.9*(\t-0.667)^2 + 0.4}, \t);
+    \node[teal] at (-0.2, 1.2) {速度分布 $u(y)$};
+    
+    % 绘制速度剖面箭头
+    \foreach \t in {0.2, 0.4, 0.667, 1.0, 1.333, 1.6, 2.0} {
+      \pgfmathsetmacro{\val}{-0.9*(\t-0.667)^2 + 0.4}
+      \draw[->, teal!70, thin] (0,\t) -- (\val,\t);
+    }
+  \end{scope}
+
+  % 绘制水平参考线与倾角 theta
+  \draw[dashed, gray] (-2.5, 0.5) -- (2.5, 0.5);
+  % 倾斜的下平板线
+  \draw[dashed, blue] (-2.5, 0.5) -- +(15:5);
+  \draw[->] (0.5,0.5) arc (0:15:3);
+  \node at (0.8,0.6) {$\theta = 15^\circ$};
+
+\end{tikzpicture}
+\caption{倾斜平板间重力与剪切驱动混合流动的物理模型及速度剖面}
+\label{fig:flow_schematic}
+\end{figure}
+
+\newpage
+
+\section{详细解题思路与解析步骤}
+
+\subsection{第一步：简化控制方程 (N-S方程)}
+对于定常、不可压缩、单向粘性流动，其控制方程为 Navier-Stokes 方程。
+由于平板是无限大的，流动在 $x$ 方向完全发展，因此速度分量只有 $x$ 方向的 $u(y)$，即 $v = w = 0$。
+
+在 $x$ 方向（沿平板向下），N-S 方程写为：
+\begin{equation}
+    \rho \left( \frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} + v \frac{\partial u}{\partial y} \right) = -\frac{\partial p}{\partial x} + \mu \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right) + \rho f_x
+\end{equation}
+结合物理条件进行项的化简：
+\begin{itemize}
+    \item \textbf{定常流动}：$\frac{\partial u}{\partial t} = 0$；
+    \item \textbf{单向流动与连续性方程}：由 $\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0$ 且 $v=0$，得出 $\frac{\partial u}{\partial x} = 0$（速度仅是 $y$ 的函数）；
+    \item \textbf{无压差驱动}：$\frac{\partial p}{\partial x} = 0$；
+    \item \textbf{重力外力分量}：重力加速度 $\bm{g}$ 垂直向下，其在沿斜面向下的 $x$ 方向投影分量为 $f_x = g \sin\theta$。
+\end{itemize}
+
+代入上述简化项，方程化简为经典的常微分方程：
+\begin{equation}
+    \mu \frac{d^2u}{dy^2} + \rho g \sin\theta = 0
+    \label{eq:ns_simple}
+\end{equation}
+
+\subsection{第二步：积分并代入边界条件}
+将方程 \eqref{eq:ns_simple} 变形：
+\begin{equation}
+    \frac{d^2u}{dy^2} = -\frac{\rho g \sin\theta}{\mu}
+\end{equation}
+
+对 $y$ 进行第一次积分，得到速度的梯度（剪切率）分布：
+\begin{equation}
+    \frac{du}{dy} = -\frac{\rho g \sin\theta}{\mu} y + C_1
+    \label{eq:grad}
+\end{equation}
+对 $y$ 进行第二次积分，得到速度分布公式：
+\begin{equation}
+    u(y) = -\frac{\rho g \sin\theta}{2\mu} y^2 + C_1 y + C_2
+    \label{eq:vel}
+\end{equation}
+
+接下来代入边界条件确定积分常数 $C_1$ 和 $C_2$：
+\begin{enumerate}
+    \item \textbf{下平板固定 ($y = 0$)}：
+    \begin{equation}
+        u(0) = 0 \implies C_2 = 0
+    \end{equation}
+    \item \textbf{上平板以速度 $U_0$ 向上抽动 ($y = H$)}：
+    由于我们设定向下为 $x$ 正方向，向上抽动的速度方向与 $x$ 正方向相反，因此：
+    \begin{equation}
+        u(H) = -U_0
+    \end{equation}
+    代入速度分布公式 \eqref{eq:vel}：
+    \begin{equation}
+        -U_0 = -\frac{\rho g \sin\theta}{2\mu} H^2 + C_1 H \implies C_1 = \frac{\rho g H \sin\theta}{2\mu} - \frac{U_0}{H}
+    \end{equation}
+\end{enumerate}
+
+将 $C_1$ 代入式 \eqref{eq:grad}，得到流场中任意高度 $y$ 处的切应力 $\tau(y)$ 分布：
+\begin{equation}
+    \tau(y) = \mu \frac{du}{dy} = -\rho g \sin\theta \cdot y + \mu C_1 = -\rho g \sin\theta \cdot y + \frac{\rho g H \sin\theta}{2} - \frac{\mu U_0}{H}
+    \label{eq:stress}
+\end{equation}
+
+\newpage
+
+\subsection{第三步：第一问求解（计算 $U_0$ 大小）}
+题目要求在距离下平板 $y = \frac{H}{3}$ 处的粒子不受摩擦应力作用。根据牛顿内摩擦定律，流体在当地的摩擦剪应力必须为 $0$：
+\begin{equation}
+    \tau\left(\frac{H}{3}\right) = 0 \implies -\rho g \sin\theta \left( \frac{H}{3} \right) + \frac{\rho g H \sin\theta}{2} - \frac{\mu U_0}{H} = 0
+\end{equation}
+
+移项合并同类项：
+\begin{equation}
+    \frac{\mu U_0}{H} = \rho g H \sin\theta \left( \frac{1}{2} - \frac{1}{3} \right)
+\end{equation}
+\begin{equation}
+    \frac{\mu U_0}{H} = \frac{1}{6} \rho g H \sin\theta
+\end{equation}
+由此解出上平板抽动速度 $U_0$ 的解析表达式：
+\begin{equation}
+    U_0 = \frac{\rho g H^2 \sin\theta}{6\mu}
+    \label{eq:u0_res}
+\end{equation}
+
+将题目所给的具体数据代入上式计算：
+\begin{itemize}
+    \item 倾角：$\theta = 15^\circ \implies \sin\theta = \sin 15^\circ \approx 0.25882$
+    \item 板间距：$H = 3\text{ cm} = 0.03\text{ m}$
+    \item 液体密度：$\rho = 1.25\text{ kg/m}^3$
+    \item 动力粘度：$\mu = 0.0001\text{ kg/(m}\cdot\text{s)}$
+    \item 重力加速度：取标准值 $g = 9.8\text{ m/s}^2$
+\end{itemize}
+代入解析式 \eqref{eq:u0_res}：
+\begin{equation}
+    U_0 = \frac{1.25 \times 9.8 \times (0.03)^2 \times 0.25882}{6 \times 0.0001}
+\end{equation}
+\begin{equation}
+    U_0 = \frac{12.25 \times 0.0009 \times 0.25882}{0.0006} = \frac{12.25 \times 1.5 \times 0.25882}{1} \approx \mathbf{4.76\text{ m/s}}
+\end{equation}
+
+\begin{tcolorbox}[colback=green!5!white, colframe=green!60!black, title=第一问最终答案]
+上平板抽动速度 $U_0$ 的大小为 \textbf{4.76 m/s}（或更精确地表示为 \textbf{4.756 m/s}）。
+\end{tcolorbox}
+
+\subsection{第四步：第二问求解与物理本质探讨}
+第二问：要满足无摩擦要求，对释放粒子与下平板距离 $y_p$ 有无限制？
+
+\textbf{结论：有限制。释放距离 $y_p$ 必须满足：}
+\begin{equation}
+    0 < y_p < \frac{H}{2}
+\end{equation}
+即粒子必须释放于下半通道区域内（即靠近固定的下平板侧）。
+
+\subsubsection*{详细理由与数学证明}
+设零剪切力（无摩擦力）点所在的坐标为 $y_p$。令 $\tau(y_p) = 0$ 代入式 \eqref{eq:stress}：
+\begin{equation}
+    -\rho g \sin\theta \cdot y_p + \frac{\rho g H \sin\theta}{2} - \frac{\mu U_0}{H} = 0
+\end{equation}
+解出 $y_p$ 对应的位置：
+\begin{equation}
+    y_p = \frac{H}{2} - \frac{\mu U_0}{\rho g H \sin\theta}
+    \label{eq:yp}
+\end{equation}
+
+分析式 \eqref{eq:yp} 的物理和几何约束条件：
+\begin{enumerate}
+    \item \textbf{流动性质约束}：上平板是向上抽动的，其速度大小 $U_0 > 0$。同时密度 $\rho$、粘度 $\mu$、重力 $g$ 以及倾角正弦值 $\sin\theta$ 均为正数。
+    \item \textbf{几何位置判定}：由此可得，公式右侧的减数项 $\frac{\mu U_0}{\rho g H \sin\theta} > 0$。因此：
+    \begin{equation}
+        y_p < \frac{H}{2}
+    \end{equation}
+    \item \textbf{壁面几何边界}：粒子必须存在于流体内部，不能超出平板边界，故必须满足 $y_p > 0$。
+\end{enumerate}
+综合上述三点，零剪应力点在空间中的分布范围被严格限制在：
+\begin{equation}
+    y_p \in \left( 0, \frac{H}{2} \right)
+\end{equation}
+
+\subsubsection*{深入物理本质剖析}
+从力学平衡的角度来看，本流动属于重力驱动流（向下加速）和剪切驱动流（向上减速）的混合流动。
+* **重力驱动**使得流体在通道中部产生向下的抛物线型流速分布（在通道中心 $y=H/2$ 处具有对称轴）；
+* **上平板的向上抽动**，在通道上半部（靠近 $y=H$）施加了向上的强剪切摩擦力，使速度梯度斜率发生偏转；
+* 这种上平板的摩擦阻碍，使得流场的速度“最高点”（即导数 $\frac{du}{dy} = 0$，切应力为 $0$ 的点）从通道中心线（$H/2$）被**硬性拉向**了下方的固定板（$y=0$）一侧。
+* 因此，在 $U_0 > 0$ 的工况下，零摩擦力点只能落在下半通道（$y < H/2$）。如果我们将粒子放在上半通道（$y \ge H/2$），流体在当地的剪应力永远是负值（指向向上偏方向），绝对无法实现无摩擦状态。
+
+\end{document}

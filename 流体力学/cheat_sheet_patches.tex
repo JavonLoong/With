@@ -1,0 +1,97 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[UTF8,scheme=chinese]{ctex}
+\usepackage{geometry}
+\geometry{left=1.2cm,right=1.2cm,top=1.2cm,bottom=1.2cm}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\newtcolorbox{patchbox}[1]{
+    colback=red!5!white,
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    title=#1,
+    boxrule=1.2pt,
+    arc=3pt,
+    top=1mm,
+    bottom=1mm,
+    left=2mm,
+    right=2mm,
+    boxsep=0.8mm,
+    breakable
+}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\LARGE 流体力学期末考试——考前核心考点补丁 (补充页)}
+\end{center}
+\vspace{-0.4cm}
+
+\begin{patchbox}{补丁一：倾斜平板重力-剪切混合驱动流动模型}
+\textbf{1. 物理场景与控制方程：}
+两无限大平行平板，板间距 $H$，倾角 $\theta$。下板固定 ($y=0$)，上板以速度 $U_0$ 向上/下抽动，无压差流动 ($\frac{\partial p}{\partial x} = 0$)，由重力分量 $g\sin\theta$ 驱动。
+化简后的二维定常 N-S 方程：
+\begin{equation}
+    \mu \frac{d^2u}{dy^2} + \rho g \sin\theta = 0 \implies \frac{d^2u}{dy^2} = -\frac{\rho g \sin\theta}{\mu}
+\end{equation}
+
+\textbf{2. 速度与剪应力分布 (积分两次并代入边界条件)：}
+若向上抽动速度为 $U_0$（与沿斜面向下 $x$ 正方向相反，则 $u(H) = -U_0$；下板固定 $u(0)=0$）：
+\begin{equation}
+    u(y) = -\frac{\rho g \sin\theta}{2\mu} y^2 + \left( \frac{\rho g H \sin\theta}{2\mu} - \frac{U_0}{H} \right) y
+\end{equation}
+根据牛顿内摩擦定律，任意位置 $y$ 处的剪切力 $\tau(y) = \mu \frac{du}{dy}$ 为：
+\begin{equation}
+    \tau(y) = -\rho g \sin\theta \cdot y + \frac{\rho g H \sin\theta}{2} - \frac{\mu U_0}{H}
+\end{equation}
+
+\textbf{3. 零剪应力点 ($y_p$) 位置与几何约束：}
+令 $\tau(y_p) = 0$ 解得：
+\begin{equation}
+    y_p = \frac{H}{2} - \frac{\mu U_0}{\rho g H \sin\theta}
+\end{equation}
+\textbf{关键物理结论}：
+\begin{itemize}
+    \item 若上板向上抽动（$U_0 > 0$），则有减数项为正，必有 $y_p < \frac{H}{2}$，即零剪应力点被限制在通道的\textbf{下半区域} $y_p \in \left(0, \frac{H}{2}\right)$。
+    \item 若上板向下抽动（$U_0 < 0$），则有 $y_p > \frac{H}{2}$，零剪应力点落在\textbf{上半区域}。
+\end{itemize}
+\end{patchbox}
+
+\begin{patchbox}{补丁二：拉瓦尔喷管瞬态充气与出口正激波模型}
+\textbf{1. 临界流量简便计算 (空气 $\gamma = 1.4, R = 287 \text{ J/(kg}\cdot\text{K)}$)：}
+当喷管喉部达到声速（即 choked 阻塞状态），通过喷管的质量流量 $\dot{m}$ 达到最大且为恒定常数：
+\begin{equation}
+    \dot{m}_{\text{max}} = K \frac{p_0 A^*}{\sqrt{T_0}} \approx \mathbf{0.0404} \times \frac{p_0 A^*}{\sqrt{T_0}}
+\end{equation}
+其中：$p_0$ 为滞止压强（$\text{Pa}$），$A^*$ 为喉部面积（$\text{m}^2$），$T_0$ 为滞止温度（$\text{K}$）。
+
+\textbf{2. 喷管出口面与背压关系式：}
+\begin{itemize}
+    \item \textbf{完全膨胀设计背压 $p_{b3}$ (状态 1)}：出口气流为等熵超声速，无波。
+    \begin{equation}
+        p_{b3} = \frac{p_0}{(1 + 0.2 Ma_e^2)^{3.5}}
+    \end{equation}
+    \item \textbf{出口截面恰好存在正激波时的背压 $p_{b2}$ (状态 2)}：激波前 $Ma_1 = Ma_e$，激波后背压突增。
+    \begin{equation}
+        p_{b2} = p_{b3} \left[ 1 + \frac{2\gamma}{\gamma + 1} \left( Ma^2 - 1 \right) \right] \xrightarrow{Ma_e=2.0, \gamma=1.4} p_{b2} = 4.5 \times p_{b3}
+    \end{equation}
+\end{itemize}
+
+\textbf{3. 充气过渡时间 $\Delta t$ 求解链条：}
+当背压从 $p_{b3}$ 升高到 $p_{b2}$ 的填充过程中，喉部始终保持阻塞状态，$\dot{m} = \dot{m}_{\text{max}}$ 恒定。
+若充气容器 $V_b$ 恒温 $T_b$，其流入空气质量变化为：
+\begin{equation}
+    \Delta m = \frac{\Delta p \cdot V_b}{R T_b} = \frac{(p_{b2} - p_{b3}) V_b}{287 \cdot T_b} \implies \Delta t = \frac{\Delta m}{\dot{m}_{\text{max}}}
+\end{equation}
+\end{patchbox}
+
+\end{document}

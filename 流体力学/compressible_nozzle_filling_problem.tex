@@ -104,14 +104,14 @@
         A_e = 1.6875 \times A_t = 1.6875 \times 0.07 = \mathbf{0.118125\text{ m}^2}
     \end{equation}
 
-    \item \textbf{等熵设计背压 $p_b$}：
-    在此完全膨胀等熵流状态下，环境背压 $p_b$ 必须与等熵出口静压 $p_e$ 严格相等：
+    \item \textbf{等熵设计背压 $p_{b3}$}：
+    在此完全膨胀等熵流状态下，环境设计背压 $p_{b3}$ 必须与等熵出口静压 $p_e$ 严格相等：
     \begin{equation}
-        p_{b,1} = p_e = \frac{p_0}{\left(1 + 0.2 Ma_e^2\right)^{3.5}}
+        p_{b3} = p_e = \frac{p_0}{\left(1 + 0.2 Ma_e^2\right)^{3.5}}
     \end{equation}
     将 $p_0 = 1000\text{ kPa}$ 且 $Ma_e = 2.0$ 代入：
     \begin{equation}
-        p_{b,1} = \frac{1000}{(1 + 0.2 \times 4)^{3.5}} = \frac{1000}{1.8^{3.5}} = \frac{1000}{7.8244} \approx \mathbf{127.80\text{ kPa}}
+        p_{b3} = \frac{1000}{(1 + 0.2 \times 4)^{3.5}} = \frac{1000}{1.8^{3.5}} = \frac{1000}{7.8244} \approx \mathbf{127.80\text{ kPa}}
     \end{equation}
 \end{enumerate}
 
@@ -122,19 +122,19 @@
     \item 激波前（出口内侧）：气流仍然为等熵超声速流，马赫数 $Ma_1 = Ma_e = 2.0$，静压 $p_1 = p_e = 127.80\text{ kPa}$；
     \item 激波后（出口外侧）：气流跃升为亚声速，其静压突变为 $p_2$。
 \end{itemize}
-容器b的背压 $p_{b,2}$ 此时等于激波后的静压 $p_2$。
+容器b的背压 $p_{b2}$ 此时等于激波后的静压 $p_2$。
 
 根据正激波压强比公式（$\gamma = 1.4$）：
 \begin{equation}
-    \frac{p_2}{p_1} = 1 + \frac{2\gamma}{\gamma + 1}\left( Ma_1^2 - 1 \right) = \frac{2\gamma Ma_1^2 - (\gamma - 1)}{\gamma + 1}
+    p_{b2} = p_{b3} \left[ 1 + \frac{2\gamma}{\gamma + 1} \left( Ma^2 - 1 \right) \right]
 \end{equation}
-代入 $Ma_1 = 2.0$ 进行计算：
+代入 $Ma = 2.0$ 和 $p_{b3} = 127.80\text{ kPa}$ 进行计算：
 \begin{equation}
-    \frac{p_b}{p_e} = \frac{2 \times 1.4 \times 2^2 - 0.4}{2.4} = \frac{11.2 - 0.4}{2.4} = \frac{10.8}{2.4} = 4.5
+    \frac{p_{b2}}{p_{b3}} = 1 + \frac{2 \times 1.4}{1.4 + 1} \left( 2^2 - 1 \right) = 1 + 1.1667 \times 3 = 4.5
 \end{equation}
 因此，恰好存在正激波时的容器b中背压为：
 \begin{equation}
-    p_{b,2} = 4.5 \times p_1 = 4.5 \times 127.80\text{ kPa} = \mathbf{575.12\text{ kPa}}
+    p_{b2} = 4.5 \times p_{b3} = 4.5 \times 127.80\text{ kPa} = \mathbf{575.12\text{ kPa}}
 \end{equation}
 
 \newpage
@@ -142,7 +142,7 @@
 \subsection{第三步：求 1-2 状态过渡之间所需的时间}
 
 \subsubsection{1. 临界流动（Choked Flow）判断}
-在背压从状态 1 ($p_{b,1} = 127.80\text{ kPa}$) 升高到状态 2 ($p_{b,2} = 575.12\text{ kPa}$) 的全过程中：
+在背压从状态 1 ($p_{b3} = 127.80\text{ kPa}$) 升高到状态 2 ($p_{b2} = 575.12\text{ kPa}$) 的全过程中：
 由于激波始终位于出口面（状态 2）或出口面外侧（状态 1），喷管内部从收缩段到喉部、再到扩张段的超声速流动完全没有受到任何扰动。
 因此，\textbf{喉部截面始终保持临界马赫数 $Ma_t = 1.0$（喷管处于临界临塞 choked 状态）}。
 
@@ -168,7 +168,7 @@
 
 在状态 1 到状态 2 期间，空气压力的增加值为：
 \begin{equation}
-    \Delta p = p_{b,2} - p_{b,1} = 575.12\text{ kPa} - 127.80\text{ kPa} = 447.32\text{ kPa} = 4.4732 \times 10^5\text{ Pa}
+    \Delta p = p_{b2} - p_{b3} = 575.12\text{ kPa} - 127.80\text{ kPa} = 447.32\text{ kPa} = 4.4732 \times 10^5\text{ Pa}
 \end{equation}
 因此，容器b内流入的空气总质量变化量为：
 \begin{equation}
@@ -183,8 +183,8 @@
 
 \begin{tcolorbox}[colback=green!5!white, colframe=green!60!black, title=最终结果总结]
 \begin{itemize}
-    \item \textbf{出口截面设计值}：$A_e = 0.1181\text{ m}^2$；等熵设计背压 $p_{b,1} = 127.80\text{ kPa}$。
-    \item \textbf{出口正激波临界背压}：$p_{b,2} = 575.12\text{ kPa}$。
+    \item \textbf{出口截面设计值}：$A_e = 0.1181\text{ m}^2$；等熵设计背压 $p_{b3} = 127.80\text{ kPa}$。
+    \item \textbf{出口正激波临界背压}：$p_{b2} = 575.12\text{ kPa}$。
     \item \textbf{状态 1 至状态 2 所需充气时间}：$\Delta t = \mathbf{4.20\text{ s}}$。
 \end{itemize}
 \end{tcolorbox}

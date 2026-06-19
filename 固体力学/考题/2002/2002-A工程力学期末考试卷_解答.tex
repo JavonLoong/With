@@ -1,0 +1,291 @@
+\documentclass[UTF8,fontset=windows]{ctexart}
+\usepackage[a4paper,margin=22mm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{float}
+\usetikzlibrary{arrows.meta,calc,patterns}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlist[itemize]{leftmargin=2em,itemsep=2pt,topsep=2pt}
+
+\definecolor{accent}{RGB}{32,92,148}
+\definecolor{softblue}{RGB}{224,238,250}
+\definecolor{softred}{RGB}{252,230,226}
+\definecolor{axisgray}{RGB}{80,80,80}
+
+\newcommand{\diff}{\,\mathrm{d}}
+
+\title{\vspace{-1.5cm}\textbf{清华大学 2002 年《工程力学》期末考试题标准解答}}
+\author{考前复习标准答案}
+\date{考试日期：2002年春季}
+
+\begin{document}
+\maketitle
+\vspace{-1.0cm}
+
+\section*{一、积分求解分布载荷与最大正应力位置题（20分）}
+
+\textbf{1、AB端铰支的工字形截面横梁如图所示，垂直方向受一分布载荷力的作用。所产生的挠度可由如下挠度方程表示：}
+\[
+    w(x) = \frac{q_0 L^4}{840 EI} \left[ \left(\frac{x}{L}\right)^7 - 7\left(\frac{x}{L}\right)^3 + 6\left(\frac{x}{L}\right) \right]
+\]
+\textbf{试求：(a) 确定分布载荷的数学表达形式；(b) 确定支撑力 $A_y$，$B_y$ 的表达式；(c) 求梁上最大正应力的位置。}
+
+\subsubsection*{解答：}
+
+以左支座 A 为坐标原点 $x = 0$，向右为 $x$ 轴正方向。设向下为挠度 $w(x)$ 的正方向。
+
+\textbf{(a) 确定分布载荷 $q(x)$ 的数学表达形式}
+根据梁的弯曲微分方程，分布载荷 $q(x)$（向下为正）与挠度 $w(x)$ 的关系为：
+\[
+    q(x) = EI \frac{\diff^4 w(x)}{\diff x^4}
+\]
+令无量纲参数 $u = \frac{x}{L}$，则有 $w(x) = \frac{q_0 L^4}{840 EI} (u^7 - 7u^3 + 6u)$。对 $x$ 依次求导：
+\[
+    \frac{\diff w}{\diff x} = \frac{\diff w}{\diff u} \frac{\diff u}{\diff x} = \frac{q_0 L^3}{840 EI} (7u^6 - 21u^2 + 6)
+\]
+\[
+    \frac{\diff^2 w}{\diff x^2} = \frac{q_0 L^2}{840 EI} (42u^5 - 42u) = \frac{q_0 L^2}{20 EI} (u^5 - u)
+\]
+\[
+    \frac{\diff^3 w}{\diff x^3} = \frac{q_0 L}{20 EI} (5u^4 - 1)
+\]
+\[
+    \frac{\diff^4 w}{\diff x^4} = \frac{q_0}{20 EI} (20u^3) = \frac{q_0}{EI} u^3 = \frac{q_0}{EI} \left(\frac{x}{L}\right)^3
+\]
+代入微分方程中得到：
+\[
+    q(x) = EI \frac{\diff^4 w(x)}{\diff x^4} = q_0 \left(\frac{x}{L}\right)^3
+\]
+所以，分布载荷的数学表达形式为 $q(x) = q_0 \left(\frac{x}{L}\right)^3$。
+
+\textbf{(b) 确定支撑力 $A_y$，$B_y$ 的表达式}
+根据剪力与挠度三阶导数的关系 $V(x) = -EI \frac{\diff^3 w(x)}{\diff x^3}$，有：
+\[
+    V(x) = -\frac{q_0 L}{20} \left[ 5\left(\frac{x}{L}\right)^4 - 1 \right]
+\]
+在简支梁两端，支反力与端部剪力的平衡关系为：
+*   在 A 端 ($x = 0$)：向上支反力 $A_y = V(0) = \frac{q_0 L}{20}$。
+*   在 B 端 ($x = L$)：向上支反力 $B_y = -V(L) = -\left( -\frac{q_0 L}{20} (5 - 1) \right) = \frac{q_0 L}{5}$。
+
+\textit{校核平衡方程：}
+1.  垂直方向受力平衡：$\sum F_y = A_y + B_y - \int_0^L q_0 \left(\frac{x}{L}\right)^3 \diff x = \frac{q_0 L}{20} + \frac{q_0 L}{5} - \frac{q_0 L}{4} = 0$。（平衡）
+2.  对 A 点力矩平衡：$\sum M_A = B_y \cdot L - \int_0^L x \cdot q_0 \left(\frac{x}{L}\right)^3 \diff x = \frac{q_0 L^2}{5} - \frac{q_0 L^2}{5} = 0$。（平衡）
+所以，支撑力表达式为：
+\[
+    A_y = \frac{q_0 L}{20}, \qquad B_y = \frac{q_0 L}{5}
+\]
+
+\textbf{(c) 求梁上最大正应力的位置}
+对于等截面直梁，最大弯曲正应力发生在弯矩绝对值 $|M(x)|$ 最大的截面上。弯矩方程为：
+\[
+    M(x) = EI \frac{\diff^2 w(x)}{\diff x^2} = \frac{q_0 L^2}{20} \left[ \left(\frac{x}{L}\right)^5 - \frac{x}{L} \right]
+\]
+求弯矩的驻点（令剪力 $V(x) = 0$）：
+\[
+    \frac{\diff M(x)}{\diff x} = 0 \implies 5\left(\frac{x}{L}\right)^4 - 1 = 0 \implies x = \frac{L}{\sqrt[4]{5}} \approx 0.669 L
+\]
+因为在 $x=0$ 和 $x=L$ 处弯矩为 0，所以此唯一驻点即为最大弯矩截面。
+故梁上最大正应力发生在距 A 端 $x = \frac{L}{\sqrt[4]{5}} \approx 0.669 L$ 处。
+
+\newpage
+
+\section*{二、梁-柱组合结构失稳分析题（20分）}
+
+\textbf{2、简支的横梁上作用了垂直向下的均匀分布载荷 $q$，在中点 C 处有一垂直立柱与之铰接，立柱的 D 点与地面固支。已知横梁和立柱的弹性模量相同，用 $E$ 表示。假设立柱是属于长杆弹性失稳，截面积为 $A$，横梁对 $y$ 轴的惯性矩为 $I_a$，立柱对 $x$ 轴的惯性矩为 $I_b$，对 $y$ 轴的惯性矩为 $I_c$，$I_b/I_c=3/4$。如果结构的破坏为失稳破坏，计算临界载荷集度 $q_{\text{cr}}$。（横梁总长为 $a$，立柱长度为 $L$。）}
+
+\subsubsection*{解答：}
+
+\textbf{1. 梁柱节点 C 的受力平衡与协调分析}
+设在中点 C 处，横梁对立柱的垂直压缩作用力为 $F$。
+横梁为跨度 $a$ 的简支梁，在中点受集中反力 $F$，并承受均布载荷 $q$。中点 C 的向下挠度为：
+\[
+    w_C = \frac{5 q a^4}{384 E I_a} - \frac{F a^3}{48 E I_a}
+\]
+若忽略立柱本身的轴向压缩变形（视为轴向刚性），则 $w_C \approx 0$，由此可得节点反力：
+\[
+    F = \frac{5}{8} q a
+\]
+若计及立柱的轴向弹性压缩变形（柱截面积为 $A$），则协调条件为 $w_C = \frac{F L}{E A}$，可解得更精确的压力：
+\[
+    F = \frac{5}{8} q a \cdot \frac{1}{1 + \alpha}, \qquad \text{其中 } \alpha = \frac{48 I_a L}{A a^3}
+\]
+
+\textbf{2. 立柱稳定性边界条件分析}
+立柱 CD 长度为 $L$，底端 D 固定，顶端 C 与横梁铰接。
+由于横梁在 $x$ 方向具有极高的轴向刚度，且 A、B 两端在水平面内具有支承定位，因此节点 C 在平行于横梁轴线 ($x$ 方向) 的水平移动被完全约束。而在垂直于横梁轴线 ($y$ 方向) 的水平移动，根据横梁的抗弯支撑能力强弱，可分为两种情形分析：
+
+*   \textbf{情形一：节点 C 在 $x$ 和 $y$ 方向都被完全限位}
+    在 $x-z$ 面和 $y-z$ 面内，立柱都相当于一端固定、另一端铰支（阻碍侧移），长度系数均为 $\mu = 0.7$。
+    立柱绕 $x$ 轴和 $y$ 轴的惯性矩分别为 $I_b$ 和 $I_c$。由于 $I_b/I_c = 3/4 < 1$，立柱必将首先绕 $x$ 轴弯曲失稳。其临界载荷为：
+    \[
+        P_{\text{cr}} = \frac{\pi^2 E I_b}{(0.7 L)^2} \approx 20.16 \frac{E I_b}{L^2}
+    \]
+*   \textbf{情形二：节点 C 在 $y$ 方向可自由移动，仅 $x$ 方向受限}
+    此时，绕 $y$ 轴失稳（$x-z$ 面）对应的长度系数 $\mu_{xz} = 0.7$，临界载荷为 $P_{\text{cr}, y} = \frac{\pi^2 E I_c}{0.49 L^2}$。
+    绕 $x$ 轴失稳（$y-z$ 面）对应的长度系数 $\mu_{yz} = 2.0$（相当于悬臂柱），临界载荷为：
+    \[
+        P_{\text{cr}, x} = \frac{\pi^2 E I_b}{(2 L)^2} = 0.25 \frac{\pi^2 E I_b}{L^2} \approx 2.47 \frac{E I_b}{L^2}
+    \]
+    由于 $P_{\text{cr}, x} < P_{\text{cr}, y}$，立柱仍将发生绕 $x$ 轴弯曲失稳，且临界力退化为 $P_{\text{cr}} \approx 2.47 \frac{E I_b}{L^2}$。
+
+\textbf{3. 计算临界载荷集度 $q_{\text{cr}}$}
+令立柱压力达到临界屈曲载荷，即 $F = P_{\text{cr}}$。
+*   \textbf{若按情形一（双向限位且忽略轴向压缩）计算：}
+    \[
+        \frac{5}{8} q_{\text{cr}} a = \frac{\pi^2 E I_b}{0.49 L^2} \implies q_{\text{cr}} = \frac{8 \pi^2 E I_b}{2.45 a L^2} \approx 3.265 \frac{\pi^2 E I_b}{a L^2}
+    \]
+*   \textbf{若按情形二（单向限位且忽略轴向压缩）计算：}
+    \[
+        \frac{5}{8} q_{\text{cr}} a = \frac{\pi^2 E I_b}{4 L^2} \implies q_{\text{cr}} = \frac{2 \pi^2 E I_b}{5 a L^2} = 0.4 \frac{\pi^2 E I_b}{a L^2}
+    \]
+
+\newpage
+
+\section*{三、超静定温升极限求解题（20分）}
+
+\textbf{3、在中心铝圆柱 CD 上绕有热电阻丝，通电后将铝圆柱从 $30\text{ °C}$ 开始加热。在 $30\text{ °C}$ 时，铝圆柱顶端距上面的横梁底面间隙为 $0.7\text{ mm}$。如果设横梁为刚性梁，所有材料的安全因数等于 3，求保证系统正常工作时，铝柱能够达到的最高温度。}
+\textbf{（铝圆柱截面积为 $375\text{ mm}^2$，钢立柱截面积为 $125\text{ mm}^2$（单侧），铝的弹性模量为 $70\text{ GPa}$，温度膨胀系数为 $23 \times 10^{-6}/\text{°C}$，钢的弹性模量为 $200\text{ GPa}$。铝的屈服极限为 $240\text{ MPa}$，钢的屈服极限为 $220\text{ MPa}$。铝柱长 $L_{\text{Al}} = 240\text{ mm}$，钢柱长 $L_{\text{St}} = 300\text{ mm}$。）}
+
+\subsubsection*{解答：}
+
+\textbf{1. 材料的许用应力计算}
+安全因数 $n = 3$，两材料的许用应力（抗拉/抗压强度极限）为：
+*   铝柱：$[\sigma]_{\text{Al}} = \frac{\sigma_{s, \text{Al}}}{n} = \frac{240}{3} = 80\text{ MPa}$
+*   钢柱：$[\sigma]_{\text{St}} = \frac{\sigma_{s, \text{St}}}{n} = \frac{220}{3} = 73.33\text{ MPa}$
+
+\textbf{2. 静力学平衡与强度限制分析}
+设铝柱受到的轴向力为 $F_{\text{Al}}$（受压），单侧钢柱受到的轴向力为 $F_{\text{St}}$（受拉）。
+平衡关系为：
+\[
+    F_{\text{Al}} = 2 F_{\text{St}}
+\]
+根据两材料的许用应力限制系统最大承载力：
+*   若铝柱达到强度极限：$F_{\text{Al}} = [\sigma]_{\text{Al}} A_{\text{Al}} = 80 \times 375 = 30,000\text{ N}$
+*   若钢柱达到强度极限：$F_{\text{St}} = [\sigma]_{\text{St}} A_{\text{St}} = 73.33 \times 125 = 9,166.7\text{ N} \implies F_{\text{Al}} = 2 F_{\text{St}} = 18,333.3\text{ N}$
+比较可知，系统强度瓶颈在钢立柱上。因此，系统能承受的最大压紧力限制为：
+\[
+    F_{\text{Al, max}} = 18,333.3\text{ N}, \qquad F_{\text{St, max}} = 9,166.7\text{ N}
+\]
+
+\textbf{3. 变形协调分析与最大温升计算}
+根据间隙闭合后的变形协调方程：
+\[
+    \Delta L_{\text{Al}, T} - \frac{F_{\text{Al}} L_{\text{Al}}}{E_{\text{Al}} A_{\text{Al}}} = \delta_0 + \frac{F_{\text{St}} L_{\text{St}}}{E_{\text{St}} A_{\text{St}}}
+\]
+将最大限制力代入协调方程，求解此时铝柱所需的自由热膨胀量 $\Delta L_{\text{Al}, T}$：
+\[
+    \Delta L_{\text{Al}, T} = \delta_0 + F_{\text{St, max}} \left( \frac{2 L_{\text{Al}}}{E_{\text{Al}} A_{\text{Al}}} + \frac{L_{\text{St}}}{E_{\text{St}} A_{\text{St}}} \right)
+\]
+代入数值计算：
+\[
+    \frac{2 L_{\text{Al}}}{E_{\text{Al}} A_{\text{Al}}} = \frac{2 \times 240}{70 \times 10^3 \times 375} \approx 1.8286 \times 10^{-5}\text{ mm/N}
+\]
+\[
+    \frac{L_{\text{St}}}{E_{\text{St}} A_{\text{St}}} = \frac{300}{200 \times 10^3 \times 125} = 1.2000 \times 10^{-5}\text{ mm/N}
+\]
+所以：
+\[
+    \Delta L_{\text{Al}, T} = 0.7 + 9166.7 \times (1.8286 + 1.2000) \times 10^{-5} = 0.7 + 0.2776 = 0.9776\text{ mm}
+\]
+
+由热膨胀公式 $\Delta L_{\text{Al}, T} = \alpha_{\text{Al}} \Delta T L_{\text{Al}}$，求温升 $\Delta T$：
+\[
+    0.9776 = 23 \times 10^{-6} \times \Delta T \times 240 \implies \Delta T = \frac{0.9776}{5.52 \times 10^{-3}} \approx 177.1\text{ °C}
+\]
+
+最高能达到的温度为：
+\[
+    T_{\max} = T_0 + \Delta T = 30 + 177.1 = 207.1\text{ °C}
+\]
+
+\newpage
+
+\section*{四、自行车蹬踏机构轴向弯扭组合应力分析题（20分）}
+
+\textbf{4、自行车的蹬踏系统由下图所示，设人的蹬踏力 $P=750\text{ N}$ 为恒力，在任意时刻都垂直于地面。杆件尺寸为：曲柄臂长 $b_1 = 125\text{ mm}$，脚蹬轴长 $b_2 = 60\text{ mm}$，圆截面轴直径 $d=15\text{ mm}$。当脚蹬子从水平位置 ($\varphi=0$) 运动到最低点位置 ($\varphi=\pi/2$) 过程中：}
+\textbf{（a）求连接处 A 点弯矩、扭矩、轴力和剪力的变化；（b）当忽略剪力作用时，求 A 点应力状态的表达形式；（c）用微元法给出 $\varphi=0$，$\varphi=\pi/4$，$\varphi=\pi/2$ 时的应力状态。}
+
+\subsubsection*{解答：}
+
+以脚蹬轴轴线为局部坐标 $y$ 轴，指向踏板；设截面 $x$ 向与 $z$ 向为截面主惯性轴，其中 $z$ 轴在 $\varphi=0$ 时与垂直向下的外力 $P$ 共线。
+
+\textbf{(a) A 点内力随转角 $\varphi$ 的变化规律}
+对于脚蹬轴（踏板轴）CD，其相当于根部固定于曲柄 B 端 A 处的悬臂杆件，长度为 $b_2 = 60\text{ mm}$。
+由于力 $P$ 在任意转角下始终垂直于地面向下，相对踏板轴自身局部横截面：
+*   **轴力**：因为力 $P$ 始终垂直于 $y$ 轴，故轴向无力拉压：$F_N(\varphi) = 0$。
+*   **扭矩**：因为力 $P$ 的作用线通过踏板轴心，故不产生绕轴线的转矩：$T(\varphi) = 0$。
+*   **剪力**：总剪力大小恒定，在局部旋转坐标系下分解为：
+    \[
+        V_u(\varphi) = P \cos\varphi, \qquad V_v(\varphi) = P \sin\varphi, \qquad \text{总剪力 } V = P = 750\text{ N}
+    \]
+*   **弯矩**：弯矩主要是力 $P$ 对根部 A 的力臂 $b_2$ 产生的弯曲矩，弯矩大小保持恒定，在局部截面坐标系中分量表示为：
+    \[
+        M_u(\varphi) = P b_2 \cos\varphi, \qquad M_v(\varphi) = P b_2 \sin\varphi
+    \]
+    总弯矩幅值为：$M = P b_2 = 750 \times 0.060 = 45\text{ N}\cdot\text{m}$。
+
+\textbf{(b) 忽略剪力作用时 A 点的应力状态}
+由于 $T = 0$ 且忽略横向剪应力，截面上任意一点均处于单轴应力状态。
+在圆截面外边缘上，弯曲产生的最大拉应力/压应力值为：
+\[
+    \sigma_{\max} = \frac{M}{W} = \frac{P b_2}{\frac{\pi d^3}{32}} = \frac{45}{\frac{\pi \times 0.015^3}{32}} \approx 135.81\text{ MPa}
+\]
+外边缘上任意点的应力表达为 $\sigma = \pm 135.81\text{ MPa}$，剪应力 $\tau = 0$。
+
+\textbf{(c) 典型角度下的应力微元状态表示}
+对于任意角度，截面最外侧危险点的应力状态均表现为简单的单向拉伸或单向压缩状态：
+\begin{enumerate}
+    \item   \textbf{$\varphi=0$ 时}：最大弯矩发生在垂直方向边缘，危险点 D 处受拉应力 $\sigma = 135.81\text{ MPa}$。
+    \item   \textbf{$\varphi=\pi/4$ 时}：最大弯矩轴倾斜 $45^\circ$，倾斜方向的最外层纤维危险点受拉应力 $\sigma = 135.81\text{ MPa}$。
+    \item   \textbf{$\varphi=\pi/2$ 时}：踏板曲柄转至最低点，此时最大受拉正应力仍为 $\sigma = 135.81\text{ MPa}$。
+\end{enumerate}
+
+\newpage
+
+\section*{五、变宽度变高度等应力悬臂梁设计（20分）}
+
+\textbf{5、有一均布载荷的悬臂梁，任意截面均为矩形，固定端 B 的截面高度为 $h_B$，宽度为 $b_B$。如果梁的宽度随轴线 $x$ 成线性函数变化，即 $b(x) = b_B \frac{x}{L}$（其中 $x$ 自自由端向固定端计量），那么要设计一条等应力梁（即梁任意截面的最大正应力相等），试求梁的高度随 $x$ 变化的关系。}
+
+\subsubsection*{解答：}
+
+\textbf{1. 确定弯矩方程}
+设自由端为原点 $x = 0$，固定端为 $x = L$。在距离自由端为 $x$ 的截面上，均布载荷 $q$ 产生的弯矩为：
+\[
+    M(x) = \frac{1}{2} q x^2
+\]
+
+\textbf{2. 确定截面系数 $W(x)$}
+截面为矩形，宽度随位置线性变化 $b(x) = b_B \frac{x}{L}$，设截面高度为 $h(x)$。截面抵抗矩为：
+\[
+    W(x) = \frac{1}{6} b(x) h^2(x) = \frac{b_B x h^2(x)}{6 L}
+\]
+
+\textbf{3. 应用等应力条件}
+要求任意横截面上的最大弯曲正应力均等于固定端 B 处的最大正应力（即设计为等应力梁）：
+\[
+    \sigma_{\max}(x) = \frac{M(x)}{W(x)} = \frac{\frac{1}{2} q x^2}{\frac{b_B x h^2(x)}{6 L}} = \frac{3 q L x}{b_B h^2(x)} = \text{常数}
+\]
+因为在固定端 $x = L$ 处，高度为 $h_B$，其应力为：
+\[
+    \sigma_{\max}(L) = \frac{3 q L^2}{b_B h_B^2}
+\]
+令 $\sigma_{\max}(x) = \sigma_{\max}(L)$：
+\[
+    \frac{3 q L x}{b_B h^2(x)} = \frac{3 q L^2}{b_B h_B^2}
+\]
+约去两端共同的常数项：
+\[
+    \frac{x}{h^2(x)} = \frac{L}{h_B^2} \implies h^2(x) = h_B^2 \frac{x}{L} \implies h(x) = h_B \sqrt{\frac{x}{L}}
+\]
+
+\textbf{结论}：等应力梁的高度随 $x$ 的变化关系为：
+\[
+    h(x) = h_B \sqrt{\frac{x}{L}}
+\]
+
+\end{document}

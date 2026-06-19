@@ -1,0 +1,213 @@
+\documentclass[UTF8,aspectratio=169,12pt]{ctexbeamer}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{caption}
+\graphicspath{{assets/}}
+
+\definecolor{THUPurple}{HTML}{6A1B78}
+\definecolor{LightPurple}{HTML}{F5EDF7}
+\definecolor{Ink}{HTML}{222222}
+\setbeamercolor{normal text}{fg=Ink,bg=white}
+\setbeamercolor{frametitle}{fg=THUPurple,bg=white}
+\setbeamercolor{title}{fg=THUPurple}
+\setbeamercolor{block title}{fg=THUPurple,bg=LightPurple}
+\setbeamercolor{block body}{fg=Ink,bg=LightPurple!30}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{itemize item}{\color{THUPurple}$\bullet$}
+\setlength{\parskip}{0.15em}
+
+\newcommand{\claim}[1]{\textbf{\color{THUPurple}#1}}
+\newcommand{\smallnote}[1]{{\footnotesize\color{black!65}#1}}
+
+\title{表面重力波波长与表观波速的水深效应探究}
+\subtitle{从“验证公式”到“解释真实水槽中的测量结果”}
+\author{丘洪源\quad 白子恒\quad 秦健淞\quad 纪文龙\quad 杨天皓}
+\institute{行健书院}
+\date{2026 年 5 月}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \vspace{-0.6cm}
+  \centering
+  \includegraphics[width=0.20\linewidth]{tsinghua_logo.png}
+\end{frame}
+
+\begin{frame}{我们一开始想问什么？}
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.52\textwidth}
+      \claim{原问题：} 水深改变时，水波传播速度是否会随之改变？
+      \vspace{0.6em}
+      \begin{itemize}
+        \item 理论上，水深会通过色散关系影响相速度。
+        \item 但水槽中会有反射波、边界效应和波峰断裂。
+        \item 所以我们实际能稳定测到的是：波长和表观波峰速度。
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \begin{block}{本次答辩的核心口径}
+        不把视频追踪得到的 $|c_{\mathrm{app}}|$ 直接说成理论相速度 $c_p$，而是解释二者为什么会有差异。
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{实验装置：用视频把水面运动变成数据}
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.43\textwidth}
+      \begin{itemize}
+        \item 透明水槽、2 Hz 活塞电机、3D 打印推板。
+        \item LED 背光增强液面边界。
+        \item 水深设置为 $2.2$--$20.0\,\mathrm{cm}$ 共 14 组。
+        \item 每组录制稳定波列视频，再做像素标定和液面识别。
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.53\textwidth}
+      \includegraphics[width=\linewidth]{fig_setup.png}
+      \smallnote{侧向成像与液面识别示意}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{数据处理：先证明我们测的是连续波列}
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.56\textwidth}
+      \includegraphics[width=\linewidth]{fig_xt_field.png}
+    \end{column}
+    \begin{column}{0.40\textwidth}
+      \claim{为什么要做 $x$--$t$ 图？}
+      \begin{itemize}
+        \item 连续斜纹对应稳定传播的波列。
+        \item 二维 Fourier 分离能看出入射波与反射波同时存在。
+        \item 这一步决定了后面不能把表观速度硬说成纯相速度。
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{两个测量量：波长更稳，速度更容易受干扰}
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.50\textwidth}
+      \claim{推荐平均波长 $\lambda_{\mathrm{rec}}$}
+      \begin{itemize}
+        \item 每帧检测局部波峰。
+        \item 相邻波峰间距换算为实际长度。
+        \item 稳定阶段取中位数，降低异常帧影响。
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \claim{表观波速 $|c_{\mathrm{app}}|$}
+      \begin{itemize}
+        \item 在 $x$--$t$ 图上追踪波峰轨迹。
+        \item 逐段差分得到速度。
+        \item 受反射、断裂和轨迹连接影响更大。
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{结果一：波长没有表现出明显的水深单调关系}
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.62\textwidth}
+      \includegraphics[width=\linewidth]{fig_lambda_capp.png}
+    \end{column}
+    \begin{column}{0.34\textwidth}
+      \begin{block}{读图结论}
+        除最低水深组外，$\lambda_{\mathrm{rec}}$ 基本围绕 $8\,\mathrm{cm}$ 波动；表观波速更离散，也没有简单单调律。
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{结果二：多数工况已接近深水近似区}
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.58\textwidth}
+      \includegraphics[width=\linewidth]{fig_theory_compare.png}
+    \end{column}
+    \begin{column}{0.38\textwidth}
+      \begin{itemize}
+        \item 实测波长主要在 $8\,\mathrm{cm}$ 附近。
+        \item 换算后 $kh\approx1.98$--$15.71$。
+        \item 多数组已经接近深水波，水深修正本身不强。
+        \item 所以不能用浅水公式 $\sqrt{gh}$ 直接解释。
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{为什么实测速度不能硬说成相速度？}
+  \[
+    \omega^2=\left(gk+\frac{\sigma}{\rho}k^3\right)\tanh(kh),
+    \qquad c_p=\frac{\omega}{k}=\lambda f
+  \]
+  \vspace{0.3em}
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{理论相速度需要什么？}
+        单一行进波的波长和主频率，或者完整色散关系参数。
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{我们视频里实际有什么？}
+        入射波、反射波和局部波峰断裂叠加后的波峰轨迹。
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{典型诊断：$h=12\,\mathrm{cm}$ 时速度离散很明显}
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.62\textwidth}
+      \includegraphics[width=\linewidth]{fig_speed_diagnosis.png}
+    \end{column}
+    \begin{column}{0.34\textwidth}
+      \begin{itemize}
+        \item 中位表观波速：$24.6\,\mathrm{cm/s}$。
+        \item 四分位区间：$7.6$--$42.5\,\mathrm{cm/s}$。
+        \item 离散范围宽，说明单个中位数不能代表严格相速度。
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{结论：这次实验真正说明了什么}
+  \begin{enumerate}
+    \item 视频重建能稳定给出水面波列和波长统计。
+    \item 除最低水深外，推荐平均波长主要集中在 $8\,\mathrm{cm}$ 附近。
+    \item 多数组已接近深水近似区，因此水深影响没有想象中明显。
+    \item 表观波速受反射叠加和波峰追踪影响，不能直接等同于理论相速度。
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{如果继续改进，最该做三件事}
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.32\textwidth}
+      \begin{block}{减小反射}
+        加入消波材料或延长水槽，减少入射/反射叠加。
+      \end{block}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \begin{block}{提取主频}
+        从视频信号同步得到 $f$，用 $c=\lambda f$ 比较相速度。
+      \end{block}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \begin{block}{覆盖浅水区}
+        增大波长或降低水深，让实验真正进入 $h/\lambda<1/20$。
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \centering
+  {\Huge\color{THUPurple}\bfseries 谢谢}\\[0.6em]
+  {\Large 欢迎提问}
+\end{frame}
+
+\end{document}

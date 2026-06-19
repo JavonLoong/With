@@ -1,0 +1,18 @@
+{
+  "description": "以下文件消息未能成功导出。",
+  "missing_count": 2,
+  "error_count": 0,
+  "files": [
+    {
+      "file_name": "腾讯混元3D建模教程.mp4",
+      "file_md5": "406b1507e8d14ff62ed7dbfd2163ee91",
+      "file_size": 64256882
+    },
+    {
+      "file_name": "拓竹切片软件对三维模型上色教程视频20260319.mp4",
+      "file_md5": "776bb1a9866a2d08662d1cebec7447ab",
+      "file_size": 53683387
+    }
+  ],
+  "copy_errors": []
+}

@@ -1,0 +1,38 @@
+\documentclass{article}
+
+\usepackage[
+  paperwidth=803.25bp,
+  paperheight=612bp,
+  margin=0pt
+]{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+% One-page version: original page 1 and page 2 are placed side by side.
+% Content is unchanged; each source page is scaled only for layout.
+\newcommand{\SourcePdf}{cheatsheet_source.pdf}
+
+\begin{document}
+\begin{tikzpicture}[remember picture, overlay]
+  \node[anchor=west, inner sep=0pt] at (current page.west) {%
+    \includegraphics[
+      page=1,
+      width=0.5\paperwidth,
+      height=\paperheight,
+      keepaspectratio
+    ]{\SourcePdf}%
+  };
+  \node[anchor=west, inner sep=0pt] at (current page.center) {%
+    \includegraphics[
+      page=2,
+      width=0.5\paperwidth,
+      height=\paperheight,
+      keepaspectratio
+    ]{\SourcePdf}%
+  };
+\end{tikzpicture}
+\null
+\end{document}

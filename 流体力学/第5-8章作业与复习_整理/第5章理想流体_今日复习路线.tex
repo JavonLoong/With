@@ -1,0 +1,576 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  urlcolor=blue!55!black
+}
+
+\setlist[itemize]{leftmargin=2em,itemsep=2pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,topsep=3pt}
+\renewcommand{\arraystretch}{1.25}
+
+\definecolor{mainblue}{RGB}{26,82,118}
+\definecolor{softblue}{RGB}{235,245,252}
+\definecolor{warn}{RGB}{163,72,58}
+\definecolor{softwarn}{RGB}{252,240,237}
+\definecolor{softgreen}{RGB}{238,248,241}
+
+\newtcolorbox{focusbox}[1]{
+  enhanced,
+  breakable,
+  colback=softblue,
+  colframe=mainblue,
+  boxrule=0.8pt,
+  arc=2mm,
+  left=8pt,
+  right=8pt,
+  top=6pt,
+  bottom=6pt,
+  title=\textbf{#1}
+}
+
+\newtcolorbox{warnbox}[1]{
+  enhanced,
+  breakable,
+  colback=softwarn,
+  colframe=warn,
+  boxrule=0.8pt,
+  arc=2mm,
+  left=8pt,
+  right=8pt,
+  top=6pt,
+  bottom=6pt,
+  title=\textbf{#1}
+}
+
+\newtcolorbox{greenbox}[1]{
+  enhanced,
+  breakable,
+  colback=softgreen,
+  colframe=green!45!black,
+  boxrule=0.8pt,
+  arc=2mm,
+  left=8pt,
+  right=8pt,
+  top=6pt,
+  bottom=6pt,
+  title=\textbf{#1}
+}
+
+\title{\heiti 第5章 理想流体力学特性\\今日复习路线}
+\author{根据何枫课件整理}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{一、今天目标}
+
+今天不做泛泛复习，只解决一个目标：\textbf{看到第5章对应题目，知道用哪个方程、为什么能用、怎么写步骤。}
+
+\begin{focusbox}{必须学会的四类题}
+\begin{enumerate}
+  \item 判断伯努利方程能不能用，常数沿哪里成立。
+  \item 用非定常伯努利 / 柯西--拉格朗日积分做水柱运动、压力分布题。
+  \item 用速度势处理无界膨胀球问题，例如书 4.12。
+  \item 会写环量、开尔文定理、拉格朗日定理、海姆霍兹定理的条件和结论。
+\end{enumerate}
+\end{focusbox}
+
+\subsection*{本次作业题目原图}
+
+\begin{center}
+\includegraphics[width=0.93\linewidth]{ch5_images/assignment_page.png}
+\end{center}
+
+\begin{warnbox}{看图时先只盯第5章}
+这张图下半部分还有第6章题目。今天第5章只抓三件事：第1题环量，第2题书 4.12，第3题弯管/开阀非定常伯努利。
+\end{warnbox}
+
+\section*{二、最小公式表}
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{3.5cm} >{\raggedright\arraybackslash}p{8.8cm}}
+\toprule
+\textbf{名称} & \textbf{公式 / 用法}\\
+\midrule
+环量 &
+\[
+\Gamma=\oint_C \vec V\cdot d\vec l
+\]
+\\
+欧拉方程 &
+\[
+\frac{D\vec V}{Dt}=\vec f-\frac{1}{\rho}\nabla p
+\]
+\\
+兰姆方程 &
+\[
+\frac{\partial \vec V}{\partial t}
++\nabla\frac{V^2}{2}
+-\vec V\times\vec\Omega
+=\vec f-\frac{1}{\rho}\nabla p
+\]
+\\
+定常伯努利 &
+\[
+\frac{V^2}{2}+\frac{p}{\rho}+gz=C
+\]
+\\
+非定常无旋伯努利 &
+\[
+\frac{\partial\varphi}{\partial t}
++\frac{V^2}{2}
++\frac{p}{\rho}
++gz=C(t)
+\]
+\\
+速度势 &
+\[
+\vec V=\nabla\varphi
+\]
+\\
+球对称径向流 &
+\[
+v_r=\frac{\partial\varphi}{\partial r}
+\]
+\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{warnbox}{最容易混的点}
+\begin{itemize}
+  \item 理想流体固壁条件：\textbf{不可穿透}，但\textbf{允许滑移}。
+  \item 定常伯努利一般沿流线成立；如果无旋，则可在全流场任意两点使用。
+  \item 非定常无旋流必须多写一项：
+  \[
+  \frac{\partial\varphi}{\partial t}
+  \]
+  \item 跨越激波、强损失、粘性主导流动时，不能直接套理想伯努利。
+\end{itemize}
+\end{warnbox}
+
+\section*{三、题型 1：环量题}
+
+\subsection*{识别}
+
+题目给速度场，又给一条封闭路径，问：
+
+\[
+\Gamma=\oint_C \vec V\cdot d\vec l
+\]
+
+\subsection*{标准写法}
+
+在极坐标中：
+
+\[
+\vec V\cdot d\vec l=V_r\,dr+V_\theta r\,d\theta
+\]
+
+如果题目给：
+
+\[
+V_r=ar,\qquad V_\theta=0
+\]
+
+圆弧段上：
+
+\[
+dr=0,\qquad V_\theta=0
+\]
+
+所以圆弧段环量为零。
+
+两条径向段：
+
+\[
+\Gamma_1=\int_{R_1}^{R_2}ar\,dr
+=\frac{a}{2}(R_2^2-R_1^2)
+\]
+
+\[
+\Gamma_2=\int_{R_2}^{R_1}ar\,dr
+=-\frac{a}{2}(R_2^2-R_1^2)
+\]
+
+因此：
+
+\[
+\boxed{\Gamma=0}
+\]
+
+\section*{四、题型 2：伯努利适用条件}
+
+\subsection*{定常伯努利}
+
+若满足：
+
+\[
+\text{无粘、定常、不可压、质量力有势}
+\]
+
+则沿流线：
+
+\[
+\boxed{
+\frac{V^2}{2}+\frac{p}{\rho}+gz=C
+}
+\]
+
+如果进一步满足：
+
+\[
+\Omega=0
+\]
+
+即无旋，则伯努利常数可在全流场相同。
+
+\begin{greenbox}{考试可直接写}
+理想、定常、不可压、质量力有势流动中，伯努利方程沿流线成立；若流动无旋，则伯努利常数在全流场相同。
+\end{greenbox}
+
+\section*{五、题型 3：非定常水柱 / 开阀题}
+
+\subsection*{识别}
+
+出现这些字眼：
+
+\begin{itemize}
+  \item 不计粘性；
+  \item 突然打开阀门；
+  \item 水柱振荡；
+  \item 求瞬时压力分布；
+  \item 求自由面运动规律。
+\end{itemize}
+
+优先考虑非定常伯努利积分式。
+
+\subsection*{课件题图：U 型管振荡}
+
+\begin{center}
+\includegraphics[width=0.93\linewidth]{ch5_images/slide_unsteady_utube.png}
+\end{center}
+
+\subsection*{非定常伯努利：表格版}
+
+\begin{center}
+\begin{tabular}{p{2.8cm} p{5.8cm} p{5.2cm}}
+\toprule
+\textbf{要判断的事} & \textbf{怎么写} & \textbf{作用}\\
+\midrule
+基本条件 &
+无粘、非定常、不可压；质量力有势 \( \vec f=-\nabla \Pi \) &
+决定可以从兰姆方程积分。\\
+\midrule
+沿流线积分 &
+\[
+\begin{aligned}
+&\int_1^2 \frac{\partial V}{\partial t}\,dl\\
+&+\left(\frac{V^2}{2}+\frac{p}{\rho}+gz\right)_2\\
+&-\left(\frac{V^2}{2}+\frac{p}{\rho}+gz\right)_1=0
+\end{aligned}
+\]
+&
+用于水柱振荡、开阀瞬时压力分布。\\
+\midrule
+等截面管 &
+\[
+V_1=V_2=V(t)
+\]
+&
+速度项常抵消。\\
+\midrule
+两端通大气 &
+\[
+p_1=p_2=p_a
+\]
+&
+压力项常抵消。\\
+\midrule
+最后常见形式 &
+\[
+L\frac{dV}{dt}+g(z_2-z_1)=0
+\]
+&
+把流动问题变成一维运动方程。\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{U 型管振荡：结果表}
+
+\begin{center}
+\begin{tabular}{p{3cm} p{5.3cm} p{5.3cm}}
+\toprule
+\textbf{量} & \textbf{表达式} & \textbf{备注}\\
+\midrule
+坐标关系 &
+\[
+h=2z
+\]
+&
+\(z\) 为一侧液面相对平衡位置位移。\\
+\midrule
+控制方程 &
+\[
+\frac{d^2z}{dt^2}+\frac{2g}{L}z=0
+\]
+&
+简谐振动方程。\\
+\midrule
+初始条件 &
+\[
+z(0)=\frac{h_0}{2},\qquad \dot z(0)=0
+\]
+&
+初始液面差为 \(h_0\)，初速为零。\\
+\midrule
+振荡规律 &
+\[
+z=\frac{h_0}{2}\cos\sqrt{\frac{2g}{L}}\,t
+\]
+&
+直接背这个结果。\\
+\midrule
+周期 &
+\[
+T=2\pi\sqrt{\frac{L}{2g}}
+\]
+&
+水柱越长，周期越大。\\
+\midrule
+速度 &
+\[
+V=\dot z
+=-\frac{h_0}{2}\sqrt{\frac{2g}{L}}
+\sin\sqrt{\frac{2g}{L}}\,t
+\]
+&
+由位移对时间求导。\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{六、题型 4：书 4.12 膨胀球}
+
+\subsection*{课件题图：直角管开阀}
+
+\begin{center}
+\includegraphics[width=0.93\linewidth]{ch5_images/slide_right_angle_pipe.png}
+\end{center}
+
+这类题和作业第3题同源：都是等截面水柱、突然开阀、不计粘性。关键不是静水压，而是用非定常伯努利中的
+\[
+\int \frac{\partial V}{\partial t}\,dl
+\]
+处理瞬时加速度项。
+
+\subsection*{题目模型}
+
+原静止无界理想均质不可压流体中，有一球形物体，其半径按
+
+\[
+R=1+3t
+\]
+
+膨胀。求压力场。已知无穷远处压力为 \(p_\infty\)，密度为 \(\rho\)，不计质量力。
+
+\subsection*{步骤 1：由不可压缩连续性求速度}
+
+球面速度：
+
+\[
+\dot R=3
+\]
+
+球对称径向流，任意球面流量相同：
+
+\[
+4\pi r^2v_r=4\pi R^2\dot R
+\]
+
+所以：
+
+\[
+v_r=\frac{R^2\dot R}{r^2}
+\]
+
+代入 \(R=1+3t\)：
+
+\[
+\boxed{
+v_r=\frac{3(1+3t)^2}{r^2}
+}
+\]
+
+\subsection*{步骤 2：求速度势}
+
+径向无旋流有：
+
+\[
+v_r=\frac{\partial\varphi}{\partial r}
+\]
+
+因此：
+
+\[
+\varphi=\int \frac{R^2\dot R}{r^2}\,dr
+=-\frac{R^2\dot R}{r}
+\]
+
+代入：
+
+\[
+\boxed{
+\varphi=-\frac{3(1+3t)^2}{r}
+}
+\]
+
+\subsection*{步骤 3：用非定常无旋伯努利求压力}
+
+无穷远处：
+
+\[
+v_\infty=0,\qquad \varphi_\infty=0,\qquad p=p_\infty
+\]
+
+因此：
+
+\[
+\frac{\partial\varphi}{\partial t}
++\frac{v^2}{2}
++\frac{p}{\rho}
+=
+\frac{p_\infty}{\rho}
+\]
+
+即：
+
+\[
+p=p_\infty-\rho
+\left(
+\frac{\partial\varphi}{\partial t}
++\frac{v^2}{2}
+\right)
+\]
+
+计算：
+
+\[
+\frac{\partial\varphi}{\partial t}
+=-\frac{18(1+3t)}{r}
+\]
+
+\[
+\frac{v^2}{2}
+=
+\frac{9(1+3t)^4}{2r^4}
+\]
+
+所以压力场为：
+
+\[
+\boxed{
+p=p_\infty
++\frac{18\rho(1+3t)}{r}
+-\frac{9\rho(1+3t)^4}{2r^4}
+}
+\]
+
+\section*{七、三个定理的最短背法}
+
+\subsection*{课件题图：书 4.12 与 Kelvin 环量}
+
+\begin{center}
+\includegraphics[width=0.93\linewidth]{ch5_images/slide_sphere_kelvin.png}
+\end{center}
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{4.2cm} >{\raggedright\arraybackslash}p{6cm}}
+\toprule
+\textbf{定理} & \textbf{条件} & \textbf{结论}\\
+\midrule
+开尔文定理 &
+无粘、正压、质量力有势、连续流场 &
+沿封闭流体线的速度环量不随时间变化：
+\[
+\frac{D\Gamma}{Dt}=0
+\]
+\\
+拉格朗日定理 &
+满足开尔文定理条件 &
+若某时刻无旋，则过去和以后都无旋。
+\\
+海姆霍兹第一定理 &
+满足开尔文定理条件 &
+组成涡面的流体质点永远组成涡面。
+\\
+海姆霍兹第二定理 &
+满足开尔文定理条件 &
+涡管强度不随时间变化。
+\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{warnbox}{背诵重点}
+\begin{itemize}
+  \item 开尔文定理管的是环量守恒。
+  \item 拉格朗日定理管的是无旋保持。
+  \item 海姆霍兹定理管的是涡线、涡面、涡管强度保持。
+  \item 这些定理的共同条件都离不开：无粘、正压、质量力有势、连续流场。
+\end{itemize}
+\end{warnbox}
+
+\section*{八、今天 2.5 小时复习安排}
+
+\begin{center}
+\begin{tabular}{p{2.5cm} p{10cm}}
+\toprule
+\textbf{时间} & \textbf{任务}\\
+\midrule
+30 分钟 &
+看何枫第5章课件，重点标出：理想流体条件、兰姆方程、定常/非定常伯努利、开尔文定理。
+\\
+60 分钟 &
+做三道核心题：环量题、书 4.12、U 型管振荡。每题按“条件判断--方程--代入--结果”写。
+\\
+40 分钟 &
+不看答案重写：书 4.12、非定常伯努利积分式、伯努利成立条件。
+\\
+20 分钟 &
+背三个定理的条件和结论，并口头解释“为什么非定常题多一项 \(\partial\varphi/\partial t\)”。
+\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{九、最后自测}
+
+如果下面问题能答出来，第5章今天就算过关。
+
+\begin{enumerate}
+  \item 理想流体在固壁上的边界条件是什么？
+  \item 伯努利方程什么时候沿流线成立？什么时候全流场成立？
+  \item 非定常无旋伯努利比定常伯努利多哪一项？
+  \item 环量的定义是什么？
+  \item 书 4.12 为什么先用 \(4\pi r^2v_r=4\pi R^2\dot R\)？
+  \item 开尔文定理成立条件是什么？
+  \item 拉格朗日定理说明了什么？
+  \item 涡管强度是什么意思？
+\end{enumerate}
+
+\end{document}

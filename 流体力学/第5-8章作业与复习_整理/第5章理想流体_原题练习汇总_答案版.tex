@@ -1,0 +1,426 @@
+\documentclass[UTF8,zihao=-4]{ctexart}
+\usepackage[a4paper,margin=1.75cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{colorlinks=true,linkcolor=blue!60!black,urlcolor=blue!60!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\renewcommand{\arraystretch}{1.22}
+
+\newcommand{\ans}[1]{\textcolor{blue!60!black}{#1}}
+\newcommand{\warn}[1]{\textcolor{red!70!black}{#1}}
+
+\title{\bfseries 第5章理想流体：原题练习汇总答案版}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+本答案版对应《第5章理想流体：原题练习汇总（去作业版）》。
+课本中有些题是建模题或证明题，答案给出关键方程、边界条件或结论；数值题给最终结果。
+
+\section*{一、先记住的基本解}
+
+\begin{longtable}{p{3cm}p{5.1cm}p{5.8cm}}
+\toprule
+\textbf{基本流动} & \textbf{速度势 $\varphi$} & \textbf{流函数 $\psi$}\\
+\midrule
+均匀流 $U$ 沿 $+x$ & $\varphi=Ux$ & $\psi=Uy$\\
+点源 $q$ 在原点 & $\displaystyle \varphi=\frac{q}{2\pi}\ln r$ & $\displaystyle \psi=\frac{q}{2\pi}\theta$\\
+点涡 $\Gamma$ 在原点 & $\displaystyle \varphi=\frac{\Gamma}{2\pi}\theta$ & $\displaystyle \psi=-\frac{\Gamma}{2\pi}\ln r$\\
+偶极子 & 按题中方向由点源、点汇极限得到 & 按题中方向由点源、点汇极限得到\\
+\bottomrule
+\end{longtable}
+
+总原则：
+\[
+\psi=\psi_1+\psi_2+\cdots,\qquad
+\varphi=\varphi_1+\varphi_2+\cdots .
+\]
+流线方程：
+\[
+\psi=C.
+\]
+驻点条件：
+\[
+u=0,\qquad v=0.
+\]
+
+\section*{二、课本第5章习题参考答案}
+
+\begin{longtable}{p{1.3cm}p{12.6cm}}
+\toprule
+\textbf{题号} & \textbf{答案/关键结论}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{题号} & \textbf{答案/关键结论}\\
+\midrule
+\endhead
+
+5.1 &
+速度势提法：
+\[
+\nabla^2\varphi=0.
+\]
+边界条件：物面不可穿透，
+\[
+\frac{\partial\varphi}{\partial n}=\vec V_{\text{物面}}\cdot\vec n;
+\]
+无穷远处满足给定来流。题设 $\Gamma=0$，所以不再附加环量条件。\\
+
+5.2 &
+流函数提法：
+\[
+\nabla^2\psi=0.
+\]
+壁面为流线，故壁面上 $\psi=\text{常数}$；进口、出口的流函数差等于体积流量 $Q$。\\
+
+5.3 &
+绝对流动无旋，所以仍满足势流/流函数的拉普拉斯方程。边界条件要写在随椭圆柱运动的坐标系中：物面法向相对速度为零，无穷远处为与物体运动相反的来流。\\
+
+5.4 &
+若题面为
+\[
+u=x^2+y^2,\qquad v=x^2-2xy,
+\]
+则
+\[
+\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=2x-2x=0,
+\]
+所以存在不可压流函数；但
+\[
+\frac{\partial v}{\partial x}-\frac{\partial u}{\partial y}
+=2x-4y\ne0,
+\]
+所以不存在速度势。
+
+流函数可取：
+\[
+\psi=x^2y+\frac{y^3-x^3}{3}.
+\]
+
+变形速率：
+\[
+e_{xx}=2x,\qquad e_{yy}=-2x,\qquad e_{xy}=x.
+\]
+刚体旋转角速度：
+\[
+\Omega_z=\frac12\left(\frac{\partial v}{\partial x}-\frac{\partial u}{\partial y}\right)=x-2y.
+\]\\
+
+5.5 &
+总流函数：
+\[
+\psi=Uy+\frac{Q}{2\pi}\theta_1+\frac{Q}{2\pi}\theta_2.
+\]
+若 $U=5,\ Q=20\pi$，驻点在
+\[
+(x,y)=(-2,0)
+\]
+附近；过驻点流线可写为
+\[
+5y+10(\theta_1+\theta_2)=0.
+\]
+具体方向以原题图中来流方向为准；若来流反向，驻点关于 $y$ 轴对称变号。\\
+
+5.6 &
+见第三节完整写法。核心结论：
+\[
+U_\infty=\frac{\Gamma}{4\pi h},
+\]
+\[
+\ln\frac{\sqrt{x^2+(y+h)^2}}{\sqrt{x^2+(y-h)^2}}
+-\frac{y}{2h}=C.
+\]\\
+
+5.7 &
+用均匀流、点源和连续分布点汇叠加。写出总流函数 $\psi$ 后，物面由过驻点流线确定：
+\[
+\psi=C_{\text{驻点}}.
+\]
+求法：先由 $u=0,\ v=0$ 找驻点，再令 $\psi=\psi_{\text{驻点}}$。\\
+
+5.8 &
+书后答案给出关键结论：常数 $c$ 由无穷远来流和奇点强度匹配确定；最大速度点在对称轴附近。该题重点不是套公式，而是用轴对称基本解叠加。\\
+
+5.9 &
+这是兰金卵形体绕流。物面方程由
+\[
+\psi=\psi_{\text{驻点}}
+\]
+确定；最大速度点位于对称轴上。\\
+
+5.10 &
+若
+\[
+\psi=\arctan\frac{y}{x},
+\]
+则
+\[
+w(z)=\ln z.
+\]
+若
+\[
+\psi=\ln(x^2+y^2),
+\]
+则
+\[
+w(z)=2i\ln z.
+\]\\
+
+5.11 &
+若
+\[
+\varphi=r^2\cos2\theta,
+\]
+则
+\[
+w(z)=z^2.
+\]
+第二小问按圆柱绕流型势函数写复势，常见形式为
+\[
+w(z)=Ue^{-i\alpha}\left(z+\frac{a^2}{z}\right),
+\]
+符号按题面来流方向调整。\\
+
+5.12 &
+按图中点源、点汇写复势并相加：
+\[
+w(z)=\sum_k \frac{q_k}{2\pi}\ln(z-z_k).
+\]
+证明 $|z|=a$ 是流线，只需证明在 $|z|=a$ 上
+\[
+\operatorname{Im}w(z)=\text{常数}.
+\]\\
+
+5.13 &
+点涡轨迹等于它所在流场的流线。代入初始点 $(\sqrt2,\sqrt2)$ 确定常数即可。\\
+
+5.14 &
+书后结果：
+\[
+Q=12\pi,\qquad \Gamma=8\pi.
+\]\\
+
+5.15 &
+用保角映射把圆弧边界化为较简单边界，再写复势。此题主要练映射，不是普通代数题。\\
+
+5.16 &
+书后结果：
+\[
+\Gamma=-20.5\ \mathrm{m^2/s},
+\]
+\[
+x_{\text{驻点}}\approx -0.74\ \mathrm{m},
+\]
+\[
+|F|\approx125\ \mathrm{N},
+\qquad F_x\approx -10.9\ \mathrm{N},\quad F_y\approx124.5\ \mathrm{N}.
+\]\\
+
+5.17 &
+无环量椭圆柱势流绕流：
+\[
+F_x=0,\qquad F_y=0,
+\]
+但有力矩：
+\[
+M_z=-\rho U^2\pi(a^2-b^2)\sin2\alpha.
+\]
+符号按原题坐标正向调整。\\
+
+5.18 &
+可压缩平面定常流动的连续方程：
+\[
+\frac{\partial(\rho u)}{\partial x}
++\frac{\partial(\rho v)}{\partial y}=0.
+\]
+因此可定义流函数：
+\[
+\rho u=\frac{\partial\psi}{\partial y},\qquad
+\rho v=-\frac{\partial\psi}{\partial x}.
+\]\\
+
+5.19 &
+按极坐标写流线方程 $\theta=\theta(r)$，速度方向与流线切向一致，再由
+\[
+\omega_z=\frac1r\frac{\partial(rv_\theta)}{\partial r}
+-\frac1r\frac{\partial v_r}{\partial\theta}
+\]
+推出题中涡量表达式。\\
+
+5.20 &
+三个等强点涡位于等边三角形三个顶点时，三角形形状保持不变，整体绕面心匀速旋转。
+若外接圆半径为 $R$，点涡强度为 $\Gamma$，则角速度量级为
+\[
+\Omega=\frac{\Gamma}{2\pi R^2}.
+\]\\
+
+5.21 &
+中心点源只产生径向速度，不能抵消三个同号点涡相互诱导产生的切向旋转速度；若题面确为“点源”，则不存在有限 $Q$ 使三点涡完全静止。若原题实际为中心点涡，则需用中心涡诱导切向速度抵消 5.20 的旋转速度。\\
+
+5.22 &
+用不可压平面理想有旋流动的涡量输运方程：
+\[
+\frac{D\omega}{Dt}=0
+\]
+和随体面积元不变，直接对题中积分作质点导数，可得
+\[
+\frac{D I_m}{Dt}=0.
+\]\\
+
+S5.1 &
+会旋转。平板下落时微小倾斜会造成两侧压力和速度分布不对称，从而产生力矩。\\
+
+S5.2 &
+翼尖处上下翼面压力差使气流绕过翼尖，形成一对尾涡；两条涡管旋转方向相反。起动时后缘脱落起动涡，由环量守恒，绕翼型产生相反方向环量。\\
+
+S5.3 &
+奇点必须放在物体内部，否则会在流体区域引入非物理奇点；总点源强度等于总点汇强度，是为了保证远处没有净流量增减。圆外点源关于圆的镜像必须配成源汇，是为了同时满足圆面为流线和无穷远条件。\\
+
+S5.4 &
+不可压平面理想流动中
+\[
+\frac{D\omega}{Dt}=0.
+\]
+定常时质点轨迹与流线重合，所以涡量沿流线为常数。轴对称有旋流中不再是 $\omega$ 沿流线常数，而是
+\[
+\frac{\omega}{r}=\text{沿流线常数}.
+\]\\
+
+S5.5 &
+对称翼型零攻角上下对称，环量为零，所以升力为零。有攻角时由库塔条件确定非零环量，故有升力。起飞低速时为获得足够升力，攻角应大于高空平飞时攻角。\\
+
+\bottomrule
+\end{longtable}
+
+\section*{三、5.6 完整答案}
+
+题意：两个等强反向点涡放在 $(0,h)$ 和 $(0,-h)$，远处来流刚好使两个涡停留不动。
+
+上方点涡受到下方点涡的诱导速度：
+\[
+u_{\text{ind}}=\frac{\Gamma}{2\pi(2h)}
+=\frac{\Gamma}{4\pi h}.
+\]
+来流必须与此相反，大小为
+\[
+U_\infty=\frac{\Gamma}{4\pi h}.
+\]
+
+取上方点涡为 $+\Gamma$，下方点涡为 $-\Gamma$，且均匀来流向左，则
+\[
+\psi_\infty=-U_\infty y.
+\]
+两点涡的流函数为
+\[
+\psi_1=-\frac{\Gamma}{2\pi}\ln\sqrt{x^2+(y-h)^2},
+\]
+\[
+\psi_2=+\frac{\Gamma}{2\pi}\ln\sqrt{x^2+(y+h)^2}.
+\]
+总流函数：
+\[
+\psi
+=-U_\infty y
+-\frac{\Gamma}{2\pi}\ln\sqrt{x^2+(y-h)^2}
++\frac{\Gamma}{2\pi}\ln\sqrt{x^2+(y+h)^2}.
+\]
+代入 $U_\infty=\Gamma/(4\pi h)$：
+\[
+\psi=
+\frac{\Gamma}{2\pi}
+\left[
+\ln
+\frac{\sqrt{x^2+(y+h)^2}}
+{\sqrt{x^2+(y-h)^2}}
+-\frac{y}{2h}
+\right].
+\]
+所以流线方程为
+\[
+\boxed{
+\ln
+\frac{\sqrt{x^2+(y+h)^2}}
+{\sqrt{x^2+(y-h)^2}}
+-\frac{y}{2h}=C
+}.
+\]
+
+\section*{四、往年题答案}
+
+\subsection*{1. 不可压缩无旋线性速度场}
+
+题面：
+\[
+u=Ax+By,\qquad v=Cx+Dy,\qquad w=0.
+\]
+
+不可压缩连续方程：
+\[
+\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=A+D=0.
+\]
+
+无旋条件：
+\[
+\frac{\partial v}{\partial x}-\frac{\partial u}{\partial y}=C-B=0.
+\]
+
+所以
+\[
+\boxed{D=-A,\qquad C=B.}
+\]
+
+\subsection*{2. 2022 春期末：半圆柱气膜馆势流}
+
+把地面看作对称面，半圆柱外流等价于完整圆柱绕流的上半部分。
+
+圆柱表面速度：
+\[
+v_r=0,\qquad v_\theta=-2V\sin\theta.
+\]
+
+由伯努利：
+\[
+p(\theta)+\frac12\rho v_\theta^2
+=p_\infty+\frac12\rho V^2.
+\]
+所以表面压力分布：
+\[
+\boxed{
+p(\theta)=p_\infty+\frac12\rho V^2(1-4\sin^2\theta)
+}.
+\]
+
+升力按单位长度计算，取动压相对压力积分：
+\[
+L'=-a\int_0^\pi [p(\theta)-p_\infty]\sin\theta\,d\theta.
+\]
+代入压力分布：
+\[
+L'
+=-a\frac12\rho V^2
+\int_0^\pi (1-4\sin^2\theta)\sin\theta\,d\theta
+=\frac53\rho V^2a.
+\]
+
+代入
+\[
+a=5\ \mathrm{m},\qquad V=10\ \mathrm{m/s},\qquad \rho=1.29\ \mathrm{kg/m^3},
+\]
+得
+\[
+\boxed{
+L'\approx1.08\times10^3\ \mathrm{N/m}
+}
+\]
+方向向上。
+
+\end{document}

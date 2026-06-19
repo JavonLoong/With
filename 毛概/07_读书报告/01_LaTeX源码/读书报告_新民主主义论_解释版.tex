@@ -1,0 +1,119 @@
+% !TEX program = xelatex
+\documentclass[12pt,a4paper,landscape]{article}
+
+\usepackage[UTF8,heading=true]{ctex}
+\setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+\setCJKsansfont{SimHei}
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm,headheight=14pt,landscape]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
+\usepackage{fontawesome5}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+\hypersetup{colorlinks=true, linkcolor=blue!60!black, urlcolor=blue!60!black}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{gray} 《新民主主义论》解释版}
+\fancyhead[R]{\small\color{gray} 姓名/学号待填写}
+\fancyfoot[C]{\thepage}
+
+\newtcolorbox{termbox}[1]{
+  colback=blue!3, colframe=blue!40, fonttitle=\bfseries,
+  title={#1}, rounded corners, boxrule=0.5pt,
+  left=4pt, right=4pt, top=2pt, bottom=2pt,
+  before skip=5pt, after skip=6pt, breakable
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries 《新民主主义论》解释版 — 看完就能讲}\\[8pt]
+  {\large 姓名 / 学号待填写 \quad 2026年4月18日}
+\end{center}
+\vspace{4mm}
+\noindent\rule{\textwidth}{0.4pt}
+\noindent\parbox{\textwidth}{\textbf{本文档用途}：这不是正式提交版，而是帮你快速吃透文章逻辑、顺手准备口头表达的版本。}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{4mm}
+
+\section*{一、先抓全文在回答什么问题}
+
+\begin{termbox}{什么是“新民主主义”？}
+最简单地说，它是在中国特殊国情下提出的一条革命道路。\\[2pt]
+类比：不是直接跳到终点，而是先搭一座能走得通的桥。\\[2pt]
+\textbf{汇报时你可以说}：「这篇文章最重要的贡献，不是多了一个口号，而是把中国革命到底该怎么走，讲成了一套能落地的方案。」
+\end{termbox}
+
+这篇文章最有力量的地方，是它一开头就不绕弯，直接追问“中国向何处去”。这个问题在今天读起来像理论题，但在1940年的语境里其实是现实题。国家正处在民族危机和革命进程之中，旧路走不通，新路又不能凭空想象，所以必须先判断中国社会到底是什么性质，再决定革命应该走什么方向。
+
+\begin{quote}\kaishu
+如果我要在课堂上用一句话概括这一段，我会说：毛泽东不是先有答案再找材料，而是先分析中国现实，再从现实里推出道路选择。
+\end{quote}
+
+\section*{二、为什么文章一直强调“国情”}
+
+\begin{termbox}{什么是“半殖民地半封建社会”？}
+意思是中国既没有真正独立，也没有完成现代资本主义国家那种社会转型。\\[2pt]
+类比：房子的结构一半受外力控制，一半还被旧制度压着，所以不能照搬别人家的装修方案。\\[2pt]
+\textbf{汇报时你可以说}：「毛泽东的判断是，中国不是西方资本主义国家，也不是能直接进入社会主义的社会，所以革命道路必须自己找。」
+\end{termbox}
+
+《新民主主义论》的论证骨架其实很清楚：因为中国社会有自己的特殊性，所以中国革命也有自己的阶段性。文章不是简单说“先民主再社会主义”，而是强调中国革命必须先解决民族独立、反帝反封建这些历史任务，否则后面的社会变革根本没有现实基础。这里最值得学的，是“先认识对象，再决定方法”的思考方式。
+
+\section*{三、“新”到底新在三层}
+
+\begin{termbox}{为什么叫“新”民主主义，而不是旧民主主义？}
+因为时代变了、领导力量变了、革命前途也变了。\\[2pt]
+类比：同样都是“修路”，旧方案只想把路修到旧城市，新方案是把路继续通往新社会。\\[2pt]
+\textbf{汇报时你可以说}：「这个‘新’不是修辞，而是历史条件变化后的重新定位。」
+\end{termbox}
+
+\begin{enumerate}[leftmargin=2em]
+  \item \textbf{时代条件变了}：它发生在帝国主义时代，已经不属于旧世界资产阶级民主革命的逻辑。
+  \item \textbf{领导力量变了}：真正能把民族独立和社会变革统一起来的，是无产阶级及其政党。
+  \item \textbf{发展前途变了}：它不是停在资本主义那里，而是为社会主义创造条件。
+\end{enumerate}
+
+\begin{quote}\kaishu
+如果老师问“新在哪里”，我会先用这三点作骨架，再补一句：所以它不是重复旧民主主义，也不是急着越级进入社会主义，而是一种符合中国现实的过渡性安排。
+\end{quote}
+
+\section*{四、为什么文章要把政治、经济、文化放在一起讲}
+
+\begin{termbox}{“民族的、科学的、大众的文化”是什么意思？}
+民族的：反对外来压迫，强调中国自己的主体性。\\
+科学的：反对迷信和僵化教条，强调理性、实践和真理检验。\\
+大众的：不是少数人的文化，而是要面向最广大的人民。\\[2pt]
+\textbf{汇报时你可以说}：「这说明毛泽东理解的新中国，不是只换一个政权，而是政治、经济、文化整体重建。」
+\end{termbox}
+
+我读到这里最大的感觉是，毛泽东不是只在谈“谁来掌权”，他实际上是在回答“新中国会是什么样”。新政治、新经济、新文化连在一起，说明文章并不满足于革命胜利的瞬间，而是在思考革命胜利之后如何构造新的社会秩序。这也是为什么《新民主主义论》到今天还值得读，因为它体现了一种整体设计的意识。
+
+\section*{五、和《中国革命和中国共产党》一起读时更清楚}
+
+\begin{termbox}{为什么要对读另一篇文章？}
+因为《新民主主义论》更像回答“目标是什么”，而《中国革命和中国共产党》更像回答“现实依据是什么”。\\[2pt]
+类比：一篇像路线图，一篇像地形图，两张图一起看才知道为什么这样走。\\[2pt]
+\textbf{汇报时你可以说}：「把两篇文章放在一起，我更能理解毛泽东不是从抽象教条出发，而是从中国社会性质、革命对象和历史任务出发。」
+\end{termbox}
+
+这也让我意识到，所谓理论创造，并不是把概念说得越来越玄，而是把现实问题讲得更清楚、把行动路径设计得更可行。对今天的我们来说，这种从国情和实际任务出发的思维方式，依然有启发意义。
+
+\section*{六、老师可能会问什么}
+
+\textbf{问题1：这篇文章最重要的贡献是什么？}\\
+标准回答：它系统论证了新民主主义革命的理论框架，把中国社会性质、革命阶段、领导力量和发展前途连接成一个完整逻辑，回答了“中国向何处去”的时代问题。
+
+\textbf{问题2：“新”字最值得强调什么？}\\
+标准回答：最值得强调的是它重新界定了中国革命的历史位置。它已经不是旧式资产阶级民主革命，而是无产阶级领导下、以社会主义为前途的人民革命。
+
+\textbf{问题3：你读完最大的个人收获是什么？}\\
+标准回答：我最大的收获不是记住了几个定义，而是理解了“先认识国情，再决定道路”这一方法，这比单独背诵结论更重要。
+
+\end{document}

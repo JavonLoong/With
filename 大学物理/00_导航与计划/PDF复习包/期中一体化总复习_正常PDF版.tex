@@ -1,0 +1,859 @@
+% !TEX program = xelatex
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[UTF8,heading=true]{ctex}
+\setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+\setCJKsansfont{SimHei}
+\setCJKmonofont{FangSong}
+
+\usepackage[top=22mm,bottom=22mm,left=22mm,right=22mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,fit}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  urlcolor=blue!50!black
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 前14节期中一体化总复习}
+\fancyhead[R]{\small 大学物理}
+\fancyfoot[C]{\thepage}
+
+\setlist[itemize]{leftmargin=2em,itemsep=3pt,topsep=4pt}
+\setlist[enumerate]{leftmargin=2em,itemsep=3pt,topsep=4pt}
+
+\newcommand{\key}[1]{\textcolor{blue!60!black}{\textbf{#1}}}
+\newcommand{\warn}[1]{\textcolor{red!70!black}{\textbf{#1}}}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries 大学物理前14节期中一体化总复习}\\[8pt]
+{\large 正常PDF详细版}\\[8pt]
+{\normalsize 适用目标：接下来只看这一份，不再来回翻课件和作业答案}
+\end{center}
+
+\vspace{6mm}
+
+\section*{怎么使用这份PDF}
+
+这份 PDF 的写法不是“目录式提醒”，而是“单文件可复习”。也就是说，后面的内容已经把你前 14 节需要的框架、公式、典型题型、代表结论、易错点、临考顺序都尽量压在这一份里。你接下来可以直接这样用：
+
+\begin{enumerate}
+  \item 第一次从头到尾通读，建立全局框架。
+  \item 第二次只看蓝色关键词、公式和题型模板。
+  \item 第三次只看你第一次卡住的地方。
+  \item 考前最后 20 到 30 分钟，只翻最后的“终极速看页”。
+\end{enumerate}
+
+如果现在时间非常紧，就按本文中给出的优先级：\key{第10章 $\rightarrow$ 第11章 $\rightarrow$ 第9章 $\rightarrow$ 第6章 $\rightarrow$ 第7章 $\rightarrow$ 光学开头}。
+
+\section*{范围总览}
+
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{1.8cm} >{\raggedright\arraybackslash}p{3.0cm} X >{\raggedright\arraybackslash}p{2.2cm}}
+\toprule
+课次范围 & 对应章节 & 核心内容 & 复习优先级 \\
+\midrule
+第1--4节 & 热学第9章 & 温度、理想气体、速率分布、范德瓦尔斯方程、平均自由程、输运过程 & 高 \\
+第5--6节 & 热学第10章 & 热力学第一定律、功、热容量、绝热过程、循环效率 & 最高 \\
+第7--9节 & 热学第11章 & 第二定律、熵、可逆不可逆、热库、可逆循环 & 最高 \\
+第10节 & 力学第6章 & 简谐振动表达式、相位、能量、弹簧振子周期 & 中高 \\
+第11--14节 & 力学第7章 + 光学开头 & 行波、驻波、波峰位置、多普勒效应、相干、光强、双缝干涉入门 & 中 \\
+\bottomrule
+\end{tabularx}
+
+\vspace{6mm}
+
+\begin{center}
+\begin{tikzpicture}[
+  node distance=8mm,
+  chapter/.style={draw=blue!45!black,rounded corners=4pt,fill=blue!5,minimum width=28mm,minimum height=10mm,align=center},
+  ->,>=Latex
+]
+\node[chapter] (c10) {第10章\\第一定律};
+\node[chapter,right=10mm of c10] (c11) {第11章\\第二定律};
+\node[chapter,right=10mm of c11] (c9) {第9章\\热学基础};
+\node[chapter,right=10mm of c9] (c6) {第6章\\振动};
+\node[chapter,right=10mm of c6] (c7) {第7章\\波动};
+\node[chapter,right=10mm of c7] (opt) {光学开头\\相干与双缝};
+\draw (c10) -- (c11);
+\draw (c11) -- (c9);
+\draw (c9) -- (c6);
+\draw (c6) -- (c7);
+\draw (c7) -- (opt);
+\end{tikzpicture}
+\end{center}
+
+\section{总公式速览}
+
+\subsection{热学总公式}
+
+\begin{align*}
+pV &= nRT \\
+U &= \frac{i}{2}nRT \\
+Q &= \Delta U + W \\
+\Delta U &= n C_V \Delta T \\
+W &= \int p\,dV \\
+pV^\gamma &= \text{常量} \\
+TV^{\gamma-1} &= \text{常量} \\
+\Delta S &= \int \frac{dQ_{\mathrm{rev}}}{T} \\
+\Delta S &= nC_V \ln\frac{T_2}{T_1}+nR\ln\frac{V_2}{V_1} \\
+\Delta S &= nC_P \ln\frac{T_2}{T_1}-nR\ln\frac{p_2}{p_1}
+\end{align*}
+
+\subsection{振动波动总公式}
+
+\begin{align*}
+x &= A\cos(\omega t+\varphi) \\
+\omega &= \frac{2\pi}{T} \\
+E &= \frac12 kA^2 \\
+y &= A\cos(\omega t \mp kx + \varphi) \\
+v &= \lambda f = \frac{\omega}{k} \\
+x_{\text{波节}} &= n\frac{\lambda}{2} \\
+x_{\text{波腹}} &= (2n+1)\frac{\lambda}{4}
+\end{align*}
+
+\subsection{光学开头总公式}
+
+\begin{align*}
+I &\propto \langle E^2\rangle_t \\
+I &= I_1 + I_2 + 2\sqrt{I_1I_2}\cos\Delta\varphi \\
+\delta &\approx \frac{dx}{D} \\
+\Delta\varphi &= \frac{2\pi\delta}{\lambda} \\
+\delta_{\text{明}} &= k\lambda \\
+\delta_{\text{暗}} &= \frac{(2k+1)\lambda}{2} \\
+\Delta x &= \frac{\lambda D}{d}
+\end{align*}
+
+\section{第9章：热学基础}
+
+\subsection{这一章到底在讲什么}
+
+第 9 章本质上是热学的底层框架。它把“气体为什么 obey 某些宏观规律”解释给你看，也把很多后面热力学公式所依赖的物理图景先铺好。考试中这章通常有三个来源：
+
+\begin{itemize}
+  \item 概念类：理想气体、真实气体、平均自由程、单原子与双原子自由度。
+  \item 计算类：混合气体末温、速率分布函数、范德瓦尔斯方程。
+  \item 理解类：为什么热导率、黏度、平均自由程会和分子运动联系起来。
+\end{itemize}
+
+\subsection{你必须先会的概念}
+
+\begin{itemize}
+  \item \key{理想气体内能只和温度有关}。这句话后面在第10章和第11章会反复用到。
+  \item 单原子气体常温下自由度通常取 $i=3$，双原子气体常温下通常取 $i=5$。
+  \item 平均自由程越大，说明分子两次碰撞之间平均走得越远，碰撞越稀。
+  \item 范德瓦尔斯方程修正的是两件事：分子有体积、分子间有引力。
+\end{itemize}
+
+\subsection{这章最常考的四类题}
+
+\subsubsection*{题型1：混合气体求末温}
+
+解题模板：
+
+\begin{enumerate}
+  \item 先用状态方程找物质的量关系。
+  \item 再写混合前后总内能守恒。
+  \item 单原子和双原子的自由度不能写错。
+\end{enumerate}
+
+代表题：一半氦气 $T_1=250\,\mathrm{K}$，一半氧气 $T_2=310\,\mathrm{K}$，体积相等、压强相等，混合后末温为
+\[
+T=\frac{8T_1T_2}{3T_2+5T_1}\approx 284.4\,\mathrm{K}.
+\]
+
+\subsubsection*{题型2：速率分布函数}
+
+已知
+\[
+f(v)=\frac{av}{v_0}\quad (0\le v\le v_0),\qquad
+f(v)=a\quad (v_0\le v\le 2v_0).
+\]
+
+标准套路是：
+
+\begin{enumerate}
+  \item 先归一化 $\int_0^\infty f(v)\,dv=1$ 求 $a$。
+  \item 再算区间粒子比例。
+  \item 最后用 $\bar v=\int_0^\infty vf(v)\,dv$ 求平均速率。
+\end{enumerate}
+
+这道题的结果要直接记住：
+
+\[
+a=\frac{2}{3v_0},\qquad
+N(v<v_0)=\frac{N}{3},\qquad
+N(v>v_0)=\frac{2N}{3},\qquad
+\bar v=\frac{11v_0}{9}.
+\]
+
+\subsubsection*{题型3：范德瓦尔斯方程}
+
+这类题最常见的坑不是物理，而是单位。一定先把体积换成 $\mathrm{m^3}$，摩尔质量换成 SI 单位。标准步骤：
+
+\begin{enumerate}
+  \item 算 $n=m/M$。
+  \item 代入
+  \[
+  p=\frac{nRT}{V-nb}-\frac{an^2}{V^2}.
+  \]
+  \item 再和理想气体压强比较。
+\end{enumerate}
+
+代表题：$V=20\,\mathrm{L}$，$m=1.1\,\mathrm{kg}$，$T=286\,\mathrm{K}$ 的 CO$_2$：
+
+\begin{align*}
+n &= 25\,\mathrm{mol},\\
+p_{\text{ideal}} &\approx 2.972\times 10^6\,\mathrm{Pa},\\
+p_{\text{vdW}} &\approx 2.571\times 10^6\,\mathrm{Pa},\\
+p_{\text{内}} &\approx 5.69\times 10^5\,\mathrm{Pa}.
+\end{align*}
+
+\subsubsection*{题型4：平均自由程和分子直径}
+
+如果给了黏度 $\eta$、平均速率 $\bar v$ 和密度 $\rho$，先用
+\[
+\eta=\frac13 \rho \bar v \lambda
+\]
+求平均自由程，再用
+\[
+\lambda=\frac{1}{\sqrt{2}\pi d^2 n_0}
+\]
+求分子直径。
+
+代表结论：氦气标准状态下
+\[
+\lambda \approx 2.65\times 10^{-7}\,\mathrm{m},\qquad
+d\approx 1.78\times 10^{-10}\,\mathrm{m}.
+\]
+
+\subsection{第9章高危易错点}
+
+\begin{itemize}
+  \item \warn{温度必须用 K}，不能直接用摄氏度。
+  \item \warn{体积单位 L 必须换成 m$^3$}。
+  \item \warn{自由度别混}：单原子 3，双原子常温 5。
+  \item 平均自由程公式里是 $\sqrt{2}\pi d^2$，不是 $\pi d$。
+\end{itemize}
+
+\section{第10章：热力学第一定律}
+
+\subsection{核心思想}
+
+第10章最重要的是把“热量、功、内能”三者关系彻底想清楚。整章所有题，无论表面看起来多复杂，本质都绕不开这一句：
+\[
+Q=\Delta U + W.
+\]
+
+其中最常见的考试技巧是：\key{先用一条好算的路径求出 $\Delta U$，再换路径求 $Q$ 和 $W$。}
+
+\subsection{状态量和过程量}
+
+\begin{center}
+\begin{tikzpicture}[
+box/.style={draw=blue!50!black,rounded corners=4pt,fill=blue!5,minimum width=30mm,minimum height=11mm,align=center},
+arrow/.style={->,>=Latex,thick}
+]
+\node[box] (q) at (0,0) {$Q$\\过程量};
+\node[box] (u) at (4.2,0) {$\Delta U$\\状态量};
+\node[box] (w) at (8.4,0) {$W$\\过程量};
+\node[below=8mm of u,align=center] (law) {\Large $Q=\Delta U+W$};
+\draw[arrow] (q) -- (u);
+\draw[arrow] (u) -- (w);
+\end{tikzpicture}
+\end{center}
+
+你一定要分清：
+
+\begin{itemize}
+  \item 同样的初态和末态，$\Delta U$ 一样。
+  \item 但走不同路径，$Q$ 和 $W$ 可以不同。
+  \item 循环过程总的 $\Delta U = 0$。
+\end{itemize}
+
+\subsection{必背过程特征}
+
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.3cm} X}
+\toprule
+过程 & 最该先想到的结论 \\
+\midrule
+等温过程 & 理想气体 $\Delta U = 0$ \\
+等容过程 & $W = 0$ \\
+绝热过程 & $Q = 0$ \\
+循环过程 & $\Delta U_{\text{总}} = 0$ \\
+多方过程 & 认出 $pV^n=\text{常量}$ \\
+\bottomrule
+\end{tabularx}
+
+\subsection{最常考三类题}
+
+\subsubsection*{题型1：已知路径求 $Q$、$W$、$\Delta U$}
+
+代表题：沿 acb 吸热 $560\,\mathrm{J}$，做功 $356\,\mathrm{J}$。
+
+\[
+\Delta U = Q-W = 560-356 = 204\,\mathrm{J}.
+\]
+
+如果另一条路径 adb 做功 $220\,\mathrm{J}$，则
+\[
+Q=\Delta U + W = 204+220 = 424\,\mathrm{J}.
+\]
+
+这种题你要记住的不是数字，而是这个套路：
+
+\begin{enumerate}
+  \item 先找一条已知路径算 $\Delta U$。
+  \item 再把 $\Delta U$ 带到另一条路径。
+  \item 最后用 $Q=\Delta U+W$ 收尾。
+\end{enumerate}
+
+\subsubsection*{题型2：绝热容器 + 隔板 + 加热}
+
+这类题经常把人吓住，但本质其实很稳定：
+
+\begin{enumerate}
+  \item 先找哪一侧在做绝热过程。
+  \item 再写两侧压强平衡条件。
+  \item 再写总体积守恒。
+  \item 最后用理想气体方程和 $\Delta U=nC_V\Delta T$。
+\end{enumerate}
+
+代表题结论：
+
+\begin{align*}
+T_A &\approx 321.5\,\mathrm{K},\\
+T_B &\approx 964.5\,\mathrm{K},\\
+Q_B &\approx 16.6\,\mathrm{kJ}.
+\end{align*}
+
+\subsubsection*{题型3：循环效率}
+
+循环题一定别上来就乱推。第一步永远是：
+\[
+\eta=\frac{W}{Q_{\text{in}}}=1-\frac{Q_{\text{out}}}{Q_{\text{in}}}.
+\]
+
+狄赛尔循环这类题的结构是：
+
+\begin{itemize}
+  \item 一段绝热压缩；
+  \item 一段等压吸热；
+  \item 一段绝热膨胀；
+  \item 一段等容放热。
+\end{itemize}
+
+结果形式直接记：
+\[
+\eta = 1-\frac{\sigma^\gamma - 1}{\gamma r^{\gamma-1}(\sigma - 1)},
+\]
+其中 $r=V_1/V_2$ 是压缩比，$\sigma=V_1'/V_2$ 是截止比。
+
+\subsection{第10章高危易错点}
+
+\begin{itemize}
+  \item \warn{本资料默认“系统对外做功为正”}。
+  \item 等温过程不是绝热过程。
+  \item 绝热过程 $Q=0$，不是 $\Delta U=0$。
+  \item 循环总内能变化一定为 0。
+\end{itemize}
+
+\section{第11章：热力学第二定律与熵}
+
+\subsection{这章真正要抓什么}
+
+这章不是让你背很多哲学话，而是抓四件事：
+
+\begin{enumerate}
+  \item 熵怎么定义；
+  \item 物体和热库各自的熵变怎么算；
+  \item 可逆、不可逆怎么判；
+  \item 可逆循环怎么做账。
+\end{enumerate}
+
+\subsection{你必须会说出口的概念}
+
+\begin{itemize}
+  \item 熵是状态量。
+  \item 可逆绝热过程 $\Delta S = 0$。
+  \item 孤立系统总熵不会减小。
+  \item 不可逆过程的总熵增大于 0。
+\end{itemize}
+
+\subsection{最常考三类题}
+
+\subsubsection*{题型1：物体和热库的熵变}
+
+代表题：$1\,\mathrm{kg}$、$0^\circ\mathrm{C}$ 的水放到 $100^\circ\mathrm{C}$ 热库上。
+
+这类题固定三步：
+
+\begin{enumerate}
+  \item 先算水吸收的热量 $Q$。
+  \item 再算水的熵变 $\Delta S_{\text{水}} = mc\ln(T_2/T_1)$。
+  \item 再算热库熵变 $\Delta S_{\text{热库}} = -Q/T_{\text{库}}$。
+\end{enumerate}
+
+结果：
+
+\begin{align*}
+\Delta S_{\text{水}} &\approx 1305\,\mathrm{J/K},\\
+\Delta S_{\text{热库}} &\approx -1122\,\mathrm{J/K},\\
+\Delta S_{\text{总}} &\approx 183\,\mathrm{J/K}.
+\end{align*}
+
+如果改成先放到 $50^\circ\mathrm{C}$，再放到 $100^\circ\mathrm{C}$，总熵变会减小到约 $97.4\,\mathrm{J/K}$，说明过程更接近可逆。
+
+\subsubsection*{题型2：理想气体的熵变}
+
+如果是等容过程，优先想到
+\[
+\Delta S = nC_V \ln\frac{T_2}{T_1}.
+\]
+
+如果是等温过程，优先想到
+\[
+\Delta S = nR \ln\frac{V_2}{V_1}.
+\]
+
+如果是可逆绝热过程，直接想到
+\[
+\Delta S = 0.
+\]
+
+\subsubsection*{题型3：可逆循环}
+
+这一类题一定要分段看。代表结论如下：
+
+\begin{align*}
+W_{12} &\approx 1685\,\mathrm{kJ},\qquad \Delta S_{12}\approx 5616\,\mathrm{J/K},\\
+W_{23} &= 0,\qquad \Delta S_{23}\approx -5616\,\mathrm{J/K},\\
+W_{31} &\approx -1294\,\mathrm{kJ},\qquad \Delta S_{31}=0.
+\end{align*}
+
+所以循环总功约为
+\[
+W_{\text{cycle}}\approx 391\,\mathrm{kJ}.
+\]
+
+\subsection{第11章高危易错点}
+
+\begin{itemize}
+  \item \warn{所有熵变公式都用绝对温度 K}。
+  \item 热库熵变别忘了负号。
+  \item 物体熵变和总熵变不是一个量。
+  \item 可逆绝热过程熵不变。
+\end{itemize}
+
+\section{第6章：振动}
+
+\subsection{核心结构}
+
+第 6 章真正需要拿稳的只有三个部分：
+
+\begin{enumerate}
+  \item 振动表达式怎么写；
+  \item 初相和相位怎么判；
+  \item 能量和周期怎么求。
+\end{enumerate}
+
+\subsection{你一定要熟的公式}
+
+\begin{align*}
+x &= A\cos(\omega t + \varphi),\\
+v &= -A\omega \sin(\omega t + \varphi),\\
+a &= -\omega^2 x,\\
+\omega &= \frac{2\pi}{T},\\
+E &= \frac12 kA^2.
+\end{align*}
+
+\subsection{最常考题型}
+
+\subsubsection*{题型1：由图像求表达式}
+
+固定套路：
+
+\begin{enumerate}
+  \item 先读振幅 $A$。
+  \item 再由两次过平衡位置求 $T$。
+  \item 再由 $x(0)$ 求 $\cos\varphi$。
+  \item 最后用速度方向判断 $\sin\varphi$ 的正负。
+\end{enumerate}
+
+代表题结果：
+
+\[
+T=2.4\,\mathrm{s},\qquad
+\omega=\frac{5\pi}{6},\qquad
+\varphi=-\frac{\pi}{3},
+\]
+因此
+\[
+x = 5\cos\left(\frac{5\pi}{6}t-\frac{\pi}{3}\right)\,\mathrm{cm}.
+\]
+
+\subsubsection*{题型2：相差问题}
+
+如果第一个振子回到平衡位置并向负方向运动，第二个振子恰在正向端点，那么第二个振子比第一个振子\key{落后} $\pi/2$，即
+\[
+x_2 = A\cos(\omega t + \varphi - \pi/2).
+\]
+
+\subsubsection*{题型3：能量题}
+
+记住三条：
+
+\begin{itemize}
+  \item 总能量 $E=\frac12 kA^2$；
+  \item 势能 $E_p=\frac12 kx^2$；
+  \item 动能 $E_k=E-E_p$。
+\end{itemize}
+
+例题：
+
+若 $k=25\,\mathrm{N/m}$，$E_k=0.2\,\mathrm{J}$，$E_p=0.6\,\mathrm{J}$，则
+
+\begin{align*}
+E &= 0.8\,\mathrm{J},\\
+A &\approx 0.253\,\mathrm{m},\\
+x(E_k=E_p) &\approx \pm 0.179\,\mathrm{m}.
+\end{align*}
+
+\subsubsection*{题型4：竖直弹簧振子}
+
+这类题最经典的结论就是：虽然有重力，但如果以平衡位置为原点，小振动方程仍是
+\[
+m\frac{d^2x}{dt^2} + kx = 0.
+\]
+所以
+\[
+T = 2\pi\sqrt{\frac{m}{k}},
+\qquad
+E = \frac12 kA^2.
+\]
+
+\subsection{第6章高危易错点}
+
+\begin{itemize}
+  \item \warn{求初相不能只看 $\cos\varphi$，还要结合速度方向}。
+  \item 竖直弹簧振子周期不因重力改写。
+  \item 相位差、初相差、瞬时相位不要混。
+\end{itemize}
+
+\section{第7章：波动}
+
+\subsection{这章其实就五类东西}
+
+\begin{enumerate}
+  \item 波函数；
+  \item 波长、频率、波速；
+  \item 波峰位置；
+  \item 驻波；
+  \item 多普勒效应。
+\end{enumerate}
+
+\subsection{行波方向怎么判}
+
+\[
+y = A\cos(\omega t-kx+\varphi)\quad \Rightarrow \quad \text{沿 } +x \text{ 传播}
+\]
+
+\[
+y = A\cos(\omega t+kx+\varphi)\quad \Rightarrow \quad \text{沿 } -x \text{ 传播}
+\]
+
+这一点是考试中的高频失分点。
+
+\subsection{最常考题型}
+
+\subsubsection*{题型1：已知某点振动写波函数}
+
+例题：在 $x=0.1\,\mathrm{m}$ 处，
+\[
+y=0.05\sin(1.0-4.0t),\qquad u=0.8\,\mathrm{m/s}.
+\]
+
+则
+\[
+\omega = 4,\qquad k=\frac{\omega}{u}=5,
+\]
+最后得到
+\[
+y(x,t)=0.05\sin(5x-4t+0.5).
+\]
+
+\subsubsection*{题型2：由图像写波函数}
+
+固定步骤：
+
+\begin{enumerate}
+  \item 读振幅 $A$；
+  \item 读波长 $\lambda$；
+  \item 算波数 $k=2\pi/\lambda$；
+  \item 用波速求 $\omega=kv$；
+  \item 用初态求初相。
+\end{enumerate}
+
+\subsubsection*{题型3：波峰位置}
+
+若
+\[
+y=A\cos\pi(4t+2x),
+\]
+则波峰条件为
+\[
+4t+2x=2n,
+\]
+所以
+\[
+x=n-2t.
+\]
+当 $t=4.2\,\mathrm{s}$ 时，
+\[
+x=n-8.4.
+\]
+最近的波峰位置是
+\[
+x=-0.4\,\mathrm{m}.
+\]
+
+\subsubsection*{题型4：驻波}
+
+入射波与反射波分别为
+\[
+y_1=A\sin(\omega t-kx),\qquad
+y_2=-A\sin(\omega t+kx).
+\]
+合成得到
+\[
+y=-2A\sin(kx)\cos(\omega t).
+\]
+所以波节满足
+\[
+\sin(kx)=0 \quad \Rightarrow \quad x=n\frac{\lambda}{2}.
+\]
+
+\subsubsection*{题型5：多普勒效应}
+
+先别急着套公式，先判断：
+
+\begin{enumerate}
+  \item 谁是声源；
+  \item 谁是接收者；
+  \item 是靠近还是远离。
+\end{enumerate}
+
+驱逐舰探潜代表题中，反射波频率满足
+\[
+f_2 = f_0 \frac{v+v_s}{v-v_s},
+\]
+最终求得潜艇速度
+\[
+v_s \approx 9.4\,\mathrm{m/s}.
+\]
+
+\subsection{第7章高危易错点}
+
+\begin{itemize}
+  \item \warn{$\omega t-kx$ 和 $\omega t+kx$ 方向别写反}。
+  \item 驻波不是行波。
+  \item 波节与波腹公式别背反。
+  \item 多普勒效应先判断再列式。
+\end{itemize}
+
+\section{光学开头：相干、光强与双缝}
+
+\subsection{先抓四个最核心的问题}
+
+\begin{enumerate}
+  \item 普通光源为什么不相干？
+  \item 什么叫相干条件？
+  \item 光强为什么不是简单相加？
+  \item 双缝干涉条纹怎么求？
+\end{enumerate}
+
+\subsection{普通光源为什么不相干}
+
+因为普通光源里：
+
+\begin{itemize}
+  \item 不同原子发光彼此独立；
+  \item 同一个原子不同次发光也彼此独立。
+\end{itemize}
+
+因此相位关系不稳定，不能长期维持固定相差。激光则不同，它依靠受激辐射产生全同光子，所以相干性好。
+
+\subsection{相干条件}
+
+两列光要形成稳定干涉，必须同时满足：
+
+\begin{enumerate}
+  \item 频率相同；
+  \item 振动有平行分量；
+  \item 相差恒定。
+\end{enumerate}
+
+只要缺一项，就没有稳定干涉条纹。
+
+\subsection{光强公式}
+
+单色光平均光强满足
+\[
+I \propto \langle E^2\rangle_t.
+\]
+
+两列相干光叠加后
+\[
+I = I_1 + I_2 + 2\sqrt{I_1I_2}\cos\Delta\varphi.
+\]
+
+最后一项就是干涉项。如果不相干，平均后这一项为 0，于是只剩
+\[
+I = I_1 + I_2.
+\]
+
+\subsection{单色与准单色}
+
+\begin{itemize}
+  \item 理想单色光：只有一个频率。
+  \item 准单色光：频率范围很窄，但不是绝对单频。
+\end{itemize}
+
+考试中只要记住一句最有用的话：\key{谱线越窄，越接近单色，越有利于稳定干涉。}
+
+\subsection{双缝干涉必须会}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.0,>=Latex]
+\draw[thick] (0,-1.8) -- (0,1.8);
+\draw[thick] (0,0.5) -- (-0.25,0.5);
+\draw[thick] (0,-0.5) -- (-0.25,-0.5);
+\node[left] at (-0.25,0.5) {$S_1$};
+\node[left] at (-0.25,-0.5) {$S_2$};
+
+\draw[thick] (6,-2.1) -- (6,2.1);
+\node[right] at (6,1.7) {屏};
+\node[circle,fill=black,inner sep=1.2pt,label=right:$P(x)$] (p) at (6,0.8) {};
+\draw[dashed] (0,0) -- (6,0);
+\draw[blue!70!black] (0,0.5) -- (p);
+\draw[blue!70!black] (0,-0.5) -- (p);
+\node at (2.5,1.0) {$r_1$};
+\node at (2.7,0.1) {$r_2$};
+\draw[<->] (6,0) -- node[right] {$x$} (6,0.8);
+\draw[<->] (-0.7,-0.5) -- node[left] {$d$} (-0.7,0.5);
+\draw[<->] (0,-1.6) -- node[below] {$D$} (6,-1.6);
+\end{tikzpicture}
+\end{center}
+
+最该背的是下面几条：
+
+\begin{align*}
+\delta &\approx \frac{dx}{D}, \\
+\Delta\varphi &= \frac{2\pi\delta}{\lambda}, \\
+\delta_{\text{明}} &= k\lambda, \\
+\delta_{\text{暗}} &= \frac{(2k+1)\lambda}{2}, \\
+\Delta x &= \frac{\lambda D}{d}.
+\end{align*}
+
+\subsection{光学开头高危易错点}
+
+\begin{itemize}
+  \item \warn{相干不只是“频率接近”就够}。
+  \item 频率不同通常不会形成稳定干涉条纹。
+  \item 条纹间距公式里是 $D$ 在上、$d$ 在下。
+\end{itemize}
+
+\section{临考执行流程}
+
+\subsection{如果你还有一整晚}
+
+\begin{enumerate}
+  \item 第一轮先通读本文，把所有章节过一遍。
+  \item 第二轮只看公式和题型模板。
+  \item 第三轮只盯第10章、第11章和第9章。
+  \item 第四轮再把振动、波动和光学开头扫一遍。
+\end{enumerate}
+
+\subsection{如果只剩6小时}
+
+\begin{enumerate}
+  \item 先看第10章；
+  \item 再看第11章；
+  \item 再看第9章；
+  \item 最后看第6章和第7章；
+  \item 光学只保留相干条件、光强公式和双缝结论。
+\end{enumerate}
+
+\subsection{如果只剩3小时}
+
+只盯这几块：
+
+\begin{enumerate}
+  \item 第10章的第一定律、绝热过程、循环效率；
+  \item 第11章的熵变公式；
+  \item 第9章的理想气体、内能、范德瓦尔斯方程；
+  \item 第6章的振动表达式；
+  \item 第7章的波函数和驻波；
+  \item 光学的相干条件和双缝条纹间距。
+\end{enumerate}
+
+\section{终极速看页}
+
+\subsection*{热学最后必看}
+
+\[
+pV=nRT,\qquad
+Q=\Delta U + W,\qquad
+\Delta U=nC_V\Delta T,
+\]
+\[
+pV^\gamma=\text{常量},\qquad
+\Delta S=\int \frac{dQ_{\mathrm{rev}}}{T}.
+\]
+
+\subsection*{振动波动最后必看}
+
+\[
+x=A\cos(\omega t+\varphi),\qquad
+\omega=\frac{2\pi}{T},\qquad
+E=\frac12 kA^2,
+\]
+\[
+y=A\cos(\omega t\mp kx+\varphi),\qquad
+v=\lambda f,\qquad
+x_{\text{波节}}=n\frac{\lambda}{2}.
+\]
+
+\subsection*{光学最后必看}
+
+\[
+I = I_1 + I_2 + 2\sqrt{I_1I_2}\cos\Delta\varphi,\qquad
+\Delta x = \frac{\lambda D}{d}.
+\]
+
+还要能直接说出：\key{相干条件 = 频率相同、振动有平行分量、相差恒定。}
+
+\vfill
+
+\begin{center}
+\fbox{\parbox{0.9\textwidth}{
+\centering
+\textbf{最后一句：}你现在不需要追求“所有内容都看过”，你需要的是把\key{热学三章主公式}、\key{振动表达式}、\key{波函数与驻波}、\key{相干与双缝干涉入门}这四块抓住。\\[4pt]
+只要这四块稳住，你就已经从“没复习”进入“能拿分”的状态了。
+}}
+\end{center}
+
+\end{document}

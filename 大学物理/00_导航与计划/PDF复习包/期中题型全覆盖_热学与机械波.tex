@@ -1,0 +1,714 @@
+% !TEX program = xelatex
+\documentclass[11pt,a4paper]{ctexart}
+
+\usepackage[top=18mm,bottom=20mm,left=18mm,right=18mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+
+\setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+\setCJKsansfont{SimHei}
+\setCJKmonofont{FangSong}
+
+\usetikzlibrary{arrows.meta,calc,positioning,decorations.pathreplacing}
+
+\definecolor{theme}{RGB}{22,74,132}
+\definecolor{softblue}{RGB}{242,247,255}
+\definecolor{softgold}{RGB}{255,248,231}
+\definecolor{softgreen}{RGB}{238,249,242}
+\definecolor{softred}{RGB}{255,242,242}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=theme,
+  urlcolor=theme
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 期中题型全覆盖}
+\fancyhead[R]{\small 热学与机械波}
+\fancyfoot[C]{\thepage}
+
+\setlength{\parindent}{2em}
+\setlist[itemize]{leftmargin=1.8em,itemsep=2pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=2pt,topsep=3pt}
+\linespread{1.22}
+
+\newcommand{\key}[1]{\textcolor{theme}{\textbf{#1}}}
+\newcommand{\warn}[1]{\textcolor{red!70!black}{\textbf{#1}}}
+
+\tcbset{
+  enhanced,
+  boxrule=0.8pt,
+  arc=1.5mm,
+  left=1.5mm,
+  right=1.5mm,
+  top=1.2mm,
+  bottom=1.2mm
+}
+
+\newtcolorbox{introbox}[1]{
+  breakable,
+  colback=softblue,
+  colframe=theme!65!black,
+  title={#1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{typebox}[1]{
+  breakable,
+  colback=white,
+  colframe=theme!65!black,
+  colbacktitle=softblue,
+  coltitle=black,
+  title={#1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{warnbox}[1]{
+  breakable,
+  colback=softred,
+  colframe=red!65!black,
+  title={#1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{tipbox}[1]{
+  breakable,
+  colback=softgreen,
+  colframe=green!45!black,
+  title={#1},
+  fonttitle=\bfseries
+}
+
+\begin{document}
+
+\begin{center}
+{\zihao{1}\bfseries 大学物理期中题型全覆盖\\[4pt]}
+{\zihao{3}分子动理论 + 热力学第一定律 + 热力学第二定律 + 机械波\\[10pt]}
+{\large 目标不是背零碎知识点，而是一次性看清“老师能怎么出题”}
+\end{center}
+
+\vspace{4mm}
+
+\begin{introbox}{这份 PDF 怎么用}
+这份材料不是普通提纲，而是\key{题型册}。它把你期中前这几章最常见的出题方式压进一份 PDF 里，尽量做到：
+\begin{itemize}
+  \item \key{按题型而不是按课本目录}组织。你进考场首先面对的是题目长相，不是章节标题。
+  \item 每个题型都给\key{识别信号、代表题、解题入口、常见变形、易错点}。
+  \item 图像题、循环题、波形题都给了\key{示意图}，避免只靠文字想象。
+  \item 代表题是根据你现在这套课件、作业和习题套路重组出来的\key{标准模板题}，目的不是押中原题，而是把出题面覆盖全。
+\end{itemize}
+建议使用顺序：
+\begin{enumerate}
+  \item 先看第 1 节“题型总地图”，知道整张卷子可能从哪些角度出。
+  \item 再按\key{第 10 章 $\rightarrow$ 第 11 章 $\rightarrow$ 第 9 章 $\rightarrow$ 第 7 章}刷，因为热学主观题和计算题最集中。
+  \item 每看完一个题型，至少自己口头说出\key{第一步写什么式子}。能说出第一步，考场就不容易空白。
+\end{enumerate}
+\end{introbox}
+
+\section*{1. 题型总地图}
+
+\begin{longtable}{>{\centering\arraybackslash}p{0.9cm} >{\centering\arraybackslash}p{1.9cm} p{4.0cm} p{7.9cm}}
+\toprule
+编号 & 章节 & 题型名称 & 你至少要会的动作 \\
+\midrule
+\endhead
+1 & 分子动理 & 温度、压强、平均动能 & 在宏观量和微观量之间切换，能写 $p=\frac13 n_0m\overline{v^2}$、$\bar\varepsilon=\frac32kT$。\\
+2 & 分子动理 & 自由度、内能、热容量 & 识别单原子/双原子，自由度 $i$ 一写对，$U=\frac{i}{2}nRT$ 基本就稳了。\\
+3 & 分子动理 & 混合气体平衡温度 & 看见绝热容器、去掉隔板、两边混合，就先写总内能守恒。\\
+4 & 分子动理 & 速率分布函数 & 先归一化求常数，再算区间比例，再算平均速率。\\
+5 & 分子动理 & 范德瓦尔斯方程 & 理想气体与真实气体对比，分清体积修正和分子引力修正。\\
+6 & 分子动理 & 平均自由程与输运 & 平均自由程、碰撞频率、粘度、热导率的量纲和趋势会判。\\
+7 & 第一定律 & 已知路径求 $Q,W,\Delta U$ & 把“状态量”和“过程量”分清，先用一条已知路径定 $\Delta U$。\\
+8 & 第一定律 & 四大准静态过程比较 & 等温、等压、等容、绝热的功、热、内能关系必须秒判。\\
+9 & 第一定律 & 多方过程 $pV^n=C$ & 会从 $n=0,1,\gamma,\infty$ 识别特殊过程，会写功和热容表达式。\\
+10 & 第一定律 & 热容量与升温降温 & 题目把过程包进装置背景里，本质还是 $Q=\Delta U+W$。\\
+11 & 第一定律 & 绝热容器综合题 & 隔板、活塞、电热丝、压缩膨胀联立，最怕漏掉能量流向。\\
+12 & 第一定律 & 热机循环与效率 & 面积代表功，效率一定回到 $\eta=W/Q_{\rm in}$。\\
+13 & 第二定律 & 热过程方向判断 & 哪些过程自发、哪些不可能，靠第二定律表述秒筛。\\
+14 & 第二定律 & 可逆与不可逆 & 抓“有限温差传热、摩擦、自由膨胀、非准静态”等关键词。\\
+15 & 第二定律 & 卡诺定理与效率上限 & 看见高低温热库，先想 $\eta_{\rm C}=1-\frac{T_c}{T_h}$。\\
+16 & 第二定律 & 理想气体熵变 & 会选公式，会在可逆辅助路径上算 $\Delta S$。\\
+17 & 第二定律 & 热库与有限物体熵增 & 分别算物体和热库，再看总熵是不是大于零。\\
+18 & 第二定律 & 温熵图与循环 & 可逆过程中面积代表热量，闭合曲线包围面积对应净吸热。\\
+19 & 第二定律 & 统计意义与玻尔兹曼熵 & 选择题常考：宏观有序度下降，本质是微观状态数增大。\\
+20 & 机械波 & 由波函数读波速方向周期 & 从 $y=A\cos(\omega t\mp kx+\varphi)$ 直接读传播方向、$\lambda$、$T$、$v$。\\
+21 & 机械波 & 已知一点振动写整条波 & 先定 $\omega,k$，再把已知点坐标代入定初相。\\
+22 & 机械波 & 由波形图写波函数 & 先读振幅和波长，再结合传播方向判断相位。\\
+23 & 机械波 & 相位差、波峰位置、振动方向 & 波峰条件、同相反相条件、某点瞬时运动方向要会。\\
+24 & 机械波 & 波的能量与强度 & 机械波平均功率、声强或绳波功率公式要能套。\\
+25 & 机械波 & 反射与驻波 & 固定端半波损失、自由端无半波损失，节点腹点位置要背熟。\\
+26 & 机械波 & 多普勒效应 & 一靠近频率增大，一远离频率减小，分清声源动还是观察者动。\\
+\bottomrule
+\end{longtable}
+
+\begin{tipbox}{先看哪几类最划算}
+如果时间很紧，优先顺序是：
+\[
+\key{\text{第 7--12 号题型}} \;\rightarrow\; \key{\text{第 13--18 号题型}} \;\rightarrow\; \key{\text{第 1--6 号题型}} \;\rightarrow\; \key{\text{第 20--26 号题型}}
+\]
+原因很简单：期中热学计算题最容易连续出在第一定律和第二定律上，机械波更多是中等难度、图像和公式识别题。
+\end{tipbox}
+
+\section*{2. 分子动理论题型全覆盖}
+
+\begin{introbox}{本章先抓住的总公式}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{3.8cm}X}
+理想气体状态方程 & $pV=nRT=N kT$ \\[2pt]
+压强的微观表达 & $p=\frac13 n_0m\overline{v^2}$ \\[2pt]
+平均平动动能 & $\bar\varepsilon=\frac32 kT$ \\[2pt]
+内能 & $U=\dfrac{i}{2}nRT$ \\[2pt]
+摩尔热容量 & $C_{V,m}=\dfrac{i}{2}R,\quad C_{P,m}=C_{V,m}+R$ \\[2pt]
+范德瓦尔斯方程 & $\left(p+a\dfrac{n^2}{V^2}\right)(V-nb)=nRT$ \\[2pt]
+平均自由程 & $\lambda_{\rm mfp}=\dfrac{1}{\sqrt2\pi d^2 n_0}$ \\[2pt]
+输运关系常见近似 & $\eta\sim \dfrac13 \rho \bar v \lambda_{\rm mfp}$,\quad $\bar z\sim \bar v/\lambda_{\rm mfp}$
+\end{tabularx}
+\end{introbox}
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[->,thick] (0,0) -- (7.2,0) node[right] {$v$};
+\draw[->,thick] (0,0) -- (0,4.1) node[above] {$f(v)$};
+\draw[thick,blue!70!black] plot[smooth] coordinates {(0,0) (0.5,0.6) (1.0,1.5) (1.5,2.2) (2.0,2.5) (2.5,2.2) (3.0,1.7) (3.5,1.1) (4.0,0.7) (4.5,0.35) (5.0,0.15)};
+\draw[thick,green!50!black] plot[smooth] coordinates {(0,0) (0.6,0.3) (1.2,0.9) (1.8,1.5) (2.4,1.9) (3.0,1.95) (3.6,1.65) (4.2,1.15) (4.8,0.75) (5.4,0.38) (6.0,0.16)};
+\draw[thick,red!70!black] plot[smooth] coordinates {(0,0) (0.8,0.12) (1.6,0.45) (2.4,0.95) (3.2,1.38) (4.0,1.58) (4.8,1.46) (5.6,1.12) (6.2,0.7) (6.8,0.28)};
+\node[blue!70!black] at (2.2,3.1) {$T_1$};
+\node[green!50!black] at (3.2,2.4) {$T_2>T_1$};
+\node[red!70!black] at (5.2,1.9) {$T_3>T_2$};
+\draw[dashed] (2.0,0) -- (2.0,2.5);
+\draw[dashed] (3.0,0) -- (3.0,1.95);
+\draw[dashed] (4.0,0) -- (4.0,1.58);
+\node at (3.6,-0.5) {Maxwell 速率分布的图像题最爱考“升温后峰值右移、峰值降低、曲线变宽”};
+\end{tikzpicture}
+\end{center}
+
+\begin{typebox}{题型 1：温度、压强、平均动能之间的互相切换}
+\textbf{识别信号}：题干给出压强、分子数密度、方均根速率、平均动能中的任意两个，让你求第三个，或者出成选择填空。\\
+\textbf{代表题}：某理想气体分子数密度为 $n_0$，单个分子质量为 $m$，方均根速率为 $v_{\rm rms}$。求气体压强、平均平动动能和温度。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 先写 \(\overline{v^2}=v_{\rm rms}^2\)，再用 \(p=\frac13 n_0m\overline{v^2}\)。
+  \item 平均平动动能直接写 \(\bar\varepsilon=\frac12 m\overline{v^2}=\frac32kT\)。
+  \item 一旦把 \(T\) 求出，后面的状态方程、内能题都能串起来。
+\end{enumerate}
+\textbf{高频变形}：改成“$x$ 方向平均速度是多少”“$x$ 方向平均动能是多少”。\\
+\textbf{最容易错}：\warn{平均速度矢量为 0，但平均速率不为 0；$x$ 方向平均速度为 0，而 $x$ 方向平均动能不为 0。}
+\end{typebox}
+
+\begin{typebox}{题型 2：自由度、内能、热容量}
+\textbf{识别信号}：题干出现单原子、双原子、刚性分子、定容摩尔热容量、定压摩尔热容量。\\
+\textbf{代表题}：2 mol 双原子理想气体从 \(300\ \mathrm{K}\) 升到 \(450\ \mathrm{K}\)，求内能增量、\(C_{V,m}\)、\(C_{P,m}\)。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 常温下单原子通常 \(i=3\)，双原子通常 \(i=5\)。
+  \item 写 \(U=\frac{i}{2}nRT\)，所以 \(\Delta U=\frac{i}{2}nR\Delta T=nC_V\Delta T\)。
+  \item 写 \(C_{V,m}=\frac{i}{2}R\)，再加一个 \(R\) 得 \(C_{P,m}\)。
+\end{enumerate}
+\textbf{高频变形}：让你比较不同气体在同样升温下内能变化大小，或者比较 \(C_V,C_P,\gamma\)。\\
+\textbf{最容易错}：\warn{别把“分子自由度”直接写成“物质的量”；公式里的 \(i,n,R,T\) 各自代表不同物理量。}
+\end{typebox}
+
+\begin{typebox}{题型 3：混合气体平衡温度}
+\textbf{识别信号}：两个容器、同压同体积、去掉隔板、绝热、混合后求温度。\\
+\textbf{代表题}：等压等体积下，一侧是 He，\(T_1=250\ \mathrm{K}\)；另一侧是 \(O_2\)，\(T_2=310\ \mathrm{K}\)。混合后的平衡温度是多少。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 先用状态方程处理同压同体积条件，得到 \(n_1T_1=n_2T_2\)。
+  \item 再用绝热容器的总内能守恒：\(\sum \frac{i}{2}nRT\) 混合前后相等。
+  \item 不同气体的自由度不同，He 用 \(i=3\)，\(O_2\) 常温下用 \(i=5\)。
+\end{enumerate}
+\textbf{高频变形}：把“同压同体积”换成“已知质量”“已知摩尔数”或“已知初压不同”。\\
+\textbf{最容易错}：\warn{混合题守恒的是总内能，不是温度的简单平均。}
+\end{typebox}
+
+\begin{typebox}{题型 4：速率分布函数与图像题}
+\textbf{识别信号}：给出 \(f(v)\) 的分段函数、图像，求常数、某速度区间内粒子比例、平均速率。\\
+\textbf{代表题}：
+\[
+f(v)=
+\begin{cases}
+\dfrac{av}{v_0}, & 0\le v\le v_0,\\[4pt]
+a, & v_0\le v\le 2v_0,\\
+0, & v>2v_0.
+\end{cases}
+\]
+求 \(a\)、\(v<v_0\) 的粒子数比例和平均速率。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 第一步永远是归一化：\(\int_0^\infty f(v)\,dv=1\)。
+  \item 第二步算区间比例：\(N_{[a,b]}=N\int_a^b f(v)\,dv\)。
+  \item 第三步算平均速率：\(\bar v=\int_0^\infty vf(v)\,dv\)。
+\end{enumerate}
+\textbf{高频变形}：直接让你识别 Maxwell 图像随着温度升高的变化趋势。\\
+\textbf{最容易错}：\warn{别把 \(f(v)\) 当粒子数本身，它是概率密度；积分后才是比例。}
+\end{typebox}
+
+\begin{typebox}{题型 5：真实气体与范德瓦尔斯方程}
+\textbf{识别信号}：高压、低温、二氧化碳、真实气体、内压力、体积修正、参数 \(a,b\)。\\
+\textbf{代表题}：把 1.1 kg 的 \(CO_2\) 关在 \(20\ \mathrm{L}\) 容器里，\(13^\circ\mathrm{C}\) 时分别用理想气体方程和范德瓦尔斯方程估算压强，并比较差别。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 先把质量换成摩尔数 \(n=m/M\)。
+  \item 理想气体先算 \(p=nRT/V\)。
+  \item 范德瓦尔斯再算 \(p=\dfrac{nRT}{V-nb}-a\dfrac{n^2}{V^2}\)。
+\end{enumerate}
+\textbf{高频变形}：问“为何真实气体压强常比理想气体小”“内压力来自哪里”。\\
+\textbf{最容易错}：\warn{单位一定统一，尤其是 \(L\)、\(m^3\)、\(atm\)、\(Pa\) 之间转换。}
+\end{typebox}
+
+\begin{typebox}{题型 6：平均自由程、碰撞频率与输运性质}
+\textbf{识别信号}：平均自由程、分子直径、粘度、热导率、真空度变化。\\
+\textbf{代表题}：标准状态下已知 He 的粘度系数和平均速率，求平均自由程和原子直径。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 用 \(\eta\sim \frac13 \rho\bar v\lambda_{\rm mfp}\) 求平均自由程。
+  \item 再用 \(\lambda_{\rm mfp}=\dfrac{1}{\sqrt2\pi d^2 n_0}\) 反求碰撞直径 \(d\)。
+  \item 若问碰撞频率，数量级上写 \(\bar z\sim \bar v/\lambda_{\rm mfp}\)。
+\end{enumerate}
+\textbf{高频变形}：降低压强后平均自由程如何变、碰撞频率如何变、粘度为什么不一定按直觉变化。\\
+\textbf{最容易错}：\warn{平均自由程变长并不等于分子跑得更快，它主要反映碰撞稀疏程度。}
+\end{typebox}
+
+\section*{3. 热力学第一定律题型全覆盖}
+
+\begin{introbox}{这一章的总抓手}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{4.0cm}X}
+第一定律 & \(Q=\Delta U+W\)（本册统一约定 \(W\) 为系统对外做功）\\[2pt]
+状态量与过程量 & \(\Delta U\) 只看始末态，\(Q,W\) 与路径有关\\[2pt]
+理想气体内能变化 & \(\Delta U=nC_V\Delta T\)\\[2pt]
+功 & \(W=\int p\,dV\)\\[2pt]
+等温过程 & \(\Delta U=0,\;W=Q=nRT\ln\frac{V_2}{V_1}\)\\[2pt]
+等容过程 & \(W=0,\;Q=\Delta U=nC_V\Delta T\)\\[2pt]
+等压过程 & \(W=p(V_2-V_1)=nR\Delta T,\;Q=nC_P\Delta T\)\\[2pt]
+绝热过程 & \(Q=0,\;pV^\gamma=\text{常量},\;TV^{\gamma-1}=\text{常量}\)\\[2pt]
+循环效率 & \(\eta=W_{\rm cycle}/Q_{\rm in}=1-Q_{\rm out}/Q_{\rm in}\)
+\end{tabularx}
+\end{introbox}
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[->,thick] (0,0) -- (7,0) node[right] {$V$};
+\draw[->,thick] (0,0) -- (0,4.8) node[above] {$p$};
+\draw[thick,blue!70!black] (1.2,3.8) -- (1.2,1.3) node[midway,left] {等容};
+\draw[thick,green!45!black] (1.2,3.8) -- (5.4,3.8) node[midway,above] {等压};
+\draw[thick,red!70!black] plot[smooth] coordinates {(1.2,3.8) (1.7,2.9) (2.3,2.3) (3.0,1.8) (3.9,1.4) (5.0,1.1)} node[right] {等温};
+\draw[thick,purple!70!black] plot[smooth] coordinates {(1.2,3.8) (1.7,2.5) (2.3,1.8) (3.0,1.25) (3.8,0.9) (4.5,0.68)} node[right] {绝热};
+\fill (1.2,3.8) circle (1.3pt) node[above left] {$a$};
+\node at (3.6,-0.55) {一张 $p$-$V$ 图里最爱混着出：面积看功，路径看 $Q$，始末态看 $\Delta U$};
+\end{tikzpicture}
+\end{center}
+
+\begin{typebox}{题型 7：已知路径求 \(Q,W,\Delta U\)}
+\textbf{识别信号}：状态 \(a\to b\) 有两条不同路径，已知其中一条的吸热和做功，让你求另一条。\\
+\textbf{代表题}：系统由 \(a\) 沿 \(acb\) 到 \(b\) 时吸热 \(560\ \mathrm{J}\)，对外做功 \(356\ \mathrm{J}\)。若沿 \(adb\) 到 \(b\) 时对外做功 \(220\ \mathrm{J}\)，求吸热。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 先在已知路径上用 \(Q=\Delta U+W\) 算出 \(\Delta U\)。
+  \item 再把同一个 \(\Delta U\) 代入另一条路径。
+  \item 遇到回路题就记住：\(\Delta U_{\rm cycle}=0\)。
+\end{enumerate}
+\textbf{高频变形}：题目换成图像面积、或者“外界对气体做功”这种反向表述。\\
+\textbf{最容易错}：\warn{一定先统一功的正负号。这里默认“系统对外做功为正”。}
+\end{typebox}
+
+\begin{typebox}{题型 8：等温、等压、等容、绝热四大过程比较}
+\textbf{识别信号}：同一初态到不同终态，问哪条路径吸热更多、做功更多、温降更快。\\
+\textbf{代表题}：同样从 \((p_1,V_1,T_1)\) 膨胀到更大体积，比较等温、等压、绝热三种过程的末温、做功和吸热。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 先定性：绝热膨胀会降温，等温不变温，等压膨胀可能升温。
+  \item 再定量：等温用 \(W=nRT\ln(V_2/V_1)\)，等压用 \(W=p\Delta V\)，绝热用 \(Q=0\) 联立状态方程。
+  \item 如果是图像题，直接比曲线下面积。
+\end{enumerate}
+\textbf{高频变形}：让你选“同样体积变化时哪条曲线更陡”“哪条路径终点温度最低”。\\
+\textbf{最容易错}：\warn{绝热曲线在 $p$-$V$ 图上比等温曲线更陡。}
+\end{typebox}
+
+\begin{typebox}{题型 9：多方过程 \(pV^n=C\)}
+\textbf{识别信号}：题目直接给 \(pV^n=\text{常量}\)，或者问 \(n=0,1,\gamma,\infty\) 分别对应什么过程。\\
+\textbf{代表题}：理想气体做多方过程 \(pV^n=C\)。证明做功表达式，并写出该过程摩尔热容量 \(C_m\)。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 先记特殊值：\(n=0\) 等压，\(n=1\) 等温，\(n=\gamma\) 绝热，\(n\to\infty\) 等容。
+  \item 功写成 \(W=\int p\,dV=\dfrac{p_2V_2-p_1V_1}{1-n}\)。
+  \item 热容量写成 \(C_m=C_{V,m}+\dfrac{R}{1-n}=C_{V,m}\dfrac{\gamma-n}{1-n}\)。
+\end{enumerate}
+\textbf{高频变形}：把 \(n\) 换成具体数字，让你判断它更像升温还是降温、更像哪种已知过程。\\
+\textbf{最容易错}：\warn{别把多方指数 \(n\) 和物质的量 \(n\) 混掉，考试里经常专门卡这一点。}
+\end{typebox}
+
+\begin{typebox}{题型 10：热容量和升温降温题}
+\textbf{识别信号}：等容、等压、恒定外压、缓慢加热、冷却到某温度、求吸放热。\\
+\textbf{代表题}：1 mol 理想气体在等压下从 \(300\ \mathrm{K}\) 升到 \(450\ \mathrm{K}\)，求做功、内能变化、吸热。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 等压先写 \(W=nR\Delta T\)。
+  \item 内能变化写 \(\Delta U=nC_V\Delta T\)。
+  \item 最后 \(Q=\Delta U+W=nC_P\Delta T\)。
+\end{enumerate}
+\textbf{高频变形}：把“等压”藏在活塞受恒力、外界大气压不变之类的装置描述里。\\
+\textbf{最容易错}：\warn{看到“缓慢移动活塞”通常意味着准静态，可直接用过程方程；看到“突然拔掉隔板”则常常不是准静态。}
+\end{typebox}
+
+\begin{typebox}{题型 11：绝热容器、隔板、活塞综合题}
+\textbf{识别信号}：绝热容器、绝热隔板、活塞无摩擦、电热丝、左右两侧气体相互做功。\\
+\textbf{代表题}：总容积 \(40\ \mathrm{L}\) 的绝热容器中间有绝热隔板，两边各装 1 mol \(N_2\)。缓慢加热右侧直到左侧体积减半，求两侧末温和右侧吸热。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 先判断每一侧是什么过程。左侧通常是\key{可逆绝热压缩}。
+  \item 用机械平衡写两侧压强相等，用总体积不变写 \(V_A+V_B=\text{常量}\)。
+  \item 对整个系统用能量守恒，或者对单侧分别写第一定律再联立。
+\end{enumerate}
+\textbf{高频变形}：加热一侧、抽气一侧、隔板可移动但导热、容器整体绝热等。\\
+\textbf{最容易错}：\warn{右侧吸热不等于右侧内能增加，因为它还要对左侧做功。}
+\end{typebox}
+
+\begin{typebox}{题型 12：热机循环、效率、致冷系数}
+\textbf{识别信号}：循环、柴油机、卡诺、制冷机、空调、热泵、\(p\)-\(V\) 闭合曲线。\\
+\textbf{代表题}：空气标准柴油循环由两段绝热、一段等压、一段等容组成，证明效率公式并讨论压缩比增大时效率如何变化。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 循环题先写 \(\Delta U_{\rm cycle}=0\)，所以净功等于净吸热。
+  \item 面积给净功，吸热段和放热段分开算。
+  \item 效率永远回到 \(\eta=1-\dfrac{Q_{\rm out}}{Q_{\rm in}}\)；制冷机回到 \(\varepsilon=\dfrac{Q_c}{W}\)。
+\end{enumerate}
+\textbf{高频变形}：给循环图像不说名字，让你自己识别哪段是等压、等容、绝热。\\
+\textbf{最容易错}：\warn{“效率高”不代表吸热多，而是单位吸热里转成有用功的比例更高。}
+\end{typebox}
+
+\section*{4. 热力学第二定律题型全覆盖}
+
+\begin{introbox}{这一章真正要抓的不是定义，而是判断力}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{4.0cm}X}
+Kelvin 表述 & 不可能从单一热源吸热并全部变成有用功而不产生其他影响 \\[2pt]
+Clausius 表述 & 不可能使热量不产生其他影响地从低温物体自动传到高温物体 \\[2pt]
+可逆过程 & 任意微小改变外界条件都能反向进行且系统和外界都可完全复原 \\[2pt]
+熵定义 & \(dS=\dfrac{\delta Q_{\rm rev}}{T}\) \\[2pt]
+理想气体熵变 & \(\Delta S=nC_V\ln\dfrac{T_2}{T_1}+nR\ln\dfrac{V_2}{V_1}\) \\[2pt]
+另一种写法 & \(\Delta S=nC_P\ln\dfrac{T_2}{T_1}-nR\ln\dfrac{p_2}{p_1}\) \\[2pt]
+可逆绝热 & \(\Delta S=0\) \\[2pt]
+熵增原理 & 孤立系统总熵 \(\Delta S_{\rm tot}\ge 0\) \\[2pt]
+卡诺效率 & \(\eta_{\rm C}=1-\dfrac{T_c}{T_h}\) \\[2pt]
+玻尔兹曼熵公式 & \(S=k\ln\Omega\)
+\end{tabularx}
+\end{introbox}
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[->,thick] (0,0) -- (6.8,0) node[right] {$S$};
+\draw[->,thick] (0,0) -- (0,4.8) node[above] {$T$};
+\draw[thick,blue!70!black] (1.1,3.8) -- (4.8,3.8);
+\draw[thick,blue!70!black] (4.8,3.8) -- (4.8,1.5);
+\draw[thick,blue!70!black] (4.8,1.5) -- (1.9,1.5);
+\draw[thick,blue!70!black] (1.9,1.5) -- (1.9,3.8);
+\node[above] at (2.95,3.8) {$T_h$};
+\node[below] at (3.35,1.5) {$T_c$};
+\node[left] at (1.9,2.65) {绝热};
+\node[right] at (4.8,2.65) {绝热};
+\fill (1.9,3.8) circle (1.2pt) node[above left] {$a$};
+\fill (4.8,3.8) circle (1.2pt) node[above right] {$b$};
+\fill (4.8,1.5) circle (1.2pt) node[below right] {$c$};
+\fill (1.9,1.5) circle (1.2pt) node[below left] {$d$};
+\draw[decorate,decoration={brace,mirror,amplitude=4pt},thick] (1.9,0.9) -- (4.8,0.9) node[midway,below=5pt] {$Q_{\rm in}-Q_{\rm out}=W_{\rm cycle}$};
+\node at (3.4,-0.55) {在 $T$-$S$ 图上，可逆过程曲线下面积就是热量；闭合面积对应净吸热和净功};
+\end{tikzpicture}
+\end{center}
+
+\begin{typebox}{题型 13：用第二定律判断过程方向}
+\textbf{识别信号}：判断某机器是否可能、某热量传递是否会自发发生、某叙述是否违反热力学第二定律。\\
+\textbf{代表题}：某热机每循环只从 \(400\ \mathrm{K}\) 单热源吸热 \(500\ \mathrm{J}\)，全部转为功而不向外放热。问是否可能。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 单热源吸热全部变功，直接违反 Kelvin 表述。
+  \item 热从低温自动跑到高温而无外界代价，直接违反 Clausius 表述。
+  \item 这类题不用算太多，先用逻辑筛掉不可能过程。
+\end{enumerate}
+\textbf{高频变形}：包装成“效率 100\% 的热机”“不耗功的冰箱”“常温环境里永动装置”。\\
+\textbf{最容易错}：\warn{第二定律不是说热不能完全变成功，而是说不能只和单一热源交换热时完全变成功。}
+\end{typebox}
+
+\begin{typebox}{题型 14：可逆与不可逆的判断}
+\textbf{识别信号}：自由膨胀、有限温差传热、摩擦、节流、快速压缩、缓慢准静态。\\
+\textbf{代表题}：判断以下过程是否可逆：自由膨胀、两物体间有限温差传热、无摩擦准静态绝热压缩、带摩擦活塞运动。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 抓四个典型不可逆源：\key{有限温差、有限压差、摩擦、扩散/自由膨胀}。
+  \item 若题目强调“缓慢、准静态、无摩擦、温差无穷小”，往可逆上靠。
+  \item 可逆绝热过程的熵变为 0；不可逆绝热过程总熵一般增大。
+\end{enumerate}
+\textbf{高频变形}：让你在多条过程里选最接近可逆的一条。\\
+\textbf{最容易错}：\warn{“绝热”不等于“可逆”。自由膨胀就是绝热但不可逆。}
+\end{typebox}
+
+\begin{typebox}{题型 15：卡诺定理、效率上限、致冷系数}
+\textbf{识别信号}：高温热库 \(T_h\)、低温热库 \(T_c\)、效率极限、卡诺机、制冷机。\\
+\textbf{代表题}：热机在 \(600\ \mathrm{K}\) 和 \(300\ \mathrm{K}\) 两热库间工作，某同学算出效率 \(60\%\)。问是否可能。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 先写卡诺上限 \(\eta_{\rm C}=1-\dfrac{T_c}{T_h}=50\%\)。
+  \item 超过卡诺效率的热机都不可能。
+  \item 制冷机若给温度，就写 \(\varepsilon_{\rm C}=\dfrac{T_c}{T_h-T_c}\)。
+\end{enumerate}
+\textbf{高频变形}：同一对热库下比较两台热机、热泵和冰箱的优劣。\\
+\textbf{最容易错}：\warn{公式里的温度必须用绝对温度 K，不能直接代摄氏度。}
+\end{typebox}
+
+\begin{typebox}{题型 16：理想气体熵变计算}
+\textbf{识别信号}：求某一过程的熵变，尤其是等温、等压、等容、可逆绝热，或者让你从初态到终态任意找辅助可逆路径。\\
+\textbf{代表题}：1 mol 双原子理想气体由 \((T_1,V_1)\) 变到 \((T_2,V_2)\)，求熵变。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 熵是状态量，只看始末态，不必执着原路径是否可逆。
+  \item 最常用公式：\(\Delta S=nC_V\ln\dfrac{T_2}{T_1}+nR\ln\dfrac{V_2}{V_1}\)。
+  \item 如果给的是压强变化，就改用 \(C_P\) 版本。
+\end{enumerate}
+\textbf{高频变形}：画出对应的 \(p\)-\(V\) 或 \(T\)-\(S\) 图，并判断哪一段熵增哪一段熵减。\\
+\textbf{最容易错}：\warn{可逆绝热才有 \(\Delta S=0\)；不可逆绝热不能直接这么写。}
+\end{typebox}
+
+\begin{typebox}{题型 17：热库与有限物体之间的熵变}
+\textbf{识别信号}：1 kg 水放到热库上、金属块接触热源、分几步加热、比较总熵变大小。\\
+\textbf{代表题}：1 kg、\(0^\circ\mathrm{C}\) 的水放到 \(100^\circ\mathrm{C}\) 热库上。再比较“先放到 \(50^\circ\mathrm{C}\) 热库，再放到 \(100^\circ\mathrm{C}\) 热库”的总熵变。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 物体熵变：\(\Delta S_{\rm obj}=mc\ln(T_2/T_1)\)。
+  \item 热库熵变：\(\Delta S_{\rm res}=-Q/T_{\rm res}\)，其中 \(Q\) 是热库放出的热量。
+  \item 比较总熵：分步越细，总熵增越小，过程越接近可逆。
+\end{enumerate}
+\textbf{高频变形}：金属块冷却、多个热库级联、比较哪种方案更“经济”。\\
+\textbf{最容易错}：\warn{热库温度视为恒定，所以它的熵变不能用 \(mc\ln(T_2/T_1)\) 那套。}
+\end{typebox}
+
+\begin{typebox}{题型 18：温熵图、循环与热量面积}
+\textbf{识别信号}：让你在 \(T\)-\(S\) 图上画循环、算每段热量、判断净功。\\
+\textbf{代表题}：理想气体经历一段等温膨胀、一段等容降温、一段可逆绝热压缩回到初态。要求在 \(p\)-\(V\) 和 \(T\)-\(S\) 图上画出循环并计算总功。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 等温过程在 \(T\)-\(S\) 图上是水平线。
+  \item 可逆绝热过程在 \(T\)-\(S\) 图上是竖直线，因为 \(S\) 不变。
+  \item 可逆过程中曲线下面积就是热量，闭合面积就是净热量，也就是净功。
+\end{enumerate}
+\textbf{高频变形}：把 \(T\)-\(S\) 图和 \(p\)-\(V\) 图混着考，让你双图对应。\\
+\textbf{最容易错}：\warn{“面积等于热量”只对可逆过程成立。}
+\end{typebox}
+
+\begin{typebox}{题型 19：第二定律的统计意义与玻尔兹曼熵公式}
+\textbf{识别信号}：宏观状态数、无序度、概率、\(\Omega\)、玻尔兹曼公式、为什么熵增。\\
+\textbf{代表题}：解释为什么气体自由膨胀后更难自发回到原来一半体积；并用 \(S=k\ln\Omega\) 说明。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 自由膨胀后可实现的微观状态数 \(\Omega\) 大大增加。
+  \item 熵是对微观状态数的对数度量：\(S=k\ln\Omega\)。
+  \item 宏观上看到的“自发方向”，本质是更大概率方向。
+\end{enumerate}
+\textbf{高频变形}：选择题里常问“熵增意味着什么”，要会把它和\key{状态数增多}联系起来。\\
+\textbf{最容易错}：\warn{熵不是“混乱程度”这五个字就完了，考试更想听到“可实现微观状态数增加”。}
+\end{typebox}
+
+\section*{5. 机械波题型全覆盖}
+
+\begin{introbox}{机械波最值得背熟的公式}
+\begin{tabularx}{\textwidth}{>{\bfseries}p{4.0cm}X}
+沿 \(+x\) 传播的简谐波 & \(y=A\cos(\omega t-kx+\varphi)\) \\[2pt]
+沿 \(-x\) 传播的简谐波 & \(y=A\cos(\omega t+kx+\varphi)\) \\[2pt]
+角频率与波数 & \(\omega=2\pi f=\dfrac{2\pi}{T},\quad k=\dfrac{2\pi}{\lambda}\) \\[2pt]
+波速 & \(v=\dfrac{\omega}{k}=\lambda f\) \\[2pt]
+同一时刻两点相位差 & \(\Delta\phi=k\Delta x=\dfrac{2\pi\Delta x}{\lambda}\) \\[2pt]
+介质质点速度 & \(u_y=\dfrac{\partial y}{\partial t}\) \\[2pt]
+波峰条件 & 相位 \(=2m\pi\)（余弦型） \\[2pt]
+驻波常见形式 & \(y=2A\sin kx \cos\omega t\) 或 \(y=2A\cos kx \sin\omega t\) \\[2pt]
+节点与腹点 & 节点间距 \(\lambda/2\)，相邻节腹间距 \(\lambda/4\) \\[2pt]
+绳波平均功率 & \(\bar P=\dfrac12\mu\omega^2A^2v\) \\[2pt]
+声强常见公式 & \(\bar I=\dfrac12\rho v\omega^2 s_m^2\) \\[2pt]
+多普勒效应 & \(f'=f\dfrac{v\pm v_o}{v\mp v_s}\)
+\end{tabularx}
+\end{introbox}
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=0.9cm]
+\draw[->,thick] (0,0) -- (8,0) node[right] {$x$};
+\draw[->,thick] (0,-2.2) -- (0,2.3) node[above] {$y$};
+\draw[thick,blue!70!black,smooth] plot[domain=0:7.2,samples=120] (\x,{1.4*sin(360*\x/2.4)});
+\draw[<->,thick] (1.2,-1.8) -- (3.6,-1.8);
+\node at (2.4,-2.15) {$\lambda$};
+\draw[->,very thick,red!70!black] (5.9,1.8) -- (7.1,1.8);
+\node[red!70!black] at (6.5,2.15) {传播方向};
+\node at (3.7,-2.75) {图像题先读振幅和波长，再用传播方向决定是 \( \omega t-kx \) 还是 \( \omega t+kx \)};
+\end{tikzpicture}
+\end{center}
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=0.9cm]
+\draw[->,thick] (0,0) -- (8,0) node[right] {$x$};
+\draw[thick,green!50!black,smooth] plot[domain=0:7.2,samples=120] (\x,{1.1*sin(180*\x/2.4)});
+\draw[thick,green!50!black,smooth] plot[domain=0:7.2,samples=120] (\x,{-1.1*sin(180*\x/2.4)});
+\foreach \x in {0,2.4,4.8,7.2} \fill (\x,0) circle (1.3pt);
+\node at (1.2,1.55) {腹};
+\node at (3.6,1.55) {腹};
+\node at (6.0,1.55) {腹};
+\node at (0,-0.4) {节};
+\node at (2.4,-0.4) {节};
+\node at (4.8,-0.4) {节};
+\node at (7.2,-0.4) {节};
+\node at (3.8,-2.15) {驻波题要死记：节点不动，腹点振幅最大，相邻节点间距为 \( \lambda/2 \)};
+\end{tikzpicture}
+\end{center}
+
+\begin{typebox}{题型 20：从波函数直接读传播方向、波长、频率、波速}
+\textbf{识别信号}：题目已经给出 \(y=A\cos(\omega t\mp kx+\varphi)\)，让你判断波向哪边走，或求 \(\lambda,T,v\)。\\
+\textbf{代表题}：已知 \(y=A\cos\pi(4t+2x)\)。求传播方向、波速、周期、波长以及某时刻波峰位置。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 看相位结构：\(\omega t-kx\) 沿 \(+x\) 传播，\(\omega t+kx\) 沿 \(-x\) 传播。
+  \item 读出 \(\omega,k\) 后，直接算 \(T=2\pi/\omega\)、\(\lambda=2\pi/k\)、\(v=\omega/k\)。
+  \item 波峰用相位条件解方程，别硬靠画图猜。
+\end{enumerate}
+\textbf{高频变形}：把余弦换成正弦，本质完全一样，只是初相不同。\\
+\textbf{最容易错}：\warn{传播方向看的是“相位保持不变时 \(x\) 随 \(t\) 怎么变”，不是看式子里加号减号的直觉。}
+\end{typebox}
+
+\begin{typebox}{题型 21：已知某一点振动方程，写整条波函数}
+\textbf{识别信号}：给出 \(x=x_0\) 处的振动方程和波速，要求写 \(y(x,t)\)。\\
+\textbf{代表题}：波沿弦传播，速度 \(0.8\ \mathrm{m/s}\)。已知 \(x=0.1\ \mathrm{m}\) 处振动为 \(y=0.05\sin(1.0-4.0t)\)，求波函数。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 从给定点的振动方程读出振幅 \(A\) 和角频率 \(\omega\)。
+  \item 再用 \(k=\omega/v\)。
+  \item 把 \(x=x_0\) 代入通式 \(y=A\sin(\omega t-kx+\varphi)\) 或 \(A\sin(\omega t+kx+\varphi)\)，解出初相。
+\end{enumerate}
+\textbf{高频变形}：不直接告诉传播方向，而是通过“某点此刻向上运动”让你自己判断。\\
+\textbf{最容易错}：\warn{先判传播方向再定相位，不然初相常常会差一个符号。}
+\end{typebox}
+
+\begin{typebox}{题型 22：由波形图或某时刻快照写波函数}
+\textbf{识别信号}：给出 \(t=0\) 时的波形图，或给出几个特征点，让你写出波函数。\\
+\textbf{代表题}：已知某平面简谐波在 \(t=0\) 时的波形图，传播方向沿 \(+x\)，从图上读得 \(A=0.04\ \mathrm{m}\)、\(\lambda=0.4\ \mathrm{m}\)、\(v=0.08\ \mathrm{m/s}\)。求波函数并画出 \(t=T/8\) 时波形。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 先从图上读 \(A,\lambda\)，再算 \(k,\omega,T\)。
+  \item 通式先写对，再用 \(t=0\) 图像条件求初相。
+  \item 下一时刻的波形可以看成整条曲线沿传播方向平移 \(vt\)。
+\end{enumerate}
+\textbf{高频变形}：考“原点处此刻速度方向”来反推相位。\\
+\textbf{最容易错}：\warn{波形平移的是整条曲线，不是每个点都沿着自己的瞬时速度方向平移。}
+\end{typebox}
+
+\begin{typebox}{题型 23：相位差、同相反相、波峰位置、振动方向}
+\textbf{识别信号}：问两点是否同相，求某时刻最近波峰位置，问某点在图像上是向上还是向下运动。\\
+\textbf{代表题}：已知波函数 \(y=A\cos(\omega t-kx+\varphi)\)，求 \(t=4.2\ \mathrm{s}\) 时各波峰坐标，并判断距原点最近的波峰何时经过原点。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 波峰条件是相位 \(=2m\pi\)；波谷条件是相位 \(=(2m+1)\pi\)。
+  \item 同一时刻两点相位差 \(\Delta\phi=k\Delta x\)。
+  \item 某点向上还是向下，求 \(\partial y/\partial t\) 的符号最稳。
+\end{enumerate}
+\textbf{高频变形}：把“同相”换成“振动状态完全相同”“振动方向相反但位移相等”。\\
+\textbf{最容易错}：\warn{相位相同不代表坐标相同，题目若跨越多个波长，要先化到 \(2\pi\) 周期里。}
+\end{typebox}
+
+\begin{typebox}{题型 24：波的能量、强度和功率}
+\textbf{识别信号}：钢轨中的声波、绳中的横波、声强、振幅、功率。\\
+\textbf{代表题}：钢轨中声波传播速度已知，给出振幅、频率、钢的密度和截面积，求声强和通过钢轨传递的功率。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 先分清是\key{弦上的横波}还是\key{介质中的纵波}，公式不同。
+  \item 对绳波常用 \(\bar P=\frac12\mu\omega^2A^2v\)。
+  \item 对声波常用 \(\bar I=\frac12\rho v\omega^2 s_m^2\)，再乘面积得功率。
+\end{enumerate}
+\textbf{高频变形}：比较振幅翻倍、频率翻倍时功率如何变化。\\
+\textbf{最容易错}：\warn{功率常和振幅平方、频率平方成正比，不是线性正比。}
+\end{typebox}
+
+\begin{typebox}{题型 25：反射、驻波、节点腹点}
+\textbf{识别信号}：固定端反射、自由端反射、两列波叠加、驻波方程、基频。\\
+\textbf{代表题}：一列简谐波射向固定端，反射面在 \(x=3\lambda/4\) 处。求反射波表达式、驻波表达式和节点位置。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 固定端反射有\key{半波损失}，自由端没有。
+  \item 叠加后整理成 \(2A\sin kx\cos\omega t\) 或 \(2A\cos kx\sin\omega t\)。
+  \item 节点让前面的空间因子为 0，腹点让它取最大值。
+\end{enumerate}
+\textbf{高频变形}：给弦长 \(L\) 问允许的驻波波长、频率、基频、谐波序号。\\
+\textbf{最容易错}：\warn{节点位置只由空间因子决定，不随时间改变。}
+\end{typebox}
+
+\begin{typebox}{题型 26：多普勒效应}
+\textbf{识别信号}：声源运动、观察者运动、靠近或远离、听到频率变化。\\
+\textbf{代表题}：频率为 \(f\) 的警笛声源以速度 \(v_s\) 向静止观察者靠近，介质中的声速为 \(v\)。求观察者听到的频率。再讨论若观察者也运动时怎么办。\\
+\textbf{解题入口}：
+\begin{enumerate}
+  \item 通用记法：\(f'=f\dfrac{v\pm v_o}{v\mp v_s}\)。
+  \item \key{靠近}使频率增大，\key{远离}使频率减小。
+  \item 分母看声源，分子看观察者，这是最稳的记法。
+\end{enumerate}
+\textbf{高频变形}：列车鸣笛、回声测速、两者同时运动。\\
+\textbf{最容易错}：\warn{别把“靠近/远离”的符号同时加错；先用物理直觉判断结果应该变大还是变小，再回头验符号。}
+\end{typebox}
+
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[->,thick] (0,0) -- (9.2,0);
+\draw[fill=theme!20,draw=theme!80!black,thick] (4,0) circle (0.22);
+\draw[->,very thick,theme!80!black] (4.3,0.35) -- (5.1,0.35);
+\node[above] at (4.55,0.35) {声源};
+\foreach \r in {0.7,1.3,1.9}{
+  \draw[red!70!black] (4,0) ++(\r,0) arc[start angle=0,end angle=180,x radius=\r,y radius={0.42*\r}];
+}
+\foreach \r in {1.0,2.0,3.0}{
+  \draw[blue!60!black] (4,0) ++(-\r,0) arc[start angle=180,end angle=360,x radius=\r,y radius={0.42*\r}];
+}
+\node[red!70!black] at (6.8,1.25) {前方波前更密};
+\node[blue!60!black] at (1.6,-1.0) {后方波前更疏};
+\node at (4.5,-1.8) {多普勒图像题的核心直觉：前压后疏，所以前方频率高、后方频率低};
+\end{tikzpicture}
+\end{center}
+
+\section*{6. 临考速用：看到题目先怎么分类}
+
+\begin{tipbox}{十秒识别法}
+\begin{enumerate}
+  \item 看到\key{绝热容器、隔板、活塞、电热丝}，优先联想到第 11 号题型。
+  \item 看到\key{热库、可逆、熵、卡诺、效率上限}，优先联想到第 13--19 号题型。
+  \item 看到\key{分子数密度、平均动能、自由度、分布函数}，优先联想到第 1--6 号题型。
+  \item 看到\key{波函数、波形图、固定端、驻波、警笛}，优先联想到第 20--26 号题型。
+\end{enumerate}
+\end{tipbox}
+
+\begin{warnbox}{考前最容易丢分的 12 个坑}
+\begin{enumerate}
+  \item 把“外界对系统做功”错当成“系统对外做功”。
+  \item 把 \(\Delta U\) 当成路径量。
+  \item 绝热过程误以为一定可逆。
+  \item 直接用摄氏度代卡诺效率公式。
+  \item 熵变不会拆成“系统 + 热库”分别计算。
+  \item 混合气体题把末温写成简单平均。
+  \item 速率分布题忘记先做归一化。
+  \item 范德瓦尔斯方程单位没统一。
+  \item 波形图题先入为主写错传播方向。
+  \item 驻波题把节点和腹点位置写反。
+  \item 多普勒公式分子分母对象混淆。
+  \item 图像题只靠感觉不列相位方程。
+\end{enumerate}
+\end{warnbox}
+
+\begin{introbox}{如果只剩最后 3 小时}
+\begin{enumerate}
+  \item 第 1 小时：只看第 7--19 号题型，把热学主干刷透。
+  \item 第 2 小时：看第 1--6 号和第 20--26 号题型，补分子动理论和机械波。
+  \item 最后 1 小时：只看本页前面的“十秒识别法”和“12 个坑”，然后把每类题型的第一步口头复述一遍。
+\end{enumerate}
+如果你能做到下面这件事，考试就已经很有把握了：\key{任意抽一道题，你都能在 10 秒内说出它属于哪一类，并写出第一条公式。}
+\end{introbox}
+
+\end{document}

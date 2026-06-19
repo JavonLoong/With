@@ -1,0 +1,17 @@
+{
+  "all_items": 591,
+  "non_past_items": 546,
+  "effective_raw_items": 528,
+  "effective_unique_items": 519,
+  "excluded_from_effective": 27,
+  "v16_six_page_weighted": 72.7,
+  "v68_six_page_weighted": 76.6,
+  "v68_with_textbook_weighted": 79.2,
+  "v79_six_page_weighted": 77.2,
+  "v79_with_textbook_weighted": 79.7,
+  "v16_six_page_simple": 72.7,
+  "v68_six_page_simple": 76.6,
+  "v68_with_textbook_simple": 79.2,
+  "v79_six_page_simple": 77.2,
+  "v79_with_textbook_simple": 79.7
+}

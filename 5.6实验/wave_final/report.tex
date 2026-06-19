@@ -1,0 +1,243 @@
+\documentclass[UTF8,a4paper,11pt]{ctexart}
+
+\usepackage[margin=2.35cm,headheight=14pt]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{amsmath,amssymb}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+\graphicspath{{assets/}}
+\definecolor{TsinghuaPurple}{HTML}{6A1B78}
+\definecolor{SoftPurple}{HTML}{F4EEF7}
+\definecolor{TextGray}{HTML}{333333}
+\hypersetup{colorlinks=true, linkcolor=TsinghuaPurple, urlcolor=TsinghuaPurple}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.15em}
+\setlist[itemize]{leftmargin=2.2em,itemsep=0.2em,topsep=0.2em}
+\captionsetup{font=small,labelfont=bf,labelsep=quad}
+
+\titleformat{\section}
+  {\Large\bfseries\color{TsinghuaPurple}}
+  {\thesection}{0.8em}{}
+\titleformat{\subsection}
+  {\normalsize\bfseries\color{TextGray}}
+  {\thesubsection}{0.8em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{水波波长与表观波速的水深效应探究}
+\rhead{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\newcommand{\term}[1]{\textbf{#1}}
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \vspace*{0.8cm}
+  \includegraphics[width=0.28\textwidth]{tsinghua_logo.png}\par
+  \vspace{1.4cm}
+  {\fontsize{24}{30}\selectfont\bfseries 表面重力波波长与表观波速的水深效应探究\par}
+  \vspace{0.45cm}
+  {\Large 探究性实验结课报告\par}
+  \vspace{1.0cm}
+  \colorbox{SoftPurple}{%
+    \begin{minipage}{0.84\textwidth}
+      \vspace{0.6cm}
+      \centering
+      \begin{tabular}{>{\bfseries}r l}
+        小组成员： & 丘洪源（2024012773）\quad 白子恒（2024012776）\\
+                  & 秦健淞（2024012784）\quad 纪文龙（2024012842）\\
+                  & 杨天皓（2024012878）\\[0.45em]
+        单\quad 位： & 行健书院\\
+        完成时间： & 2026 年 5 月
+      \end{tabular}
+      \vspace{0.6cm}
+    \end{minipage}
+  }
+  \vfill
+  {\small 本报告用于课程探究性实验总结，重点呈现实验过程、数据处理、结果判断与误差分析。}
+\end{titlepage}
+
+\begin{abstract}
+本实验围绕“水深是否会明显影响水波传播速度”这一问题，搭建透明水槽造波平台，在 $h=2.2$--$20.0\,\mathrm{cm}$ 的水深范围内拍摄水面波动视频，并通过图像处理提取水面位移场、推荐平均波长 $\lambda_{\mathrm{rec}}$ 与表观波峰速度 $|c_{\mathrm{app}}|$。实验结果显示，除最低水深组外，推荐平均波长主要集中在 $8\,\mathrm{cm}$ 附近，随水深变化并不明显；表观波速的离散程度明显大于波长，且受入射波、反射波叠加及波峰追踪稳定性影响。进一步用线性水波理论判别发现，本实验多数工况已接近深水近似区，水深修正本身较弱，因此不能把实验现象简单表述为“波速随水深单调变化”。本报告将实测速度明确界定为表观波速，而非严格理论相速度，并据此给出数据解释、实验局限与改进方案。
+
+\noindent\textbf{关键词：} 表面重力波；水深；推荐平均波长；表观波速；视频分析；色散关系
+\end{abstract}
+
+\section{实验问题与研究思路}
+
+水波在有限水深中的传播是流体力学中的经典问题。理论上，水波传播速度与波长、水深、重力加速度以及表面张力有关；但在实际水槽实验中，测量到的并不一定是理想单一行进波的相速度。水槽有限长度会产生反射，推板造波也可能带来非正弦成分，视频中追踪到的波峰轨迹常常是入射波与反射波叠加后的结果。
+
+因此，本实验并不把目标简单写成“验证某一条公式”。更合理的问题是：
+
+\begin{itemize}
+  \item 在不同水深下，视频中能否稳定提取水面波长和波峰传播轨迹？
+  \item 推荐平均波长 $\lambda_{\mathrm{rec}}$ 是否随水深出现明显变化？
+  \item 表观波速 $|c_{\mathrm{app}}|$ 与线性水波理论给出的相速度、群速度是否处于同一量级？
+  \item 如果实验结果与理论相速度不完全一致，主要原因来自理论适用范围，还是来自测量方法和波场叠加？
+\end{itemize}
+
+这样的表述更符合本实验的实际条件，也避免把“可观测的表观速度”误说成“严格相速度”。
+
+\section{理论基础}
+
+在线性微幅波理论中，有限水深重力--毛细波满足色散关系
+\begin{equation}
+  \omega^2=\left(gk+\frac{\sigma}{\rho}k^3\right)\tanh(kh),
+\end{equation}
+其中 $h$ 为静水深，$k=2\pi/\lambda$ 为波数，$g$ 为重力加速度，$\sigma$ 为表面张力系数，$\rho$ 为水的密度。若忽略表面张力，上式退化为常见的 Airy 线性重力波关系。
+
+理论相速度为
+\begin{equation}
+  c_p=\frac{\omega}{k}.
+\end{equation}
+对于理想的单一行进简谐波，也可由波长和主频率写成
+\begin{equation}
+  c_p=\lambda f.
+\end{equation}
+但本实验视频中存在反射波与局部波峰断裂，直接追踪到的波峰速度记为 $c_{\mathrm{app}}$，它是表观传播速度，不应直接等同于 $c_p$。这一区分是后续数据解释的关键。
+
+水波理论通常用相对水深划分近似范围：$h/\lambda<1/20$ 为浅水长波，$1/20<h/\lambda<1/2$ 为过渡水深，$h/\lambda>1/2$ 为深水近似。等价地，也可用 $kh$ 判断。若实验点大多已经接近深水区，水深对速度的影响本来就会变弱。
+
+\section{实验装置与数据采集}
+
+实验装置由透明亚克力水槽、活塞式电机、3D 打印推板、LED 背光和侧向摄像设备组成。推板由电机周期性驱动，在水槽一端激发水面波列；摄像机从侧面记录水面轮廓，LED 光源用于增强水面与空气交界处的明暗对比。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.82\textwidth]{fig_setup.png}
+  \caption{水槽侧向成像与液面识别示意。红线/标记表示图像处理中识别到的自由液面位置。}
+\end{figure}
+
+实验设置了 14 组水深：
+\[
+2.2,\ 2.6,\ 3.2,\ 3.5,\ 3.7,\ 4.4,\ 5.0,\ 6.1,\ 7.0,\ 8.5,\ 10.0,\ 12.0,\ 14.0,\ 20.0\ \mathrm{cm}.
+\]
+每一组水深下，待水波进入相对稳定状态后开始录制视频。后续分析以视频帧为基础，而不是只读取若干静态照片。需要说明的是，电机标称频率不能直接替代水面主频率；若要严格计算理论相速度，仍需从视频信号中同步提取主频。
+
+\section{视频处理与测量定义}
+
+每帧图像先提取绿色通道 $G_i(x,y)$，在自由液面区域内逐列扫描，由亮度突变和竖直梯度确定液面位置 $y=s_i(x)$。以初始平静阶段的中位液面 $s_0(x)$ 为基准，得到瞬时水面位移
+\begin{equation}
+  \eta(x,t_i)=-\frac{s_i(x)-s_0(x)}{k_0},
+\end{equation}
+其中 $k_0$ 为像素到实际长度的标定系数。为了区分传播方向，对 $\eta(x,t)$ 作二维 Fourier 分析，按波数--频率平面中的符号将入射分量和反射分量分开。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.86\textwidth]{fig_xt_field.png}
+  \caption{典型水深 $h=12\,\mathrm{cm}$ 下的 $x$--$t$ 水面位移场与传播方向分离。连续斜纹说明测量对象是连续波列，而不是孤立帧读数。}
+\end{figure}
+
+波长的提取采用逐帧波峰间距统计。对每一帧去除大尺度趋势后，记局部波峰位置为 $x_{i,1},x_{i,2},\ldots,x_{i,n_i}$，相邻峰距换算为实际长度：
+\begin{equation}
+  \lambda_{i,j}=\frac{x_{i,j+1}-x_{i,j}}{k_0},\qquad
+  \bar{\lambda}_i=\frac{1}{m_i}\sum_{j=1}^{m_i}\lambda_{i,j}.
+\end{equation}
+为降低误检波峰和异常帧的影响，本实验取稳定阶段逐帧平均波长的中位数作为推荐平均波长：
+\begin{equation}
+  \lambda_{\mathrm{rec}}=\mathrm{median}(\bar{\lambda}_1,\bar{\lambda}_2,\ldots,\bar{\lambda}_N).
+\end{equation}
+
+表观波速由 $x$--$t$ 图中的波峰轨迹 $X_\ell(t)$ 得到：
+\begin{equation}
+  c_{\mathrm{app},i,\ell}=\frac{X_\ell(t_{i+1})-X_\ell(t_i)}{t_{i+1}-t_i}.
+\end{equation}
+统计时取速度大小 $|c_{\mathrm{app}}|$ 的中位数和四分位范围。这样得到的是视频追踪意义下的表观速度，而不是理论公式中的严格相速度。
+
+\section{实验结果}
+
+\subsection{推荐平均波长与表观波速}
+
+\begin{table}[H]
+  \centering
+  \caption{不同水深下的推荐平均波长与中位表观波速}
+  \small
+  \begin{tabular}{cccccccc}
+    \toprule
+    $h$/cm & 2.2 & 2.6 & 3.2 & 3.5 & 3.7 & 4.4 & 5.0\\
+    \midrule
+    $\lambda_{\mathrm{rec}}$/cm & 6.352 & 8.259 & 7.512 & 9.554 & 9.213 & 7.528 & 8.220\\
+    $|c_{\mathrm{app}}|$/cm\,s$^{-1}$ & 5.7 & 6.3 & 30.7 & 28.3 & 29.2 & 26.5 & 27.4\\
+    \midrule
+    $h$/cm & 6.1 & 7.0 & 8.5 & 10.0 & 12.0 & 14.0 & 20.0\\
+    \midrule
+    $\lambda_{\mathrm{rec}}$/cm & 7.717 & 8.728 & 7.885 & 8.050 & 7.953 & 8.000 & 8.000\\
+    $|c_{\mathrm{app}}|$/cm\,s$^{-1}$ & 30.2 & 27.4 & 24.7 & 20.8 & 24.6 & 28.3 & 18.3\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.84\textwidth]{fig_lambda_capp.png}
+  \caption{水深对推荐平均波长和中位表观波速的影响。除最低水深组外，波长主要集中在 $8\,\mathrm{cm}$ 附近；表观波速离散更大。}
+\end{figure}
+
+从结果看，推荐平均波长并未随水深呈现明显单调变化。若不计最低水深组，数据主要围绕 $8\,\mathrm{cm}$ 波动。相比之下，表观波速的组间差异更大，且误差条较长，说明它更容易受到波场叠加和波峰追踪质量的影响。
+
+\subsection{与线性水波理论的对照}
+
+将实测 $\lambda_{\mathrm{rec}}$ 代入有限水深重力--毛细波色散关系后，理论相速度约为 $32$--$39\,\mathrm{cm\,s^{-1}}$，群速度约为 $19$--$22\,\mathrm{cm\,s^{-1}}$。实验中 $h=3.2$--$14.0\,\mathrm{cm}$ 的部分表观波速与理论速度处于同一量级，但最低水深组明显偏低。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.86\textwidth]{fig_theory_compare.png}
+  \caption{实测推荐波长、表观波速与有限水深线性水波理论的对比。实测速度更接近“波峰追踪结果”，不宜直接解释为理论相速度。}
+\end{figure}
+
+进一步按 $kh$ 判断，本实验 $\lambda_{\mathrm{rec}}$ 主要集中在 $8\,\mathrm{cm}$ 附近，对应 $kh\approx1.98$--$15.71$。这意味着实验没有真正覆盖浅水长波区，多数组已经进入或接近深水近似区。换言之，本实验中“水深影响不明显”不是失败，而是数据范围本身给出的合理结果。
+
+\section{讨论：为什么不能把结果说成严格相速度验证}
+
+典型水深 $h=12\,\mathrm{cm}$ 下，波峰在 $x$--$t$ 图中可以形成多条可追踪轨迹，但轨迹并不完全平行，局部还会出现断裂、重接和斜率变化。该组数据的中位表观波速为 $24.6\,\mathrm{cm\,s^{-1}}$，四分位区间为 $7.6$--$42.5\,\mathrm{cm\,s^{-1}}$，离散范围较宽。
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.84\textwidth]{fig_speed_diagnosis.png}
+  \caption{典型水深 $h=12\,\mathrm{cm}$ 下的波峰轨迹、逐段表观波速和速度分布。较宽的四分位范围提示表观速度受波场叠加影响明显。}
+\end{figure}
+
+造成这一现象的原因主要有三点：
+
+\begin{itemize}
+  \item \term{反射波影响。} 水槽长度有限，末端反射会与入射波叠加，使波峰位置不再只代表单一行进波。
+  \item \term{主频率未独立提取。} 理论相速度应使用 $c_p=\lambda f$ 或色散关系计算，单独追踪波峰轨迹不足以严格验证相速度。
+  \item \term{低水深边界条件复杂。} 在 $h=2.2$ 和 $2.6\,\mathrm{cm}$ 时，推板运动、底部边界、黏性耗散和液面识别误差都可能被放大，导致结果偏低。
+\end{itemize}
+
+因此，本实验最有价值的结论不是“证明波速随水深单调变化”，而是通过视频分析说明：在本实验波长约 $8\,\mathrm{cm}$ 的条件下，多数水深已接近深水波范围；推荐平均波长较稳定，而表观波速受非理想波场影响更明显。
+
+\section{结论与改进}
+
+本次探究实验完成了从水槽造波、侧向视频记录、液面识别到波长和表观波速统计的完整流程。主要结论如下：
+
+\begin{enumerate}[leftmargin=2.2em,itemsep=0.25em]
+  \item 视频重建得到的 $x$--$t$ 位移场能够呈现连续传播波列，说明后续波长统计具有物理基础。
+  \item 除最低水深组外，推荐平均波长主要集中在 $8\,\mathrm{cm}$ 附近，没有表现出明显的水深单调关系。
+  \item 按 $kh$ 判别，本实验多数工况已接近深水近似区，水深修正本身较弱，因此不能用浅水公式 $\sqrt{gh}$ 直接解释。
+  \item 表观波速的离散程度较大，受入射/反射叠加和波峰追踪稳定性影响，不能直接等同于线性理论相速度。
+\end{enumerate}
+
+若要进一步提高实验说服力，建议在后续改进中加入消波装置，减小反射波；同步提取水面主频率 $f$，用 $c=\lambda f$ 与理论相速度比较；同时扩大浅水长波条件的数据范围，例如增大波长或降低水深，使实验真正覆盖 $h/\lambda<1/20$ 的区间。这样才能更严格地验证水深对相速度的影响。
+
+\section*{参考文献}
+\begin{enumerate}[label={[\arabic*]},leftmargin=2.2em,itemsep=0.15em]
+  \item Dean R. G., Dalrymple R. A. \textit{Water Wave Mechanics for Engineers and Scientists}. Singapore: World Scientific, 1991.
+  \item Bosboom J., Stive M. J. F. Coastal Dynamics: Wave Dispersion. Delft: TU Delft Open, 2021.
+  \item Stoker J. J. \textit{Water Waves: The Mathematical Theory with Applications}. New York: Interscience Publishers, 1957.
+  \item Lamb H. \textit{Hydrodynamics}. 6th ed. Cambridge: Cambridge University Press, 1932.
+\end{enumerate}
+
+\end{document}

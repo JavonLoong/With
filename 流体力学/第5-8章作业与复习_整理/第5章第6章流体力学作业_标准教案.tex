@@ -1,0 +1,789 @@
+\documentclass[12pt,a4paper]{ctexart}
+
+\usepackage{amsmath,amssymb,bm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+
+\geometry{left=2.2cm,right=2.2cm,top=2.2cm,bottom=2.2cm}
+\setlist[enumerate]{itemsep=0.4em,topsep=0.4em}
+\setlist[itemize]{itemsep=0.25em,topsep=0.25em}
+
+\newcommand{\dd}{\mathrm d}
+\newcommand{\ee}{\mathrm e}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\jj}{\mathrm j}
+\newcommand{\kk}{\mathrm k}
+\newcommand{\vr}{v_r}
+\newcommand{\vtheta}{v_\theta}
+\newcommand{\pa}{p_a}
+\newcommand{\pinf}{p_\infty}
+\newcommand{\grad}{\nabla}
+
+\title{第5章、第6章流体力学作业标准讲解教案}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{一、教学目标}
+
+本次讲解的目标不是单纯给出答案，而是让学生掌握三类常见题型的基本套路：
+
+\begin{enumerate}
+  \item 会用速度环量定义判断闭合曲线上的环量。
+  \item 会用理想不可压流体的连续方程和非定常伯努利方程求压力场。
+  \item 会用一维非定常运动方程分析管内水柱刚启动时的压力分布。
+  \item 会判断二维速度场是否不可压、是否无旋，并求速度势函数和流函数。
+  \item 会写出简单剪切流速度分布、流函数和单位宽度体积流量。
+\end{enumerate}
+
+\section*{二、讲课前先板书的公共公式}
+
+\subsection*{1. 速度环量}
+
+沿闭合曲线 $C$ 的速度环量为
+\[
+\Gamma=\oint_C \bm V\cdot \dd \bm s .
+\]
+
+如果速度方向与路径微元方向垂直，则该段贡献为零。
+
+\subsection*{2. 理想不可压、无旋流动的速度势}
+
+若存在速度势 $\varphi$，则
+\[
+\bm V=\grad \varphi .
+\]
+
+在球对称径向流中，
+\[
+v_r=\frac{\partial \varphi}{\partial r}.
+\]
+
+非定常伯努利方程可写为
+\[
+\frac{\partial \varphi}{\partial t}
++\frac{V^2}{2}
++\frac{p}{\rho}
+=C(t).
+\]
+
+若无穷远处速度为零，压力为 $\pinf$，且 $\varphi\to0$，则
+\[
+C(t)=\frac{\pinf}{\rho}.
+\]
+
+\subsection*{3. 一维非定常运动方程}
+
+沿流线方向 $s$，在初始速度为零时，有
+\[
+\rho a=-\frac{\dd p}{\dd s}+\rho g_s ,
+\]
+即
+\[
+\frac{\dd p}{\dd s}=\rho(g_s-a).
+\]
+
+\subsection*{4. 二维不可压流动}
+
+连续方程：
+\[
+\frac{\partial u}{\partial x}
++\frac{\partial v}{\partial y}=0.
+\]
+
+涡量：
+\[
+\omega_z=
+\frac{\partial v}{\partial x}
+-\frac{\partial u}{\partial y}.
+\]
+
+若 $\omega_z=0$，则流动无旋，可以引入速度势函数 $\varphi$：
+\[
+u=\frac{\partial\varphi}{\partial x},\qquad
+v=\frac{\partial\varphi}{\partial y}.
+\]
+
+二维不可压流动可以引入流函数 $\psi$：
+\[
+u=\frac{\partial\psi}{\partial y},\qquad
+v=-\frac{\partial\psi}{\partial x}.
+\]
+
+\section*{三、第5章 理想流体作业}
+
+\subsection*{题1：定常平面流动的速度环量}
+
+\paragraph{题意}
+已知
+\[
+v_r=ar,\qquad v_\theta=0,
+\]
+其中 $a$ 为常数。求图示闭合曲线沿路径方向的速度环量。
+
+\paragraph{讲解思路}
+这题要让学生抓住一个核心点：速度只有径向分量，没有切向分量。
+因此，圆弧段上速度与路径微元垂直，圆弧段环量为零；只有径向段可能有贡献。
+
+\paragraph{板书步骤}
+速度环量定义为
+\[
+\Gamma=\oint_C \bm V\cdot \dd \bm s .
+\]
+
+圆弧段上
+\[
+\dd \bm s=r\dd\theta\,\bm e_\theta ,
+\]
+而
+\[
+\bm V=ar\,\bm e_r.
+\]
+所以
+\[
+\bm V\cdot \dd \bm s=0.
+\]
+
+右侧径向段从 $R_1$ 到 $R_2$：
+\[
+\Gamma_1=\int_{R_1}^{R_2} ar\,\dd r
+=\frac a2(R_2^2-R_1^2).
+\]
+
+左侧径向段方向相反，从 $R_2$ 到 $R_1$：
+\[
+\Gamma_2=\int_{R_2}^{R_1} ar\,\dd r
+=-\frac a2(R_2^2-R_1^2).
+\]
+
+因此
+\[
+\Gamma=\Gamma_1+\Gamma_2=0.
+\]
+
+\paragraph{答案}
+\[
+\boxed{\Gamma=0.}
+\]
+
+\paragraph{易错点}
+\begin{itemize}
+  \item 不要把圆弧长度 $r\dd\theta$ 直接乘 $v_r$。圆弧方向是 $\bm e_\theta$，而速度方向是 $\bm e_r$，二者垂直。
+  \item 两条径向段方向相反，所以贡献相互抵消。
+\end{itemize}
+
+\subsection*{题2：书4.12，膨胀球体诱导的压力场}
+
+\paragraph{题意}
+原静止无界理想均质不可压流体中，有一球形物体，其半径按
+\[
+R(t)=1+3t
+\]
+膨胀。已知无穷远处压力为 $\pinf$，流体密度为 $\rho$，质量力忽略，求压力场。
+
+\paragraph{讲解思路}
+这题分三步：
+\begin{enumerate}
+  \item 由球对称连续方程求 $v_r$。
+  \item 由 $v_r=\partial\varphi/\partial r$ 求速度势。
+  \item 代入非定常伯努利方程求压力。
+\end{enumerate}
+
+\paragraph{板书步骤}
+因为流动是球对称径向流，任意半径 $r$ 球面上的体积流量相等：
+\[
+4\pi r^2 v_r=4\pi R^2\dot R.
+\]
+
+所以
+\[
+v_r=\frac{R^2\dot R}{r^2}.
+\]
+
+由于
+\[
+R=1+3t,\qquad \dot R=3,
+\]
+得
+\[
+v_r=\frac{3(1+3t)^2}{r^2}.
+\]
+
+由
+\[
+v_r=\frac{\partial\varphi}{\partial r}
+\]
+可取速度势
+\[
+\varphi=-\frac{R^2\dot R}{r}.
+\]
+
+非定常伯努利方程为
+\[
+\frac{\partial \varphi}{\partial t}
++\frac{v^2}{2}
++\frac p\rho
+=\frac{\pinf}{\rho}.
+\]
+
+所以
+\[
+p=\pinf-\rho
+\left(
+\frac{\partial \varphi}{\partial t}
++\frac{v^2}{2}
+\right).
+\]
+
+其中
+\[
+\frac{\partial \varphi}{\partial t}
+=-\frac{1}{r}\frac{\dd}{\dd t}(R^2\dot R),
+\]
+又
+\[
+R^2\dot R=3R^2,
+\]
+故
+\[
+\frac{\dd}{\dd t}(R^2\dot R)
+=\frac{\dd}{\dd t}(3R^2)
+=6R\dot R
+=18(1+3t).
+\]
+
+同时
+\[
+\frac{v^2}{2}
+=\frac12\left(\frac{R^2\dot R}{r^2}\right)^2
+=\frac{R^4\dot R^2}{2r^4}.
+\]
+
+代入得
+\[
+p=\pinf
++\rho\frac{1}{r}\frac{\dd}{\dd t}(R^2\dot R)
+-\rho\frac{R^4\dot R^2}{2r^4}.
+\]
+
+于是
+\[
+p
+=\pinf
++\frac{18\rho(1+3t)}{r}
+-\frac{9\rho(1+3t)^4}{2r^4}.
+\]
+
+\paragraph{答案}
+\[
+\boxed{
+p(r,t)=
+\pinf
++\frac{18\rho(1+3t)}{r}
+-\frac{9\rho(1+3t)^4}{2r^4}
+}
+\]
+其中
+\[
+r\ge R(t)=1+3t.
+\]
+
+\paragraph{易错点}
+\begin{itemize}
+  \item 这是非定常流动，伯努利方程里不能漏掉 $\partial\varphi/\partial t$。
+  \item 球对称流动的连续方程是 $4\pi r^2 v_r=\text{常数}$，不是 $2\pi r v_r=\text{常数}$。
+  \item 速度势取负号是因为 $\partial(-A/r)/\partial r=A/r^2$。
+\end{itemize}
+
+\subsection*{题3：弯管中水柱刚启动的压力分布与排空时间}
+
+\paragraph{题意}
+大气压为 $\pa$，等直径玻璃管被弯成 $120^\circ$ 弯管，管中有密度为 $\rho$ 的水。
+管末端装有阀门，打开阀门后水在重力作用下流出，管位于竖直平面内。
+
+图(a) 中竖直段长 $L_1$，倾斜段长 $L_2$，求 $t=0$ 阀门刚打开时管内压力分布。
+
+图(b) 中初始时只有倾斜段内盛满水，求打开阀门后水流光所需时间。
+
+\paragraph{讲解思路}
+这题要先把几何关系讲清楚：弯管夹角为 $120^\circ$，因此倾斜段与水平夹角为 $30^\circ$，倾斜段的竖直高度差为
+\[
+L_2\sin30^\circ=\frac{L_2}{2}.
+\]
+
+图(a) 中整段水柱作为一个整体刚开始加速。设水柱沿管方向的加速度为 $a_0$。
+
+\paragraph{图(a) 板书步骤}
+总水柱长度为
+\[
+L=L_1+L_2.
+\]
+
+总高度差为
+\[
+H=L_1+\frac12L_2.
+\]
+
+两端压力均为大气压，所以推动水柱的净重力头为 $H$，水柱长度为 $L$，因此
+\[
+a_0=\frac{gH}{L}
+=\frac{g\left(L_1+\frac12L_2\right)}{L_1+L_2}.
+\]
+
+即
+\[
+\boxed{
+a_0=\frac{g\left(L_1+\frac12L_2\right)}{L_1+L_2}.
+}
+\]
+
+竖直段中，取 $s$ 为从上端自由液面向下的距离，则
+\[
+0\le s\le L_1.
+\]
+
+沿竖直向下方向，
+\[
+\frac{\dd p}{\dd s}=\rho(g-a_0).
+\]
+
+且 $s=0$ 处
+\[
+p=\pa.
+\]
+
+所以竖直段压力分布为
+\[
+\boxed{
+p=\pa+\rho(g-a_0)s,\qquad 0\le s\le L_1.
+}
+\]
+
+倾斜段中，取 $x$ 为从弯头沿倾斜管到阀门的距离，则
+\[
+0\le x\le L_2.
+\]
+
+从自由液面到该点的高度下降为
+\[
+L_1+x\sin30^\circ=L_1+\frac{x}{2},
+\]
+沿管路距离为
+\[
+L_1+x.
+\]
+
+因此压力为
+\[
+\boxed{
+p=\pa+\rho\left[
+g\left(L_1+\frac{x}{2}\right)
+-a_0(L_1+x)
+\right],
+\qquad 0\le x\le L_2.
+}
+\]
+
+检验：当 $x=L_2$ 时，
+\[
+p=\pa+\rho[gH-a_0L]=\pa,
+\]
+与出口接大气相符。
+
+\paragraph{图(b) 板书步骤}
+若初始时只有倾斜段内盛满水，则两端均为大气压，水柱只受沿斜面方向的重力分量加速：
+\[
+a=g\sin30^\circ=\frac g2.
+\]
+
+水流光时，上端自由液面沿倾斜管移动距离 $L_2$，由
+\[
+L_2=\frac12at^2
+\]
+得
+\[
+L_2=\frac12\cdot \frac g2 t^2.
+\]
+
+所以
+\[
+\boxed{
+t=2\sqrt{\frac{L_2}{g}}.
+}
+\]
+
+\paragraph{易错点}
+\begin{itemize}
+  \item 不能把 $120^\circ$ 直接代入 $\sin120^\circ$。这里实际需要的是倾斜段与水平面的夹角 $30^\circ$。
+  \item 图(a) 中整段水柱加速度相同，不能竖直段和倾斜段各算一个加速度。
+  \item 刚打开阀门瞬间速度为零，但加速度不为零，压力分布不是普通静水压分布。
+\end{itemize}
+
+\section*{四、第6章 平面不可压无旋作业}
+
+\subsection*{题1：由速度场求速度势}
+
+\paragraph{题意}
+给定无旋流场
+\[
+u=3x^2-3y^2,\qquad v=-6xy,\qquad w=0.
+\]
+求速度势。
+
+\paragraph{讲解思路}
+先说明速度势的定义：
+\[
+u=\frac{\partial\varphi}{\partial x},\qquad
+v=\frac{\partial\varphi}{\partial y}.
+\]
+然后对 $u$ 关于 $x$ 积分，再用 $v$ 校正关于 $y$ 的未知函数。
+
+\paragraph{板书步骤}
+由
+\[
+\frac{\partial\varphi}{\partial x}=3x^2-3y^2
+\]
+对 $x$ 积分，得
+\[
+\varphi=x^3-3xy^2+f(y).
+\]
+
+再对 $y$ 求偏导：
+\[
+\frac{\partial\varphi}{\partial y}
+=-6xy+f'(y).
+\]
+
+与
+\[
+v=-6xy
+\]
+比较，得
+\[
+f'(y)=0.
+\]
+
+所以
+\[
+f(y)=C.
+\]
+
+\paragraph{答案}
+\[
+\boxed{
+\varphi=x^3-3xy^2+C.
+}
+\]
+
+\paragraph{易错点}
+\begin{itemize}
+  \item 对 $x$ 积分时，积分常数应写成 $f(y)$，不是普通常数。
+  \item 最后要用 $v$ 校正 $f(y)$。
+\end{itemize}
+
+\subsection*{题2：判断不可压、无旋，并求流函数和势函数}
+
+\paragraph{题意}
+已知速度场
+\[
+u=2cxy,\qquad
+v=c(a^2+x^2-y^2).
+\]
+判断是否满足不可压连续方程，是否有旋；若有势，求速度势函数；并写出流函数和流线方程。
+
+\paragraph{讲解思路}
+这题可以按固定顺序讲：
+\[
+\text{连续方程}\rightarrow
+\text{涡量}\rightarrow
+\text{流函数}\rightarrow
+\text{速度势}.
+\]
+
+\paragraph{板书步骤一：判断不可压}
+二维不可压连续方程为
+\[
+\frac{\partial u}{\partial x}
++\frac{\partial v}{\partial y}=0.
+\]
+
+计算得
+\[
+\frac{\partial u}{\partial x}=2cy,
+\qquad
+\frac{\partial v}{\partial y}=-2cy.
+\]
+
+所以
+\[
+\frac{\partial u}{\partial x}
++\frac{\partial v}{\partial y}
+=2cy-2cy=0.
+\]
+
+故该速度场满足不可压连续方程。
+
+\paragraph{板书步骤二：判断有旋或无旋}
+涡量为
+\[
+\omega_z=
+\frac{\partial v}{\partial x}
+-\frac{\partial u}{\partial y}.
+\]
+
+计算得
+\[
+\frac{\partial v}{\partial x}=2cx,
+\qquad
+\frac{\partial u}{\partial y}=2cx.
+\]
+
+所以
+\[
+\omega_z=2cx-2cx=0.
+\]
+
+因此流动无旋。
+
+\paragraph{板书步骤三：求流函数}
+取流函数定义
+\[
+u=\frac{\partial\psi}{\partial y},
+\qquad
+v=-\frac{\partial\psi}{\partial x}.
+\]
+
+由
+\[
+\frac{\partial\psi}{\partial y}=2cxy
+\]
+对 $y$ 积分，得
+\[
+\psi=cxy^2+f(x).
+\]
+
+再由
+\[
+-\frac{\partial\psi}{\partial x}
+=c(a^2+x^2-y^2)
+\]
+得
+\[
+-\left(cy^2+f'(x)\right)
+=c(a^2+x^2-y^2).
+\]
+
+整理得
+\[
+f'(x)=-c(a^2+x^2).
+\]
+
+积分：
+\[
+f(x)=-ca^2x-\frac c3x^3+C.
+\]
+
+所以
+\[
+\boxed{
+\psi=cxy^2-ca^2x-\frac c3x^3+C.
+}
+\]
+
+流线方程为
+\[
+\boxed{
+cxy^2-ca^2x-\frac c3x^3=C.
+}
+\]
+
+\paragraph{板书步骤四：求速度势函数}
+因为流动无旋，可以引入速度势 $\varphi$：
+\[
+u=\frac{\partial\varphi}{\partial x},
+\qquad
+v=\frac{\partial\varphi}{\partial y}.
+\]
+
+由
+\[
+\frac{\partial\varphi}{\partial x}=2cxy
+\]
+对 $x$ 积分，得
+\[
+\varphi=cx^2y+f(y).
+\]
+
+再由
+\[
+\frac{\partial\varphi}{\partial y}
+=cx^2+f'(y)
+=c(a^2+x^2-y^2)
+\]
+得
+\[
+f'(y)=c(a^2-y^2).
+\]
+
+积分：
+\[
+f(y)=ca^2y-\frac c3y^3+C.
+\]
+
+因此
+\[
+\boxed{
+\varphi=cx^2y+ca^2y-\frac c3y^3+C.
+}
+\]
+
+\paragraph{答案汇总}
+\[
+\boxed{\text{满足不可压连续方程}}
+\]
+\[
+\boxed{\omega_z=0,\quad \text{无旋}}
+\]
+\[
+\boxed{
+\psi=cxy^2-ca^2x-\frac c3x^3+C
+}
+\]
+\[
+\boxed{
+\varphi=cx^2y+ca^2y-\frac c3y^3+C
+}
+\]
+
+\paragraph{易错点}
+\begin{itemize}
+  \item 流函数的符号约定要固定。本教案采用 $u=\psi_y,\ v=-\psi_x$。
+  \item 判断有势函数前，应先检查无旋条件。
+  \item 求流函数时对 $y$ 积分，未知函数应写 $f(x)$；求速度势时对 $x$ 积分，未知函数应写 $f(y)$。
+\end{itemize}
+
+\subsection*{题3：两平板间简单粘性剪切流}
+
+\paragraph{题意}
+两平板相距 $h$，下板固定，上板以速度 $U_0$ 沿 $x$ 方向做直线运动。求流函数及两平板间单位宽度体积流量 $Q$。并说明粘性流体是否可以有流函数，求流量可用哪些方法。
+
+\paragraph{讲解思路}
+这是典型的平面 Couette 流。无压差时速度沿 $y$ 方向线性分布：
+\[
+u(0)=0,\qquad u(h)=U_0.
+\]
+
+\paragraph{板书步骤}
+速度分布为
+\[
+\boxed{
+u=\frac{U_0}{h}y,\qquad v=0.
+}
+\]
+
+流函数满足
+\[
+u=\frac{\partial\psi}{\partial y}.
+\]
+
+因此
+\[
+\frac{\partial\psi}{\partial y}
+=\frac{U_0}{h}y.
+\]
+
+对 $y$ 积分：
+\[
+\psi=\frac{U_0}{2h}y^2+C.
+\]
+
+故流函数为
+\[
+\boxed{
+\psi=\frac{U_0}{2h}y^2+C.
+}
+\]
+
+单位宽度体积流量：
+\[
+Q=\int_0^h u\,\dd y.
+\]
+
+代入速度分布：
+\[
+Q=\int_0^h \frac{U_0}{h}y\,\dd y
+=\frac{U_0}{h}\cdot\frac{h^2}{2}
+=\frac{U_0h}{2}.
+\]
+
+所以
+\[
+\boxed{
+Q=\frac{U_0h}{2}.
+}
+\]
+
+也可以用流函数差求流量：
+\[
+Q=\psi(h)-\psi(0).
+\]
+
+代入
+\[
+\psi(h)-\psi(0)
+=\frac{U_0}{2h}h^2
+=\frac{U_0h}{2}.
+\]
+
+\paragraph{关于粘性流体能否有流函数}
+只要是二维不可压缩流动，就可以引入流函数。是否有粘性不是流函数存在的决定条件。
+
+\[
+\boxed{
+\text{二维不可压缩流动可以有流函数，粘性流体也可以有流函数。}
+}
+\]
+
+\paragraph{易错点}
+\begin{itemize}
+  \item 流函数存在的条件是二维不可压缩，不是无粘。
+  \item 单位宽度体积流量的单位是 $\mathrm{m^2/s}$。
+  \item 速度分布是线性的，不是抛物线。抛物线通常对应有压差驱动的平板 Poiseuille 流。
+\end{itemize}
+
+\section*{五、最后给学生总结的解题模板}
+
+\begin{center}
+\begin{tabular}{p{0.24\linewidth}p{0.34\linewidth}p{0.32\linewidth}}
+\toprule
+题型 & 第一步 & 核心公式 \\
+\midrule
+环量题 & 判断速度与路径方向 & $\Gamma=\oint_C\bm V\cdot\dd\bm s$ \\
+球对称径向流 & 用球面流量守恒 & $4\pi r^2v_r=4\pi R^2\dot R$ \\
+非定常理想流压力 & 用非定常伯努利 & $\varphi_t+V^2/2+p/\rho=C(t)$ \\
+管内刚启动压力 & 用一维非定常运动方程 & $\dd p/\dd s=\rho(g_s-a)$ \\
+不可压判断 & 算速度散度 & $u_x+v_y=0$ \\
+无旋判断 & 算涡量 & $\omega_z=v_x-u_y$ \\
+速度势 & 对速度分量积分 & $u=\varphi_x,\ v=\varphi_y$ \\
+流函数 & 对速度分量积分 & $u=\psi_y,\ v=-\psi_x$ \\
+平板剪切流 & 用边界条件定线性分布 & $u=U_0y/h$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{六、课堂讲解建议}
+
+\begin{enumerate}
+  \item 先讲第5章题1，让学生重新熟悉“点乘”和“路径方向”的关系。
+  \item 再讲书4.12，重点强调非定常伯努利方程中的 $\partial\varphi/\partial t$。
+  \item 第5章题3要画简图，说明为什么 $120^\circ$ 对应倾斜段与水平成 $30^\circ$。
+  \item 第6章题1、题2要放在一起讲：一个求速度势，一个同时求流函数和速度势。
+  \item 第6章题3作为收尾，强调“粘性流体也可以有流函数，只要二维不可压缩即可”。
+\end{enumerate}
+
+\end{document}

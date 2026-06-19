@@ -1,0 +1,219 @@
+\documentclass[UTF8,zihao=-4]{ctexart}
+\usepackage[a4paper,margin=2.1cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  urlcolor=blue!60!black
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\renewcommand{\arraystretch}{1.28}
+
+\newcommand{\task}[1]{\textbf{#1}}
+\newcommand{\src}[1]{\textcolor{blue!55!black}{#1}}
+\newcommand{\key}[1]{\textcolor{red!65!black}{#1}}
+
+\title{\bfseries 第5章 理想流体补充练习题单}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{使用规则}
+
+\begin{tabular}{>{\bfseries}p{3cm}p{11.2cm}}
+\toprule
+目标 & 不是刷数量，而是检查：会不会选方程、会不会判断条件、会不会把题目翻译成公式。\\
+写法 & 每题至少写出：已知量、所求量、适用公式、关键判断、最后结果。\\
+顺序 & 先做 1--4，确认第5章核心；再做 5--8，练势函数/流函数；最后做 9--10，接近期末。\\
+检查 & 做不出来时不要直接看答案，先写出“卡在哪一步”。\\
+\bottomrule
+\end{tabular}
+
+\section*{一、总表}
+
+\begin{longtable}{p{0.7cm}p{3.1cm}p{5.6cm}p{4.6cm}}
+\toprule
+\textbf{序} & \textbf{来源} & \textbf{题目} & \textbf{主要训练}\\
+\midrule
+1 & \src{何枫课件第5章} & 非定常伯努利推导题 & 欧拉方程、沿流线积分、适用条件\\
+2 & \src{何枫课件第5章例题} & 开口 U 型管水柱自由振荡 & 非定常伯努利、振动方程\\
+3 & \src{第5章当前作业} & 极坐标速度场的速度环量 & 环量、路径积分、极坐标速度\\
+4 & \src{张兆顺书 4.12} & 膨胀球问题 & 速度势、非定常伯努利、压力分布\\
+5 & \src{张兆顺书 5.4} & 判断流函数/速度势是否存在 & 连续方程、无旋条件\\
+6 & \src{张兆顺书 5.10} & 已知直角坐标系流函数 & 由 $\psi$ 求速度、判断流动性质\\
+7 & \src{张兆顺书 5.11} & 已知极坐标系速度势 & 由 $\varphi$ 求速度、极坐标公式\\
+8 & \src{张兆顺书 5.16} & 求 $|z|=3$ 的体积流量 $Q$ 与环量 $\Gamma$ & 复势、流函数、环量综合\\
+9 & \src{2022春期末试题} & 伯努利条件、流线迹线、连续方程等简答 & 期末概念题\\
+10 & \src{2022春期末试题} & 半圆柱气膜馆受风的势流分析 & 势流绕圆柱、压力积分、升力\\
+\bottomrule
+\end{longtable}
+
+\section*{二、具体练习}
+
+\subsection*{1. 非定常伯努利推导}
+
+从无粘、质量力有势、不可压流体的欧拉方程出发，说明下列式子分别在什么条件下成立：
+\[
+\int_1^2 \frac{\partial \vec V}{\partial t}\cdot d\vec l
++\left(\frac{V^2}{2}+\frac{p}{\rho}+\Pi\right)_2
+=
+\left(\frac{V^2}{2}+\frac{p}{\rho}+\Pi\right)_1 .
+\]
+
+若流动无旋，$\vec V=\nabla\varphi$，进一步写出柯西--拉格朗日积分：
+\[
+\frac{\partial \varphi}{\partial t}
++\frac{V^2}{2}+\frac{p}{\rho}+\Pi=f(t).
+\]
+
+\task{要求：}写出每一步的适用条件，不要只背公式。
+
+\subsection*{2. U 型管水柱振荡}
+
+等截面开口 U 型管内水柱总长为 $L$。初始时两液面高度差为 $h_0$，释放后忽略水粘性。求水柱振荡规律、振荡周期和速度。
+
+\task{提示：}沿两液面之间的流线使用非定常伯努利，最后应得到简谐振动方程。
+
+\[
+\frac{d^2 z}{dt^2}+\frac{2g}{L}z=0,
+\qquad
+T=2\pi\sqrt{\frac{L}{2g}}.
+\]
+
+\subsection*{3. 极坐标速度场的速度环量}
+
+定常平面流动，若已知极坐标速度场为
+\[
+V_\theta=ar,\qquad V_r=0,
+\]
+其中 $a$ 为常数。求绕给定闭合路径的速度环量：
+\[
+\Gamma=\oint_C \vec V\cdot d\vec l.
+\]
+
+\task{要求：}先判断路径上 $d\vec l$ 的方向，再分段积分。不要直接套结果。
+
+\subsection*{4. 书 4.12：膨胀球}
+
+做张兆顺书上 4.12。重点练习：球对称径向流动中，怎样由连续方程得到 $v_r(r,t)$，再由速度势 $\varphi$ 和非定常伯努利求压力分布。
+
+核心路线：
+\[
+4\pi r^2v_r=4\pi R^2\dot R,
+\qquad
+v_r=\frac{R^2\dot R}{r^2},
+\qquad
+v_r=\frac{\partial \varphi}{\partial r}.
+\]
+
+\task{要求：}写出 $v_r,\ \varphi,\ p(r,t)$ 三个结果。
+
+\subsection*{5. 书 5.4：流函数/速度势判断}
+
+做张兆顺书 5.4。看到二维速度场后，依次判断：
+\[
+\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=0
+\quad \Longrightarrow \quad
+\text{可存在流函数 } \psi ,
+\]
+\[
+\frac{\partial v}{\partial x}-\frac{\partial u}{\partial y}=0
+\quad \Longrightarrow \quad
+\text{可存在速度势 } \varphi .
+\]
+
+\task{要求：}不要只写“存在/不存在”，必须写出判断依据。
+
+\subsection*{6. 书 5.10：由流函数求速度}
+
+做张兆顺书 5.10。直角坐标中若给定流函数 $\psi(x,y)$，使用：
+\[
+u=\frac{\partial \psi}{\partial y},
+\qquad
+v=-\frac{\partial \psi}{\partial x}.
+\]
+
+\task{要求：}算出速度分量后，再判断是否无旋：
+\[
+\omega_z=\frac{\partial v}{\partial x}-\frac{\partial u}{\partial y}.
+\]
+
+\subsection*{7. 书 5.11：由速度势求速度}
+
+做张兆顺书 5.11。极坐标中若给定速度势 $\varphi(r,\theta)$，使用：
+\[
+V_r=\frac{\partial\varphi}{\partial r},
+\qquad
+V_\theta=\frac{1}{r}\frac{\partial\varphi}{\partial\theta}.
+\]
+
+\task{要求：}注意极坐标里 $V_\theta$ 前面有 $\frac{1}{r}$。
+
+\subsection*{8. 书 5.16：流量与环量}
+
+做张兆顺书 5.16。题目要求求 $|z|=3$ 上的体积流量 $Q$ 和沿圆周的速度环量 $\Gamma$。
+
+常用定义：
+\[
+Q=\int_C \vec V\cdot \vec n\,ds,
+\qquad
+\Gamma=\oint_C \vec V\cdot d\vec l.
+\]
+
+\task{要求：}区分“穿过曲线的流量”和“沿曲线绕一圈的环量”。
+
+\subsection*{9. 2022 春期末简答}
+
+从期末题里抽以下概念题练习：
+
+\begin{enumerate}[label=\arabic*.]
+  \item 简述欧拉法和拉格朗日法的差异。
+  \item 写出一元恒定总流能量方程，并说明适用条件。
+  \item 简述什么是控制体。
+  \item 简述流线和迹线的定义。
+  \item 写出不可压缩流体运动连续方程的一般形式。
+\end{enumerate}
+
+\task{要求：}每题控制在 3--5 行，考试时按“定义 + 条件 + 公式”写。
+
+\subsection*{10. 2022 春期末计算题：半圆柱气膜馆}
+
+设气膜馆做成半径为 $a$ 的半圆柱形，受到速度为 $V$ 的大风正面来袭。采用势流理论分析：
+
+\begin{enumerate}[label=(\alph*)]
+  \item 给出气膜馆外的流速分布；
+  \item 计算气膜馆表面的压力分布；
+  \item 若 $a=5\,\mathrm{m}$，$V=10\,\mathrm{m/s}$，空气密度 $\rho=1.29\,\mathrm{kg/m^3}$，计算气膜馆受到的升力合力。
+\end{enumerate}
+
+\task{提示：}这是势流绕圆柱的一半。圆柱表面速度通常从
+\[
+V_\theta=-2V\sin\theta
+\]
+入手，再用伯努利求压力分布：
+\[
+p(\theta)=p_\infty+\frac{1}{2}\rho\left(V^2-V_\theta^2\right).
+\]
+
+\section*{三、推荐做题顺序}
+
+\begin{tabular}{>{\bfseries}p{3cm}p{9.6cm}}
+\toprule
+第 1 轮 & 做 1、2、5、6。目标：检查第5章最核心公式会不会用。\\
+第 2 轮 & 做 3、4、7、8。目标：补环量、势函数、流函数的计算能力。\\
+第 3 轮 & 做 9、10。目标：转成期末题写法。\\
+\bottomrule
+\end{tabular}
+
+\end{document}

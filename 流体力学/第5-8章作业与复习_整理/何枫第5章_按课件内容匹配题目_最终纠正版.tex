@@ -1,0 +1,560 @@
+\documentclass[UTF8,zihao=-4]{ctexart}
+\usepackage[a4paper,margin=1.6cm]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{graphicx}
+\usepackage{booktabs,longtable,array}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\hypersetup{colorlinks=true,linkcolor=blue!60!black,urlcolor=blue!60!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlist[enumerate]{itemsep=0.25em,topsep=0.25em}
+\renewcommand{\arraystretch}{1.18}
+
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\D}{\mathrm D}
+\newcommand{\core}[1]{\textcolor{blue!65!black}{#1}}
+\newcommand{\warn}[1]{\textcolor{red!70!black}{#1}}
+
+\title{\bfseries 何枫第5章：按课件内容匹配题目与答案（最终纠正版）}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{0. 这版的纠错结论}
+
+正确范围不是“张兆顺第4章全章”，也不是“张兆顺第5章全章”。
+
+\[
+\boxed{\text{正确范围 = 何枫课件第5章讲到的内容 + 张兆顺书中对应题目。}}
+\]
+
+何枫第5章实际只有三块：
+\[
+5.1\ \text{理想流体基本方程和定解条件}
+\]
+\[
+5.2\ \text{Lamb 方程及其应用：定常/非定常 Bernoulli，U 型管，直角管，书 4.12}
+\]
+\[
+5.3\ \text{Kelvin、Lagrange、Helmholtz 定理}
+\]
+
+所以本文件只把与这三块直接相关的题列为核心。张兆顺第4章中“附加惯性、圆柱圆周运动、空腔塌缩”等题虽然同在第4章，但不是何枫这份第5章课件的主线，不再混进核心复习。
+
+\section*{1. 按课件内容筛题}
+
+\begin{longtable}{p{3.2cm}p{5.2cm}p{6.6cm}}
+\toprule
+课件模块 & 直接对应题目 & 为什么对应 \\
+\midrule
+5.1 Euler 方程、理想流体边界条件 & \core{书 4.1、书 4.2} & 都是在写理想流体物面不可穿透条件。课件强调“固壁有滑移，但法向速度必须一致”。\\
+5.2 定常 Lamb 方程、Bernoulli 条件 & \core{概念题：Bernoulli 适用条件} & 课件推导 \(d(V^2/2+p/\rho+\Pi)=0\) 何时成立。\\
+5.2 非定常 Lamb 方程、Cauchy-Lagrange 积分 & \core{课件 U 型管例题、课件直角管例题、书 4.10、书 4.12} & 这些题都要用非定常项 \(\int \partial\bm V/\partial t\cdot \dd\bm l\) 或 \(\partial\varphi/\partial t\)。\\
+5.3 Kelvin 定理 & \core{S4.2} & 圆桶旋转是否带动理想流体，核心就是 Kelvin 定理条件。\\
+5.3 Lagrange 定理 & \core{书 4.4、S4.1} & 初始无旋、理想正压、有势力场时无旋保持；剪切来流已有涡量则保持原涡量。\\
+5.3 Helmholtz 定理 & \core{书 4.3、补充证明题} & 平面涡量输运、涡面保持、涡管强度保持。\\
+\midrule
+同章但非本课件主线 & 书 4.5、4.6、4.7、4.8、4.9、4.11、S4.4 & 这些可作为扩展或老师额外布置；不要作为“何枫第5章核心题”优先复习。\\
+\bottomrule
+\end{longtable}
+
+\section*{2. 原题页}
+
+下面页中含有相关题，也含有非本课件主线题。核心只看：4.1、4.2、4.3、4.4、4.10、4.12、S4.1--S4.3。
+
+\includegraphics[width=\textwidth,height=0.88\textheight,keepaspectratio]{correct_ch4_assets/zhang_ch4_p-161.png}
+\clearpage
+\includegraphics[width=\textwidth,height=0.91\textheight,keepaspectratio]{correct_ch4_assets/zhang_ch4_p-162.png}
+\clearpage
+\includegraphics[width=\textwidth,height=0.91\textheight,keepaspectratio]{correct_ch4_assets/zhang_ch4_p-163.png}
+\clearpage
+\includegraphics[width=\textwidth,height=0.91\textheight,keepaspectratio]{correct_ch4_assets/zhang_ch4_p-164.png}
+\clearpage
+
+\section*{3. 课件 5.1：Euler 方程与物面条件}
+
+\subsection*{核心公式}
+
+理想流体应力张量
+\[
+\bm P=-p\bm I.
+\]
+动量方程化为 Euler 方程
+\[
+\boxed{
+\frac{\partial\bm V}{\partial t}
++\bm V\cdot\nabla\bm V
+=\bm f-\frac{\nabla p}{\rho}}
+\]
+或
+\[
+\boxed{
+\frac{\D\bm V}{\D t}
+=\bm f-\frac{\nabla p}{\rho}.}
+\]
+理想流体在固壁上允许滑移，但不允许穿透：
+\[
+\boxed{(\bm V-\bm V_b)\cdot\bm n=0.}
+\]
+
+\subsection*{书 4.1：内外圆柱壳的物面条件}
+
+外圆柱固定，半径为 \(b\)。外壁不可穿透：
+\[
+\boxed{\left.\frac{\partial\varphi}{\partial r}\right|_{r=b}=0.}
+\]
+
+内圆柱半径为 \(a\)，中心 \(O'(x_0(t),0)\)，速度
+\[
+\bm V_b=U_0(t)\bm i .
+\]
+以内圆柱中心为极点，内圆柱面法向量为
+\[
+\bm n=\bm e_{r'}.
+\]
+故
+\[
+\boxed{
+\left.\frac{\partial\varphi}{\partial r'}\right|_{r'=a}
+=U_0(t)\cos\theta'.}
+\]
+一句话答案：外壁法向速度为 0，内壁流体法向速度等于内圆柱法向速度。
+
+\subsection*{书 4.2：物体运动的绝对/相对物面条件}
+
+通用式：
+\[
+\boxed{(\bm V-\bm V_b)\cdot\bm n=0.}
+\]
+
+\textbf{固定地面坐标系：}
+
+圆柱平移时
+\[
+\bm V_b=U_0(t)\bm i,
+\]
+所以
+\[
+\boxed{\nabla\varphi\cdot\bm n=U_0(t)\bm i\cdot\bm n.}
+\]
+
+椭圆柱平移并转动时
+\[
+\bm V_b=U_0(t)\bm i+\bm\omega(t)\times\bm r',
+\]
+所以
+\[
+\boxed{
+\nabla\varphi\cdot\bm n
+=\left[U_0(t)\bm i+\bm\omega(t)\times\bm r'\right]\cdot\bm n.}
+\]
+
+\textbf{固定在物体上的坐标系：}
+
+物面不动，所以相对速度法向分量为零：
+\[
+\boxed{\bm V_{\rm rel}\cdot\bm n=0.}
+\]
+远处条件要改成相对来流，例如平移物体：
+\[
+\bm V_{\rm rel,\infty}=-U_0(t)\bm i'.
+\]
+
+\section*{4. 课件 5.2：Lamb 方程、Bernoulli 和非定常积分}
+
+\subsection*{核心公式}
+
+向量恒等式：
+\[
+\bm V\cdot\nabla\bm V
+=\nabla\left(\frac{V^2}{2}\right)-\bm V\times\bm\Omega,
+\qquad \bm\Omega=\nabla\times\bm V.
+\]
+Euler 方程变为 Lamb 方程：
+\[
+\boxed{
+\frac{\partial\bm V}{\partial t}
++\nabla\left(\frac{V^2}{2}\right)
+-\bm V\times\bm\Omega
+=\bm f-\frac{\nabla p}{\rho}.}
+\]
+若 \(\bm f=-\nabla\Pi\)，且不可压缩，则
+\[
+\frac{\partial\bm V}{\partial t}\cdot\dd\bm l
++\dd\left(\frac{V^2}{2}+\frac p\rho+\Pi\right)
+=(\bm V\times\bm\Omega)\cdot\dd\bm l.
+\]
+
+若右边为 0，沿 1 到 2 积分：
+\[
+\boxed{
+\int_1^2\frac{\partial\bm V}{\partial t}\cdot\dd\bm l
++\left(\frac{V^2}{2}+\frac p\rho+\Pi\right)_2
+=
+\left(\frac{V^2}{2}+\frac p\rho+\Pi\right)_1.}
+\]
+
+若无旋，\(\bm V=\nabla\varphi\)，则
+\[
+\frac{\partial\bm V}{\partial t}\cdot\dd\bm l
+=\dd\left(\frac{\partial\varphi}{\partial t}\right),
+\]
+所以任意两点间：
+\[
+\boxed{
+\left(\frac{\partial\varphi}{\partial t}
++\frac{V^2}{2}+\frac p\rho+\Pi\right)_2
+=
+\left(\frac{\partial\varphi}{\partial t}
++\frac{V^2}{2}+\frac p\rho+\Pi\right)_1.}
+\]
+
+\subsection*{课件例题：U 型管自由振荡}
+
+水柱总长 \(L\)，两液面高度差初始为 \(h_0\)。设右侧液面相对平衡位置位移为 \(z_2\)，则
+\[
+z_1=-z_2,\qquad h=2z_2.
+\]
+沿整根水柱使用非定常积分。等截面一维流动，速度处处相同：
+\[
+V=\frac{\dd z_2}{\dd t}.
+\]
+两端均通大气，\(p_1=p_2=p_a\)。动能项两端相同而抵消，得到
+\[
+L\frac{\dd^2z_2}{\dd t^2}+2gz_2=0.
+\]
+初始条件：
+\[
+z_2(0)=\frac{h_0}{2},\qquad \dot z_2(0)=0.
+\]
+所以振荡规律
+\[
+\boxed{
+z_2=\frac{h_0}{2}\cos\sqrt{\frac{2g}{L}}\,t.}
+\]
+周期
+\[
+\boxed{
+T=2\pi\sqrt{\frac{L}{2g}}.}
+\]
+速度
+\[
+\boxed{
+V=\dot z_2
+=-\frac{h_0}{2}\sqrt{\frac{2g}{L}}
+\sin\sqrt{\frac{2g}{L}}\,t.}
+\]
+
+\subsection*{课件例题：直角管突然打开阀门，\(t=0\) 压力分布}
+
+竖直管和水平管长度均为 \(L\)，等截面。A 端、B 端均通大气。阀门刚打开时，速度仍为零，但有加速度 \(a\)。
+
+沿 A 到 B 的整段水柱积分：
+\[
+2La+\left(\frac{p_a}{\rho}+0\right)
+=\frac{p_a}{\rho}+gL.
+\]
+故
+\[
+\boxed{a=\frac g2.}
+\]
+
+竖直段任意点，设高度为 \(z\)，从弯头算起 \(0\le z\le L\)。A 到该点长度为 \(L-z\)，
+\[
+a(L-z)+\frac p\rho+gz
+=\frac{p_a}{\rho}+gL.
+\]
+代入 \(a=g/2\)，得
+\[
+\boxed{
+p=p_a+\frac12\rho g(L-z).}
+\]
+
+水平段任意点，设距弯头为 \(x\)，\(0\le x\le L\)。A 到该点长度为 \(L+x\)，高度为 0：
+\[
+a(L+x)+\frac p\rho
+=\frac{p_a}{\rho}+gL.
+\]
+所以
+\[
+\boxed{
+p=p_a+\frac12\rho g(L-x).}
+\]
+
+\subsection*{课件例题：直角管 \(t>0\) 自由面运动}
+
+设竖管中剩余水柱高度为 \(h(t)\)，水平管长仍为 \(L\)。流速
+\[
+V=-\frac{\dd h}{\dd t}.
+\]
+沿自由面到 B 端积分，因两端压强均为 \(p_a\)，且两端速度相同，动能项抵消：
+\[
+(h+L)\frac{\dd V}{\dd t}=gh.
+\]
+用 \(V=-\dot h\)，得
+\[
+\boxed{
+(h+L)\ddot h+gh=0.}
+\]
+压力分布仍按
+\[
+\frac{\partial V}{\partial t}=\frac{\dd V}{\dd t}
+\]
+代入非定常积分求。
+
+\subsection*{书 4.10：V 型管液柱微小振荡}
+
+设液面沿管轴位移为 \(s\)。两液面竖直高度差为
+\[
+\Delta h=s(\sin\alpha+\sin\beta).
+\]
+恢复力：
+\[
+F_r=\rho gA\Delta h
+=\rho gA s(\sin\alpha+\sin\beta).
+\]
+水柱质量：
+\[
+m=\rho AL.
+\]
+运动方程：
+\[
+\rho AL\ddot s+\rho gA(\sin\alpha+\sin\beta)s=0.
+\]
+故
+\[
+\ddot s+\frac{g(\sin\alpha+\sin\beta)}{L}s=0.
+\]
+周期
+\[
+\boxed{
+T=2\pi\sqrt{\frac{L}{g(\sin\alpha+\sin\beta)}}.}
+\]
+
+\subsection*{书 4.12：膨胀球压力场}
+
+球半径
+\[
+R(t)=1+3t,\qquad \dot R=3.
+\]
+球对称不可压径向流：
+\[
+4\pi r^2v_r=4\pi R^2\dot R,
+\]
+\[
+v_r=\frac{R^2\dot R}{r^2}.
+\]
+速度势取
+\[
+\varphi=-\frac{R^2\dot R}{r}.
+\]
+非定常 Cauchy-Lagrange 积分：
+\[
+\frac{\partial\varphi}{\partial t}
++\frac{v_r^2}{2}
++\frac p\rho
+=\frac{p_\infty}{\rho}.
+\]
+于是
+\[
+p=p_\infty-\rho\left(
+\frac{\partial\varphi}{\partial t}
++\frac{v_r^2}{2}
+\right).
+\]
+其中
+\[
+\frac{\partial\varphi}{\partial t}
+=-\frac1r\frac{\dd}{\dd t}(R^2\dot R),
+\]
+\[
+\frac{\dd}{\dd t}(R^2\dot R)
+=\frac{\dd}{\dd t}(3R^2)
+=6R\dot R=18R.
+\]
+且
+\[
+\frac{v_r^2}{2}
+=\frac{R^4\dot R^2}{2r^4}
+=\frac{9R^4}{2r^4}.
+\]
+故
+\[
+\boxed{
+p(r,t)=p_\infty
++\frac{18\rho(1+3t)}{r}
+-\frac{9\rho(1+3t)^4}{2r^4},
+\qquad r\ge 1+3t.}
+\]
+
+\section*{5. 课件 5.3：Kelvin、Lagrange、Helmholtz}
+
+\subsection*{Kelvin 定理}
+
+环量定义：
+\[
+\Gamma=\oint_C\bm V\cdot\dd\bm l.
+\]
+若流体满足
+\[
+\boxed{\text{无粘、正压、质量力有势、连续流场}}
+\]
+则沿任意封闭流体线：
+\[
+\boxed{\frac{\dd\Gamma}{\dd t}=0.}
+\]
+
+\subsection*{Lagrange 定理}
+
+在 Kelvin 定理条件下，若某一时刻流场无旋：
+\[
+\bm\Omega=0,
+\]
+则之前和之后都无旋：
+\[
+\boxed{\bm\Omega\equiv0.}
+\]
+直观记法：理想正压流体在有势力场中，涡量不会凭空产生。
+
+\subsection*{Helmholtz 定理}
+
+同样在 Kelvin 定理条件下：
+
+\[
+\boxed{\text{涡面由同一批流体质点组成，并随流体运动保持为涡面。}}
+\]
+\[
+\boxed{\text{涡管强度不随时间变化。}}
+\]
+涡管强度为
+\[
+\boxed{
+K=\iint_A\bm\Omega\cdot\bm n\,\dd A.}
+\]
+同一时刻，任一涡管不同截面有相同涡通量，因为
+\[
+\nabla\cdot\bm\Omega=\nabla\cdot(\nabla\times\bm V)=0.
+\]
+
+\subsection*{书 4.3：平面不可压理想流体涡量守恒式}
+
+理想、质量力有势时，涡量方程为
+\[
+\frac{\D\bm\Omega}{\D t}
+=(\bm\Omega\cdot\nabla)\bm V-\bm\Omega(\nabla\cdot\bm V).
+\]
+平面流动中
+\[
+\bm\Omega=\omega\bm k,\qquad \bm V=(u,v,0).
+\]
+因速度不随 \(z\) 变：
+\[
+(\bm\Omega\cdot\nabla)\bm V
+=\omega\frac{\partial\bm V}{\partial z}=0.
+\]
+不可压缩：
+\[
+\nabla\cdot\bm V=0.
+\]
+所以
+\[
+\frac{\D\omega}{\D t}=0.
+\]
+展开：
+\[
+\frac{\partial\omega}{\partial t}
++\bm V\cdot\nabla\omega=0.
+\]
+又
+\[
+\nabla\cdot(\omega\bm V)
+=\bm V\cdot\nabla\omega+\omega\nabla\cdot\bm V
+=\bm V\cdot\nabla\omega.
+\]
+故
+\[
+\boxed{
+\frac{\partial\omega}{\partial t}
++\nabla\cdot(\omega\bm V)=0.}
+\]
+
+\subsection*{书 4.4：剪切来流绕固定圆柱的涡量场}
+
+远处速度：
+\[
+u_\infty=ky,\qquad v_\infty=0.
+\]
+远处涡量：
+\[
+\omega_\infty
+=\frac{\partial v_\infty}{\partial x}
+-\frac{\partial u_\infty}{\partial y}
+=0-k=-k.
+\]
+理想不可压流体、质量力有势，且无粘壁面不产生新涡量，故每个质点保持自己的涡量：
+\[
+\frac{\D\omega}{\D t}=0.
+\]
+所以整个流场涡量为
+\[
+\boxed{\omega_z=-k.}
+\]
+这题不是“算圆柱绕流速度”，而是考 Lagrange/Kelvin：已有涡量保持，不会因为绕圆柱就消失。
+
+\subsection*{S4.1 圆球突然移动与等速膨胀/收缩}
+
+牛顿型流体有粘性，启动瞬间要满足无滑移条件；理想流体只满足不可穿透，可以滑移。因此牛顿型流体启动瞬间绕圆球的流线谱一般不等同于理想流体绕圆球的流线谱。
+
+若没有质量力，理想流体中圆球等速膨胀或等速收缩时，压力由非定常项和动能项决定：
+\[
+p=p_\infty-\rho\left(
+\frac{\partial\varphi}{\partial t}
++\frac{V^2}{2}
+\right).
+\]
+球面上压力不会简单等于静水压，而随球面运动产生的非定常势流变化。
+
+\subsection*{S4.2 圆桶旋转和 Kelvin 定理}
+
+真实牛顿流体中，圆桶等角速度旋转时，粘性会逐渐把桶内流体带动起来，最终近似随桶作刚体旋转。这时速度场
+\[
+v_\theta=\omega r
+\]
+有涡量：
+\[
+\Omega_z=\frac1r\frac{\partial(rv_\theta)}{\partial r}=2\omega.
+\]
+所以是真实有旋运动。
+
+这与 Kelvin 定理不矛盾，因为 Kelvin 定理要求无粘。真实圆桶带动流体靠的是粘性切应力，已经不满足 Kelvin 定理条件。
+
+\subsection*{S4.3 为什么可用瞬时绝对坐标系}
+
+瞬时绝对坐标系固定在物体上，优点是物面方程不随时间变化，边界条件好写：
+\[
+\frac{\partial\varphi}{\partial n}
+=\bm V_b\cdot\bm n.
+\]
+但它在每个瞬时仍可与惯性系建立速度关系，所以可以先在该坐标系求瞬时速度势，再用非定常 Bernoulli 求压强。关键是：流场对不可压无旋边界条件具有瞬时响应特性。
+
+\section*{6. 本节不要优先做的题}
+
+\begin{longtable}{p{2.2cm}p{12.5cm}}
+\toprule
+题号 & 处理建议 \\
+\midrule
+4.5 & 伯努利工程应用，和课件 5.2 有一点关系，但不是课件重点；老师若布置再做。\\
+4.6、4.7 & 圆球/圆柱势流压力和附加惯性，属于张兆顺第4章后半部分；何枫这份第5章课件没有展开。\\
+4.8 & 一维非定常管流应用，可作为课件直角管例题的扩展，不是第一优先。\\
+4.9 & 孔口泄流，更像前面能量方程/伯努利应用，不是本课件的核心理论题。\\
+4.11 & 空腔塌缩，属于非定常球对称势流扩展，难度较高。\\
+S4.4 & 附加质量概念题；若老师后面讲附加惯性再处理。\\
+\bottomrule
+\end{longtable}
+
+\end{document}

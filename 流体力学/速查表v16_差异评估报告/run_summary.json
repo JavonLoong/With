@@ -1,0 +1,16 @@
+{
+  "item_count": 591,
+  "effective_item_count": 581,
+  "excluded_false_low_count": 10,
+  "v14_all_avg": 77.0,
+  "v16_all_avg": 76.2,
+  "v14_effective_avg": 77.7,
+  "v16_effective_avg": 76.8,
+  "v14_past_avg": 79.1,
+  "v16_past_avg": 77.6,
+  "v16_past_effective_avg": 77.6,
+  "v16_textbook_effective_avg": 76.7,
+  "low_v14": 25,
+  "low_v16": 18,
+  "low_v16_effective": 8
+}

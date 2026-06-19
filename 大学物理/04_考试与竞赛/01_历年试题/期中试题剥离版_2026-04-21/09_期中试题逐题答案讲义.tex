@@ -1,0 +1,1122 @@
+
+\documentclass[12pt,a4paper]{ctexart}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{setspace}
+\setstretch{1.12}
+\setlength{\parindent}{2em}
+\setlist[itemize]{leftmargin=2.2em,itemsep=0.35em,topsep=0.35em}
+\title{大学物理期中试题逐题答案讲义}
+\author{Codex 整理}
+\date{2026-04-21}
+\begin{document}
+\maketitle
+
+\begin{tcolorbox}[title=讲义定位,colback=yellow!4!white,colframe=orange!60!black]
+这是一份\textbf{图文公式混排的逐题答案讲义}。它把原题页图、常用公式和每道题后面的完整答案放到了同一份 PDF 里。
+\end{tcolorbox}
+
+\tableofcontents
+\clearpage
+
+
+\section{期中试题分类总览}
+
+\begin{tcolorbox}[title=这一份讲义怎么用,colback=green!3!white,colframe=green!45!black]
+这份讲义不是纯文字摘要，而是把期中试题做成\textbf{图文公式混排}：
+\begin{itemize}
+\item 先给原题页图，保证能看到原题长什么样
+\item 再给本卷常用公式，保证复习时有抓手
+\item 最后按“一题一块”的方式放题意、完整答案和易错点
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{主题分类}
+
+\begin{itemize}
+\item 刚体转动与角动量：转动惯量、角动量守恒、力矩、滚动约束、回转仪
+\item 力学基础与质点运动：功能关系、势能曲线、碰撞、约束运动、相对运动
+\item 热学与统计物理：理想气体过程、熵、热机效率、分布函数、漏气模型
+\item 振动与波动：简谐振动、驻波、多普勒效应、李萨如图、反射与叠加
+\item 相对论：长度收缩、速度合成、动量与能量关系、寿命延长
+\end{itemize}
+
+
+\clearpage
+
+\section{大学物理1期中试题}
+
+\subsection*{原题页图}
+下面先放这一套试卷的原题页图，便于把讲解和原题对应起来。
+
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/大学物理1期中试题-1.png}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/大学物理1期中试题-2.png}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/大学物理1期中试题-3.png}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/大学物理1期中试题-4.png}
+\end{center}
+\vspace{0.5em}
+
+
+\begin{tcolorbox}[title=本卷讲解会反复用到的公式,colback=blue!3!white,colframe=blue!45!black]
+\textbf{来源说明：}完整正式 PDF。\\
+这些公式不是替代做题，而是作为看图和看讲解时的主线框架。
+\begin{itemize}
+\item $g_{\mathrm{eff}}=g-a_{\mathrm{ref}}$
+\item $W=\Delta K$
+\item $\tau=\dfrac{dL}{dt},\quad L=r\times p$
+\item $u=\dfrac{u'+v}{1+u'v/c^2}$
+\item $p=\gamma mv,\quad E=\gamma mc^2$
+\end{itemize}
+\end{tcolorbox}
+
+
+\subsection*{逐题答案}
+
+\subsubsection*{1. 木板自由下落时，板上单摆相对木板如何运动}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}木板可沿无摩擦导轨自由下落，木板下落时问摆球相对板怎样运动。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}取木板为参考系，自由下落意味着有效重力为 0，摆球只受绳张力，没有切向力，所以相对板作匀速圆周运动。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别把它继续当普通单摆。\par
+\end{tcolorbox}
+
+\subsubsection*{2. 半球碗匀速转动，小球在碗内某高度处相对碗静止，求角速度}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}半径 10 cm 的半球碗绕竖直轴转动，小球停在高于碗底 4 cm 处。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}在转动参考系里，重力和离心力的合力必须沿碗面法线；由几何关系得球的位置参数，再列平衡条件。\par
+\textbf{最终答案：}角速度约为 12.9 rad/s。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别把“高于碗底 4 cm”直接当成到圆心的坐标。\par
+\end{tcolorbox}
+
+\subsubsection*{3. 砂子落到向右运动的传送带上，求传送带对砂子的作用方向}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}砂子自高处落下后，被速度为 3 m/s 的传送带带走。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先求落下瞬间竖直速度，再看传送带要把速度改成“向右且无竖直分量”，作用力方向与动量改变量方向一致。\par
+\textbf{最终答案：}与水平方向成 53° 向上。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}不要把重力和接触力混在一起。\par
+\end{tcolorbox}
+
+\subsubsection*{4. 椭圆轨道卫星在近地点和远地点的角动量与动能比较}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}比较近地点 A 和远地点 B 的角动量与动能。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}万有引力是中心力，所以角动量守恒；近地点速度更大，所以动能更大。\par
+\textbf{最终答案：}\(L_A=L_B\)，\(E_{kA}>E_{kB}\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别以为“半径变了角动量就变”。\par
+\end{tcolorbox}
+
+\subsubsection*{5. 小球与远重于它、同向滑行的小车完全弹碰后的小球速度}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}小车质量远大于小球，二者同向运动，发生完全弹性碰撞。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}把小车视为“移动墙”，直接用反射公式。\par
+\textbf{最终答案：}小球碰后速度为 \(2v-v_0\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}符号方向最容易错。\par
+\end{tcolorbox}
+
+\subsubsection*{6. 有转动惯量的定滑轮两侧张力大小比较}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}滑轮有质量，绳两端挂 \(m_1,m_2\)，比较左右张力。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}对滑轮列转动方程，张力差提供角加速度。\par
+\textbf{最终答案：}右侧张力大于左侧张力。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}题目给的是某一瞬时角速度，不是角加速度方向。\par
+\end{tcolorbox}
+
+\subsubsection*{7. 圆锥摆运动半周时重力冲量大小}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}圆锥摆球在水平圆轨道上运动半周，求重力冲量。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}重力恒定竖直向下，冲量大小等于 \texttt{mgΔt}；半周时间为 \texttt{πR/v}。\par
+\textbf{最终答案：}\(J_g=πRmg/v\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别把重力冲量误写成合冲量。\par
+\end{tcolorbox}
+
+\subsubsection*{8. 已知质点平面运动方程，求一段时间内外力做功}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}由 \(x=5t, y=0.5t^2\) 求从 2 s 到 4 s 外力做功。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}直接用动能定理，先求速度，再算动能变化。\par
+\textbf{最终答案：}外力做功为 3 J。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}不要多此一举先求合力再积分。\par
+\end{tcolorbox}
+
+\subsubsection*{9. 一对滑动摩擦力分别作用在两物体上时，作功之和如何}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}问一对滑动摩擦力的总功可能是什么符号。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}总功率写成 \(f·(v_A-v_B)\)，滑动摩擦总是反向于相对运动。\par
+\textbf{最终答案：}总功恒为负。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}不要套“相互作用力做功和为零”。\par
+\end{tcolorbox}
+
+\subsubsection*{10. 两球跨过光滑圆柱，A 落地后 B 还能再升多高}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}等效阿特伍德系统，A 落地后 B 继续上升。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先求联动阶段加速度和落地瞬间速度，再把 B 看作竖直上抛。\par
+\textbf{最终答案：}B 还能再升 \texttt{R/3}。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别把“总上升高度”和“落地后再升高度”混了。\par
+\end{tcolorbox}
+
+\subsubsection*{11. 由势能曲线判断运动范围与平衡稳定性}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}给出势能曲线和总能量，判断运动范围。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}允许运动区满足 \(E_p≤E\)；稳定平衡看势能极小点。\par
+\textbf{最终答案：}若初始在 \(x_A\) 与 \(x_B\) 之间，则范围就是 \(x_A~x_B\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}平衡位置不是看势能值大小，而是看导数。\par
+\end{tcolorbox}
+
+\subsubsection*{12. 桌面上小物体绕孔转动，缓慢拉绳后哪些量改变}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}小物体在桌面上绕孔转，缓慢收绳。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}拉力始终过孔，所以关于孔的角动量守恒；但拉力做功，动能改变，动量大小和方向也改变。\par
+\textbf{最终答案：}角动量不变，动能和动量都改变。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}角动量守恒不等于动量守恒。\par
+\end{tcolorbox}
+
+\subsubsection*{13. 挖去偏心圆孔后的圆盘，对原圆心轴的转动惯量}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}整圆盘挖去一个偏心小圆孔，求剩余部分对原圆心轴的转动惯量。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}整盘减去小盘，小孔部分还要用平行轴定理。\par
+\textbf{最终答案：}\(I=13MR^2/32\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}要先分清题中的 \texttt{M} 是原整圆盘质量。\par
+\end{tcolorbox}
+
+\subsubsection*{14. 相对论尺的倾角变换，求 \texttt{K'} 相对 \texttt{K} 的速度}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}已知同一根尺在两个惯性系里的倾角，求相对速度。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}只有平行于运动方向的长度收缩，垂直分量不变；用倾角关系反推 \texttt{γ}。\par
+\textbf{最终答案：}\(v=√(2/3)c\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}不要把两条边都按同样比例收缩。\par
+\end{tcolorbox}
+
+\subsubsection*{15. 狭义相对论四个说法的正误判断}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}判断相对论若干命题组合。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}按本卷的教材口径，逐个判断哪些成立。\par
+\textbf{最终答案：}选 \texttt{(1)(2)(4)}。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}本卷沿用“相对论质量”旧表述，不要和现代理解混着判。\par
+\end{tcolorbox}
+
+\subsubsection*{16. 已知三维动量和总能量，求粒子速率}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}给出动量分量和总能量，求速度。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先求动量模，再用 \(v/c=pc/E\)。\par
+\textbf{最终答案：}\(v=0.6c\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}先求模长再代公式。\par
+\end{tcolorbox}
+
+\subsubsection*{17. 竖直圆环绕竖直直径转动时，小珠离开底部并停在别处的最小角速度}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}小珠原来在底部，圆环转得够快后会在其他位置平衡。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}在旋转系里列切向平衡条件，要求非底部解存在。\par
+\textbf{最终答案：}最小角速度阈值为 \texttt{√(g/R)}，题意通常表述为“大于这个值”。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别把“出现其他平衡点”和“底部失稳”割裂开。\par
+\end{tcolorbox}
+
+\subsubsection*{18. 两钢球缩短到轴的距离后角速度变多少}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}转台上两球沿杆向轴靠近。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}关于竖直轴无外力矩，角动量守恒。\par
+\textbf{最终答案：}角速度变为 36 rad/s。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}守恒的是 \(mr^2ω\)，不是 \texttt{rω}。\par
+\end{tcolorbox}
+
+\subsubsection*{19. 已知角动量矢量随时间变化，求 \(t=1 s\) 时力矩}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}直接由角动量函数求力矩。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}\(M=dL/dt\)，对每个分量分别求导。\par
+\textbf{最终答案：}若末项读作 \(12t^3-8t^2\)，则 \(t=1 s\) 时 \(M=12i-2j+20k\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}这题主要是 OCR 略糊，思路本身很直。\par
+\end{tcolorbox}
+
+\subsubsection*{20. 皮带传动中主动轮在 4 s 内转过多少圈}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}已知被动轮末角速度，求主动轮在 4 s 内的转数。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}无滑动有线速度相等；先由半径比换算角速度，再用匀角加速角位移公式。\par
+\textbf{最终答案：}主动轮转过 20 圈。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别直接拿被动轮角位移当主动轮角位移。\par
+\end{tcolorbox}
+
+\subsubsection*{21. 水平释放的匀质细杆下摆到某角度时的角速度}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}细杆从水平释放后下摆。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}绕铰点用机械能守恒，重心下降势能转为转动动能。\par
+\textbf{最终答案：}\(ω=√(3g sinθ/l)\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}先看清图里的 \texttt{θ} 是相对水平还是相对竖直。\par
+\end{tcolorbox}
+
+\subsubsection*{22. 同轴挖孔后的圆柱体质心坐标}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}圆柱一部分被同轴挖空，求剩余质心位置。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}把挖去部分视为负质量，做一维质心计算。\par
+\textbf{最终答案：}在常见读图下有 \(x_C=-H/28\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}这题题面分数和几何标注偏糊，符号方向要靠图判断。\par
+\end{tcolorbox}
+
+\subsubsection*{23. 水平自转轴回转仪的进动与冲量矩}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}已知初末角动量方向，求外力矩方向和冲量矩。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}用 \(τ=dL/dt\) 和 \(∫τdt=ΔL\)。\par
+\textbf{最终答案：}若末态为 \texttt{Lj}，则冲量矩为 \texttt{L(j-i)}。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}区分进动角速度方向和力矩方向。\par
+\end{tcolorbox}
+
+\subsubsection*{24. 转动圆锥上有一条母线槽，小珠由顶端滑到槽底}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}圆锥初始自转，小珠沿槽下滑到边缘离开。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}关于竖直轴角动量守恒，整体机械能守恒；先求末角速度，再求小珠离开时实验室系速率。\par
+\textbf{最终答案：}\(ω_f=Iω_0/(I+mR^2)\)，小珠末速由能量式给出。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别漏掉小珠对轴的角动量。\par
+\end{tcolorbox}
+
+\subsubsection*{25. 小圆柱在可平移半圆柱外侧纯滚下落}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\textbf{题意：}要求一组量，包括相对速度、切向/法向加速度、自转角速度与角加速度，以及大半圆柱的速度与加速度。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先用水平方向动量守恒，再用无滑动条件和机械能守恒，最后对时间求导得到加速度。\par
+
+\textbf{补充说明：}这是一道综合约束题，推导很长，关键是不能把大半圆柱错当固定轨道。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}漏掉“大半圆柱可以平移”会导致所有系数都错。\par
+\end{tcolorbox}
+
+
+\clearpage
+
+\section{大学物理1期中 2022 秋回忆版}
+
+\subsection*{原题页图}
+下面先放这一套试卷的原题页图，便于把讲解和原题对应起来。
+
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/大学物理1期中-王山鹰-2022秋-wsy回忆版-1.png}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/大学物理1期中-王山鹰-2022秋-wsy回忆版-2.png}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/01_正式试题/大学物理1_2022秋_图片版/大物1期中wsy2022上.jpg}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/01_正式试题/大学物理1_2022秋_图片版/大物1期中wsy2022下（部分，计算题部分请参考wsy回忆版）.jpg}
+\end{center}
+\vspace{0.5em}
+
+
+\begin{tcolorbox}[title=本卷讲解会反复用到的公式,colback=blue!3!white,colframe=blue!45!black]
+\textbf{来源说明：}回忆版 PDF + 图片补充。\\
+这些公式不是替代做题，而是作为看图和看讲解时的主线框架。
+\begin{itemize}
+\item $\rho=\dfrac{v^2}{a_n}$
+\item $\Omega=\dfrac{mgl}{J\omega}$
+\item $I_z=I_x+I_y$
+\item $x_C=\dfrac{\int x\,dm}{\int dm}$
+\item $\Delta L=\int \tau\,dt$
+\end{itemize}
+\end{tcolorbox}
+
+
+\subsection*{逐题答案}
+
+\subsubsection*{一-1. 斜抛体在最高点求曲率半径}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}最高点速度只剩水平分量 \(v_0 cosθ\)，法向加速度就是 \texttt{g}，所以 \(ρ=v^2/g\)。\par
+\textbf{最终答案：}\(ρ=v_0^2 cos^2θ/g\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别把初速度 \(v_0\) 直接代进去。\par
+\end{tcolorbox}
+
+\subsubsection*{一-2. 已知势能曲线和总能量 \(E=0\)，求运动范围与 \(x_0\) 处动能}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}用 \(K=E-U=-U\)，可达区间由 \texttt{U≤0} 决定。\par
+
+\textbf{补充说明：}右端图形有些模糊，严格范围要结合回忆版理解。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}总能量为 0 不等于动能也为 0。\par
+\end{tcolorbox}
+
+\subsubsection*{一-3. 高速自转陀螺在水平面内进动，求进动角速度}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}稳定进动满足 \(Ω=τ/L=mgl/(Jω)\)。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}不要把 \texttt{J} 误认成进动轴的转动惯量。\par
+\end{tcolorbox}
+
+\subsubsection*{一-4. 正方形均匀薄板已知过中心垂直板面的转动惯量为 \texttt{J}，求以对角线为轴的转动惯量}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}由垂直轴定理和两条对角线对称性，\(J=2J_d\)。\par
+\textbf{最终答案：}\(J_d=J/2\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别误用平行轴定理。\par
+\end{tcolorbox}
+
+\subsubsection*{一-5. 飞轮受阻力矩 \(M∝ω^2\) 减速，求 \(ω=ω_0/3\) 时的角加速度和已历时间}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}由 \(J dω/dt=-kω^2\) 先求角加速度，再积分求时间。\par
+\textbf{最终答案：}\(α=-kω_0^2/(9J)\)，\(t=2J/(kω_0)\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}积分时最容易漏负号。\par
+\end{tcolorbox}
+
+\subsubsection*{一-6. 质点沿 \texttt{x} 轴运动且 \(v=kx\)，求合力与 \texttt{x} 的关系及从 \(x_0\) 到 \(x_1\) 的时间}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}用 \(a=v dv/dx\) 得 \(a=k^2x\)，时间用 \(dt=dx/(kx)\)。\par
+\textbf{最终答案：}\(F=mk^2x\)，\(t=(1/k)ln|x_1/x_0|\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别把 \texttt{a} 写成 \texttt{dv/dx}。\par
+\end{tcolorbox}
+
+\subsubsection*{一-7. 光滑地面上，人站在滑板上从距后端 \texttt{l/4} 走到前端}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}系统水平方向无外力，质心不变。\par
+\textbf{最终答案：}滑板后退 \(3l/8\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}人相对滑板的位移是 \(3l/4\)，不是 \texttt{l}。\par
+\end{tcolorbox}
+
+\subsubsection*{一-8. 小车以恒加速度前进时，车顶螺帽脱落}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}对地只受重力；对车系还要叠加惯性加速度 \texttt{-a}。\par
+\textbf{最终答案：}对地加速度竖直向下，大小 \texttt{g}；对车加速度大小 \(√(a^2+g^2)\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}不能把相对车加速度写成标量 \texttt{g-a}。\par
+\end{tcolorbox}
+
+\subsubsection*{一-9. 已知轨迹 \(x=t, y=t^2\)，其中一力 \(F=5t i\)，求该力在 \texttt{1 s} 到 \texttt{2 s} 内做功}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}\(W=∫F·v dt\)，这里只有 \texttt{x} 分量做功。\par
+\textbf{最终答案：}\(W=15/2 J\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别把 \texttt{y} 方向也算到这一个力头上。\par
+\end{tcolorbox}
+
+\subsubsection*{一-10. 轻杆两端固定 \texttt{m} 与 \(2m\) 小球，绕过中点且与杆垂直的水平轴在竖直面内转动}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先由重力矩和转动惯量求角加速度，再由机械能守恒求角速度。\par
+
+\textbf{补充说明：}PDF 与 JPG 的题号略有错位，这里按 JPG 正式题号整理。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}重心到轴的距离别写错。\par
+\end{tcolorbox}
+
+\subsubsection*{一-11. 已知质点角动量 \(L=6t^2 i-(2t+1)j\)，求 \(t=1 s\) 时所受力矩}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}直接用 \(M=dL/dt\)。\par
+
+\textbf{补充说明：}这题与上一题在回忆版中题号有互换。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}分量求导别漏。\par
+\end{tcolorbox}
+
+\subsubsection*{一-12. 半径 \texttt{R} 的均质圆盘挖去半径 \texttt{r} 的偏心小圆盘}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}用“负质量法”求剩余部分质心。\par
+\textbf{最终答案：}若小孔圆心在 \texttt{+x} 方向，则 \(x_c=-r^2d/(R^2-r^2)\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}符号方向由孔的位置决定。\par
+\end{tcolorbox}
+
+\subsubsection*{二-1. 斥力有心场 \(F(r)=k/r^2\)，求势能与最近距离}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先由 \(F=-dU/dr\) 得 \(U=k/r\)，再用机械能和角动量守恒处理有效势。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}斥力场的势能符号别写反。\par
+\end{tcolorbox}
+
+\subsubsection*{二-2. 细杆从桌边滑落，在持续接触阶段求支持力与转角关系}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}对杆列平动和转动方程，结合几何约束与摩擦条件。\par
+
+\textbf{补充说明：}题面不完整，主要依赖回忆版恢复。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}不能把桌角直接当固定转轴。\par
+\end{tcolorbox}
+
+\subsubsection*{二-3. 带槽圆环可绕竖直直径转动，小球从槽顶端滑下}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}关于竖直轴角动量守恒，整体机械能守恒。\par
+
+\textbf{补充说明：}题面仍有一些缺失，但“顶端滑到图示侧点”的框架是清楚的。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别漏圆环自身转动惯量。\par
+\end{tcolorbox}
+
+\subsubsection*{二-4. 两个相同圆盘碰撞后重新恢复纯滚}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先做一维弹性碰撞，再考虑碰后地面摩擦让两个圆盘重新达到纯滚条件。\par
+\textbf{最终答案：}原先运动盘最终速度变为 \texttt{v/3}，原先静止盘变为 \(2v/3\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}碰撞瞬间无摩擦，不代表之后地面也无摩擦。\par
+\end{tcolorbox}
+
+
+\clearpage
+
+\section{2020 年秋大学物理 A2 期中}
+
+\subsection*{原题页图}
+下面先放这一套试卷的原题页图，便于把讲解和原题对应起来。
+
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/2020年秋大学物理A2期中王山鹰-1.png}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/2020年秋大学物理A2期中王山鹰-2.png}
+\end{center}
+\vspace{0.5em}
+
+
+\begin{tcolorbox}[title=本卷讲解会反复用到的公式,colback=blue!3!white,colframe=blue!45!black]
+\textbf{来源说明：}完整正式 PDF。\\
+这些公式不是替代做题，而是作为看图和看讲解时的主线框架。
+\begin{itemize}
+\item $n(h)=n(0)e^{-Mgh/(RT)}$
+\item $TV^{\gamma-1}=\mathrm{const}$
+\item $\Delta S=nR\ln\dfrac{V_2}{V_1},\quad \Delta S=k\ln\dfrac{\Omega_2}{\Omega_1}$
+\item $\eta=\dfrac{W}{Q_h}$
+\item $y=2A\cos(kx)\cos(\omega t+\varphi)$
+\item $\dfrac{dN}{dt}=-\dfrac14 n\bar v A$
+\end{itemize}
+\end{tcolorbox}
+
+
+\subsection*{逐题答案}
+
+\subsubsection*{一-1. 海平面上氮气与氧气浓度比为 4:1，求海拔 5 km 处的浓度比}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}对两种气体分别用等温大气公式，再相除。\par
+\textbf{最终答案：}高处的 \(N_2/O_2\) 比值约为 \texttt{4.34:1}。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}氧气更重，衰减更快，所以比值应增大。\par
+\end{tcolorbox}
+
+\subsubsection*{一-2. 单原子理想气体绝热压缩到原体积一半，求平均速率变化倍数}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先用绝热关系求温度变化，再利用平均速率与 \texttt{√T} 成正比。\par
+\textbf{最终答案：}平均速率变为原来的 \(2^(1/3)\) 倍。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别直接按体积比推平均速率。\par
+\end{tcolorbox}
+
+\subsubsection*{一-3. \texttt{ν mol} 理想气体等温压缩到原体积一半，求熵变和微观状态数之比}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}\(ΔS=νR ln(V_2/V_1)\)，再用 \(ΔS=k ln(Ω_2/Ω_1)\)。\par
+\textbf{最终答案：}\(ΔS=-νR ln2\)，\(Ω_2/Ω_1=2^(-νN_A)\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}等温压缩不代表熵变为 0。\par
+\end{tcolorbox}
+
+\subsubsection*{一-4. 温熵图中矩形循环的名称与效率}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}矩形 T-S 循环对应卡诺循环，效率用面积比。\par
+\textbf{最终答案：}这是卡诺循环，效率为 \texttt{1/3}。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}吸热量对应上方等温线下的面积，不是整个矩形面积。\par
+\end{tcolorbox}
+
+\subsubsection*{一-5. 弹簧振子从平衡位置向 \texttt{+x} 方向出发，求首次到达 \texttt{A/2} 的时刻}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}设 \(x=A sin(ωt)\)，解 \(sin(ωt)=1/2\)。\par
+\textbf{最终答案：}\(t=T/12\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}很容易误写成 \texttt{T/6}。\par
+\end{tcolorbox}
+
+\subsubsection*{一-6. 长为 \texttt{L} 的杆中波速为 \texttt{u}，一端固定，求基频}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}按“一端固定、一端自由”的基模处理。\par
+\textbf{最终答案：}\(f_1=u/(4L)\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别误当成两端固定。\par
+\end{tcolorbox}
+
+\subsubsection*{一-7. 运动波源与运动反射壁的多普勒效应}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先算反射壁接收到的频率，再把反射壁当移动波源算反射波频率。\par
+\textbf{最终答案：}反射壁接收频率约为 \texttt{291.43 Hz}，静止观察者听到的拍频约为 \texttt{17.68 Hz}。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}第二次变换时反射壁已经是波源，不再是观察者。\par
+\end{tcolorbox}
+
+\subsubsection*{一-8. 两同方向简谐振动合成的振幅与初相位}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先把两个余弦式化成同一相位形式，再合成。\par
+\textbf{最终答案：}振幅 \(4×10^-2 m\)，初相位 \texttt{π/2}。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}三角变形时最容易把相位号搞错。\par
+\end{tcolorbox}
+
+\subsubsection*{一-9. 根据李萨如图判断角速度比；若为左旋正圆再求振幅比和相位差}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}从图形回环数判断频率比；左旋正圆要求同频同振幅并满足特定相位差。\par
+\textbf{最终答案：}图中 \(ω_y:ω_x=2:1\)；若为左旋正圆，则 \(A_y:A_x=1:1\)，相位差可写为 \texttt{-π/2}。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}不同教材对“左旋”符号约定可能不同。\par
+\end{tcolorbox}
+
+\subsubsection*{一-10. 已知驻波 \(y=2cos(πx)cos(90t+π/2)\)，求原波波长和周期}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}从标准驻波式直接读出 \texttt{k,ω}。\par
+\textbf{最终答案：}\(λ=2 m\)，\(T=π/45 s\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别把 90 当频率而不是角频率。\par
+\end{tcolorbox}
+
+\subsubsection*{二-1. 一维横波从波疏介质入射到波密界面，写入射波、反射波并求静止点}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先写右行入射波，再利用“疏到密反相”写反射波，合成后求驻波节点。\par
+\textbf{最终答案：}静止点满足 \(x=λ/4+nλ/2\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}反射反相这一点非常关键。\par
+\end{tcolorbox}
+
+\subsubsection*{二-2. 已知速率分布 \(f(v)=Av^2 (0≤v≤v_m)\)，求归一化常数、平均速率和区间平均速率}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}分别做归一化积分、平均值积分和条件平均积分。\par
+\textbf{最终答案：}\(A=3/v_m^3\)，平均速率 \(3v_m/4\)，区间 \(v_m/2~v_m\) 的平均速率为 \(45v_m/56\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}第 3 问不能只算分子，还要除以该区间的概率。\par
+\end{tcolorbox}
+
+\subsubsection*{二-3. \texttt{2 mol} 水蒸气作热循环，求各段功、内能变化、循环功和效率}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先从图上读出各状态点，\texttt{b→c} 是等温过程；循环功等于 P-V 图面积，效率为 \(W/Q_in\)。\par
+\textbf{最终答案：}\(W_{d→a}≈-5.07×10^3 J\)，\(ΔU_{a→b}≈3.04×10^4 J\)，\(W_cycle≈5.47×10^3 J\)，效率约 \texttt{13.4\%}。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别把等温段错当成等压段。\par
+\end{tcolorbox}
+
+\subsubsection*{二-4. 理想气体经小孔漏气，温度恒定，求压强降到初值 \texttt{1/3} 的时间}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}用分子通量 \(dN/dt=-(1/4)n v̄ A\) 建微分方程，再由 \texttt{p∝N} 转成压强关系。\par
+\textbf{最终答案：}\(t=(4V/(A v̄))ln3\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}漏掉通量公式里的 \texttt{1/4}。\par
+\end{tcolorbox}
+
+\subsubsection*{二-5. 两个定压热容均为 \(C_p\) 的物体，通过工质使其中一个降温，求最小外功}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}最小外功对应可逆过程，所以总熵变为 0，再联立能量关系。\par
+\textbf{最终答案：}\(W_min=C_p(T_i-T_f)^2/T_f\)。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}如果不加“可逆”条件，就做不出最小功。\par
+\end{tcolorbox}
+
+
+\clearpage
+
+\section{大学物理 B1 2014 期中}
+
+\subsection*{原题页图}
+下面先放这一套试卷的原题页图，便于把讲解和原题对应起来。
+
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/01_正式试题/大学物理B1_2014/大学物理B1-期中-2014-1.jpg}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/01_正式试题/大学物理B1_2014/大学物理B1-期中-2014-2.jpg}
+\end{center}
+\vspace{0.5em}
+
+
+\begin{tcolorbox}[title=本卷讲解会反复用到的公式,colback=blue!3!white,colframe=blue!45!black]
+\textbf{来源说明：}图片卷。\\
+这些公式不是替代做题，而是作为看图和看讲解时的主线框架。
+\begin{itemize}
+\item $\theta=\omega_0 t+\dfrac12\alpha t^2$
+\item $x_C=\dfrac{\int x\lambda(x)\,dx}{\int \lambda(x)\,dx}$
+\item $a=v\dfrac{dv}{dx}$
+\item $\tau=\dfrac{dL}{dt}$
+\item $\gamma=\dfrac{E}{E_0},\quad s=v\gamma\tau_0$
+\end{itemize}
+\end{tcolorbox}
+
+
+\subsection*{逐题答案}
+
+\subsubsection*{一-1. 半径 \texttt{1.5 m} 的飞轮，初角速度 \texttt{10 rad/s}，角加速度 \(-5 rad/s^2\)，求角位移再次为 0 的时刻及线速度}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}用匀角变速公式求 \(θ=0\) 的非零时刻，再求轮缘线速度。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别把“角位移为 0”误认成“角速度为 0”。\par
+\end{tcolorbox}
+
+\subsubsection*{一-2. 线密度 \(λ=ax+b\) 的细杆，求质心坐标}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先求总质量，再求一阶矩。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}线密度不是常量，要积分。\par
+\end{tcolorbox}
+
+\subsubsection*{一-3. 质点沿 \texttt{x} 轴运动且 \(v=kx\)，求合力与从 \(x_0\) 到 \(x_1\) 的时间}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}\(a=v dv/dx\)，再对 \(dt=dx/v\) 积分。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}\texttt{a} 不是 \texttt{dv/dx}。\par
+\end{tcolorbox}
+
+\subsubsection*{一-4. 矩形薄板已知边轴转动惯量，求过中心垂直板面的转动惯量}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}平行轴定理配合垂直轴定理。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}边轴与中心轴别混。\par
+\end{tcolorbox}
+
+\subsubsection*{一-5. 圆锥摆在 1/4 周期内，重力对悬点 \texttt{O} 的冲量矩}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}对力矩矢量积分，或直接用角动量定理。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}冲量矩不是简单标量 \texttt{τΔt}。\par
+\end{tcolorbox}
+
+\subsubsection*{一-6. 物块沿 30° 斜面下滑，求滑动摩擦系数和地面对斜面的静摩擦}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先写物块沿斜面方向方程，再单独分析斜面受力。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}地面静摩擦要分析斜面，不是重复写物块方程。\par
+\end{tcolorbox}
+
+\subsubsection*{一-7. 给定势能曲线与总能量，求运动范围并判断平衡类型}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先找 \texttt{U≤E} 的允许区，再看极值点稳定性。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}别把不同连通区间混成一段。\par
+\end{tcolorbox}
+
+\subsubsection*{一-8. 边长 \texttt{a} 的立方体以 \(0.6c\) 运动，求地面测得体积}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}只有沿运动方向的一条边收缩。\par
+\textbf{最终答案：}体积变为原来的 \texttt{1/γ}。\par
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}不是三条边都缩。\par
+\end{tcolorbox}
+
+\subsubsection*{一-9. 飞船以 \(0.6c\) 飞行，向前抛出 \(0.8c\) 物体，求地面测得速度}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}用一维相对论速度合成。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}不能做经典相加。\par
+\end{tcolorbox}
+
+\subsubsection*{二-1. 两人分别抓住滑轮两端上爬，A 用力更大，讨论谁先到屋顶}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}理想滑轮下先看张力是否相同；若考虑滑轮质量和摩擦，则再写转动方程。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}直觉上“A 用力更大就先到”在理想模型里并不成立。\par
+\end{tcolorbox}
+
+\subsubsection*{三-1. 纯滚轮缘点轨迹是摆线，求坐标、速度、加速度及最高点曲率半径}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}写摆线参数方程，逐次求导。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}最高点不是速度为 0 的点。\par
+\end{tcolorbox}
+
+\subsubsection*{三-2. 飞船从北极沿切向飞出，轨道与 \texttt{y} 轴再交于 \texttt{C}，求 \texttt{C} 点速度与初速夹角}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}用机械能守恒和角动量守恒。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}中心力问题一定要想到角动量守恒。\par
+\end{tcolorbox}
+
+\subsubsection*{三-3. 圆柱从桌边滚下，求支持力与转角关系及开始滑动的临界角}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}无滑动时用能量和接触约束，再令所需静摩擦达到极限。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}临界条件不是 \(N=0\)，而是摩擦到上限。\par
+\end{tcolorbox}
+
+\subsubsection*{三-4. 小球与杆弹性碰撞，求碰后小球速度、杆角速度和杆质心速度}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}联立线动量守恒、角动量守恒和动能守恒。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}杆的转动惯量用的是关于质心的。\par
+\end{tcolorbox}
+
+\subsubsection*{三-5. 相对论介子总能量已知，求飞行距离}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{解法：}先求 \texttt{γ}，再求实验室系寿命和飞行距离。\par
+
+
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\textbf{提醒：}固有寿命要乘时间延缓因子。\par
+\end{tcolorbox}
+
+
+\end{document}

@@ -1,0 +1,2250 @@
+% !TEX program = xelatex
+\documentclass[a4paper]{article}
+\usepackage[UTF8]{ctex}
+\setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+\usepackage[top=2.55mm,bottom=2.55mm,left=2.75mm,right=2.75mm]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem,array,tabularx}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.16pt}
+\setlength{\columnsep}{2.0mm}
+\setlength{\columnseprule}{0.12pt}
+\setlength{\tabcolsep}{0.8pt}
+\setlength{\fboxsep}{0.72pt}
+\setlength{\emergencystretch}{0.9em}
+\sloppy
+\raggedcolumns
+\setlist{nosep,leftmargin=4.5pt,labelsep=1pt,itemsep=0pt,topsep=0pt,parsep=0pt}
+\definecolor{M}{HTML}{0B3D91}
+\definecolor{Q}{HTML}{0E6BA8}
+\definecolor{A}{HTML}{1B5E20}
+\definecolor{E}{HTML}{B71C1C}
+\definecolor{G}{HTML}{FBFDFF}
+\definecolor{Y}{HTML}{FFFEF5}
+\definecolor{R}{HTML}{B71C1C}
+\definecolor{V}{HTML}{1B5E20}
+\definecolor{S}{HTML}{E65100}
+\definecolor{F}{HTML}{006064}
+\definecolor{C}{HTML}{6A1B9A}
+\definecolor{bg}{HTML}{FBFDFF}
+\definecolor{warnbg}{HTML}{FFFEF5}
+\newcommand{\mt}[1]{\vspace{0.45pt}\colorbox{M}{\parbox{\dimexpr\linewidth-2\fboxsep}{\color{white}\bfseries #1}}\par}
+\newcommand{\qt}[1]{\vspace{0.25pt}\colorbox{Q}{\parbox{\dimexpr\linewidth-2\fboxsep}{\color{white}\bfseries #1}}\par}
+\newcommand{\ans}[1]{\colorbox{G}{\parbox{\dimexpr\linewidth-2\fboxsep}{#1}}\par}
+\newcommand{\warn}[1]{\colorbox{Y}{\parbox{\dimexpr\linewidth-2\fboxsep}{\color{E}\bfseries #1}}\par}
+\newcommand{\chain}[1]{{\color{A}\bfseries 解题链：}#1\par}
+\newcommand{\res}[1]{{\color{E}\bfseries 结果/收口：}#1\par}
+\newcommand{\form}[1]{{\color{M}\bfseries 公式链：}#1\par}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\chap}[1]{\mt{#1}}
+\newcommand{\sect}[1]{\qt{#1}}
+\newcommand{\exm}[1]{\qt{#1}}
+\newcommand{\key}[1]{{\bfseries\color{M}#1}}
+\newcommand{\fml}[1]{\begin{adjustbox}{max width=\linewidth}$\displaystyle #1$\end{adjustbox}}
+\newcommand{\wfml}[1]{\begin{adjustbox}{max width=\linewidth}$\displaystyle #1$\end{adjustbox}}
+\newcommand{\fmlb}[1]{\ans{\begin{adjustbox}{max width=.96\linewidth}$\displaystyle #1$\end{adjustbox}}}
+\newcommand{\wfmlb}[1]{\ans{\begin{adjustbox}{max width=.96\linewidth}$\displaystyle #1$\end{adjustbox}}}
+\newcommand{\fitmath}[2][\linewidth]{\begin{adjustbox}{max width=#1}$\displaystyle #2$\end{adjustbox}}
+\newcommand{\mother}[1]{\mt{#1}}
+\newcommand{\labtag}[3]{{\bfseries\color{#1}\colorbox{#1}{\color{white}\fontsize{2.8}{2.95}\selectfont #2}\,#3}\par}
+\newcommand{\real}[1]{\labtag{R}{真题}{#1}}
+\newcommand{\subt}[1]{\labtag{Q}{子题}{#1}}
+\newcommand{\var}[1]{\labtag{V}{变式}{#1}}
+\newcommand{\iden}[1]{\labtag{C}{识别}{#1}}
+\newcommand{\step}[1]{\labtag{S}{步骤}{#1}}
+\newcommand{\err}[1]{\labtag{R}{易错}{#1}}
+\newcommand{\lookup}[1]{\labtag{C}{查表}{#1}}
+\newcommand{\concept}[1]{\labtag{V}{概念}{#1}}
+\newcommand{\sym}[1]{\labtag{F}{符号}{#1}}
+\newcommand{\boxmini}[1]{\colorbox{warnbg}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}\fontsize{3.2}{3.38}\selectfont #1\end{minipage}}\par}
+\newcommand{\eq}[1]{\begin{adjustbox}{max width=\linewidth}$\displaystyle #1$\end{adjustbox}}
+\newcommand{\eqb}[1]{\par\begin{adjustbox}{max width=\linewidth}$\displaystyle #1$\end{adjustbox}\par}
+\newcommand{\kw}[1]{{\bfseries\color{S}#1}}
+\newcommand{\bad}[1]{{\bfseries\color{R}#1}}
+\newcommand{\miniimg}[2]{}
+\newcommand{\schemabasics}{}
+\newcommand{\schemepotential}{}
+\newcommand{\schemelaval}{}
+\newcommand{\schemeshock}{}
+\newcommand{\schemeviscous}{}
+\newcommand{\schemebl}{}
+\newcommand{\pvzfig}{}
+\newcommand{\lavalfig}{}
+\newcommand{\cylfig}{}
+\newcommand{\platefig}{}
+\begin{document}
+\fontsize{4.02}{4.24}\selectfont
+\begin{center}
+{\heiti\fontsize{7.6}{7.9}\selectfont 流体力学期末开卷资料：母题证据链版二}\par
+{\fontsize{3.95}{4.12}\selectfont 题干定位 $\to$ 母题 $\to$ 真题/子题 $\to$ 公式链 $\to$ 易错；v106 与重整版五已按母题回流。}
+\end{center}
+\vspace{-2.2pt}
+\begin{multicols}{3}
+
+\mt{母题0 新卷快速定位：题干词 $\to$ 主方程 $\to$ 检查}
+\qt{子题：考场看到新题，先用 20 秒判断应落到哪一个母题。}
+\ans{液面/水池/管/泵/阀/水轮机 $\to$ 母题1；闸门/U管/曲面/浮体 $\to$ 母题2；喷嘴/弯管/射流/叶片/支座力 $\to$ 母题3；$\phi,\psi,Q,\Gamma,$ 圆柱/机翼/镜像 $\to$ 母题4；$p_0,T_0,M,A^*,p_b,$ 喷管 $\to$ 母题5；黏度/充分发展/两平板/圆管层流 $\to$ 母题6；平板边界层/$C_f,C_D$/沉降/风载 $\to$ 母题7；速度场/散度/旋度/应力张量 $\to$ 母题8；量纲/模型/相似/水击/水波 $\to$ 母题9；证明/解释/定义 $\to$ 母题10。}
+\qt{子题：每道计算题的标准落笔骨架。}
+\chain{第一行写模型句：“本题属于……，取……为截面/CV/流线，基准面……”。第二行写主方程。第三行按已知量求中间量。第四行回代答案并检查。}
+\ans{常见中间量顺序：管路 $Q\to V\to Re\to\lambda\to h_L\to p/H/P$；CV $Q,A,p\to V,\dot m\to \sum F=\dot m\Delta V$；势流 $\phi/\psi\to V\to p\to F$；可压 $p_0,T_0,A/A^*,p_b\to M\to p,T,\rho,V,\dot m$；边界层 $Re_x/Re_L\to\delta,C_f\to D$；应力 $P,\bm n\to P\bm n\to$ 法向/切向。}
+\qt{子题：查表题不要空，写“输入--输出--回代”。}
+\ans{Moody：输入 $Re,\varepsilon/d$，读 $\lambda$，回 $h_f=\lambda(L/d)V^2/(2g)$。面积--马赫：输入 $A/A^*$，读亚声/超声两支 $M$，再由背压选支路。正激波：输入 $M_1$，读 $M_2,p_2/p_1,T_2/T_1,p_{02}/p_{01}$。斜激波：输入 $M_1,\theta$ 或 $\beta$，先得 $M_{n1}=M_1\sin\beta$。PM：输入 $M$ 读 $\nu(M)$，膨胀用 $\nu_2=\nu_1+\delta$。阻力图：输入 $Re$ 和形状，读 $C_D$。}
+\warn{总检查：单位先化 SI；问压强先判表压/绝压；问方向先画受力或动量方向；跨泵/水轮机/激波/损失不能硬套同一条 Bernoulli；局部损失速度用所在管段。}
+
+
+\mt{母题1 两油箱变径突扩钢管：管路 PVZ + 局损 + 沿程 + Re}
+\qt{真题：两油箱液面差 $h=0.5$m，前管 $D_1=100$mm，后管 $D_2=400$mm，入口/出口均淹没，入口端液面到管轴 $H=1.0$m，油 $s=0.9,\mu=0.04$Pa s。短管忽略沿程求 $Q,p_A,p_B$；长管给 $Q=0.006$m$^3$/s、$L_1=50$m、$L_2=100$m、$e=0.046$mm 求所需液面差。$k_e=0.5,k_d=1.0,h_x'=(V_1-V_2)^2/(2g)$。}
+\chain{把两个大液面当截面：$p=0,V=0$。连续性 $Q=A_1V_1=A_2V_2$，本题 $A_2/A_1=16$，故 $V_2=V_1/16$。短管：两液面列 PVZ，$h=k_eV_1^2/(2g)+(V_1-V_2)^2/(2g)+k_dV_2^2/(2g)$。长管：再加 $\lambda_1L_1D_1^{-1}V_1^2/(2g)+\lambda_2L_2D_2^{-1}V_2^2/(2g)$。}
+\ans{短管：$0.5=[0.5+(15/16)^2+1/16^2]V_1^2/(2g)$，$V_1=2.66$m/s，$V_2=0.166$m/s，$Q=A_1V_1=2.09\times10^{-2}$m$^3$/s。A 点：$p_A/\gamma=H-(1+k_e)V_1^2/(2g)=0.458$m油，$p_A\approx4.0$kPa。B 点：$p_B/\gamma=H-h=0.50$m油，$p_B\approx4.4$kPa。}
+\ans{长管：$Q=0.006$，$V_1=0.764$m/s，$V_2=0.0478$m/s；$\rho=900$kg/m$^3$。$Re_1=1719,Re_2=430$，均层流；$\lambda_1=0.0372,\lambda_2=0.149$。损失：$h_e=0.0149$，$h_x=0.0261$，$h_d\approx0.0001$，$h_{f1}=0.553$，$h_{f2}=0.0043$m，总液面差 $h\approx0.60$m。}
+\warn{检查：局部损失速度用所在管段速度；表压输出；油的 $\rho=s\rho_w$；长管不能丢沿程。}
+
+\qt{子题：离心泵吸水管，镀锌钢管 $e=0.15$mm，$L=6$m，$D=100$mm，弯头 $\zeta=0.29$，入口阀 $\zeta=2.5$，$Q=50$m$^3$/h，$p_v=19.6$kPa，$p_a=101.3$kPa，入口压至少比汽化压大 $20$kPa，求最大安装高度。}
+\chain{水面 1 到泵入口 2：$p_a/\rho g+z_1=p_2/\rho g+z_2+V^2/(2g)+h_L$。令 $z_2-z_1=h$，且 $p_2\ge p_v+20$kPa。$h_{\max}=(p_a-p_v-20{\rm kPa})/(\rho g)-V^2/(2g)-h_L$。}
+\res{先算 $V=Q/A$、$Re=VD/\nu$，由 $Re,e/D$ 查 $\lambda$，$h_L=\lambda LD^{-1}V^2/(2g)+(\zeta_{\rm bend}+\zeta_{\rm valve}+\zeta_{\rm in}) V^2/(2g)$。本题核心是\textbf{绝压}，不是表压。}
+
+\qt{子题：水轮机管路，斜管 $D=20$cm、$L=30$m，水平管 $D=30$cm、$L=15$m，水温 $10^\circ$C，$\nu=1.3\times10^{-6}$，铸铁 $e=0.25$mm，忽略局部损失，斜管平均速度 $2$m/s，压力表 $70$kPa，求输出功率。}
+\chain{先由斜管流量 $Q=A_1V_1$，再得水平管 $V_2=Q/A_2$。算两段 $Re,e/D$，查 $\lambda_1,\lambda_2$。从上游自由液面到下游测压截面列能量，水轮机取能：$H_T=E_{\rm in}-E_{\rm out}-h_f$。}
+\form{$P_T=\rho gQH_T$，若给效率则乘 $\eta$。压力表是表压；自由液面表压为 0。}
+
+\qt{子题：两水槽光滑/粗糙管。$D=10$cm、$L=200$m 水平管连两 $20^\circ$C 水槽，水位 $800$m 与 $650$m。问光滑管流量；若粗糙管实际 $Q=100$m$^3$/h，问平均粗糙度。}
+\chain{水位差 $H=150$m。先忽略/选光滑管摩阻关系求 $Q$；反推粗糙度时用 $V=Q/A$，$Re=VD/\nu$，由 $H=\lambda(L/D)V^2/(2g)$ 得 $\lambda$，再用 Colebrook 解 $e/D$。}
+
+\qt{子题：2006 期末粗糙圆管放水。水池有 $20^\circ$C 水 $1$m$^3$，底部接相对粗糙度 $\varepsilon/D\approx0.0012$ 的粗糙圆管，求出口流量 $Q$；若换 SAE 10W30 油，判出口层流/湍流。}
+\chain{第一眼：水池液面到出口是 PVZ，未知 $Q$ 又影响 $Re,\lambda$，所以必须迭代。取自由液面 1 和出口 2：$p_1=p_2=0,\ V_1\approx0$。}
+\form{$H=\left(1+\sum\zeta+\lambda L/D\right)V^2/(2g)$，$Q=AV$，$Re=VD/\nu$。湍流由 $Re,\varepsilon/D$ 查 Moody 或 Colebrook；层流 $\lambda=64/Re$。}
+\res{水：先猜 $\lambda$ 求 $V,Q$，再算 $Re$ 更新 $\lambda$，重复到 $Q$ 基本不变。SAE 油：把 $\nu$ 换成油的运动黏度，重新算 $Re$；若 $Re<2000$ 写层流，若 $Re>4000$ 写湍流，中间写过渡。}
+\warn{这类题不能只写托里拆利 $V=\sqrt{2gH}$；粗糙长管必须把沿程损失吃掉。}
+
+\qt{子题：普通池底放水管、虹吸管、并联/分支、泵管路四类 Pipe Flow 定位。}
+\ans{\textbf{池底放水：} 大水面到出口，$H=(1+\sum\zeta+\lambda L/D)V^2/(2g)$，未知 $Q$ 就迭代 $\lambda$。\textbf{虹吸防空化：} 水面到管顶最高点，$p_{\rm top}/\gamma=p_a/\gamma-(z_{\rm top}-z_s)-V^2/(2g)-h_{L,s\to top}$，要求 $p_{\rm top}>p_v/\gamma+\Delta h_{\rm safe}$。\textbf{并联/分支：} 总流量 $Q=\sum Q_i$，并联各支路损失相等 $h_{L1}=h_{L2}=\cdots$；已知总 $Q$ 就调 $Q_i$，已知压差就分别求 $Q_i$ 后相加。\textbf{泵/水轮机：} $z_1+p_1/\gamma+\alpha_1V_1^2/(2g)+H_p=z_2+p_2/\gamma+\alpha_2V_2^2/(2g)+h_L+H_T$；泵输入 $P=\rho gQH_p/\eta$，水轮机输出 $P=\eta\rho gQH_T$。}
+\warn{管道题统一检查：基准面、表压/绝压、速度属于哪段管、局部损失是否在入口/出口/阀/弯头/突扩、$\lambda$ 是 Darcy 摩阻系数。}
+
+\qt{子题：孔板/文丘里/喷嘴流量计，给压差 $\Delta p$、管径 $d$、孔径 $d_0$，求 $Q$。}
+\chain{第一眼：收缩节流导致速度升高、静压降低。取上游截面和喉口/孔口，先用连续性消掉两处速度，再用 Bernoulli 或带流量系数的公式。}
+\form{$\beta=d_0/d$，理想 $Q=A_0\sqrt{2\Delta p/[\rho(1-\beta^4)]}$；实际 $Q=C A_0\sqrt{2\Delta p/[\rho(1-\beta^4)]}$，$C$ 由题给或查表。}
+\warn{孔板不是无损装置；若题给流量系数/收缩系数必须乘。压差计读数先换成 $\Delta p$。}
+
+\qt{子题：液面随时间变化的放水题，求排空时间或液面下降规律。}
+\chain{第一眼：题干出现“多久流光/水面随时间下降”。不能只算瞬时 $Q$，必须接连续方程。先写 $Q(h)=C A_o\sqrt{2gh}$ 或含损失的 $Q(h)$，再写水箱 $A_T\,dh/dt=-Q(h)$。}
+\res{若 $Q=C A_o\sqrt{2gh}$，则 $t=\dfrac{2A_T}{C A_o\sqrt{2g}}\left(\sqrt{h_0}-\sqrt{h_1}\right)$。若管路损失明显，用 $H(h)=[1+\sum\zeta+\lambda L/d]V^2/(2g)$ 迭代 $Q(h)$ 后积分。}
+
+
+\qt{重整版五回流：母题1 子题/变式/公式链}
+{\fontsize{3.48}{3.68}\selectfont
+\pvzfig
+\real{两油箱变径突扩管 15 分真题}
+题干：两油箱液面差 $h$，钢管前段 $D_1$、后段 $D_2$，入口/出口/突扩；短管求 $Q,p_A,p_B$；长管给 $Q,L_1,L_2,e,\mu,s$ 求所需液面差。此题作为管路母题主模板。
+\iden{看到什么用}
+水池/油箱/大容器 + 管道 + 阀/弯头/突扩/突缩/泵/水轮机 + 求 $Q,p,H,P$。有两个自由液面：先两液面列机械能；有管内 A/B 点：再从最近液面到点列局部方程。
+\subt{求流量 $Q$}
+第一步写大容器液面到液面：$p=0,V=0$。若短管只局损：
+\eqb{h=\sum \zeta_i\frac{V_i^2}{2g}+\frac{(V_1-V_2)^2}{2g}}
+若长管：
+\eqb{h=\sum \lambda_i\frac{L_i}{d_i}\frac{V_i^2}{2g}+\sum \zeta_i\frac{V_i^2}{2g}}
+中间顺序：设 $Q\to A_i\to V_i=Q/A_i\to Re_i\to\lambda_i\to h_L$。
+\subt{求 A/B 点压强}
+先有 $Q$。A 点在细管：从上游液面到 A；B 点在粗管：从 B 到下游液面或从上游液面到 B。写：
+\eqb{z_1+\frac{p_1}{\rho g}+\frac{V_1^2}{2g}=z_2+\frac{p_2}{\rho g}+\frac{V_2^2}{2g}+h_L}
+最后 $p=\rho g(\text{水头})$，通常是表压。
+\subt{求泵安装高度/汽蚀}
+从吸水池液面到泵入口列能量；约束：
+\eqb{\frac{p_{\rm in}}{\rho g}\ge \frac{p_v}{\rho g}+\Delta h_{\rm safe}}
+未知安装高度就是高程差。必须用\bad{绝压}，不能用表压乱代。
+\subt{求泵功率/水轮机功率}
+先求扬程或水轮机水头：
+\eqb{H_p=E_2-E_1+h_L,\qquad H_T=E_1-E_2-h_L}
+\eqb{P_{\rm pump}=\rho gQH_p/\eta,\qquad P_T=\eta\rho gQH_T}
+\subt{串联/并联管路}
+串联：$Q_1=Q_2=\cdots$，总损失相加。并联：各支路两端水头损失相等，$Q=\sum Q_i$。
+\form{管路公式链}
+\eq{A=\pi d^2/4}, \eq{V=Q/A}, \eq{Re=Vd/\nu=\rho Vd/\mu}。层流 $\lambda=64/Re$。沿程 $h_f=\lambda(L/d)V^2/(2g)$；局部 $h_\zeta=\zeta V^2/(2g)$；突扩 $h=(V_1-V_2)^2/(2g)$。
+\lookup{Moody/Colebrook}
+粗糙管先算 $e/d$，再用 $Re,e/d$ 查 Moody。若题给
+\eqb{\frac1{\sqrt\lambda}=-2\log_{10}\left(\frac{e/d}{3.7}+\frac{2.51}{Re\sqrt\lambda}\right)}
+这是迭代式。
+\err{常见扣分}
+局损速度必须用局部件所在管段速度；短管才可忽略沿程；油的比重 $s$ 给出则 $\rho=s\rho_w$；汽蚀和可压缩题用绝压；泵加能、水轮机取能。
+}
+
+\qt{v106回流：旧母题1 细题链/易错/查表}
+{\fontsize{3.42}{3.60}\selectfont
+\pvzfig
+\sect{两油箱/水池--变径管PVZ主例}
+图形：两液面差$h$，左液面到管轴$H$，细管A、粗管B，中间突扩。第一行：$p/\rho g+\alpha V^2/2g+z$ 左 = 右 + 损失。液面$p=0,V=0$。短管求$Q$：$h=0.5V_s^2/2g+(V_s-V_b)^2/2g+1.0V_b^2/2g$，$V_s=Q/A_s,V_b=Q/A_b$。求A：$H=p_A/\rho g+1.5V_s^2/2g$。求B：从B到右液面，若只剩出口损失，则$p_B/\rho g=H-h$。长管加$\lambda L V^2/(d2g)$，层流$64/Re$，湍流用Colebrook；局部损失速度取所在管段。\schemabasics
+\sect{两油箱变径管15分真题：两问标准套写}
+已知$s=0.9,\rho=900,\mu=0.04,D_1=0.1,D_2=0.4,H=1.0,h=0.5$，故$A_2=16A_1,V_2=V_1/16$。问(a)短管：$0.5=[0.5+(15/16)^2+(1/16)^2]V_1^2/(2g)$，得$V_1=2.66$m/s，$Q=A_1V_1=2.09\times10^{-2}$m$^3$/s；$p_A/\rho g=H-1.5V_1^2/(2g)=0.458$m油，$p_A\approx4.04$kPa；$p_B/\rho g=H-h=0.50$m油，$p_B\approx4.41$kPa。问(b)长管给$Q=0.006$：$V_1=0.764,V_2=0.0478$；$Re_1=1719,Re_2=430$均层流，$f_1=0.0372,f_2=0.149$；$h_e=0.0149,h_d\approx0.0001,h_x=0.0261,h_{f1}=0.553,h_{f2}=0.0043$，总液面差$h=\sum h_L\approx0.60$m。
+\sect{新卷读题定位法}
+四步：1圈\key{物质模型}静水/无粘/可压/有粘；2圈\key{对象}流线/CV/截面/壁面/外绕物；3圈\key{要求量}$p,Q,F,H,\dot m,M,A,\delta,D$/证明；4圈\key{特殊状态}定常/非定常/充分发展/背压/激波/粗糙/汽蚀/分离。落笔句：模型+假设+主方程+已知链。
+\warn{页间导航}：P1判题/CV/静水，P2势流，P3喷管，P4激波PM，P5管流，P6边界层/查表；Q区看模板，M区查易错与过程分。
+\warn{四件套}：题干词定位模型$\to$列适用条件和主方程$\to$查表输入/输出/回代$\to$自检。自检五类：单位、方向、绝压/表压、亚/超声支路、适用条件。
+
+\sect{题干关键词定位}
+\renewcommand{\arraystretch}{0.76}\begin{tabular}{|p{0.30\linewidth}|p{0.61\linewidth}|}
+\hline 静止/水深/闸门/U管 & 首写静水压链：$p=p_0+\rho gh$；平面/曲面总压力\\ \hline
+喷管/Ma/背压/激波 & 先判阻塞/亚超支；P3/P4：等熵、临界、激波、膨胀波\\ \hline
+势函数/流函数/圆柱 & 先写总$\varphi,\psi$；P2：叠加、边界为流线、Bernoulli\\ \hline
+黏度/Re/管流/泵 & 先$V\to Re\to\lambda$；P5：N-S简化、H-P、管路损失\\ \hline
+平板/边界层/阻力 & 先$Re_x/Re_L$判层/湍；P6：$C_f,\delta,D$\\ \hline
+弯管/喷流/受力/转矩 & 先能量求$V,p$，再CV动量/动量矩：$\sum F=\dot m\Delta V$\\ \hline
+速度场/应力/$\pi$群 & 先散度/旋度/速度梯度；$P\bm n$；列变量配量纲\\ \hline
+水击/声速/水波/明渠 & 先判传播速度：$\Delta p=\rho a\Delta V$；$\omega^2=gk\tanh kh$；$Fr$\\ \hline
+证明/说明/判断/比较 & M20/M23：适用条件-主方程-边界-结论；定义-原因-后果\\ \hline
+\end{tabular}\renewcommand{\arraystretch}{1}
+
+\sect{常数与基本量}
+$g=9.81$；水$\rho=1000$；空气$\gamma=1.4,R=287$；$1\rm atm=101325Pa=10.33mH_2O$。\\
+\fml{\nu=\mu/\rho,\quad Re=VL/\nu=\rho VL/\mu}\\
+\fml{Ma=V/a,\quad a=\sqrt{\gamma RT}}
+
+\sect{连续性}
+不可压：$\nabla\cdot\bm V=0$；一维定常：$A_1V_1=A_2V_2=Q$。非均匀速度必须积分：$Q=\int_A v\,dA$。圆管抛物线层流：$\bar v=v_{\max}/2$。
+
+\sect{控制体动量/动量守恒模板}
+\fml{\sum F_x=\dot m(V_{2x}-V_{1x})}\\
+\fml{\sum F_y=\dot m(V_{2y}-V_{1y})}, $\dot m=\rho Q$。\\
+步骤：画CV；标速度方向；列压力/重力/支反力；动量写\key{流出-流入}；物体受力与流体受力反向。\\
+若问转矩/角动量：$\sum \bm M_O=\sum_{\rm out}\rho Q(\bm r\times\bm V)-\sum_{\rm in}\rho Q(\bm r\times\bm V)$，功率$P=M\omega$。\\
+\exm{弯管}
+$x:p_1A_1-p_2A_2\cos\alpha-F_{Rx}=\rho Q(V_2\cos\alpha-V_1)$；\\
+$y:-p_2A_2\sin\alpha+F_{Ry}=\rho QV_2\sin\alpha$。
+\exm{射流冲板}
+垂直板：$F=\rho QV$。斜板/分流：分$x,y$列动量，未给损失时各支速度近似$V$。
+
+\sect{伯努利/机械能}
+理想同流线：\fml{p/\rho g+V^2/(2g)+z=C}。\\
+含损失/泵/水轮机：\\
+\fml{\frac{p_1}{\rho g}+\frac{\alpha_1V_1^2}{2g}+z_1+H_p=\frac{p_2}{\rho g}+\frac{\alpha_2V_2^2}{2g}+z_2+h_f+\sum h_\zeta+H_T}
+\warn{泵加左，水轮机输出加右；开口液面表压为0。}
+
+\sect{静水压常见题流程}
+平面：$F=\rho gh_CA$，$y_D=y_C+J_C/(y_CA)$。\\
+曲面：$F_x=\rho gh_{Cx}A_x$；$F_y=\rho gV_p$，$V_p$为压力体体积；圆柱面合力过圆心。\\
+U管爬楼梯：向下$+\rho gh$，向上$-\rho gh$，同一静止连通液体同高等压。
+\sect{要求量$\to$首写/公式链$\to$检查点}
+\renewcommand{\arraystretch}{0.70}\begin{tabular}{|p{0.23\linewidth}|p{0.69\linewidth}|}
+\hline 求$p/H$ & 已知高度/能量$\to p$；先判表压/绝压和高程基准。\\ \hline
+求$Q/V/t$ & 已知截面/压差/水位$\to V,Q$；变水位写$-A\,dh/dt=Q(h)$。\\ \hline
+求$F/R/M$ & 已知$p,V,Q\to$CV动量/动量矩；题问管壁/法兰最后取反。\\ \hline
+求$\dot m,A,M$ & 已知$p_0,T_0,A,p_b\to M\to$状态量/面积/流量；检查阻塞。\\ \hline
+求$D/\delta$/证明 & 已知$Re\to C_f/C_D/\delta$；证明写假设-方程-边界-结论。\\ \hline
+\end{tabular}\renewcommand{\arraystretch}{1}
+\sect{建模第一句话}
+连续介质：物理量写$F(x,y,z,t)$，系统量记$F(t)$。概念题：控制体法=质量/动量/动量矩/能量守恒的空间积分；静止流体表面力垂直表面，$p$与方向无关，大小由平衡微分方程/静压分布约束。先定系统/CV/流线/截面，再写守恒/主方程+初边界条件。欧拉=固定点，拉格朗日=跟踪质点。
+
+\sect{模型首句模板}
+静水：$p$随高程；势流：不可压无粘无旋，$\phi,\psi$可叠加；可压：先判$M$，等熵保$p_0,T_0$，激波降$p_0$；粘性解析：定常不可压充分发展，N--S积分；边界层：高$Re$近壁薄层。
+\sect{速度场题}
+迹线：$dx/dt=u,dy/dt=v,dz/dt=w$，给初始点积分。流线：定常时$dx/u=dy/v=dz/w$。加速度：$\bm a=\partial\bm V/\partial t+u\bm V_x+v\bm V_y+w\bm V_z$。
+\sect{运动描述名词}
+流体线/物质线：同一时刻相邻流体质点连成的线，随体运动。脉线/串线：同一固定点连续染色形成的线。速度通量$\Phi=\int_A\bm V\cdot\bm n\,dA=Q$；速度环量$\Gamma=\oint_C\bm V\cdot d\bm l$。
+\sect{旋度/应变/应力}
+速度散度$\nabla\cdot\bm V=u_x+v_y+w_z$。速度旋度$\bm\Omega=\nabla\times\bm V$，二维$\Omega_z=v_x-u_y$，角速度常取$\omega_z=\Omega_z/2$。牛顿本构：$\tau_{xy}=\mu(u_y+v_x)$；不可压正应力粘性项$2\mu u_x,2\mu v_y,2\mu w_z$。
+\sect{静水压补充模板}
+倾斜平板：$h_C=\bar y\sin\theta$，$F=\rho gh_CA$，压力中心沿板坐标$y_D=y_C+I_C/(y_CA)$。相对平衡：水平加速度$a$时自由面$\tan\alpha=a/g$；旋转液面$z=\omega^2r^2/(2g)+C$。
+\sect{量纲分析模板}
+设$f(x_1,\cdots,x_n)=0$，选$k$个重复变量覆盖基本量纲，构造$n-k$个无量纲数$\pi_i$。常用：$Re=\rho VL/\mu$，$Fr=V/\sqrt{gL}$，$Eu=\Delta p/(\rho V^2)$，$We=\rho V^2L/\sigma$，$Ma=V/a$。
+\sect{控制体受力图检查}
+画CV后先标三类量：截面压力$pA$永远推入CV；支座/壁面对流体反力$\bm R$先设未知；动量通量按$\rho Q(\bm V_{\rm out}-\bm V_{\rm in})$。题问管道受力时，最后把求得的“壁对流体”取反。开口大水面$V\approx0$，表压$p=0$。
+\sect{应力张量题}
+给应力张量$P$和平面法向$\bm n$：应力矢量$\bm p_n=P\bm n$。法向分量$p_N=\bm p_n\cdot\bm n$；切向矢量$\bm p_T=\bm p_n-p_N\bm n$；夹角$\cos\alpha=p_N/|\bm p_n|$。圆柱面法向用几何外法线。
+\sect{平面受压常用惯性矩}
+矩形宽$b$高$h$：$I_C=bh^3/12$；圆面积：$I_C=\pi R^4/4$。压力中心永远比形心更深。若要求铰链力，先算液压力合力和作用点，再对铰链取矩。
+\sect{小孔/水箱出流}
+大水箱小孔：$V=C_v\sqrt{2gH}$，$Q=C_dA\sqrt{2gH}$。水位下降：$-A_t\,dH/dt=C_dA_o\sqrt{2gH}$，积分得时间。若是水银压差计，先换算实际压差。
+\sect{U管振荡}
+等截面U管总液柱长$L$，位移$z$时回复力$2\rho gAz$，质量$\rho AL$，故$\ddot z+(2g/L)z=0$，$T=2\pi\sqrt{L/(2g)}$。有非定常伯努利也可推同式。
+% ==================== SECTION 2 ====================
+}
+
+\mt{母题2 静水压、测压管、曲面与浮力}
+\qt{真题：直径 $d=12$cm 圆柱体，质量 $m=5$kg，外力 $F=100$N，淹深 $h=0.5$m，静止，求测压管水柱高度 $H$。}
+\chain{把圆柱/受压面作静力平衡：竖直方向一般有重力、外力、浮力或水压力分量。测压管高度给压强：$p=\rho gH$ 或 $p/\gamma=H$。若图中圆柱受液体压力，先由平衡求接触处/管内压强，再换成水柱高度。}
+\form{静水：$p=p_0+\rho gh$。平面总压力：$F=p_cA=\rho gh_cA$。压力中心：$h_p=h_c+I_G/(h_cA)$。曲面水平分量 $F_H$ 等于垂直投影面压力；竖直分量 $F_V$ 等于压力体液重。}
+\warn{静水题最常错：表压/绝压混用；曲面 $F_V$ 方向由压力体在曲面上方还是下方决定；测压管读数是水头不是直接压力。}
+
+\qt{子题：斜平壁上圆柱。直径 $d=2$cm，水平放在 $\alpha=60^\circ$ 斜平壁；左侧盛水，接触点 A 淹深 $h=1$cm。求单位长柱面总压力 $F$ 大小和方向。}
+\chain{圆柱曲面受静水压：分解为水平/竖直分量。$F_H$ 取曲面在竖直平面投影的压力；$F_V$ 取压力体水重。最后 $F=\sqrt{F_H^2+F_V^2}$，$\tan\theta=F_V/F_H$。单位长柱面，面积/压力体都按单位长度算。}
+
+\qt{子题：真空吸水圆柱容器。$D=0.8$m，$d=0.3$m，容器空重 $100$N，支承在距液面 $b=1.5$m 的 C；真空吸水，液面高度 $a+b=1.9$m，求支承力 $R$。}
+\chain{列整体竖直力平衡：支承力 + 外界压力/水压力的竖直合力 = 容器重 + 水重。若上下有不同受压面积，压力力用 $pA$；水重用 $\gamma V$。}
+
+\qt{子题：平面闸门/矩形板，给水深、铰点、拉力位置，求总压力、压力中心、拉力。}
+\chain{第一眼：图中有平面板、铰链、拉杆。先算总水压力，再算压力中心，最后对铰点取矩。}
+\form{$F=\rho gh_cA$；$h_p=h_c+I_G/(h_cA)$；若板倾角为 $\alpha$，沿板距离 $s_p=s_c+I_G/(s_cA)$。取铰点矩：$T l_T=F l_F+G l_G$。}
+\warn{压力中心是作用线位置，不是形心；$I_G$ 是面积二次矩，不是质量转动惯量。}
+
+\qt{子题：曲面受静水压力，给圆弧门/圆柱面，求合力和方向。}
+\chain{第一眼：受压面是曲面。不要直接用 $F=p_cA$ 求总力，必须分水平和竖直分量。}
+\form{$F_H=$ 曲面在竖直投影面上的静水压力；$F_V=$ 曲面上方或下方压力体液重；$F=\sqrt{F_H^2+F_V^2}$，$\tan\theta=F_V/F_H$。}
+\warn{$F_V$ 方向由压力体位置决定；压力体在曲面上方通常向下，在曲面下方可向上。}
+
+\qt{子题：浮体稳定，给浮心、重心、排水体积或水线面惯性矩，判断稳/不稳。}
+\chain{第一眼：浮体、小船、比重、倾覆、稳性。先由浮力等于重力确定吃水/排水体积，再用初稳性判断。}
+\form{$F_B=\rho gV_{\rm disp}$；稳心半径 $BM=I_w/V_{\rm disp}$；$GM=BM-BG$。$GM>0$ 稳定，$GM<0$ 不稳定。}
+\warn{浮力作用线过浮心；稳性看倾斜后浮心移动产生的恢复矩，不是只比较平均密度。}
+
+
+\qt{重整版五回流：母题2 子题/变式/公式链}
+{\fontsize{3.48}{3.68}\selectfont
+\iden{看到什么用}
+静止液体、U 管、水银、油水分层、闸门、铰链、曲面、浮体/潜体、压力中心。
+\subt{U 管/多管测压计}
+从已知压强端沿液柱爬：向下 $+\rho gh$，向上 $-\rho gh$，同一静止连通液体同高等压。气体柱密度小可忽略。输出前判表压/绝压/真空度。
+\subt{密闭容器油水分层}
+从自由面或压表所在点开始逐层加减 $\rho_i gh_i$。同一水平面若为同一种静止液体则压强相同。
+\subt{平面闸门}
+先形心深度 $h_c$，再合力，再压力中心：
+\eqb{F=\rho gh_cA,\qquad h_D=h_c+\frac{I_G}{h_cA}}
+铰链题最后对铰链取矩求拉力/支反力。
+\subt{曲面压力}
+水平分力等于投影面静水压力；竖直分力等于曲面上方压力体液重：
+\eqb{F_H=\rho gh_{c,\text{投影}}A_{\text{投影}},\qquad F_V=\rho gV_{\text{压力体}}}
+合力方向 $\tan\alpha=F_V/F_H$。
+\subt{浮力/稳定}
+\eq{F_B=\rho_{\text{液}}gV_{\text{排}}}。漂浮平衡：重力=浮力；判断上浮/下沉比较平均密度。稳定性用浮心、重心、定倾中心。
+\err{常见扣分}
+压力中心比形心深；曲面竖直分力方向看压力体位置；表压可为负，绝压不可为负；水银密度不要当水。
+}
+
+\mt{母题3 控制体动量、喷嘴、弯管和机械能}
+\qt{真题：水平喷嘴 $D_1=200$mm，$D_2=100$mm，进口绝压 $345$kPa，出口大气 $p_a=103.4$kPa，出口速度 $22$m/s。求固定喷嘴法兰螺栓受力，忽略摩擦。}
+\chain{取喷嘴内流体为 CV，先连续求 $V_1=A_2V_2/A_1$。压力用表压：$p_{1g}=345-103.4$kPa，$p_{2g}=0$。动量方程 $R_x+p_{1g}A_1-p_{2g}A_2=\dot m(V_2-V_1)$。求得 $R_x$ 是壁面对流体；螺栓受力取反。}
+\res{$V_1=22(0.1/0.2)^2=5.5$m/s，$\dot m=\rho A_2V_2$。代入上式即可得法兰轴向力。方向由符号判。}
+\warn{动量题必须先画外法线和速度方向；压力力只对封闭截面用表压，出口自由射流表压为 0。}
+
+\qt{子题：转弯变径管。$d_1=200$mm，$p_1=70$kPa；$d_2=400$mm，$p_2=40$kPa，$v_2=1$m/s，高差 $z=1$m。求流量和方向。}
+\chain{先假设 1 到 2，连续给 $Q=A_2v_2$ 与 $v_1=Q/A_1$。再列伯努利：$p_1/\gamma+v_1^2/(2g)+z_1$ 与 $p_2/\gamma+v_2^2/(2g)+z_2$ 比较。能量高的一端流向能量低的一端。}
+
+\qt{子题：烟囱烟道。烟气 $\rho_s=0.6$，空气 $\rho_a=1.2$kg/m$^3$；烟道损失 $8\rho v^2/2$，烟囱损失 $26\rho v^2/2$；标高 0、5、40m，求烟囱出口速度 $v$ 和接头静压 $p$。}
+\chain{这是自然通风能量题。驱动力来自外界空气柱与烟气柱密度差。总可用压差 $\Delta p=(\rho_a-\rho_s)g\Delta z$，被动压和损失消耗：$\Delta p=(8+26)\rho_s v^2/2$。接头压强从接头到出口列烟囱段能量求。}
+
+\qt{子题：开口 U 型管水柱自由振荡，总长 $L$，初始液面差 $h_0$，忽略粘性。求振荡规律、周期和速度。}
+\chain{设右液面相对平衡位移 $z$，左液面 $-z$，高度差 $2z$。沿整根水柱用非定常伯努利：$L\ddot z+2gz=0$。初值 $z(0)=h_0/2,\dot z(0)=0$。}
+\res{$z=\frac{h_0}{2}\cos\sqrt{2g/L}\,t$，$T=2\pi\sqrt{L/(2g)}$，$V=\dot z=-\frac{h_0}{2}\sqrt{2g/L}\sin\sqrt{2g/L}\,t$。}
+
+\qt{子题：自由射流冲击固定平板/挡板，给 $Q,V$ 和偏转角，求板受力。}
+\chain{第一眼：射流、挡板、冲击力。取包含射流和挡板的控制体，出口压力取大气表压 0，忽略重力。先分解入口/出口速度，再用动量方程。}
+\form{$\sum F_x=\dot m(V_{2x}-V_{1x})$，$\sum F_y=\dot m(V_{2y}-V_{1y})$，$\dot m=\rho Q$。若垂直平板使 $V_{2x}=0$，流体受力 $F_x=-\rho QV$，板受力反向。}
+\warn{题目问“板受到的力”时，要把“外力对流体”取反；出口自由射流表压为 0。}
+
+\qt{子题：运动叶片/水轮机叶片，给绝对速度 $\bm V$、叶片速度 $\bm U$，求功率。}
+\chain{第一眼：叶片运动、相对速度、入口/出口速度三角形。先写 $\bm W=\bm V-\bm U$，若忽略摩擦，沿叶片相对速度大小近似不变，只改变方向。}
+\form{角动量：$M=\dot m(r_2V_{u2}-r_1V_{u1})$，$P=M\omega$；直线叶片功率 $P=FU$。}
+\warn{功率看切向分量，不是总速度；入口/出口速度三角形必须画清绝对速度、相对速度、叶片速度。}
+
+\qt{子题：CV 动量方程通用收口，给弯管支座力/喷嘴反力/管壁受力。}
+\chain{步骤：1 选 CV 包住流体；2 坐标取题图正方向；3 压力力按法向压入 CV；4 写 $\sum F=\dot m(\bm V_2-\bm V_1)$；5 求得的是外界对流体的力；6 题问支座/管壁/螺栓受力时取反。}
+\warn{压强若是表压，大气出口直接取 0；若题给绝压，两端都用绝压或都转表压，不能混用。}
+
+
+\qt{重整版五回流：母题3 子题/变式/公式链}
+{\fontsize{3.48}{3.68}\selectfont
+\iden{看到什么用}
+题问“力、推力、支座反力、螺栓、法兰、喷嘴、弯管、射流冲板、叶片、转矩、功率”。
+\subt{弯管/变径管受力}
+先连续求 $V$，再 Bernoulli 求 $p$，最后 CV：
+\eqb{\sum F_x=\dot m(V_{2x}-V_{1x}),\quad \sum F_y=\dot m(V_{2y}-V_{1y})}
+压力力指向 CV 内部；求“水对管”的力，要对“管对水”的力取反。
+\subt{喷嘴/消防水枪/固定板}
+自由出口表压 0。若速度变大压强变小，入口压力不能漏。喷嘴反力用动量变化：入口压力 + 支反力 = 动量通量差。
+\subt{射流冲击平板}
+固定垂直板近似 $F=\rho QV$。斜板/分流要按 $x,y$ 分量写；若忽略损失，出口速度大小近似不变，只改方向。
+\subt{运动叶片/水轮机}
+绝对速度 $\bm V$，叶片速度 $\bm U$，相对速度 $\bm W=\bm V-\bm U$。功率来自切向动量变化：
+\eqb{M=\dot m(r_2V_{u2}-r_1V_{u1}),\qquad P=M\omega}
+\err{常见扣分}
+动量方程必须用矢量分量；压力力用表压即可但全题统一；支座反力与流体受力方向相反；出口为大气压不代表速度为 0。
+}
+
+\mt{母题4 势流绕圆柱、半圆柱气膜馆、环量与升力}
+\qt{真题：半圆柱气膜馆半径 $a$，大风正面速度 $V$；求外部速度分布、表面压力分布；$a=5$m，$V=10$m/s，$\rho=1.29$kg/m$^3$ 求升力。}
+\chain{把地面当对称面，半圆柱外流等价完整圆柱上半部分。圆柱绕流表面 $r=a$：$v_r=0$，$v_\theta=-2V\sin\theta$。伯努利从无穷远到表面：$p+\rho v_\theta^2/2=p_\infty+\rho V^2/2$。}
+\ans{$p(\theta)=p_\infty+\frac12\rho V^2(1-4\sin^2\theta)$。净升力按单位长度：$L'=-a\int_0^\pi[p(\theta)-p_\infty]\sin\theta\,\dd\theta=\frac53\rho V^2a$。代入得 $L'\approx1.08\times10^3$N/m，方向向上。}
+\warn{压力积分只积相对压差；别把均匀大气压也积分进净升力。}
+
+\qt{子题：$20^\circ$C 水以 $5$m/s 流过直径 $1.2$m 圆柱。求偶极子强度；远处静压 $150$kPa，求 $\theta=180^\circ,135^\circ,90^\circ$ 表面压力；有环量 $\Gamma$ 时使 $35^\circ$ 和 $145^\circ$ 有驻点。}
+\chain{圆柱半径 $a=0.6$m，均匀流 + 偶极子：$\psi=U(r-a^2/r)\sin\theta$，偶极子强度按教材定义常取 $M=Ua^2$ 或 $2\pi Ua^2$，看定义。表面速度 $v_\theta=-2U\sin\theta-\Gamma/(2\pi a)$。}
+\form{$p=p_\infty+\frac12\rho(U^2-v_\theta^2)$；无环量时 $C_p=1-4\sin^2\theta$。驻点在表面满足 $v_\theta=0$，故 $\Gamma=-4\pi aU\sin\theta_s$，两个驻点关于 $90^\circ$ 对称。}
+
+\qt{子题：点源点汇组合。点源 $Q$ 在 $(0,a),(0,-a)$，点汇 $-Q$ 在 $(-a,0),(a,0)$。写复势并证 $|z|=a$ 为流线。}
+\chain{基本解叠加：$w=\frac{Q}{2\pi}[\ln(z-ia)+\ln(z+ia)-\ln(z+a)-\ln(z-a)]$。合并：$w=\frac{Q}{2\pi}\ln\frac{z^2+a^2}{z^2-a^2}$。令 $z=ae^{i\theta}$，比值 $=(e^{2i\theta}+1)/(e^{2i\theta}-1)=-i\cot\theta$，辐角常数，故 $\psi=\operatorname{Im}w=$常数，是流线。}
+
+\qt{子题：两垂直壁面点涡，真实涡 $+\Gamma$ 初始 $(\sqrt2,\sqrt2)$，求轨迹。}
+\chain{镜像：$(-x,y):-\Gamma$，$(x,-y):-\Gamma$，$(-x,-y):+\Gamma$。真实点涡速度由镜像诱导：$\dot x=\frac{\Gamma}{4\pi}(1/y-y/(x^2+y^2))$，$\dot y=\frac{\Gamma}{4\pi}(-1/x+x/(x^2+y^2))$。}
+\res{$\dd y/\dd x=-y^3/x^3$，积分得 $1/x^2+1/y^2=C$。过 $(\sqrt2,\sqrt2)$，$C=1$，轨迹 $1/x^2+1/y^2=1$。}
+
+\qt{子题：薄平板 $l=1.5$m，$\alpha=5^\circ$，$U=50$m/s，$\rho=0.122$kg/m$^3$，求环量、驻点、升力。}
+\chain{Kutta 条件给薄翼环量量级 $|\Gamma|=\pi Ul\sin\alpha$。升力 $L'=\rho U\Gamma$，方向由环量号和来流右手关系定。}
+\res{$|\Gamma|\approx20.5$m$^2$/s；$L'\approx0.122\times50\times20.5=125$N/m。理想势流阻力为 0。}
+
+\qt{子题：给任意源/汇/涡/偶极子叠加，要求 $\phi,\psi,V$ 或流线。}
+\ans{均匀流沿 $x$：$\phi=Ur\cos\theta,\ \psi=Ur\sin\theta$。点源：$v_r=Q/(2\pi r),\ \phi=(Q/2\pi)\ln r,\ \psi=(Q/2\pi)\theta$；点汇 $Q$ 取负。点涡：$v_\theta=\Gamma/(2\pi r),\ \phi=(\Gamma/2\pi)\theta,\ \psi=-(\Gamma/2\pi)\ln r$。偶极子：$\phi=M\cos\theta/r,\ \psi=-M\sin\theta/r$。}
+\chain{解题顺序：先写 $\phi=\sum\phi_i$ 或 $\psi=\sum\psi_i$；再由 $v_r=\partial\phi/\partial r=(1/r)\partial\psi/\partial\theta$，$v_\theta=(1/r)\partial\phi/\partial\theta=-\partial\psi/\partial r$ 求速度；流线令 $\psi=C$。}
+\warn{极坐标切向导数带 $1/r$；点涡除原点外无旋；叠加只适用于线性势流方程。}
+
+\qt{子题：镜像法，给壁面附近源/汇/涡，求壁面不穿透或涡轨迹。}
+\chain{第一眼：直壁、角壁、地面、对称面。镜像目的让壁面成为一条流线 $\psi=C$，即法向速度为 0。源/汇对固壁镜像同号；点涡对固壁镜像反号；双壁就连续镜像到四象限。}
+\warn{镜像法保证的是不穿透，不自动满足有粘无滑移；真实壁面有粘阻力时不能继续用势流阻力结论。}
+
+\qt{子题：达朗贝尔佯谬与 Kutta--Joukowski 升力短答。}
+\ans{理想不可压无旋绕圆柱，前后压力对称，压力积分阻力为 0，这就是达朗贝尔佯谬；真实流体因粘性边界层分离产生压差阻力。若圆柱/翼型有环量，表面速度上下不对称，Bernoulli 使上下压强不同，单位展长升力 $L'=\rho U\Gamma$，方向由来流和环量右手关系判断。}
+
+
+\qt{v106回流：旧母题2 细题链/易错/查表}
+{\fontsize{3.42}{3.60}\selectfont
+\schemepotential
+\sect{基本条件}
+无旋：$\nabla\times\bm V=0\Rightarrow \bm V=\nabla\varphi$。二维不可压可设流函数$\psi$。\\
+\fml{\nabla^2\varphi=0,\quad \nabla^2\psi=0}
+直角：$u=\varphi_x=\psi_y,\;v=\varphi_y=-\psi_x$。\\
+极坐标：\fml{v_r=\varphi_r=\frac1r\psi_\theta,\quad v_\theta=\frac1r\varphi_\theta=-\psi_r}
+
+\sect{基本流表}
+\renewcommand{\arraystretch}{0.76}\begin{tabular}{|p{0.18\linewidth}|p{0.35\linewidth}|p{0.35\linewidth}|}
+\hline 流动 & $\varphi$ & $\psi$\\ \hline
+均匀流 & $Ur\cos\theta$ & $Ur\sin\theta$\\ \hline
+源 & $\frac{Q}{2\pi}\ln r$ & $\frac{Q}{2\pi}\theta$\\ \hline
+汇 & $-\frac{Q}{2\pi}\ln r$ & $-\frac{Q}{2\pi}\theta$\\ \hline
+点涡 & $\frac{\Gamma}{2\pi}\theta$ & $-\frac{\Gamma}{2\pi}\ln r$\\ \hline
+偶极子 & $\frac{M\cos\theta}{r}$ & $-\frac{M\sin\theta}{r}$\\ \hline
+\end{tabular}\renewcommand{\arraystretch}{1}
+\warn{线性叠加法：总$\varphi,\psi$直接相加，速度也相加。}
+\sect{看到题先搭哪几个基元}
+\renewcommand{\arraystretch}{0.70}\begin{tabular}{|p{0.28\linewidth}|p{0.62\linewidth}|}
+\hline 均匀来流绕物体 & 均匀流+偶极子；有升力再加点涡。\\ \hline
+半无限体/半长钝体/Rankine体 & 均匀流+点源；分界流线取过驻点的$\psi$。\\ \hline
+壁面附近源/涡 & 用镜像让壁面成为流线：源同号、涡异号。\\ \hline
+边角绕流 & 用$\varphi=Ar^n\cos n\theta$，$n=\pi/\alpha$。\\ \hline
+\end{tabular}\renewcommand{\arraystretch}{1}
+
+\sect{给速度求$\varphi,\psi$}
+有$\varphi$先验：$v_x-u_y=0$；有$\psi$先验：$u_x+v_y=0$。\\
+$\varphi_x=u\Rightarrow \varphi=\int u dx+f(y)$，再用$\varphi_y=v$定$f$。\\
+$\psi_y=u\Rightarrow \psi=\int u dy+g(x)$，再用$-\psi_x=v$定$g$。
+
+\sect{圆柱绕流}
+\fml{\varphi=U(r+a^2/r)\cos\theta,\quad \psi=U(r-a^2/r)\sin\theta}\\
+$v_r=U(1-a^2/r^2)\cos\theta$，$v_\theta=-U(1+a^2/r^2)\sin\theta$。\\
+壁面$r=a$：$v_r=0,\;v_\theta=-2U\sin\theta$；驻点$\theta=0,\pi$；最大速$2U$在$90^\circ,270^\circ$。\\
+压强：\fml{p=p_\infty+\frac12\rho(U^2-V^2)}。壁面$p=p_\infty+\frac12\rho U^2(1-4\sin^2\theta)$。
+\sect{圆柱绕流答题模板}
+写“均匀流+偶极子叠加”。零流线$\psi=0$给$r=a$，故偶极强度$M=Ua^2$（若教材用$M/(2\pi r)$则$M=2\pi Ua^2$）；适用$r\ge a$。求压强先求$V^2=v_r^2+v_\theta^2$；求合力用$dF_x=-p\cos\theta a\,d\theta,dF_y=-p\sin\theta a\,d\theta$。无环量阻力升力均为0；有环量只剩升力$\rho U\Gamma$。
+
+\sect{半圆柱气膜馆15分：圆柱绕流升力}
+题干：半圆柱屋顶/气膜馆，内压$p_{\rm in}=p_0$，远方风速$U$且$p_\infty=p_0$。按全圆柱绕流取上半圆$0\le\theta\le\pi$：$v_r=U(1-a^2/r^2)\cos\theta,\ v_\theta=-U(1+a^2/r^2)\sin\theta$；壁面$V_s=2U\sin\theta$。伯努利得外压$p_{\rm out}=p_0+\frac12\rho U^2(1-4\sin^2\theta)$，净向外压差$p_n=p_{\rm in}-p_{\rm out}=\frac12\rho U^2(4\sin^2\theta-1)$。单位长度升力
+\fml{F_L'=\int_0^\pi p_n\sin\theta\,a\,d\theta=\frac12\rho U^2a(4\cdot\frac43-2)=\frac53\rho U^2a}
+代$a=5{\rm m},U=10{\rm m/s},\rho=1.29$：$F_L'=1.08\times10^3{\rm N/m}$，方向向上；若总长为$L$，总升力乘$L$。易错：半圆积分不是全圆；若$p_{\rm in}\ne p_0$，另加$2a(p_{\rm in}-p_0)$。
+
+\sect{有环量/升力}
+圆柱+点涡：$v_\theta=-2U\sin\theta+\Gamma/(2\pi a)$。升力：\fml{L'=\rho U\Gamma}。理想无粘绕流阻力$D=0$。
+
+\sect{镜像法/边角}
+固壁为流线，要求法向速度为0。源/汇靠直壁：同号镜像；点涡靠直壁：反号镜像。半平面源汇常见$2\pi\to\pi$。\\
+边角：若$\varphi=Ar^n\cos n\theta,\psi=Ar^n\sin n\theta$，壁面$\psi=0$，夹角$\alpha$满足$n=\pi/\alpha$。$V\sim r^{n-1}$。
+\sect{源汇/驻点常用算式}
+源+均匀流：$v_r=U\cos\theta+Q/(2\pi r)$，$v_\theta=-U\sin\theta$。驻点在$\theta=\pi$，$r=Q/(2\pi U)$。过驻点分界流线$\psi=Q/2$。源汇对：两个源汇距离给出时，写总$\psi$后令$\psi=C$画物体轮廓；速度由偏导，不要凭图猜。
+
+\sect{势流模型公式链骨架}
+\exm{均匀流+点源半体}
+$\psi=Ur\sin\theta+Q\theta/(2\pi)$。驻点$\theta=\pi,r=Q/(2\pi U)$；分界线$\psi=Q/2$。远处半体宽度$b=Q/U$。
+\exm{均匀流+源汇对}
+源在$(-a,0)$、汇在$(a,0)$：总$\psi=Uy+\frac{Q}{2\pi}(\theta_1-\theta_2)$。驻点由$u=v=0$求；封闭流线为Rankine卵形。
+\exm{壁面吸水/缝隙}
+半平面源汇常从$2\pi$改成$\pi$；先写$\psi=Uy-Q\theta/\pi$，令壁面$\psi=0$，驻点由速度为0定位置。
+\exm{圆柱有环量停滞点}
+壁面$v_\theta=-2U\sin\theta+\Gamma/(2\pi a)$。停滞点满足$\sin\theta=\Gamma/(4\pi Ua)$；若绝对值$>1$，停滞点离开圆柱表面。
+\sect{伯努利用法}
+势流定常无粘：$p+\frac12\rho V^2=p_\infty+\frac12\rho U^2$。求压力最低点先找$V$最大点；求空化/吸力，比较$p$与汽化压或外界压。
+\sect{给速度场求势/流函数例式}
+若$u=3x^2-3y^2,\;v=-6xy$：$u_y=-6y,v_x=-6y$，无旋；$\varphi=\int u dx=x^3-3xy^2+C$。$\psi_y=u\Rightarrow \psi=3x^2y-y^3+g(x)$，由$-\psi_x=v$得$g'=0$。
+\sect{源/涡压力题}
+点涡$V_\theta=\Gamma/(2\pi r)$，伯努利给$p(r)=C-\frac12\rho\Gamma^2/(4\pi^2r^2)$，越靠中心压强越低。源汇有径向速度，压力同样按$V^2$比较。
+\sect{圆柱绕流公式链}
+无环量：$C_p=(p-p_\infty)/(0.5\rho U^2)=1-4\sin^2\theta$。有环量：把$v_\theta$代入$C_p=1-(v_\theta/U)^2$。升力方向按环量和来流右手关系判。
+\sect{保角/边角题}
+角域$\alpha$内势流解常取$n=\pi/\alpha$。若$\alpha<\pi$，$n>1$，角点速度趋0；若$\alpha>\pi$，$n<1$，角点速度趋无穷，物理上需粘性修正。
+
+\sect{标准结论句}
+“该流动不可压无旋，故$\varphi,\psi$满足Laplace方程。由叠加法写总流函数，速度由极坐标关系求得，固壁为$\psi=C$。压强由伯努利求。”
+% ==================== SECTION 3 ====================
+}
+
+\mt{母题5 Laval 喷管、阻塞、正激波、面积--马赫}
+\qt{真题：空气过连接两大气源 Laval 喷管。汞柱接喉部和下游气源，$h=15$cm，喉部端水银面低；$T_0=100^\circ$C，$p_0=300$kPa，$A_t=10$cm$^2$，$A_e=30$cm$^2$。求 $p_b$；判断正激波及位置；设计超声速工况汞柱高。}
+\chain{喉部阻塞：$M_t=1$，$A_t=A^*$。空气 $\gamma=1.4$：$p^*/p_0=0.5283$，$T^*/T_0=0.833$。喉部压 $p_t=158.5$kPa。汞柱差 $\Delta p=\rho_{Hg}gh=13600\cdot9.81\cdot0.15=20.0$kPa。喉部端水银面低，喉压高于下游，$p_b=p_t-\Delta p=138.5$kPa。}
+\form{面积--马赫：先记 $F(M)=A/A^*$，空气常用 $F(M)=\dfrac1M\left(\dfrac{5+M^2}{6}\right)^3$。通式：}
+\ans{\resizebox{0.94\linewidth}{!}{$\displaystyle F(M)=\frac{A}{A^*}=\frac1M\left[\frac{2}{\gamma+1}\left(1+\frac{\gamma-1}{2}M^2\right)\right]^{\frac{\gamma+1}{2(\gamma-1)}}$}}
+\ans{$A_e/A_t=3$ 得 $M_{e,sub}=0.197$，$M_{e,sup}=2.637$。亚声等熵出口压 $p_{b1}=292$kPa；超声设计出口压 $p_{b3}=14.2$kPa。若正激波在出口，$p_{b2}=p_{b3}[1+2\gamma(M_e^2-1)/(\gamma+1)]=112.8$kPa。实际 $112.8<p_b=138.5<292$，喷管内有正激波，且因 $p_b>p_{b2}$，激波在出口上游的渐扩段内。设计工况 $p_b=p_{b3}$，汞柱高 $h'=(p_t-p_{b3})/(\rho_{Hg}g)=1.08$m。}
+\warn{$0.528$ 是 $M=1$ 的临界静压比，不是“所有喉部压力比”。激波后总压下降，不能跨激波沿用同一个 $p_0$。}
+
+\qt{子题：等熵流。$T_0=500$K，$p_0=200$kPa；某截面 $p=150$kPa，求 $M,T$。}
+\chain{$p_0/p=(1+0.2M^2)^{3.5}$，得 $M=\sqrt{[(p_0/p)^{1/3.5}-1]/0.2}$；$T=T_0/(1+0.2M^2)$。}
+
+\qt{子题：大空气容器 $T_0=500$K，$p_0=300$kPa，Laval 喉部 $A^*=0.06$m$^2$，求最大质量流量。}
+\chain{最大流量发生喉部阻塞 $M=1$。}
+\res{$\dot m_{\max}=0.0404 A^*p_0/\sqrt{T_0}$（空气，SI），代入 $A^*=0.06,p_0=3\times10^5,T_0=500$。}
+
+\qt{子题：已知 $T_0=350$K，$p_0=10^6$Pa，$A_e=0.001$m$^2$，$p_b=9.3\times10^5$Pa，喉部 $M_t=0.6$，求出口 $T_e,\rho_e,M_e,V_e$ 及喉部 $T_t,\rho_t,p_t,V_t,A_t$。}
+\chain{第一眼：背压高且题给 $M_t<1$，未阻塞，全管按等熵亚声速；出口接下游大容器，取 $p_e=p_b$。}
+\form{$M_e=\sqrt{[(p_0/p_e)^{1/3.5}-1]/0.2}$；$T=T_0/(1+0.2M^2)$；$\rho=p/(RT)$；$V=M\sqrt{\gamma RT}$；$\rho_eV_eA_e=\rho_tV_tA_t$。}
+\res{$M_e\approx0.326,\ T_e\approx342.7$K，$\rho_e\approx9.46$kg/m$^3$，$V_e\approx121$m/s；$T_t\approx326.5$K，$p_t\approx7.84\times10^5$Pa，$\rho_t\approx8.37$kg/m$^3$，$V_t\approx217$m/s，$A_t\approx6.3\times10^{-4}$m$^2$。}
+\warn{$t$ 是几何喉部，$*$ 是临界态；本题 $M_t=0.6$，所以不能令 $A_t=A^*$。}
+
+\qt{子题：已知 $p_0=10^6$Pa，$T_0=350$K，$A_e=10$cm$^2$，$p_b=9\times10^5$Pa，要求喉部 $M_t=0.5$，求喉部面积 $A_t$。}
+\chain{第一眼：给背压和指定喉部马赫数，属于“按指定流态反推几何”。先由 $p_b$ 求 $M_e$，再用同一个 $A^*$ 联系出口与喉部。}
+\form{$M_e=\sqrt{[(p_0/p_b)^{1/3.5}-1]/0.2}$；$F(M)=A/A^*=\dfrac1M\left[\dfrac{2}{\gamma+1}\left(1+\dfrac{\gamma-1}{2}M^2\right)\right]^{(\gamma+1)/(2(\gamma-1))}$；$A_t=A_eF(M_t)/F(M_e)$。}
+\res{$M_e\approx0.391$；$F(0.391)\approx1.62,\ F(0.5)\approx1.34$，故 $A_t\approx10\times1.34/1.62=8.3$cm$^2$。}
+\warn{题目要求 $M_t=0.5$，说明不是临界喉部；不能套 $p^*/p_0=0.528$。}
+
+\qt{子题：正激波。$M_1=2.5,p_1=30$kPa，$T_1=25^\circ$C，求波后 $M_2,p_2,T_2,V_2$。}
+\form{$M_2^2=\frac{1+0.2M_1^2}{1.4M_1^2-0.2}$；$p_2/p_1=1+\frac{2\gamma}{\gamma+1}(M_1^2-1)$；$\rho_2/\rho_1=\frac{(\gamma+1)M_1^2}{(\gamma-1)M_1^2+2}$；$T_2/T_1=(p_2/p_1)/(\rho_2/\rho_1)$；$V_2=M_2\sqrt{\gamma RT_2}$。}
+
+\qt{子题：斜激波。尖劈顶角 $2\delta=20^\circ$，$M_1=2.5,p_1=85$kPa，$T_1=298$K，求 $\beta,M_2,p_2,T_2$。}
+\chain{取半角 $\delta=10^\circ$。查/解 $\theta-\beta-M$ 关系得弱解 $\beta$。先算法向 $M_{n1}=M_1\sin\beta$，用正激波关系得 $M_{n2},p_2,T_2$，最后 $M_2=M_{n2}/\sin(\beta-\delta)$。}
+
+\qt{子题：收缩喷管/小孔可压流量，给 $p_0,T_0,p_b,A_e$，求是否阻塞和 $\dot m$。}
+\chain{第一眼：只有收缩段或孔口，无渐扩段。先比较 $p_b/p_0$ 与临界压比 $0.528$。若 $p_b/p_0>0.528$，未阻塞，出口 $p_e=p_b$，由等熵压比求 $M_e$ 后算 $\dot m$；若 $p_b/p_0\le0.528$，出口临界 $M=1$，$\dot m$ 达最大。}
+\form{未阻塞：$\dot m=A p M\sqrt{\gamma/(RT)}$；阻塞：空气 $\dot m_{\max}=0.0404 A^*p_0/\sqrt{T_0}$。}
+\warn{背压低于临界后继续降低，只改变外部射流，不再增大喉/出口质量流量。}
+
+\qt{子题：气体密度/可压缩性判断，题给气体速度、压力、温度或体积弹性模量。}
+\chain{先算 $M=V/a$，$a=\sqrt{\gamma RT}$。若 $M<0.3$ 通常可近似不可压；若 $M$ 大或题给喷管/激波，必须用等熵或激波关系求 $\rho$。}
+\form{理想气体 $\rho=p/(RT)$；等熵 $p_0/p=(1+0.2M^2)^{3.5}$，$\rho_0/\rho=(1+0.2M^2)^{2.5}$；液体小压缩 $\Delta\rho/\rho\approx\Delta p/E$。}
+\warn{低速气体也可用 $\rho=p/(RT)$，但动量/能量里是否考虑密度变化由 $M$ 和题意决定。}
+
+\qt{子题：马赫锥/超声速飞机，给飞行速度、高度声速或温度，求听到距离。}
+\chain{先算 $M=V/a$。扰动在马赫锥上传播，半角 $\mu=\sin^{-1}(1/M)$。若飞机水平飞行高度 $H$，观察者听到时水平距离常用 $x=H/\tan\mu$。}
+\warn{高度处声速用当地温度算，不一定是海平面声速；$M<1$ 没有马赫锥。}
+
+\qt{子题：Fanno 等截面绝热摩擦管，给管长/直径/摩擦因子/入口 $M$，求出口状态或是否阻塞。}
+\chain{第一眼：等截面、绝热、有摩擦、长管。不是 Laval，不用面积--马赫。查 Fanno 表，输入入口 $M_1$ 和 $4fL/D$，得到出口 $M_2$ 或剩余临界长度。}
+\ans{Fanno 规律：摩擦使亚声速加速到 $M=1$，超声速减速到 $M=1$；$T_0$ 不变，$p_0$ 下降。若给定长度超过临界长度，则管流阻塞，实际流量不能再增大。}
+\warn{Fanno 的 $f$ 可能是 Fanning 摩阻系数，Darcy 系数常记 $\lambda=4f$，题目符号要看清。}
+
+\qt{子题：可压查表小表，考试无表时写输入/输出链。}
+\ans{空气：$\gamma=1.4,R=287$。临界：$T^*/T_0=0.833,\ p^*/p_0=0.528,\ \rho^*/\rho_0=0.634$。面积比粗值：$M=0.5\Rightarrow A/A^*\approx1.34$，$M=2\Rightarrow1.69$，$M=2.5\Rightarrow2.64$，$M=3\Rightarrow4.23$。PM：$M=2,\nu\approx26.4^\circ$；$M=3,\nu\approx49.8^\circ$。}
+
+
+\qt{v106回流：旧母题3 细题链/易错/查表}
+{\fontsize{3.42}{3.60}\selectfont
+\schemelaval
+\sect{基本公式}
+\fmlb{\begin{gathered}
+p=\rho RT,\quad a=\sqrt{\gamma RT},\quad M=V/a\\
+T_0/T=1+\frac{\gamma-1}{2}M^2\\
+p_0/p=\left(1+\frac{\gamma-1}{2}M^2\right)^{\gamma/(\gamma-1)}\\
+\rho_0/\rho=\left(1+\frac{\gamma-1}{2}M^2\right)^{1/(\gamma-1)}
+\end{gathered}}
+空气：
+\fmlb{\begin{gathered}
+T_0/T=1+0.2M^2\\
+p_0/p=(1+0.2M^2)^{3.5}\\
+\rho_0/\rho=(1+0.2M^2)^{2.5}
+\end{gathered}}
+
+\sect{临界/阻塞}
+$M=1,A=A^*$。\\
+\fmlb{\begin{gathered}
+T^*/T_0=0.833,\quad p^*/p_0=0.528\\
+\rho^*/\rho_0=0.634
+\end{gathered}}
+\warn{0.528只表示临界静压比，不是所有出口/背压比。}
+\sect{总量、静量、背压别混}
+$p_0,T_0$是把当地气体等熵减速到$M=0$得到的量；等熵段不变，过激波$p_0$降、$T_0$不变。$p_e$是喷管出口截面内静压，$p_b$是外界背压。收缩管未阻塞时$p_e=p_b$；Laval非设计时出口外还会用激波/膨胀波调整。
+
+\sect{面积--马赫数}
+\fmlb{\begin{gathered}
+\frac{A}{A^*}=\frac1M\left[\frac{2}{\gamma+1}\left(1+\frac{\gamma-1}{2}M^2\right)\right]^n\\
+n=\frac{\gamma+1}{2(\gamma-1)}
+\end{gathered}}
+$A/A^*>1$通常有亚声速/超声速两支。收缩管最多到$M=1$；Laval扩张段可超声速。
+
+\sect{质量流量}
+\fmlb{\begin{gathered}
+\dot m=\rho VA\\
+\dot m=ApM\sqrt{\gamma/(RT)}\\
+\dot m_{\max}=0.0404A^*p_0/\sqrt{T_0}\quad(\text{空气})
+\end{gathered}}
+阻塞最大流量在$M=1$处取得。
+\sect{Ma作为中间变量}
+知道某截面$M$，即可由等熵式求该截面$T,p,\rho,V$；但跨激波不能直接连，要先用激波关系换到波后，再以新的$p_{02}$继续等熵。
+
+\sect{Laval 背压状态}
+\renewcommand{\arraystretch}{0.76}\begin{tabular}{|p{0.30\linewidth}|p{0.61\linewidth}|}
+\hline 背压高 & 全管亚声速，$p_e=p_b$，未阻塞\\ \hline
+喉部$M=1$ & 阻塞，$\dot m$最大\\ \hline
+扩张段正激波 & 波前超声速，波后亚声速，$p_0$降\\ \hline
+设计状态 & 全管等熵，$p_e=p_b$\\ \hline
+$p_e<p_b$ & 过膨胀，出口外压缩/斜激波\\ \hline
+$p_e>p_b$ & 欠膨胀，出口外膨胀波\\ \hline
+\end{tabular}\renewcommand{\arraystretch}{1}
+
+\sect{收缩喷管题}
+给$p_0,T_0,p_b,A_e$。若$p_b/p_0>0.528$：未阻塞，$p_e=p_b$，用$p_0/p_e$求$M_e$，再求$T_e,\rho_e,V_e,\dot m=\rho_eV_eA_e$。\\
+若$p_b/p_0\le0.528$：阻塞，出口/喉部$M=1$，$\dot m=0.0404A_ep_0/\sqrt{T_0}$。
+\sect{收缩喷管/背压标准步骤}
+入口速度可忽略：入口给的$p,T$就是$p_0,T_0$。1 算$p_b/p_0$。2 与0.528比。3 未阻塞：令$p_e=p_b$求$M_e$，再$\rho_e=p_e/(RT_e)$，$\dot m=\rho_eM_e\sqrt{\gamma RT_e}A_e$。4 阻塞：$M_e=1$，$p_e=p^*$不是$p_b$，用最大流量式。
+
+\sect{Laval面积/流量题}
+给$A^*$与出口$p_e$或$T_e$，无激波。用等熵求$M_e$；若取超声速支，则喉部$M=1,A_t=A^*$。出口面积由$A_e/A^*$求；流量可用喉部最大流量或出口$\rho VA$。
+\sect{Laval面积比标准步骤}
+1 由出口$T_e$或$p_e$和$p_0,T_0$反求$M_e$。2 题说无激波且$M_e>1$，出口必须取超声速支。3 由$A_e/A^*(M_e)$求$A_e$。4 流量用$\dot m_{\max}$或出口$\rho_eV_eA_e$；两者应一致。
+
+\sect{文丘里质量流量计}
+给最大流量和最低喉压$p_t$。先由入口$M_1$求$p_0,T_0$，再用$p_0/p_t=(1+0.2M_t^2)^{3.5}$求$M_t$。若$M_t<1$，不可用0.528，继续算$T_t,\rho_t,V_t,A_t$。
+\sect{可压文丘里流量计标准步骤}
+最大流量$\dot m$和入口面积给出：先用$\dot m=\rho_1V_1A_1$求$V_1,M_1$，再求$p_0,T_0$。最低允许喉压$p_t$给出后求$M_t$。若$M_t=1$才临界；通常$M_t<1$，所以不能写$p_t/p_0=0.528$。
+\sect{可压缩题判断树}
+0 判$M$型：$Ma=V/a$表示惯性/弹性；$Ma<0.3$常近似不可压，$M<1$亚/椭圆/全局边界，$M>1$超/双曲/马赫锥影响域、不逆传。1 给$p,T,V$先算$M,p_0,T_0$。2 给$p_0,T_0$和静压，用$p_0/p$反求$M$。3 给面积比，用$A/A^*$反求$M$并按题意选支。4 涉及背压，先判阻塞，再判激波。
+\sect{空气小表：等熵/面积/PM/正激波}
+等熵：$M=1/2/3$时$p/p_0=0.528/0.128/0.027$，$A/A^*=1/1.69/4.23$，$\nu=0/26.4^\circ/49.8^\circ$。正激波：$M_1=2\to M_2=0.577,p_2/p_1=4.5,p_{02}/p_{01}=0.721$；$M_1=3\to M_2=0.475,p_2/p_1=10.33,p_{02}/p_{01}=0.328$。
+\sect{答题检查句}
+“本段若无摩擦和激波，按一维绝热等熵处理，总温总压不变；若出现正激波，总温仍不变、总压下降，激波后用新$p_0$。”等熵任意两点：$p_2/p_1=(T_2/T_1)^{\gamma/(\gamma-1)},\ \rho_2/\rho_1=(T_2/T_1)^{1/(\gamma-1)}$；最大速$V_{\max}=\sqrt{2c_pT_0}$。
+\sect{可压缩基础题}
+弹性模量$E=-dp/(dV/V)$，密度相对变化$d\rho/\rho=dp/E$。声速$a=\sqrt{K/\rho}$或理想气$a=\sqrt{\gamma RT}$。飞机声响题：若$M=V/a>1$，马赫锥半角$\sin\mu=1/M$，听到位置/时间由几何三角形算。
+\sect{喷管出口状态三句话}
+收缩喷管：出口就是最小面积，阻塞时出口$M=1$。Laval喷管：喉部是最小面积，阻塞时喉部$M=1$，出口可亚声速或超声速。背压只直接等于出口静压的情况：未阻塞或完全匹配设计状态。
+\sect{面积比求M查表替代}
+考试无表时，写“由面积--马赫数关系迭代解得$M=\cdots$”。若$A/A^*$给定且题说超声速，必须取大于1那支；若收缩管，不能取超声速支。
+\sect{质量流量检查}
+同一截面三种写法应一致：$\dot m=\rho VA=ApM\sqrt{\gamma/(RT)}=A p_0\sqrt{\gamma/(RT_0)}M(1+0.2M^2)^{-3}$（空气）。阻塞时$M=1$代入得$0.0404A^*p_0/\sqrt{T_0}$。
+% ==================== SECTION 4 ====================
+}
+
+\qt{v106回流：旧母题4 细题链/易错/查表}
+{\fontsize{3.42}{3.60}\selectfont
+\schemeshock
+\sect{总判断}
+超声速遇压缩角/凹角/迎风面$\Rightarrow$激波；遇扩张角/凸角/低压区$\Rightarrow$膨胀波；偏转角太大$\Rightarrow$脱体激波。激波(坐标系固结在波上/驻激波)：波前后绝热，气流被压缩且参数突变；$p,T,\rho\uparrow$，$V,M\downarrow$，$T_0$不变，$p_0$下降；波阻来自熵增/总压损失。
+
+\sect{正激波}
+\fmlb{\begin{gathered}
+M_2^2=\frac{1+\frac{\gamma-1}{2}M_1^2}{\gamma M_1^2-\frac{\gamma-1}{2}}\\
+\frac{p_2}{p_1}=1+\frac{2\gamma}{\gamma+1}(M_1^2-1)\\
+\frac{\rho_2}{\rho_1}=\frac{(\gamma+1)M_1^2}{(\gamma-1)M_1^2+2}\\
+\frac{T_2}{T_1}=(p_2/p_1)/(\rho_2/\rho_1)
+\end{gathered}}
+空气：$M_2^2=(1+0.2M_1^2)/(1.4M_1^2-0.2)$。\\
+$p_{02}/p_{01}=(p_2/p_1)(p_{02}/p_2)/(p_{01}/p_1)$，用等熵式算$p_0/p$。
+
+\sect{斜激波流程}
+$M_{n1}=M_1\sin\beta$。本质：法向分量过正激波，切向分量不变。\\
+已知$M_1,\theta$：查$\theta-\beta-M$表得$\beta$；算$M_{n1}$；用正激波公式得$p_2/p_1,T_2/T_1,M_{n2}$；$M_2=M_{n2}/\sin(\beta-\theta)$。工程常取弱激波解。
+\sect{斜激波无表时}
+\fmlb{\tan\theta
+=2\cot\beta\,
+\frac{M_1^2\sin^2\beta-1}
+{M_1^2(\gamma+\cos2\beta)+2}}
+先数值/试算$\beta$。同一$\theta$常有弱/强两解，$\beta$小为弱解，题无说明取弱解；若偏转角超过最大值，无附体斜激波，写“脱体激波”，不能强行用弱解。
+
+\sect{膨胀波/Prandtl-Meyer}
+\fmlb{\begin{aligned}
+\nu(M)=&
+\sqrt{\frac{\gamma+1}{\gamma-1}}\tan^{-1}
+\sqrt{\frac{\gamma-1}{\gamma+1}(M^2-1)}\\
+&-\tan^{-1}\sqrt{M^2-1}
+\end{aligned}}
+空气：$\nu(M)=\sqrt6\tan^{-1}\sqrt{(M^2-1)/6}-\tan^{-1}\sqrt{M^2-1}$。\\
+膨胀角：\fml{\delta=\nu(M_2)-\nu(M_1)}。给$\delta$：$\nu(M_2)=\nu(M_1)+\delta$。马赫波是微弱扰动极限，$\mu=\sin^{-1}(1/M)$；总偏转不能超过$\nu(\infty)-\nu(M_1)$。
+\sect{膨胀波后物理量}
+小扰动波连续等熵：膨胀加速降压，压缩减速升压。膨胀波近似等熵：$p_0,T_0$不变。已知$M_1,M_2$后：
+$p_2/p_1=\left[\frac{1+0.2M_1^2}{1+0.2M_2^2}\right]^{3.5}$，
+$T_2/T_1=(1+0.2M_1^2)/(1+0.2M_2^2)$。
+
+\sect{Laval管外膨胀模板}
+给$A_e/A_t,p_b,p_0$。1 由$A_e/A^*$取超声速支求$M_e$。2 等熵求$p_e=p_0/(1+0.2M_e^2)^{3.5}$。3 若$p_e>p_b$，出口外继续膨胀。4 由$p_0/p_b$求最终$M_b$。5 $\alpha=\nu(M_b)-\nu(M_e)$。
+
+\sect{Laval管内正激波模板}
+给激波位置$A_s/A_t$。1 激波前由$A_s/A^*$超声速支求$M_1$。2 正激波求$M_2,p_2/p_1,p_{02}/p_{01}$。3 激波后以新总压$p_{02}$亚声速等熵到出口。
+\sect{Laval内激波分段链}
+$p_{01}=p_0$。波前：$A_s/A_t\to M_1\to p_1,T_1$。过波：$M_1\to M_2,p_2,T_2,p_{02}$。波后：用$A_e/A_s$或等效$A^*_2$求出口$M_e$，再用$p_{02}/p_e$求$p_e$，最后令$p_b=p_e$判断该激波位置是否匹配。
+
+\sect{易错}
+知道$M_2$不能随便算全部：激波后静量接激波前$p_1,T_1,\rho_1$。$p_{01}$是波前滞止压，$p_{02}$是波后滞止压，$p_{02}<p_{01}$。膨胀波不用正激波公式。
+\sect{激波反射/相交题写法}
+把每道波按顺序编号。每过一道斜激波：$M,p,T,\rho$用斜激波关系更新；每过一道膨胀波：用PM函数更新$M$，再等熵更新$p,T$。两股流相交后的接触面两侧静压相等，方向用偏转角闭合。
+\sect{压缩角/膨胀角判断}
+超声速来流沿壁面走：壁面向流体内折，流体被压缩$\Rightarrow$斜激波；壁面向外展开，流体膨胀$\Rightarrow$膨胀扇。亚声速不能套斜激波/PM函数。
+\sect{Laval背压八状态速记}
+背压从高到低：不流动$\to$全亚声速$\to$喉部临界$\to$扩张段内正激波$\to$出口正激波$\to$出口外斜激波(过膨胀)$\to$设计等熵$\to$出口外膨胀波(欠膨胀)。质量流量一旦阻塞后基本不再随背压增加。
+\sect{过程分标准句}
+“激波前后满足质量、动量、能量守恒，但熵增，故不可用同一个$p_0$贯穿波前波后。”这句话通常能救概念分。
+\sect{正激波常用极限}
+$M_1\to1$时波很弱，$M_2\to1$、总压损失小。$M_1$很大时，空气$\rho_2/\rho_1\to6$。正激波后一定亚声速，斜激波后可亚声速也可超声速。
+\sect{斜激波压力比}
+只要算出$M_{n1}$，压力比直接用正激波式：$p_2/p_1=1+\frac{2\gamma}{\gamma+1}(M_{n1}^2-1)$。温度、密度同理。不要把$M_1$直接代正激波式。
+\sect{膨胀波常见题}
+给$M_1$和转角$\delta$：查/算$\nu(M_1)$，得$\nu(M_2)=\nu(M_1)+\delta$，反查$M_2$。压力用等熵比；若要求壁面角，壁面转过的角就是膨胀角。
+\sect{管外膨胀简答句}
+若由面积比得到的等熵出口压$p_e$大于背压$p_b$，说明出口射流继续膨胀，属于管外膨胀；最终射流压力调至$p_b$，角度用PM函数差。
+% ==================== SECTION 5 ====================
+}
+
+\mt{母题6 粘性层流解析解：Couette/Poiseuille/重力项/Stokes}
+\qt{真题：倾角 $15^\circ$、间隔 $H=3$cm 平板，$\rho=1.25$kg/m$^3$，$\mu=10^{-4}$kg/(m s)，流体向下；下板不动，上板以 $U_0$ 向上拉；层流、无压差，$H/2$ 处速度为 0，求 $U_0$ 与上下壁剪应力。}
+\chain{取沿下滑方向为正，方程 $\mu u''+\rho g\sin\theta=0$。边界：$u(0)=0,u(H)=-U_0,u(H/2)=0$。积分：$u=-Ay^2/2+C_1y$，$A=\rho g\sin\theta/\mu$。由 $u(H/2)=0$ 得 $C_1=AH/4$；由 $u(H)=-U_0$ 得 $U_0=AH^2/4=\rho g\sin\theta H^2/(4\mu)$。}
+\ans{代入得 $U_0\approx7.14$m/s。剪应力 $\tau=\mu u'=\rho g\sin\theta(H/4-y)$。下壁 $|\tau_0|=\rho gH\sin\theta/4\approx2.38\times10^{-2}$Pa；上壁 $|\tau_H|=3\rho gH\sin\theta/4\approx7.14\times10^{-2}$Pa。}
+
+\qt{子题：两层 Couette。下层 $h_1,\mu_1$，上层 $h_2,\mu_2$，下板固定，上板速度 $U$，压强常数，无质量力，求速度和剪应力。}
+\chain{两层均 $\mu_i u_i''=0$，所以线性。界面速度连续、剪应力连续。总速度差 $U=\tau h_1/\mu_1+\tau h_2/\mu_2$。}
+\res{$\tau=U/(h_1/\mu_1+h_2/\mu_2)=U\mu_1\mu_2/(\mu_2h_1+\mu_1h_2)$。$u_1=\tau y/\mu_1$；$u_2=u_1(h_1)+\tau(y-h_1)/\mu_2$。}
+
+\qt{子题：管内层流。$\rho=1.24$kg/m$^3$，$\mu=0.001$，$D=8$cm，壁面剪切力 $0.72$N/m$^2$，轴向为 $x$，分别水平、向上、向下，求 $dp/dx$ 与 $Re$。}
+\chain{圆管层流壁剪切与压强梯度：$\tau_w=-R(dp^*/dx)/2$，其中 $p^*=p+\rho gz$。故 $dp^*/dx=-2\tau_w/R=-4\tau_w/D$。水平：$dp/dx=dp^*/dx$；向上：$dp^*/dx=dp/dx+\rho g$；向下：$dp^*/dx=dp/dx-\rho g$。}
+\form{$\bar u=R\tau_w/(4\mu)$，$Re=\rho\bar uD/\mu$。}
+
+\qt{子题：Stokes 小球终速。半径 $a$ 小球在粘性流体中下落，证明 $U_t=2a^2(\rho_s-\rho)g/(9\mu)$。}
+\chain{低 Re 球阻力 $F_D=6\pi\mu aU$。终速时重力-浮力-阻力=0：$(4/3)\pi a^3\rho_sg-(4/3)\pi a^3\rho g-6\pi\mu aU=0$。解得结论。}
+
+\qt{子题：两板间薄板拉力。两平板距 20mm，油 $\mu=0.065$Pa s；薄板以 1m/s 拉动，距上板 5mm，面积 0.5m$^2$，求拉力。}
+\chain{薄板上下都是 Couette 剪切。上间隙 $h_1=5$mm，下间隙 $h_2=15$mm。总剪力 $F=\mu AU(1/h_1+1/h_2)$。}
+
+\qt{子题：圆管层流 Hagen--Poiseuille，给 $\Delta p,L,D,\mu$ 求 $Q,\bar u,\tau_w$。}
+\chain{第一眼：圆管、层流、充分发展、黏性压降。由 N-S 简化为 $0=-dp^*/dx+\mu(1/r)(d/dr)(r\,du/dr)$，边界 $u(R)=0$、中心有限。}
+\form{$u(r)=\frac{-dp^*/dx}{4\mu}(R^2-r^2)$；$\bar u=\frac{R^2}{8\mu}(-dp^*/dx)$；$Q=\pi R^4\Delta p^*/(8\mu L)$；$\tau_w=R\Delta p^*/(2L)$；$\lambda=64/Re$。}
+\warn{$p^*=p+\rho gz$ 是广义压强；竖直管要把重力项并入 $dp^*/dx$。H--P 只适合层流充分发展圆管。}
+
+\qt{子题：湍流圆管壁面律，给平均速度或管心速度，求壁面剪应力/边界层范围。}
+\chain{先算摩擦速度 $u_\tau=\sqrt{\tau_w/\rho}$，无量纲 $u^+=u/u_\tau$，$y^+=yu_\tau/\nu$。近壁判区：$y^+<5$ 黏性底层，$5\sim30$ 过渡，$y^+>30$ 对数律区。}
+\form{对数律常写 $u^+=2.5\ln y^+ +5.5$；圆管平均速度近似 $\bar u/u_\tau=2.5\ln(Ru_\tau/\nu)+1.75$。}
+\warn{$\bar u$ 是截面平均速度，不是局部速度 $u(y)$；题中“管截面平均的时均速度”就是 $\bar u$。}
+
+\qt{子题：湍流管路摩阻，给粗糙度、流量、直径，求压降。}
+\chain{先 $V=Q/A$，再 $Re=VD/\nu$。若 $Re<2300$ 用 $\lambda=64/Re$；若湍流，查 Moody 或用 Colebrook/题给公式。}
+\form{$h_f=\lambda(L/D)V^2/(2g)$，$\Delta p=\rho gh_f$。光滑湍流近似 $\lambda\approx0.3164/Re^{1/4}$；粗糙湍流由 $Re,\varepsilon/D$ 决定。}
+\warn{层流摩阻不受粗糙度影响；Moody 图常用 Darcy 摩阻系数 $\lambda$，不要和 Fanning $f$ 混。}
+
+\qt{子题：边界条件速写，N-S 简化题第一行怎么写。}
+\ans{固壁无滑移：$\bm V=\bm V_w$；无粘壁只写不穿透 $\bm V\cdot\bm n=0$。对称轴/管心：速度有限且 $du/dr=0$。自由面：$p=p_a$。两流体界面：速度连续、剪应力连续 $\mu_1u_1'=\mu_2u_2'$。充分发展：$\partial u/\partial x=0,\ v=0$。远场：$V\to U_\infty$。}
+
+
+\qt{v106回流：旧母题5 细题链/易错/查表}
+{\fontsize{3.42}{3.60}\selectfont
+\schemeviscous
+\sect{N-S 简化}
+不可压牛顿流体：$\rho D\bm V/Dt=-\nabla p+\mu\nabla^2\bm V+\rho\bm g$。定常$\partial_t=0$；单向流只保留$u$；充分发展$\partial u/\partial x=0$；平行流惯性项常为0。\\
+\warn{大题先写假设，再积分两次，再代边界条件。}
+
+\sect{H-P 圆管层流}
+\fml{u(r)=\frac{1}{4\mu}\left(-\frac{dp}{dx}\right)(R^2-r^2)}\\
+\fml{u_{\max}=2\bar u,\quad Q=\frac{\pi R^4}{8\mu}\left(-\frac{dp}{dx}\right)}\\
+\fml{\Delta p=\frac{8\mu LQ}{\pi R^4},\quad \lambda=64/Re}
+壁剪：$\tau_w=R\Delta p/(2L)=8\mu\bar u/d$。
+\sect{广义压强写法}
+有重力沿管时，用$p^*=p+\rho gz$。H--P可写成$u(r)=\frac{1}{4\mu}(-dp^*/dx)(R^2-r^2)$。斜管、竖管不要漏掉$\rho g$项。
+
+\sect{Couette 流}
+无压差：$u=Uy/h,\;\tau=\mu U/h$。\\
+有压力梯度/重力分量：\fml{\mu d^2u/dy^2=dp/dx-\rho g_x}，积分两次。\\
+倾斜平板若$u(0)=0,u(H)=-U_0,u(H/2)=0$，且$\mu u''+\rho g\sin\theta=0$，则$U_0=\rho g\sin\theta H^2/(4\mu)$。
+
+\sect{双层 Couette}
+\fml{\tau=\frac{U}{h_1/\mu_1+h_2/\mu_2}=\frac{U\mu_1\mu_2}{\mu_2h_1+\mu_1h_2}}
+$u_1=\tau y/\mu_1$；$u_2=u_1(h_1)+\tau(y-h_1)/\mu_2$。
+
+\sect{管路损失/管内压损}
+\fml{h_f=\lambda\frac{L}{d}\frac{V^2}{2g},\quad h_\zeta=\zeta\frac{V^2}{2g}}
+粗糙度只通过$\varepsilon/d$影响$\lambda$；层流$\lambda=64/Re$与粗糙度无关。\\
+\fml{\frac1{\sqrt\lambda}=-2\log_{10}\left(\frac{\varepsilon}{3.7d}+\frac{2.51}{Re\sqrt\lambda}\right)}\\
+无Moody图时用Colebrook试算；完全粗糙区近似只看$\varepsilon/d$。反求粗糙度：先由能量方程求$\lambda$，再由$Re,\lambda$查Moody反读$\varepsilon/d$；完全粗糙近似$1/\sqrt{\lambda}=-2\log_{10}(\varepsilon/3.7d)$。\\
+吸水泵：$h=(p_a-p_B)/\rho g-V^2/2g-(\lambda L/d+\sum\zeta)V^2/2g$。\\
+水轮机：$H_T=z_1-z_2+(p_1-p_2)/\rho g+(V_1^2-V_2^2)/2g-h_f-\sum h_\zeta$，$P=\rho gQH_T$。
+\sect{管路题统一流程}
+1 由$Q$算各段$V=4Q/(\pi d^2)$。2 算$Re=Vd/\nu$判层/湍。3 层流$\lambda=64/Re$；湍流用Moody/题给提示。4 各段$h_f$相加，弯头阀门用$\sum h_\zeta$。5 能量方程求$p,H_p,H_T$。
+
+\sect{常见模型模板}
+\exm{泵最大安装高度}
+算$Q,V,Re,\varepsilon/d\to\lambda$；入口压力要求$p_B\ge p_v+\Delta p_{\text{safe}}$；代入求$h_{\max}$。
+\exm{水轮机功率}
+各段算$Re,\lambda,h_f$；能量方程含$H_T$；$P=\rho gQH_T$。
+\exm{滑动轴承/油膜}
+$du/dy\approx V/t$；$\tau=\mu V/t$；$F=\tau A$；$P=FV$。
+\exm{吸水泵高度/汽蚀}
+起点选水面，终点选泵入口中心。入口阀、弯头、沿程损失全在右侧；泵入口最低绝压$p_B=p_v+20{\rm kPa}$。粗糙度用于$\varepsilon/d$查$\lambda$。
+\exm{水轮机输出功率}
+从上游水面到下游压力表截面列能量；不同直径分段算$V,Re,\lambda,h_f$。压力表给表压，水面表压为0；输出功率$P=\rho gQH_T$。
+\sect{平板Poiseuille}
+两固定板距$h$，定常充分发展：$\mu u''=dp/dx$。边界$u(0)=u(h)=0$，得$u=\frac{1}{2\mu}(-dp/dx)y(h-y)$，$u_{\max}=\frac{h^2}{8\mu}(-dp/dx)$，$\bar u=2u_{\max}/3$。
+\sect{Couette--Poiseuille合成}
+上板$U$、下板0、同时有压差：$u=Uy/h+\frac{1}{2\mu}(-dp/dx)y(h-y)$。零剪切位置由$du/dy=0$；流量$Q=b\int_0^h udy$。
+\sect{层流/湍流判定}
+圆管$Re<2300$层流，$Re>4000$通常湍流。非圆管用水力直径$d_h=4A/P_w$。层流有解析速度分布；湍流多用经验阻力系数，不能套H--P抛物线。
+\sect{压力降与剪力平衡}
+圆管受力平衡：$\Delta p\,\pi R^2=\tau_w(2\pi RL)$，故$\tau_w=R\Delta p/(2L)$。这条可推很多壁面剪应力题。
+\sect{管内层流竖直流}
+沿$z$向上流，能驱动流动的是$-\frac{dp}{dz}-\rho g$。若速度分布已知，由H--P反推$dp/dz$；题问“沿轴向压降”要说明是否含重力项，常用$p^*=p+\rho gz$避免漏项。
+\sect{层流解析题通用套路}
+两平行板/两层流体：主方程都是$\mu u''=$常数。边界：固壁无滑移；两流体交界速度连续、剪应力连续。先解速度，再求剪应力$\tau=\mu u'$，最后代数值。
+\sect{泵/汽蚀判断}
+入口绝压必须大于汽化压加安全余量。若算得$p_B<p_v+\Delta p$，就汽蚀。吸水高度越大、流速越大、管越长、局部损失越大，越容易汽蚀。
+\sect{局部损失系数}
+入口、弯头、阀门、出口统一写$h_\zeta=\zeta V^2/(2g)$。若不同管径，局部损失用该局部元件所在管段速度，不能全用一个$V$。
+% ==================== SECTION 6 ====================
+}
+
+\mt{母题7 边界层、平板摩擦阻力、外绕流}
+\qt{真题：来流 2.5m/s 绕零攻角平板，$L=0.5$m，$b=3$m，求单面摩擦阻力和尾部名义厚度。$Re_{cr}=5\times10^5$。空气：$\rho=1.2,\nu=1.5\times10^{-5}$；水：$\rho=998,\nu=1.005\times10^{-6}$。}
+\chain{先算 $Re_L=UL/\nu$。空气 $Re_L=8.33\times10^4<Re_{cr}$，全层流；水 $Re_L=1.24\times10^6>Re_{cr}$，前段层流后段湍流。}
+\form{层流：$\delta_L=5L/\sqrt{Re_L}$，$\bar C_f=1.328/\sqrt{Re_L}$，$D=\bar C_f(0.5\rho U^2)Lb$。混合平板常用 $\bar C_f=0.074/Re_L^{1/5}-1742/Re_L$。湍流厚度可用 $\delta=0.37L/Re_L^{1/5}$。}
+\res{按对应公式代入。注意单面面积 $S=Lb$，不是 $2Lb$。}
+
+\qt{子题：速度分布求排挤厚度和动量厚度。线性 $u=Uy/\delta$；三次式 $u=U[3y/(2\delta)-\frac12(y/\delta)^3]$，$y<\delta$。}
+\form{$\delta^*=\int_0^\delta(1-u/U)\dd y$，$\theta=\int_0^\delta(u/U)(1-u/U)\dd y$。}
+\res{线性：$\delta^*=\delta/2,\ \theta=\delta/6$。三次式令 $\eta=y/\delta$ 积分：$\delta^*=\delta\int_0^1(1-\frac32\eta+\frac12\eta^3)\dd\eta=3\delta/8$；$\theta=\delta\int_0^1 f(1-f)\dd\eta=39\delta/280$。}
+
+\qt{子题：湍流边界层 $u/U=(y/\delta)^{1/6}$，$\tau_w=0.0233\rho U^2(\mu/\rho U\delta)^{1/4}$，求 $\delta/x,C_f$。}
+\chain{先算动量厚度 $\theta=\delta\int_0^1\eta^{1/6}(1-\eta^{1/6})\dd\eta$。零压梯度 Karman：$\tau_w=\rho U^2\dd\theta/\dd x$。代入经验 $\tau_w$ 得微分方程，积分求 $\delta(x)$，再 $C_f=2\tau_w/(\rho U^2)$。}
+
+\qt{子题：圆球阻力危机。}
+\ans{临界 Re 附近边界层由层流转为湍流。湍流边界层近壁动量交换强，抗逆压梯度能力强，分离点后移，尾迹变窄，压差阻力大幅下降，所以总阻力系数突然减小。}
+
+\qt{子题：铝球直径 2cm，SG=2.7，在 20$^\circ$C 水中下沉，$C_D=0.5$，求终速。}
+\chain{终速：重力-浮力=阻力。$(\rho_s-\rho)g(\pi d^3/6)=C_D(0.5\rho V^2)(\pi d^2/4)$。解 $V=\sqrt{4(\rho_s-\rho)gd/(3C_D\rho)}$。}
+
+\qt{子题：氦气球直径 50cm，内压 120kPa，材料重 0.2N，空气 20$^\circ$C 一大气压，风速 4 和 24m/s，求拉线角。}
+\chain{竖直：浮力-氦气重-材料重；水平：风阻 $D=C_D\rho_aV^2A/2$。线张力方向满足 $\tan\theta=D/(B-W_{\rm He}-W_s)$，$C_D$ 按球阻力图由 Re 取。}
+
+\qt{子题：边界层积分法，给速度剖面 $u/U=f(y/\delta)$，求 $\delta^*,\theta,\tau_w,\delta(x)$。}
+\chain{第一眼：题给边界层速度分布。先把 $y/\delta=\eta$ 代入积分定义，再用动量积分方程闭合。}
+\form{$\delta^*=\int_0^\delta(1-u/U)\dd y=\delta\int_0^1(1-f)\dd\eta$；$\theta=\int_0^\delta(u/U)(1-u/U)\dd y=\delta\int_0^1 f(1-f)\dd\eta$；动量积分：$\tau_w/\rho U^2=d\theta/dx$。}
+\warn{不要把 $\delta$ 当常数；积分后通常得到 $\delta\,d\delta/dx$，再积分求 $\delta(x)$。}
+
+\qt{子题：平板边界层有转捩，给 $Re_{cr}$，求总阻力。}
+\chain{先算 $Re_L=UL/\nu$。若 $Re_L<Re_{cr}$ 全层流；若超过，前段层流后段湍流，用混合平均摩擦系数或分段积分。}
+\form{层流平板：$\delta\approx5x/\sqrt{Re_x}$，$\bar C_f=1.328/\sqrt{Re_L}$。湍流平板常用 $\bar C_f=0.074/Re_L^{1/5}-1742/Re_L$（含前缘层流修正）。$D=\bar C_f(0.5\rho U^2)S$。}
+\warn{$S$ 用受摩擦的湿面积：单面 $Lb$，双面 $2Lb$。局部 $c_f(x)$ 和平均 $\bar C_f$ 不能混。}
+
+\qt{子题：外绕阻力/终端速度，给物体尺寸、流体物性、速度，求 $D$ 或 $V_t$。}
+\chain{先算 $Re=VD/\nu$，由物体形状查 $C_D$。阻力 $D=C_D(0.5\rho V^2)A_{\rm ref}$；终端速度题把重力-浮力=阻力，若 $C_D$ 依赖 $Re$ 就迭代。}
+\warn{球/圆柱用迎风面积，不是湿面积；平板摩擦阻力用湿面积；阻力危机附近 $C_D$ 会突降，不能用常数硬算。}
+
+\qt{子题：边界层分离/阻力危机概念题。}
+\ans{逆压梯度使近壁流体动量不足，壁面剪应力降到 0 后反向，边界层分离。圆球/圆柱在临界 $Re$ 附近由层流边界层转为湍流边界层，湍流近壁动量交换强，分离点后移，尾迹变窄，压差阻力骤降，称阻力危机。}
+
+
+\qt{v106回流：旧母题6 细题链/易错/查表}
+{\fontsize{3.42}{3.60}\selectfont
+\schemebl
+\sect{Prandtl 边界层/Blasius}
+高$Re$且无或很小分离：边界层外场Euler，内流动Prandtl/动量积分。Prandtl零压梯度型：$u_x+v_y=0,\;uu_x+vu_y=\nu u_{yy},\;p_y=0$；壁面无滑移，外缘$u\to U(x)$。$Re_x=Ux/\nu,\;Re_L=UL/\nu$。层流/Blasius：\\
+\fml{\delta=5x/\sqrt{Re_x},\quad \bar C_f=1.328/\sqrt{Re_L}}\\
+湍流：\fml{\bar C_f=0.074/Re_L^{1/5}}\\
+转捩：\fml{\bar C_f=0.074/Re_L^{1/5}-1742/Re_L}\\
+\fml{D=\bar C_f\frac12\rho U^2A,\quad P=DU}
+
+\sect{位移/动量厚度/Von Karman}
+\fml{\delta^*=\int_0^\delta(1-u/U)dy,\quad \theta=\int_0^\delta(u/U)(1-u/U)dy}
+\fml{\frac{\tau_w}{\rho U^2}=\frac{d\theta}{dx}\quad (dp/dx=0)}
+\fml{\frac{\tau_w}{\rho U^2}=\frac{d\theta}{dx}+\frac{2\theta+\delta^*}{U}\frac{dU}{dx}}
+给$u/U=f(\eta),\eta=y/\delta$：把$dy=\delta d\eta$代入积分。
+\sect{常见剖面直接用}
+线性$u/U=\eta$：$\delta^*=\delta/2,\theta=\delta/6$。抛物$u/U=2\eta-\eta^2$：$\delta^*=\delta/3,\theta=2\delta/15$。若题给幂律$u/U=\eta^{1/n}$，先代$\eta$积分，不要展开成$y$。
+
+\sect{平板层流边界层油流}
+给$\mu,\rho,U,L,b$。先$\nu=\mu/\rho$，$Re_L=UL/\nu$。若层流：$\delta_{\max}=5L/\sqrt{Re_L}$，两面阻力$D=\bar C_f(0.5\rho U^2)(2Lb)$。\\
+\warn{这是平板边界层，不是管流壁律。}
+\sect{平板题统一流程}
+1 算$Re_L$判层/湍/转捩。2 选$\bar C_f$和$\delta(L)$。3 阻力面积：单面$A=Lb$，双面$A=2Lb$。4 题问尾部边界层厚度用$x=L$；问总阻力用平均摩擦系数。
+
+\sect{湍流近壁三层}
+$u_\tau=\sqrt{\tau_w/\rho}$，$y^+=yu_\tau/\nu$，$u^+=\bar u/u_\tau$。线性底层$y^+<5,u^+=y^+$；缓冲层$5<y^+<30$；湍流核心$u^+=2.5\ln y^+ +5.5$。圆管平均：$\bar u/u_\tau=2.5\ln(Ru_\tau/\nu)+1.75$。
+\sect{壁律题写法}
+给管径、平均速度、$\rho,\mu$：先$\nu=\mu/\rho$。由$\bar u/u_\tau=2.5\ln(Ru_\tau/\nu)+1.75$试算$u_\tau$，再$\tau_w=\rho u_\tau^2$。线性底层最大厚度：$y=5\nu/u_\tau$；缓冲层到$y=30\nu/u_\tau$。
+
+\sect{分离与阻力}
+逆压梯度$dp/dx>0$使边界层减速增厚；$\partial u/\partial y|_w=0$为分离临界。摩擦阻力来自$\tau_w$；压差阻力来自分离尾流。
+\sect{外绕流阻力判断}
+流线型小迎角：摩擦阻力为主；钝体/分离明显：压差阻力为主。高$Re$物面外可近似无粘，用Euler/伯努利；靠壁必须用边界层。
+
+\sect{高频收口模型}
+\renewcommand{\arraystretch}{0.76}\begin{tabular}{|p{0.30\linewidth}|p{0.61\linewidth}|}
+\hline 速度场连续 & 算$u_x+v_y+w_z$\\ \hline
+有旋 & $\Omega_z=v_x-u_y$，$\omega_z=\Omega_z/2$\\ \hline
+流线 & $dx/u=dy/v$，非定常先代$t=t_0$\\ \hline
+势/流函数 & 先验无旋/不可压，再积分\\ \hline
+小孔出流 & $V=\sqrt{2gH}$，$Q=\mu A\sqrt{2gH}$\\ \hline
+皮托管 & $V=\sqrt{2(p_0-p)/\rho}$\\ \hline
+U管差压 & $\Delta p=(\rho_m-\rho)g\Delta h$\\ \hline
+维数分析 & $n$个量、$k$个基本量纲，得$n-k$个$\pi$数\\ \hline
+\end{tabular}\renewcommand{\arraystretch}{1}
+
+\sect{过程分最小骨架}
+先写“该题属于……模型”，再写控制方程、边界条件、代入顺序。比如：“定常一维绝热等熵流，由$M$求滞止量，由面积比求另一截面$M$，再由等熵式求$p,T,\rho,V$。”这能拿框架分。
+\sect{Von Karman边界层积分模板}
+无压梯度平板：$\tau_w=\rho U^2d\theta/dx$。若假定剖面含未知$\delta(x)$，先算$\theta=C\delta$，再由$\tau_w=\mu(\partial u/\partial y)_0$得到微分方程，积分求$\delta(x)$。
+\sect{阻力系数换算}
+局部$c_f=\tau_w/(0.5\rho U^2)$；平均$\bar C_f=D/(0.5\rho U^2A)$。层流局部$c_f=0.664/\sqrt{Re_x}$；平均$\bar C_f=1.328/\sqrt{Re_L}$。不要把局部当平均。
+\sect{边界层题检查}
+$x$用从前缘量的距离；$L$用整块板长度；$A$是湿表面积；双面板乘2。若题给临界$Re_{cr}$，先算转捩位置$x_{cr}=Re_{cr}\nu/U$。
+\sect{交卷前检查}
+看见“平均时均速度”就是$\bar u$，不是中心最大速度；看见“壁面最大厚度”通常是$x=L$处$\delta$；看见“平板阻力”要用平均摩擦系数，不是尾部局部值。
+\sect{外流阻力典型量}
+球/圆柱阻力常写$D=C_D(0.5\rho U^2)A$，$A$为迎风面积。Stokes小球$Re<1$：$D=3\pi\mu dU$。高Re钝体以压差阻力为主，不能只算摩擦。
+\sect{边界层分离答题句}
+“由于逆压梯度，近壁流体动能不足，壁面速度梯度降为零并反向，边界层发生分离，尾流区压力降低，压差阻力增大。”
+\sect{公式许可检查}
+许可：静水$V=0$；Bernoulli定常/不可压/无粘/同流线；H--P层流充分发展；等熵无摩擦无激波；激波/PM超声速分段；边界层高$Re$；应力$P\bm n$。分段：跨泵/水轮/局损/变径/激波，换截面/基准/$V$/$p_0$/$H$。
+\sect{查书优先级}
+可带教材时，优先查：正/斜激波表、PM函数表、Moody图、面积--马赫数表、阻力系数图。速查表负责告诉你该查哪个表和查完怎么接公式。
+
+\sect{静力学、运动学、张量模型速解}
+\sect{压强单位换算}
+$1{\rm kPa}=10^3{\rm Pa}$；$1{\rm mmHg}=133.3{\rm Pa}$；水头$h=p/(\rho g)$。表压$p_g=p_{\rm abs}-p_a$；绝压进入汽蚀、气体状态方程；表压进入多数水力计算。
+\sect{平面闸门答题骨架}
+1 取形心深度$h_C$。2 合力$F=\rho gh_CA$。3 压力中心：竖直平面$y_D=y_C+I_C/(y_CA)$；倾斜平面沿板长坐标同式，$h_C=y_C\sin\theta$。4 对铰点列力矩求拉力/反力。写明“压力分布为三角形或梯形”。
+\sect{曲面闸门答题骨架}
+水平分量$F_x$等于曲面在竖直投影面上的静水压力；竖直分量$F_y$等于曲面上方压力体水重，方向看压力体在曲面哪侧。合力$F=\sqrt{F_x^2+F_y^2}$，作用线由力矩或过圆心性质定。
+\sect{相对平衡}
+容器水平加速度$a$：自由液面满足$dp=0$，$g\,dz+a\,dx=0$，故$\tan\alpha=a/g$。竖直加速向上$a$：等效重力$g+a$；向下$a$：$g-a$。旋转容器：$p/\rho+gz-\omega^2r^2/2=C$，自由面$z=\omega^2r^2/(2g)+C$。
+\sect{浮力和稳定}
+浮力$F_B=\rho gV_{\rm disp}$，$V_{\rm disp}$为排开液体体积，作用于该体积形心。稳定判断：小倾角后浮心移动，重心$G$低于定倾中心$M$稳定；题若只问浮力，直接排水体积。
+\sect{迹线/流线/脉线}
+流线：固定时刻速度场切线，$dx/u=dy/v=dz/w$。迹线：单个质点轨迹，解$dx/dt=u(x,y,z,t)$。脉线：同一注入点不同时刻质点连线。定常流三者重合；非定常不能混写。
+\sect{加速度题模板}
+$a_x=u_t+uu_x+vu_y+wu_z$，$a_y=v_t+uv_x+vv_y+wv_z$，$a_z=w_t+uw_x+vw_y+ww_z$。若只给二维定常，去掉$t,z$项。题问“当地/迁移”分别对应$\partial/\partial t$和对流项。
+\sect{应力张量标准解}
+平面单位法向$\bm n=(n_x,n_y,n_z)^T$。应力矢量$\bm t=P\bm n$。法向应力$\sigma_n=\bm t\cdot\bm n$。切应力大小$\tau=\sqrt{|\bm t|^2-\sigma_n^2}$。夹角$\cos\alpha=\sigma_n/|\bm t|$。若问垂直平面分量，答案为$\sigma_n\bm n$。
+\sect{应力对称原因}
+无体偶力、微元角动量平衡给$p_{xy}=p_{yx}$，$p_{xz}=p_{zx}$，$p_{yz}=p_{zy}$。作用：张量独立分量从9个减到6个；做题时矩阵若不对称，通常题设有误或需取对称部分。
+\sect{流体微团运动分解}
+速度梯度$\nabla\bm V$可分解为平移、线变形率、角变形率、旋转。二维不可压时$u_x+v_y=0$；角速度$\omega_z=(v_x-u_y)/2$；角变形率$\varepsilon_{xy}=(u_y+v_x)/2$。
+\sect{维数分析常用组合}
+阻力问题$F=f(\rho,\mu,V,L)$：$F/(\rho V^2L^2)=\Phi(Re)$。自由液面重力波常有$Fr=V/\sqrt{gL}$。表面张力小尺度常有$We=\rho V^2L/\sigma$。可压缩高速常有$Ma=V/a$。
+
+\sect{伯努利、动量、能量方程模型速解}
+\sect{伯努利适用性}
+理想无粘：沿流线；无旋势流：全场任意点。实际管路：用机械能方程加$h_f,\sum h_\zeta,H_p,H_T$。非定常势流：$\partial\varphi/\partial t+V^2/2+p/\rho+gz=C(t)$。
+\sect{皮托管/文丘里/孔板}
+皮托：滞止点$V=0$，$V=C\sqrt{2\Delta p/\rho}$。文丘里不可压：连续$A_1V_1=A_2V_2$，伯努利$p_1-p_2=\frac12\rho(V_2^2-V_1^2)$，解$Q=A_2\sqrt{\frac{2(p_1-p_2)/\rho}{1-(A_2/A_1)^2}}$，实际乘流量系数。
+\sect{虹吸管}
+最高点压强最低。列水面到最高点：$p_a/\rho g+z_0=p_c/\rho g+z_c+V^2/(2g)+h_{loss}$。要求$p_c>p_v$，否则断流/汽化。出口速度由总落差扣损失。
+\sect{弯管受力}
+对流体列动量，入口压力推入、出口压力推入控制体内部。若入口$x$向、出口转角$\alpha$：速度向量$\bm V_1=(V_1,0)$，$\bm V_2=(V_2\cos\alpha,V_2\sin\alpha)$。支座对流体力$\bm R$求出后，流体对管道力$-\bm R$。
+\sect{射流冲击平板}
+固定平板正撞：$F=\rho QV$。移动平板速度$u$：相对流量$\rho A(V-u)$，力$F=\rho A(V-u)^2$。功率$P=Fu$，最大功率常在$u=V/3$。斜板按法向动量变化。
+\sect{喷嘴/消防水枪反力}
+喷嘴出口表压近似0，入口压力加速流体：$p_1A_1-p_2A_2+R_x=\rho Q(V_2-V_1)$。若求握持力，取流体对喷嘴反力。先由伯努利或连续求$V_2,Q$。
+\sect{水轮机/泵符号}
+泵给流体能量：左侧加$H_p$。水轮机从流体取能：右侧加$H_T$。功率$P=\rho gQH$；若有效率，泵轴功率$P_{\rm shaft}=\rho gQH_p/\eta$，水轮机输出$P_{\rm out}=\eta\rho gQH_T$。
+\sect{大水池到大水池}
+两端大水面$V_1\approx V_2\approx0$，表压均0，则水位差$z_1-z_2=h_f+\sum h_\zeta-H_p+H_T$。这是长管、阀门、泵题最快写法。
+\sect{压力表截面}
+压力表给表压$p_g$，能量方程中可直接用$p_g/(\rho g)$，但汽蚀必须转绝压$p_{\rm abs}=p_g+p_a$。压力表位置速度不可忽略，面积变了要算$V=Q/A$。
+
+\sect{势流与理想不可压模型速解}
+\sect{势函数流函数互求}
+直角坐标：$u=\varphi_x=\psi_y$，$v=\varphi_y=-\psi_x$。若给$u,v$，先验无旋$v_x-u_y=0$再求$\varphi$；先验不可压$u_x+v_y=0$再求$\psi$。流线就是$\psi=C$。
+\sect{极坐标速度关系}
+$v_r=\partial\varphi/\partial r=(1/r)\partial\psi/\partial\theta$；$v_\theta=(1/r)\partial\varphi/\partial\theta=-\partial\psi/\partial r$。圆柱、点源、点涡题优先换极坐标。
+\sect{基本流全表}
+均匀流：$\varphi=Ur\cos\theta,\psi=Ur\sin\theta$。源：$\varphi=\frac Q{2\pi}\ln r,\psi=\frac Q{2\pi}\theta$。汇取负号。点涡：$\varphi=\frac\Gamma{2\pi}\theta,\psi=-\frac\Gamma{2\pi}\ln r$。偶极：$\varphi=M\cos\theta/r,\psi=-M\sin\theta/r$。
+\sect{叠加题总流程}
+1 读图选基元。2 写总$\psi$或$\varphi$。3 壁面/物体边界通常是$\psi=C$。4 驻点令$v_r=v_\theta=0$或$u=v=0$。5 压强用伯努利。6 合力用压力积分或库塔--儒可夫斯基。
+\sect{半圆柱/半体绕流}
+均匀流+点源构成Rankine半体：$\psi=Ur\sin\theta+Q\theta/(2\pi)$，驻点$r_0=Q/(2\pi U)$，边界$\psi=Q/2$，半宽$b=Q/(2U)$。壁面半平面用镜像，源/汇常等价于分母$\pi$。
+\sect{镜像法常见组合}
+源靠固壁：同号源在镜像点。汇靠固壁：同号汇。点涡靠固壁：反号涡。双壁直角：连续镜像到四象限。目的只有一个：让壁面成为流线，法向速度为0。
+\sect{圆柱绕流推导}
+设$\varphi=(Ar+B/r)\cos\theta$。无穷远给$A=U$；壁面$r=a$不穿透：$v_r=\partial\varphi/\partial r=0$给$B=Ua^2$。所以$\varphi=U(r+a^2/r)\cos\theta$。
+\sect{圆柱压力和阻力}
+壁面$v_\theta=-2U\sin\theta$，$C_p=1-4\sin^2\theta$。前后对称，阻力为0即达朗贝尔佯谬。现实阻力来自粘性边界层分离，不是势流能算出的。
+\sect{有环量圆柱/机翼}
+叠加点涡后$v_\theta=-2U\sin\theta+\Gamma/(2\pi a)$。上下面速度不对称产生升力$L'=\rho U\Gamma$。库塔条件本质：后缘速度有限，确定环量。薄板小攻角可写$\Gamma\approx\pi Uc\sin\alpha$，再代$L'$；符号按攻角/环量方向。
+\sect{边角绕流}
+角域$0<\theta<\alpha$，壁面取$\psi=0$，解$\varphi=Ar^n\cos n\theta,\psi=Ar^n\sin n\theta$，$n=\pi/\alpha$。问速度奇异性用$V\sim r^{n-1}$。
+\sect{势流压力题}
+势流速度已知后，压力都是$p=p_0-\frac12\rho V^2$加常数。比较压强只需比较速度大小；速度大压强小。若点涡中心速度发散，理想模型中心不可直接用。
+
+\sect{可压缩、喷管、激波模型速解}
+\sect{弹性模量/声速}
+$E=-dp/(dV/V)=dp/(d\rho/\rho)$。水受压密度相对变化$\Delta\rho/\rho=\Delta p/E$。理想气体等熵声速$a=\sqrt{\gamma RT}$，马赫数$M=V/a$。
+\sect{飞机声音/马赫锥}
+$M>1$才有马赫锥，半角$\mu=\sin^{-1}(1/M)$。飞机到观察者最近水平距离或高度给出时，用几何关系$h/x=\tan\mu$或$x=h/\tan\mu$求听到位置/时间。
+\sect{滞止量题}
+若入口速度不可忽略，先算$M_1=V_1/\sqrt{\gamma RT_1}$，再$T_0=T_1(1+0.2M_1^2)$，$p_0=p_1(1+0.2M_1^2)^{3.5}$。若“入口速度可忽略”，直接$p_0=p_1,T_0=T_1$。
+\sect{收缩喷管背压型}
+给容器$p_0,T_0$、背压$p_b$、出口面积$A_e$。若$p_b/p_0>0.528$未阻塞：$p_e=p_b$，由$p_0/p_e$求$M_e$，再算$\dot m$。若$\le0.528$阻塞：出口$M=1$，$p_e=p^*=0.528p_0$，$\dot m=0.0404A_ep_0/\sqrt{T_0}$。
+\sect{Laval面积比型}
+给$A_t=A^*$、出口状态，且无激波：出口若是超声速，就由等熵式求$M_e$，再用面积--马赫数求$A_e/A^*$。流量用喉部最大流量或出口$\rho_eV_eA_e$。
+\sect{可压文丘里流量计型}
+给最大流量和喉部最低压力：先入口截面由$\dot m=\rho VA$求$M_1$与$p_0,T_0$，再由$p_0/p_t$求$M_t$。只有$M_t=1$才临界；$M_t<1$时喉部不是阻塞。
+\sect{正激波关系型}
+已知$M_1,p_1,T_1$：用正激波关系求$M_2,p_2,T_2,\rho_2$；再用等熵式分别算$p_{01},p_{02}$。结论句：$T_0$守恒，$p_0$损失，熵增。
+\sect{斜激波/脱体激波型}
+已知来流$M_1$和楔角$\theta$：查$\theta-\beta-M$得波角$\beta$；算$M_{n1}=M_1\sin\beta$；套正激波求法向波后；再$M_2=M_{n2}/\sin(\beta-\theta)$。压力比只用$M_{n1}$。
+\sect{PM膨胀/管外膨胀型}
+已知$M_1$和膨胀角$\delta$：$\nu(M_2)=\nu(M_1)+\delta$。已知出口压力低于/高于背压时，判断出口外压缩或膨胀；膨胀波内$p_0$不变。
+\sect{Laval管内正激波型}
+激波位置给$A_s/A_t$：波前按超声速支求$M_1$；过正激波求$M_2,p_{02}$；波后用新总压亚声速等熵到出口。若算出的出口压力等于背压，该激波位置成立。
+\sect{Laval背压图文字版}
+$p_b$很高：不流或全亚声速。降到临界：喉部$M=1$。再降：扩张段内正激波向出口移动。出口正激波后，再降：出口外斜激波。设计背压：全管等熵。更低：出口外膨胀波。
+\sect{激波/膨胀选择}
+超声速流被迫转向自身一侧，即流道变窄/凹角，压缩，用激波；超声速流道向外打开/凸角，膨胀，用PM扇。亚声速不能用这些关系。
+
+\sect{粘性流动、管流、边界层模型速解}
+\sect{N--S简化四句话}
+牛顿不可压：$\tau_{ij}=-p\delta_{ij}+\mu(u_{i,j}+u_{j,i})$，$\rho D\bm V/Dt=-\nabla p+\mu\nabla^2\bm V+\rho\bm g$。定常去$\partial_t$，充分发展去$\partial_x$，单向只留一个速度；小$Re$时惯性项可删。
+\sect{平板间层流}
+$\mu u''=dp/dx$。无压差Couette：$u=Uy/h$。无动板Poiseuille：$u=\frac{1}{2\mu}(-dp/dx)y(h-y)$。两者叠加：$u=Uy/h+\frac{1}{2\mu}(-dp/dx)y(h-y)$。
+\sect{两层Couette型}
+下层厚$h_1,\mu_1$，上层厚$h_2,\mu_2$，上板速度$U$。剪应力常数：$\tau=U/(h_1/\mu_1+h_2/\mu_2)$。速度分段线性，交界速度连续，剪应力连续。
+\sect{倾斜平板流程}
+沿板方向无压差，重力分量驱动：$\mu u''+\rho g\sin\theta=0$。积分两次，用$u(0)=0,u(H)=-U_0,u(H/2)=0$求常数和$U_0$。剪应力$\tau=\mu u'$，上下壁代$y=0,H$。
+\sect{圆管H--P}
+速度抛物线，$u_{\max}=2\bar u$。$Q=\pi R^4\Delta p/(8\mu L)$，$\Delta p=32\mu L\bar u/d^2$，$\lambda=64/Re$。壁剪$\tau_w=8\mu\bar u/d$。
+\sect{管道湍流壁律}
+$u_\tau=\sqrt{\tau_w/\rho}$。线性底层$u^+=y^+$，缓冲层$5<y^+<30$，对数层$u^+=2.5\ln y^+ +5.5$。圆管平均$\bar u/u_\tau=2.5\ln(Ru_\tau/\nu)+1.75$。
+\sect{管内边界层厚度题}
+线性底层厚度$y_5=5\nu/u_\tau$；缓冲层外缘$y_{30}=30\nu/u_\tau$；完全湍流核心从$y^+>30$开始。若题问“离壁距离”，$y=R-r$。
+\sect{管路损失综合题}
+每段独立算$V_i,Q,A_i,Re_i,\lambda_i$。沿程$h_{fi}=\lambda_i(L_i/d_i)V_i^2/(2g)$。局部$h_\zeta=\zeta V^2/(2g)$，速度取元件所在管段。总损失相加进能量方程。
+\sect{粗糙度使用}
+层流不用粗糙度。湍流用$\varepsilon/d$查Moody或Colebrook。题给镀锌钢管粗糙度$h$时，通常$\varepsilon=h$，相对粗糙度$\varepsilon/d$。
+\sect{泵安装高度}
+水面到泵入口列能量：$0+0+z_0=p_B/\rho g+V^2/(2g)+z_B+h_f+\sum h_\zeta$。令$p_B=p_v+\Delta p_{\rm safe}$求最大$z_B-z_0$。越高越危险。
+\sect{水轮机功率}
+上游水面到下游截面：左边总水头减去损失和出口剩余水头，剩下就是$H_T$。$P=\rho gQH_T$。若给压力表，压力表截面还有速度头。
+\sect{平板边界层/Blasius}
+层流$\delta=5x/\sqrt{Re_x}$，$\delta^*=1.72x/\sqrt{Re_x}$，$\theta=0.664x/\sqrt{Re_x}$，局部$c_f=0.664/\sqrt{Re_x}$，平均$\bar C_f=1.328/\sqrt{Re_L}$。
+\sect{湍流/转捩平板}
+全湍近似$\delta=0.37x/Re_x^{1/5}$，局部$c_f=0.0592/Re_x^{1/5}$，平均$\bar C_f=0.074/Re_L^{1/5}$。从前缘层流转捩用修正$\bar C_f=0.074/Re_L^{1/5}-1742/Re_L$。
+\sect{平板外绕阻力型}
+先算$Re_L=UL/\nu$，与$Re_{cr}$比。单面面积$Lb$，双面$2Lb$。总阻力$D=\bar C_f(0.5\rho U^2)A$。尾部厚度用$x=L$。
+\sect{边界层动量积分}
+给假设速度剖面，先算$\theta=C_\theta\delta$，壁剪$\tau_w=\mu U f'(0)/\delta$。代$\tau_w=\rho U^2d\theta/dx$得$\delta d\delta\sim(\nu/U)dx$，积分定常数。
+\sect{分离/绕流阻力}
+逆压梯度$dp/dx>0$导致近壁速度降低，$\tau_w=0$为分离点。圆柱、球分离后压差阻力大；流线型体摩擦阻力大。减阻常靠延迟分离或减小湿表面积。
+\sect{Stokes小球}
+$Re<1$：阻力$D=3\pi\mu dU$。沉降终速由重力减浮力等于阻力：$(\rho_s-\rho)g\pi d^3/6=3\pi\mu dU$，得$U=(\rho_s-\rho)gd^2/(18\mu)$。
+
+\sect{通用题干关键词套写索引}
+\sect{静水压/伯努利/动量}
+先判断对象：静止液体$\to$静水压；沿流线能量$\to$Bernoulli/机械能；弯管喷嘴射流受力$\to$控制体动量。不要一个方程包打天下。
+\sect{势函数/流函数/圆柱/镜像/机翼}
+先写$\varphi,\psi$基本流叠加。圆柱/机翼先圆柱+环量；有墙面先镜像；有夹角先$n=\pi/\alpha$；求压强最后用伯努利。
+\sect{速度场/连续/有旋/无旋/剪切板}
+速度场题做四连：散度判不可压、旋度判无旋、积分求$\phi$、积分求$\psi$。剪切板/两层流体不是势流，转N--S简化。
+\sect{喷管/背压/阻塞/质量流量}
+先定$p_0,T_0$，再判喉部是否$M=1$阻塞；最后算$M,p,T,\rho,V,A,\dot m$。0.528只对应临界$M=1$，不是任意喉部压比。
+\sect{激波/斜激波/膨胀波/超声速转角}
+先判波型：正激波直接公式；斜激波先法向马赫数；凸角膨胀用PM函数；Laval内激波分“波前等熵--过波--波后等熵”。
+\sect{N-S简化/H-P/Couette/两层流体/Stokes}
+层流解析题：写N--S简化，积分两次，代边界条件。两层流体写速度连续和剪应力连续。小球$Re<1$用Stokes。
+\sect{边界层/壁律/泵吸水/水轮机}
+壁律题：由$\bar u/u_\tau$求$u_\tau$再算$y^+$。泵吸水：水面到泵入口列能量+汽蚀压强约束。水轮机：上游到下游扣损失，功率$P=\eta\rho gQH_T$。
+\sect{平板边界层/摩擦阻力/分离}
+先算$Re_x$或$Re_L$，再选层流/湍流/转捩公式。问厚度用$\delta$；问阻力用$\bar C_f$；问功率乘$U$；问分离写逆压梯度。
+\sect{表值未算出时}
+写“查表得$M=...,\lambda=...,\beta=...,\nu(M)=...$”，再把后续公式完整列出；未算表值也保留查表输入和回代链。
+\sect{标准卷面模板}
+“本题属于\underline{\hspace{1cm}}模型。假设\underline{\hspace{1cm}}。控制方程为\underline{\hspace{1cm}}。由边界条件\underline{\hspace{1cm}}得未知量。代入数值得\underline{\hspace{1cm}}。物理判断：单位正确、方向正确、状态合理。”
+
+\sect{通用数值题公式链骨架}
+\sect{压缩性/弹性模量}
+已知压强变化$\Delta p$求密度相对变：液体用$\Delta\rho/\rho=\Delta p/E$；气体等温用$p/\rho=RT$，故$\rho_2/\rho_1=p_2/p_1$。注意压强用绝压。
+\sect{马赫锥/扰动传播}
+扰动/声响题：先$M=V/a$。$M<1$亚/椭圆/可上游传播/无马赫锥；$M>1$超/双曲/只看依赖域，$\mu=\sin^{-1}(1/M)$，$x=h/\tan\mu=h\sqrt{M^2-1}$。
+\sect{Laval出口外膨胀}
+已知$A_e/A_t,p_0,p_b$：查超声速支得$M_e$，等熵算$p_e$。若$p_e>p_b$为欠膨胀，管外PM继续膨胀：由$p_0/p_b$求$M_b$，转角$\alpha=\nu(M_b)-\nu(M_e)$。
+\sect{管内湍流壁律厚度}
+已知$d,\bar u,\nu$：先$R=d/2,Re=\bar ud/\nu$。由$\bar u/u_\tau=2.5\ln(Ru_\tau/\nu)+1.75$迭代$u_\tau$；线性底层$y_5=5\nu/u_\tau$，缓冲外缘$y_{30}=30\nu/u_\tau$，壁剪$\tau_w=\rho u_\tau^2$。
+\sect{泵吸水安装高度/汽蚀}
+水面$\to$泵入口：$p_a/\rho g+z_0=p_B/\rho g+z_B+V^2/2g+h_L$。$V=4Q/\pi d^2$，$Re$和$\varepsilon/d$查$\lambda$，$h_L=(\lambda L/d+\sum\zeta)V^2/2g$；约束$p_B\ge p_v+\Delta p_{\rm safe}$解最大安装高。
+\sect{水轮机/泵管路功率}
+先选上下游截面，统一表压和高度基准。机械能方程求机器水头：泵为$H_p$加在上游侧，水轮机为$H_T$从可用水头中扣除。水功率$P_w=\rho gQH$，轴功率按效率乘/除。
+\sect{平板边界层阻力}
+已知$U,L,b,\nu,\rho$：先$Re_L=UL/\nu$判层/湍/转捩；选$\bar C_f$，再$D=\bar C_f(0.5\rho U^2)A_{\rm wet}$。单面$A=Lb$，双面$2Lb$；厚度用$x=L$处$\delta(L)$。
+\sect{应力张量指定平面}
+已知应力张量$P$和单位法向$\bm n$：应力矢量$\bm t=P\bm n$；法向应力标量$t_n=\bm t\cdot\bm n$；法向分量$t_n\bm n$；切向分量$\bm t-\bm t_n\bm n$。夹角用$\cos\alpha=t_n/|\bm t|$。
+\sect{圆柱/物面压力积分}
+势流先由速度求$C_p=1-(V_s/U)^2$，再$p=p_\infty+0.5\rho U^2 C_p$。单位长度$d\bm F=-p\bm n\,ds$沿物面积分；无环量圆柱$D=L=0$，有环量升力$L'=\rho U\Gamma$。
+
+\sect{教材可查表项目和速查表衔接}
+\sect{Moody图怎么用}
+横坐标$Re$，曲线参数$\varepsilon/d$，读Darcy摩阻系数$\lambda$。若题中公式用$f$需确认是否为Fanning系数；本课常用Darcy，$h_f=\lambda Ld^{-1}V^2/(2g)$。
+\sect{面积--马赫数表怎么用}
+输入$A/A^*$，会有亚声速和超声速两支。收缩喷管只能用亚声速支直到$M=1$；Laval喉后若设计超声速才用超声速支。题没说明时，结合背压和流动状态判支。
+\sect{正激波表怎么用}
+输入$M_1$，读$M_2,p_2/p_1,\rho_2/\rho_1,T_2/T_1,p_{02}/p_{01}$。表中$p_{02}/p_{01}$可省去手算总压损失；但波后继续等熵必须用$p_{02}$。
+\sect{斜激波表怎么用}
+输入$M_1$和偏转角$\theta$，通常有弱/强两解，工程取弱解。读$\beta$后用$M_{n1}=M_1\sin\beta$查正激波关系。若$\theta>\theta_{\max}$，无附体斜激波。
+\sect{PM函数表怎么用}
+输入$M$读$\nu(M)$。膨胀：$\nu_2=\nu_1+\delta$；压缩不能用PM膨胀表，而要斜激波。角度单位必须统一，表多为度。
+\sect{阻力系数图怎么用}
+圆柱/球外流阻力$D=C_D(0.5\rho U^2)A$，$A$是迎风面积，不是湿表面积。平板摩擦阻力用$C_f$，面积是湿表面积。两类不能混。
+
+\sect{高风险易混概念对照}
+\sect{$p_0,p^*,p_e,p_b$}
+$p_0$滞止压；$p^*$临界截面静压；$p_e$出口截面内静压；$p_b$背压/外界压。只有部分状态$p_e=p_b$。阻塞时收缩喷管$p_e=p^*$，不等于更低的$p_b$。
+\sect{喉部、临界、阻塞}
+喉部是最小面积截面。临界状态是该截面$M=1$。阻塞是继续降低背压也不能增大质量流量。喉部存在不等于一定临界；临界也不等于所有截面$M=1$。
+\sect{亚声速/超声速面积效应}
+亚声速：收缩加速、扩张减速。超声速：扩张加速、收缩减速。Laval喷管先收缩到喉部$M=1$，再扩张才能超声速。
+\sect{激波和膨胀波}
+激波是压缩、非等熵、总压损失；膨胀波是连续小扰动、近似等熵、总压不损失。激波可使超声速变亚声速；膨胀波使超声速更快。
+\sect{层流/湍流/边界层}
+层流是流动状态；边界层是近壁区域；湍流边界层不是“管内湍流核心”。管内H--P只能用于层流充分发展，不能套到湍流。
+\sect{平均速度/最大速度/摩擦速度}
+$\bar u$是截面平均；$u_{\max}$是中心最大；$u_\tau=\sqrt{\tau_w/\rho}$不是实际流速，而是由壁剪定义的速度尺度。壁律题用$u_\tau$。
+\sect{表面积/迎风面积/截面积}
+管流连续用截面积$\pi d^2/4$；平板摩擦用湿表面积$Lb$或$2Lb$；绕流阻力用迎风面积；静水压力用受压面积投影或实际面积，别混。
+\sect{局部损失/沿程损失}
+沿程损失跟$L/d$有关；局部损失跟$\zeta$有关。弯头、阀门、入口、出口不是沿程损失。长管可以局部忽略，短管不能。
+\sect{绝压/表压}
+气体状态方程、汽化压、声速问题用绝压/绝温。水力能量方程两端同大气时可用表压。压力表读数通常是表压。
+
+\sect{按题干关键词选公式}
+\sect{“不可压无旋”}
+写$\nabla^2\varphi=0,\nabla^2\psi=0$，用$\varphi,\psi$速度关系，压力用伯努利。若题说“有环量”，加点涡。
+\sect{“定常一维绝热”}
+若无摩擦激波，等熵；若有激波，分段等熵+激波关系；若有摩擦热交换，本表不套等熵，按题给关系。
+\sect{“平均时均速度”}
+通常湍流统计量$\bar u$；若在管内，用壁律或平均速度公式，不是瞬时速度。雷诺应力$\overline{u'v'}$来自脉动相关。
+\sect{“小球Re<1”}
+直接Stokes阻力；若问沉降终速，重力-浮力=阻力；若问阻力系数，$C_D=24/Re$。
+\sect{“完全发展”}
+速度分布不随流向变，$\partial u/\partial x=0$，但压强仍沿流向下降。充分发展层流可解析；入口段不能直接用H--P。
+\sect{“无压差Couette”}
+速度线性，剪应力常数。若有压力梯度，速度为线性+抛物线。若两层流体，剪应力在两层相等。
+\sect{“逆压梯度”}
+$dp/dx>0$，流体沿流动方向压力升高，近壁减速，可能分离。顺压梯度$dp/dx<0$则加速，分离不易发生。
+\sect{“背压降低”}
+喷管题中背压降低不是静压处处降低。未阻塞时影响全管；阻塞后质量流量固定，影响下游激波位置/管外波系。
+\sect{“压力中心/形心”}
+形心用于算合力大小；压力中心用于合力作用点。压力中心在形心以下，除非面积水平或压强均匀。
+
+\sect{计算细节防错}
+\sect{单位统一}
+面积：$1{\rm cm^2}=10^{-4}{\rm m^2}$；粗糙度mm转m；运动粘度$1{\rm mm^2/s}=10^{-6}{\rm m^2/s}$；温度用K；角度查表通常用度，计算三角函数确认模式。
+\sect{截面积}
+圆管$A=\pi d^2/4$，半径题$A=\pi R^2$。环形面积$A=\pi(R_o^2-R_i^2)$。平板流每单位宽度时$Q'=\int udy$，总流量$Q=bQ'$。
+\sect{水头与压力}
+$p/\rho g$单位是m。能量方程每一项都用m时，泵扬程$H_p$也是m；功率再乘$\rho gQ$。用压力形式时每项是Pa，损失为$\Delta p=\rho gh$。
+\sect{查表/异常回退}
+查表写法：查\_\_表，输入\_\_，读得\_\_；需插值写“线性插值”。异常先按：单位、模型、边界、支路、符号回退。$M<0$或$p_{\rm abs}<0$查绝压/表压；$\dot m$不守恒回连续；$h_L<0$查泵/水轮机符号；$Re$判型冲突换层/湍公式；激波后$M_2>1$或$p_2<p_1$查表输入；泵入口$p_B<p_v$说明高度/损失过大。
+\sect{答案量纲检查}
+流量$m^3/s$，质量流量$kg/s$，压强Pa，剪应力Pa，功率W，扬程m，环量$m^2/s$，势函数$m^2/s$，流函数$m^2/s$每单位宽度流量。
+\sect{方向检查}
+力的方向若不确定，先假设正向，算出负值表示反向。动量方程一定是“外力合力=流出动量流率-流入动量流率”。
+\sect{结果合理性}
+收缩喷管未阻塞$M<1$；正激波后$M_2<1$；膨胀波后$M$增大、$p$降低；泵入口高度越大入口压越低；边界层厚度沿程增大。
+
+\sect{可直接写的结论句}
+\sect{势流结论句}
+“由无旋和不可压知势函数与流函数均满足Laplace方程，且线性方程允许叠加。固体边界为流线，故总流函数在边界上为常数。”
+\sect{达朗贝尔佯谬句}
+“理想不可压无粘定常绕流中，圆柱前后压力分布对称，积分阻力为零；实际阻力来自粘性边界层分离。”
+\sect{边界层句}
+“高雷诺数外流可分为外部近似无粘区和近壁粘性边界层；壁面无滑移使速度从0过渡到外流速度。”
+\sect{管流损失句}
+“沿程损失反映壁面摩擦，局部损失反映流道突变、阀门、弯头等引起的附加耗能；二者均以速度头表示。”
+\sect{激波句}
+“激波是超声速压缩扰动的有限强度间断，满足守恒方程但熵增，因此总压降低；正激波后必为亚声速。复杂激波反射/相交可导致声爆；波阻来自激波损失，声障指跨声速阻力突增。”
+\sect{膨胀波句}
+“膨胀波由连续弱扰动组成，可近似看作等熵过程；超声速气流通过膨胀扇后马赫数增大，静压和静温降低。”
+\sect{阻塞句}
+“阻塞的本质是最小面积处达到声速，信息不能向上游传递，继续降低背压不能增加质量流量。”
+\sect{湍流句}
+“湍流时速度可分解为时均量和脉动量，脉动相关产生雷诺应力，工程上常通过经验摩擦系数或壁律求解。”
+
+\sect{题图识别+查表+公式链}
+\sect{题图一眼选模型}
+\renewcommand{\arraystretch}{0.67}\begin{tabular}{|p{0.30\linewidth}|p{0.62\linewidth}|}
+\hline U管/压差计 & 同高同压链；$\Delta p=(\rho_m-\rho)g\Delta h$；振荡$T=2\pi\sqrt{L/2g}$\\ \hline
+闸门/曲面 & 平面$F=\rho gh_CA,\;y_D=y_C+I_C/(y_CA)$；曲面$F_x=$投影，$F_y=$压力体\\ \hline
+弯管/喷嘴 & 取管内流体CV：$\sum\bm F=\rho Q(\bm V_2-\bm V_1)$；题问管受力最后取反\\ \hline
+射流冲板 & 固定正撞$F=\rho QV$；动板相对速度$V-u$；斜板按方向分量列动量\\ \hline
+源+均流 & 驻点$r=Q/(2\pi U)$；分界流线常取$\psi=Q/2$；墙面先镜像\\ \hline
+圆柱/环量 & $v_\theta=-2U\sin\theta+\Gamma/(2\pi a)$；$C_p=1-(v_\theta/U)^2$；$L'=\rho U\Gamma$\\ \hline
+Laval/内激波 & 波前等熵$\to$正激波$\to$波后新$p_{02}$等熵；喉部不等于一定$M=1$\\ \hline
+楔角/膨胀角 & 压缩角：斜激波，$M_{n1}=M_1\sin\beta$；凸角：PM，$\nu_2=\nu_1+\delta$\\ \hline
+泵/水轮机 & 泵吸水看汽蚀绝压；水轮机$P=\eta\rho gQH_T$；局部损失用所在管段速度\\ \hline
+边界层/两层流 & 平板用$Re_x,\bar C_f,\delta$；两层Couette速度连续、剪应力连续，$\tau=U/(h_1/\mu_1+h_2/\mu_2)$\\ \hline
+\end{tabular}\renewcommand{\arraystretch}{1}
+
+\sect{小查表：空气等熵/PM}
+\renewcommand{\arraystretch}{0.66}\begin{tabular}{|c|c|c|c|c|}
+\hline $M$&$T_0/T$&$p_0/p$&$A/A^*$&$\nu(^\circ)$\\ \hline
+0.5&1.05&1.19&1.34&--\\ \hline
+1.0&1.20&1.89&1.00&0\\ \hline
+1.5&1.45&3.67&1.18&11.9\\ \hline
+2.0&1.80&7.82&1.69&26.4\\ \hline
+2.5&2.25&17.1&2.64&39.1\\ \hline
+3.0&2.80&36.7&4.23&49.8\\ \hline
+\end{tabular}\renewcommand{\arraystretch}{1}
+
+\sect{小查表：正激波/光滑管}
+空气正激波：$M_1=1.5\Rightarrow M_2=0.701,p_2/p_1=2.46,p_{02}/p_{01}=0.93$；$M_1=2\Rightarrow0.577,4.50,0.72$；$M_1=3\Rightarrow0.475,10.33,0.33$。光滑湍流管Darcy：$\lambda\approx0.3164/Re^{1/4}$，$Re=10^5$时$0.0178$，$10^6$时$0.010$。
+
+\sect{量纲相似满分模板}
+先列变量和量纲，选重复变量$\rho,V,L$。阻力题常得
+\fmlb{\pi_F=F/(\rho V^2L^2)=\Phi(Re,Fr,We,Ma,\varepsilon/L)}
+若无自由面忽略$Fr$；低速不可压忽略$Ma$；表面张力不重要忽略$We$。模型换算：$F\sim\rho V^2L^2$，压强差$\Delta p\sim\rho V^2$，力矩$M\sim\rho V^2L^3$。
+
+\sect{公式链：已知-中间量-目标量}
+静水$h\to p\to F/M$；管路$Q,d\to V\to Re,\lambda,\zeta\to h_L$；CV$Q,A,p\to V,\dot m\to F$；势流$\phi/\psi\to V\to p$；可压/波$M,A/A^*,p_0,T_0,M_1,\theta\to$查表$\to p,T,\dot m,p_{02}$；边界层$Re\to\delta,C_f\to D$。
+
+\sect{按图像补充的模型第一步}
+\sect{玻璃弯管放水}
+看见竖直段+倾斜段+阀门：未开阀时静水压分布$p=p_a+\rho g\Delta z$，只看竖直高度。开阀排空时间：沿流线伯努利求出口$V=\sqrt{2gH_{\rm eff}}$，再用液面下降连续方程积分。
+\sect{半圆柱/圆柱浮起}
+无穷远均匀流绕圆柱或半圆柱，用圆柱绕流速度分布求表面压力，再对压力积分求升力。若有重力和浮力，临界浮起条件：流体动力升力+浮力=重力。
+\sect{点源靠壁最大速度}
+壁面上点源/点汇用镜像。壁面速度由总势函数求导，令$dv/dx=0$找最大速度。给最大速度反求距离$a$或源强$q$。
+\sect{水下半圆球/半圆柱开孔}
+轴对称势流用给定流函数/势函数，开孔使压力等于外界时，先求表面压力分布$p=p_\infty+\frac12\rho(U^2-V_s^2)$，令$p=p_{\rm in}$解角度。
+\sect{粘性圆管入口发展}
+若题问“完全发展前的边界层厚度”，用边界层概念；若题问“完全发展层流压降”，用H--P。入口段不能直接套抛物线速度分布。
+\sect{雷诺输运定理题}
+系统量变化=控制体内变化+穿过控制面的净流出。定常时控制体内变化为0。动量方程、质量守恒都是它的特例。
+\sect{LES/DNS/RANS概念}
+DNS解全尺度N--S，最贵；LES解析大涡、模型小涡；RANS对时均方程建模雷诺应力，工程最常用。考试多为概念判断。
+\sect{雷诺应力}
+$-\rho\overline{u_i'u_j'}$来自湍流脉动动量输运，不是分子粘性应力。近壁湍流总剪应力=分子粘性剪应力+雷诺剪应力。
+\sect{混合长度}
+Prandtl混合长度假设$\tau_t=\rho l^2|du/dy|du/dy$，近壁$l=\kappa y$，可推对数律。只需知道它是湍流半经验模型。
+\sect{边界层厚度种类}
+名义厚度$\delta$：$u=0.99U$处；位移厚度$\delta^*$：外流被排挤的等效厚度；动量厚度$\theta$：动量亏损厚度。积分题按定义算。
+
+\sect{动力学/应力题干模型压缩}
+\sect{应力张量+指定平面}
+条件：给$P$和单位法向$\bm n$，目标为应力矢量、垂直分量、夹角。公式链：$\bm p_n=P\bm n$，$\bm p_N=(\bm p_n\cdot\bm n)\bm n$，$\bm p_T=\bm p_n-\bm p_N$，$\alpha=\cos^{-1}\frac{\bm p_n\cdot\bm n}{|\bm p_n|}$。
+\sect{圆柱切平面M点应力}
+圆柱面$y^2+z^2=4$在点$M(2,1,\sqrt3)$，法向取$\nabla(y^2+z^2-4)=(0,2y,2z)$归一化。代入坐标先求$P(M)$，再$\bm p=P\bm n$。
+\sect{给应力分布求平面上一点}
+先把点坐标代入$p_{xx},p_{xy},p_{yy}$得到矩阵$P$。平面$x+3y+z+1=0$法向$\bm n=(1,3,1)/\sqrt{11}$。同样$P\bm n$，再分解法向/切向。
+\sect{由$\nabla\cdot P=-\rho\bm f$求体力}
+散度按行求：$(\nabla\cdot P)_x=\partial p_{xx}/\partial x+\partial p_{xy}/\partial y+\partial p_{xz}/\partial z$，其余同理。最后$\bm f=-(\nabla\cdot P)/\rho$。
+\sect{正交曲线坐标散度}
+若选做，核心是尺度因子$h_i$。圆柱坐标向量散度：$\nabla\cdot\bm A=\frac1r\frac{\partial(rA_r)}{\partial r}+\frac1r\frac{\partial A_\theta}{\partial\theta}+\frac{\partial A_z}{\partial z}$。张量散度需查教材公式，不要现场硬推。
+
+\sect{理想流体/势流题干模型压缩}
+\sect{环形路径速度环量}
+定常平面流，若给$v_r=ar,v_\theta=0$，沿半圆/环形路径的速度环量$\Gamma=\int\bm V\cdot d\bm l$。径向段$d\bm l=dr\bm e_r$有贡献；圆弧段$d\bm l=rd\theta\bm e_\theta$无贡献。按箭头方向分段积分$ar\,dr$。
+\sect{弯玻璃管放水}
+未开阀压力分布只由高度决定：从自由面向下$p=p_a+\rho gh$；倾斜段同样用竖直高度，不用管长。排空时间：液面高度$H(t)$，出口$V=\sqrt{2gH_{\rm eff}}$，$A_{\rm tank}dH/dt=-A_oV$积分。
+\sect{速度场$u=3x^2-3y^2,v=-6xy$}
+速度势：$\varphi=x^3-3xy^2+C$。流函数：$\psi=3x^2y-y^3+C$。速度势线$\varphi=C$，流线$\psi=C$。
+\sect{$u=2cxy,v=c(a^2+x^2-y^2)$}
+连续：$u_x+v_y=2cy-2cy=0$。旋度：$v_x-u_y=2cx-2cx=0$，无旋。$\varphi=\int2cxy\,dx=cx^2y+f(y)$，由$\varphi_y=cx^2+f'=c(a^2+x^2-y^2)$得$f=ca^2y-cy^3/3$。$\psi_y=u$求$\psi=cxy^2+g(x)$，再由$-\psi_x=v$定$g=-ca^2x-cx^3/3$。
+\sect{平板Couette流量}
+下板固定，上板$U_0$，间距$h$，无压差：$u=U_0y/h$。单位宽流量$q=\int_0^h udy=U_0h/2$；总流量$Q=bU_0h/2$。若有压差，叠加抛物线项。
+\sect{势流方程推导}
+不可压$\nabla\cdot\bm V=0$且无旋$\bm V=\nabla\varphi$，故$\nabla^2\varphi=0$。二维不可压定义$\psi$后，同样$\nabla^2\psi=-\omega_z$，无旋时$\nabla^2\psi=0$。
+\sect{均匀流绕圆柱推导题}
+写通解$(Ar+B/r)\cos\theta$。无穷远$A=U$；壁面$r=a$不穿透给$B=Ua^2$。速度和压力见P2。若问流线图，$\psi=U(r-a^2/r)\sin\theta=C$。
+\sect{点源/点汇/点涡叠加题}
+先定强度符号：源$+Q$，汇$-Q$，逆时针涡$+\Gamma$。总流函数相加。驻点令速度为0；边界是过驻点的流线。墙面问题先镜像再叠加。
+\sect{边角流动题}
+夹角$\alpha$，$n=\pi/\alpha$。$\varphi=Ar^n\cos n\theta$，$\psi=Ar^n\sin n\theta$。速度$V=nAr^{n-1}$。若$\alpha=120^\circ=2\pi/3$，$n=3/2$。
+
+\sect{势流应用题干模型压缩}
+\sect{均匀流绕长钝体上坡}
+无穷远均匀流$U$，已知A、B在同一流线。理想不可压无旋沿同一流线伯努利：$p_A+\rho gz_A+\frac12\rho V_A^2=p_B+\rho gz_B+\frac12\rho V_B^2$。若B点速度由势流叠加求，代入求高度或压差。
+\sect{半圆柱屋顶受升力}
+绕半圆柱用镜像等价全圆柱绕流的一半。表面速度$V_\theta=2U_\infty\sin\theta$。压力$p=p_\infty+\frac12\rho(U_\infty^2-V_\theta^2)$。升力为压力竖直分量积分；若有开孔使内外压相等，令表面$p(\theta)=p_{\rm in}$解孔位。
+\sect{半圆柱水底浮起}
+水深环境加静压，但动力压差由绕流速度给。半圆柱受力=静水浮力+动压积分。临界$U_\infty$由上浮力=重力求。若题说内部压强与上压强一样，内外静压抵消，只剩动力压。
+\sect{壁面点源最大速度}
+点源距壁$a$，镜像同号。壁面切向速度由两个源叠加得到，常形如$u(x)=q x/[\pi(x^2+a^2)]$，令$du/dx=0$得$x=a$处最大，$u_{\max}=q/(2\pi a)$或按题定义$q/(2\pi)$修正。
+
+\sect{可压缩流动题干模型压缩}
+\sect{收缩喷管背压}
+题面：等熵流入容器，喷管入口速度忽略，给入口$p_0,T_0$、容器压力$p_b$、出口面积$A_e$，求流量和阻塞流量。答案骨架：算$p_b/p_0$；未阻塞则$p_e=p_b$反求$M_e$；阻塞则$M_e=1$，$\dot m_{\max}=0.0404A_ep_0/\sqrt{T_0}$。
+\sect{Laval无激波}
+题面常给$A_t$和出口$T_e$或$p_e$。若由等熵式得$M_e>1$且题说无激波，则喉部临界$A_t=A^*$。出口面积$A_e=A^*(A/A^*)_{M_e}$。流量用喉部最大流量。
+\sect{可压文丘里流量计}
+题面给最大流量、入口截面、最低喉压。先入口状态求$p_0,T_0$，再由最低喉压求$M_t$。若$M_t<1$，不是临界；喉部面积$A_t=\dot m/(\rho_tV_t)$。
+\sect{喷管背压状态判断}
+若题给背压变化，画$p_b$降低流程：未阻塞$\to$临界$\to$激波位置移动$\to$设计/欠膨胀。题问“是否阻塞/是否激波”，不要一上来代0.528。
+\sect{正激波}
+已知$M_1$，查正激波表或公式。波后$M_2<1$；$p_2/p_1>1,T_2/T_1>1,\rho_2/\rho_1>1$；$p_{02}<p_{01}$。若题问声速/速度，先$T_2$再$a_2=\sqrt{\gamma RT_2}$，$V_2=M_2a_2$。
+\sect{运动正激波撞墙反射}
+坐标系固结在激波上：来流相对激波超声速。先过入射正激波求波后速度；反射波再以墙面速度为边界，使最终气体速度为0。过程复杂时写两个正激波关系+速度转换。
+\sect{斜激波}
+楔角题：$M_1,\theta$查弱激波$\beta$。$M_{n1}=M_1\sin\beta$，用正激波表得$p_2/p_1,M_{n2}$，$M_2=M_{n2}/\sin(\beta-\theta)$。若问强弱解，通常弱解物理可实现。
+\sect{斜激波方程组}
+若要求列方程：质量$\rho_1V_{n1}=\rho_2V_{n2}$；切向速度$V_{t1}=V_{t2}$；法向动量$p_1+\rho_1V_{n1}^2=p_2+\rho_2V_{n2}^2$；能量$h_1+V_1^2/2=h_2+V_2^2/2$。
+\sect{脱体激波}
+给大偏转角或钝头体，若$\theta>\theta_{\max}$，斜激波不能附着，形成脱体弓形激波。近前缘可用正激波近似，远处转为斜激波。
+\sect{管外膨胀}
+面积比$A_e/A_t$得$M_e$；等熵得$p_e$。若$p_e>p_b$欠膨胀? 注意：出口压高于环境，射流向外膨胀，管外膨胀波；若$p_e<p_b$，外界压缩，出现斜激波。最终角度用PM函数差。
+\sect{管内激波}
+给激波截面$A_s$，波前用$A_s/A_t$超声速支求$M_1$；过正激波求$M_2,p_{02}/p_{01}$；波后把$A_s$视作新亚声速支上的截面，求到出口压力。
+\sect{风洞/多波相交题}
+题面缺图时：超声速风洞内通常用喷管/试验段面积比求$M$，再用等熵关系求$p,T,\rho,V$。若有激波，按位置分段。答案必须先补完整题图或数据。
+\sect{U型压差计+正激波}
+收缩扩张喷管出口有正激波，U型压差计连接喉部和下游大容器。压差计给$p_t-p_b=\rho_{\rm Hg}gh$或考虑水柱修正。若下游$p_b=100$kPa，先判断是否有激波；有则位置可能在管内/管外，按背压匹配。
+
+\sect{粘性流动题干模型压缩}
+\sect{Re判层/湍}
+水管$d=0.2,V=1,\nu=10^{-6}$：$Re=2\times10^5$，湍流。油管$d=0.15,V=0.2,\nu=2\times10^{-5}$：$Re=1500$，层流。圆管临界约2300。
+\sect{圆管层流压降}
+给$\rho,\mu,d,V,L$，先$Re$判层流。$\Delta p=\lambda(L/d)\rho V^2/2$，层流$\lambda=64/Re$。也可H--P：$\Delta p=32\mu LV/d^2$。
+\sect{小球Stokes阻力}
+Stokes阻力$F=3\pi\mu dU$。若求沉降速度：$(\rho_s-\rho)g\pi d^3/6=3\pi\mu dU$。若求阻力系数：$C_D=24/Re$。
+\sect{两层流体剪切}
+总速度差$U=\tau(h_1/\mu_1+h_2/\mu_2)$。所以$\tau=U/(h_1/\mu_1+h_2/\mu_2)$。分段速度：$u_1=\tau y/\mu_1$；$u_2=u_1(h_1)+\tau(y-h_1)/\mu_2$。
+\sect{小球低Re终速}
+通常仍用Stokes。若问阻力或终速，先算$Re=\rho Ud/\mu$核验$<1$，再套。若结果导致$Re$不小，说明假设不自洽。
+\sect{管内层流三方向}
+水平管：$dp/dx=-32\mu V/d^2$。向上竖直：需要额外克服重力，$-dp/dz=32\mu V/d^2+\rho g$。向下竖直：$-dp/dz=32\mu V/d^2-\rho g$，可能压力沿流向升高。
+\sect{倾斜平板层流}
+方程$\mu u''+\rho g\sin\theta=0$，通解$u=-\rho g\sin\theta\,y^2/(2\mu)+C_1y+C_2$。代边界和$u(H/2)=0$，求上板速度和壁面剪应力。
+\sect{物面条件证明}
+静止固壁无滑移$\bm V=0$。涡通量提示：$\bm\Omega\cdot\bm n=0$来自壁面速度为零且不可穿透，考试写物理解释：固壁上速度无切向变化导致法向涡量为零。
+\sect{流函数Poisson方程}
+二维不可压：$u=\psi_y,v=-\psi_x$。涡量$\Omega=v_x-u_y=-(\psi_{xx}+\psi_{yy})=-\nabla^2\psi$，故$\nabla^2\psi=-\Omega$。
+\sect{平板边界层混合}
+若前段层流后段湍流，总阻力不是简单全湍。常用修正平均摩擦系数$\bar C_f=0.074/Re_L^{1/5}-1742/Re_L$，适用于临界$5\times10^5$。
+\sect{圆管湍流平均速度公式}
+$\bar u/u_\tau=2.5\ln(Ru_\tau/\nu)+1.75$用于题给平均速度反解摩擦速度。解出$u_\tau$后$\tau_w=\rho u_\tau^2$，$\lambda=8(u_\tau/\bar u)^2$。
+
+\sect{常见问法到首行公式}
+\sect{“证明满足连续方程”}
+直接算$\nabla\cdot\bm V$。若为二维：$u_x+v_y=0$。写“故不可压连续方程满足”。若不为0，说明该速度场不可能表示不可压流。
+\sect{“判断有旋否”}
+二维：$\Omega_z=v_x-u_y$。三维：$\nabla\times\bm V$。若为0，无旋，可求势函数；若非0，不能全场定义单值势函数。
+\sect{“写流线方程”}
+定常：$dy/dx=v/u$。分离变量积分。非定常问某时刻流线，先把$t=t_0$代入速度场再积分。
+\sect{“写迹线方程”}
+解ODE：$dx/dt=u(x,y,t)$，$dy/dt=v(x,y,t)$，带初始条件$x(t_0)=x_0,y(t_0)=y_0$。不要用$dy/dx=v/u$替代。
+\sect{“求流量”}
+均匀速度$Q=VA$；非均匀$Q=\int_Au\,dA$。圆管轴对称$Q=2\pi\int_0^Ru(r)rdr$。平板单位宽$q=\int_0^hu(y)dy$。
+\sect{“求剪应力”}
+牛顿流体简单剪切$\tau=\mu du/dy$。圆管壁剪可由速度梯度或受力平衡。湍流总剪应力还含雷诺应力，题若是壁面，壁面脉动速度为0，壁剪仍由粘性梯度给。
+\sect{“求压强分布”}
+静止流体$p=p_a+\rho gh$。势流定常$p=p_\infty+\frac12\rho(U_\infty^2-V^2)$。管路沿程压降由损失或H--P。可压缩等熵由$p_0/p(M)$。
+\sect{“求升力/阻力”}
+压力积分：$\bm F=-\int p\bm n\,dA+\int\bm\tau\,dA$。势流圆柱无阻力；有环量升力$\rho U\Gamma$。工程外流可用$C_D,C_L$。
+\sect{“求功率”}
+泵/水轮机$P=\rho gQH$；阻力功率$P=DU$；剪切拖动功率$P=FU$；射流对动板功率$P=Fu$。注意效率。
+\sect{“判断能不能用伯努利”}
+同一流线、定常、不可压、无粘或损失可忽略。若有泵/损失，用机械能方程。若跨激波，不可用同一个伯努利常数。
+\sect{“判断阻塞”}
+只看最小面积截面是否达到$M=1$。收缩管用$p_b/p_0\le0.528$判断；Laval要结合背压状态和面积比。阻塞后$\dot m$不随背压继续增大。
+\sect{“判断激波位置”}
+给背压时，假设激波位置，算出口压力，与背压匹配。背压高，激波靠上游；背压降低，激波向出口移动；再低则到管外。
+\sect{“判断边界层层流湍流”}
+平板用$Re_x=Ux/\nu$，圆管用$Re=Vd/\nu$。平板临界常$5\times10^5$；圆管约2300/4000。别混。
+\sect{“判断分离”}
+看逆压梯度和壁面速度梯度。$\tau_w=\mu(\partial u/\partial y)_w$，分离点$\tau_w=0$。压差阻力因尾流低压而增大。
+
+\sect{通用组合模型：压缩公式链}
+\sect{静水压+铰链}
+题面有闸门、铰链、拉索：$F=\rho gh_CA$，$y_D=y_C+I_C/(y_CA)$，对铰链取矩：$T l_T=F l_F+G l_G$。若两侧有水，分别算两侧压力再相减。
+\sect{曲面压力+浮力}
+题面有圆弧闸门/半圆柱：水平分量=投影面压力；竖直分量=压力体重。若物体可浮起，加上浮力$\rho gV_{\rm disp}$和自重平衡。
+\sect{U管+加速度}
+题面容器加速或旋转：先写等效体力，压强梯度$\nabla p=\rho(\bm g-\bm a)$。自由液面垂直于等效重力。U管两端压差再用液柱关系。
+\sect{速度场+势函数}
+题面给$u,v$并问势/流：先算连续和旋度。若只满足连续，只有$\psi$；若只满足无旋，只有$\varphi$；两者都满足才都有。
+\sect{速度场+应力}
+先算速度梯度，再牛顿粘性应力：$\tau_{xy}=\mu(u_y+v_x)$，正应力含压强$-p+2\mu u_x$。若只给应力张量，直接$P\bm n$。
+\sect{伯努利+动量}
+喷嘴/弯管常先用伯努利求$V,Q$，再用动量求力。不要只写一个方程；速度未知时动量方程不能闭合。
+\sect{泵+管路损失}
+先由$Q,d$算速度，再$Re,\lambda$，再总损失，最后机械能方程。泵扬程和安装高度是不同问题：扬程给能量，安装高度受汽蚀限制。
+\sect{水轮机+压力表}
+压力表截面有$p/\rho g$和$V^2/(2g)$。若下游不是大水面，不能把速度头忽略。输出功率用水轮机取得的水头，不是总落差。
+\sect{收缩喷管+背压}
+如果$p_b/p_0$没有低到0.528，不能写阻塞。未阻塞出口压等于背压；阻塞出口压等于临界压，背压更低只影响管外调整。
+\sect{Laval+面积比}
+面积比给两个$M$，选择靠题意：喉前亚声速，喉后若设计超声速取超声速支；若全管亚声速取亚声速支。题中“无激波”很关键。
+\sect{Laval+内激波}
+有激波时不能从入口总压一路等熵到出口。必须波前$p_{01}$、过波总压损失、波后$p_{02}$。出口背压用于匹配激波位置。
+\sect{斜激波+PM}
+超声速绕多折角壁面：每个压缩角用斜激波，每个扩张角用PM。逐段更新$M,p,T$。最后若两支流相交，压强和方向需匹配。
+\sect{边界层+平板阻力}
+先判层/湍，再用平均摩擦系数求总阻力。若问局部壁剪，才用局部$c_f$。若问边界层厚度，取指定$x$处的$\delta(x)$。
+\sect{湍流壁律+管内厚度}
+给平均速度求$u_\tau$通常需要迭代；算出$u_\tau$后所有厚度都由$y^+=yu_\tau/\nu$反解。线性底层到5，缓冲到30。
+\sect{Stokes小球+沉降}
+小球终速题一定先写受力平衡：重力-浮力-阻力=0。若题给终速求黏度，反解$\mu$。最后核验$Re<1$。
+\sect{相似准则}
+模型试验要保持主要无量纲数相等。不可压重力主导：$Fr$相等；粘性主导：$Re$相等；高速气体：$Ma$相等。若$Re,Fr$因比例尺冲突不能同时满足，写“保持主导准则，其余做模型修正/自模化近似”。
+\sect{空化}
+局部压力最低处若$p_{\min}\le p_v$发生空化。伯努利题中速度最大点压强最低；泵吸入口高度越大，入口压越低。
+\sect{流量计}
+不可压流量计：压差$\to$速度$\to$流量；可压流量计：压差$\to M\to T,p,\rho,V\to \dot m$。可压缩不能直接用不可压Bernoulli。
+\sect{水击/声速概念}
+若题涉及扰动传播，液体声速$a=\sqrt{K/\rho}$，气体$a=\sqrt{\gamma RT}$。马赫数决定可压缩性重要程度，$M<0.3$常近似不可压。
+\sect{自由涡}
+自由涡$v_\theta=C/r$，环量$\Gamma=2\pi r v_\theta=2\pi C$常数。压强径向平衡$dp/dr=\rho v_\theta^2/r$，液面凹陷。
+\sect{强迫涡}
+强迫涡$v_\theta=\omega r$，像刚体旋转。$dp/dr=\rho\omega^2r$，自由面$z=\omega^2r^2/(2g)+C$。
+\sect{管嘴出流}
+大容器到喷口：$V=C_v\sqrt{2gH}$，$Q=C_dA\sqrt{2gH}$。若有管嘴损失，$H=V^2/(2g)+\sum h$。
+\sect{多出口分流}
+连续：$Q_{\rm in}=\sum Q_{\rm out}$。动量方程每个出口都要加$\rho Q_i\bm V_i$。若速度大小相同但方向不同，向量不能当标量相加。
+\sect{压力恢复/扩压器}
+亚声速扩压速度降、压力升；若逆压梯度过大，边界层分离，实际压力恢复低。超声速扩压需先激波减速。
+\sect{雷诺平均}
+速度$u=\bar u+u'$，$\overline{u'}=0$，但$\overline{u'v'}$不为0。RANS方程多出雷诺应力项，需要模型封闭。
+
+\sect{完整公式清单：按物理量查}
+\sect{密度/压强/温度}
+液体静压$p=p_a+\rho gh$。理想气体$p=\rho RT$。等温气体$\rho\propto p$。等熵气体$p/\rho^\gamma=C$，$T\rho^{1-\gamma}=C$。
+\sect{速度/流量}
+$Q=VA$，$\dot m=\rho Q$，圆管$A=\pi d^2/4$，环形$A=\pi(D^2-d^2)/4$。非均匀$Q=\int_A\bm V\cdot\bm n\,dA$。
+\sect{水头}
+总水头$H=p/\rho g+V^2/(2g)+z$。损失水头$h_L=h_f+\sum h_\zeta$。泵增$H_p$，水轮机取$H_T$。
+\sect{沿程损失}
+$h_f=\lambda(L/d)V^2/(2g)$。层流$\lambda=64/Re$。H--P给$\Delta p=32\mu LV/d^2$。湍流查Moody。
+\sect{局部损失}
+$h_\zeta=\zeta V^2/(2g)$。突扩损失$h=(V_1-V_2)^2/(2g)$。出口损失常$\zeta=1$，入口锐边约0.5，具体以题给为准。
+\sect{动量通量}
+一维均匀截面动量流率$\rho Q\bm V$。非均匀需$\int_A\rho\bm V(\bm V\cdot\bm n)dA$，常引入动量修正系数。
+\sect{能量修正系数}
+层流圆管动能修正系数$\alpha=2$；湍流近似$\alpha\approx1$。如果课程未强调，管路工程题通常取1，除非题给。
+\sect{剪应力}
+简单剪切$\tau=\mu du/dy$。圆管层流$\tau(r)=r\Delta p/(2L)$，壁面$\tau_w=R\Delta p/(2L)$。平板边界层$\tau_w=0.5\rho U^2 c_f$。
+\sect{雷诺数}
+圆管$Re=Vd/\nu$；平板$Re_x=Ux/\nu$；小球$Re=Ud/\nu$。特征长度随问题变，不要固定用直径。
+\sect{马赫数和总量}
+$M=V/\sqrt{\gamma RT}$，$T_0/T=1+(\gamma-1)M^2/2$，$p_0/p=(T_0/T)^{\gamma/(\gamma-1)}$，$\rho_0/\rho=(T_0/T)^{1/(\gamma-1)}$。
+\sect{临界量}
+$M=1$时$T^*/T_0=2/(\gamma+1)$，$p^*/p_0=[2/(\gamma+1)]^{\gamma/(\gamma-1)}$，空气为0.833和0.528。
+\sect{面积--马赫}
+$A/A^*=\frac1M[\frac{2}{\gamma+1}(1+\frac{\gamma-1}{2}M^2)]^{(\gamma+1)/(2\gamma-2)}$。注意指数为$(\gamma+1)/[2(\gamma-1)]$。
+\sect{质量流量可压}
+$\dot m=A p_0\sqrt{\gamma/(RT_0)}M(1+\frac{\gamma-1}{2}M^2)^{-(\gamma+1)/(2(\gamma-1))}$。空气阻塞系数$0.0404$。
+\sect{正激波}
+$M_2^2=\frac{1+(\gamma-1)M_1^2/2}{\gamma M_1^2-(\gamma-1)/2}$。$p_2/p_1=1+\frac{2\gamma}{\gamma+1}(M_1^2-1)$。$\rho_2/\rho_1=\frac{(\gamma+1)M_1^2}{(\gamma-1)M_1^2+2}$。
+\sect{斜激波}
+$M_{n1}=M_1\sin\beta$，法向按正激波，切向速度不变。$M_2=M_{n2}/\sin(\beta-\theta)$。$\theta-\beta-M$关系查表或公式。
+\sect{PM/Prandtl-Meyer函数}
+$\nu(M)=\sqrt{\frac{\gamma+1}{\gamma-1}}\tan^{-1}\sqrt{\frac{\gamma-1}{\gamma+1}(M^2-1)}-\tan^{-1}\sqrt{M^2-1}$。膨胀角$\delta=\nu_2-\nu_1$。
+\sect{平板层流Blasius}
+$\delta=5x/\sqrt{Re_x}$，$\delta^*=1.72x/\sqrt{Re_x}$，$\theta=0.664x/\sqrt{Re_x}$，$c_f=0.664/\sqrt{Re_x}$，$\bar C_f=1.328/\sqrt{Re_L}$。
+\sect{平板边界层湍流}
+$\delta=0.37x/Re_x^{1/5}$，$c_f=0.0592/Re_x^{1/5}$，$\bar C_f=0.074/Re_L^{1/5}$。混合转捩用减$1742/Re_L$修正。
+\sect{边界层积分}
+$\delta^*=\int_0^\infty(1-u/U)dy$，$\theta=\int_0^\infty(u/U)(1-u/U)dy$。无压梯度动量积分$\tau_w=\rho U^2d\theta/dx$。
+\sect{Stokes}
+$D=3\pi\mu dU$，$C_D=24/Re$。终速$U=(\rho_s-\rho)gd^2/(18\mu)$。
+\sect{势流基本关系}
+直角：$u=\phi_x=\psi_y,v=\phi_y=-\psi_x$。极坐标：$v_r=\phi_r=\psi_\theta/r$，$v_\theta=\phi_\theta/r=-\psi_r$。无旋不可压：$\nabla^2\phi=\nabla^2\psi=0$。
+\sect{圆柱绕流}
+$v_r=U(1-a^2/r^2)\cos\theta$，$v_\theta=-U(1+a^2/r^2)\sin\theta$。壁面$V=2U|\sin\theta|$，$C_p=1-4\sin^2\theta$。
+\sect{环量升力}
+$\Gamma=\oint\bm V\cdot d\bm l$。库塔--儒可夫斯基$L'=\rho U\Gamma$。点涡$v_\theta=\Gamma/(2\pi r)$。
+
+\sect{符号解释表：看到符号就知道干什么}
+\sect{$\rho,\mu,\nu$}
+$\rho$密度，$\mu$动力粘度，$\nu=\mu/\rho$运动粘度。Re题优先用$\nu$；剪应力题优先用$\mu$。单位：$\mu$为Pa·s，$\nu$为$m^2/s$。
+\sect{$Q,\dot m,V,\bar u$}
+$Q$体积流量，$\dot m=\rho Q$质量流量，$V$常为平均速度，$\bar u$明确表示截面平均/时均。圆管层流中心速度$u_{\max}=2\bar u$。
+\sect{$p,p_g,p_0,p^*$}
+$p$可能是绝压，$p_g$表压，$p_0$滞止压，$p^*$临界静压。气体状态方程必须绝压；水力方程可统一表压。
+\sect{$A,A^*,A_t,A_e$}
+$A$截面积，$A^*$临界面积，$A_t$喉部面积，$A_e$出口面积。阻塞时最小面积$A_t=A^*$；出口不一定是临界截面。
+\sect{$h_f,h_\zeta,H_p,H_T$}
+$h_f$沿程损失，$h_\zeta$局部损失，$H_p$泵扬程，$H_T$水轮机水头。能量方程中损失总在被消耗一侧。
+\sect{$\lambda,\zeta,C_D,C_f$}
+$\lambda$管摩阻系数，$\zeta$局部损失系数，$C_D$外绕流阻力系数，$C_f$摩擦阻力系数。四者不能混用。
+\sect{$\delta,\delta^*,\theta$}
+边界层名义厚度、位移厚度、动量厚度。$\delta$看速度达到$0.99U$，后两者由积分定义。
+\sect{$u_\tau,y^+,u^+$}
+摩擦速度$u_\tau=\sqrt{\tau_w/\rho}$；无量纲壁距$y^+=yu_\tau/\nu$；无量纲速度$u^+=u/u_\tau$。用于湍流近壁，不用于普通层流H--P。
+\sect{$M,\mu,\beta,\theta$}
+压缩流里$M$马赫数，$\mu$常作马赫角$\sin\mu=1/M$，$\beta$斜激波波角，$\theta$气流偏转角。不要把粘度$\mu$和马赫角$\mu$混。
+\sect{$\nu(M)$}
+Prandtl--Meyer函数，不是运动粘度$\nu$。膨胀波用$\nu(M)$，粘性Re用运动粘度$\nu$，看上下文。
+
+\sect{分支流程：从条件到公式}
+\sect{流程A：给速度场}
+1 算散度。2 算旋度。3 若散度0求$\psi$；若旋度0求$\phi$；若问流线用$dy/dx=v/u$；若问加速度用当地+迁移。4 若给粘度求应力，再速度梯度。
+\sect{流程B：给静止液体图}
+1 选自由液面为$p_a$。2 沿竖直高度算压强。3 平面用形心，曲面分水平/竖直。4 求铰链/拉力时对铰点取矩。
+\sect{流程C：给管路图}
+1 标点1、2，通常选大水面/压力表/出口。2 算各管段$V,Re,\lambda$。3 写能量方程含$h_f,h_\zeta,H_p/H_T$。4 解压力、扬程或功率。
+\sect{流程D：给喷管图}
+1 判断入口速度是否可忽略，定$p_0,T_0$。2 看是收缩还是Laval。3 用背压/面积比判断$M$。4 等熵段算状态；激波处分段。
+\sect{流程E：给激波图}
+1 看压缩角还是膨胀角。2 压缩角：斜激波；膨胀角：PM。3 斜激波先求$M_{n1}$。4 多波逐段更新，不能跨波共用总压。
+\sect{流程F：给边界层/平板}
+1 算$Re_x$或$Re_L$。2 判断层流/湍流/转捩。3 问厚度用$\delta$，问阻力用$\bar C_f$，问壁剪用局部$c_f$。4 面积看单面/双面。
+\sect{流程G：给层流解析}
+1 写N--S假设：定常、不可压、单向、充分发展。2 化成$\mu u''=$常数。3 积分两次。4 代无滑移/交界条件。5 求$Q,\tau,\Delta p$。
+\sect{流程H：给相似/量纲}
+1 列变量。2 写基本量纲。3 选重复变量：不含待求量、量纲独立、覆盖$M,L,T$。4 构造$n-k$个$\pi$群。5 说明控制参数，如$Re,Fr,Ma$。
+
+\sect{易错点逐条排雷}
+\sect{错1：把背压当出口压}
+收缩管未阻塞可令$p_e=p_b$；阻塞后$p_e=p^*$。Laval非设计状态出口外有波系，$p_e$和$p_b$也未必相等。
+\sect{错2：把0.528到处用}
+0.528是空气等熵$M=1$时$p^*/p_0$。只有截面临界才用。文丘里喉部若$M<1$不能用。
+\sect{错3：激波后继续用原$p_0$}
+错。正激波总温不变，总压下降。波后所有等熵计算都用$p_{02}$，不是$p_{01}$。
+\sect{错4：面积比支路选错}
+$A/A^*>1$有两个$M$。收缩管取亚声速；Laval扩张段根据背压和题意取亚/超声速。无激波设计通常取超声速。
+\sect{错5：H--P用于湍流}
+H--P抛物线只适用于层流充分发展圆管。湍流用摩阻系数/壁律，不能说$u_{\max}=2\bar u$。
+\sect{错6：平板阻力用截面积}
+外流平板摩擦阻力面积是湿表面积$Lb$或$2Lb$，不是迎风面积，也不是管截面积。
+\sect{错7：压力中心公式乱用}
+$y_D=y_C+I_C/(y_CA)$中的$y$是沿平面从自由液面交线量的坐标；竖直深度要乘$\sin\theta$。
+\sect{错8：动量方程标量化}
+弯管、斜板必须用向量分量。速度大小不变不代表动量不变，方向变也有力。
+\sect{错9：局部损失速度取错}
+局部元件在哪个管段，就用哪个管段速度。突扩/突缩常需要前后速度，不要全用主干管速度。
+\sect{错10：表压绝压混用}
+压力表读数是表压；汽化压和气体方程用绝压。能量方程若两点同大气，可用表压统一。
+\sect{错11：PM压缩也用}
+PM函数描述超声速等熵膨胀。超声速压缩通常是斜激波，不是把$\nu$相减就完。
+\sect{错12：边界层厚度和管半径混}
+管内湍流的$y$是离壁距离，$y=R-r$。边界层厚度不是管半径，近壁层只是一小部分。
+\sect{错13：把流函数当势函数}
+流线是$\psi=C$，等势线是$\phi=C$，二者正交。速度关系符号不同，特别是$v=-\psi_x$。
+\sect{错14：源涡原点直接用}
+点源、点涡在奇点处模型失效，速度/压强发散。题通常只问奇点外区域。
+\sect{错15：忘记单位换算}
+cm$^2$、mm、kPa、mm$^2$/s最容易错。写表前先统一SI单位。
+
+\sect{详细小模板：把答案写得像标准解}
+\sect{标准解模板：静水压}
+解：取自由液面为基准，形心深度$h_C=\cdots$。合力$F=\rho gh_CA=\cdots$。压力中心$y_D=y_C+I_C/(y_CA)=\cdots$。由力矩平衡$\sum M_O=0$得所求力$\cdots$。
+\sect{标准解模板：动量}
+解：取包围弯管/喷嘴的控制体。连续方程得$Q=AV$。动量方程$\sum F_x=\rho Q(V_{2x}-V_{1x})$，$\sum F_y=\rho Q(V_{2y}-V_{1y})$。解得壁面对流体力，所求管受力为反向。
+\sect{标准解模板：管路}
+解：选1、2截面列机械能方程。各段速度$V_i=Q/A_i$，$Re_i=V_id_i/\nu$，查得$\lambda_i$。总损失$\sum\lambda_iL_i/d_i\,V_i^2/(2g)+\sum\zeta_jV_j^2/(2g)$。代入得$H_p/H_T/p$。
+\sect{标准解模板：N--S层流}
+解：定常、不可压、充分发展、单向流，$u=u(y)$或$u(r)$。N--S化为$\mu u''=\cdots$。积分两次得通解。边界无滑移/剪应力连续求常数。最后求$Q,\tau$。
+\sect{标准解模板：势流}
+解：该流动不可压无旋，故存在$\phi,\psi$且满足Laplace方程。由基本流叠加得总$\psi$。固壁为流线$\psi=C$。由速度关系求$V$，由伯努利求$p$。
+\sect{标准解模板：喷管}
+解：入口/容器状态为滞止状态$p_0,T_0$。先判断$p_b/p_0$与临界压比或用面积比求$M$。等熵段用$p_0/p(M),T_0/T(M)$。若阻塞，$M=1$且$\dot m=\dot m_{\max}$。
+\sect{标准解模板：激波}
+解：波前由等熵或面积比求$M_1,p_1,T_1$。正激波/斜激波关系得$M_2,p_2,T_2$。总压损失后得$p_{02}$。波后再按等熵关系继续到出口。
+\sect{标准解模板：边界层}
+解：先算$Re_L$判别流态。按层流/湍流选$\delta(x),C_f$公式。局部量用$x$处局部公式，整体阻力用平均摩擦系数。代入湿表面积得$D$。
+\sect{标准解模板：相似}
+解：选取影响物理量$\{...\}$，基本量纲为$M,L,T$，故无量纲数个数$n-3$。选重复变量$\rho,V,L$，逐个令$\pi=X\rho^aV^bL^c$解$a,b,c$，得$Re,Fr,\cdots$。模型与原型满足主导无量纲数相等。
+
+\sect{补充模型：自由面与涡}
+\sect{自由涡液面}
+$v_\theta=C/r$，径向平衡$dp/dr=\rho C^2/r^3$。自由面$p=p_a$且竖向静压，得$z=C_0-C^2/(2gr^2)$，中心凹陷。适用于排水旋涡外部近似。
+\sect{强迫涡液面}
+$v_\theta=\omega r$，$dp/dr=\rho\omega^2r$，自由面$z=\omega^2r^2/(2g)+C$，抛物面。容器旋转题用这个。
+\sect{复合涡}
+核心强迫涡、外部自由涡，交界处速度连续。常用于实际旋涡近似。压强分布分段积分。
+\sect{Rankine卵形}
+均匀流+源汇对。物体边界为过驻点的闭合流线。长宽由驻点位置和分界流线确定，考试通常只需写总$\psi$并说明。
+\sect{偶极子物理意义}
+源汇距离趋零、强度趋无穷但乘积有限，得到偶极。圆柱绕流就是均匀流+偶极，偶极强度$M=Ua^2$。
+\sect{机翼升力}
+势流中机翼可由保角变换把圆柱映到翼型；环量由Kutta条件确定；升力公式仍为$L'=\rho U\Gamma$。考试概念题写这个即可。
+
+\sect{查表与优先级索引}
+\sect{教材查找建议}
+正激波表、斜激波表、PM表、面积--马赫表、Moody图、阻力系数图、常见截面惯性矩表、物性表。速查表里不要抄全表，只写“什么时候查、查完怎么用”。
+\sect{考试先后顺序}
+先做能套模板的：静水压、速度场、管路、喷管、边界层。再做需查表的激波/PM。最后做推导证明题。未闭合题先写模型和控制方程拿步骤分。
+\sect{数值题通用检查}
+压力不能低于绝对零；水泵入口绝压不能随便小于汽化压；质量流量在同一管内守恒；激波后静压上升；膨胀后静压下降；边界层厚度不应超过特征长度太多。
+\sect{概念题通用答法}
+先定义，再说物理原因，再说公式或后果。例如问阻塞：定义$M=1$，原因信息不能上游传递，后果质量流量最大且不随背压增大。
+\sect{证明题通用答法}
+从守恒律或定义出发。连续方程来自质量守恒；Euler来自无粘动量；Bernoulli来自沿流线积分Euler；势流Laplace来自无旋+不可压；流函数Poisson来自涡量定义。
+\sect{图像题通用答法}
+先在图上标1、2截面、坐标方向、速度方向、压力方向、已知高度。图像题扣分多来自方向和截面选错。
+\sect{答题纸三行骨架}
+1 “取控制体/流线/截面如图。” 2 “由连续/动量/能量/状态方程得...” 3 “代入题给数据，取正方向，故结果为...” 这三行至少保住结构分。
+
+\sect{高频小问速答}
+\sect{为什么应力张量对称}
+对微元取角动量矩平衡，若无体偶力，剪应力互等，故应力张量对称。用途：减少未知量，保证任意切面的应力由$P\bm n$唯一确定。
+\sect{为什么有流函数}
+二维不可压连续方程$u_x+v_y=0$保证存在$\psi$使$u=\psi_y,v=-\psi_x$。流函数差等于两条流线间单位宽流量。
+\sect{为什么有势函数}
+无旋$\nabla\times\bm V=0$且区域单连通时，速度场为某标量势的梯度$\bm V=\nabla\phi$。等势线与流线正交。
+\sect{为什么Laplace}
+不可压$\nabla\cdot\bm V=0$，又$\bm V=\nabla\phi$，所以$\nabla^2\phi=0$。无旋二维流函数同理$\nabla^2\psi=0$。
+\sect{为什么Bernoulli沿流线}
+无粘Euler方程沿流线积分，定常不可压时动能、压能、位能总和守恒。若无旋，常数可扩展到全场。
+\sect{为什么圆柱理想阻力为0}
+势流无粘且前后对称，压力积分$x$方向抵消。该结论与现实矛盾，称达朗贝尔佯谬，现实阻力由粘性分离导致。
+\sect{为什么边界层存在}
+高Re外流粘性只在近壁薄层内重要；壁面无滑移使速度从0快速过渡到外流速度，形成边界层。
+\sect{为什么逆压梯度会分离}
+流向压力升高使近壁低能流体减速，壁面速度梯度降至0并反向，流线脱离壁面形成回流区。
+\sect{为什么湍流阻力大}
+脉动增强动量交换，等效剪应力增大；边界层更厚但抗分离能力更强。工程上用经验摩阻系数。
+\sect{为什么阻塞}
+喉部$M=1$后，下游压力扰动不能逆流传到上游；在给定$p_0,T_0,A^*$下质量流量达到最大。
+\sect{为什么激波总压下降}
+激波虽绝热，但不可逆熵增。滞止温度由能量守恒不变，滞止压力因熵增下降。
+\sect{为什么膨胀波等熵}
+膨胀扇由无数弱扰动连续组成，近似无耗散、无间断，故可按等熵关系处理。
+\sect{为什么斜激波用法向马赫数}
+激波面切向无压力梯度，切向速度不变；压缩只发生在法向方向，所以法向分量满足正激波关系。
+\sect{为什么Laval能超声速}
+亚声速在收缩段加速至喉部$M=1$；过喉后若背压合适，超声速在扩张段继续加速。单纯收缩管不能稳定得到超声速出口。
+\sect{为什么粗糙度层流不用}
+层流摩阻来自粘性剪切解析解，$\lambda=64/Re$；粗糙凸起若未破坏层流，公式中不出现粗糙度。湍流中粗糙度影响近壁结构。
+\sect{为什么平板局部/平均系数不同}
+局部$c_f(x)$随$x$变化；总阻力是沿全板积分的平均效果，所以用$\bar C_f$。尾部局部值不能代表总板阻力。
+\sect{为什么两层流体剪应力连续}
+交界面没有质量和表面力奇异时，切向力平衡要求两侧剪应力相等；同时无滑移要求速度连续。
+\sect{为什么H--P抛物线}
+圆管层流充分发展时压力梯度为常数，粘性扩散方程在圆柱坐标积分两次，边界无滑移，得到$r^2$抛物线。
+\sect{为什么Stokes阻力与速度一次方成正比}
+低Re时惯性项可忽略，N--S线性化，粘性力主导，因此阻力与速度成正比而不是平方。
+\sect{为什么管路损失用速度头}
+损失本质是机械能耗散，工程上以单位重量能量表示。局部扰动强度通常与动压$\rho V^2/2$成正比，所以写成$\zeta V^2/(2g)$。
+\sect{为什么压力中心低于形心}
+静水压随深度线性增大，较深部分受力更大，合力作用点向深处偏移，故压力中心低于形心。
+\sect{为什么动量方程要控制体}
+流体不断进出，质点系统不好追踪。控制体形式用流入流出动量通量表达，适合弯管、喷嘴、射流等定常问题。
+\sect{为什么流量要积分}
+截面速度若不均匀，$VA$只适用于平均速度。真实流量是每个面积元的法向速度贡献积分：$Q=\int_A v_n dA$。
+\sect{为什么表压可为负}
+表压相对大气压定义，低于大气压时为负；绝压不能为负。汽蚀判断看绝压是否低于汽化压。
+\sect{为什么马赫数重要}
+Ma决定压缩性、方程型和扰动范围：$M<1$椭圆型/全局边界；$M>1$双曲型/马赫锥依赖域。
+\sect{为什么扩压器易分离}
+扩压器亚声速减速升压，存在逆压梯度；若扩张角过大，边界层不能克服逆压梯度，产生分离，压力恢复下降。
+\sect{为什么泵入口最危险}
+泵吸入侧压力最低，若安装高度大或损失大，入口绝压可能低于汽化压，先发生汽蚀。
+\sect{为什么水轮机要扣损失}
+上游总水头不是全部转化为轴功，一部分作为沿程/局部损失和下游剩余动能，剩余才是水轮机可利用水头。
+\sect{为什么圆管湍流用壁律}
+湍流N--S时均后出现未知雷诺应力，不能直接解析闭合；近壁实验显示无量纲速度分布具有通用壁律。
+\sect{为什么位移厚度叫位移}
+边界层内速度亏损使外流好像被壁面向外排挤一段距离，等效距离就是$\delta^*$。
+\sect{为什么动量厚度重要}
+动量厚度表示边界层造成的动量亏损，动量积分方程把壁剪和$\theta$的增长联系起来。
+\sect{为什么答案要写假设}
+流体题公式都有适用条件。写“定常、不可压、无粘/充分发展/等熵”等假设，可以明确选用方程并获得过程分。
+
+\sect{速算区：不用重新推的中间结果}
+\sect{常用平方/根号}
+$\sqrt{2gH}\approx4.43\sqrt{H}$ m/s。$V^2/(2g)$：$V=1,2,5,10$ m/s时约$0.051,0.204,1.27,5.10$m。
+\sect{常用水柱压强}
+$1$m水柱约$9.81$kPa；$10$m约$98.1$kPa；$10.33$m约1atm。水银$1$mm约133Pa。
+\sect{常用圆管面积}
+$d=0.1$m，$A=7.85\times10^{-3}$；$d=0.2$m，$A=3.14\times10^{-2}$；$d=0.3$m，$A=7.07\times10^{-2}$。
+\sect{空气等熵速算}
+$M=0.5$：$T_0/T=1.05,p_0/p\approx1.19$。$M=1$：$1.2,1.893$。$M=2$：$1.8,7.82$。$M=3$：$2.8,36.7$。
+\sect{空气临界速算}
+$p^*/p_0=0.528$，$T^*/T_0=0.833$，$\rho^*/\rho_0=0.634$。$a^*=\sqrt{\gamma RT^*}$，$V^*=a^*$。
+\sect{正激波空气$M_1=2$}
+$M_2\approx0.577$，$p_2/p_1=4.5$，$\rho_2/\rho_1=2.67$，$T_2/T_1=1.69$。可用于检查数量级。
+\sect{正激波空气$M_1=3$}
+$M_2\approx0.475$，$p_2/p_1\approx10.33$，$\rho_2/\rho_1\approx3.86$，$T_2/T_1\approx2.68$。
+\sect{层流圆管速算}
+$Re=VD/\nu$。水$\nu\approx10^{-6}$，所以$V=1,d=0.1$时$Re=10^5$湍流；油$\nu=10^{-5}$时同条件$Re=10^4$。
+\sect{H--P压降速算}
+$\Delta p=32\mu LV/d^2$。直径减半，压降增为4倍（同平均速度）；同流量下$V\sim1/d^2$，压降$\sim1/d^4$。
+\sect{平板层流厚度速算}
+$\delta/x=5/\sqrt{Re_x}$。$Re_x=10^5$，$\delta/x=0.0158$；$Re_x=10^6$，$\delta/x=0.005$。
+\sect{平板层流阻力速算}
+$\bar C_f=1.328/\sqrt{Re_L}$。$Re_L=10^5$时$0.0042$；$10^6$时$0.00133$。
+\sect{湍流平板阻力速算}
+$\bar C_f=0.074/Re_L^{1/5}$。$Re_L=10^6$时约$0.0047$；$10^7$时约$0.00295$。
+\sect{壁律厚度速算}
+若$u_\tau=0.1$m/s，水$\nu=10^{-6}$，线性底层$y_5=5\times10^{-5}$m，缓冲层外$y_{30}=3\times10^{-4}$m。
+\sect{Stokes终速速算}
+$U=(\rho_s-\rho)gd^2/(18\mu)$。直径增10倍，终速增100倍；但需重新检查$Re<1$。
+\sect{动量力速算}
+水流$Q=0.01$m$^3$/s，$V=10$m/s，动量力$\rho QV=100$N。速度方向转90度，两个方向分量都要算。
+\sect{泵功率速算}
+$P=\rho gQH$。水中$Q=0.01,H=10$m，水功率约981W。考虑效率0.7，轴功率约1.4kW。
+\sect{粗糙度速算}
+$\varepsilon=0.2$mm，$d=0.2$m，则$\varepsilon/d=0.001$。题中“粗糙度$h$”通常就是$\varepsilon$。
+\sect{声速速算}
+空气$T=293$K，$a=\sqrt{1.4\times287\times293}\approx343$m/s。温度越高声速越大，$a\propto\sqrt T$。
+\sect{马赫角速算}
+$M=2$，$\mu=30^\circ$；$M=3$，$\mu\approx19.5^\circ$；$M=1.5$，$\mu\approx41.8^\circ$。
+\sect{PM函数使用提醒}
+PM函数角度从$M=1$时0开始，随$M$增大而增大。空气$M=2$时$\nu\approx26.4^\circ$，$M=3$时$\nu\approx49.8^\circ$，可查数量级。
+\sect{斜激波弱解检查}
+弱斜激波后通常仍可能超声速；强解后多为亚声速。工程外流默认弱解。若算出波角接近$90^\circ$，接近正激波。
+\sect{喷管状态数量级}
+出口超声速时静压通常远低于总压；若算得$p_e>p_0$必错。等熵加速时$T,p,\rho$都下降，$V,M$上升。
+\sect{管路答案数量级}
+损失水头不应为负；泵扬程若小于总损失无法供水；水轮机可利用水头不能超过上下游总水头差。
+\sect{压力中心数量级}
+矩形竖直板上边在自由面、高$h$，压力中心深度$2h/3$。若算到$h/2$上方，说明公式或坐标错。
+\sect{圆管层流剪应力}
+壁面剪应力$\tau_w=8\mu\bar u/d$。直径越小剪应力越大；粘度越大剪应力越大。
+\sect{局部损失数量级}
+$\zeta=1,V=2$m/s时损失约$0.204$m水头；$V=10$m/s时约$5.1$m。高速下局部损失很大。
+\sect{不可压近似}
+气体$M<0.3$时密度变化通常小于约5\%，可近似不可压；液体通常不可压，除非题明确弹性模量/水击。
+\sect{题目读数顺序}
+先圈单位，再圈“忽略/不可忽略”，再圈“等熵/有激波/有损失”，最后圈要求量。很多错误来自漏掉“入口速度可忽略”或“表压”。
+\sect{交卷前记忆卡}
+静水压看高度；动量看方向；管路看损失；势流看叠加；喷管看$M$和背压；激波看分段；边界层看$Re$；粘性解析看边界条件。
+
+\sect{展开型模板：按流程仿写}
+\sect{模板：速度场流程}
+给$\bm V=(u,v,w)$。先写$\nabla\cdot\bm V=u_x+v_y+w_z=\cdots$，故是否不可压。再写$\nabla\times\bm V=(w_y-v_z,u_z-w_x,v_x-u_y)=\cdots$，故是否有旋。若无旋，$\phi=\int u dx+f(y,z)$，逐项定函数。
+\sect{模板：流线流程}
+由流线微分方程$\frac{dx}{u}=\frac{dy}{v}$，代入$t=t_0$若非定常。整理为$M(x,y)dx+N(x,y)dy=0$，积分得$F(x,y)=C$。若与$\psi=C$一致，说明计算正确。
+\sect{模板：迹线流程}
+由$\dot x=u(x,y,t),\dot y=v(x,y,t)$。先解$x(t)$，再代入解$y(t)$；带入初始条件确定常数。最后消去$t$或写参数方程。
+\sect{模板：应力流程}
+单位法向先归一化。$\bm t=P\bm n$写成列向量。$\sigma_n=\bm n^T P\bm n$。$\tau=\sqrt{\bm t^T\bm t-\sigma_n^2}$。若题要分量，写$\bm t_N=\sigma_n\bm n,\bm t_T=\bm t-\bm t_N$。
+\sect{模板：闸门流程}
+设水深方向坐标$y$，形心$y_C$，面积$A$，惯性矩$I_C$。$F=\rho g y_C\sin\theta A$。压力中心$y_D=y_C+I_C/(y_CA)$。对铰点取矩求未知力，注意力臂是几何垂距。
+\sect{模板：曲面流程}
+投影面积$A_x$形心深$h_C$，$F_x=\rho gh_CA_x$。压力体体积$V_p$，$F_y=\rho gV_p$，方向由水压推曲面方向定。合力大小和方向$\tan\alpha=F_y/F_x$。
+\sect{模板：弯管流程}
+先用连续得$Q,A,V$。假设支座对流体反力$R_x,R_y$。列$x,y$动量，包含压力力$pA$和重力（若不可忽略）。解得$R$，题问管道受力则$-R$。
+\sect{模板：泵流程}
+从吸水池水面到泵入口：求安装高度/汽蚀。从泵入口到出口或两水池：求泵扬程。不要把两个方程混成一个。汽蚀题必须用绝压。
+\sect{模板：水轮机流程}
+选上游高水面和下游压力表/水面。机械能方程右侧加$H_T$，即流体失去的水头。$H_T$求出后$P=\eta\rho gQH_T$。
+\sect{模板：圆管层流流程}
+由受力或N--S得$\frac1r\frac{d}{dr}(rdu/dr)=\frac1\mu dp/dx$。有限性使$r=0$处常数不发散，壁面$u(R)=0$。得到$u(r)$后积分求$Q$。
+\sect{模板：平板Couette流程}
+方程$\mu u''=dp/dx$。通解$u=(dp/dx)y^2/(2\mu)+C_1y+C_2$。边界$u(0)=0,u(h)=U$。若给流量或中点速度，再解$dp/dx$或$U$。
+\sect{模板：两层流流程}
+两层各有$u_i=A_iy+B_i$。四条件：下壁、上壁、交界速度连续、交界剪应力连续。若无压差，剪应力常数，直接用阻力串联公式。
+\sect{模板：势流叠加流程}
+列出各基元$\psi_i$，总$\psi=\sum\psi_i$。物体边界通常为某条$\psi=C$。驻点令$\nabla\phi=0$或速度分量为0。压力由伯努利，合力由积分。
+\sect{模板：圆柱有环量流程}
+总速度壁面$v_\theta=-2U\sin\theta+\Gamma/(2\pi a)$。停滞点令$v_\theta=0$。压力系数$C_p=1-(v_\theta/U)^2$。升力用$L'=\rho U\Gamma$。
+\sect{模板：Laval喷管流程}
+写明“喉部达到临界则$A_t=A^*$”。面积比求出口$M_e$，等熵求$p_e$。比较$p_e$与$p_b$判断设计/过膨胀/欠膨胀。若管内激波，分三段。
+\sect{模板：正激波流程}
+波前状态已知或由等熵求。用正激波表得$M_2,p_2/p_1,T_2/T_1$。若要波后速度，$a_2=\sqrt{\gamma RT_2}$，$V_2=M_2a_2$。
+\sect{模板：斜激波流程}
+已知$M_1,\theta$查$\beta$。$M_{n1}=M_1\sin\beta$，正激波关系得$M_{n2}$。$M_2=M_{n2}/\sin(\beta-\theta)$。压力温度比与法向马赫数相关。
+\sect{模板：膨胀波流程}
+查$\nu(M_1)$，加转角得$\nu(M_2)$，反查$M_2$。再等熵求$p_2,T_2$。若求壁面角，膨胀扇总角等于气流偏转角。
+\sect{模板：Blasius平板边界层}
+$Re_L=UL/\nu$。判层流/湍流。阻力$D=\bar C_f(0.5\rho U^2)A$，尾部厚度$\delta(L)$。若双面流动，面积乘2。
+\sect{模板：动量积分边界层}
+假设$u/U=f(y/\delta)$。算$\theta=C\delta$和$\tau_w=\mu U f'(0)/\delta$。代$\tau_w=\rho U^2 d\theta/dx$，分离变量积分得$\delta(x)$。
+\sect{模板：Stokes小球流程}
+写$Re=\rho Ud/\mu<1$，故用Stokes。受力平衡：$G-F_B-D=0$。代$G=\rho_sg\pi d^3/6$，$F_B=\rho g\pi d^3/6$，$D=3\pi\mu dU$。
+
+\sect{过程分骨架：算不完也能写}
+\sect{压强题骨架}
+写“压强随竖直深度线性变化，与容器形状无关”。再画压力分布三角形/梯形；力矩未算完也保留合力和作用点。
+\sect{速度场题骨架}
+写散度、旋度两个算式。多数题至少一半分在这里。若能积分出$\phi$或$\psi$，再补。
+\sect{管路题骨架}
+写完整机械能方程；若$\lambda$未查出，先保留$\lambda$符号。把$h_f,\sum h_\zeta,H_p,H_T$位置放对。
+\sect{喷管题骨架}
+写等熵三公式和临界0.528；再写“先判阻塞，再算$M$”。不要直接乱代数。
+\sect{激波题骨架}
+写“波前等熵、过波用激波关系、波后用新总压等熵”。这句比一堆错公式值钱。
+\sect{边界层题骨架}
+写$Re_x,Re_L$，选层流/湍流，写$\delta,C_f,D$三类公式。题问什么就取对应公式。
+\sect{粘性解析题骨架}
+写N--S简化假设和边界条件。即使积分错，假设和边界条件也有分。
+\sect{概念题骨架}
+定义+原因+后果三段式。例：阻塞=喉部$M=1$；原因=扰动不能上传；后果=质量流量最大。
+\sect{证明题骨架}
+从定义写起：连续来自质量守恒，伯努利来自Euler沿流线积分，Laplace来自无旋不可压，流函数Poisson来自涡量定义。
+\sect{单位题骨架}
+所有数值先写SI单位转换。老师看见单位转换，至少知道你没瞎代。
+
+\sect{高频模型一行公式链}
+\sect{静水矩形窗}
+$F=\rho g(h_0+h/2)bh$；压力中心距窗顶$y=(h_0+h/2)+I_C/[(h_0+h/2)A]$，再换成题目坐标。
+\sect{静水圆形舱门}
+$A=\pi R^2,I_C=\pi R^4/4$。$F=\rho gh_CA$，$y_D=y_C+R^2/(4y_C)$。
+\sect{浮力/吃水}
+平衡$\rho_w gV_{\rm disp}=G$。若圆柱竖放，$V_{\rm disp}=Ah$；若横放，查/算圆缺面积。
+\sect{非恒定小孔出流}
+$A_t dH/dt=-C_dA_o\sqrt{2gH}$，积分$t=\frac{2A_t}{C_dA_o\sqrt{2g}}(\sqrt{H_1}-\sqrt{H_2})$。
+\sect{皮托/静压管测速}
+$p_0-p=\frac12\rho V^2$。若接U管，$p_0-p=(\rho_m-\rho)g\Delta h$。
+\sect{文丘里不可压流量}
+$Q=C_dA_2\sqrt{2\Delta p/[\rho(1-\beta^4)]}$，$\beta=d_2/d_1$。
+\sect{喷嘴反力}
+$F_{\rm hold}\approx\rho QV+(p_e-p_a)A_e$，若出口对大气$p_e=p_a$，只剩动量项。
+\sect{喷嘴法兰/螺栓}
+取喷嘴内流体为控制体：$p_1A_1-p_2A_2+R_x=\rho Q(V_2-V_1)$。法兰螺栓受力为流体对喷嘴的反力，方向与$R_x$相反；出口对大气用表压$p_2=0$。
+\sect{平板拖曳阻力}
+层流单面$D=1.328/\sqrt{Re_L}\cdot0.5\rho U^2Lb$。双面乘2。
+\sect{小球低Re阻力}
+$D=3\pi\mu dU$；若给$C_D$，低Re可写$24/Re$。
+\sect{小球二次阻力终速}
+若题给$C_D$且$Re$不小：$(\rho_s-\rho)g\pi d^3/6=C_D(0.5\rho U^2)(\pi d^2/4)$，故$U=\sqrt{4(\rho_s-\rho)gd/(3C_D\rho)}$。
+\sect{圆管层流流量}
+$Q=\pi R^4\Delta p/(8\mu L)$。半径误差影响四次方，注意用$R$不是$d$。
+\sect{管内平均/最大速度}
+$\bar u=Q/A$。层流最大速度$2\bar u$；湍流最大速度与平均速度关系需经验式，不用2。
+\sect{局部突扩}
+$h=(V_1-V_2)^2/(2g)$。压力可能升高但总能量下降。
+\sect{泵效率/轴功率}
+$\eta=\rho gQH/P_{\rm shaft}$。若求轴功率，$P_{\rm shaft}=\rho gQH/\eta$。
+\sect{水轮机效率/输出}
+$P_{\rm out}=\eta\rho gQH_T$。若给输出功率反求$H_T=P/(\eta\rho gQ)$。
+\sect{自由涡压差}
+$dp/dr=\rho C^2/r^3$，积分$p_2-p_1=\frac12\rho C^2(1/r_1^2-1/r_2^2)$。
+\sect{强迫涡压差}
+$dp/dr=\rho\omega^2r$，积分$p_2-p_1=\frac12\rho\omega^2(r_2^2-r_1^2)$。
+\sect{声速}
+空气$a\approx20.05\sqrt{T}$，$T$用K。$T=288$K时$a\approx340$m/s。
+\sect{滞止温度}
+$T_0=T+V^2/(2c_p)$。理想气$c_p=\gamma R/(\gamma-1)$。与$T_0/T=1+0.2M^2$等价。
+\sect{收缩管最大流量}
+空气$\dot m_{\max}=0.0404A p_0/\sqrt{T_0}$，$p_0$Pa，$A$m$^2$，$T_0$K，结果kg/s。
+\sect{正激波后速度链}
+先求$T_2,M_2$，再$V_2=M_2\sqrt{\gamma RT_2}$。不要用$V_1$直接乘压力比。
+\sect{PM膨胀压力比}
+$p_2/p_1=[(1+0.2M_1^2)/(1+0.2M_2^2)]^{3.5}$。
+\sect{斜激波波角检查}
+波角$\beta$大于马赫角$\mu$，小于$90^\circ$。若算出$\beta<\mu$，必错。
+\sect{边界层位移厚度}
+若$u/U=y/\delta$，$\delta^*=\delta/2$。若$u/U=(y/\delta)^{1/7}$，$\delta^*=\delta/8$。
+\sect{边界层动量厚度}
+线性剖面$\theta=\delta/6$；抛物$2\eta-\eta^2$时$\theta=2\delta/15$。
+\sect{壁面剪应力}
+由速度剖面求$\tau_w=\mu(\partial u/\partial y)_{y=0}$。边界层题不要用管流$\lambda$，除非题是管内。
+\sect{两板间流量}
+$q=\int_0^hu\,dy$，若$u=Uy/h$，$q=Uh/2$每单位宽。
+\sect{薄板两侧油膜剪力}
+薄板速度$U$、面积$A$，两侧固定壁间隙$h_1,h_2$：$F=\mu AU(1/h_1+1/h_2)$。一侧则只取对应项。
+\sect{活塞/环隙油膜}
+小间隙$\delta=(D-d)/2$，接触面积$S=\pi Dl$。线性剪切：$\tau=F/S=\mu v/\delta$，故$v=F\delta/(\mu S)$。
+\sect{两层流体剪力}
+等效“粘性电阻”$h_1/\mu_1+h_2/\mu_2$，剪应力$\tau=U/(h_1/\mu_1+h_2/\mu_2)$，$F=\tau A$。
+\sect{气球受风偏角}
+净浮力$B=(\rho_a-\rho_g)gV-G$，风阻$D=C_D(0.5\rho_aU^2)A$。若细线与竖直夹角$\theta$，平衡得$\tan\theta=D/B$。
+\sect{雷诺应力符号}
+RANS中$-\rho\overline{u'v'}$像附加剪应力。若$\overline{u'v'}<0$，雷诺剪应力为正。
+\sect{模型律}
+若重力波模型保持$Fr$，速度比$V_m/V_p=\sqrt{L_m/L_p}$。时间比$t_m/t_p=\sqrt{L_m/L_p}$。
+\sect{模型力/压强换算}
+几何相似且主导$\pi$数相等：$C_p,C_D,C_M$相等。$\Delta p\sim\rho U^2$，$F\sim\rho U^2L^2$，力矩$M\sim\rho U^2L^3$。
+\sect{答案末尾检查}
+每个答案后写单位；每个力题说明方向；每个压缩流题说明是等熵还是激波；每个粘性题说明层流还是湍流。
+
+\sect{第六页补全：专题判断与查表子链}
+\sect{喷管查表子链1}
+已知$p_0/p$求$M$：查等熵表或解$(1+0.2M^2)^{3.5}=p_0/p$。若解得$M<1$但题说超声速，说明给的不是该段等熵关系或有激波。
+\sect{喷管查表子链2}
+已知$A/A^*$求$M$：表中读两支。先在题边写“亚支/超支”，避免抄错。出口扩张段常需要超支，入口收缩段常亚支。
+\sect{激波查表子链}
+正激波表读数后，立刻写$p_{02}=p_{01}(p_{02}/p_{01})$，后续所有出口压力用$p_{02}$。这是最容易漏的步骤。
+\sect{斜激波查表子链}
+$M_1,\theta\to\beta$。若表无精确值，用线性插值。读到$\beta$后不要忘了$M_{n1}=M_1\sin\beta$。
+\sect{PM查表子链}
+先查$\nu_1$，加膨胀角得$\nu_2$，再反查$M_2$。若题给压强比，也可先等熵求$M_2$，再求角度。
+\sect{Moody查图子链}
+先判层流/湍流。湍流才用$Re$和$\varepsilon/d$查图。若题给“完全粗糙”，$\lambda$几乎与$Re$无关。
+\sect{阻力图查图子链}
+先确定特征面积和特征长度。球/圆柱$A$为迎风面积；平板摩擦用湿表面积。查到$C_D$后$D=C_DqA$。
+\sect{物性表查表子链}
+水温给出时查$\rho,\mu,\nu,p_v$。汽蚀题必须查$p_v$。空气题通常给$R,\gamma$，若不给取空气标准值。
+\sect{惯性矩查表子链}
+压力中心题需要面积二次矩$I_C$，不是质量转动惯量。矩形$bh^3/12$，圆$\pi R^4/4$，三角形查表。
+\sect{三角函数角度}
+激波/PM表多为度；计算器确认DEG。LaTeX/推导里弧度不影响公式，但数值代入会错。
+
+\sect{题目图像再识别}
+\miniimg{0.98}{assets/original_problem_schematics_generic.png}
+\sect{图像：有大水面+管道+泵}
+一定是机械能方程。大水面速度0、表压0。泵前若问安装高度，就是汽蚀；泵后若问压力/功率，就是扬程。
+\sect{图像：管道变径}
+连续先给$V_1,V_2$。突扩有局部损失$(V_1-V_2)^2/(2g)$；渐扩看是否给扩压器效率或损失系数。
+\sect{图像：管道弯头}
+局部损失$\zeta V^2/(2g)$用于能量；弯管受力用动量。两个问题不要混。
+\sect{图像：喷口射流}
+自由射流出口压力等于大气。速度由伯努利；反力由动量。射流打板再按板方向分解动量。
+\sect{图像：Laval喷管压力曲线}
+压力曲线突然跳升表示正激波；平滑下降为等熵加速；出口外波系由$p_e$与$p_b$比较决定。
+\sect{图像：楔形物体}
+超声速来流撞楔尖，前方斜线是斜激波，楔角是流动偏转角$\theta$，斜线角是波角$\beta$。
+\sect{图像：凹角/凸角}
+超声速流遇凹角压缩，画斜激波；遇凸角膨胀，画膨胀扇。亚声速不画马赫波。
+\sect{图像：平板外流}
+前缘开始发展边界层。题问尾部厚度用$L$；题问阻力用全长平均摩擦系数；题问局部剪应力用$x$处局部系数。
+\sect{图像：圆柱/球外绕}
+低Re可能Stokes；高Re看分离和阻力系数。理想势流只给压力分布和升力概念，不给真实阻力。
+\sect{图像：两平板夹流体}
+上板动下板静是Couette；有压差是Poiseuille；两者同时存在则叠加。两层流体加交界条件。
+\sect{图像：同心圆管/环隙}
+若内外圆柱相对运动，是环隙Couette，速度分布可能含$\ln r$。若压差驱动，是环隙Poiseuille，查教材公式或由圆柱坐标积分。
+\sect{图像：旋转容器}
+自由面抛物线。若问压强，$p/\rho+gz-\omega^2r^2/2=C$。若问液面高度差，$\Delta z=\omega^2(R_2^2-R_1^2)/(2g)$。
+\sect{图像：自由涡水面}
+液面中心凹陷，$v_\theta=C/r$。与强迫涡相反：强迫涡中心低但外缘高为抛物面，自由涡近中心理论发散。
+\sect{图像：U形管振荡}
+两个自由面高度差产生回复力，周期$2\pi\sqrt{L/(2g)}$。若管截面不等，需要用体积连续换算位移。
+
+\sect{新卷通用定位矩阵：关键词$\to$模型}
+\sect{第一眼先判“物质模型”}
+静止$\to$静水；无粘不可压$\to$Euler/Bernoulli/势流；可压无粘$\to$等熵/激波/膨胀；不可压有粘$\to$N--S/H--P/Couette/管损/边界层。
+\sect{题目问“求什么”}
+按输出量反推第一行：$p/H\to$静水压或能量；$Q/V\to$连续+压差/能量/阻塞；$F/R\to p,V,Q$后列CV动量；$\dot m,A,M\to$状态方程+等熵/面积--Ma；$D/\delta\to Re$判型后接$C_f/C_D$或边界层公式；$t\to$瞬时体积守恒微分方程；证明/说明/判断$\to$假设+主方程+边界+判据+结论。
+\sect{题干给速度场$u,v,w$}
+先算$\nabla\cdot V$和$\nabla\times V$；问轨迹写ODE，问流线写$dx/u=dy/v=dz/w$；问应力用速度梯度，问势/流函数用积分互求。
+\sect{题干给容器、液面、压差计、闸门}
+优先静水压链。自由液面$p=p_a$，同高同液等压；闸门先$F=\rho gh_CA$和压力中心，再对铰链取矩。
+\sect{题干给管路、泵、阀、弯头、粗糙度}
+先连续求$V$，再$Re$判层/湍，取$\lambda$或查Moody；机械能方程汇总$h_f+\sum h_\zeta$。汽蚀用泵入口绝压约束。
+\sect{题干给喷嘴、射流、弯管受力}
+能量求速度/压强，控制体动量求力：$\sum F=\sum_{\rm out}\rho QV-\sum_{\rm in}\rho QV$。题问管壁/法兰时取反。
+\sect{题干给$\phi,\psi,\Gamma$、源汇、圆柱、壁面}
+势流叠加。先写基本流，再用边界条件定常数；压力用Bernoulli，升力用$L'=\rho U\Gamma$，理想势流阻力为0。
+\sect{题干给$M,p_0,T_0,A^*,p_b$}
+等熵段用$T_0/T,p_0/p,A/A^*$；先判阻塞和亚/超支；有激波则总压跨波下降，波后用新$p_{02}$。
+\sect{题干给$\delta,C_f,C_D$或外绕物}
+先算$Re_x,Re_L$或绕流$Re$。平板摩擦用湿表面积；球/圆柱阻力用迎风面积；分离题写逆压梯度和$\tau_w=0$。
+\sect{题干给模型、相似、无量纲}
+列变量$\to$选重复变量$\to$配$\pi$。自由面主导看$Fr$，粘性主导看$Re$，高速气体看$Ma$，表面张力看$We$。冲突时保主导准则。
+
+\sect{新卷薄弱题通用补丁}
+\sect{运动学长题}
+流线：固定时刻速度场切线；迹线：单个质点轨迹；脉线/串线：同一点连续染色质点的位置集合；流体线/物质线：同一时刻相邻质点连线。定常时三线重合。计算：流线$\frac{dx}{u}=\frac{dy}{v}=\frac{dz}{w}$；迹线$\dot x=u(x,y,z,t)$带初值。加速度$D\bm V/Dt=\partial_t\bm V+(\bm V\cdot\nabla)\bm V$。
+\sect{连续/流函数/势函数证明}
+不可压$\nabla\cdot\bm V=0$；二维给$\psi$：$u=\psi_y,\ v=-\psi_x$；无旋给$\phi$：$\bm V=\nabla\phi$；二者合用得$\nabla^2\phi=0,\ \nabla^2\psi=0$。题问“存在性”先写区域单连通/无旋或二维不可压条件。
+\sect{相似律换算}
+Re相似：$V_rL_r/\nu_r=1$；Fr相似：$V_r/\sqrt{L_r}=1,\ t_r=\sqrt{L_r}$；Ma相似：$V_r/a_r=1$；We相似：$\rho_rV_r^2L_r/\sigma_r=1$。常用：$\Delta p\sim\rho V^2,\ F\sim\rho V^2L^2,\ M_{\rm force}\sim\rho V^2L^3,\ Q\sim VL^2$。
+\sect{Buckingham易错}
+重复变量必须覆盖基本量纲且不能含待求量；每个$\pi$写成$X\rho^aV^bL^c$最稳。若题给重力/表面张力/压缩性，候选数通常是$Fr,We,Ma$，不要只写$Re$。
+\sect{边界层积分长题}
+先假设$u/U=f(\eta),\eta=y/\delta$。算$\delta^*=\delta\int(1-f)d\eta$，$\theta=\delta\int f(1-f)d\eta$，$\tau_w=\mu U f'(0)/\delta$。零压梯度用$\tau_w=\rho U^2d\theta/dx$，解$\delta(x)$后$C_D=2\theta(L)/L$（单面）。
+\sect{有压梯度/分离}
+外流$U(x)$变时用$\tau_w/\rho=U^2d\theta/dx+U(dU/dx)(2\theta+\delta^*)$。逆压梯度$dp/dx>0\Leftrightarrow dU/dx<0$，壁面$\tau_w\to0$为分离。
+\sect{可压查表小表}
+空气$A/A^*$：$M=0.5:1.34,\ 0.8:1.04,\ 1:1,\ 1.5:1.18,\ 2:1.69,\ 2.5:2.64,\ 3:4.23$。PM：$M=2:\nu\approx26.4^\circ,\ M=3:\nu\approx49.8^\circ$。无表时写查表输入和后续回代。
+\sect{外绕流阻力图}
+低Re球：$C_D=24/Re$，$D=3\pi\mu dU$。一般外绕流：$D=C_D(0.5\rho U^2)A_{\rm front}$。平板摩擦阻力用湿表面积$A_{\rm wet}$，不是迎风面积。
+\sect{概念长答加分}
+三句结构：定义+适用条件+后果/公式。例：边界层=高Re近壁薄层，条件是粘性只在壁附近重要，后果是外流可近似无粘、壁面满足无滑移并产生摩擦阻力和分离。
+
+\sect{带教材查表/模型定位：补过程分}
+\sect{查教材表三行格式}
+卷面四项：查\underline{\hspace{0.35cm}}表/图；输入\underline{\hspace{0.45cm}}；读得\underline{\hspace{0.45cm}}；代入\underline{\hspace{0.5cm}}；检查单位/支路/绝压表压。
+\sect{模型冲突先判}
+给$\mu,\nu,\varepsilon,C_D$优先粘性/阻力；给$\phi,\psi,\Gamma$优先势流；给$M,p_0,T_0,p_b$优先可压；给泵/阀/长管优先机械能；给“证明/说明”优先假设+方程+边界+结论。
+\sect{可压缩题查表入口}
+\begin{tabular}{|p{0.29\linewidth}|p{0.29\linewidth}|p{0.34\linewidth}|}\hline
+题眼 & 查书/表 & 查完怎么接\\\hline
+$p_0/p,T_0/T$ & 等熵表 & 得$M$后算$p,T,\rho,V$\\\hline
+$A/A^*$ & 面积--马赫表 & 先判亚/超支，再接等熵\\\hline
+正激波 & 正激波表 & $M_1\to M_2,p_2/p_1,p_{02}/p_{01}$\\\hline
+楔角压缩 & 斜激波图 & $M_1,\theta\to\beta\to M_{n1}$\\\hline
+凸角膨胀 & PM函数表 & $\nu_2=\nu_1+\delta\to M_2$\\\hline
+\end{tabular}
+\sect{粘性/阻力查表入口}
+\begin{tabular}{|p{0.31\linewidth}|p{0.28\linewidth}|p{0.33\linewidth}|}\hline
+题眼 & 查书/图 & 查完怎么接\\\hline
+粗糙管$\varepsilon/d$ & Moody图 & $h_f=\lambda L V^2/(2gd)$\\\hline
+阀门弯头 & 局部$\zeta$表 & $h_\zeta=\zeta V^2/(2g)$\\\hline
+汽蚀/水温 & 物性表 & 用$p_v,\nu,\rho$列吸水能量\\\hline
+球/圆柱/车 & $C_D-Re$图 & $D=C_D(0.5\rho U^2)A$\\\hline
+压力中心 & 面积惯性矩表 & $y_D=y_C+I_C/(y_CA)$\\\hline
+\end{tabular}
+\sect{题干图像/文字不全时}
+不要空题：缺几何量/表值就设$x$或写“查表得…”。先写模型、主方程、查表输入$\to$输出$\to$回代链；固定编号索引不可靠，关键词和已知量判断更可靠。
+\sect{平板层流/矩形板摩擦型}
+给$\mu,\rho,U,L,b$：$\nu=\mu/\rho,Re_L=UL/\nu$；层流$\delta=5L/\sqrt{Re_L}$，$D=\bar C_f(0.5\rho U^2)A,\bar C_f=1.328/\sqrt{Re_L}$。有转捩：$x_{cr}=Re_{cr}\nu/U$，分层流段+湍流段摩擦，$P=DU$。
+\sect{Laval管外膨胀/内激波/多波型}
+管外膨胀：$A_e/A_t\to M_e$，等熵得$p_e$，若$p_e>p_b$继续膨胀，角度$\alpha=\nu(M_b)-\nu(M_e)$。内激波：全等熵先判$p_e$与$p_b$，再按“波前等熵$\to$激波$\to$波后等熵”。多波：压缩角走斜激波，凸角走PM，逐段更新$M,p,T,p_0$。
+\sect{复杂题考场流程}
+图表题：先写查表输入量和主公式，数值从教材补；长推导：假设$\to$控制方程$\to$边界条件$\to$结论；相似律冷门题：列变量，$\pi=X\rho^aV^bL^c$，说明主导准则。
+
+\sect{数值替换模板}
+\sect{模板：先写符号后代数}
+不要边想边代。先写$Re=Vd/\nu=\cdots$，再写数值。公式正确即使数值错也能保分。
+\sect{模板：面积换算}
+$A=\pi d^2/4=\pi(0.1)^2/4=7.85\times10^{-3}{\rm m^2}$。这类中间值可写在草稿区。
+\sect{模板：速度换算}
+$V=Q/A$。若$Q$给$m^3/h$，先除3600。若给L/s，乘$10^{-3}$。
+\sect{模板：压强水头}
+$p/(\rho g)=70000/(1000\times9.81)=7.14$m。kPa转水头直接除9.81。
+\sect{模板：雷诺数}
+$Re=Vd/\nu$。把$\nu$写成科学计数法，防止$10^{-6}$漏掉。
+\sect{模板：损失水头}
+$h_f=\lambda(L/d)V^2/(2g)$。先算$L/d$和速度头，再乘$\lambda$。
+\sect{模板：功率}
+$P=\rho gQH$，水中可速算$P({\rm kW})\approx9.81QH$，$Q$用$m^3/s$。
+\sect{模板：风管/风扇}
+气体也用压强水头$H=\Delta p/(\rho g)$。风扇需提供$H=\sum(\lambda L/d+\zeta)V^2/(2g)+$高度/速度项；轴功率$P=\Delta p\,Q/\eta=\rho gQH/\eta$。
+\sect{模板：真空度/负表压}
+表压$p_g=p_{\rm abs}-p_a$；真空度$p_v=p_a-p_{\rm abs}=-p_g$。U管同一静止连通液体同高压强相等，跨液柱加减$\rho gh$。
+\sect{模板：等熵压比}
+$p=p_0/(1+0.2M^2)^{3.5}$。如果$M=1$，直接$p=0.528p_0$。
+\sect{模板：质量流量}
+$\dot m=\rho VA$。可压缩出口：先$p,T$求$\rho=p/(RT)$，再$V=M\sqrt{\gamma RT}$。
+\sect{模板：压力中心}
+矩形竖直上边距液面$h_0$：$y_C=h_0+h/2$，$I_C=bh^3/12$，$y_D=y_C+I_C/(y_CA)$。
+\sect{模板：Stokes}
+终速$U=(\rho_s-\rho)gd^2/(18\mu)$。代完后算$Re=\rho Ud/\mu$检查。
+\sect{长推导/概念证明保分骨架}
+\sect{证明题关键词卡}
+固定结构：条件$\to$方程$\to$边界/积分路径$\to$化简$\to$结论限制。RTT/控制体：系统导数=CV局部项+CS通量项。Kelvin：$D\Gamma/Dt=\oint D\bm V/Dt\cdot d\bm l=0$。Lagrange：$\Gamma_0=0\Rightarrow\Gamma=0\Rightarrow\Omega=0$。Helmholtz：Kelvin+Stokes得涡线随体、涡管强度守恒。势函数单值：两路径差$=\oint\bm V\cdot d\bm l=\iint\Omega_n dA$。边界层积分：N--S沿$y$积分$\to\delta^*,\theta\to$Karman。非定常Bernoulli：Euler写成$\partial_t\bm V+\nabla(V^2/2)-\bm V\times\bm\Omega=-\nabla(p/\rho+\Pi)$；无旋得$\partial_t\phi+V^2/2+p/\rho+\Pi=f(t)$。
+\sect{流函数存在与物理意义}
+二维不可压：$u_x+v_y=0$。令$u=\psi_y,\ v=-\psi_x$，自动满足连续；反过来连续保证可构造$\psi$。微分式$d\psi=u\,dy-v\,dx$，两流线间单位宽流量$q'=\psi_2-\psi_1$。流线为$\psi=C$，因$d\psi=0\Rightarrow dy/dx=v/u$。
+\sect{速度势与单值性}
+无旋$\nabla\times\bm V=0$，单连通域内可令$\bm V=\nabla\phi$。证明路径无关：$\phi_P-\phi_0=\int_0^P\bm V\cdot d\bm r$；两路径差$=\oint\bm V\cdot d\bm l=\iint(\nabla\times\bm V)\cdot\bm n\,dA$，单连通且无旋$\Rightarrow0$。多连通域有点涡/环量时，速度可单值而$\phi$多值。不可压再给$\nabla^2\phi=0$。
+\sect{Kelvin定理推出Lagrange定理}
+理想无粘、正压$\rho=\rho(p)$、保守体力下，随体闭合线环量$\Gamma=\oint\bm V\cdot d\bm l$守恒。Lagrange定理：若某时刻处处无旋，则以后始终无旋；证法：任意小闭合线$\Gamma_0=0$，以后仍$\Gamma=0$；由Stokes，$\Gamma=\iint(\nabla\times\bm V)\cdot\bm n\,dA$，任意小面为0，故$\nabla\times\bm V=0$。物理句：无粘切应力不能自生/消灭微团旋转。
+\sect{涡线、涡管、涡通量}
+涡线切向为涡量$\bm\Omega=\nabla\times\bm V$，方程$dx/\Omega_x=dy/\Omega_y=dz/\Omega_z$。涡通量$J=\iint_A\bm\Omega\cdot\bm n\,dA$；由Stokes，$J=\oint_{\partial A}\bm V\cdot d\bm l=\Gamma$。涡管侧面$\bm\Omega\cdot\bm n=0$，所以任意截面涡通量相等；微元涡管常写$\Omega_1A_1=\Omega_2A_2$。
+\sect{Helmholtz涡定理答句}
+理想、正压、保守体力：涡线随流体运动；涡管强度守恒；涡线不能在流体内部开始或终止，只能闭合、伸到边界或无穷远。考试只需写条件+三条结论。
+\sect{涡量矩/随体守恒题}
+二维不可压理想流：$D\Omega/Dt=0$，且随体面积$dA$不变，故$\Omega\,dA$随体守恒。若题问涡量矩，先写$\Gamma=\int\Omega dA$守恒，$x_c=\int x\Omega dA/\Gamma,\ y_c=\int y\Omega dA/\Gamma$；二阶矩$I=\int[(x-x_c)^2+(y-y_c)^2]\Omega dA/\Gamma$，用随体导数和一阶矩相消证明。
+\sect{相似律严格答法}
+三层：几何相似$l_r$相同；运动相似$v_r,t_r$相同；动力相似各力比相同。完全相似=所有主控$\pi$数相等；由N--S无量纲化得$Re,Fr,Eu,Ma,We$等。缩尺同流体常$Re$与$Fr$冲突，不能完全相似；保主导数就是部分相似/自模化。
+\sect{Buckingham $\pi$写法}
+有$n$个物理量、基本量纲$r$个，独立无量纲数$n-r$个。步骤：列变量$\{Q_i\}$，选重复变量(含基本量纲且彼此独立)，设$\pi=Q\,a^\alpha b^\beta c^\gamma$，配平量纲，最后写$F(\pi_1,\pi_2,\cdots)=0$。
+\sect{边界层积分推导入口}
+从边界层方程和连续方程积分，定义$\delta^*=\int_0^\delta(1-u/U)dy$，$\theta=\int_0^\delta(u/U)(1-u/U)dy$。零压梯度：$\tau_w=\rho U^2\,d\theta/dx$。给速度剖面$u/U=f(\eta),\eta=y/\delta$时：算$A_\theta=\int_0^1f(1-f)d\eta$，$\theta=A_\theta\delta$，$\tau_w=\mu U f'(0)/\delta$，代入得$\delta d\delta/dx=\nu f'(0)/(UA_\theta)$，再由$C_D=2\theta(L)/L$收口。
+\sect{水击/水波最小保分}
+快速关阀：$\Delta p=\rho a\Delta V$，水击波速$a$由管水弹性决定。深水波定义：$h>\lambda/2$或$kh>\pi$，底床影响可忽略，$c=\sqrt{g\lambda/(2\pi)}$；浅水$h<\lambda/20$，$c=\sqrt{gh}$。明渠扰动看$Fr=V/\sqrt{gL}$：扰动传播速度和流速比较决定上游是否受影响。
+\sect{坐标、单位、负号}
+压力式Pa：$p+\frac12\rho V^2+\rho gz$；水头式m：$p/\rho g+V^2/2g+z$。管路$z$向上为正，静水压深度$h$向下为正。压降$\Delta p=p_1-p_2>0$；沿程梯度常为$dp/dx<0$，H--P写$-dp/dx>0$。
+
+\sect{题图决策卡}
+\sect{图里有“自由液面”}
+自由液面通常$p=p_a$；若水箱很大取$V\approx0$。若液面随时间动，必须接连续方程$A\,dh/dt=\pm Q$，不是只列伯努利。
+\sect{图里有“压力表”}
+表压进入能量方程可直接当$p/\rho g$；若题问汽蚀/蒸汽压，必须换绝压：$p_{\rm abs}=p_g+p_a$。
+\sect{图里有“U形压差计”}
+先写两连接点压力差。若测同一流体管路，常用$\Delta p=(\rho_m-\rho)g\Delta h$；若一端接大气，用$p-p_a=\rho_m g\Delta h$。
+\sect{图里有“铰链+拉杆”}
+别先求反力。先求水压力合力和压力中心，再对铰链取矩求拉力；最后若题要铰链反力，再用力平衡。
+\sect{图里有“弯头/喷嘴出口”}
+出口若射入大气，出口静压为大气压。支座力方向容易反：先求外界对流体力，再取相反即流体对管壁力。
+\sect{图里有“泵在吸水侧”}
+最高安装高度由泵入口最低允许绝压控制，不由泵功率直接控制。能量方程从水面列到泵入口。
+\sect{图里有“水轮机”}
+水轮机不是加能，是取能。能量式中$H_T$放在下游侧或从上游总水头中减去；功率$P=\eta\rho gQH_T$。
+\sect{图里有“突然扩大/缩小”}
+突扩损失常用$h=(V_1-V_2)^2/(2g)$；突缩或阀门按题给$\zeta V^2/(2g)$。速度取对应局部元件处速度。
+\sect{图里有“圆管层流”}
+H--P必须满足充分发展层流。若题给入口段/发展段，不要直接套抛物线；若给壁面剪切力，可由$\tau_w=d\Delta p/(4L)$反推压降。
+\sect{图里有“平板零攻角”}
+摩擦阻力用湿表面积，单面$Lb$，双面$2Lb$。空气和水同速同板，阻力差主要来自$\rho,\nu$导致的$Re$和$C_f$。
+\sect{图里有“圆柱/球绕流”}
+若是理想势流，压力积分阻力为0；若题给$C_D$，阻力$D=C_D(0.5\rho U^2)A_{\rm front}$，面积取迎风面积。
+\sect{图里有“喉部”}
+喉部是最小截面。只有阻塞时喉部$M=1$；没阻塞时喉部也可能$M<1$。不要见喉部就直接用0.528。
+\sect{图里有“背压$p_b$”}
+$p_b$是外界/下游压力，不一定等于喷管出口内压$p_e$。只有全亚声速收缩管或设计匹配等特殊状态才常有$p_e=p_b$。
+\sect{图里有“正激波”}
+波前必须超声速，波后亚声速。过波$p,T,\rho$升，$M$降，$T_0$不变，$p_0$下降；后面若继续等熵，用新的$p_{02}$。
+\sect{图里有“斜面压缩角”}
+超声速流遇凹角/压缩角，用斜激波；求解顺序是$M_1,\delta\to\beta\to M_{n1}\to$正激波关系$\to M_2$。
+\sect{图里有“凸角膨胀”}
+超声速流遇凸角，用PM膨胀扇。$\nu(M_2)=\nu(M_1)+\delta$，压力温度下降，总压不变。
+
+\sect{题图常见误判}
+\sect{喷管出口线}
+出口截面内压$p_e$不一定等于背压$p_b$；只有匹配或全亚声速等特殊情况才等。
+\sect{喉部面积}
+$A_t$是几何最小面积；$A^*$是临界面积。阻塞时二者相等，未阻塞时不能乱等。
+\sect{平均速度}
+管路能量题用截面平均速度$V=Q/A$；边界层/壁律题里的$u(y)$是局部速度。
+\sect{表压零点}
+开口水面表压为0，不是绝压为0；涉及汽化压、气体状态方程时必须用绝压。
+\sect{方向符号}
+静水深度$h$常向下为正，能量方程高度$z$向上为正。CV截面压力永远推入，求管道/螺栓受力最后取反。
+\sect{摩擦面积}
+平板阻力题问单面/双面要看图；管内沿程损失不用外表面积，用$L/d$和速度头。
+\sect{局部损失速度}
+不同管径时，每个阀门/弯头的$\zeta V^2/2g$用该元件所在管段速度。
+\sect{激波查表}
+正激波表输入$M_1$；斜激波先转成法向$M_{n1}$；膨胀表输入PM函数$\nu(M)$。
+\sect{应力题}
+求某平面应力矢量直接$P\bm n$；法向分量是投影$(P\bm n)\cdot\bm n$，不是矩阵对角元。
+
+\sect{概念短答库：照三句写}
+\sect{简答题首句索引}
+先按题干原词写首句：N--S=牛顿流体动量方程；$Ma=V/a$=惯性/弹性量级，$Ma\le0.3$常忽略压缩；深水波=底床影响可忽略；水击波速=液体可压缩性+管壁弹性决定；渐变流=流线近似平行、同断面测压管水头近似常数；圆管层流剖面=抛物线，湍流剖面=丰满且有脉动；完全相似=主控$\pi$数全等，部分相似=只保主导准则。然后补：定义+机理+公式/限制。
+\sect{连续介质}
+连续介质假设：宏观尺度远大于平均自由程，把$\rho,p,\bm V$看成连续函数$F(x,y,z,t)$，才能用微积分写连续、动量、能量方程。
+\sect{欧拉/拉格朗日}
+欧拉法盯固定空间点，给$\bm V(x,y,z,t)$；拉格朗日法盯同一流体质点，给$\bm x(a,b,c,t)$。定常流中流线、迹线、脉线重合。
+\sect{控制体/系统/质量动量能量守恒}
+系统是固定流体质点集合，随流体运动；控制体是选定空间区域，流体可进出。雷诺输运：$\frac d{dt}\int_{\rm sys}b\,dm=\partial_t\int_{CV}\rho b\,d\forall+\int_{CS}\rho b(\bm V\cdot\bm n)dA$，取$b=1,\bm V,e,\bm r\times\bm V$即质量/动量/能量/动量矩。
+外力=质量力+表面力+支反力，常见为重力、压力、剪切、支座/螺栓反力。力矩题用$\sum \bm M_O=\sum_{\rm out}\rho Q(\bm r\times\bm V)-\sum_{\rm in}\rho Q(\bm r\times\bm V)$；压力力$\bm F_p=\int p(-\bm n)dA$，均匀大气压闭面相消可用表压；旋转机械功率$P=M\omega$。
+\sect{当地/迁移/随体导数}
+$D\rho/Dt=\partial\rho/\partial t+u\rho_x+v\rho_y+w\rho_z$。当地：同一点随时间变；迁移：质点走到不同位置导致变。纳维-斯托克斯(N--S)：$\partial_t\bm V+(\bm V\cdot\nabla)\bm V=-\nabla p/\rho+\nu\nabla^2\bm V+\bm f$。答项意：左边=单位质量加速度(当地+迁移)，右边=压强力+粘性扩散力+质量力。
+\sect{层流/湍流/渐变流}
+圆管断面速度分布：层流分层有序、脉动小，$Re<2300$，$u=2\bar u(1-r^2/R^2)$为抛物线；湍流=时均+脉动，剖面更丰满，近壁$u^+=2.5\ln y^++5.5$或$1/7$次幂。Boussinesq涡黏把$-\rho\overline{u'_iu'_j}$类比为$\mu_t$乘时均速度梯度，$\mu_t$不是物性。渐变流：流线近似平行，同断面测压管水头$p/(\rho g)+z\approx C$。
+\sect{Re/Fr冲突/水波/水击}
+$Re$=惯性/粘性；$Fr$=惯性/重力。同流体缩尺：$Fr$等$\Rightarrow V_m/V_p=\sqrt{L_m/L_p}$，$Re$等$\Rightarrow V_m/V_p=L_p/L_m$，冲突时按主导力选。深水波定义：$h>\lambda/2(kh>\pi)$，底床影响忽略，$c=\sqrt{g\lambda/(2\pi)}$；浅水$h<\lambda/20$，$c=\sqrt{gh}$。明渠：$Fr<1$缓流可传上游，$Fr>1$急流不能。水击波速$a\approx\sqrt{K/\rho}/\sqrt{1+KD/(Ee)}$，跟液体$K,\rho$、管壁$E,e,D$和约束有关，$\Delta p=\rho a\Delta V$。
+\sect{孔板/自由射流}
+孔板节流：流通面积缩小，速度升高、静压降低，同时有局部损失，实际流量需乘流量系数。自由射流：出口后$p\approx p_a$，用横截面动量通量$\int\rho u^2dA$守恒/近似守恒，卷吸使射流宽度增大、中心速度衰减。
+\sect{阻力危机/减阻}
+球/圆柱在临界$Re$附近边界层转捩为湍流，抗逆压梯度增强，分离点后移、尾迹变窄，$C_D$骤降。减阻：流线型、光滑、延迟分离、减小湿面积。
+\sect{势函数/流函数/阻塞/激波}
+无旋$\nabla\times\bm V=0\Rightarrow\bm V=\nabla\phi$；不可压再得$\nabla^2\phi=0$。二维不可压可用$u=\psi_y,v=-\psi_x$，$\Delta\psi$为单位宽流量。喉部$M=1$后阻塞，降背压不再增大$\dot m$。激波=绝热不可逆压缩：$p,T,\rho$升，$M$降，$T_0$不变，$p_0$降，熵增造成波阻；斜激波退化：$\beta=\mu$为马赫波、$\beta=90^\circ$为正激波；凸角用PM膨胀，$p_0$不变。
+
+\sect{边界层特点/积分题/指数律}
+\sect{三个厚度}
+\fmlb{\delta^*=\int_0^\delta(1-u/U)\,dy,\quad \theta=\int_0^\delta(u/U)(1-u/U)\,dy,\quad H=\delta^*/\theta}
+能量损失厚度$\delta_E=\int_0^\delta(u/U)[1-(u/U)^2]dy$。答概念：$\delta$是名义厚度；$\delta^*<\delta$为质量亏损等效外移厚度；$\theta$为动量亏损厚度；$\delta_E$为能量亏损厚度；$H$越大剖面越空，分离风险增大。
+Karman：
+\fmlb{\frac{\tau_w}{\rho U^2}=\frac{d\theta}{dx}+\frac{(2+H)\theta}{U}\frac{dU}{dx}}
+零压强梯度$U=$常数：$\tau_w/(\rho U^2)=d\theta/dx$。局部$c_f=2\tau_w/(\rho U^2)$；单位宽阻力$D'=\rho U^2\theta(L)$，故$C_D=2\theta(L)/L$。吸气(指向壁内)常使$d\theta/dx=c_f/2-v_w/U$，边界层变薄；吹气相反。
+\sect{常见速度剖面结果/1/n指数律}
+\begin{tabular}{|p{0.42\linewidth}|p{0.52\linewidth}|}\hline
+$u/U=\eta$ & $\delta^*=\delta/2,\ \theta=\delta/6,\ H=3$\\\hline
+$u/U=\frac32\eta-\frac12\eta^3$ & $\delta^*=3\delta/8,\ \theta=39\delta/280,\ H=35/13$\\\hline
+$u/U=\eta^{1/n}$；1/6律取$n=6$ & $\delta^*=\delta/(n+1),\ \theta=n\delta/[(n+1)(n+2)]$\\\hline
+$u/U=\sin(\pi\eta/2)$ & $\delta^*/\theta\approx2.66,\ C_D\approx1.31/\sqrt{Re_L}$\\\hline
+\end{tabular}
+\sect{Karman--Pohlhausen配边界}
+设$f=a_0+a_1\eta+a_2\eta^2+a_3\eta^3$。壁面：$f(0)=0$，零压梯度时$f''(0)=0$；外缘：$f(1)=1,\ f'(1)=0$。常得$f=\frac32\eta-\frac12\eta^3$。曲面有压梯度用形状参数$\Theta$；顺压$dp/dx<0$加速，逆压$dp/dx>0$减速；常见判据$\Theta<-12$分离，$\Theta>12$剖面不物理。
+\sect{平板阻力}
+$Re_L=UL/\nu$，若给$Re_{cr}$则$x_{cr}=Re_{cr}\nu/U$，$L<x_{cr}$全层流，$L>x_{cr}$分段或用修正湍流。层流：$\delta_L=5L/\sqrt{Re_L},\ \bar C_f=1.328/\sqrt{Re_L}$；湍流常用$\bar C_f=0.074/Re_L^{1/5}$。$D=\bar C_f(0.5\rho U^2)A_{\rm wet}$，单面$Lb$，双面$2Lb$；外绕$C_D$用迎风面积。
+\sect{分离判断}
+逆压梯度$dp/dx>0$使近壁减速；壁面$\tau_w=\mu(\partial u/\partial y)_0=0$为分离点，后方可能回流。平面自由射流：$p\approx p_\infty,\partial p/\partial x\approx0$，$u\gg v,\partial u/\partial x\ll\partial u/\partial y$，$\int\rho u^2dy$守恒；卷吸使宽度增大、中心速度降低。
+
+\sect{量纲相似+推导骨架}
+\sect{量纲齐次/Rayleigh写法}
+量纲公式$[A]=M^aL^bT^c$；无量纲量为$a=b=c=0$。量纲齐次：同一方程各项量纲相同，不同量纲不能相加减。Rayleigh法：假设$Y=Cx_1^ax_2^b\cdots$，写$[Y]=[x_1]^a[x_2]^b\cdots$，按$M,L,T$列指数方程。球阻力：$C_D=D/(\rho U^2d^2)=F(Re)$，$Re=\rho Ud/\mu$。
+\sect{Buckingham $\pi$/相似准则流程}
+1列变量含待求量；2数基本量纲$k$，得$n-k$个$\pi$；3选重复变量：量纲独立、不含待求量、覆盖$M,L,T$；4令$\pi=X\rho^aV^bL^c$解$a,b,c$；5模型换算先写几何相似，再按主导力取准则。
+\fmlb{\pi_F=F/(\rho V^2L^2)=\Phi(Re,Fr,We,Ma,Sr,\sigma_c,\epsilon/L)}
+\begin{tabular}{|p{0.27\linewidth}|p{0.66\linewidth}|}\hline
+$Re$ & 粘性/管流/边界层；同流体$V_rL_r=1$\\\hline
+$Fr$ & 自由面/重力波/船模；$V_r=\sqrt{L_r}$\\\hline
+$Ma$ & 可压缩/声速/激波；低速不可压可忽略\\\hline
+$We$ & 表面张力/小尺度液滴；不重要则忽略\\\hline
+$Eu,C_p,\sigma_c$ & 压力系数$C_p=(p-p_\infty)/(0.5\rho V^2)$；汽蚀$\sigma_c=(p-p_v)/(0.5\rho V^2)$\\\hline
+\end{tabular}
+完全相似=几何/运动/动力相似且主控$\pi$数全相等；部分相似=只保主导准则；雷诺相似保$Re_m=Re_p$；自模化=大$Re$后阻力近似不随$Re$变。换算：$Q\sim VL^2,\ t\sim L/V,\ f\sim V/L,\ F\sim\rho V^2L^2,\ \Delta p\sim\rho V^2,\ M\sim\rho V^2L^3,\ P\sim\rho V^3L^2$。若$Re$与$Fr$冲突，按主导现象选。
+\sect{一维N--S/H--P骨架}
+定常、充分发展、一个速度分量，通常剩
+\fmlb{\mu u''+\rho g_x-\frac{dp}{dx}=0,\quad \frac1r\frac d{dr}(r\mu du/dr)=dp/dx}
+圆管结论：$u=(-dp/dx)(R^2-r^2)/(4\mu)$，$Q=\pi R^4\Delta p/(8\mu L)$，$\tau_w=d\Delta p/(4L)$。
+\sect{边界条件翻译表}
+固壁：不穿透$\bm V\cdot\bm n=0$，有粘再加无滑移$\bm V=\bm V_w$。对称轴/管心：速度有限且$du/dr=0$。自由面：$p=p_a$，随时间动则接$A\,dh/dt=\pm Q$。两流体界面：速度连续、剪应力连续$\mu_1u_1'=\mu_2u_2'$。充分发展：$\partial u/\partial x=0,\ v=0$。远场：$V\to U_\infty$。
+
+\sect{高频计算/查表/控制体收口}
+{\fontsize{4.35}{4.45}\selectfont
+\textbf{目标量首行}：求$p$判静水/Bernoulli/等熵/激波；求$F$用CV或$p\,dA$或$C_DqA$；求$Q/\dot m$用连续、$\lambda$/H--P或可压$M$；求$M$用压比/面积比/波表；求$D$判$C_f$湿面积或$C_D$迎风面积；求$t$写$A\,dh/dt=\pm Q$。 
+\textbf{泵/水轮机}：吸水$p_a/\rho g+z_0=p_B/\rho g+z_B+V^2/2g+h_L$，$p_B\ge p_v+\Delta p_{\rm safe}$，$NPSH_a=(p_B-p_v)/\rho g+V_B^2/2g$；水轮机$H_T=H_{\rm up}-H_{\rm down}-h_L,\ P=\eta\rho gQH_T$。 
+\textbf{孔板/文丘里}：$\beta=d_0/d$，理想$Q=A_0\sqrt{2\Delta p/[\rho(1-\beta^4)]}$；实际$Q=C A_0\sqrt{2\Delta p/[\rho(1-\beta^4)]}$，$C$由$\beta,Re$查表/题给。 
+\textbf{CV分量样例}：画流入/流出，$x$向$p_1A_1-p_2A_2+R_x=\rho(Q_2V_{2x}-Q_1V_{1x})$，$y$向同理；压力用表压且截面压力推入，题问管/螺栓取$-R$。 
+\textbf{可压查表}：空气$\gamma=1.4,R=287$；临界$T^*/T_0=0.833,p^*/p_0=0.528$；$V_{\max}=\sqrt{2c_pT_0}$，$M^*=V/a^*$；$\dot m_{\max}=0.0404A^*p_0/\sqrt{T_0}$；等熵/面积查$M$，正激波查$M_1$，斜激波查$M_{n1}$，PM查$\nu(M)$；Fanno等截面绝热摩擦管查$4fL^*/D$，摩擦使$M\to1$，$T_0$不变、$p_0$降。 
+\textbf{边界层积分样例}：设$u/U=f(\eta),\eta=y/\delta$；$\delta^*=\delta\int(1-f)d\eta,\theta=\delta\int f(1-f)d\eta,\tau_w=\mu Uf'(0)/\delta$；零压梯度$\tau_w=\rho U^2d\theta/dx\to\delta(x)$，单面$C_D=2\theta(L)/L$。 
+\textbf{管路/模型}：$Re<2300$层，$Re>4000$湍；$\lambda=64/Re$，光滑湍$\lambda\approx0.3164/Re^{1/4}$；无Moody可写$\lambda\approx0.25/[\lg(\varepsilon/3.7d+5.74/Re^{0.9})]^2$。局损：锐入口约0.5、出口1、突扩$(V_1-V_2)^2/2g$；各用所在管段$V$。$F,\Delta p$按$\rho V^2$相似；$Fr:V_r=\sqrt{L_r}$，$Re:V_r=1/L_r$；单位$cm^2\to10^{-4}m^2$。}
+\sect{新题反向定位/收口}
+{\fontsize{4.43}{4.53}\selectfont
+\textbf{条件反推模型}：有液面/压表/阀门先编号截面、高程、表/绝压；给$Q,d,L,\varepsilon,\zeta,\mu\to Re,\lambda,h_L$；给$\phi,\psi,Q,\Gamma\to$势流叠加；给$p_0,T_0,M,p_b,A_t/A_e\to$等熵/阻塞/激波；给$a,\Delta V,\lambda,h,Fr\to$水击/水波/明渠；给$P,\bm n\to P\bm n$；给$\rho,V,L,F\to\pi$群。 
+\textbf{目标反推中间量}：求$p$找高度/能量/等熵/激波；求$F$找$p\,dA$或$\rho Q\Delta V$或$C_DqA$；求$Q$找压差/水头/面积/阻塞；求$D$找$Re,C_f$或$C_D$；求角度找PM函数或斜激波$\beta$；求时间接$A\,dh/dt=\pm Q$。 
+\textbf{标准答案四行}：模型句=本题属\underline{\hspace{0.45cm}}模型，适用条件\underline{\hspace{0.45cm}}；方程句=取\underline{\hspace{0.4cm}}为CV/流线/截面，由\underline{\hspace{0.55cm}}得；查表句=输入\underline{\hspace{0.45cm}}读\underline{\hspace{0.45cm}}；结论句=回代，单位/方向/支路/绝压检查。 
+\textbf{读图/收口八查}：截面号和面积；液面$V\approx0$；高程基准；压力表要表压/汽蚀要绝压；CV受力取反；局损速度取所在管段；亚/超声支路和$p_0$是否换段；公式适用条件(层/湍、无粘/有粘、等熵/不可逆、充分发展/发展段)。}
+\sect{高频易错硬判}
+{\fontsize{4.43}{4.53}\selectfont
+\textbf{可压}：$p_b$是背压不一定等于出口内压$p_e$；$0.528$只表示空气$M=1$临界静压比；$A_t$是几何喉部，阻塞时才等于$A^*$；$\rho VA$必须用同一截面的$p,T,V,A$；正激波使$p_0$降，PM膨胀$p_0$不变。 
+\textbf{管流}：Moody图$\lambda$通常是Darcy摩阻系数；局部损失用元件所在管段速度；泵入口汽蚀看绝压和汽化压；$Q/A$是平均速度，不是壁律中的局部$u(y)$。 
+\textbf{力学}：CV压力力推入控制体，题问管/壁/螺栓受力取反；平板摩擦用湿面积，外绕阻力用迎风面积；压力中心低于形心；应力向量为$P\bm n$，法向分量还要再点乘$\bm n$。}
+\sect{公式禁用快判}
+{\fontsize{4.43}{4.53}\selectfont
+\textbf{课件原词定位}：欧拉方程=无粘动量方程；伯努利方程=欧拉方程沿流线积分；Prandtl边界层方程=高$Re$近壁N--S简化。Bernoulli禁用/需改写：跨泵、水轮机、局部损失、明显粘性或激波而未加项；跨泵/变径/激波必须分段换基准。H--P禁用：湍流、入口发展段、非充分发展或非圆管无等效修正。等熵禁用：有激波、摩擦、换热、非准一维。$0.528$禁用：非空气$\gamma=1.4$或不是$M=1$临界截面。Moody禁用：$Re<2300$直接$\lambda=64/Re$；外绕阻力禁用管内$\lambda$。势流阻力禁用真实有粘阻力题；真实阻力看边界层分离或$C_D$。}
+}
+
+\mt{母题8 运动学、连续、无旋、应力张量}
+\qt{真题：$u=Ax+By,\ v=Cx+Dy,\ w=0$，不可压缩且无旋，求 $A,B,C,D$ 条件。}
+\chain{不可压缩：$\nabla\cdot\bm V=\partial u/\partial x+\partial v/\partial y+\partial w/\partial z=A+D=0$。无旋：$\omega_z=\partial v/\partial x-\partial u/\partial y=C-B=0$。}
+\res{$A+D=0,\quad B=C$。}
+
+\qt{子题：应力张量 $P=\begin{pmatrix}-7&0&2\\0&-5&0\\2&0&-4\end{pmatrix}$，$\bm n=(2/3,-2/3,1/3)$，求应力矢量、法向分量、切向分量和夹角。}
+\chain{牵引矢量 $\bm p_n=P\bm n$。法向标量 $p_N=\bm p_n\cdot\bm n$，法向矢量 $p_N\bm n$，切向矢量 $\bm p_T=\bm p_n-p_N\bm n$。夹角 $\cos\alpha=(\bm p_n\cdot\bm n)/|\bm p_n|$。}
+\res{$\bm p_n=(-4,-10/3,0)$；$p_N=-4/9$；后续直接代入分解即可。}
+
+\qt{子题：$P(x,y,z)$，点 $M(2,1,\sqrt3)$，平面与圆柱 $y^2+z^2=4$ 相切，求应力矢量。}
+\chain{圆柱面 $F=y^2+z^2-4=0$，法向 $\nabla F=(0,2y,2z)$。在 $M$：$\bm n=(0,1/2,\sqrt3/2)$。先代 $y=1,z=\sqrt3$ 入 $P$，再算 $\bm p=P\bm n$。}
+
+\qt{子题：平面 $x+3y+z+1=0$ 上点 $(1,-1,1)$，给 $p_{ij}(x,y)$，求应力向量及法向/切向投影。}
+\chain{平面法向 $\bm n=(1,3,1)/\sqrt{11}$。先把点代入各 $p_{ij}$ 得数值张量 $P$，再 $\bm p=P\bm n$，法向 $p_N=\bm p\cdot\bm n$，切向 $\bm p_T=\bm p-p_N\bm n$。}
+
+\qt{子题：常密度流场 $P=\begin{pmatrix}-3xy&5y^2&0\\5y^2&0&2z\\0&2z&0\end{pmatrix}$，满足 $\nabla\cdot P=-\rho\bm f$，求单位质量力。}
+\chain{$(\nabla\cdot P)_i=\partial p_{ix}/\partial x+\partial p_{iy}/\partial y+\partial p_{iz}/\partial z$。算得 $\nabla\cdot P=(7y,0,2)$，故 $\bm f=-(7y,0,2)/\rho$。}
+
+\qt{子题：极坐标速度场 $V_\theta=ar,V_r=0$，求闭合路径速度环量。}
+\chain{$\Gamma=\oint\bm V\cdot\dd\bm l$。圆弧段 $\dd\bm l=r\dd\theta\bm e_\theta$，贡献 $\int ar\cdot r\dd\theta$；径向段 $\dd\bm l=\dd r\bm e_r$，与 $V_\theta$ 垂直，贡献 0。按图中圆弧方向和角度相加。}
+
+\qt{子题：速度场判断不可压/无旋/流函数/势函数。}
+\chain{给 $u,v,w$ 先算散度和旋度。不可压：$\nabla\cdot\bm V=0$；无旋：$\nabla\times\bm V=0$。二维不可压可设 $u=\psi_y,\ v=-\psi_x$；无旋可设 $u=\phi_x,\ v=\phi_y$。}
+\warn{不可压不等于无旋；有流函数不等于有势函数。平面不可压保证可写流函数，平面无旋保证可写势函数。}
+
+\qt{子题：速度梯度、变形率、旋转率，给线性速度场求运动学量。}
+\ans{速度梯度 $L_{ij}=\partial v_i/\partial x_j$。变形率张量 $D=(L+L^T)/2$，旋转张量 $W=(L-L^T)/2$。涡量 $\bm\Omega=\nabla\times\bm V$，刚体角速度为 $\bm\Omega/2$。若题问线元伸长率，用 $\dot\varepsilon_{\bm n}=\bm n\cdot D\bm n$。}
+
+\qt{子题：为什么应力张量常取对称，有什么用。}
+\ans{普通连续介质若无体偶力，由微元角动量守恒可得剪应力互等，即 $p_{ij}=p_{ji}$，所以应力张量对称。用途：独立未知量从 9 个减为 6 个；任意斜面应力可直接用 $\bm p_{\bm n}=P\bm n$，再分解法向和切向。}
+\warn{若涉及极性流体/微结构体偶力，可能不对称；本课程常规流体默认对称。}
+
+\qt{子题：应力矢量分解标准流程。}
+\chain{给应力张量 $P$ 和单位法向 $\bm n$：先 $\bm p_{\bm n}=P\bm n$；法向标量 $p_N=\bm p_{\bm n}\cdot\bm n$；法向矢量 $\bm p_N=p_N\bm n$；切向矢量 $\bm p_T=\bm p_{\bm n}-\bm p_N$；夹角 $\cos\alpha=p_N/|\bm p_{\bm n}|$。}
+
+
+\mt{母题9 量纲分析、相似准则、模型实验}
+\qt{真题：利用 $\pi$ 定理推求水下航行器阻力 $F$ 的表达式。}
+\chain{列变量：$F,\rho,\mu,V,L$，若有自由面加 $g$，若可压加声速 $a$。无自由面不可压粘性外绕流：$F=f(\rho,\mu,V,L)$，基本量纲 $M,L,T$，变量 5 个，基本量纲 3 个，得 2 个 $\pi$。}
+\res{取 $\rho,V,L$ 重复变量：$\Pi_1=F/(\rho V^2L^2)$，$\Pi_2=\rho VL/\mu=Re$。故 $F=\rho V^2L^2\,\Phi(Re)$，或 $C_D=F/(\frac12\rho V^2A)=\Phi(Re)$。}
+
+\qt{子题：为什么 Re 准则和 Fr 准则总是矛盾？}
+\ans{若同一流体、同一重力场，几何比 $C_L\ne1$。Re 相似要求 $V_mL_m/\nu_m=V_pL_p/\nu_p$；Fr 相似要求 $V_m/\sqrt{gL_m}=V_p/\sqrt{gL_p}$。同一流体且 $g$ 相同，则 Re 要 $C_V=1/C_L$，Fr 要 $C_V=\sqrt{C_L}$，除 $C_L=1$ 外不能同时满足。}
+
+\qt{子题：管内压降 $\Delta p$ 与 $d,l,\varepsilon,U,\rho,\mu$ 有关，用 $\pi$ 定理求无量纲方程。}
+\chain{变量 7 个，基本量纲 3 个，得 4 个 $\pi$。取 $\rho,U,d$ 为重复变量。}
+\res{$\Delta p/(\rho U^2)=\Phi(l/d,\varepsilon/d,\rho Ud/\mu)$。也可写 $\Delta p/(\rho U^2)=\Phi(l/d,\varepsilon/d,Re)$。}
+
+\qt{子题：小球阻力 $D$ 受 $u,\rho,\mu,d$ 影响，推 $C_D=f(Re)$。}
+\chain{取 $\rho,u,d$ 为重复变量。$\Pi_1=D/(\rho u^2d^2)$，$\Pi_2=\rho ud/\mu=Re$。}
+\res{$D/(\rho u^2d^2)=\Phi(Re)$。按迎风面积定义则 $C_D=D/(\frac12\rho u^2A)=f(Re)$。}
+
+\qt{子题：Re 准则和 Fr 准则是否矛盾，模型试验怎么取舍。}
+\chain{先写物理意义：$Re=\rho VL/\mu$ 表示惯性/黏性，$Fr=V/\sqrt{gL}$ 表示惯性/重力。若同一流体缩尺 $L_m/L_p=C_L$，两者同时相等通常要求不同速度比。}
+\res{$Fr$ 相似给 $V_m/V_p=\sqrt{L_m/L_p}$；$Re$ 相似给 $V_m/V_p=L_p/L_m$。除 $C_L=1$ 外不能同时满足，所以按主导力选：自由液面/船舶/明渠优先 $Fr$；管内黏性/边界层优先 $Re$。}
+
+\qt{子题：Buckingham $\pi$ 定理，题目要求推出无量纲关系。}
+\chain{1 列变量并写量纲；2 统计变量数 $n$ 和基本量纲数 $r$；3 得 $\pi$ 数 $n-r$；4 选重复变量，必须覆盖基本量纲且彼此独立；5 令 $\pi=X\rho^aV^bL^c$ 解指数；6 写 $\Pi_1=\Phi(\Pi_2,\cdots)$。}
+\warn{重复变量不能包含目标量；不能选量纲相同或缺少基本量纲的重复变量组。}
+
+\qt{子题：水击，给管内流速变化 $\Delta V$ 和波速 $a$，求压升。}
+\chain{第一眼：快速关阀、压力波、水击。用 Joukowsky 公式。}
+\form{$\Delta p=\rho a\Delta V$；若题问水头升高，$\Delta H=\Delta p/(\rho g)=a\Delta V/g$。波速受液体体积弹性、管壁弹性、管径壁厚约束影响。}
+\warn{慢关阀不能直接全用最大水击公式；题若给关阀时间与管长，需要比较 $t_c$ 和 $2L/a$。}
+
+\qt{子题：水面波/明渠扰动，给水深、波长或流速，判断深水/浅水/扰动传播。}
+\ans{深水波：$h>\lambda/2$ 或 $kh>\pi$，底床影响小，$c=\sqrt{g\lambda/(2\pi)}$。浅水波：$h<\lambda/20$，$c=\sqrt{gh}$。明渠用 $Fr=V/\sqrt{gL}$：$Fr<1$ 缓流，扰动可传上游；$Fr>1$ 急流，扰动不能传上游。}
+
+
+\mt{母题10 概念证明、非定常 Bernoulli、流线迹线}
+\qt{真题：简述流线和迹线定义。}
+\ans{流线：某一瞬时在流场中作出的一族曲线，其上任一点切线方向与该瞬时该点速度方向一致。迹线：某一流体质点在一段时间内运动所经过的轨迹。定常流动中流线、迹线、脉线重合；非定常一般不重合。}
+
+\qt{子题：从无粘、质量力有势、不可压欧拉方程推非定常伯努利和柯西--拉格朗日积分。}
+\chain{Euler：$\partial\bm V/\partial t+\nabla(V^2/2)-\bm V\times\bm\Omega=-\nabla(p/\rho+\Pi)$。沿线积分。若沿流线或 $\bm\Omega=0$ 使 $(\bm V\times\bm\Omega)\cdot\dd\bm l=0$，得非定常沿线 Bernoulli。若全场无旋 $\bm V=\nabla\varphi$，则 $\partial\bm V/\partial t=\nabla(\partial\varphi/\partial t)$，任意两点积分得 $\partial\varphi/\partial t+V^2/2+p/\rho+\Pi=f(t)$。}
+\warn{定常时 $\partial/\partial t=0$；无旋时可任意两点；有旋时通常只能沿流线。}
+
+\qt{子题：证明可压缩平面定常流动存在流函数。}
+\chain{连续方程：$\partial(\rho u)/\partial x+\partial(\rho v)/\partial y=0$。定义 $\partial\Psi/\partial y=\rho u$，$\partial\Psi/\partial x=-\rho v$。}
+\res{代入后 $\partial(\rho u)/\partial x+\partial(\rho v)/\partial y=\partial^2\Psi/\partial x\partial y-\partial^2\Psi/\partial y\partial x=0$，故定义自动满足连续方程。}
+
+\qt{子题：连续介质假设和守恒方程如何形成流体力学方程。}
+\ans{连续介质假设把真实分子离散系统平均成空间连续场量 $\rho,\bm V,p,T$。确定物质系统后写质量、动量、动量矩、能量守恒；用雷诺输运定理转成控制体或空间微分形式；再加本构关系和状态方程；最后给初始条件、边界条件确定具体解。}
+
+\qt{子题：Bernoulli 方程适用条件和禁用场景。}
+\ans{标准 Bernoulli 适用：定常、不可压、无粘、沿同一流线，且无泵/水轮机/显著损失。若全场无旋，可任意两点用。跨泵、水轮机、阀门、弯头长管、激波时必须加机械能项、损失项或分段处理。}
+
+\qt{子题：N-S 方程各项物理意义，简答题怎么写。}
+\ans{N-S 方程是牛顿流体的动量守恒微分式：非定常项表示当地加速度，对流项表示随流运动的速度变化，压力梯度项是压强力，黏性项表示分子黏性扩散动量，体力项常为重力。解题时先按流动特征删项，再加边界条件。}
+
+\qt{子题：层流、湍流、边界层的概念短答。}
+\ans{层流：流体质点分层有序运动，扰动不易扩散，圆管常以 $Re<2300$ 判定。湍流：速度、压力有脉动，强混合，速度剖面更丰满。边界层：高 $Re$ 外流近壁薄层内黏性不可忽略，速度从壁面无滑移 0 过渡到外流速度；逆压梯度可导致分离。}
+
+\qt{子题：证明题保底写法。}
+\chain{先写假设：定常/不可压/无旋/无粘/二维。再写控制方程：连续、Euler、N-S、Laplace 或动量积分。然后写边界条件。最后把目标式代回验证。}
+\warn{证明题不要只写结论；至少写“由什么方程，在什么条件下，得到什么式子”。这通常能拿过程分。}
+
+
+\end{multicols}
+\end{document}

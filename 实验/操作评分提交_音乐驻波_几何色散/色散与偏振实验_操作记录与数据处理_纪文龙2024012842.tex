@@ -1,0 +1,227 @@
+\documentclass[UTF8,12pt,a4paper]{ctexart}
+
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{hyperref}
+
+\geometry{left=2.35cm,right=2.35cm,top=2.35cm,bottom=2.35cm}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.12em}
+\linespread{1.15}
+\hypersetup{hidelinks}
+\renewcommand{\arraystretch}{1.18}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{色散与偏振实验}
+\rhead{物理实验B}
+\cfoot{\thepage}
+\setlength{\headheight}{14.5pt}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\begin{document}
+
+\begin{center}
+    {\zihao{2}\bfseries 色散与偏振实验操作记录与数据处理}
+\end{center}
+
+\vspace{0.4em}
+
+\begin{center}
+\small
+\begin{tabularx}{0.82\textwidth}{@{}>{\bfseries}rY>{\bfseries}rY@{}}
+姓名：& 纪文龙 & 学号：& 2024012842 \\
+班级：& 行健烽火 4 & 课程：& 物理实验B \\
+\end{tabularx}
+\end{center}
+
+\section{实验内容}
+
+本次实验包括五个部分：用最小偏向角法测三棱镜折射率、用布儒斯特角法测折射率并观察偏振、观察玻璃球和亚克力棒中的虹和霓、用光谱仪观察光源谱线、观察特斯拉线圈放电和无线点亮现象。课堂上主要完成了仪器调节、现象观察、关键角度读数和部分数据处理。
+
+\begin{table}[H]
+\centering
+\caption{实验内容整理}
+\small
+\begin{tabularx}{0.96\textwidth}{p{0.20\textwidth}Y}
+\toprule
+实验部分 & 课堂记录 \\
+\midrule
+最小偏向角法 & 搭建氦灯、狭缝、凸透镜、三棱镜转台和望远镜光路，观察氦光谱，并记录紫色、黄色两条谱线的入射和出射方位。 \\
+布儒斯特角法 & 用绿光激光照射三棱镜光学面，先确定法线方位，再调节入射角和偏振片方位，寻找反射光最暗位置。 \\
+虹和霓观察 & 用玻璃球和亚克力棒观察虹、霓及其偏振特性，比较一次反射和二次反射形成的现象差别。 \\
+光谱仪实验 & 打开光谱仪软件，调节选区、曝光和校准峰，观察不同光源的谱线分布。 \\
+特斯拉线圈 & 观察电弧放电、无线点亮灯泡/放电管以及播放音乐现象，注意保持安全距离。 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{操作过程记录}
+
+\subsection{最小偏向角法}
+
+实验开始时先按“氦灯—狭缝—凸透镜—三棱镜转台—望远镜”的顺序摆放仪器。粗调时主要保证各元件大致等高共轴，然后调节凸透镜与狭缝的距离，使望远镜中能看到清晰的狭缝像。狭缝不能调得太窄，否则谱线虽然细，但亮度不够，后面读数会比较困难。
+
+放入三棱镜后，先在出射侧用肉眼寻找彩色谱线，再把望远镜转到谱线附近。测量时缓慢转动三棱镜转台，观察谱线在望远镜视场中的移动方向。当谱线即将反向运动时，认为接近最小偏向角位置。此时锁紧转台，再转动望远镜使分划板竖直线与目标谱线重合，读取出射方位角 \(\varphi\)。最后取下三棱镜，使望远镜直接对准狭缝像，读取入射方位角 \(\varphi_0\)。
+
+\subsection{布儒斯特角法}
+
+布儒斯特角实验先用绿光激光照射三棱镜光学面，调到反射光与入射方向重合，由此确定法线方位。之后把偏振片放在激光器和三棱镜之间，转动转台并同时微调偏振片方位，在白屏上寻找反射光最暗的位置。这里的“最暗”并不是完全没有光，而是反射光亮度明显降低的位置，所以需要反复微调才能比较稳定地读数。
+
+\subsection{虹、霓、光谱仪和特斯拉线圈}
+
+虹和霓部分主要是观察现象。玻璃球中一次反射形成主虹，二次反射形成副虹，副虹亮度更弱，颜色顺序也与主虹相反。转动偏振片时可以看到亮度变化，说明虹和霓具有偏振特性。
+
+光谱仪实验中，先连接电脑并打开软件，再调节光源位置，使光尽量进入光谱仪通光孔。软件中需要手动调曝光，避免主峰过曝；校准时要选准已知谱线，否则后面的波长读数会整体偏移。特斯拉线圈部分主要观察高频高压放电、气体电离发光和电弧发声现象，操作时需要远离手机、手环、示波器和信号发生器。
+
+\section{原始数据}
+
+\subsection{最小偏向角法}
+
+等边三棱镜顶角取 \(A=60^\circ\)。课堂记录的角度如下。
+
+\begin{table}[H]
+\centering
+\caption{最小偏向角法原始读数}
+\small
+\begin{tabular}{ccccc}
+\toprule
+谱线 & 波长/nm & 出射方位 \(\varphi\) & 入射方位 \(\varphi_0\) & \(\delta=\varphi-\varphi_0\) \\
+\midrule
+紫色 & 447.1 & \(295.4^\circ\) & \(242.0^\circ\) & \(53.4^\circ\) \\
+黄色 & 587.6 & \(258.8^\circ\) & \(205.5^\circ\) & \(53.3^\circ\) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{布儒斯特角法}
+
+\begin{table}[H]
+\centering
+\caption{布儒斯特角法原始读数}
+\small
+\begin{tabular}{ccccc}
+\toprule
+光源 & 法线方位 & 最暗位置方位 & \(\theta_B\) & \(n=\tan\theta_B\) \\
+\midrule
+绿光激光 & \(58.6^\circ\) & \(116.0^\circ\) & \(57.4^\circ\) & 1.564 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{数据处理}
+
+\subsection{最小偏向角法计算折射率}
+
+最小偏向角条件下，三棱镜折射率为
+\[
+    n=\frac{\sin[(A+\delta)/2]}{\sin(A/2)} .
+\]
+
+紫色谱线：
+\[
+ n_{\text{紫}}=
+ \frac{\sin[(60^\circ+53.4^\circ)/2]}{\sin30^\circ}
+ =\frac{\sin56.70^\circ}{0.5}
+ \approx 1.672 .
+\]
+
+黄色谱线：
+\[
+ n_{\text{黄}}=
+ \frac{\sin[(60^\circ+53.3^\circ)/2]}{\sin30^\circ}
+ =\frac{\sin56.65^\circ}{0.5}
+ \approx 1.671 .
+\]
+
+\begin{table}[H]
+\centering
+\caption{最小偏向角法计算结果}
+\small
+\begin{tabular}{cccc}
+\toprule
+谱线 & 波长/nm & 折射率 \(n\) & 备注 \\
+\midrule
+紫色 & 447.1 & 1.672 & 波长较短，折射率略大 \\
+黄色 & 587.6 & 1.671 & 用于不确定度估算 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{黄色谱线的不确定度估算}
+
+角度估读精度取 \(0.1^\circ\)。由于
+\[
+    \delta=\varphi-\varphi_0,
+\]
+若两次读数误差相互独立，则
+\[
+    \Delta\delta=\sqrt{(0.1^\circ)^2+(0.1^\circ)^2}
+    =0.141^\circ
+    =0.00246\ \text{rad}.
+\]
+
+由折射率公式可得
+\[
+    \frac{\partial n}{\partial \delta}
+    =\frac{\cos[(A+\delta)/2]}{2\sin(A/2)} .
+\]
+代入黄色谱线 \(\delta=53.3^\circ\)，有
+\[
+    \Delta n
+    \approx
+    \frac{\cos56.65^\circ}{2\sin30^\circ}\Delta\delta
+    \approx 0.5497\times0.00246
+    \approx 0.001 .
+\]
+所以黄色谱线的结果为
+\[
+    n_{\text{黄}}=1.671\pm0.001 .
+\]
+
+\subsection{布儒斯特角法计算折射率}
+
+由原始读数可得
+\[
+    \theta_B=116.0^\circ-58.6^\circ=57.4^\circ .
+\]
+根据布儒斯特定律，
+\[
+    n=\tan\theta_B=\tan57.4^\circ\approx1.564 .
+\]
+
+\section{结果分析}
+
+最小偏向角法得到 \(n_{\text{紫}}=1.672\)，\(n_{\text{黄}}=1.671\pm0.001\)。紫色谱线的折射率略大于黄色谱线，符合正常色散中短波长光折射率更大的规律。不过两条谱线的折射率差值约为 0.001，和估算的不确定度同量级，因此这组数据更适合说明色散趋势，而不适合把两者差值看作很精确的定量结果。
+
+布儒斯特角法得到的折射率为 1.564，和最小偏向角法的结果有差别。主要原因可能是两种方法实际测量条件不同：布儒斯特角法依赖反射光“最暗”位置的目视判断，偏振片角度、屏幕位置和棱镜表面状态都会影响读数；最小偏向角法则主要受光路调节和角度读数影响。因此两种结果可以互相验证折射率的量级和偏振规律，但精度不能简单等同。
+
+光谱仪实验中，曝光和校准对结果影响比较明显。若曝光过强，峰顶会变平，峰位不容易判断；若校准峰选错，后续谱线波长会整体偏移。特斯拉线圈部分虽然不以数值测量为主，但能直观看到高频高压放电、电磁感应点亮和气体电离发光等现象。
+
+\section{注意事项}
+
+\begin{enumerate}[label=\arabic*.,leftmargin=2.2em]
+    \item 调整光路时先粗调等高共轴，再细调狭缝、凸透镜和望远镜焦距。
+    \item 寻找最小偏向角时要缓慢转动转台，锁紧转台后再读数。
+    \item 激光实验中不能直视激光束，也不能让镜面反射光扫过他人视线。
+    \item 氦放电管有高压端，不能触碰电极；光学元件只接触边缘，不触碰镜面。
+    \item 光谱仪需要手动调曝光，校准峰要选准。
+    \item 特斯拉线圈工作时应远离电子设备，观察后及时关闭并保持通风。
+\end{enumerate}
+
+\section{课后小结}
+
+这次实验中，最小偏向角法对光路调节要求比较高。如果望远镜中狭缝像不清楚，或者三棱镜放置方向不合适，后面很难稳定找到谱线。寻找最小偏向角时，我觉得最关键的是观察谱线反向运动的临界位置，不能一边快速转台一边急着读数。
+
+布儒斯特角法的难点在于“最暗位置”的判断。实验中反射光不会完全消失，所以需要在转台角度和偏振片方位之间来回调整。这个过程让我更直观地理解了 P 偏振光在布儒斯特角附近反射最弱的含义。
+
+整体来看，这个实验不是单一的数据测量，而是把几何光学、偏振、光谱测量和高压放电几个内容放在一起。课堂操作中既要能把现象调出来，也要知道数据从哪里来、公式怎么用、误差主要来自哪些环节。
+
+\end{document}

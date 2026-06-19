@@ -1,0 +1,575 @@
+% !TEX program = xelatex
+\documentclass[11pt,a4paper]{ctexart}
+
+\usepackage[top=18mm,bottom=20mm,left=18mm,right=18mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+
+\setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+\setCJKsansfont{SimHei}
+\setCJKmonofont{FangSong}
+
+\usetikzlibrary{arrows.meta,calc,positioning,decorations.pathreplacing}
+
+\definecolor{theme}{RGB}{25,76,135}
+\definecolor{softblue}{RGB}{243,247,255}
+\definecolor{softgreen}{RGB}{239,249,242}
+\definecolor{softred}{RGB}{255,243,243}
+\definecolor{softgold}{RGB}{255,249,234}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=theme,
+  urlcolor=theme
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 2020 期中卷计算题批改}
+\fancyhead[R]{\small 大学物理 A2}
+\fancyfoot[C]{\thepage}
+
+\setlength{\parindent}{2em}
+\setlist[itemize]{leftmargin=1.8em,itemsep=2pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=2pt,topsep=3pt}
+\linespread{1.2}
+
+\newcommand{\key}[1]{\textcolor{theme}{\textbf{#1}}}
+\newcommand{\warn}[1]{\textcolor{red!70!black}{\textbf{#1}}}
+
+\tcbset{
+  enhanced,
+  boxrule=0.8pt,
+  arc=1.3mm,
+  left=1.5mm,
+  right=1.5mm,
+  top=1.2mm,
+  bottom=1.2mm
+}
+
+\newtcolorbox{summarybox}[1]{
+  breakable,
+  colback=softblue,
+  colframe=theme!70!black,
+  title={#1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{goodbox}[1]{
+  breakable,
+  colback=softgreen,
+  colframe=green!45!black,
+  title={#1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{warnbox}[1]{
+  breakable,
+  colback=softred,
+  colframe=red!65!black,
+  title={#1},
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{stepbox}[1]{
+  breakable,
+  colback=white,
+  colframe=theme!65!black,
+  colbacktitle=softgold,
+  coltitle=black,
+  title={#1},
+  fonttitle=\bfseries
+}
+
+\begin{document}
+
+\begin{center}
+{\zihao{2}\bfseries 2020 年秋大学物理 A2 期中卷\\[4pt]
+计算题批改与标准解}\\[8pt]
+{\large 面向你这次口述思路的定制版批改讲义}
+\end{center}
+
+\vspace{4mm}
+
+\begin{summarybox}{这份 PDF 是干什么的}
+这份材料不是单纯抄标准答案，而是把你刚才口头讲过的解题思路，按下面三层重新整理：
+\begin{enumerate}
+  \item \key{你哪里已经想对了}，避免你把本来会的东西也怀疑掉。
+  \item \key{标准解法该怎么落到卷面上}，补齐你卡住的那半步。
+  \item \key{如果按你当前写法上考场，大概能拿多少分}，让你知道最值得补的是哪两题。
+\end{enumerate}
+阅读顺序建议是：先看第 1 节总评，再重点看第 2 节第 1 题和第 5 题，这两题是你当前最不稳、但提分最值钱的部分。
+\end{summarybox}
+
+\section*{1. 总评}
+
+\begin{goodbox}{先说结论}
+你这 5 道计算题里，\key{第 2 题}和\key{第 4 题}的骨架已经比较稳，\key{第 3 题}属于半会半不会，真正明显薄弱的是：
+\begin{itemize}
+  \item \key{第 1 题：反射波方程与节点条件}
+  \item \key{第 5 题：最小功与熵平衡}
+\end{itemize}
+也就是说，你不是“什么都不会”，而是会在中间断掉：知道物理意思，却没有把卷面上的方程封闭到最后。
+\end{goodbox}
+
+\begin{summarybox}{粗略估分}
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{1.0cm} >{\raggedright\arraybackslash}p{5.8cm} >{\centering\arraybackslash}p{2.4cm} X}
+\toprule
+题号 & 题目类型 & 估分 & 主要失分点 \\
+\midrule
+1 & 一维横波入射、反射、静止点 & 3/10 & 反射波没写稳，节点条件没落地 \\
+2 & 速率分布函数 & 7--8/10 & 方法对，但积分结果没有完整收口 \\
+3 & 热循环、做功、内能、效率 & 6--8/12 & 过程分析有了，但 $Q_{\rm in}$ 与效率没完全关上 \\
+4 & 小孔漏气、压强衰减 & 8/10 & 最终结果几乎会了，中间微分方程没讲顺 \\
+5 & 两物体间作功、最小外界功 & 2--3/7 & 知道和熵有关，但不会把最小功翻成可逆极限 \\
+\bottomrule
+\end{tabularx}
+
+\vspace{2mm}
+总计大概落在 \key{26 到 30 / 49}。如果把第 1 题和第 5 题补起来，计算题可以明显再上一个台阶。
+\end{summarybox}
+
+\section*{2. 分题批改与标准解}
+
+\subsection*{第 1 题：一维横波入射到疏密介质界面}
+
+\begin{goodbox}{你已经想对的部分}
+\begin{itemize}
+  \item 你知道这是\key{沿 $+x$ 方向传播的入射波}。
+  \item 你知道 \(\omega = 2\pi \nu\)。
+  \item 你知道 \(k = 2\pi/\lambda\)，且 \(\lambda = u/\nu\)，所以 \(k = \omega/u\)。
+\end{itemize}
+这些都是对的，说明你不是不会波函数，只是\key{后半段反射波卡住了}。
+\end{goodbox}
+
+\begin{warnbox}{你当前思路的主要问题}
+\begin{itemize}
+  \item 没有利用题图把 \key{初相} 定下来。
+  \item 没有把“波从疏到密介质反射会出现\key{半波损失}”这件事真正用到方程里。
+  \item “保持静止的点”本质上就是\key{驻波节点}，你没有把这个条件写成方程。
+\end{itemize}
+\end{warnbox}
+
+\begin{stepbox}{标准思路}
+题图可以理解为 \(t=0\) 时的波形快照。波源在 \(x=0\)，界面在
+\[
+x_b=\frac{3\lambda}{4}.
+\]
+波向 \(+x\) 传播，所以入射波可写为
+\[
+y_i = A\sin(kx-\omega t),
+\]
+其中
+\[
+\omega = 2\pi \nu,\qquad k=\frac{2\pi}{\lambda}=\frac{\omega}{u}.
+\]
+
+从\key{疏介质射向密介质}时，反射波发生半波损失，且反射后沿 \(-x\) 方向传播，因此反射波可写成
+\[
+y_r = A\sin(\omega t + kx - 3\pi),
+\]
+它与
+\[
+y_r=-A\sin(\omega t+kx)
+\]
+是等价写法。
+
+叠加后得到驻波
+\[
+y=y_i+y_r=-2A\cos(kx)\sin(\omega t).
+\]
+要使某点始终静止，必须有空间振幅因子为 0，即
+\[
+\cos(kx)=0.
+\]
+所以节点坐标满足
+\[
+kx=\frac{(2n+1)\pi}{2}
+\quad\Rightarrow\quad
+x=\frac{(2n+1)\lambda}{4}.
+\]
+\end{stepbox}
+
+\begin{summarybox}{考场版最简答案}
+\begin{enumerate}
+  \item 入射波：
+  \[
+  y_i=A\sin(kx-\omega t),\qquad \omega=2\pi\nu,\qquad k=\omega/u.
+  \]
+  \item 反射波：
+  \[
+  y_r=-A\sin(\omega t+kx).
+  \]
+  \item 稳定后：
+  \[
+  y=-2A\cos(kx)\sin(\omega t),
+  \]
+  因此静止点为
+  \[
+  x=\frac{(2n+1)\lambda}{4}.
+  \]
+\end{enumerate}
+\end{summarybox}
+
+\subsection*{第 2 题：速率分布函数}
+
+\begin{goodbox}{你已经想对的部分}
+你这题的方法基本是对的：
+\begin{itemize}
+  \item 先用归一化求常数 \(A\)。
+  \item 再用 \(\int v f(v)\,dv\) 求平均速率。
+  \item 第三问知道要做\key{条件平均}，也就是“该区间内总速度贡献 / 该区间内粒子比例”。
+\end{itemize}
+这题你的问题不是物理概念，而是\key{没有把积分算到结果为止}。
+\end{goodbox}
+
+\begin{stepbox}{标准思路}
+题目给出
+\[
+f(v)=
+\begin{cases}
+Av^2, & 0\le v\le v_m,\\
+0, & v>v_m.
+\end{cases}
+\]
+
+\paragraph{(1) 求常数 \(A\)}
+归一化条件：
+\[
+\int_0^{v_m} Av^2\,dv=1.
+\]
+所以
+\[
+A\cdot \frac{v_m^3}{3}=1
+\quad\Rightarrow\quad
+A=\frac{3}{v_m^3}.
+\]
+
+\paragraph{(2) 求平均速率}
+\[
+\bar v=\int_0^{v_m} v f(v)\,dv
+  =\int_0^{v_m} Av^3\,dv
+  =A\frac{v_m^4}{4}
+  =\frac{3v_m}{4}.
+\]
+
+\paragraph{(3) 求 \(v_m/2\sim v_m\) 区间内分子的平均速率}
+条件平均速率为
+\[
+\bar v_{\rm cond}
+=\frac{\int_{v_m/2}^{v_m} v f(v)\,dv}
+       {\int_{v_m/2}^{v_m} f(v)\,dv}.
+\]
+分子：
+\[
+\int_{v_m/2}^{v_m} Av^3\,dv
+=A\left[\frac{v^4}{4}\right]_{v_m/2}^{v_m}
+=A\frac{15v_m^4}{64}.
+\]
+分母：
+\[
+\int_{v_m/2}^{v_m} Av^2\,dv
+=A\left[\frac{v^3}{3}\right]_{v_m/2}^{v_m}
+=A\frac{7v_m^3}{24}.
+\]
+因此
+\[
+\bar v_{\rm cond}
+=\frac{15v_m^4/64}{7v_m^3/24}
+=\frac{45}{56}v_m.
+\]
+\end{stepbox}
+
+\begin{summarybox}{考场版最简答案}
+\[
+A=\frac{3}{v_m^3},\qquad
+\bar v=\frac{3v_m}{4},\qquad
+\bar v_{[v_m/2,v_m]}=\frac{45}{56}v_m.
+\]
+\end{summarybox}
+
+\subsection*{第 3 题：2 mol 水蒸气热循环}
+
+\begin{goodbox}{你已经想对的部分}
+\begin{itemize}
+  \item 你看出了 \(d\to a\) 是\key{等压压缩}，所以做负功。
+  \item 你知道 \(b\to c\) 是\key{等温过程}。
+  \item 你知道整个循环的净功来自 \key{$p$-$V$ 图围成的面积}。
+  \item 你知道效率最后一定是 \(\eta=W_{\rm cycle}/Q_{\rm in}\)。
+\end{itemize}
+这些已经说明你对循环题不陌生，只是还没把它真正“算闭合”。
+\end{goodbox}
+
+\begin{warnbox}{你当前思路的主要问题}
+\begin{itemize}
+  \item 没先用等温条件求出 \(c\) 点压强。
+  \item 内能公式里你知道要用 \(i=6\)，但中间常数有些口误，卷面上容易写乱。
+  \item 效率最关键的是 \key{找清楚吸热只发生在哪几段}，你这里没有最后收口。
+\end{itemize}
+\end{warnbox}
+
+\begin{stepbox}{标准思路}
+由图可读：
+\[
+a(25\text{L},2\text{atm}),\qquad
+b(25\text{L},6\text{atm}),\qquad
+d(50\text{L},2\text{atm}).
+\]
+且 \(b\to c\) 等温，所以
+\[
+p_bV_b=p_cV_c
+\quad\Rightarrow\quad
+6\times 25 = p_c\times 50,
+\]
+故
+\[
+p_c=3\text{atm},
+\]
+即
+\[
+c(50\text{L},3\text{atm}).
+\]
+
+水蒸气视为刚性多原子理想气体，取 \(i=6\)，故
+\[
+U=\frac{i}{2}\nu RT = 3\nu RT = 3pV.
+\]
+
+\paragraph{(1) \(d\to a\) 过程中水蒸气做的功}
+\[
+W_{da}=p(V_a-V_d)=2(25-50)=-50\,\text{L·atm}.
+\]
+约为
+\[
+W_{da}\approx -5.07\,\text{kJ}.
+\]
+
+\paragraph{(2) \(a\to b\) 过程气体内能变化}
+\[
+\Delta U_{ab}=3(p_bV_b-p_aV_a)=3(150-50)=300\,\text{L·atm}.
+\]
+约为
+\[
+\Delta U_{ab}\approx 30.4\,\text{kJ}.
+\]
+
+\paragraph{(3) 整个循环中水蒸气做的功}
+\[
+W_{ab}=0,\qquad W_{cd}=0.
+\]
+\[
+W_{bc}=p_bV_b\ln\frac{V_c}{V_b}=150\ln 2\,\text{L·atm}.
+\]
+所以
+\[
+W_{\rm cycle}=W_{ab}+W_{bc}+W_{cd}+W_{da}
+=150\ln2-50.
+\]
+数值约为
+\[
+W_{\rm cycle}\approx 53.97\,\text{L·atm}\approx 5.47\,\text{kJ}.
+\]
+
+\paragraph{(4) 循环效率}
+吸热发生在
+\[
+a\to b,\qquad b\to c.
+\]
+所以
+\[
+Q_{ab}=\Delta U_{ab}=300\,\text{L·atm},
+\]
+\[
+Q_{bc}=W_{bc}=150\ln2\,\text{L·atm},
+\]
+故
+\[
+Q_{\rm in}=300+150\ln2.
+\]
+于是
+\[
+\eta=\frac{W_{\rm cycle}}{Q_{\rm in}}
+=\frac{150\ln2-50}{300+150\ln2}
+\approx 13.3\%.
+\]
+\end{stepbox}
+
+\begin{summarybox}{这题最值得背的流程}
+\begin{enumerate}
+  \item 先用等温条件求 \(c\) 点。
+  \item 再用 \(U=3pV\) 算内能变化。
+  \item 再按每一段单独算功。
+  \item 最后只把吸热段加起来，再求效率。
+\end{enumerate}
+\end{summarybox}
+
+\subsection*{第 4 题：小孔漏气}
+
+\begin{goodbox}{你已经想对的部分}
+这题你几乎已经会到最后一步了：
+\begin{itemize}
+  \item 你记得结果里会有 \(\ln\)。
+  \item 你记得最后会长成 \(\frac{4V}{A\bar v}\ln(\cdots)\)。
+  \item 你也知道这题关键来自\key{碰壁率}。
+\end{itemize}
+\end{goodbox}
+
+\begin{stepbox}{标准思路}
+碰壁率公式：
+\[
+\Gamma=\frac14 n\bar v.
+\]
+所以单位时间漏掉的分子数为
+\[
+dN=-\Gamma A\,dt
+  =-\frac14 n\bar v A\,dt.
+\]
+又因为
+\[
+n=\frac{N}{V},
+\]
+所以
+\[
+dN=-\frac14\frac{N}{V}\bar v A\,dt
+\quad\Rightarrow\quad
+\frac{dN}{N}=-\frac{\bar v A}{4V}dt.
+\]
+
+由于漏气过程中 \(T\) 和 \(V\) 恒定，而
+\[
+p=\frac{NkT}{V},
+\]
+故
+\[
+p\propto N
+\quad\Rightarrow\quad
+\frac{dp}{p}=\frac{dN}{N}.
+\]
+于是
+\[
+\frac{dp}{p}=-\frac{\bar v A}{4V}dt.
+\]
+对初始压强 \(p_0\) 到末压强 \(p_0/3\) 积分：
+\[
+\int_{p_0}^{p_0/3}\frac{dp}{p}
+=
+-\int_0^t \frac{\bar v A}{4V}dt.
+\]
+得到
+\[
+\ln\frac{1}{3}=-\frac{\bar v A}{4V}t,
+\]
+所以
+\[
+t=\frac{4V}{A\bar v}\ln 3.
+\]
+\end{stepbox}
+
+\begin{summarybox}{考场版记忆模板}
+只要看到“理想气体、小孔漏气、温度恒定、外压远小于内压”，你几乎可以直接写：
+\[
+t=\frac{4V}{A\bar v}\ln\frac{p_{\text{初}}}{p_{\text{末}}}.
+\]
+本题末压强为 \(p_0/3\)，所以就是
+\[
+t=\frac{4V}{A\bar v}\ln 3.
+\]
+\end{summarybox}
+
+\subsection*{第 5 题：两个物体之间工作，求最小外界做功}
+
+\begin{goodbox}{你已经想对的部分}
+你最关键的一句其实已经说对了：这题\key{核心和熵有关}。  
+这一步一旦想到，就说明你没有跑偏。
+\end{goodbox}
+
+\begin{warnbox}{你当前思路的主要问题}
+你现在卡在：知道要看熵，却不知道“最小功”到底该翻译成什么数学条件。  
+标准翻译其实只有一句：
+\[
+\text{\key{最小外界做功}} \Longleftrightarrow \text{\key{整个过程取可逆极限}}
+\]
+一旦过程取可逆极限，总熵变就必须满足
+\[
+\Delta S_{\rm total}=0.
+\]
+\end{warnbox}
+
+\begin{stepbox}{标准思路}
+设两个物体初温都为 \(T_i\)。其中一个被降到 \(T_f\)，另一个最终升到 \(T_h\)。两物体定压热容均为 \(C_p\)。
+
+为使外界做功最小，过程必须可逆，因此
+\[
+\Delta S_{\rm total}=0.
+\]
+于是
+\[
+C_p\ln\frac{T_f}{T_i}+C_p\ln\frac{T_h}{T_i}=0.
+\]
+整理得
+\[
+\ln\frac{T_fT_h}{T_i^2}=0
+\quad\Rightarrow\quad
+T_h=\frac{T_i^2}{T_f}.
+\]
+
+冷物体放出的热量为
+\[
+Q_c=C_p(T_i-T_f).
+\]
+热物体吸收的热量为
+\[
+Q_h=C_p(T_h-T_i).
+\]
+外界所需做的最小功就是净输入能量：
+\[
+W_{\min}=Q_h-Q_c.
+\]
+代入 \(T_h=T_i^2/T_f\)：
+\[
+W_{\min}
+=C_p\left(\frac{T_i^2}{T_f}-T_i\right)-C_p(T_i-T_f).
+\]
+化简得
+\[
+W_{\min}
+=C_p\left(\frac{T_i^2}{T_f}-2T_i+T_f\right)
+=C_p\frac{(T_i-T_f)^2}{T_f}.
+\]
+\end{stepbox}
+
+\begin{summarybox}{这题一句话的灵魂}
+\[
+\text{\key{最小功}} \Rightarrow \text{\key{可逆}} \Rightarrow \Delta S_{\rm total}=0
+\]
+只要你把这句翻出来，后面基本就是代公式。
+\end{summarybox}
+
+\section*{3. 你最值得立刻补的两题}
+
+\begin{summarybox}{优先级}
+\begin{enumerate}
+  \item \key{第 1 题}：因为你前半段其实会，补上反射波和节点后，分数能从 3 分往上跳。
+  \item \key{第 5 题}：因为你现在几乎完全卡住，但它的逻辑骨架其实非常固定，补熟之后就是一类题都能通吃。
+\end{enumerate}
+\end{summarybox}
+
+\begin{goodbox}{最后给你的考场提醒}
+\begin{itemize}
+  \item 会说物理图像还不够，最后一定要\key{写出封闭方程}。
+  \item 循环效率题不要一上来就写 \(\eta\)，先找\key{哪几段吸热}。
+  \item 熵题看到“最小”“最大”这类极值词，第一反应就是：\key{可逆极限}。
+  \item 波动题看到界面反射，要先问自己一句：\key{有没有半波损失}。
+\end{itemize}
+\end{goodbox}
+
+\end{document}

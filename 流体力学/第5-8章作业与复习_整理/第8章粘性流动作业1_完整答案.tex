@@ -1,0 +1,627 @@
+\documentclass[12pt,a4paper]{ctexart}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\geometry{left=2.2cm,right=2.2cm,top=2.2cm,bottom=2.2cm}
+\setlist[enumerate]{itemsep=0.7em,topsep=0.5em}
+
+\newcommand{\Rey}{\mathrm{Re}}
+\newcommand{\dd}{\mathrm d}
+
+\title{第八章 粘性流动 作业-1：完整答案}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{1. 判断层流或湍流}
+
+圆管流动雷诺数为
+\[
+\Rey=\frac{Vd}{\nu}.
+\]
+
+\paragraph{(1)}
+\[
+\Rey=\frac{1\times0.2}{1\times10^{-6}}
+=2.0\times10^5.
+\]
+远大于临界值，故为湍流：
+\[
+\boxed{\text{湍流}}.
+\]
+
+\paragraph{(2)}
+\[
+\Rey=\frac{0.2\times0.15}{2\times10^{-5}}
+=1.5\times10^3.
+\]
+小于 \(2000\)，故为层流：
+\[
+\boxed{\text{层流}}.
+\]
+
+\section*{3. 书 8.4}
+
+已知
+\[
+d=75\mathrm{mm}=0.075\mathrm m,\quad
+Q=7\mathrm{L/s}=0.007\mathrm{m^3/s},\quad
+\rho=800\mathrm{kg/m^3},\quad
+\tau_w=48\mathrm{N/m^2}.
+\]
+
+平均速度
+\[
+\bar V=\frac{Q}{A}
+=\frac{Q}{\pi d^2/4}
+=\frac{0.007}{\pi(0.075)^2/4}
+\approx1.584\mathrm{m/s}.
+\]
+
+圆管层流中
+\[
+\tau_w=\mu\left|\frac{\dd u}{\dd r}\right|_{r=R}
+=\frac{8\mu \bar V}{d}.
+\]
+
+所以
+\[
+\mu=\frac{\tau_w d}{8\bar V}
+=\frac{48\times0.075}{8\times1.584}
+\approx0.284\mathrm{kg/(m\cdot s)}.
+\]
+
+验算雷诺数：
+\[
+\Rey=\frac{\rho \bar V d}{\mu}
+=\frac{800\times1.584\times0.075}{0.284}
+\approx335<2000,
+\]
+层流假设成立。
+
+\[
+\boxed{\mu\approx0.28\mathrm{kg/(m\cdot s)}}.
+\]
+
+\section*{4. 书 8.5}
+
+钢球半径
+\[
+a=\frac{1.5}{2}\mathrm{mm}=0.75\times10^{-3}\mathrm m.
+\]
+
+钢球等速下降速度
+\[
+U=\frac{0.500}{56}
+\approx8.93\times10^{-3}\mathrm{m/s}.
+\]
+
+油的密度
+\[
+\rho=0.95\times1000=950\mathrm{kg/m^3}.
+\]
+
+小球体积
+\[
+V_s=\frac43\pi a^3.
+\]
+
+小雷诺数下，阻力服从斯托克斯公式：
+\[
+D=6\pi\mu aU.
+\]
+
+等速下落时合力为零：
+\[
+mg-\rho gV_s=6\pi\mu aU.
+\]
+
+因此
+\[
+\mu=\frac{mg-\rho gV_s}{6\pi aU}.
+\]
+
+代入
+\[
+m=13.7\times10^{-6}\mathrm{kg},\quad
+a=0.75\times10^{-3}\mathrm m,\quad
+U=8.93\times10^{-3}\mathrm{m/s},
+\]
+得
+\[
+\mu\approx0.934\mathrm{kg/(m\cdot s)}.
+\]
+
+验算：
+\[
+\Rey=\frac{\rho Ud}{\mu}
+=\frac{950\times8.93\times10^{-3}\times1.5\times10^{-3}}{0.934}
+\approx0.014<1.
+\]
+故小雷诺数假设成立。
+
+\[
+\boxed{\mu\approx0.934\mathrm{kg/(m\cdot s)}}.
+\]
+
+\section*{5. 书 8.6}
+
+取 \(y=0\) 为下板，\(y=h_1\) 为两流体交界面，\(y=h_1+h_2\) 为上板。
+下层为流体 1，上层为流体 2。
+
+由于全场压强为常数，且不计质量力，动量方程化为
+\[
+\mu_i\frac{\dd^2u_i}{\dd y^2}=0.
+\]
+
+因此两层速度均为线性分布：
+\[
+u_1=A_1y+B_1,\qquad 0\le y\le h_1,
+\]
+\[
+u_2=A_2y+B_2,\qquad h_1\le y\le h_1+h_2.
+\]
+
+边界条件为
+\[
+u_1(0)=0,
+\]
+\[
+u_2(h_1+h_2)=U,
+\]
+\[
+u_1(h_1)=u_2(h_1),
+\]
+\[
+\mu_1\frac{\dd u_1}{\dd y}
+=
+\mu_2\frac{\dd u_2}{\dd y}.
+\]
+
+设两层剪应力相同，为
+\[
+\tau=\mu_1\frac{\dd u_1}{\dd y}
+=\mu_2\frac{\dd u_2}{\dd y}.
+\]
+
+总速度差为
+\[
+U=\frac{\tau h_1}{\mu_1}+\frac{\tau h_2}{\mu_2}.
+\]
+
+所以
+\[
+\tau=
+\frac{U}{h_1/\mu_1+h_2/\mu_2}
+=\frac{U\mu_1\mu_2}{\mu_2h_1+\mu_1h_2}.
+\]
+
+下层速度：
+\[
+u_1(y)=\frac{\tau}{\mu_1}y
+=
+\frac{U\mu_2 y}{\mu_2h_1+\mu_1h_2},
+\qquad 0\le y\le h_1.
+\]
+
+上层速度：
+\[
+u_2(y)=u_1(h_1)+\frac{\tau}{\mu_2}(y-h_1),
+\]
+即
+\[
+u_2(y)
+=
+\frac{U\left[\mu_2h_1+\mu_1(y-h_1)\right]}
+{\mu_2h_1+\mu_1h_2},
+\qquad h_1\le y\le h_1+h_2.
+\]
+
+剪应力分布为常数：
+\[
+\boxed{
+\tau_{xy}=
+\frac{U\mu_1\mu_2}{\mu_2h_1+\mu_1h_2}
+}.
+\]
+
+答案：
+\[
+\boxed{
+u_1(y)=
+\frac{U\mu_2 y}{\mu_2h_1+\mu_1h_2},
+\quad 0\le y\le h_1
+}
+\]
+\[
+\boxed{
+u_2(y)=
+\frac{U\left[\mu_2h_1+\mu_1(y-h_1)\right]}
+{\mu_2h_1+\mu_1h_2},
+\quad h_1\le y\le h_1+h_2
+}
+\]
+\[
+\boxed{
+\tau_{xy}=
+\frac{U\mu_1\mu_2}{\mu_2h_1+\mu_1h_2}
+}.
+\]
+
+\section*{6. 书 8.10}
+
+小球半径为 \(a\)，密度为 \(\rho_s\)，流体密度为 \(\rho\)，流体粘度为 \(\mu\)。
+
+小球重力：
+\[
+G=\frac43\pi a^3\rho_s g.
+\]
+
+浮力：
+\[
+B=\frac43\pi a^3\rho g.
+\]
+
+小雷诺数下，斯托克斯阻力为
+\[
+D=6\pi\mu aU.
+\]
+
+小球达到最终速度 \(U_t\) 时，受力平衡：
+\[
+G-B-D=0.
+\]
+
+即
+\[
+\frac43\pi a^3(\rho_s-\rho)g
+=6\pi\mu aU_t.
+\]
+
+解得
+\[
+U_t=
+\frac{\frac43\pi a^3(\rho_s-\rho)g}{6\pi\mu a}
+=
+\frac{2a^2(\rho_s-\rho)g}{9\mu}.
+\]
+
+故
+\[
+\boxed{
+U_t=\frac{2a^2(\rho_s-\rho)g}{9\mu}
+}.
+\]
+
+\section*{7. 管内层流：不同方向的压降和雷诺数}
+
+已知
+\[
+\rho=1.24\mathrm{kg/m^3},\quad
+\mu=0.001\mathrm{kg/(m\cdot s)},\quad
+D=0.08\mathrm m,\quad
+\tau_w=0.72\mathrm{N/m^2}.
+\]
+
+圆管层流中
+\[
+\tau_w=\frac{8\mu \bar V}{D}.
+\]
+
+所以
+\[
+\bar V=\frac{\tau_wD}{8\mu}
+=\frac{0.72\times0.08}{8\times0.001}
+=7.2\mathrm{m/s}.
+\]
+
+雷诺数
+\[
+\Rey=\frac{\rho \bar VD}{\mu}
+=\frac{1.24\times7.2\times0.08}{0.001}
+\approx714.
+\]
+
+故三种情况均为层流。
+
+管流中有
+\[
+\tau_w=\frac{D}{4}\left(-\frac{\dd p}{\dd x}+\rho g_x\right),
+\]
+所以
+\[
+\frac{\dd p}{\dd x}
+=\rho g_x-\frac{4\tau_w}{D}.
+\]
+
+其中
+\[
+\frac{4\tau_w}{D}
+=\frac{4\times0.72}{0.08}
+=36\mathrm{Pa/m}.
+\]
+
+\paragraph{(1) 水平管}
+\[
+g_x=0.
+\]
+\[
+\frac{\dd p}{\dd x}=-36\mathrm{Pa/m}.
+\]
+即沿程压降
+\[
+-\frac{\dd p}{\dd x}=36\mathrm{Pa/m}.
+\]
+
+\paragraph{(2) 向上垂直流动}
+取 \(x\) 沿流动向上，则
+\[
+g_x=-g.
+\]
+\[
+\frac{\dd p}{\dd x}
+=-\rho g-36
+=-1.24\times9.81-36
+\approx-48.2\mathrm{Pa/m}.
+\]
+即沿程压降
+\[
+-\frac{\dd p}{\dd x}\approx48.2\mathrm{Pa/m}.
+\]
+
+\paragraph{(3) 向下垂直流动}
+取 \(x\) 沿流动向下，则
+\[
+g_x=+g.
+\]
+\[
+\frac{\dd p}{\dd x}
+=\rho g-36
+=1.24\times9.81-36
+\approx-23.8\mathrm{Pa/m}.
+\]
+即沿程压降
+\[
+-\frac{\dd p}{\dd x}\approx23.8\mathrm{Pa/m}.
+\]
+
+答案汇总：
+\[
+\boxed{
+\Rey\approx714
+}
+\]
+\[
+\boxed{
+\begin{array}{c|c|c}
+\text{情况} & dp/dx\ (\mathrm{Pa/m}) & -dp/dx\ (\mathrm{Pa/m})\\
+\hline
+\text{水平} & -36.0 & 36.0\\
+\text{向上} & -48.2 & 48.2\\
+\text{向下} & -23.8 & 23.8
+\end{array}
+}
+\]
+
+\section*{8. 倾斜平板间流动}
+
+取 \(x\) 沿斜面向下，\(y\) 从下板指向上板。
+下板为
+\[
+y=0,\qquad u(0)=0.
+\]
+上板为
+\[
+y=H,\qquad u(H)=-U_0,
+\]
+因为上板向上拉动，与 \(x\) 正方向相反。
+
+沿流动方向无压力差，动量方程为
+\[
+\mu\frac{\dd^2u}{\dd y^2}+\rho g\sin\theta=0.
+\]
+
+令
+\[
+A=\frac{\rho g\sin\theta}{\mu}.
+\]
+则
+\[
+\frac{\dd^2u}{\dd y^2}=-A.
+\]
+
+积分得
+\[
+u=-\frac A2y^2+C_1y+C_2.
+\]
+
+由 \(u(0)=0\)，得 \(C_2=0\)。
+
+又已知
+\[
+u\left(\frac H2\right)=0.
+\]
+
+所以
+\[
+0=-\frac A2\left(\frac H2\right)^2+C_1\frac H2,
+\]
+得
+\[
+C_1=\frac{AH}{4}.
+\]
+
+因此
+\[
+u=-\frac A2y^2+\frac{AH}{4}y.
+\]
+
+代入上壁面条件
+\[
+u(H)=-U_0,
+\]
+得
+\[
+-U_0=-\frac A2H^2+\frac A4H^2=-\frac{AH^2}{4}.
+\]
+
+故
+\[
+U_0=\frac{AH^2}{4}
+=\frac{\rho g\sin\theta\,H^2}{4\mu}.
+\]
+
+代入
+\[
+\rho=1.25,\quad
+H=0.03\mathrm m,\quad
+\theta=15^\circ,\quad
+\mu=0.0001,
+\]
+得
+\[
+U_0=
+\frac{1.25\times9.81\times\sin15^\circ\times(0.03)^2}{4\times0.0001}
+\approx7.14\mathrm{m/s}.
+\]
+
+剪应力
+\[
+\tau=\mu\frac{\dd u}{\dd y}
+=\mu\left(-Ay+\frac{AH}{4}\right)
+=\rho g\sin\theta\left(\frac H4-y\right).
+\]
+
+下壁面：
+\[
+\tau_0=\rho g\sin\theta\frac H4.
+\]
+
+上壁面：
+\[
+\tau_H=\rho g\sin\theta\left(\frac H4-H\right)
+=-\frac{3\rho gH\sin\theta}{4}.
+\]
+
+故切应力大小为
+\[
+|\tau_0|
+=\frac{\rho gH\sin\theta}{4}
+\approx2.38\times10^{-2}\mathrm{Pa},
+\]
+\[
+|\tau_H|
+=\frac{3\rho gH\sin\theta}{4}
+\approx7.14\times10^{-2}\mathrm{Pa}.
+\]
+
+答案：
+\[
+\boxed{U_0\approx7.14\mathrm{m/s}}
+\]
+\[
+\boxed{|\tau_{\text{下壁}}|\approx2.38\times10^{-2}\mathrm{Pa}}
+\]
+\[
+\boxed{|\tau_{\text{上壁}}|\approx7.14\times10^{-2}\mathrm{Pa}}
+\]
+
+\section*{9. 证明静止物面上 \(\bm\Omega\cdot\bm n=0\)}
+
+在静止固体壁面上，粘性流体满足无滑移条件。
+取壁面局部坐标，使 \(x,y\) 为壁面切向坐标，\(z\) 为法向坐标。
+则壁面为 \(z=0\)，法向量为
+\[
+\bm n=\bm k.
+\]
+
+无滑移条件给出
+\[
+u(x,y,0)=0,\qquad v(x,y,0)=0,\qquad w(x,y,0)=0.
+\]
+
+涡量的法向分量为
+\[
+\bm\Omega\cdot\bm n
+=\Omega_z
+=\frac{\partial v}{\partial x}
+-\frac{\partial u}{\partial y}.
+\]
+
+因为在壁面上 \(u\) 和 \(v\) 沿整个壁面均为零，
+所以它们沿壁面切向的导数也为零：
+\[
+\left.\frac{\partial v}{\partial x}\right|_{z=0}=0,
+\qquad
+\left.\frac{\partial u}{\partial y}\right|_{z=0}=0.
+\]
+
+因此
+\[
+\left.\Omega_z\right|_{z=0}=0.
+\]
+
+即
+\[
+\boxed{
+\bm\Omega\cdot\bm n=0.
+}
+\]
+
+物理解释：静止壁面上任意贴壁小闭合曲线的速度环量为零，因此穿过该小面积的涡通量也为零。
+
+\section*{10. 证明 \(\nabla^2\psi=-\Omega\)}
+
+二维不可压流动中，引入流函数 \(\psi\)，取约定
+\[
+u=\frac{\partial\psi}{\partial y},
+\qquad
+v=-\frac{\partial\psi}{\partial x}.
+\]
+
+涡量只有 \(z\) 方向分量：
+\[
+\bm\Omega=\Omega(x,y)\bm k.
+\]
+
+其中
+\[
+\Omega=\frac{\partial v}{\partial x}
+-\frac{\partial u}{\partial y}.
+\]
+
+代入流函数表达式：
+\[
+\frac{\partial v}{\partial x}
+=\frac{\partial}{\partial x}
+\left(-\frac{\partial\psi}{\partial x}\right)
+=-\frac{\partial^2\psi}{\partial x^2},
+\]
+\[
+\frac{\partial u}{\partial y}
+=\frac{\partial}{\partial y}
+\left(\frac{\partial\psi}{\partial y}\right)
+=\frac{\partial^2\psi}{\partial y^2}.
+\]
+
+所以
+\[
+\Omega
+=-\frac{\partial^2\psi}{\partial x^2}
+-\frac{\partial^2\psi}{\partial y^2}
+=-\nabla^2\psi.
+\]
+
+因此
+\[
+\boxed{
+\nabla^2\psi=-\Omega.
+}
+\]
+
+\end{document}

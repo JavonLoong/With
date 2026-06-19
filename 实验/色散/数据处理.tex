@@ -1,0 +1,184 @@
+\documentclass[12pt,a4paper]{ctexart}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{色散实验——数据处理}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{实验数据}
+
+等边三棱镜顶角 $A = 60^\circ$。
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cccc}
+\toprule
+谱线 & 波长 (nm) & 出射角 $\varphi$ & 入射角 $\varphi_0$ \\
+\midrule
+紫色 & 447.1 & $295.4^\circ$ & $242.0^\circ$ \\
+黄色 & 587.6 & $258.8^\circ$ & $205.5^\circ$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{计算最小偏向角}
+
+\[
+\delta = \varphi - \varphi_0
+\]
+
+紫色：$\delta_{\text{紫}} = 295.4^\circ - 242.0^\circ = 53.4^\circ$
+
+黄色：$\delta_{\text{黄}} = 258.8^\circ - 205.5^\circ = 53.3^\circ$
+
+\section{计算折射率}
+
+折射率公式：
+\[
+n = \frac{\sin\dfrac{A + \delta}{2}}{\sin\dfrac{A}{2}}
+\]
+
+\subsection{紫色（$\delta = 53.4^\circ$）}
+
+\[
+n_{\text{紫}} = \frac{\sin\dfrac{60^\circ + 53.4^\circ}{2}}{\sin 30^\circ}
+= \frac{\sin 56.70^\circ}{0.5}
+= \frac{0.8358}{0.5}
+= \boxed{1.672}
+\]
+
+\subsection{黄色（$\delta = 53.3^\circ$）}
+
+\[
+n_{\text{黄}} = \frac{\sin\dfrac{60^\circ + 53.3^\circ}{2}}{\sin 30^\circ}
+= \frac{\sin 56.65^\circ}{0.5}
+= \frac{0.8353}{0.5}
+= \boxed{1.671}
+\]
+
+\section{不确定度计算（以黄色谱线为例）}
+
+\subsection{偏向角的不确定度}
+
+角度估读精度 $\Delta\varphi = 0.1^\circ$，则：
+
+\[
+\Delta\delta = \sqrt{(\Delta\varphi)^2 + (\Delta\varphi_0)^2}
+= \sqrt{0.1^2 + 0.1^2}
+= 0.1\sqrt{2}
+\approx 0.141^\circ
+\]
+
+转为弧度：
+\[
+\Delta\delta = 0.141^\circ \times \frac{\pi}{180} = 0.00246 \text{ rad}
+\]
+
+\subsection{折射率的不确定度}
+
+\[
+\frac{\partial n}{\partial \delta}
+= \frac{\cos\dfrac{A+\delta}{2}}{2\sin\dfrac{A}{2}}
+= \frac{\cos 56.65^\circ}{2 \times 0.5}
+= \frac{0.5497}{1}
+= 0.5497
+\]
+
+\[
+\Delta n = \left|\frac{\partial n}{\partial \delta}\right| \times \Delta\delta
+= 0.5497 \times 0.00246
+\approx \boxed{0.001}
+\]
+
+\subsection{最终结果}
+
+\[
+n_{\text{黄}} = 1.671 \pm 0.001
+\]
+
+不确定度 $\Delta n = 0.001$ 影响到小数点后第三位，因此 $n$ 保留四位有效数字。
+
+\section{布儒斯特角的测定（偏振光实验）}
+
+\subsection{测定原理}
+当入射光由空气斜射入介质时，调节入射角至某一特定角度 $\theta_B$（布儒斯特角），使反射光成为线偏振光且光强最弱（S光占主导，P光为零）。此时玻璃的折射率 $n$ 与布儒斯特角 $\theta_B$ 满足关系：
+\[
+n = \tan \theta_B
+\]
+
+\subsection{布儒斯特角计算}
+采用绿光半导体激光器进行照射，不断旋转转台以及偏振片，找到反射光斑最暗的位置。根据实验数据，入射面法向所在位置标度和布儒斯特角位置标度分别为 $58.6^\circ$ 和 $116.0^\circ$。
+转台转过的角度差即为实际的入射角（即布儒斯特角 $\theta_B$）：
+\[
+\theta_B = 116.0^\circ - 58.6^\circ = 57.4^\circ
+\]
+
+\subsection{折射率计算}
+即可计算出介质的折射率为：
+\[
+n = \tan \theta_B = \tan 57.4^\circ \approx 1.5637
+\]
+
+保留四位有效数字，得到偏振实验测定的折射率：
+\[
+n = \boxed{1.564}
+\]
+
+\section{结果汇总}
+
+\subsection{实验一：最小偏向角法测三棱镜折射率}
+
+\begin{table}[h]
+\centering
+\caption{最小偏向角法——原始数据与计算结果}
+\begin{tabular}{ccccccc}
+\toprule
+谱线 & 波长 & 出射角 $\varphi$ & 入射角 $\varphi_0$ & 最小偏向角 $\delta$ & 折射率 $n$ & 不确定度 $\Delta n$ \\
+     & (nm)  &                  &                    &                     &            &                      \\
+\midrule
+紫色 & 447.1 & $295.4^\circ$ & $242.0^\circ$ & $53.4^\circ$ & 1.672 & — \\
+黄色 & 587.6 & $258.8^\circ$ & $205.5^\circ$ & $53.3^\circ$ & 1.671 & $\pm 0.001$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{实验二：布儒斯特角法测三棱镜折射率}
+
+\begin{table}[h]
+\centering
+\caption{布儒斯特角法——原始数据与计算结果}
+\begin{tabular}{cccccc}
+\toprule
+光源 & 法线方位 & 布儒斯特角方位 & 布儒斯特角 $\theta_B$ & 折射率 $n = \tan\theta_B$ \\
+\midrule
+绿光激光 & $58.6^\circ$ & $116.0^\circ$ & $57.4^\circ$ & 1.564 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{全部折射率汇总对比}
+
+\begin{table}[h]
+\centering
+\caption{不同方法测定折射率汇总}
+\begin{tabular}{cccc}
+\toprule
+测量方法 & 测量对象 & 折射率 $n$ & 备注 \\
+\midrule
+最小偏向角法 & 紫色谱线 (447.1\,nm) & 1.672 & 重火石玻璃棱镜 \\
+最小偏向角法 & 黄色谱线 (587.6\,nm) & $1.671 \pm 0.001$ & 重火石玻璃棱镜 \\
+布儒斯特角法 & 绿光激光            & 1.564 & 三棱镜光学面 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+最小偏向角法测得棱镜折射率约 1.67，属于重火石玻璃（ZF）。布儒斯特角法测得折射率 1.564，
+两种方法所测对象及测量精度不同，结果存在差异属于正常现象。
+
+\end{document}

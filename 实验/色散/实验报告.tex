@@ -1,0 +1,460 @@
+\documentclass[UTF8]{article}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath, amssymb}
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage[font=small]{caption}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{geometry}
+\geometry{a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+\usepackage{enumitem}
+\usepackage{float}
+
+% 页眉页脚
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{色散与偏振实验}
+\chead{}
+\rhead{物理实验B}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{14pt}
+
+\title{色散与偏振实验}
+\author{} % 填写你的姓名和学号
+\date{} % 填写实验日期
+
+\begin{document}
+
+\maketitle
+
+% ============================================================
+\section{实验目的}
+% ============================================================
+
+\begin{enumerate}
+    \item 了解光的色散现象，理解折射率随波长变化的规律。
+    \item 学习搭建分离式平台分光光谱仪，掌握\textbf{最小偏向角法}测定三棱镜折射率的原理与方法。
+    \item 学习利用\textbf{布儒斯特角法}测定介质折射率，理解偏振光的产生机制。
+    \item 观察玻璃球和亚克力棒中的\textbf{虹}与\textbf{霓}现象，验证其偏振特性。
+    \item 学习使用\textbf{光栅光谱仪}测量和分析不同光源的发射光谱。
+    \item 观察\textbf{特斯拉线圈}的放电现象，理解无线发光和电弧放电的原理。
+\end{enumerate}
+
+% ============================================================
+\section{实验原理}
+% ============================================================
+
+\subsection{光的色散}
+
+当白光通过三棱镜时，不同波长的光因折射率不同而发生不同程度的偏折，形成光谱，这一现象称为\textbf{色散}。对于绝大多数透明介质，折射率$n$随波长$\lambda$的减小而增大，即
+\[
+\frac{dn}{d\lambda} < 0
+\]
+这称为\textbf{正常色散}。柯西（Cauchy）色散公式可以近似描述这种关系：
+\[
+n(\lambda) = A + \frac{B}{\lambda^2} + \frac{C}{\lambda^4} + \cdots
+\]
+其中$A$、$B$、$C$为与材料相关的常数。
+
+介质的色散能力通常用\textbf{阿贝数}（Abbe number）来衡量：
+\[
+\nu = \frac{n_D - 1}{n_F - n_C}
+\]
+其中$n_D$、$n_F$、$n_C$分别为钠黄光（589.3\,nm）、氢蓝光（486.1\,nm）和氢红光（656.3\,nm）对应的折射率。阿贝数越小，色散越强。
+
+\subsection{最小偏向角法测折射率}
+
+\subsubsection{偏向角}
+
+光线通过三棱镜时，入射光和出射光之间的夹角称为\textbf{偏向角}~$\delta$。对于顶角为$A$的三棱镜，偏向角与入射角$\theta_1$、出射角$\theta_2$的关系为：
+\[
+\delta = \theta_1 + \theta_2 - A
+\]
+
+\subsubsection{最小偏向角条件}
+
+当入射角等于出射角（$\theta_1 = \theta_2$）时，光线在棱镜内对称传播，此时偏向角取得最小值$\delta_{\min}$。这意味着棱镜内部的光线平行于底面。
+
+在最小偏向角条件下，有：
+\[
+\theta_1 = \frac{A + \delta_{\min}}{2}, \qquad r = \frac{A}{2}
+\]
+其中$r$为棱镜内的折射角。由折射定律$n = \sin\theta_1 / \sin r$可得：
+\begin{equation}
+\boxed{n = \frac{\sin\dfrac{A + \delta_{\min}}{2}}{\sin\dfrac{A}{2}}}
+\label{eq:n-min-dev}
+\end{equation}
+
+对于等边三棱镜，$A = 60^\circ$，上式简化为：
+\[
+n = \frac{\sin\dfrac{60^\circ + \delta_{\min}}{2}}{\sin 30^\circ} = 2\sin\dfrac{60^\circ + \delta_{\min}}{2}
+\]
+
+\subsubsection{实验中寻找最小偏向角}
+
+实验中通过缓慢转动载有三棱镜的转台，观察望远镜中谱线的运动方向。当谱线即将反向运动的临界位置，即为该谱线对应的\textbf{最小偏向角位置}。此时锁定转台，精确读取出射方位角$\varphi$；取下三棱镜后，将望远镜对准直射狭缝光，读取入射方位角$\varphi_0$。偏向角为：
+\[
+\delta_{\min} = \varphi - \varphi_0
+\]
+
+\subsection{布儒斯特角与偏振}
+
+\subsubsection{布儒斯特定律}
+
+当自然光以特定角度$\theta_B$（布儒斯特角）入射到两种介质的界面时，反射光成为完全的\textbf{线偏振光}（仅含S分量），反射光与折射光互相垂直。此时折射率$n$与布儒斯特角$\theta_B$满足：
+\begin{equation}
+\boxed{n = \tan\theta_B}
+\label{eq:brewster}
+\end{equation}
+
+\subsubsection{物理解释}
+
+当入射角为布儒斯特角时，折射光的传播方向与反射光的传播方向恰好垂直（$\theta_B + \theta_r = 90^\circ$）。由于光是横波，折射光方向上振动的P分量恰好沿反射方向，无法激发反射波中的P分量，因此反射光中P分量为零，仅剩S分量。
+
+\subsubsection{实验测定方法}
+
+用半导体激光器照射三棱镜的光学平面，旋转偏振片使入射光成为P偏振光（振动方向在入射面内），然后旋转转台调节入射角，寻找反射光\textbf{最暗}的位置。该位置对应的入射角即为布儒斯特角。
+
+\subsection{虹与霓}
+
+\subsubsection{虹（主虹）}
+
+白光射入球形水滴（或实验中的玻璃球）后，经过\textbf{一次全内反射}从水滴折射出来。不同颜色的光因折射率不同而以不同角度出射，形成虹。虹的出射角约为$42^\circ$（对水），且\textbf{外侧为红色、内侧为紫色}。
+
+\subsubsection{霓（副虹）}
+
+光线在水滴内经过\textbf{两次全内反射}后出射形成霓。霓位于虹的外侧，颜色排列与虹\textbf{相反}（外紫内红），且亮度较虹更弱。虹和霓之间的暗带称为\textbf{亚历山大暗带}。
+
+\subsubsection{偏振特性}
+
+虹和霓的光具有偏振特性，其中\textbf{S偏振光（振动方向沿彩虹圆环切线）}占主导地位。可用偏振片旋转验证。
+
+\subsection{光栅光谱仪}
+
+光栅光谱仪利用\textbf{光栅衍射}原理分析光源的光谱成分。光栅的衍射方程为：
+\[
+d \sin\theta = m\lambda \qquad (m = 0, \pm 1, \pm 2, \ldots)
+\]
+其中$d$为光栅常数，$\theta$为衍射角，$m$为衍射级次。
+
+光谱仪的\textbf{分辨本领}$R$定义为：
+\[
+R = \frac{\lambda}{\Delta\lambda} = mN
+\]
+其中$N$为光栅总缝数。分辨本领越高，能分辨的波长差越小。
+
+\subsection{特斯拉线圈}
+
+特斯拉线圈（Tesla Coil）是一种谐振变压器，基本原理是利用LC振荡回路产生高频高压电场。主要由初级线圈、次级线圈和放电端三部分组成。初级线圈与电容构成LC谐振回路，通过电磁感应在次级线圈产生极高的电压（可达数十万伏），从而电离空气产生电弧放电。
+
+特斯拉线圈可以无线点亮灯泡和灯管，其机理分别为：LED灯泡通过电磁感应产生感应电流；气体放电管（节能灯管）因高频电场直接电离管内气体而发光；不同气体放电管因气体种类不同而呈现不同颜色。
+
+% ============================================================
+\section{实验仪器与设备}
+% ============================================================
+
+\subsection{色散实验}
+\begin{itemize}
+    \item 氦放电管（高压5$\sim$6\,kV，\textbf{严禁触碰电极}）
+    \item 等边三棱镜（顶角$A = 60^\circ$，重火石玻璃 ZF）
+    \item 可调狭缝、凸透镜（焦距$f = 20$\,cm）
+    \item 望远镜（带分划板十字丝）
+    \item 分离式转台（带角度刻度盘，估读精度$0.1^\circ$）
+\end{itemize}
+
+\subsection{偏振实验}
+\begin{itemize}
+    \item 半导体绿光激光器
+    \item 偏振片（$\times$2）
+    \item 玻璃球（大、小各一）
+    \item 亚克力棒（多种直径）
+    \item 白色大屏
+\end{itemize}
+
+\subsection{光谱仪实验}
+\begin{itemize}
+    \item 光栅光谱仪（USB接口）
+    \item 电脑及光谱分析软件（窗台小圃光谱仪软件）
+    \item 氦放电管、氢放电管、荧光灯等多种光源
+\end{itemize}
+
+\subsection{特斯拉线圈}
+\begin{itemize}
+    \item 特斯拉线圈装置
+    \item LED灯泡、节能灯管、8种气体放电管
+\end{itemize}
+
+% ============================================================
+\section{实验内容与步骤}
+% ============================================================
+
+\subsection{实验一：最小偏向角法测三棱镜折射率}
+
+\begin{enumerate}
+    \item \textbf{等高共轴粗调}：按照"氦灯$\to$狭缝$\to$凸透镜$\to$转台$\to$望远镜"顺序摆放各器件，目测调至等高。
+    \item \textbf{调焦}：氦灯靠近狭缝，调节凸透镜距狭缝约20\,cm，在望远镜中观察到清晰无视差的狭缝像。调整狭缝宽度适中，十字丝对准清晰。
+    \item \textbf{寻找光谱}：将三棱镜置于转台上（折射面朝向入射光），先用肉眼在出射侧搜索彩色光谱，再将望远镜对准该方向。
+    \item \textbf{测量最小偏向角}：缓慢转动转台使谱线偏向角减小，至谱线即将反向运动的临界位置即为最小偏向角。锁死转台，用望远镜分划板对准目标谱线，记录出射方位角$\varphi$。
+    \item \textbf{测入射方位角}：取下三棱镜，望远镜对准狭缝像，记录入射方位角$\varphi_0$。
+    \item 对紫色（447.1\,nm）和黄色（587.6\,nm）两条谱线分别测量。
+\end{enumerate}
+
+\subsection{实验二：布儒斯特角法测折射率}
+
+\begin{enumerate}
+    \item 三棱镜置于转台上，用激光器照射其光学平面，调节使反射光与入射光重合（确认法线方向），记录法线方位角。
+    \item 在激光器与转台之间放置偏振片，旋转偏振片使入射光为P偏振光。
+    \item 旋转转台改变入射角（预设$\theta_i \approx 57^\circ$），同时观察白屏上反射光斑亮度。
+    \item 反复微调入射角和偏振片方位，使反射光斑\textbf{最暗}，读取此时方位角。
+    \item 布儒斯特角$\theta_B$等于当前方位角与法线方位角之差。
+\end{enumerate}
+
+\subsection{实验三：虹与霓的观察}
+
+\begin{enumerate}
+    \item \textbf{白光观察}：将大/小玻璃球依次放在转台上，用手电筒照射，观察一次反射形成的虹和二次反射形成的霓。
+    \item \textbf{偏振验证}：用布儒斯特角实验中已校正的偏振片旋转观察，验证虹和霓中S光占主导。
+    \item \textbf{激光观察}：用激光器照射亚克力棒，观察幻日、虹和霓现象，测定出射角度。
+\end{enumerate}
+
+\subsection{实验四：光谱仪测量}
+
+\begin{enumerate}
+    \item 光谱仪通过USB连接电脑，启动光谱分析软件。
+    \item 将氦放电管对准光谱仪通光孔，调节高度和角度使信号最强。
+    \item 调节软件中的选区框高度和位置，手动设置曝光强度使主峰尖锐。
+    \item \textbf{波长校准}：使用氦光谱的447.1\,nm和706.6\,nm两个已知峰进行手动校准。
+    \item 记录其他各峰的波长值，与标准氦光谱对比。
+    \item 更换光源（氢管、荧光灯等），重复测量并记录光谱图。
+\end{enumerate}
+
+\subsection{实验五：特斯拉线圈观察}
+
+\begin{enumerate}
+    \item 了解特斯拉线圈的基本构造（LC振荡回路、升压线圈、放电端）。
+    \item 通电观察电弧放电现象。
+    \item 分别用特斯拉线圈无线点亮LED灯泡、节能灯管和8种不同气体的放电管，观察并比较发光颜色和亮度。
+    \item 利用特斯拉线圈播放音乐，分析电弧放电产生声音的物理机制。
+\end{enumerate}
+
+% ============================================================
+\section{数据处理与结果}
+% ============================================================
+
+\subsection{实验一：最小偏向角法}
+
+\subsubsection{实验数据}
+
+等边三棱镜顶角 $A = 60^\circ$。
+
+\begin{table}[H]
+\centering
+\caption{最小偏向角法——原始数据}
+\begin{tabular}{cccc}
+\toprule
+谱线 & 波长 (nm) & 出射角 $\varphi$ & 入射角 $\varphi_0$ \\
+\midrule
+紫色 & 447.1 & $295.4^\circ$ & $242.0^\circ$ \\
+黄色 & 587.6 & $258.8^\circ$ & $205.5^\circ$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{最小偏向角计算}
+
+\[
+\delta_{\min} = \varphi - \varphi_0
+\]
+
+紫色：$\delta_{\text{紫}} = 295.4^\circ - 242.0^\circ = 53.4^\circ$
+
+黄色：$\delta_{\text{黄}} = 258.8^\circ - 205.5^\circ = 53.3^\circ$
+
+\subsubsection{折射率计算}
+
+由式~(\ref{eq:n-min-dev})，代入$A = 60^\circ$：
+
+\paragraph{紫色谱线（$\delta = 53.4^\circ$）}
+
+\[
+n_{\text{紫}} = \frac{\sin\dfrac{60^\circ + 53.4^\circ}{2}}{\sin 30^\circ}
+= \frac{\sin 56.70^\circ}{0.5}
+= \frac{0.8358}{0.5}
+= \boxed{1.672}
+\]
+
+\paragraph{黄色谱线（$\delta = 53.3^\circ$）}
+
+\[
+n_{\text{黄}} = \frac{\sin\dfrac{60^\circ + 53.3^\circ}{2}}{\sin 30^\circ}
+= \frac{\sin 56.65^\circ}{0.5}
+= \frac{0.8353}{0.5}
+= \boxed{1.671}
+\]
+
+\subsubsection{不确定度计算（以黄色谱线为例）}
+
+\paragraph{偏向角的不确定度}
+
+角度估读精度 $\Delta\varphi = 0.1^\circ$，则：
+\[
+\Delta\delta = \sqrt{(\Delta\varphi)^2 + (\Delta\varphi_0)^2}
+= \sqrt{0.1^2 + 0.1^2}
+= 0.1\sqrt{2}
+\approx 0.141^\circ
+\]
+
+转为弧度：
+\[
+\Delta\delta = 0.141^\circ \times \frac{\pi}{180} = 0.00246 \text{ rad}
+\]
+
+\paragraph{折射率的不确定度}
+
+\[
+\frac{\partial n}{\partial \delta}
+= \frac{\cos\dfrac{A+\delta}{2}}{2\sin\dfrac{A}{2}}
+= \frac{\cos 56.65^\circ}{2 \times 0.5}
+= \frac{0.5497}{1}
+= 0.5497
+\]
+
+\[
+\Delta n = \left|\frac{\partial n}{\partial \delta}\right| \times \Delta\delta
+= 0.5497 \times 0.00246
+\approx \boxed{0.001}
+\]
+
+\paragraph{最终结果}
+
+\[
+n_{\text{黄}} = 1.671 \pm 0.001
+\]
+
+不确定度 $\Delta n = 0.001$ 影响到小数点后第三位，因此 $n$ 保留四位有效数字。
+
+\subsection{实验二：布儒斯特角法}
+
+\subsubsection{布儒斯特角测定}
+
+采用绿光半导体激光器照射三棱镜光学面。旋转转台和偏振片，找到反射光斑最暗的位置。实验数据如下：
+
+\begin{itemize}
+    \item 入射面法向所在位置标度：$58.6^\circ$
+    \item 布儒斯特角位置标度：$116.0^\circ$
+\end{itemize}
+
+布儒斯特角：
+\[
+\theta_B = 116.0^\circ - 58.6^\circ = 57.4^\circ
+\]
+
+\subsubsection{折射率计算}
+
+由式~(\ref{eq:brewster})：
+\[
+n = \tan \theta_B = \tan 57.4^\circ \approx \boxed{1.564}
+\]
+
+\subsection{结果汇总}
+
+\begin{table}[H]
+\centering
+\caption{最小偏向角法——计算结果汇总}
+\begin{tabular}{ccccccc}
+\toprule
+谱线 & 波长 & 出射角 $\varphi$ & 入射角 $\varphi_0$ & 最小偏向角 $\delta$ & 折射率 $n$ & 不确定度 $\Delta n$ \\
+     & (nm)  &                  &                    &                     &            &                      \\
+\midrule
+紫色 & 447.1 & $295.4^\circ$ & $242.0^\circ$ & $53.4^\circ$ & 1.672 & — \\
+黄色 & 587.6 & $258.8^\circ$ & $205.5^\circ$ & $53.3^\circ$ & 1.671 & $\pm 0.001$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{布儒斯特角法——计算结果}
+\begin{tabular}{ccccc}
+\toprule
+光源 & 法线方位 & 布儒斯特角方位 & 布儒斯特角 $\theta_B$ & 折射率 $n = \tan\theta_B$ \\
+\midrule
+绿光激光 & $58.6^\circ$ & $116.0^\circ$ & $57.4^\circ$ & 1.564 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{不同方法测定折射率汇总}
+\begin{tabular}{cccc}
+\toprule
+测量方法 & 测量对象 & 折射率 $n$ & 备注 \\
+\midrule
+最小偏向角法 & 紫色谱线 (447.1\,nm) & 1.672 & 重火石玻璃棱镜 \\
+最小偏向角法 & 黄色谱线 (587.6\,nm) & $1.671 \pm 0.001$ & 重火石玻璃棱镜 \\
+布儒斯特角法 & 绿光激光            & 1.564 & 三棱镜光学面 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================
+\section{分析与讨论}
+% ============================================================
+
+\subsection{两种方法测定折射率的比较}
+
+最小偏向角法测得的三棱镜折射率约为1.67，而布儒斯特角法测得的折射率为1.564，两者存在明显差异。这一差异可从以下几个方面解释：
+
+\begin{enumerate}
+    \item \textbf{测量对象不同}：最小偏向角法测定的是三棱镜棱镜体材料（重火石玻璃 ZF）的折射率，而布儒斯特角法测定的是三棱镜光学面的折射率。若光学面上有镀膜或表面处理层，则测定结果可能反映的是表面层的折射率，而非体材料的折射率。
+    
+    \item \textbf{色散效应}：最小偏向角法使用了氦灯的特征谱线（447.1\,nm和587.6\,nm），而布儒斯特角法使用绿光激光（约532\,nm）。由色散关系$n(\lambda)$，不同波长的折射率本身就不同。但即使考虑色散效应，紫色和黄色谱线的折射率差异仅为0.001，远不足以解释$1.67$与$1.56$之间约0.1的差距。
+    
+    \item \textbf{测量精度差异}：最小偏向角法利用了对称光路条件，系统误差较小，测量精度较高（不确定度$\Delta n \approx 0.001$）。布儒斯特角法依赖于目视判断反射光最暗位置，主观性较强，且布儒斯特角附近P分量反射率变化较为平缓，精确定位困难。
+    
+    \item \textbf{最可能的原因}：重火石玻璃（ZF系列）的折射率范围通常在1.6$\sim$1.8之间，最小偏向角法测得的$n \approx 1.67$与标准值吻合良好。布儒斯特角法测得的$n \approx 1.56$更接近冕牌玻璃（K系列）的折射率范围，暗示所测光学面可能并非棱镜体材料本身，或存在系统误差。
+\end{enumerate}
+
+\subsection{色散现象的验证}
+
+由实验数据可知，紫色谱线（447.1\,nm）对应的折射率$n_{\text{紫}} = 1.672$略大于黄色谱线（587.6\,nm）的$n_{\text{黄}} = 1.671$，验证了\textbf{正常色散}规律：短波长（高频率）的光在介质中折射率更大。
+
+然而，两条谱线的折射率差异$\Delta n = 0.001$恰好与不确定度的量级相当。若需更精确地研究色散关系，应选取更多条谱线（氦灯具有丰富的可见光谱线：紫色447.1\,nm、蓝绿色501.6\,nm、黄色587.6\,nm、橙红色667.8\,nm、红色706.5\,nm等），绘制$n$-$\lambda$曲线，拟合柯西色散方程。
+
+\subsection{虹和霓的偏振特性}
+
+实验中通过旋转偏振片观察虹和霓，验证了其光的偏振特性。虹和霓均以S偏振光为主导，偏振方向沿彩虹圆环的切线方向。这与菲涅尔反射公式的理论预测一致：在接近布儒斯特角的入射条件下，P分量的反射系数远小于S分量。
+
+\subsection{误差来源分析}
+
+\begin{enumerate}
+    \item \textbf{角度读数误差}：分度盘的最小刻度为$1^\circ$，估读至$0.1^\circ$，是折射率不确定度的主要来源。
+    \item \textbf{最小偏向角的确定误差}：谱线即将反向运动的临界位置不易精确判断，存在一定的主观误差。
+    \item \textbf{等高共轴调节}：若光路未严格等高共轴，测量的偏向角将偏离理想值。
+    \item \textbf{狭缝宽度}：狭缝过宽会导致谱线展宽，难以精确对准十字丝。
+    \item \textbf{三棱镜顶角}：假设$A = 60^\circ$精确成立，实际三棱镜加工可能存在微小偏差。
+\end{enumerate}
+
+\subsection{特斯拉线圈发声原理}
+
+特斯拉线圈产生的电弧放电会加热电弧通道中的空气，使其剧烈膨胀形成声波。通过调制驱动信号的频率，使电弧以音频频率脉动放电，便可产生对应频率的声波，实现"播放音乐"的效果。这本质上是将电能直接转化为声能的等离子体扬声器原理。
+
+% ============================================================
+\section{思考与总结}
+% ============================================================
+
+本实验通过多种方法研究了光与物质相互作用中的色散和偏振现象。最小偏向角法提供了一种高精度测量折射率的手段，其不确定度可达$\pm 0.001$量级；布儒斯特角法虽精度较低，但直观地展示了偏振光的产生机制。虹和霓的观察将几何光学和波动光学的概念有机结合，加深了对全内反射和色散的理解。光谱仪实验则将传统分光方法与现代光电检测技术进行了对比，展示了技术进步对实验物理的推动。
+
+% ============================================================
+% \section{参考文献}
+% ============================================================
+% 如需添加参考文献，可在此处补充
+
+\end{document}

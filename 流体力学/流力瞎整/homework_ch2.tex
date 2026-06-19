@@ -1,0 +1,468 @@
+\documentclass[12pt, a4paper]{ctexart}
+\usepackage{amsmath, amssymb, bm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage{titlesec}
+
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+% 题目框样式
+\newenvironment{problem}[1]{%
+  \vspace{6pt}
+  \noindent\textbf{\large 题~#1}\par\nopagebreak
+  \begin{leftbar}\noindent\itshape
+}{%
+  \end{leftbar}\vspace{2pt}
+}
+
+% 解答标记
+\newcommand{\solution}{\noindent\textbf{解：}\par\nopagebreak}
+
+% 结果框
+\newcommand{\result}[1]{\par\vspace{4pt}\noindent\fcolorbox{black}{gray!8}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{#1}}\vspace{4pt}}
+
+\title{\vspace{-1cm}\textbf{流体力学~~第二章~~习题解答}}
+\author{教材：流体力学（张兆顺~~第三版）}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+%========================================================================
+\begin{problem}{2.2}
+给定速度场 $u = x + y$，$v = x - y$，$w = 0$，且令 $t = 0$ 时 $x = a,\, y = b,\, z = c$，求质点空间分布。
+\end{problem}
+
+\solution
+
+质点的运动方程为：
+\[
+  \frac{\mathrm{d}x}{\mathrm{d}t} = x + y, \qquad
+  \frac{\mathrm{d}y}{\mathrm{d}t} = x - y, \qquad
+  \frac{\mathrm{d}z}{\mathrm{d}t} = 0
+\]
+
+由第三式直接得 $z = c$。
+
+对第一式求导，并代入第二式：
+\[
+  \frac{\mathrm{d}^2 x}{\mathrm{d}t^2}
+  = \frac{\mathrm{d}x}{\mathrm{d}t} + \frac{\mathrm{d}y}{\mathrm{d}t}
+  = (x + y) + (x - y) = 2x
+\]
+
+即
+\[
+  \frac{\mathrm{d}^2 x}{\mathrm{d}t^2} - 2x = 0
+\]
+
+特征方程 $r^2 - 2 = 0$，根为 $r = \pm\sqrt{2}$，通解为
+\[
+  x(t) = C_1\, e^{\sqrt{2}\,t} + C_2\, e^{-\sqrt{2}\,t}
+\]
+
+由 $y = \dfrac{\mathrm{d}x}{\mathrm{d}t} - x$ 得
+\[
+  y(t) = (\sqrt{2} - 1)\,C_1\, e^{\sqrt{2}\,t}
+       - (\sqrt{2} + 1)\,C_2\, e^{-\sqrt{2}\,t}
+\]
+
+代入初始条件 $t = 0$：$x(0) = a$，$y(0) = b$：
+\[
+  \begin{cases}
+    C_1 + C_2 = a \\[4pt]
+    (\sqrt{2} - 1)\,C_1 - (\sqrt{2} + 1)\,C_2 = b
+  \end{cases}
+\]
+
+解得
+\[
+  C_1 = \frac{(\sqrt{2}+1)\,a + b}{2\sqrt{2}}, \qquad
+  C_2 = \frac{(\sqrt{2}-1)\,a - b}{2\sqrt{2}}
+\]
+
+\result{%
+\[
+  x(t) = \frac{(\sqrt{2}+1)\,a + b}{2\sqrt{2}}\,e^{\sqrt{2}\,t}
+       + \frac{(\sqrt{2}-1)\,a - b}{2\sqrt{2}}\,e^{-\sqrt{2}\,t}
+\]
+\[
+  y(t) = \frac{(\sqrt{2}-1)\bigl[(\sqrt{2}+1)\,a + b\bigr]}{2\sqrt{2}}\,e^{\sqrt{2}\,t}
+       - \frac{(\sqrt{2}+1)\bigl[(\sqrt{2}-1)\,a - b\bigr]}{2\sqrt{2}}\,e^{-\sqrt{2}\,t}
+\]
+\[
+  z(t) = c
+\]
+}
+
+%========================================================================
+\begin{problem}{2.5}
+已知平面速度 $u = 1 + 2t$，$v = 3 + 4t$，求：
+\begin{enumerate}[label=(\arabic*)]
+  \item 流线方程；
+  \item $t = 0$ 时，经过 $(0,0)$、$(0,1)$、$(0,-1)$ 点的三条流线方程；
+  \item $t = 0$ 时，位置在 $(0,0)$ 点的流体质点的迹线方程。
+\end{enumerate}
+\end{problem}
+
+\solution
+
+\paragraph{(1) 流线方程}
+
+流线满足
+\[
+  \frac{\mathrm{d}x}{u} = \frac{\mathrm{d}y}{v}
+  \implies
+  \frac{\mathrm{d}x}{1+2t} = \frac{\mathrm{d}y}{3+4t}
+\]
+
+在固定时刻 $t$，$u,v$ 均为常数，积分得
+
+\result{$(3 + 4t)\,x - (1 + 2t)\,y = C$，\quad 流线为直线族。}
+
+\paragraph{(2) $t = 0$ 时的三条流线}
+
+$t = 0$ 时，流线方程化为 $3x - y = C$。
+\begin{itemize}
+  \item 过 $(0,0)$：$C = 0$，$y = 3x$
+  \item 过 $(0,1)$：$C = -1$，$y = 3x + 1$
+  \item 过 $(0,-1)$：$C = 1$，$y = 3x - 1$
+\end{itemize}
+
+\paragraph{(3) 迹线方程}
+
+质点运动方程：
+\[
+  \frac{\mathrm{d}x}{\mathrm{d}t} = 1 + 2t, \qquad
+  \frac{\mathrm{d}y}{\mathrm{d}t} = 3 + 4t
+\]
+
+积分（初始条件 $t = 0$，$x = 0$，$y = 0$）：
+
+\result{$x = t + t^2$，\quad $y = 3t + 2t^2$\quad（$t \geqslant 0$ 为参数）}
+
+%========================================================================
+\begin{problem}{2.6}
+给定速度场 $u = -ky$，$v = kx$，$w = w_0$，求通过 $x = a,\, y = b,\, z = c$ 点的流线，式中 $k,\, w_0$ 是常数。
+\end{problem}
+
+\solution
+
+流线方程
+\[
+  \frac{\mathrm{d}x}{-ky} = \frac{\mathrm{d}y}{kx} = \frac{\mathrm{d}z}{w_0}
+\]
+
+\textbf{第一步}：取前两项，$x\,\mathrm{d}x + y\,\mathrm{d}y = 0$，积分得
+\[
+  x^2 + y^2 = a^2 + b^2
+\]
+
+\textbf{第二步}：引入参数 $s$，令
+\[
+  \frac{\mathrm{d}x}{\mathrm{d}s} = -ky,\quad
+  \frac{\mathrm{d}y}{\mathrm{d}s} = kx,\quad
+  \frac{\mathrm{d}z}{\mathrm{d}s} = w_0
+\]
+
+第一式再对 $s$ 求导并代入第二式：$\dfrac{\mathrm{d}^2 x}{\mathrm{d}s^2} = -k^2 x$，解得
+\[
+  x = a\cos(ks) - b\sin(ks), \qquad
+  y = b\cos(ks) + a\sin(ks)
+\]
+
+由 $z = c + w_0 s$ 得 $s = \dfrac{z - c}{w_0}$，消去参数：
+
+\result{%
+\[
+  x = a\cos\!\frac{k(z-c)}{w_0} - b\sin\!\frac{k(z-c)}{w_0}
+\]
+\[
+  y = b\cos\!\frac{k(z-c)}{w_0} + a\sin\!\frac{k(z-c)}{w_0}
+\]
+\[
+  x^2 + y^2 = a^2 + b^2
+\]
+流线为\textbf{螺旋线}，在 $xy$ 平面的投影是以原点为圆心、$\sqrt{a^2+b^2}$ 为半径的圆。
+}
+
+%========================================================================
+\begin{problem}{2.12}
+若已知温度场 $T = \dfrac{A}{x^2+y^2+z^2}\,t^2$ 和速度分布 $u = xt$，$v = yt$，$w = zt$，现有一流体质点在该流场中运动，质点在 $t = 0$ 时的位置为 $x = a,\, y = b,\, z = c$，试求该流体质点的温度随时间的变化关系，式中 $A$ 为常数。
+\end{problem}
+
+\solution
+
+首先求流体质点的运动轨迹：
+\[
+  \frac{\mathrm{d}x}{\mathrm{d}t} = xt
+  \implies \frac{\mathrm{d}x}{x} = t\,\mathrm{d}t
+  \implies \ln x = \frac{t^2}{2} + \text{const.}
+\]
+
+代入初始条件 $t = 0,\, x = a$：
+\[
+  x = a\,e^{t^2/2}
+\]
+
+同理
+\[
+  y = b\,e^{t^2/2}, \qquad z = c\,e^{t^2/2}
+\]
+
+因此
+\[
+  x^2 + y^2 + z^2 = (a^2 + b^2 + c^2)\,e^{t^2}
+\]
+
+将质点轨迹代入温度场表达式：
+
+\result{%
+\[
+  T = \frac{A}{(a^2 + b^2 + c^2)\,e^{t^2}}\,t^2
+    = \frac{A\,t^2}{(a^2 + b^2 + c^2)\,e^{t^2}}
+\]
+}
+
+%========================================================================
+\begin{problem}{2.17}
+求出下述问题的变形速率分量、涡量和体积膨胀速率。并说明运动是否有旋？流体是否不可压缩？
+\begin{enumerate}[label=(\arabic*)]
+  \item 直角坐标系中：$u = U(h^2 - y^2)$，\;$v = w = 0$，\;$h,U$ 均为常量。
+  \item 柱坐标系中：$U_z = U\!\left[\dfrac{a^2\ln(r/b)-b^2\ln(r/a)}{\ln(a/b)}-r^2\right]$，\;$U_\theta = U_r = 0$，\;$U,a,b$ 均为常量。
+  \item 球坐标系中：$U_R = U_\infty\!\left[1-\!\left(\dfrac{a}{R}\right)^{\!3}\right]\cos\theta$，\;$U_\theta = -U_\infty\!\left[1+\dfrac{1}{2}\!\left(\dfrac{a}{R}\right)^{\!3}\right]\sin\theta$，\;$U_\phi=0$。
+\end{enumerate}
+\end{problem}
+
+\solution
+
+\subsection*{(1) 直角坐标系}
+
+\paragraph{线变形速率}
+\[
+  e_{xx} = \frac{\partial u}{\partial x} = 0, \qquad
+  e_{yy} = \frac{\partial v}{\partial y} = 0, \qquad
+  e_{zz} = \frac{\partial w}{\partial z} = 0
+\]
+
+\paragraph{角变形速率}
+\[
+  e_{xy} = \frac{1}{2}\!\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right)
+         = \frac{1}{2}(-2Uy) = -Uy, \qquad
+  e_{xz} = 0, \qquad e_{yz} = 0
+\]
+
+\paragraph{涡量}
+\[
+  \omega_x = 0, \qquad \omega_y = 0, \qquad
+  \omega_z = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} = 2Uy
+\]
+
+\result{%
+$\bm{\omega} = (0,\, 0,\, 2Uy)$，\;$\omega_z \neq 0$（$y\neq0$ 时），\textbf{有旋运动}。
+
+体膨胀速率 $\nabla\!\cdot\!\bm{U} = 0$，\textbf{不可压缩}。
+}
+
+\subsection*{(2) 柱坐标系}
+
+\paragraph{变形速率}
+\[
+  e_{rr} = 0, \quad e_{\theta\theta} = 0, \quad e_{zz} = 0, \quad
+  e_{r\theta} = 0, \quad e_{\theta z} = 0
+\]
+
+计算 $\dfrac{\partial U_z}{\partial r}$：
+\[
+  \frac{\partial U_z}{\partial r}
+  = U\!\left[\frac{a^2 - b^2}{r\ln(a/b)} - 2r\right]
+\]
+\[
+  e_{rz} = \frac{1}{2}\frac{\partial U_z}{\partial r}
+         = \frac{U}{2}\!\left[\frac{a^2 - b^2}{r\ln(a/b)} - 2r\right]
+\]
+
+\paragraph{涡量}
+\[
+  \omega_r = 0, \qquad
+  \omega_\theta = -\frac{\partial U_z}{\partial r}
+               = -U\!\left[\frac{a^2 - b^2}{r\ln(a/b)} - 2r\right], \qquad
+  \omega_z = 0
+\]
+
+\result{%
+一般 $\omega_\theta \neq 0$，\textbf{有旋运动}。
+体膨胀速率 $\nabla\!\cdot\!\bm{U} = 0$，\textbf{不可压缩}。
+}
+
+\subsection*{(3) 球坐标系}
+
+\paragraph{体膨胀速率}
+\[
+  \nabla\!\cdot\!\bm{U}
+  = \frac{1}{R^2}\frac{\partial(R^2 U_R)}{\partial R}
+  + \frac{1}{R\sin\theta}\frac{\partial(\sin\theta\, U_\theta)}{\partial\theta}
+  + \frac{1}{R\sin\theta}\frac{\partial U_\phi}{\partial\phi}
+\]
+
+计算第一项：
+\[
+  \frac{1}{R^2}\frac{\partial(R^2 U_R)}{\partial R}
+  = U_\infty\cos\theta\!\left(\frac{2}{R}+\frac{a^3}{R^4}\right)
+\]
+
+计算第二项：
+\[
+  \frac{1}{R\sin\theta}\frac{\partial(\sin\theta\, U_\theta)}{\partial\theta}
+  = -U_\infty\cos\theta\!\left(\frac{2}{R}+\frac{a^3}{R^4}\right)
+\]
+
+两项相加等于零。
+
+\paragraph{涡量}
+\[
+  \omega_\phi
+  = \frac{1}{R}\!\left[\frac{\partial(R\,U_\theta)}{\partial R}
+    - \frac{\partial U_R}{\partial\theta}\right]
+\]
+
+计算：
+\[
+  \frac{\partial(R\,U_\theta)}{\partial R}
+  = -U_\infty\sin\theta\!\left(1 - \frac{a^3}{R^3}\right), \qquad
+  \frac{\partial U_R}{\partial\theta}
+  = -U_\infty\!\left(1 - \frac{a^3}{R^3}\right)\sin\theta
+\]
+两者相消，$\omega_\phi = 0$。同理可验证 $\omega_R = 0$，$\omega_\theta = 0$。
+
+\result{%
+$\bm{\omega} = \bm{0}$，\textbf{无旋流动}。
+体膨胀速率 $\nabla\!\cdot\!\bm{U} = 0$，\textbf{不可压缩}。
+}
+
+%========================================================================
+\begin{problem}{2.19}
+给定速度场 $u = ax$，$v = ay$，$w = -2az$，式中 $a$ 为常数。求：
+\begin{enumerate}[label=(\arabic*)]
+  \item 线变形速率分量、角变形速率分量和体积膨胀速率；
+  \item 该流场是否是无旋流场？若无旋，写出它的速度势函数。
+\end{enumerate}
+\end{problem}
+
+\solution
+
+\paragraph{(1) 变形速率分量}
+
+\textbf{线变形速率}：
+\[
+  e_{xx} = a, \qquad e_{yy} = a, \qquad e_{zz} = -2a
+\]
+
+\textbf{角变形速率}：
+\[
+  e_{xy} = \frac{1}{2}\!\left(\frac{\partial u}{\partial y}+\frac{\partial v}{\partial x}\right) = 0, \qquad
+  e_{xz} = 0, \qquad e_{yz} = 0
+\]
+
+\textbf{体积膨胀速率}：
+\[
+  \nabla\!\cdot\!\bm{U} = a + a + (-2a) = 0
+\]
+
+\result{体膨胀速率为零，流体\textbf{不可压缩}。}
+
+\paragraph{(2) 无旋判断及速度势函数}
+
+\[
+  \omega_x = \frac{\partial w}{\partial y} - \frac{\partial v}{\partial z} = 0, \qquad
+  \omega_y = \frac{\partial u}{\partial z} - \frac{\partial w}{\partial x} = 0, \qquad
+  \omega_z = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} = 0
+\]
+
+$\bm{\omega} = \bm{0}$，为\textbf{无旋流场}。
+
+求速度势函数 $\phi$，使得 $\bm{U} = \nabla\phi$：
+\[
+  \frac{\partial\phi}{\partial x} = ax \implies \phi = \frac{a}{2}x^2 + f(y,z)
+\]
+\[
+  \frac{\partial\phi}{\partial y} = ay \implies \frac{\partial f}{\partial y} = ay
+  \implies f = \frac{a}{2}y^2 + g(z)
+\]
+\[
+  \frac{\partial\phi}{\partial z} = -2az \implies g'(z) = -2az
+  \implies g = -az^2 + C
+\]
+
+\result{%
+\[
+  \phi = \frac{a}{2}\,(x^2 + y^2) - a\,z^2 + C
+\]
+}
+
+%========================================================================
+\begin{problem}{2.21}
+已知速度场为 $u = y + 2z$，$v = z + 2x$，$w = x + 2y$，
+\begin{enumerate}[label=(\arabic*)]
+  \item 求涡量及涡线方程；
+  \item 求在 $x+y+z=1$ 平面上通过横截面积 $\mathrm{d}A = 0.0001\;\mathrm{m^2}$ 的涡管强度；
+  \item 求在 $z=0$ 平面上通过横截面积 $\mathrm{d}A = 0.0001\;\mathrm{m^2}$ 的涡通量。
+\end{enumerate}
+\end{problem}
+
+\solution
+
+\paragraph{(1) 涡量及涡线方程}
+
+\[
+  \omega_x = \frac{\partial w}{\partial y} - \frac{\partial v}{\partial z} = 2 - 1 = 1
+\]
+\[
+  \omega_y = \frac{\partial u}{\partial z} - \frac{\partial w}{\partial x} = 2 - 1 = 1
+\]
+\[
+  \omega_z = \frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} = 2 - 1 = 1
+\]
+
+\result{$\bm{\omega} = (1,\, 1,\, 1)$，涡量为常向量。}
+
+涡线方程：
+\[
+  \frac{\mathrm{d}x}{\omega_x} = \frac{\mathrm{d}y}{\omega_y} = \frac{\mathrm{d}z}{\omega_z}
+  \implies
+  \frac{\mathrm{d}x}{1} = \frac{\mathrm{d}y}{1} = \frac{\mathrm{d}z}{1}
+\]
+
+\result{$x - y = C_1$，\quad $y - z = C_2$，\quad 涡线为沿 $(1,1,1)$ 方向的平行直线族。}
+
+\paragraph{(2) 涡管强度}
+
+平面 $x+y+z=1$ 的单位法向量：
+\[
+  \bm{n} = \frac{1}{\sqrt{3}}\,(1,\, 1,\, 1)
+\]
+
+涡量在法向的分量：
+\[
+  \bm{\omega}\cdot\bm{n} = (1,1,1)\cdot\frac{1}{\sqrt{3}}(1,1,1) = \frac{3}{\sqrt{3}} = \sqrt{3}
+\]
+
+\result{%
+涡管强度 $I = \bm{\omega}\cdot\bm{n}\,\mathrm{d}A = \sqrt{3}\times 0.0001 \approx 1.732\times10^{-4}\;\mathrm{m^2/s}$
+}
+
+\paragraph{(3) $z = 0$ 平面上的涡通量}
+
+$z = 0$ 平面法向量 $\bm{n} = (0,\, 0,\, 1)$，
+\[
+  \bm{\omega}\cdot\bm{n} = 1
+\]
+
+\result{%
+涡通量 $\varPhi = \bm{\omega}\cdot\bm{n}\,\mathrm{d}A = 1\times 0.0001 = 1\times10^{-4}\;\mathrm{m^2/s}$
+}
+
+\end{document}

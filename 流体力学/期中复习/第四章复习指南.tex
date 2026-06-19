@@ -1,0 +1,696 @@
+% !TEX program = xelatex
+\documentclass[11pt,a4paper]{article}
+
+% --- 中文支持 ---
+\usepackage[UTF8,heading=true]{ctex}
+\setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+\setCJKsansfont{SimHei}
+\setCJKmonofont{FangSong}
+
+% --- 页面布局：窄边距，最大化画布 ---
+\usepackage[top=12mm,bottom=12mm,left=12mm,right=12mm]{geometry}
+\pagestyle{empty}
+
+% --- 颜色系统 ---
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
+\definecolor{primary}{HTML}{1565C0}
+\definecolor{primaryLight}{HTML}{42A5F5}
+\definecolor{primaryDark}{HTML}{0D47A1}
+\definecolor{accent}{HTML}{FF6F00}
+\definecolor{accentLight}{HTML}{FFA726}
+\definecolor{success}{HTML}{2E7D32}
+\definecolor{successLight}{HTML}{66BB6A}
+\definecolor{danger}{HTML}{C62828}
+\definecolor{dangerLight}{HTML}{EF5350}
+\definecolor{purple}{HTML}{6A1B9A}
+\definecolor{purpleLight}{HTML}{AB47BC}
+\definecolor{teal}{HTML}{00695C}
+\definecolor{tealLight}{HTML}{26A69A}
+\definecolor{bgPage}{HTML}{F5F7FA}
+\definecolor{bgCard}{HTML}{FFFFFF}
+\definecolor{gray80}{HTML}{424242}
+\definecolor{gray60}{HTML}{757575}
+\definecolor{gray40}{HTML}{BDBDBD}
+\definecolor{gray20}{HTML}{E0E0E0}
+\definecolor{ocean}{HTML}{0277BD}
+\definecolor{oceanLight}{HTML}{4FC3F7}
+\definecolor{amber}{HTML}{F57F17}
+
+% --- TikZ ---
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shadows.blur,calc,shapes.geometric,
+  fit,backgrounds,decorations.pathreplacing,patterns,fadings,trees}
+
+% --- 其他包 ---
+\usepackage{fontawesome5}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{anyfontsize}
+\usepackage{hyperref}
+\hypersetup{colorlinks=false}
+\usepackage{amsmath,amssymb}
+
+% ==========================================
+% 全局公用样式定义
+% ==========================================
+\tikzset{
+  card/.style={
+    rectangle, rounded corners=6pt, draw=gray20, line width=0.4pt, fill=bgCard,
+    inner sep=8pt, align=center,
+    blur shadow={shadow blur steps=6,shadow xshift=0.6pt,shadow yshift=-0.8pt,
+      shadow blur radius=2pt,shadow opacity=12}
+  },
+  card/.default=50mm,
+  iconCircle/.style={
+    circle, minimum size=14mm, fill=#1, text=white,
+    font=\Large, inner sep=0pt
+  },
+  iconCircle/.default=primary,
+  bigIconCircle/.style={
+    circle, minimum size=18mm, fill=#1, text=white,
+    font=\LARGE, inner sep=0pt
+  },
+  bigIconCircle/.default=primary,
+  phase/.style={
+    rectangle, rounded corners=4pt, minimum width=145mm, minimum height=16mm,
+    fill=#1, text=white, font=\sffamily\bfseries\normalsize,
+    inner xsep=10pt, align=left,
+    blur shadow={shadow blur steps=4,shadow xshift=0.4pt,shadow yshift=-0.6pt,
+      shadow blur radius=1.5pt,shadow opacity=10}
+  },
+  phase/.default=primary,
+  badge/.style={
+    rectangle, rounded corners=2pt, minimum height=6mm,
+    fill=#1, text=white, font=\sffamily\bfseries\tiny,
+    inner xsep=5pt, inner ysep=1pt
+  },
+  badge/.default=primary,
+  formulabox/.style={
+    rectangle, rounded corners=8pt, draw=#1, line width=1.2pt,
+    fill=#1!5, inner sep=10pt, align=center
+  },
+  formulabox/.default=primary,
+}
+
+\newcommand{\pagemark}[1]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south east,font=\sffamily\tiny\color{gray40}]
+      at ([xshift=-8mm,yshift=8mm]current page.south east) {#1};
+  \end{tikzpicture}%
+}
+
+\begin{document}
+
+% ============================================================
+%  PAGE 1: 封面
+% ============================================================
+\begin{tikzpicture}[remember picture, overlay]
+  % 渐变背景
+  \shade[left color=primaryDark,right color=ocean]
+    (current page.south west) rectangle (current page.north east);
+  % 装饰圆
+  \fill[white,opacity=0.04] ([xshift=5cm,yshift=-3cm]current page.north east) circle(10cm);
+  \fill[white,opacity=0.03] ([xshift=-6cm,yshift=2cm]current page.south west) circle(8cm);
+  \fill[white,opacity=0.02] ([xshift=2cm,yshift=5cm]current page.south west) circle(6cm);
+
+  % 顶部标签
+  \node[rectangle, rounded corners=3pt, fill=white!15, inner xsep=12pt, inner ysep=4pt,
+    font=\sffamily\small\color{white!90}]
+    at ([yshift=6cm]current page.center)
+    {\faBook\quad 流体力学 $\cdot$ 期中复习系列};
+
+  % 主标题
+  \node[text width=16cm,align=center] at ([yshift=2.5cm]current page.center) {
+    {\color{white}\sffamily\fontsize{42}{50}\selectfont\bfseries 第四章}\\[8pt]
+    {\color{white}\sffamily\fontsize{28}{36}\selectfont 雷诺输运公式与连续性方程}
+  };
+
+  % 分割线
+  \draw[white,opacity=0.4,line width=0.8pt]
+    ([xshift=-6cm,yshift=-0.3cm]current page.center)--([xshift=6cm,yshift=-0.3cm]current page.center);
+
+  % 副标题
+  \node[text width=14cm,align=center] at ([yshift=-1.5cm]current page.center) {
+    {\color{white!85}\sffamily\large 从系统到控制体的核心桥梁}\\[4pt]
+    {\color{white!70}\sffamily\small 考试分值预估：8{\raise.17ex\hbox{$\scriptstyle\sim$}}12分\quad|\quad 填空 + 判断 + 计算题}
+  };
+
+  % 底部三个核心关键词卡片
+  \node[rectangle,rounded corners=8pt,fill=white!12,
+    minimum width=42mm,minimum height=20mm,text=white,align=center] (k1)
+    at ([xshift=-5.2cm,yshift=-5cm]current page.center) {
+    {\sffamily\bfseries\large \faRandom\; 系统 vs 控制体}\\[-1pt]
+    {\sffamily\footnotesize 两种分析视角}
+  };
+  \node[rectangle,rounded corners=8pt,fill=white!12,
+    minimum width=42mm,minimum height=20mm,text=white,align=center] (k2)
+    at ([yshift=-5cm]current page.center) {
+    {\sffamily\bfseries\large \faSuperscript\; 雷诺输运方程}\\[-1pt]
+    {\sffamily\footnotesize 翻译工具}
+  };
+  \node[rectangle,rounded corners=8pt,fill=white!12,
+    minimum width=42mm,minimum height=20mm,text=white,align=center] (k3)
+    at ([xshift=5.2cm,yshift=-5cm]current page.center) {
+    {\sffamily\bfseries\large \faWater\; 连续性方程}\\[-1pt]
+    {\sffamily\footnotesize 质量守恒}
+  };
+
+  % 底部装饰
+  \node[font=\sffamily\tiny\color{white!40}]
+    at ([yshift=1.2cm]current page.south) {复习指南 v1.0};
+\end{tikzpicture}
+\pagemark{1/8}
+
+\clearpage
+% ============================================================
+%  PAGE 2: 系统 vs 控制体 概念对比
+% ============================================================
+\begin{tikzpicture}[remember picture, overlay]
+  % 浅灰背景
+  \fill[bgPage] (current page.south west) rectangle (current page.north east);
+
+  % 页眉
+  \fill[primary] (current page.north west) rectangle ([yshift=-2cm]current page.north east);
+  \node[anchor=west,font=\sffamily\LARGE\bfseries\color{white}]
+    at ([xshift=2cm,yshift=-1cm]current page.north west) {\faRandom\; 核心概念：系统 vs 控制体};
+
+  % ---- 左卡片：系统 ----
+  \node[card, minimum width=82mm, minimum height=105mm] (sysCard)
+    at ([xshift=-4.6cm,yshift=1.5cm]current page.center) {};
+
+  \node[iconCircle=primary] at ([yshift=35mm]sysCard.center) {\faUsers};
+  \node[font=\sffamily\bfseries\Large\color{primary}] at ([yshift=18mm]sysCard.center) {系统（体系）};
+  \node[font=\sffamily\normalsize\color{gray80},text width=70mm,align=center]
+    at ([yshift=5mm]sysCard.center) {始终由\textbf{同一批流体质点}组成的集合};
+
+  \node[rectangle, rounded corners=4pt, fill=primary!8, draw=primary!30,
+    text width=68mm, align=left, inner sep=6pt, font=\sffamily\small\color{gray80}]
+    at ([yshift=-18mm]sysCard.center) {%
+    \faCheck\; 质量始终不变\\[2pt]
+    \faCheck\; 边界随流体运动变形\\[2pt]
+    \faCheck\; 拉格朗日视角（盯人防守）\\[2pt]
+    \faCheck\; 物理定律的天然对象
+  };
+
+  % ---- 右卡片：控制体 ----
+  \node[card, minimum width=82mm, minimum height=105mm] (cvCard)
+    at ([xshift=4.6cm,yshift=1.5cm]current page.center) {};
+
+  \node[iconCircle=accent] at ([yshift=35mm]cvCard.center) {\faCube};
+  \node[font=\sffamily\bfseries\Large\color{accent}] at ([yshift=18mm]cvCard.center) {控制体（CV）};
+  \node[font=\sffamily\normalsize\color{gray80},text width=70mm,align=center]
+    at ([yshift=5mm]cvCard.center) {流场中\textbf{某个确定的空间区域}};
+
+  \node[rectangle, rounded corners=4pt, fill=accent!8, draw=accent!30,
+    text width=68mm, align=left, inner sep=6pt, font=\sffamily\small\color{gray80}]
+    at ([yshift=-18mm]cvCard.center) {%
+    \faCheck\; 空间位置/形状通常固定\\[2pt]
+    \faCheck\; 流体可穿越边界进出\\[2pt]
+    \faCheck\; 欧拉视角（守株待兔）\\[2pt]
+    \faCheck\; 工程分析的常用视角
+  };
+
+  % 中间连接箭头
+  \node[font=\sffamily\bfseries\huge\color{gray40}] at ([yshift=1.5cm]current page.center) {\faArrowsAltH};
+
+  % ---- 底部：真题高频考点 ----
+  \node[rectangle, rounded corners=6pt, fill=danger!8, draw=danger!40,
+    line width=0.8pt, minimum width=170mm, minimum height=35mm,
+    align=left, inner sep=10pt] (examBox)
+    at ([yshift=-5.8cm]current page.center) {};
+
+  \node[anchor=north west, font=\sffamily\bfseries\normalsize\color{danger}]
+    at ([xshift=5pt,yshift=-3pt]examBox.north west)
+    {\faExclamationTriangle\; 真题高频考点};
+
+  \node[anchor=north west, font=\sffamily\small\color{gray80}, text width=155mm]
+    at ([xshift=5pt,yshift=-18pt]examBox.north west) {%
+    \textbf{填空}："控制体定义为什么？" $\longrightarrow$ \textbf{流场中某个确定的空间区域}\\[3pt]
+    \textbf{判断}："系统的表面通常会不断的变形" $\longrightarrow$ \textbf{对}（系统跟踪同一批质点，流体运动时表面自然变形）
+  };
+\end{tikzpicture}
+\pagemark{2/8}
+
+\clearpage
+% ============================================================
+%  PAGE 3: 雷诺输运方程（RTT）
+% ============================================================
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[bgPage] (current page.south west) rectangle (current page.north east);
+
+  % 页眉
+  \fill[ocean] (current page.north west) rectangle ([yshift=-2cm]current page.north east);
+  \node[anchor=west,font=\sffamily\LARGE\bfseries\color{white}]
+    at ([xshift=2cm,yshift=-1cm]current page.north west)
+    {\faSuperscript\; 雷诺输运方程 (Reynolds Transport Theorem)};
+
+  % 核心思想
+  \node[rectangle, rounded corners=6pt, fill=ocean!10, draw=ocean!40,
+    line width=0.8pt, minimum width=170mm, minimum height=18mm,
+    font=\sffamily\normalsize\color{gray80}, text width=160mm, align=center, inner sep=6pt]
+    at ([yshift=5.5cm]current page.center) {%
+    力学定律是针对\textbf{系统}建立的，但我们用\textbf{控制体}分析流动\\[2pt]
+    \textbf{雷诺输运方程}就是那个``\textbf{翻译工具}''——把系统视角 $\rightarrow$ 控制体视角
+  };
+
+  % 中心公式框
+  \node[formulabox=primaryDark, minimum width=170mm, minimum height=32mm] (rttBox)
+    at ([yshift=1.2cm]current page.center) {%
+    {\color{primaryDark}\sffamily\bfseries\large 雷诺输运方程}\\[6pt]
+    $\displaystyle \frac{DB_{\text{sys}}}{Dt} = \frac{\partial}{\partial t}\int_{CV} \rho\, b \; dV + \oint_{CS} \rho\, b \;(\vec{v} \cdot \vec{n}) \; dA$
+  };
+
+  % 三项含义 —— 三个卡片
+  \node[card, minimum width=52mm, minimum height=50mm] (t1)
+    at ([xshift=-5.5cm,yshift=-4cm]current page.center) {};
+  \node[badge=primaryDark] at ([yshift=16mm]t1.center) {左端};
+  \node[font=\sffamily\small\color{gray80}, text width=44mm, align=center]
+    at ([yshift=2mm]t1.center) {$\displaystyle\frac{DB_{\text{sys}}}{Dt}$};
+  \node[font=\sffamily\footnotesize\color{gray60}, text width=44mm, align=center]
+    at ([yshift=-12mm]t1.center) {\textbf{系统}中物理量$B$\\的随体变化率};
+
+  \node[card, minimum width=52mm, minimum height=50mm] (t2)
+    at ([yshift=-4cm]current page.center) {};
+  \node[badge=primary] at ([yshift=16mm]t2.center) {右端第一项};
+  \node[font=\sffamily\small\color{gray80}, text width=44mm, align=center]
+    at ([yshift=2mm]t2.center) {$\displaystyle\frac{\partial}{\partial t}\!\int_{CV}\!\rho b\,dV$};
+  \node[font=\sffamily\footnotesize\color{gray60}, text width=44mm, align=center]
+    at ([yshift=-12mm]t2.center) {控制体内$B$的\\当地变化率（储存量）};
+
+  \node[card, minimum width=52mm, minimum height=50mm] (t3)
+    at ([xshift=5.5cm,yshift=-4cm]current page.center) {};
+  \node[badge=accent] at ([yshift=16mm]t3.center) {右端第二项};
+  \node[font=\sffamily\small\color{gray80}, text width=44mm, align=center]
+    at ([yshift=2mm]t3.center) {$\displaystyle\oint_{CS}\!\rho b(\vec{v}\!\cdot\!\vec{n})\,dA$};
+  \node[font=\sffamily\footnotesize\color{gray60}, text width=44mm, align=center]
+    at ([yshift=-12mm]t3.center) {$B$通过控制面的\\净通量（流出$-$流入）};
+
+  % 箭头连接
+  \draw[-{Stealth[length=5pt]},ocean,line width=1.2pt]
+    ([yshift=-18mm]rttBox.south) -- ([yshift=27mm]t2.north);
+
+  % 底部必背文字表述
+  \node[rectangle, rounded corners=6pt, fill=amber!10, draw=amber!50,
+    line width=0.8pt, minimum width=170mm, minimum height=20mm,
+    inner sep=8pt, align=center] (memBox)
+    at ([yshift=-8.5cm]current page.center) {};
+  \node[anchor=north, font=\sffamily\small\color{gray80}, text width=155mm, align=center]
+    at ([yshift=-3pt]memBox.north) {%
+    {\color{amber}\bfseries\faLightbulb\; 真题必背文字表述}\\[4pt]
+    系统中物理量的随体导数 = 控制体内该物理量对时间的偏导数 + 通过控制面的该物理量的净通量
+  };
+
+\end{tikzpicture}
+\pagemark{3/8}
+
+\clearpage
+% ============================================================
+%  PAGE 4: 连续性方程
+% ============================================================
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[bgPage] (current page.south west) rectangle (current page.north east);
+
+  % 页眉
+  \fill[success] (current page.north west) rectangle ([yshift=-2cm]current page.north east);
+  \node[anchor=west,font=\sffamily\LARGE\bfseries\color{white}]
+    at ([xshift=2cm,yshift=-1cm]current page.north west)
+    {\faWater\; 连续性方程（质量守恒）};
+
+  % 推导过程
+  \node[rectangle, rounded corners=6pt, fill=success!8, draw=success!30,
+    line width=0.8pt, minimum width=170mm, minimum height=22mm,
+    inner sep=8pt, align=left, font=\sffamily\small\color{gray80}]
+    at ([yshift=5.2cm]current page.center) {%
+    {\color{success}\bfseries 推导思路：}令 $B=m$（质量），$b=B/m=1$ 代入RTT，由 $\frac{Dm_{\text{sys}}}{Dt}=0$ 得
+  };
+
+  % 积分形式
+  \node[formulabox=success, minimum width=170mm, minimum height=22mm] (intBox)
+    at ([yshift=2cm]current page.center) {%
+    {\color{success}\sffamily\bfseries 积分形式}\qquad
+    $\displaystyle \frac{\partial}{\partial t}\int_{CV} \rho \; dV + \oint_{CS} \rho (\vec{v} \cdot \vec{n}) \; dA = 0$
+  };
+
+  % 微分形式
+  \node[formulabox=primaryDark, minimum width=170mm, minimum height=22mm] (diffBox)
+    at ([yshift=-1.2cm]current page.center) {%
+    {\color{primaryDark}\sffamily\bfseries 微分形式}\qquad
+    $\displaystyle \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \vec{v}) = 0$
+    \qquad{\color{gray60}\small\sffamily 即：密度对时间的偏导 + 密度与速度乘积的散度 = 0}
+  };
+
+  % 简化形式表格 —— 三个条件卡片
+  \node[font=\sffamily\bfseries\large\color{gray80}]
+    at ([xshift=-6cm,yshift=-3.8cm]current page.center) {\faFilter\; 各种简化形式};
+
+  % 不可压缩
+  \node[card, minimum width=52mm, minimum height=48mm] (s1)
+    at ([xshift=-5.5cm,yshift=-6.5cm]current page.center) {};
+  \node[badge=primary] at ([yshift=14mm]s1.center) {不可压缩流体};
+  \node[font=\sffamily\normalsize\color{gray80}, text width=44mm, align=center]
+    at ([yshift=0mm]s1.center) {$\nabla \cdot \vec{v} = 0$};
+  \node[font=\sffamily\footnotesize\color{gray60}, text width=44mm, align=center]
+    at ([yshift=-12mm]s1.center) {速度场散度为零\\与是否定常\textbf{无关}};
+
+  % 定常可压缩
+  \node[card, minimum width=52mm, minimum height=48mm] (s2)
+    at ([yshift=-6.5cm]current page.center) {};
+  \node[badge=accent] at ([yshift=14mm]s2.center) {定常可压缩流};
+  \node[font=\sffamily\normalsize\color{gray80}, text width=44mm, align=center]
+    at ([yshift=0mm]s2.center) {$\nabla \cdot (\rho\vec{v}) = 0$};
+  \node[font=\sffamily\footnotesize\color{gray60}, text width=44mm, align=center]
+    at ([yshift=-12mm]s2.center) {时间项消失\\但密度不能提出来};
+
+  % 一维定常不可压
+  \node[card, minimum width=52mm, minimum height=48mm] (s3)
+    at ([xshift=5.5cm,yshift=-6.5cm]current page.center) {};
+  \node[badge=teal] at ([yshift=14mm]s3.center) {一维定常不可压};
+  \node[font=\sffamily\normalsize\color{gray80}, text width=44mm, align=center]
+    at ([yshift=0mm]s3.center) {$A_1 V_1 = A_2 V_2$};
+  \node[font=\sffamily\footnotesize\color{gray60}, text width=44mm, align=center]
+    at ([yshift=-12mm]s3.center) {管道流的基石\\管细则速快};
+
+  % 经典判断题陷阱
+  \node[rectangle, rounded corners=6pt, fill=danger!8, draw=danger!40,
+    line width=0.8pt, minimum width=170mm, minimum height=18mm,
+    inner sep=6pt, align=center] (trapBox)
+    at ([yshift=-10cm]current page.center) {};
+  \node[font=\sffamily\small\color{gray80}, text width=160mm, align=center]
+    at (trapBox.center) {%
+    {\color{danger}\bfseries \faExclamationTriangle\; 经典陷阱}\;
+    ``理想流体定常流动的连续性方程为 $\nabla\cdot\vec{v}=0$'' $\longrightarrow$
+    {\color{danger}\bfseries 错！}$\nabla\cdot\vec{v}=0$ 是\textbf{不可压缩}流体的方程
+  };
+\end{tikzpicture}
+\pagemark{4/8}
+
+\clearpage
+% ============================================================
+%  PAGE 5: 工程应用——三大题型
+% ============================================================
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[bgPage] (current page.south west) rectangle (current page.north east);
+
+  % 页眉
+  \fill[accent] (current page.north west) rectangle ([yshift=-2cm]current page.north east);
+  \node[anchor=west,font=\sffamily\LARGE\bfseries\color{white}]
+    at ([xshift=2cm,yshift=-1cm]current page.north west)
+    {\faTools\; 连续性方程的三大应用题型};
+
+  % ---- 题型一 ----
+  \node[card, minimum width=170mm, minimum height=52mm] (ty1)
+    at ([yshift=4.2cm]current page.center) {};
+  \node[bigIconCircle=primary] at ([xshift=-6.5cm,yshift=0mm]ty1.center) {\faCheckDouble};
+  \node[anchor=west, font=\sffamily\bfseries\large\color{primary}]
+    at ([xshift=-4.5cm,yshift=12mm]ty1.center) {题型一：验证流动是否连续};
+  \node[anchor=west, font=\sffamily\small\color{gray80}, text width=120mm]
+    at ([xshift=-4.5cm,yshift=-5mm]ty1.center) {%
+    \textbf{方法}：对不可压缩流体，验证 $\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z} = 0$\\[3pt]
+    只需分别求偏导再相加，结果为0即满足连续性方程
+  };
+
+  % ---- 题型二 ----
+  \node[card, minimum width=170mm, minimum height=52mm] (ty2)
+    at ([yshift=-1.2cm]current page.center) {};
+  \node[bigIconCircle=accent] at ([xshift=-6.5cm,yshift=0mm]ty2.center) {\faRocket};
+  \node[anchor=west, font=\sffamily\bfseries\large\color{accent}]
+    at ([xshift=-4.5cm,yshift=12mm]ty2.center) {题型二：管道变截面求流速};
+  \node[anchor=west, font=\sffamily\small\color{gray80}, text width=120mm]
+    at ([xshift=-4.5cm,yshift=-5mm]ty2.center) {%
+    \textbf{核心公式}：$A_1 V_1 = A_2 V_2$，圆管面积 $A = \pi d^2/4$\\[3pt]
+    直径缩小一半 $\rightarrow$ 面积缩至$1/4$ $\rightarrow$ 流速增大4倍
+  };
+
+  % ---- 题型三 ----
+  \node[card, minimum width=170mm, minimum height=62mm] (ty3)
+    at ([yshift=-6.2cm]current page.center) {};
+  \node[bigIconCircle=teal] at ([xshift=-6.5cm,yshift=5mm]ty3.center) {\faWater};
+  \node[anchor=west, font=\sffamily\bfseries\large\color{teal}]
+    at ([xshift=-4.5cm,yshift=16mm]ty3.center) {题型三：水箱液面变化率（真题常考）};
+  \node[anchor=west, font=\sffamily\small\color{gray80}, text width=120mm]
+    at ([xshift=-4.5cm,yshift=-5mm]ty3.center) {%
+    \textbf{标准三步法}：\\[2pt]
+    \textbf{Step 1}：取整个容器为控制体\\[2pt]
+    \textbf{Step 2}：储存项 = $\rho A_0 \frac{dh}{dt}$，通量项 = $\rho(A_2 V_2 - A_1 V_1)$\\[2pt]
+    \textbf{Step 3}：合并得
+    $\displaystyle\frac{dh}{dt} = \frac{A_1 V_1 - A_2 V_2}{A_0}$
+  };
+\end{tikzpicture}
+\pagemark{5/8}
+
+\clearpage
+% ============================================================
+%  PAGE 6: 例题——水箱液面变化率（含示意图）
+% ============================================================
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[bgPage] (current page.south west) rectangle (current page.north east);
+
+  % 页眉
+  \fill[teal] (current page.north west) rectangle ([yshift=-2cm]current page.north east);
+  \node[anchor=west,font=\sffamily\LARGE\bfseries\color{white}]
+    at ([xshift=2cm,yshift=-1cm]current page.north west)
+    {\faPen\; 例题演示：水箱液面变化率};
+
+  % 左侧示意图
+  \begin{scope}[shift={([xshift=-4.6cm,yshift=2.5cm]current page.center)}]
+    % 水箱外框
+    \draw[gray80, line width=1.5pt] (-2.5,-3) rectangle (2.5,3);
+    % 交叉线表示壁面
+    \foreach \y in {-2.8,-2.4,...,2.8} {
+      \draw[gray40, line width=0.3pt] (-2.7,\y) -- (-2.5,\y+0.2);
+      \draw[gray40, line width=0.3pt] (2.5,\y) -- (2.7,\y+0.2);
+    }
+    % 水面
+    \draw[primaryLight, line width=2pt] (-2.5,0) -- (2.5,0);
+    \node[font=\tiny\color{primaryLight}] at (0,0.25) {$\sim\sim\sim\sim\sim\sim\sim\sim\sim\sim\sim\sim$};
+    % 水区域
+    \fill[primaryLight!15] (-2.5,-3) rectangle (2.5,0);
+    % 空气区域
+    \node[font=\sffamily\small\color{gray60}] at (0,1.8) {空气 $\rho_a$};
+    \node[font=\sffamily\small\color{primary}] at (0,-1.5) {水 $\rho$};
+    % 标注 H
+    \draw[{Stealth}-{Stealth},gray80,line width=0.8pt] (3,-3) -- (3,3);
+    \node[font=\sffamily\small\color{gray80},anchor=west] at (3.2,0) {$H$};
+    % 标注 h
+    \draw[{Stealth}-{Stealth},primary,line width=0.8pt] (3.8,-3) -- (3.8,0);
+    \node[font=\sffamily\small\color{primary},anchor=west] at (4,{-1.5}) {$h$};
+    % 标注 A0
+    \draw[{Stealth}-{Stealth},gray60,line width=0.6pt] (-2.5,3.3) -- (2.5,3.3);
+    \node[font=\sffamily\small\color{gray60}] at (0,3.7) {$A_0$};
+    % 进水口
+    \draw[success, line width=1.5pt, -{Stealth[length=5pt]}] (-4.5,-2) -- (-2.5,-2);
+    \node[font=\sffamily\footnotesize\color{success},anchor=east] at (-4.6,-2) {$A_1,\,V_1$};
+    \node[font=\sffamily\tiny\color{success},anchor=east] at (-4.6,-2.5) {进水};
+    % 出水口
+    \draw[danger, line width=1.5pt, -{Stealth[length=5pt]}] (2.5,-2) -- (4.5,-2);
+    \node[font=\sffamily\footnotesize\color{danger},anchor=west] at (4.6,-2) {$A_2,\,V_2$};
+    \node[font=\sffamily\tiny\color{danger},anchor=west] at (4.6,-2.5) {出水};
+  \end{scope}
+
+  % 右侧解题过程
+  \node[anchor=north west, font=\sffamily\small\color{gray80}, text width=72mm, align=left]
+    at ([xshift=1.5cm,yshift=5.5cm]current page.center) {%
+    {\color{teal}\bfseries Step 1：选取控制体}\\[2pt]
+    取整个水箱为控制体\\[6pt]
+    {\color{teal}\bfseries Step 2：分析各项}\\[2pt]
+    储存项（水+空气）：\\
+    $(\rho-\rho_a)A_0\frac{dh}{dt}$\\[4pt]
+    净流出通量：\\
+    $\rho A_2 V_2 - \rho A_1 V_1$\\[6pt]
+    {\color{teal}\bfseries Step 3：连续性方程}\\[2pt]
+    $(\rho-\rho_a)A_0\frac{dh}{dt}$\\$+\;\rho A_2 V_2 - \rho A_1 V_1 = 0$
+  };
+
+  % 最终结果框
+  \node[formulabox=teal, minimum width=76mm, minimum height=26mm]
+    at ([xshift=4.2cm,yshift=-4.2cm]current page.center) {%
+    {\color{teal}\sffamily\bfseries 最终结果}\\[4pt]
+    $\displaystyle\frac{dh}{dt} = \frac{\rho(A_1 V_1 - A_2 V_2)}{(\rho - \rho_a)A_0}$
+  };
+
+  % 底部注释
+  \node[rectangle, rounded corners=4pt, fill=successLight!12, draw=successLight!40,
+    minimum width=170mm, minimum height=14mm, inner sep=6pt,
+    font=\sffamily\small\color{gray80}, align=center]
+    at ([yshift=-8.5cm]current page.center) {%
+    {\color{success}\faLightbulb}\;
+    忽略空气密度（$\rho_a\approx 0$）时简化为：$\frac{dh}{dt} = \frac{A_1 V_1 - A_2 V_2}{A_0}$
+    \quad 进多出少则液面升高
+  };
+\end{tikzpicture}
+\pagemark{6/8}
+
+\clearpage
+% ============================================================
+%  PAGE 7: 避坑指南 (DOs vs DON'Ts)
+% ============================================================
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[bgPage] (current page.south west) rectangle (current page.north east);
+
+  % 页眉
+  \fill[danger] (current page.north west) rectangle ([yshift=-2cm]current page.north east);
+  \node[anchor=west,font=\sffamily\LARGE\bfseries\color{white}]
+    at ([xshift=2cm,yshift=-1cm]current page.north west)
+    {\faExclamationTriangle\; 考前避坑指南：五大易错点};
+
+  \tikzset{
+    errbox/.style={
+      rectangle, rounded corners=5pt, minimum width=80mm, minimum height=18mm,
+      inner sep=6pt, align=left, font=\sffamily\small, text width=72mm
+    }
+  }
+
+  % ---- 错误 1 ----
+  \node[errbox, fill=danger!8, draw=danger!40, line width=0.6pt] (e1)
+    at ([xshift=-4.5cm,yshift=4.2cm]current page.center) {%
+    {\color{danger}\bfseries \faTimesCircle\; 系统 = 控制体}\\[2pt]
+    {\color{gray80}把两者搞混，胡乱套用公式}
+  };
+  \node[errbox, fill=success!8, draw=success!40, line width=0.6pt] (c1)
+    at ([xshift=4.5cm,yshift=4.2cm]current page.center) {%
+    {\color{success}\bfseries \faCheckCircle\; 明确区分视角}\\[2pt]
+    {\color{gray80}系统=跟着物质走；控制体=钉在空间}
+  };
+  \draw[-{Stealth[length=4pt]},gray40,line width=1pt] (e1) -- (c1);
+
+  % ---- 错误 2 ----
+  \node[errbox, fill=danger!8, draw=danger!40, line width=0.6pt] (e2)
+    at ([xshift=-4.5cm,yshift=1.6cm]current page.center) {%
+    {\color{danger}\bfseries \faTimesCircle\; 通量正负号搞反}\\[2pt]
+    {\color{gray80}流入流出方向弄错，答案差个负号}
+  };
+  \node[errbox, fill=success!8, draw=success!40, line width=0.6pt] (c2)
+    at ([xshift=4.5cm,yshift=1.6cm]current page.center) {%
+    {\color{success}\bfseries \faCheckCircle\; 牢记外法向约定}\\[2pt]
+    {\color{gray80}$\vec{n}$朝外：流出为正，流入为负}
+  };
+  \draw[-{Stealth[length=4pt]},gray40,line width=1pt] (e2) -- (c2);
+
+  % ---- 错误 3 ----
+  \node[errbox, fill=danger!8, draw=danger!40, line width=0.6pt] (e3)
+    at ([xshift=-4.5cm,yshift=-1cm]current page.center) {%
+    {\color{danger}\bfseries \faTimesCircle\; $\nabla\!\cdot\!\vec{v}\!=\!0$ 用于理想流体}\\[2pt]
+    {\color{gray80}``理想流体''与``不可压缩''混淆}
+  };
+  \node[errbox, fill=success!8, draw=success!40, line width=0.6pt] (c3)
+    at ([xshift=4.5cm,yshift=-1cm]current page.center) {%
+    {\color{success}\bfseries \faCheckCircle\; $\nabla\!\cdot\!\vec{v}\!=\!0$ 是不可压条件}\\[2pt]
+    {\color{gray80}理想流体也可以可压缩}
+  };
+  \draw[-{Stealth[length=4pt]},gray40,line width=1pt] (e3) -- (c3);
+
+  % ---- 错误 4 ----
+  \node[errbox, fill=danger!8, draw=danger!40, line width=0.6pt] (e4)
+    at ([xshift=-4.5cm,yshift=-3.6cm]current page.center) {%
+    {\color{danger}\bfseries \faTimesCircle\; 非均匀流速直接用 $AV$}\\[2pt]
+    {\color{gray80}抛物线分布还用平均速度$\times$面积}
+  };
+  \node[errbox, fill=success!8, draw=success!40, line width=0.6pt] (c4)
+    at ([xshift=4.5cm,yshift=-3.6cm]current page.center) {%
+    {\color{success}\bfseries \faCheckCircle\; 用积分 $Q\!=\!\int v\,dA$}\\[2pt]
+    {\color{gray80}层流抛物线分布：$Q=\frac{\pi R^2 v_0}{2}$}
+  };
+  \draw[-{Stealth[length=4pt]},gray40,line width=1pt] (e4) -- (c4);
+
+  % ---- 错误 5 ----
+  \node[errbox, fill=danger!8, draw=danger!40, line width=0.6pt] (e5)
+    at ([xshift=-4.5cm,yshift=-6.2cm]current page.center) {%
+    {\color{danger}\bfseries \faTimesCircle\; 水箱题忘了空气}\\[2pt]
+    {\color{gray80}液面上有空气时只考虑了水}
+  };
+  \node[errbox, fill=success!8, draw=success!40, line width=0.6pt] (c5)
+    at ([xshift=4.5cm,yshift=-6.2cm]current page.center) {%
+    {\color{success}\bfseries \faCheckCircle\; 水和空气一起算}\\[2pt]
+    {\color{gray80}封闭水箱出现 $(\rho-\rho_a)$ 项}
+  };
+  \draw[-{Stealth[length=4pt]},gray40,line width=1pt] (e5) -- (c5);
+
+\end{tikzpicture}
+\pagemark{7/8}
+
+\clearpage
+% ============================================================
+%  PAGE 8: 知识树速查
+% ============================================================
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[bgPage] (current page.south west) rectangle (current page.north east);
+
+  % 页眉
+  \fill[purple] (current page.north west) rectangle ([yshift=-2cm]current page.north east);
+  \node[anchor=west,font=\sffamily\LARGE\bfseries\color{white}]
+    at ([xshift=2cm,yshift=-1cm]current page.north west)
+    {\faSitemap\; 全章知识树速查};
+
+  % 根节点
+  \begin{scope}[shift={([xshift=-6cm,yshift=3.5cm]current page.center)}]
+    \node[rectangle, rounded corners=6pt, fill=purple, text=white, minimum height=14mm,
+      font=\sffamily\bfseries\large, inner xsep=12pt,
+      blur shadow={shadow blur steps=4, shadow opacity=12}] (root) at (0,0) {第四章};
+
+    % L1 nodes
+    \node[rectangle, rounded corners=4pt, fill=primary, text=white,
+      minimum height=10mm, font=\sffamily\bfseries, inner xsep=8pt] (l1a) at (5,4) {基本概念};
+    \node[rectangle, rounded corners=4pt, fill=ocean, text=white,
+      minimum height=10mm, font=\sffamily\bfseries, inner xsep=8pt] (l1b) at (5,1) {雷诺输运方程};
+    \node[rectangle, rounded corners=4pt, fill=success, text=white,
+      minimum height=10mm, font=\sffamily\bfseries, inner xsep=8pt] (l1c) at (5,-2) {连续性方程};
+    \node[rectangle, rounded corners=4pt, fill=accent, text=white,
+      minimum height=10mm, font=\sffamily\bfseries, inner xsep=8pt] (l1d) at (5,-5) {工程应用};
+
+    % Connections root -> L1
+    \draw[purple!50,thick,-{Stealth},out=0,in=180] (root.east) to (l1a.west);
+    \draw[purple!50,thick,-{Stealth},out=0,in=180] (root.east) to (l1b.west);
+    \draw[purple!50,thick,-{Stealth},out=0,in=180] (root.east) to (l1c.west);
+    \draw[purple!50,thick,-{Stealth},out=0,in=180] (root.east) to (l1d.west);
+
+    % L2 nodes for 基本概念
+    \node[rectangle, rounded corners=3pt, fill=primaryLight!20, draw=primaryLight!50,
+      font=\sffamily\small, inner sep=4pt] (l2a1) at (11,5.5) {系统 vs 控制体};
+    \node[rectangle, rounded corners=3pt, fill=primaryLight!20, draw=primaryLight!50,
+      font=\sffamily\small, inner sep=4pt] (l2a2) at (11,4) {控制面分类};
+    \node[rectangle, rounded corners=3pt, fill=primaryLight!20, draw=primaryLight!50,
+      font=\sffamily\small, inner sep=4pt] (l2a3) at (11,2.5) {广延量 vs 强度量};
+    \draw[primaryLight,thick,-{Stealth},out=0,in=180] (l1a.east) to (l2a1.west);
+    \draw[primaryLight,thick,-{Stealth},out=0,in=180] (l1a.east) to (l2a2.west);
+    \draw[primaryLight,thick,-{Stealth},out=0,in=180] (l1a.east) to (l2a3.west);
+
+    % L2 for RTT
+    \node[rectangle, rounded corners=3pt, fill=oceanLight!20, draw=oceanLight!50,
+      font=\sffamily\small, inner sep=4pt] (l2b1) at (11,1) {公式与物理含义};
+    \draw[oceanLight,thick,-{Stealth},out=0,in=180] (l1b.east) to (l2b1.west);
+
+    % L2 for 连续性
+    \node[rectangle, rounded corners=3pt, fill=successLight!20, draw=successLight!50,
+      font=\sffamily\small, inner sep=4pt] (l2c1) at (11,-1) {积分形式};
+    \node[rectangle, rounded corners=3pt, fill=successLight!20, draw=successLight!50,
+      font=\sffamily\small, inner sep=4pt] (l2c2) at (11,-2.2) {微分形式};
+    \node[rectangle, rounded corners=3pt, fill=successLight!20, draw=successLight!50,
+      font=\sffamily\small, inner sep=4pt] (l2c3) at (11,-3.4) {$\nabla\cdot\vec{v}=0$ 简化};
+    \draw[successLight,thick,-{Stealth},out=0,in=180] (l1c.east) to (l2c1.west);
+    \draw[successLight,thick,-{Stealth},out=0,in=180] (l1c.east) to (l2c2.west);
+    \draw[successLight,thick,-{Stealth},out=0,in=180] (l1c.east) to (l2c3.west);
+
+    % L2 for 工程应用
+    \node[rectangle, rounded corners=3pt, fill=accentLight!20, draw=accentLight!50,
+      font=\sffamily\small, inner sep=4pt] (l2d1) at (11,-4.5) {管道流 $A_1V_1=A_2V_2$};
+    \node[rectangle, rounded corners=3pt, fill=accentLight!20, draw=accentLight!50,
+      font=\sffamily\small, inner sep=4pt] (l2d2) at (11,-5.7) {速度分布求流量};
+    \node[rectangle, rounded corners=3pt, fill=accentLight!20, draw=accentLight!50,
+      font=\sffamily\small, inner sep=4pt] (l2d3) at (11,-6.9) {水箱液面变化率};
+    \draw[accentLight,thick,-{Stealth},out=0,in=180] (l1d.east) to (l2d1.west);
+    \draw[accentLight,thick,-{Stealth},out=0,in=180] (l1d.east) to (l2d2.west);
+    \draw[accentLight,thick,-{Stealth},out=0,in=180] (l1d.east) to (l2d3.west);
+  \end{scope}
+
+  % 底部总结
+  \node[rectangle, rounded corners=6pt, fill=purple!8, draw=purple!30,
+    line width=0.8pt, minimum width=170mm, minimum height=20mm,
+    inner sep=8pt, align=center, font=\sffamily\small\color{gray80}]
+    at ([yshift=-9cm]current page.center) {%
+    {\color{purple}\bfseries \faStar\; 一句话总结}\quad
+    雷诺输运方程是``翻译工具''，连续性方程是``质量守恒''，工程上最常用 $A_1V_1=A_2V_2$
+  };
+\end{tikzpicture}
+\pagemark{8/8}
+
+\end{document}

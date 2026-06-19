@@ -1,0 +1,47 @@
+\documentclass[UTF8,zihao=-4]{ctexart}
+\usepackage[a4paper,margin=1.25cm]{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+\captionsetup{font=small,labelfont=bf}
+
+\newcommand{\sourcepage}[2]{
+  \clearpage
+  {\large\bfseries #1}\par
+  \vspace{0.4em}
+  \includegraphics[width=\textwidth,height=0.91\textheight,keepaspectratio]{#2}
+}
+
+\newcommand{\sourcecrop}[2]{
+  \clearpage
+  {\large\bfseries #1}\par
+  \vspace{0.8em}
+  \includegraphics[width=\textwidth,keepaspectratio]{#2}
+}
+
+\begin{document}
+
+{\LARGE\bfseries 第5章理想流体：原题练习汇总（去作业版）}
+
+\vspace{0.8em}
+本文件只汇总资料中的原题截图，不对题目进行改写、拆解或二次加工。
+
+已剔除：之前作业页中的题目、书 4.12、已做过的第5章作业原题。
+
+\sourcepage{课本原题：张兆顺《流体力学》第5章习题页 1}{orig_practice_assets/zhang_ch5_exercise_hi-215.png}
+\sourcepage{课本原题：张兆顺《流体力学》第5章习题页 2}{orig_practice_assets/zhang_ch5_exercise_hi-216.png}
+\sourcepage{课本原题：张兆顺《流体力学》第5章习题页 3}{orig_practice_assets/zhang_ch5_exercise_hi-217.png}
+\sourcepage{课本原题：张兆顺《流体力学》第5章习题页 4}{orig_practice_assets/zhang_ch5_exercise_hi-218.png}
+\sourcepage{课本原题：张兆顺《流体力学》第5章习题页 5}{orig_practice_assets/zhang_ch5_exercise_hi-219.png}
+
+\sourcecrop{往年期末原题节选：不可压缩无旋流动速度分布题}{orig_practice_assets/engineering_exam_p1_problem8.png}
+
+\sourcecrop{2022 春期末原题节选：半圆柱气膜馆势流题}{orig_practice_assets/exam2022_p3_problem4.png}
+
+\end{document}

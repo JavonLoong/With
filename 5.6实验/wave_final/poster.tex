@@ -1,0 +1,119 @@
+\documentclass[UTF8,landscape,12pt]{ctexart}
+\usepackage[a3paper,landscape,margin=1.2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{caption}
+\pagestyle{empty}
+\graphicspath{{assets/}}
+
+\definecolor{TsinghuaPurple}{HTML}{6A1B78}
+\definecolor{DeepPurple}{HTML}{3C1053}
+\definecolor{LightPurple}{HTML}{F5EDF7}
+\definecolor{Ink}{HTML}{222222}
+\definecolor{Muted}{HTML}{666666}
+\captionsetup{font=footnotesize,labelfont=bf}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=1.2em,itemsep=0.12em,topsep=0.1em}
+
+\newtcolorbox{panel}[1]{
+  colback=white,
+  colframe=LightPurple,
+  boxrule=0.8pt,
+  arc=2pt,
+  left=5pt,right=5pt,top=4pt,bottom=4pt,
+  title=\bfseries #1,
+  coltitle=TsinghuaPurple,
+  colbacktitle=LightPurple,
+  fonttitle=\small
+}
+
+\begin{document}
+\color{Ink}
+
+\begin{minipage}[t]{0.72\textwidth}
+  {\fontsize{24}{28}\selectfont\bfseries\color{TsinghuaPurple} 表面重力波波长与表观波速的水深效应探究}\\[0.2em]
+  {\large 探究性实验成果海报}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.25\textwidth}
+  \raggedleft
+  \includegraphics[width=0.55\linewidth]{tsinghua_logo.png}\\[-0.2em]
+  {\small 丘洪源、白子恒、秦健淞、纪文龙、杨天皓\\行健书院\quad 2026 年 5 月}
+\end{minipage}
+
+\vspace{0.35cm}
+\colorbox{LightPurple}{%
+  \begin{minipage}{0.98\textwidth}
+    \vspace{0.25em}
+    \textbf{核心问题：} 水深是否会明显改变水波传播？在实际水槽中，我们能严格测到理论相速度，还是只能得到受反射影响的表观波速？
+    \vspace{0.25em}
+  \end{minipage}}
+
+\vspace{0.35cm}
+\begin{minipage}[t]{0.31\textwidth}
+  \begin{panel}{实验设计}
+    \begin{itemize}
+      \item 透明水槽、2 Hz 活塞电机、3D 打印推板、LED 背光和侧向摄像。
+      \item 水深设置为 $2.2$--$20.0\,\mathrm{cm}$ 共 14 组。
+      \item 从视频中重建 $\eta(x,t)$，提取推荐平均波长 $\lambda_{\mathrm{rec}}$。
+      \item 追踪波峰轨迹，统计中位表观速度 $|c_{\mathrm{app}}|$ 及离散范围。
+    \end{itemize}
+    \centering
+    \includegraphics[width=0.95\linewidth]{fig_setup.png}\\[-0.2em]
+    {\footnotesize 图 1\quad 侧向成像与液面识别}
+  \end{panel}
+
+  \vspace{0.25cm}
+  \begin{panel}{关键定义}
+    \[
+      \omega^2=\left(gk+\frac{\sigma}{\rho}k^3\right)\tanh(kh),\qquad
+      c_p=\frac{\omega}{k}
+    \]
+    \small
+    本实验报告的速度是视频追踪得到的 $|c_{\mathrm{app}}|$，不是严格理论相速度 $c_p$。这是解释结果时最重要的边界。
+  \end{panel}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.34\textwidth}
+  \begin{panel}{视频证据}
+    \centering
+    \includegraphics[width=0.98\linewidth]{fig_xt_field.png}\\[-0.2em]
+    {\footnotesize 图 2\quad $h=12\,\mathrm{cm}$ 的 $x$--$t$ 位移场与传播方向分离}
+    \vspace{0.25em}
+    \small
+    连续斜纹说明水面波列可以被稳定追踪；方向分离显示入射波和反射波同时存在。
+  \end{panel}
+
+  \vspace{0.25cm}
+  \begin{panel}{理论判据}
+    \centering
+    \includegraphics[width=0.98\linewidth]{fig_theory_compare.png}\\[-0.2em]
+  \end{panel}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.31\textwidth}
+  \begin{panel}{主要结果}
+    \centering
+    \includegraphics[width=0.98\linewidth]{fig_lambda_capp.png}\\[-0.2em]
+    {\footnotesize 图 4\quad 波长与表观波速随水深变化}
+    \vspace{0.25em}
+    \small
+    除最低水深组外，$\lambda_{\mathrm{rec}}$ 主要集中在 $8\,\mathrm{cm}$ 附近；表观波速离散更大，没有简单单调律。
+  \end{panel}
+
+  \vspace{0.25cm}
+  \begin{panel}{结论与改进}
+    \small
+    \begin{itemize}
+      \item 多数组按 $kh$ 判据已接近深水近似区，水深修正本身较弱。
+      \item 表观波速受反射叠加和波峰追踪稳定性影响，不能直接等同于理论相速度。
+      \item 后续应加入消波装置，并同步提取主频 $f$，用 $c=\lambda f$ 与理论相速度比较。
+    \end{itemize}
+  \end{panel}
+\end{minipage}
+
+\end{document}

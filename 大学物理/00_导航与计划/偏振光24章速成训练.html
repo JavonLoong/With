@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>24章光的偏振速成训练</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --paper: #ffffff;
+      --ink: #182033;
+      --muted: #5f6b7a;
+      --line: #d8dee8;
+      --orange: #df7f21;
+      --green: #1f7a68;
+      --blue: #245a9c;
+      --red: #b4473f;
+      --shadow: 0 14px 36px rgba(20, 28, 44, 0.08);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.58;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: rgba(246, 247, 249, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .nav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    .navlinks {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .navlinks a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .navlinks a:hover { background: #e9edf3; color: var(--ink); }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 22px 56px;
+    }
+    .hero {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 42px;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+    h2 {
+      font-size: 28px;
+      margin: 0 0 14px;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    p { margin: 0 0 10px; }
+    .lead { font-size: 19px; color: var(--muted); max-width: 760px; }
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .quick {
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--orange);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      background: #fbfcfd;
+      min-height: 82px;
+    }
+    .quick strong { display: block; margin-bottom: 4px; }
+    .section {
+      margin-top: 22px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    .two {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+    .three {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fbfcfd;
+    }
+    .rule {
+      border-left: 5px solid var(--green);
+      background: #f0faf7;
+    }
+    .danger {
+      border-left: 5px solid var(--red);
+      background: #fff6f4;
+    }
+    .formula {
+      font-family: Consolas, "Cascadia Mono", monospace;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 6px;
+      padding: 12px 14px;
+      white-space: pre-wrap;
+      font-size: 16px;
+      line-height: 1.55;
+      margin: 10px 0;
+    }
+    .mini {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .tag {
+      display: inline-block;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 9px;
+      margin: 2px 4px 2px 0;
+      font-size: 13px;
+      color: var(--muted);
+      background: #fff;
+    }
+    .diagram {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 10px;
+      min-height: 220px;
+    }
+    svg { max-width: 100%; height: auto; display: block; }
+    .steps {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .steps li {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 10px;
+      background: #fbfcfd;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+    .num {
+      width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      background: var(--ink);
+      color: #fff;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .quiz {
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      margin-top: 16px;
+    }
+    button {
+      appearance: none;
+      border: 1px solid #b9c3d0;
+      background: #fff;
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 9px 12px;
+      font: inherit;
+      cursor: pointer;
+      text-align: left;
+    }
+    button:hover { border-color: var(--blue); background: #f2f7ff; }
+    button.primary {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+      text-align: center;
+      font-weight: 700;
+    }
+    .choices { display: grid; gap: 8px; margin-top: 10px; }
+    .feedback {
+      min-height: 28px;
+      margin-top: 9px;
+      font-weight: 700;
+    }
+    .ok { color: var(--green); }
+    .bad { color: var(--red); }
+    .calc {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      align-items: end;
+    }
+    label {
+      display: grid;
+      gap: 5px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    input, select {
+      width: 100%;
+      border: 1px solid #b9c3d0;
+      border-radius: 6px;
+      padding: 9px 10px;
+      font: inherit;
+      background: #fff;
+      color: var(--ink);
+    }
+    .result {
+      border: 1px dashed #9fb0c8;
+      border-radius: 6px;
+      padding: 10px 12px;
+      background: #f8fafc;
+      min-height: 46px;
+      font-family: Consolas, "Cascadia Mono", monospace;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #f3f6fa; }
+    .practice-list {
+      display: grid;
+      gap: 10px;
+    }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 12px 14px;
+      background: #fbfcfd;
+    }
+    summary { cursor: pointer; font-weight: 800; }
+    .footer-note {
+      color: var(--muted);
+      text-align: center;
+      margin-top: 22px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 880px) {
+      .hero, .two, .three, .calc { grid-template-columns: 1fr; }
+      h1 { font-size: 32px; }
+      .nav { align-items: flex-start; flex-direction: column; }
+      .navlinks { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">24章光的偏振速成训练</div>
+      <nav class="navlinks" aria-label="章节导航">
+        <a href="#map">总图</a>
+        <a href="#malus">偏振片</a>
+        <a href="#brewster">布儒斯特角</a>
+        <a href="#oe">o/e 光</a>
+        <a href="#rotation">旋光</a>
+        <a href="#practice">限时自测</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="map">
+      <div>
+        <h1>把偏振题变成四个固定动作</h1>
+        <p class="lead">你不需要先懂所有物理细节。考试里先识别模型，再按对应公式走。偏振这一章最常见就四类：偏振片、布儒斯特角、双折射 o/e 光、旋光。</p>
+        <div>
+          <span class="tag">自然光先除 2</span>
+          <span class="tag">线偏振再乘 cos²</span>
+          <span class="tag">布儒斯特反射光完全偏振</span>
+          <span class="tag">方解石分成 o/e 两束</span>
+          <span class="tag">旋光角正比于长度和浓度</span>
+        </div>
+      </div>
+      <div class="quick-grid">
+        <div class="quick"><strong>偏振片</strong>第一片遇自然光：I0/2。后面每片：乘 cos²θ。</div>
+        <div class="quick"><strong>布儒斯特</strong>tan iB = n2/n1；反射光是线偏振。</div>
+        <div class="quick"><strong>双折射</strong>方解石把自然光分成 o 光和 e 光，偏振方向互相垂直。</div>
+        <div class="quick"><strong>旋光</strong>α = [α]lc；交叉尼科耳最亮要转 90°。</div>
+      </div>
+    </section>
+
+    <section class="section" id="malus">
+      <h2>1. 偏振片：先判断光是不是自然光</h2>
+      <div class="two">
+        <div>
+          <div class="card rule">
+            <h3>最短判断句</h3>
+            <p>自然光第一次过偏振片，强度变一半；从第二片开始，光已经是线偏振光，只能用马吕斯定律。</p>
+            <div class="formula">自然光过第一片：I1 = I0 / 2
+线偏振过偏振片：I2 = I1 cos²θ</div>
+            <p class="mini">θ 是“入射到这一片前的偏振方向”和“这一片透振方向”的夹角。</p>
+          </div>
+          <ol class="steps">
+            <li><span class="num">1</span><span>题目说自然光：第一片固定除以 2。</span></li>
+            <li><span class="num">2</span><span>题目给两个偏振片夹角：直接用这个角，不用 90° 减。</span></li>
+            <li><span class="num">3</span><span>后面每加一片，就乘一次 cos²θ。</span></li>
+          </ol>
+        </div>
+        <div class="diagram">
+          <svg viewBox="0 0 520 260" role="img" aria-label="偏振片强度变化示意图">
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L8,3 L0,6 Z" fill="#245a9c"></path>
+              </marker>
+            </defs>
+            <rect x="28" y="46" width="72" height="170" fill="#fff4e6" stroke="#df7f21" stroke-width="3"></rect>
+            <rect x="238" y="46" width="72" height="170" fill="#eef7ff" stroke="#245a9c" stroke-width="3"></rect>
+            <line x1="65" y1="75" x2="65" y2="188" stroke="#df7f21" stroke-width="5"></line>
+            <line x1="257" y1="185" x2="292" y2="75" stroke="#245a9c" stroke-width="5"></line>
+            <line x1="112" y1="130" x2="222" y2="130" stroke="#182033" stroke-width="3" marker-end="url(#arrow)"></line>
+            <line x1="322" y1="130" x2="470" y2="130" stroke="#182033" stroke-width="3" marker-end="url(#arrow)"></line>
+            <text x="22" y="32" font-size="20" fill="#182033">第一片</text>
+            <text x="226" y="32" font-size="20" fill="#182033">第二片</text>
+            <text x="118" y="112" font-size="19" fill="#182033">I0/2</text>
+            <text x="335" y="112" font-size="19" fill="#182033">I0/2 · cos²θ</text>
+            <path d="M276 80 A52 52 0 0 1 300 123" fill="none" stroke="#b4473f" stroke-width="3"></path>
+            <text x="306" y="104" font-size="19" fill="#b4473f">θ</text>
+          </svg>
+        </div>
+      </div>
+      <div class="quiz" data-answer="b">
+        <h3>快测：自然光过两个偏振片，夹角 45°，出射强度？</h3>
+        <div class="choices">
+          <button data-choice="a">A. I0/2</button>
+          <button data-choice="b">B. I0/4</button>
+          <button data-choice="c">C. I0 cos²45°</button>
+        </div>
+        <div class="feedback"></div>
+      </div>
+    </section>
+
+    <section class="section" id="brewster">
+      <h2>2. 布儒斯特角：让反射光变纯</h2>
+      <div class="two">
+        <div class="card">
+          <h3>人话版</h3>
+          <p>自然光照到玻璃上，反射光一般只是“有点偏振”。如果入射角刚好等于布儒斯特角，反射光会变成完全线偏振光。</p>
+          <div class="formula">tan iB = n2 / n1
+iB + r = 90°</div>
+          <p><strong>iB 永远从法线量起。</strong>n1 是入射侧，n2 是折射侧。</p>
+          <p>布儒斯特角的反射光振动方向：垂直于入射面。图画在纸面上时，通常就是垂直纸面。</p>
+        </div>
+        <div class="diagram">
+          <svg viewBox="0 0 520 270" role="img" aria-label="布儒斯特角示意图">
+            <defs>
+              <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L8,3 L0,6 Z" fill="#182033"></path>
+              </marker>
+            </defs>
+            <line x1="40" y1="150" x2="480" y2="150" stroke="#7b8794" stroke-width="3"></line>
+            <line x1="260" y1="30" x2="260" y2="248" stroke="#7b8794" stroke-width="2" stroke-dasharray="8 8"></line>
+            <line x1="82" y1="58" x2="252" y2="145" stroke="#182033" stroke-width="4" marker-end="url(#arrow2)"></line>
+            <line x1="268" y1="145" x2="430" y2="65" stroke="#df7f21" stroke-width="4" marker-end="url(#arrow2)"></line>
+            <line x1="268" y1="155" x2="414" y2="225" stroke="#245a9c" stroke-width="4" marker-end="url(#arrow2)"></line>
+            <path d="M260 105 A45 45 0 0 0 220 130" fill="none" stroke="#b4473f" stroke-width="3"></path>
+            <text x="196" y="112" font-size="20" fill="#b4473f">iB</text>
+            <path d="M260 190 A46 46 0 0 1 300 170" fill="none" stroke="#b4473f" stroke-width="3"></path>
+            <text x="306" y="191" font-size="20" fill="#b4473f">r</text>
+            <text x="55" y="42" font-size="18" fill="#182033">入射光</text>
+            <text x="374" y="54" font-size="18" fill="#df7f21">反射光：线偏振</text>
+            <text x="362" y="246" font-size="18" fill="#245a9c">折射光</text>
+            <text x="70" y="138" font-size="16" fill="#5f6b7a">n1</text>
+            <text x="70" y="174" font-size="16" fill="#5f6b7a">n2</text>
+          </svg>
+        </div>
+      </div>
+      <div class="calc">
+        <label>入射侧 n1
+          <input id="brewN1" type="number" step="0.01" value="1.00">
+        </label>
+        <label>折射侧 n2
+          <input id="brewN2" type="number" step="0.01" value="1.50">
+        </label>
+        <button class="primary" id="brewCalc">计算 iB</button>
+        <div class="result" id="brewOut">tan iB = n2/n1</div>
+      </div>
+    </section>
+
+    <section class="section" id="oe">
+      <h2>3. 方解石双折射：一束光变两束</h2>
+      <div class="two">
+        <div>
+          <div class="card rule">
+            <h3>先不要纠结图，先记考试判断</h3>
+            <p>方解石这类晶体会把入射自然光分成两束：o 光和 e 光。它们都是线偏振光，而且偏振方向互相垂直。</p>
+            <div class="formula">o 光：no 固定，像普通折射
+e 光：ne 随方向变，常被光轴影响
+o 光与 e 光：偏振方向互相垂直</div>
+          </div>
+          <div class="card danger">
+            <h3>最容易误解</h3>
+            <p><strong>光轴不是光线。</strong>它是晶体内部的特殊方向，像木头纹理。e 光会受这个方向影响。</p>
+          </div>
+        </div>
+        <div class="diagram">
+          <svg viewBox="0 0 520 270" role="img" aria-label="o光e光示意图">
+            <defs>
+              <marker id="arrow3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L8,3 L0,6 Z" fill="#182033"></path>
+              </marker>
+            </defs>
+            <polygon points="195,50 365,95 365,218 195,174" fill="#f4f2ff" stroke="#7c6ee6" stroke-width="3"></polygon>
+            <line x1="105" y1="135" x2="190" y2="135" stroke="#182033" stroke-width="4" marker-end="url(#arrow3)"></line>
+            <line x1="210" y1="132" x2="438" y2="112" stroke="#245a9c" stroke-width="4" marker-end="url(#arrow3)"></line>
+            <line x1="210" y1="140" x2="438" y2="186" stroke="#df7f21" stroke-width="4" marker-end="url(#arrow3)"></line>
+            <line x1="248" y1="72" x2="347" y2="206" stroke="#b4473f" stroke-width="4" stroke-dasharray="9 7"></line>
+            <text x="86" y="122" font-size="18" fill="#182033">自然光</text>
+            <text x="448" y="112" font-size="19" fill="#245a9c">o 光</text>
+            <text x="448" y="190" font-size="19" fill="#df7f21">e 光</text>
+            <text x="292" y="86" font-size="18" fill="#b4473f">光轴</text>
+            <circle cx="320" cy="158" r="5" fill="#245a9c"></circle>
+            <line x1="302" y1="158" x2="338" y2="158" stroke="#df7f21" stroke-width="4"></line>
+            <text x="250" y="245" font-size="18" fill="#5f6b7a">两束偏振方向互相垂直</text>
+          </svg>
+        </div>
+      </div>
+      <div class="quiz" data-answer="c">
+        <h3>快测：方解石中分出的 o 光和 e 光，一定可以先判断什么？</h3>
+        <div class="choices">
+          <button data-choice="a">A. 传播方向永远相同</button>
+          <button data-choice="b">B. 都是自然光</button>
+          <button data-choice="c">C. 偏振方向互相垂直</button>
+        </div>
+        <div class="feedback"></div>
+      </div>
+    </section>
+
+    <section class="section" id="rotation">
+      <h2>4. 旋光：偏振方向被转了一个角</h2>
+      <div class="two">
+        <div class="card">
+          <h3>这一页对应你截图里的“旋光与浓度/长度”</h3>
+          <p>有些物质会把线偏振光的振动方向转一个角度。这个角度叫旋光角 α。</p>
+          <div class="formula">溶液旋光：α = [α] l c
+比例题：α1/α2 = l1 c1 / (l2 c2)
+
+石英旋光率：ρ = α / l
+交叉尼科耳最亮：ρ l = 90° + 180°k</div>
+          <p class="mini">l 是长度，c 是浓度，[α] 是比旋光度。单位必须配套：题目给 °/mm，就用 mm。</p>
+        </div>
+        <div class="diagram">
+          <svg viewBox="0 0 520 270" role="img" aria-label="旋光示意图">
+            <defs>
+              <marker id="arrow4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                <path d="M0,0 L8,3 L0,6 Z" fill="#182033"></path>
+              </marker>
+            </defs>
+            <rect x="42" y="64" width="54" height="145" fill="#fff4e6" stroke="#df7f21" stroke-width="3"></rect>
+            <rect x="205" y="64" width="110" height="145" fill="#ecfbf6" stroke="#1f7a68" stroke-width="3"></rect>
+            <rect x="420" y="64" width="54" height="145" fill="#eef7ff" stroke="#245a9c" stroke-width="3"></rect>
+            <line x1="70" y1="84" x2="70" y2="190" stroke="#df7f21" stroke-width="5"></line>
+            <line x1="338" y1="136" x2="400" y2="136" stroke="#182033" stroke-width="3" marker-end="url(#arrow4)"></line>
+            <line x1="442" y1="84" x2="442" y2="190" stroke="#245a9c" stroke-width="5" transform="rotate(90 442 137)"></line>
+            <line x1="240" y1="180" x2="285" y2="90" stroke="#1f7a68" stroke-width="5"></line>
+            <text x="28" y="45" font-size="18" fill="#182033">起偏器</text>
+            <text x="212" y="45" font-size="18" fill="#182033">旋光物质</text>
+            <text x="404" y="45" font-size="18" fill="#182033">检偏器</text>
+            <text x="224" y="228" font-size="18" fill="#1f7a68">转角 α</text>
+            <path d="M250 164 A50 50 0 0 0 278 112" fill="none" stroke="#b4473f" stroke-width="3"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="section" style="box-shadow:none;margin-top:16px;">
+        <h3>三个计算器</h3>
+        <div class="three">
+          <div class="card">
+            <h3>溶液旋光</h3>
+            <div class="calc" style="grid-template-columns:1fr;">
+              <label>[α]<input id="specAlpha" type="number" value="20" step="0.01"></label>
+              <label>长度 l<input id="lenL" type="number" value="2" step="0.01"></label>
+              <label>浓度 c<input id="concC" type="number" value="0.5" step="0.01"></label>
+              <button class="primary" id="rotCalc">算 α</button>
+              <div class="result" id="rotOut">α = [α]lc</div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>交叉尼科耳最亮</h3>
+            <div class="calc" style="grid-template-columns:1fr;">
+              <label>旋光率 ρ，单位 °/mm<input id="rho" type="number" value="21.75" step="0.01"></label>
+              <button class="primary" id="nicCalc">算最小厚度</button>
+              <div class="result" id="nicOut">lmin = 90°/ρ</div>
+            </div>
+          </div>
+          <div class="card">
+            <h3>左右圆偏振折射率</h3>
+            <div class="calc" style="grid-template-columns:1fr;">
+              <label>nL - nR<input id="dn" type="number" value="0.00011" step="0.00001"></label>
+              <label>波长 λ，单位 nm<input id="lamNm" type="number" value="396.8" step="0.1"></label>
+              <button class="primary" id="circCalc">算旋光率</button>
+              <div class="result" id="circOut">ρ = 180(nL-nR)/λ，单位 °/m</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="practice">
+      <h2>5. 限时自测：看到题目先选模型</h2>
+      <div class="practice-list">
+        <details>
+          <summary>题型 1：自然光过两个偏振片，夹角 45°</summary>
+          <p>模型：偏振片 + 马吕斯定律。</p>
+          <div class="formula">I = (I0/2) cos²45° = I0/4</div>
+        </details>
+        <details>
+          <summary>题型 2：入射角等于布儒斯特角，问反射光性质</summary>
+          <p>模型：布儒斯特角。</p>
+          <div class="formula">反射光 = 完全线偏振光
+振动方向 = 垂直入射面</div>
+        </details>
+        <details>
+          <summary>题型 3：方解石、光轴、o 光/e 光</summary>
+          <p>模型：双折射。先写：分成 o/e 两束，偏振方向互相垂直。再看图判断传播方向是否不同。</p>
+        </details>
+        <details open>
+          <summary>题型 4：两个互相正交尼科耳之间放旋光片，求最小厚度</summary>
+          <p>起偏器和检偏器互相正交，本来完全不透。要最亮，就让旋光片把偏振方向转到检偏器方向。</p>
+          <div class="formula">最亮条件：ρl = 90° + 180°k
+最小厚度：lmin = 90° / ρ
+
+例：ρ = 21.75°/mm
+lmin = 90 / 21.75 = 4.14 mm</div>
+        </details>
+      </div>
+
+      <table aria-label="偏振题型总表">
+        <thead>
+          <tr><th>看到的关键词</th><th>立刻写什么</th><th>最常见坑</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>自然光、偏振片、夹角</td><td>I0/2，然后逐片乘 cos²θ</td><td>第二片又除以 2</td></tr>
+          <tr><td>布儒斯特角、完全偏振</td><td>tan iB = n2/n1，iB+r=90°</td><td>角度从界面量起，而不是从法线量起</td></tr>
+          <tr><td>方解石、o 光、e 光、光轴</td><td>o/e 偏振方向互相垂直</td><td>把光轴当成光线</td></tr>
+          <tr><td>旋光度、浓度、长度</td><td>α=[α]lc</td><td>单位不统一、正负号乱丢</td></tr>
+          <tr><td>交叉尼科耳、出射最强</td><td>ρl=90°+180°k</td><td>写成 0° 导致还是被挡住</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="footer-note">学习建议：先刷“最短判断句”，再用计算器套 3 遍，最后只看题目截图自己说出模型。</p>
+  </main>
+
+  <script>
+    function setFeedback(box, ok, text) {
+      box.textContent = text;
+      box.className = "feedback " + (ok ? "ok" : "bad");
+    }
+
+    document.querySelectorAll(".quiz").forEach((quiz) => {
+      const answer = quiz.dataset.answer;
+      const feedback = quiz.querySelector(".feedback");
+      quiz.querySelectorAll("button[data-choice]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const ok = btn.dataset.choice === answer;
+          setFeedback(feedback, ok, ok ? "对。你抓住了模型。" : "不对。先识别模型，再套规则。");
+        });
+      });
+    });
+
+    document.getElementById("brewCalc").addEventListener("click", () => {
+      const n1 = Number(document.getElementById("brewN1").value);
+      const n2 = Number(document.getElementById("brewN2").value);
+      const out = document.getElementById("brewOut");
+      if (!(n1 > 0) || !(n2 > 0)) {
+        out.textContent = "n1 和 n2 必须大于 0";
+        return;
+      }
+      const i = Math.atan(n2 / n1) * 180 / Math.PI;
+      const r = 90 - i;
+      out.textContent = `iB = ${i.toFixed(2)}°, r = ${r.toFixed(2)}°`;
+    });
+
+    document.getElementById("rotCalc").addEventListener("click", () => {
+      const a = Number(document.getElementById("specAlpha").value);
+      const l = Number(document.getElementById("lenL").value);
+      const c = Number(document.getElementById("concC").value);
+      document.getElementById("rotOut").textContent = `α = ${(a * l * c).toFixed(4)}°`;
+    });
+
+    document.getElementById("nicCalc").addEventListener("click", () => {
+      const rho = Number(document.getElementById("rho").value);
+      const out = document.getElementById("nicOut");
+      if (!(rho > 0)) {
+        out.textContent = "ρ 必须大于 0";
+        return;
+      }
+      out.textContent = `lmin = ${(90 / rho).toFixed(4)} mm`;
+    });
+
+    document.getElementById("circCalc").addEventListener("click", () => {
+      const dn = Number(document.getElementById("dn").value);
+      const lamNm = Number(document.getElementById("lamNm").value);
+      const out = document.getElementById("circOut");
+      if (!(lamNm > 0)) {
+        out.textContent = "λ 必须大于 0";
+        return;
+      }
+      const lamM = lamNm * 1e-9;
+      const degPerM = 180 * dn / lamM;
+      const degPerMm = degPerM / 1000;
+      out.textContent = `ρ = ${degPerM.toExponential(3)} °/m = ${degPerMm.toFixed(3)} °/mm`;
+    });
+  </script>
+</body>
+</html>

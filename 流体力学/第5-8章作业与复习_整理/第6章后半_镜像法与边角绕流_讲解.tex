@@ -1,0 +1,318 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=1.55cm]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs,longtable,array}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\arraystretch}{1.45}
+\newcommand{\ds}{\displaystyle}
+
+\title{\vspace{-1.2em}第6章后半：镜像法与边角绕流讲解}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-2.2em}
+
+\begin{tcolorbox}[colback=blue!3,colframe=blue!50!black,title=对应课件范围]
+对应灰色课件《第6章 理想不可压无旋流动-叠加.pdf》的第21页后半到第24页。
+\end{tcolorbox}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+页码 & 内容 & 考试价值\\
+\midrule
+21--22 & 平面镜像法 & 高\\
+23 & 双壁面镜像法 & 中高\\
+23--24 & 边角绕流 $\varphi=Ar^n\cos n\theta,\ \psi=Ar^n\sin n\theta$ & 高\\
+24 & 总结：势流 = 拉普拉斯方程 + 叠加 + 验证边界 & 很高\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{一、镜像法到底在干什么}
+
+理想流体碰到固体壁面，边界条件不是“不滑移”，而是“不穿透”：
+\[
+v_n=0.
+\]
+
+二维流动中，若固体壁面是一条流线，则流体速度沿着壁面走，没有法向穿透速度。因此：
+\[
+\boxed{\text{固壁}=\text{流线}}
+\]
+
+镜像法的目的就是构造一个“真实奇点 + 虚拟镜像奇点”的组合，使固体壁面上
+\[
+\psi=\text{常数}.
+\]
+
+只要能证明这一点，就满足固壁不穿透条件。
+
+\begin{tcolorbox}[colback=yellow!6,colframe=orange!75!black,title=考试判分点]
+镜像法题不能只写“放一个镜像”。标准写法必须有三步：
+\[
+1.\ \text{放镜像奇点}
+\]
+\[
+2.\ \text{写总流函数 } \psi=\psi_1+\psi_2
+\]
+\[
+3.\ \text{代入固壁，证明 } \psi=\text{常数}
+\]
+\end{tcolorbox}
+
+\section*{二、镜像法基本规则}
+
+假设固壁是 $y=0$，真实流动区域是 $y>0$。
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+真实奇点 & 镜像位置 & 镜像强度 & 原因\\
+\midrule
+点源 & 关于固壁对称 & 同号点源 & 法向速度抵消\\
+点汇 & 关于固壁对称 & 同号点汇 & 法向速度抵消\\
+点涡 & 关于固壁对称 & 反号点涡 & 让壁面成为流线\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+记忆方式：
+\[
+\boxed{\text{源汇同号，点涡反号}}
+\]
+
+\section*{三、例题1：点涡在水平壁面上方}
+
+真实点涡位于 $(0,a)$，强度为 $k$，固壁为 $y=0$，实际区域为 $y>0$。
+
+真实点涡流函数：
+\[
+\psi_1=-k\ln\sqrt{x^2+(y-a)^2}.
+\]
+
+镜像点涡位于 $(0,-a)$，强度相反，因此：
+\[
+\psi_2=+k\ln\sqrt{x^2+(y+a)^2}.
+\]
+
+总流函数：
+\[
+\psi=\psi_1+\psi_2
+=-k\ln\sqrt{x^2+(y-a)^2}
++k\ln\sqrt{x^2+(y+a)^2}.
+\]
+
+验证固壁 $y=0$：
+\[
+\psi\big|_{y=0}
+=-k\ln\sqrt{x^2+a^2}
++k\ln\sqrt{x^2+a^2}
+=0.
+\]
+
+所以：
+\[
+\boxed{y=0\text{ 是流线，满足固壁不穿透条件。}}
+\]
+
+\section*{四、例题2：点源在竖直壁面右侧}
+
+真实区域为 $x>0$，固壁是 $x=0$。点源位于 $(a,0)$，强度为 $A$。
+
+真实点源：
+\[
+\psi_1=A\tan^{-1}\frac{y}{x-a}.
+\]
+
+镜像点源在 $(-a,0)$，同号：
+\[
+\psi_2=A\tan^{-1}\frac{y}{x+a}.
+\]
+
+总流函数：
+\[
+\psi
+=A\tan^{-1}\frac{y}{x-a}
++A\tan^{-1}\frac{y}{x+a}.
+\]
+
+验证固壁 $x=0$：
+\[
+\psi\big|_{x=0}
+=A\tan^{-1}\frac{y}{-a}
++A\tan^{-1}\frac{y}{a}
+=0.
+\]
+
+所以：
+\[
+\boxed{x=0\text{ 是流线，满足固壁不穿透条件。}}
+\]
+
+\section*{五、双壁面镜像法}
+
+若实际区域是第一象限：
+\[
+x>0,\qquad y>0,
+\]
+则有两面固壁：
+\[
+x=0,\qquad y=0.
+\]
+
+如果真实点源位于 $(b,a)$，为了让两面墙都成为流线，需要补三个镜像点：
+\[
+(b,a),\qquad (-b,a),\qquad (b,-a),\qquad (-b,-a).
+\]
+
+点源/点汇：四个都是同号。
+
+点涡：每关于一面墙镜像一次，符号变一次。
+
+\begin{tcolorbox}[colback=green!4,colframe=green!45!black,title=双壁面题的标准流程]
+1. 画出真实奇点。\\
+2. 对第一面墙镜像。\\
+3. 对第二面墙镜像。\\
+4. 写总流函数。\\
+5. 分别代入 $x=0$ 和 $y=0$，证明两面墙上 $\psi=\text{常数}$。
+\end{tcolorbox}
+
+\section*{六、边角绕流}
+
+课件给出的边角绕流公式是：
+\[
+\boxed{\varphi=A r^n\cos n\theta}
+\]
+\[
+\boxed{\psi=A r^n\sin n\theta}
+\]
+
+其中 $\alpha$ 是夹角，$n$ 与夹角的关系为：
+\[
+\boxed{n=\frac{\pi}{\alpha}}.
+\]
+
+为什么这个公式能表示边角绕流？
+
+因为边界是两条直线：
+\[
+\theta=0,\qquad \theta=\frac{\pi}{n}.
+\]
+
+代入流函数：
+\[
+\psi=A r^n\sin n\theta.
+\]
+
+当 $\theta=0$ 时：
+\[
+\psi=Ar^n\sin 0=0.
+\]
+
+当 $\theta=\pi/n$ 时：
+\[
+\psi=Ar^n\sin \pi=0.
+\]
+
+所以两条边界都是流线，满足固壁不穿透条件。
+
+\section*{七、边角绕流速度公式}
+
+由势函数
+\[
+\varphi=A r^n\cos n\theta
+\]
+求速度：
+\[
+v_r=\frac{\partial\varphi}{\partial r}
+=Anr^{n-1}\cos n\theta,
+\]
+\[
+v_\theta=\frac{1}{r}\frac{\partial\varphi}{\partial\theta}
+=-Anr^{n-1}\sin n\theta.
+\]
+
+速度大小为：
+\[
+\boxed{V=Anr^{n-1}}.
+\]
+
+这个公式能判断角点附近速度是否发散：
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+情况 & 数学表现 & 物理含义\\
+\midrule
+$n>1$，即 $\alpha<180^\circ$ & $r\to0$ 时 $V\to0$ & 角点速度趋于零\\
+$n=1$，即 $\alpha=180^\circ$ & $V=A$ & 均匀流\\
+$n<1$，即 $\alpha>180^\circ$ & $r\to0$ 时 $V\to\infty$ & 角点速度奇异\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{八、常见夹角速查}
+
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+夹角 $\alpha$ & $n=\pi/\alpha$ & 速度特征\\
+\midrule
+$60^\circ$ & $3$ & 角点速度趋于 $0$\\
+$90^\circ$ & $2$ & 角点速度趋于 $0$\\
+$120^\circ$ & $3/2$ & 角点速度趋于 $0$\\
+$180^\circ$ & $1$ & 均匀流\\
+$270^\circ$ & $2/3$ & 角点速度趋于无穷\\
+$360^\circ$ & $1/2$ & 角点速度趋于无穷\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{九、考试满分流程}
+
+遇到课件第21--24页相关题，按下面流程写：
+
+\begin{tcolorbox}[colback=red!3,colframe=red!60!black,title=统一解题流程]
+\[
+1.\ \text{判断题型：镜像法还是边角绕流。}
+\]
+\[
+2.\ \text{有墙面和奇点：用镜像法。}
+\]
+\[
+3.\ \text{有夹角区域：用 } \varphi=A r^n\cos n\theta,\quad \psi=A r^n\sin n\theta.
+\]
+\[
+4.\ \text{验证边界：}\psi=\text{常数}.
+\]
+\[
+5.\ \text{若要求压强：用伯努利方程。}
+\]
+\end{tcolorbox}
+
+压强统一公式：
+\[
+p+\frac12\rho V^2=p_\infty+\frac12\rho U_\infty^2,
+\]
+\[
+\boxed{p=p_\infty+\frac12\rho(U_\infty^2-V^2)}.
+\]
+
+\section*{十、最后记忆句}
+
+\[
+\boxed{\text{势流造解不是乱凑公式，而是让边界变成流线。}}
+\]
+
+镜像法是让直墙变成流线；边角绕流公式是让两条夹角边界变成流线。
+
+\end{document}

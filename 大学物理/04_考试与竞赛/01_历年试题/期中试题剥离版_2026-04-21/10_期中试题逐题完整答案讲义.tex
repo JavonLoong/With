@@ -1,0 +1,1752 @@
+\documentclass[12pt,a4paper]{ctexart}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{setspace}
+\setstretch{1.12}
+\setlength{\parindent}{2em}
+\setlist[itemize]{leftmargin=2.2em,itemsep=0.35em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=2.5em,itemsep=0.35em,topsep=0.35em}
+\title{大学物理期中试题逐题完整答案讲义}
+\author{Codex 整理}
+\date{2026-04-21}
+\begin{document}
+\maketitle
+
+\begin{tcolorbox}[title=讲义定位,colback=yellow!4!white,colframe=orange!60!black]
+这份讲义不是提纲式摘要，而是把期中试题整理成“原题页图 + 核心公式 + 每题完整答案”的单份 PDF。
+正式 PDF 试卷优先作为主材料；回忆版和图片卷的缺损处会在题后明确标注。
+\end{tcolorbox}
+
+\tableofcontents
+\clearpage
+\section{大学物理1期中试题}
+\begin{tcolorbox}[title=资料说明,colback=yellow!4!white,colframe=orange!60!black]
+正式 PDF 主卷，按原题页图逐题展开。\par
+\end{tcolorbox}
+\subsection*{原题页图}
+先给出这一套试题的原题页图，便于把后面的完整答案和原题一一对应。
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/大学物理1期中试题-1.png}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/大学物理1期中试题-2.png}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/大学物理1期中试题-3.png}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/大学物理1期中试题-4.png}
+\end{center}
+\vspace{0.5em}
+\begin{tcolorbox}[title=本卷核心公式,colback=green!3!white,colframe=green!45!black]
+\begin{itemize}
+\item $W=\Delta E_k$
+\item $F(x)=-\dfrac{dE_p}{dx}$
+\item $\tau=\dfrac{dL}{dt},\quad L=r\times p$
+\item $I=I_C+md^2$
+\item $\dfrac{v}{c}=\dfrac{pc}{E}$
+\item $u=\dfrac{u'+v}{1+u'v/c^2}$
+\end{itemize}
+\end{tcolorbox}
+\subsection*{逐题完整答案}
+\subsubsection*{第1题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一单摆挂在木板的小钉上（摆球的质量≪木板的质量），木板可沿两根竖直且无摩擦的轨道下滑，如图。开始时木板被支撑物托住，且使单摆摆动。当摆球尚未摆到最高点时，移开支撑物，木板自由下落，则在下落过程中，摆球相对于板\par
+（A）作匀速率圆周运动。\par
+（B）静止。\par
+（C）仍作周期性摆动。\par
+（D）作上述情况之外的运动。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+木板和摆球同时做自由落体，在木板参考系中等效“失重”，摆球在释放瞬间相对木板的速度又恰好为零。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 取木板为参考系。木板向下加速度为 \(g\)，故木板系中的惯性力大小为 \(mg\) 向上。
+\item 摆球本身受重力 \(mg\) 向下，两者抵消，因此木板系中的等效重力为 0。
+\item 摆球在“摆到最高点”这一瞬间，相对木板的速度为 0。
+\item 木板系中没有沿切向继续驱动它摆动的合力，所以摆球相对木板保持原位置不变。
+\end{enumerate}
+\textbf{最终答案：}
+选 B，摆球相对木板静止。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+很多人会想“绳子还在，所以还会摆”，但摆动的根本原因是重力沿切向的分力；失重时这个分力已经没有了。\par
+\end{tcolorbox}
+
+\subsubsection*{第2题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一光滑的内表面半径为 10 cm 的半球形碗，以匀角速度 \(\omega\) 绕其对称轴 \(OC\) 旋转。已知放在碗内表面上的一个小球 \(P\) 相对于碗静止，其位置高于碗底 4 cm，则由此可推知碗旋转的角速度约为\par
+（A）10 rad/s。\par
+（B）13 rad/s。\par
+（C）17 rad/s。\par
+（D）18 rad/s。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+在随碗转动的参考系中，小球静止，因此重力与离心力的合力应沿碗面的法线方向。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 碗半径为 \(10\text{ cm}\)，小球高于碗底 \(4\text{ cm}\)，所以它比球心低 \(10-4=6\text{ cm}=0.06\text{ m}\)。
+\item 设小球到转轴的水平距离为 \(r\)，由几何关系得 \(r=\sqrt{10^2-6^2}=8\text{ cm}=0.08\text{ m}\)。
+\item 在转动参考系中，离心力大小为 \(F_c=m\omega^2 r\)，重力为 \(mg\)。
+\item 小球静止时，\(\vec F_c+\vec G\) 必须沿半径方向，于是有 \(\dfrac{m\omega^2 r}{mg}=\dfrac{8}{6}\)。
+\item 代入 \(r=0.08\text{ m}\)、\(g=10\text{ m/s}^2\)，可得 \(\omega^2=\dfrac{10}{0.06}\approx 166.7\)，所以 \(\omega\approx 12.9\text{ rad/s}\)。
+\end{enumerate}
+\textbf{最终答案：}
+角速度约为 \(13\text{ rad/s}\)，选 B。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+题中“高于碗底 4 cm”不能直接当成相对球心高度；真正参与平衡的是“小球比球心低 6 cm”。\par
+\end{tcolorbox}
+
+\subsubsection*{第3题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+如图所示，砂子从 \(h=0.8\text{ m}\) 高处下落到以 3 m/s 的速率水平方向右运动的传送带上。取重力加速度 \(g=10\text{ m/s}^2\)。传送带给予刚落到传送带上的砂子的作用力的方向为\par
+（A）与水平夹角 53° 向下。\par
+（B）与水平夹角 53° 向上。\par
+（C）与水平夹角 37° 向上。\par
+（D）与水平夹角 37° 向下。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+碰撞时间很短，可用冲量方向判断接触力方向；接触冲量方向与动量变化方向一致。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 砂子落到传送带前的竖直速度为 \(v_y=\sqrt{2gh}=\sqrt{2\times 10\times 0.8}=4\text{ m/s}\)，方向向下。
+\item 碰后砂子最终速度变成 \(\vec v_f=(3,0)\)，初速度可写成 \(\vec v_i=(0,-4)\)。
+\item 动量变化方向为 \(\Delta \vec p=m(\vec v_f-\vec v_i)=m(3,4)\)。
+\item 所以平均接触力方向与水平方向夹角满足 \(\tan\theta=\dfrac{4}{3}\)，故 \(\theta\approx 53^\circ\)，方向向上。
+\end{enumerate}
+\textbf{最终答案：}
+作用方向为“与水平方向成 \(53^\circ\) 向上”，选 B。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要只看到“摩擦向右”，车面对砂子还有明显的向上支持作用，用来把下落速度减为 0。\par
+\end{tcolorbox}
+
+\subsubsection*{第4题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+人造地球卫星绕地球作椭圆轨道运动，卫星轨道近地点和远地点分别为 \(A\) 和 \(B\)。用 \(L\) 和 \(E_k\) 分别表示卫星对地心的角动量及其动能的瞬时值，则应有\par
+（A）\(L_A>L_B,\ E_{kA}>E_{kB}\)。\par
+（B）\(L_A=L_B,\ E_{kA}<E_{kB}\)。\par
+（C）\(L_A=L_B,\ E_{kA}>E_{kB}\)。\par
+（D）\(L_A<L_B,\ E_{kA}<E_{kB}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+万有引力是中心力，所以角动量守恒；近地点速度大于远地点速度。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 卫星受力始终沿地心方向，因此关于地心的力矩为 0，所以 \(L_A=L_B\)。
+\item 椭圆轨道中，卫星在近地点速度最大，在远地点速度最小。
+\item 因此 \(E_{kA}=\dfrac12 mv_A^2>\dfrac12 mv_B^2=E_{kB}\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(L_A=L_B\)，且 \(E_{kA}>E_{kB}\)，选 C。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+“离地近，势能小”并不意味着“动能也小”；机械能守恒下反而是近地点动能更大。\par
+\end{tcolorbox}
+
+\subsubsection*{第5题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+速度为 \(v_0\) 的小球与速度 \(v\)（\(v\) 与 \(v_0\) 方向相同，并且 \(v<v_0\)）滑行中的车发生完全弹性碰撞，车的质量远大于小球的质量，则碰撞后小球的速度为\par
+（A）\(v_0-2v\)。\par
+（B）\(2(v_0-v)\)。\par
+（C）\(2v-v_0\)。\par
+（D）\(2(v-v_0)\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+在车的参考系里，这是“小球撞静止墙后反弹”；完全弹性碰撞使相对速度反向且大小不变。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 在车参考系中，小球碰前速度为 \(u_i=v_0-v\)。
+\item 完全弹性碰撞后，相对车的速度反向：\(u_f=-(v_0-v)\)。
+\item 回到地面参考系，碰后速度为 \(v_f=u_f+v=2v-v_0\)。
+\end{enumerate}
+\textbf{最终答案：}
+小球碰后速度为 \(2v-v_0\)，选 C。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+最容易错的是符号方向；一定要先转到车系，再回到地面系。\par
+\end{tcolorbox}
+
+\subsubsection*{第6题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一轻绳跨过一具有水平光滑轴、质量为 \(M\) 的定滑轮，绳的两端分别悬有质量为 \(m_1\) 和 \(m_2\) 的物体（\(m_1<m_2\)），如图所示。绳与轮之间无相对滑动。若某时刻滑轮沿逆时针方向转动，则绳中的张力\par
+（A）处处相等。\par
+（B）左边大于右边。\par
+（C）右边大于左边。\par
+（D）哪边大无法判断。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+张力大小规律由角加速度决定，不由“这一瞬间转向”决定；因 \(m_2>m_1\)，系统必然是右边下落。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设右边张力为 \(T_2\)，左边张力为 \(T_1\)。
+\item 对两物体列方程：\(m_2g-T_2=m_2a\)，\(T_1-m_1g=m_1a\)。
+\item 对滑轮列转动方程：\((T_2-T_1)R=I\alpha\)，且 \(\alpha=\dfrac{a}{R}\)。
+\item 因为 \(m_2>m_1\)，系统加速度方向必为右边下、左边上，所以 \(a>0\)，从而 \(T_2-T_1>0\)。
+\end{enumerate}
+\textbf{最终答案：}
+右边张力大于左边张力，选 C。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+题目给“滑轮逆时针转动”只是干扰；速度方向不等于加速度方向。\par
+\end{tcolorbox}
+
+\subsubsection*{第7题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+如图所示，圆锥摆的摆球质量为 \(m\)，速率为 \(v\)，圆半径为 \(R\)，当摆球在轨道上运动半周时，摆球所受重力冲量的大小为\par
+（A）\(2mv\)。\par
+（B）\(\sqrt{(2mv)^2+(mg\pi R/v)^2}\)。\par
+（C）\(\pi Rmg/v\)。\par
+（D）0。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+冲量是“力乘作用时间”的矢量累积；重力恒定向下，只需求半周所用时间。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 半周对应的弧长为 \(s=\pi R\)。
+\item 速率恒为 \(v\)，所以经历时间 \(\Delta t=\dfrac{\pi R}{v}\)。
+\item 重力大小为 \(mg\)，因此重力冲量大小为 \(J_G=mg\Delta t=\dfrac{\pi Rmg}{v}\)。
+\end{enumerate}
+\textbf{最终答案：}
+重力冲量大小为 \(\dfrac{\pi Rmg}{v}\)，选 C。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+做功和冲量不是一回事；这里重力虽然不做功，但一直在作用，所以冲量不为 0。\par
+\end{tcolorbox}
+
+\subsubsection*{第8题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+质量为 \(m=0.5\text{ kg}\) 的质点，在 \(Oxy\) 坐标平面内运动，其运动方程为 \(x=5t,\ y=0.5t^2\)（SI），从 \(t=2\text{ s}\) 到 \(t=4\text{ s}\) 这段时间内，外力对质点作的功为\par
+（A）1.5 J。\par
+（B）3 J。\par
+（C）4.5 J。\par
+（D）-1.5 J。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+直接用动能定理最省事：\(W=\Delta E_k\)。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 速度分量为 \(v_x=\dfrac{dx}{dt}=5,\ v_y=\dfrac{dy}{dt}=t\)。
+\item 当 \(t=2\text{ s}\) 时，\(v_1^2=5^2+2^2=29\)。
+\item 当 \(t=4\text{ s}\) 时，\(v_2^2=5^2+4^2=41\)。
+\item 动能变化为 \(\Delta E_k=\dfrac12 m(v_2^2-v_1^2)=\dfrac12\times 0.5\times (41-29)=3\text{ J}\)。
+\end{enumerate}
+\textbf{最终答案：}
+外力做功为 \(3\text{ J}\)，选 B。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不必先求合力再积分；题目给了运动方程，求速度后直接用动能定理更稳。\par
+\end{tcolorbox}
+
+\subsubsection*{第9题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+作为相互作用的一对滑动摩擦力，当分别作用在有相对滑动的两物体上时，它们作功之和\par
+（A）恒为零。\par
+（B）恒为负。\par
+（C）恒为正。\par
+（D）可能为正、为负或为零。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+作用力与反作用力大小相等、方向相反，但作用点位移不同，因此功不互相抵消。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设相对滑动速度大小为 \(u>0\)，滑动摩擦力大小为 \(f\)。
+\item 两个摩擦力方向相反，但总瞬时功率为 \(P=\vec f_{12}\cdot \vec v_1+\vec f_{21}\cdot \vec v_2=\vec f_{12}\cdot (\vec v_1-\vec v_2)\)。
+\item 而摩擦力总是反向于相对滑动方向，所以 \(P=-fu<0\)。
+\item 在任意一段存在滑动的时间内，功率都为负，因此总功恒为负。
+\end{enumerate}
+\textbf{最终答案：}
+这对滑动摩擦力所做总功恒为负，选 B。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+牛顿第三定律保证“力”成对，不保证“功”成对抵消。\par
+\end{tcolorbox}
+
+\subsubsection*{第10题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+如图所示两个小球用不能伸长的细软线连接，垂直地跨过固定在地面上、表面光滑的半径为 \(R\) 的圆柱，小球 \(B\) 着地，小球 \(A\) 的质量为 \(B\) 的两倍，且恰与圆柱的轴心一样高。由静止状态轻轻释放 \(A\)，当 \(A\) 球到达地面后，\(B\) 球继续上升的最大高度是\par
+（A）\(R\)。\par
+（B）\(\dfrac{2}{3}R\)。\par
+（C）\(\dfrac{1}{2}R\)。\par
+（D）\(\dfrac{1}{3}R\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+先用机械能守恒求出 \(A\) 落地瞬间两球共同速度，再把 \(B\) 球剩余动能全部转化为重力势能。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设 \(B\) 球质量为 \(m\)，则 \(A\) 球质量为 \(2m\)。
+\item 从初态到 \(A\) 落地，\(A\) 下降高度为 \(R\)，\(B\) 上升高度也为 \(R\)。
+\item 系统重力势能净减少 \(\Delta E_p=2mgR-mgR=mgR\)。
+\item 这部分转化为两球总动能：\(\dfrac12 (2m)v^2+\dfrac12 mv^2=\dfrac32 mv^2=mgR\)。
+\item 解得 \(v^2=\dfrac{2gR}{3}\)。
+\item 当 \(A\) 落地后，\(B\) 继续上升，直到速度减为 0。于是 \(mgh=\dfrac12 mv^2=\dfrac12 m\dfrac{2gR}{3}\)。
+\item 故 \(h=\dfrac{R}{3}\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(B\) 还能继续上升 \(\dfrac{R}{3}\)，选 D。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把它误算成“\(B\) 球离地总高度”；题目问的是 \(A\) 落地以后，\(B\) 还能继续上升多少。\par
+\end{tcolorbox}
+
+\subsubsection*{第11题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+由图中所示势能曲线分析物体的运动情况如下，请指出哪个说法正确：\par
+（A）在曲线 \(M_1\) 至 \(M_2\) 段物体受力 \(f(x)>0\)。\par
+（B）曲线上的一点 \(M_1\) 是非稳定平衡点。\par
+（C）开始在 \(x_A\) 与 \(x_B\) 之间的、总能量为 \(E_1\) 的物体的运动范围是 \(x_A\) 与 \(x_B\) 之间。\par
+（D）总能量为 \(E_1\) 的物体的运动范围是 \(0\to\infty\) 之间。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+一维保守力满足 \(F(x)=-\dfrac{dE_p}{dx}\)。平衡点由 \(\dfrac{dE_p}{dx}=0\) 决定；极小值点是稳定平衡，极大值点是不稳定平衡。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 在 \(M_1\) 到 \(M_2\) 这一段，势能曲线总体上升，即 \(\dfrac{dE_p}{dx}>0\)，所以 \(F(x)=-\dfrac{dE_p}{dx}<0\)，A 错。
+\item \(M_1\) 是势能极小点，所以是稳定平衡点，不是非稳定平衡点，B 错。
+\item 当总能量为 \(E_1\) 时，允许运动区域满足 \(E_1\ge E_p(x)\)。
+\item 若粒子初始位于左阱内，即在 \(x_A\) 与 \(x_B\) 之间，则它只能在这两个转折点之间往复运动，过不了势垒，所以 C 对。
+\item D 说“运动范围是 \(0\to\infty\)”显然不对，因为中间存在 \(E_p>E_1\) 的禁阻区。
+\end{enumerate}
+\textbf{最终答案：}
+正确选项是 C。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+势能曲线“上坡”，力就“向左”；势能曲线“下坡”，力就“向右”。\par
+\end{tcolorbox}
+
+\subsubsection*{第12题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+如图所示，一个小物体，位于光滑的水平桌面上，与一绳的一端连接，绳的另一端穿过桌面中心的小孔 \(O\)。该物体原以角速度 \(\omega\) 在半径为 \(R\) 的圆周上绕 \(O\) 旋转，今将绳从小孔缓慢往下拉，则物体\par
+（A）动能不变，动量改变。\par
+（B）动量不变，动能改变。\par
+（C）角动量不变，动量不变。\par
+（D）角动量改变，动量改变。\par
+（E）角动量不变，动能、动量都改变。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+拉力始终沿 \(O\) 指向小球，是中心力，所以对 \(O\) 的力矩为零，角动量守恒；但拉绳做功，动能会变化。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 关于 \(O\) 点，拉力始终沿半径方向，所以力矩 \(\tau_O=0\)。
+\item 因此小球对 \(O\) 的角动量守恒，即 \(L=mrv=\text{常量}\)。
+\item 当 \(r\) 变小，为保持 \(L\) 不变，必须有 \(v\) 变大。
+\item 所以线动量 \(p=mv\) 的大小改变，方向也在持续变化，因此动量改变。
+\item 又因为 \(E_k=\dfrac12 mv^2\) 随 \(v\) 增大而增大，所以动能也改变。
+\end{enumerate}
+\textbf{最终答案：}
+角动量不变，动能和动量都改变，选 E。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+“中心力无力矩”不等于“中心力不做功”；这里半径缩短，外界确实对小球做了正功。\par
+\end{tcolorbox}
+
+\subsubsection*{第13题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+半径为 \(R\)，质量为 \(M\) 的均匀圆盘，靠边挖去直径为 \(R\) 的一个圆孔后（如图），对通过圆盘中心 \(O\) 且与盘面垂直的轴的转动惯量是\par
+（A）\(\dfrac{15}{32}MR^2\)。\par
+（B）\(\dfrac{7}{16}MR^2\)。\par
+（C）\(\dfrac{13}{32}MR^2\)。\par
+（D）\(\dfrac{3}{8}MR^2\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+把剩余部分看成“完整大圆盘减去被挖去的小圆盘”。小圆孔半径为 \(r=\dfrac{R}{2}\)，其圆心到大圆盘中心的距离也是 \(d=\dfrac{R}{2}\)。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 完整大圆盘对中心轴的转动惯量为 \(I_{\text{大}}=\dfrac12 MR^2\)。
+\item 小圆孔的面积是大圆盘的 \(\dfrac{r^2}{R^2}=\dfrac14\)，因此被挖去部分的质量为 \(m=\dfrac{M}{4}\)。
+\item 小圆盘对自身中心轴的转动惯量为 \(I_{\text{小,中心}}=\dfrac12 mr^2=\dfrac12\times \dfrac{M}{4}\times \dfrac{R^2}{4}=\dfrac{MR^2}{32}\)。
+\item 用平行轴定理把它换到原点 \(O\)：\(I_{\text{小},O}=I_{\text{小,中心}}+md^2=\dfrac{MR^2}{32}+\dfrac{M}{4}\times \dfrac{R^2}{4}=\dfrac{3MR^2}{32}\)。
+\item 剩余部分转动惯量为 \(I=I_{\text{大}}-I_{\text{小},O}=\dfrac12 MR^2-\dfrac{3MR^2}{32}=\dfrac{13MR^2}{32}\)。
+\end{enumerate}
+\textbf{最终答案：}
+转动惯量为 \(\dfrac{13}{32}MR^2\)，选 C。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把孔直接当成“半径 \(R\) 的小盘”；题中给的是“直径为 \(R\) 的圆孔”，所以半径应为 \(\dfrac{R}{2}\)。\par
+\end{tcolorbox}
+
+\subsubsection*{第14题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\(K\) 系与 \(K'\) 系是坐标轴相互平行的两个惯性系，\(K'\) 系相对于 \(K\) 系沿 \(Ox\) 轴正方向匀速运动。一根刚性尺静止在 \(K'\) 系中，与 \(O'x'\) 轴成 30° 角。今在 \(K\) 系中观测得该尺与 \(Ox\) 轴成 45° 角，则 \(K'\) 系相对于 \(K\) 系的速度是：\par
+（A）\(\dfrac{2}{3}c\)。\par
+（B）\(\dfrac{1}{3}c\)。\par
+（C）\(\sqrt{\dfrac{2}{3}}c\)。\par
+（D）\(\sqrt{\dfrac{1}{3}}c\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+长度收缩只发生在运动方向上，所以尺子的 \(x\) 分量收缩，\(y\) 分量不变。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设尺子在 \(K'\) 系中的本长为 \(L_0\)，则其分量为 \(L_x'=L_0\cos 30^\circ\)，\(L_y'=L_0\sin 30^\circ\)。
+\item 在 \(K\) 系中，沿运动方向的长度收缩，所以 \(L_x=\dfrac{L_x'}{\gamma}\)，而 \(L_y=L_y'\)。
+\item 又题目给出在 \(K\) 系中夹角为 \(45^\circ\)，故 \(\tan 45^\circ=\dfrac{L_y}{L_x}\)。
+\item 代入得到 \(1=\dfrac{L_0\sin 30^\circ}{L_0\cos 30^\circ/\gamma}=\gamma\tan 30^\circ=\dfrac{\gamma}{\sqrt{3}}\)。
+\item 所以 \(\gamma=\sqrt{3}\)。
+\item 由 \(\gamma=\dfrac{1}{\sqrt{1-\beta^2}}\) 得 \(1-\beta^2=\dfrac{1}{3}\)，于是 \(\beta^2=\dfrac{2}{3}\)，故 \(\beta=\sqrt{\dfrac{2}{3}}\)。
+\end{enumerate}
+\textbf{最终答案：}
+相对速度为 \(v=\sqrt{\dfrac{2}{3}}\,c\)，选 C。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把尺子的两条分量都按同一比例收缩；只有平行于相对运动方向的那一部分才收缩。\par
+\end{tcolorbox}
+
+\subsubsection*{第15题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+在狭义相对论中，下列说法中哪些是正确的？\par
+（1）一切运动物体相对于观察者的速度都不能大于真空中的光速。\par
+（2）质量、长度、时间的测量结果都是随物体与观察者的相对运动状态而改变的。\par
+（3）在一惯性系中发生于同一时刻、不同地点的两个事件在其他一切惯性系中也是同时发生的。\par
+（4）惯性系中的观察者观察一个与他作匀速相对运动的时钟时，会看到这时钟比与他相对静止的相同时钟走得慢些。\par
+（A）（1），（3），（4）。\par
+（B）（1），（2），（4）。\par
+（C）（1），（2），（3）。\par
+（D）（2），（3），（4）。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+这道题按课程常用表述来判断：速度上限、长度收缩、时间延缓成立，而“同时性”不是绝对的。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 说法 (1) 正确。狭义相对论认为任何物体相对观察者的速度都不能超过真空光速。
+\item 说法 (2) 正确。按本课程教材表述，质量、长度、时间的测量结果都与相对运动状态有关。
+\item 说法 (3) 错误。不同地点同时发生的两个事件，在另一惯性系中一般不再同时，这叫同时的相对性。
+\item 说法 (4) 正确。运动时钟相对于观察者会变慢，这是时间延缓效应。
+\end{enumerate}
+\textbf{最终答案：}
+正确的是 (1)(2)(4)，选 B。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+最容易错的是第 (3) 条；“同时性”不是绝对概念，而是依赖参考系。\par
+\end{tcolorbox}
+
+\subsubsection*{第16题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+在惯性系 \(S\) 中，一粒子具有动量 \((p_x,p_y,p_z)=(5,3,\sqrt{2})\text{ MeV}/c\)，及总能量 \(E=10\text{ MeV}\)（\(c\) 表示真空中光速），则在 \(S\) 中测得粒子的速度 \(v\) 最接近于\par
+（A）\(\dfrac{3}{8}c\)。\par
+（B）\(\dfrac{2}{5}c\)。\par
+（C）\(\dfrac{3}{5}c\)。\par
+（D）\(\dfrac{4}{5}c\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+相对论中有 \(p=\gamma mv\)，\(E=\gamma mc^2\)，所以 \(\dfrac{v}{c}=\dfrac{pc}{E}\)。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 先求动量大小：\(p=\sqrt{p_x^2+p_y^2+p_z^2}=\sqrt{25+9+2}=6\text{ MeV}/c\)。
+\item 由 \(\dfrac{v}{c}=\dfrac{pc}{E}\)，代入 \(pc=6\text{ MeV}\)、\(E=10\text{ MeV}\)。
+\item 得 \(\dfrac{v}{c}=\dfrac{6}{10}=\dfrac{3}{5}\)。
+\end{enumerate}
+\textbf{最终答案：}
+粒子速度为 \(v=\dfrac{3}{5}c\)，选 C。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+一定要先求三维动量的模，再代入 \(\dfrac{v}{c}=\dfrac{pc}{E}\)。\par
+\end{tcolorbox}
+
+\subsubsection*{第17题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一小珠可以在半径为 \(R\) 的竖直圆环上作无摩擦滑动。今使圆环以角速度 \(\omega\) 绕圆环竖直直径转动。要使小珠离开环的底部而停在环上某一点，则角速度 \(\omega\) 最小应大于\_\_\_\_\_\_。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+用随圆环转动的参考系。小球相对圆环静止时，沿圆环切向合力应为零；此时要加入离心力。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设小球停在距最低点夹角为 \(\theta\) 的位置。
+\item 小球到转轴的距离为 \(\rho=R\sin\theta\)。
+\item 离心力大小为 \(m\omega^2\rho=m\omega^2R\sin\theta\)，其沿圆环切向分量为 \(m\omega^2R\sin\theta\cos\theta\)。
+\item 重力沿圆环切向分量为 \(mg\sin\theta\)。
+\item 平衡条件为 \(mg\sin\theta=m\omega^2R\sin\theta\cos\theta\)。
+\item 若小球不在最低点，则 \(\sin\theta\neq 0\)，故 \(\cos\theta=\dfrac{g}{\omega^2R}\)。
+\item 要有实解，必须满足 \(\dfrac{g}{\omega^2R}\le 1\)，即 \(\omega\ge \sqrt{\dfrac{g}{R}}\)。题目要求“离开底部”，故应严格大于该临界值。
+\end{enumerate}
+\textbf{最终答案：}
+\(\omega>\sqrt{\dfrac{g}{R}}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把离心力直接当作切向力；要先求到转轴的距离 \(R\sin\theta\)，再投影到圆环切向。\par
+\end{tcolorbox}
+
+\subsubsection*{第18题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+如图所示，钢球 \(A\) 和 \(B\) 质量相等，正被绳牵着以 \(\omega_0=4\text{ rad/s}\) 的角速度绕竖直轴转动，二球与轴的距离都为 \(r_1=15\text{ cm}\)。现在把轴上环 \(C\) 下移，使得两球离轴的距离缩减为 \(r_2=5\text{ cm}\)，则钢球的角速度 \(\omega=\underline{\qquad}\text{ rad/s}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+关于竖直轴外力矩为零，所以系统对竖直轴的角动量守恒。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 两球对竖直轴的总角动量为 \(L=2mr^2\omega\)。
+\item 由角动量守恒得 \(2mr_1^2\omega_1=2mr_2^2\omega_2\)。
+\item 解得 \(\omega_2=\omega_1\dfrac{r_1^2}{r_2^2}=4\times \left(\dfrac{15}{5}\right)^2=36\text{ rad/s}\)。
+\end{enumerate}
+\textbf{最终答案：}
+新的角速度为 \(36\text{ rad/s}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+这里守恒的是角动量，所以是 \(r^2\omega\) 守恒，不是 \(r\omega\) 守恒。\par
+\end{tcolorbox}
+
+\subsubsection*{第19题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一质点的角动量为 \(\vec L=6t^2\vec i-(2t+1)\vec j+(12t^3-8t^2)\vec k\)（SI 制），则质点在 \(t=1\text{ s}\) 时所受力矩 \(\vec M=\underline{\qquad}\)（SI 制）。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+由转动定律可直接使用 \(\vec M=\dfrac{d\vec L}{dt}\)。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 分量分别求导：\(\dfrac{d\vec L}{dt}=12t\,\vec i-2\,\vec j+(36t^2-16t)\,\vec k\)。
+\item 代入 \(t=1\) 得 \(\vec M=12\vec i-2\vec j+20\vec k\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(\vec M=(12\vec i-2\vec j+20\vec k)\text{ N·m}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+力矩是角动量的一阶导数，不要误求成大小或者再次求导。\par
+\end{tcolorbox}
+
+\subsubsection*{第20题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+半径为 20 cm 的主动轮，通过皮带拖动半径为 50 cm 的被动轮转动，皮带与轮之间无相对滑动。主动轮从静止开始作匀角加速转动。在 4 s 内被动轮的角速度达到 \(8\pi\text{ rad·s}^{-1}\)，则主动轮在这段时间内转过了\_\_\_\_\_\_圈。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+皮带不打滑，所以两轮边缘切向加速度相等，再用匀角加速度公式求从动轮角位移。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设主动轮半径为 \(r_1=0.20\text{ m}\)，从动轮半径为 \(r_2=0.50\text{ m}\)。
+\item 由不打滑条件得 \(\alpha_1r_1=\alpha_2r_2\)，所以 \(\alpha_2=\alpha_1\dfrac{r_1}{r_2}=4\times \dfrac{0.20}{0.50}=1.6\text{ rad/s}^2\)。
+\item 从动轮由静止开始转动，4 s 内转角为 \(\theta_2=\dfrac12 \alpha_2 t^2=\dfrac12\times 1.6\times 4^2=12.8\text{ rad}\)。
+\item 转过圈数为 \(n=\dfrac{\theta_2}{2\pi}=\dfrac{12.8}{2\pi}=\dfrac{6.4}{\pi}\approx 2.04\)。
+\end{enumerate}
+\textbf{最终答案：}
+从动轮 4 s 内转过 \(\dfrac{6.4}{\pi}\) 圈，约 \(2.04\) 圈。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要直接令两轮角加速度相等；相等的是边缘切向加速度。\par
+\end{tcolorbox}
+
+\subsubsection*{第21题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+如图所示，一均质细杆 \(AB\)，长为 \(l\)，质量为 \(m\)。\(A\) 端挂在一光滑的固定水平轴上，细杆可以在竖直平面内自由摆动。杆从水平位置由静止释放开始下摆，当下摆 \(\theta\) 时，杆的角速度为\_\_\_\_\_\_。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+铰链约束力不做功，所以机械能守恒。图中 \(\theta\) 是杆相对初始水平位置的下摆角。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 杆的质心在中点，距转轴为 \(\dfrac{l}{2}\)。
+\item 当杆下摆角为 \(\theta\) 时，质心下降高度为 \(\Delta h=\dfrac{l}{2}\sin\theta\)。
+\item 重力势能减少转化为转动动能：\(mg\dfrac{l}{2}\sin\theta=\dfrac12 I_A\omega^2\)。
+\item 均匀细杆绕端点转动惯量为 \(I_A=\dfrac13 ml^2\)。
+\item 代入并化简可得 \(\omega=\sqrt{\dfrac{3g\sin\theta}{l}}\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(\omega=\sqrt{\dfrac{3g\sin\theta}{l}}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把转动惯量写成 \(\dfrac{1}{12}ml^2\)；那是绕中心转动的结果。\par
+\end{tcolorbox}
+
+\subsubsection*{第22题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+如图所示，从半径为 \(R\)，长度为 \(H\) 的均质圆柱体中挖出个同轴的半径为 \(\dfrac{1}{2}R\)，长度为 \(\dfrac{1}{2}H\) 的圆柱形洞。此刚体的质心的坐标为 \(x_C=\underline{\qquad}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+把被挖去的部分看成“负质量”，做一维质心计算。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设大圆柱质量为 \(M\)，其质心坐标为 \(x_1=0\)。
+\item 被挖去小圆柱的体积与大圆柱体积之比为 \(\dfrac{\pi (R/2)^2(H/2)}{\pi R^2H}=\dfrac18\)，故其质量为 \(m=\dfrac{M}{8}\)。
+\item 小圆柱位于右半部分，其质心坐标为 \(x_2=\dfrac{H}{4}\)。
+\item 剩余刚体的质心满足 \(x_C=\dfrac{Mx_1-mx_2}{M-m}\)。
+\item 代入得 \(x_C=\dfrac{0-\dfrac18 M\cdot \dfrac{H}{4}}{M-\dfrac18 M}=-\dfrac{H}{28}\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(x_C=-\dfrac{H}{28}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+关键是先判断被挖去的小圆柱到底占了原圆柱内部多长的一段，再做质量比。\par
+\end{tcolorbox}
+
+\subsubsection*{第23题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+图为一自转轴在水平方向的回转仪的俯视图。\(t=0\) 时刻，回转仪绕自转轴的角动量为 \(\vec L=L\vec i\)。\par
+（1）欲使回转仪逆时针进动，则该时刻对它加的外力矩的方向应为\_\_\_\_\_\_。\par
+（2）若经过时间 \(t\)，回转仪进动到它的角动量指向 \(y\) 方向，而大小不变，则在这段时间内，回转仪所受的冲量矩矢量为\_\_\_\_\_\_。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+用 \(\vec M=\dfrac{d\vec L}{dt}\) 和 \(\vec J_M=\int \vec M\,dt=\Delta \vec L\)。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 逆时针进动时，\(\vec L\) 在水平面内由 \(+\vec i\) 逐渐转向 \(+\vec j\)，所以瞬时力矩方向与 \(\Delta \vec L\) 同向。
+\item 在初始时刻可写成 \(\vec M\parallel \vec k\times \vec L\)，由 \(\vec L=L\vec i\) 知 \(\vec M\) 初始指向 \(+\vec j\)。
+\item 冲量矩等于角动量变化量，即 \(\vec J_M=\vec L_f-\vec L_i=L\vec j-L\vec i\)。
+\end{enumerate}
+\textbf{最终答案：}
+(1) 外力矩初始方向为 \(+\vec j\)，更一般地可写为 \(\vec M\parallel \vec k\times \vec L\)；\par
+(2) 冲量矩为 \(L(\vec j-\vec i)\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把力矩方向写成与 \(\vec L\) 同向；力矩表示的是“角动量变化的方向”。\par
+\end{tcolorbox}
+
+\subsubsection*{第24题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+（8 分）如图一个高度为 \(h\)、底面半径为 \(R\) 的正圆锥绕其竖直轴转动，圆锥表面有一条从锥顶到锥底的光滑细直槽，圆锥起初以角速度 \(\omega_0\) 转动。一个质量为 \(m\) 的小球在槽的顶端被释放，在重力作用下滑下。假设小球只能在槽中运动，圆锥绕轴的转动惯量为 \(I\)，求：\par
+（1）小球到达底部时圆锥的角速度；\par
+（2）小球刚离开圆锥时相对于实验室的速率。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+关于竖直轴外力矩为零，所以角动量守恒；系统机械能也守恒。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设圆锥母线长为 \(l=\sqrt{h^2+R^2}\)。若小球沿槽距顶点为 \(s\)，则到轴距离 \(\rho=\dfrac{R}{l}s\)。
+\item 关于竖直轴角动量守恒：\((I+m\rho^2)\Omega=I\omega_0\)。
+\item 当小球到达底边时，\(\rho=R\)，故圆锥角速度为 \(\Omega_b=\dfrac{I\omega_0}{I+mR^2}\)。
+\item 再用机械能守恒：\(\dfrac12 I\omega_0^2+mgh=\dfrac12 I\Omega_b^2+\dfrac12 m(\dot s^2+R^2\Omega_b^2)\)。
+\item 解得沿槽速度满足 \(\dot s^2=2gh+\dfrac{IR^2\omega_0^2}{I+mR^2}\)。
+\item 小球相对实验室的总速度由沿槽分量与绕轴分量垂直合成，故 \(v=\sqrt{\dot s^2+R^2\Omega_b^2}\)。
+\item 代入 \(\Omega_b\) 后，得到 \(v=\sqrt{2gh+\dfrac{IR^2\omega_0^2(2I+mR^2)}{(I+mR^2)^2}}\)。
+\end{enumerate}
+\textbf{最终答案：}
+到达底边时圆锥角速度为 \(\Omega_b=\dfrac{I\omega_0}{I+mR^2}\)；小球离开圆锥时相对实验室的速率为 \(v=\sqrt{2gh+\dfrac{IR^2\omega_0^2(2I+mR^2)}{(I+mR^2)^2}}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把圆锥角速度误当常量；小球下滑时系统转动惯量发生变化，所以 \(\Omega\) 也在变化。\par
+\end{tcolorbox}
+
+\subsubsection*{第25题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+（20 分）质量 \(m\)、半径 \(r\) 的小圆柱体静止在质量 \(2m\)、半径 \(4r\) 的半圆柱体顶部，半圆柱体与水平面光滑接触，不固定。小圆柱体纯滚动下落，求：未打滑、未脱离半圆柱体之前，小圆柱体运动到与竖直方向成 \(\theta\) 角时，相对于半圆柱体的质心速度 \(v'_C\)、质心切向加速度 \(a'_{Ct}\) 和法向加速度 \(a'_{Cn}\)；自转角速度 \(\omega\) 和角加速度 \(\alpha\)；半圆柱体相对水平面的速度 \(v\) 和加速度 \(a\)。\par
+（求这 7 个量的大小，小圆柱体绕通过质心的中轴线的转动惯量是 \(\dfrac{1}{2}mr^2\)）\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+要同时使用三个条件：水平方向动量守恒、机械能守恒、纯滚动约束；并注意大半圆柱也会平移。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 两圆柱中心距恒为 \(4r+r=5r\)，所以相对大圆柱圆心 \(O\) 而言，小圆柱圆心 \(C\) 的轨道半径是 \(5r\)。
+\item 因此相对运动量有 \(v'_C=5r\dot\theta,\ a'_C=5r\ddot\theta,\ a''_C=5r\dot\theta^2\)。
+\item 系统水平方向无外力，故水平动量守恒：\(2mv+m(v+5r\dot\theta\cos\theta)=0\)，从而 \(v=-\dfrac{5r}{3}\dot\theta\cos\theta\)。
+\item 纯滚动条件给出 \(\omega=-5\dot\theta,\ \alpha=-5\ddot\theta\)；若只写大小，则 \(|\omega|=5\dot\theta,\ |\alpha|=5\ddot\theta\)。
+\item 小圆柱圆心下降高度为 \(\Delta h=5r(1-\cos\theta)\)。用机械能守恒可得 \(\dot\theta^2=\dfrac{12g(1-\cos\theta)}{5r(9-2\cos^2\theta)}\)。
+\item 于是 \(v'_C=5r\dot\theta=\sqrt{\dfrac{60gr(1-\cos\theta)}{9-2\cos^2\theta}}\)。
+\item 相对法向加速度为 \(a''_C=5r\dot\theta^2=\dfrac{12g(1-\cos\theta)}{9-2\cos^2\theta}\)。
+\item 对上式再求导，可得 \(\ddot\theta=\dfrac{6g\sin\theta(9-4\cos\theta+2\cos^2\theta)}{5r(9-2\cos^2\theta)^2}\)，所以 \(a'_C=5r\ddot\theta=\dfrac{6g\sin\theta(9-4\cos\theta+2\cos^2\theta)}{(9-2\cos^2\theta)^2}\)。
+\item 从而 \(|\omega|=\sqrt{\dfrac{60g(1-\cos\theta)}{r(9-2\cos^2\theta)}}\)，\(|\alpha|=\dfrac{6g\sin\theta(9-4\cos\theta+2\cos^2\theta)}{r(9-2\cos^2\theta)^2}\)。
+\item 半圆柱速度为 \(v=-\dfrac{\cos\theta}{3}\sqrt{\dfrac{60gr(1-\cos\theta)}{9-2\cos^2\theta}}\)，再对其求导可得 \(a=-\dfrac13(a'_C\cos\theta-a''_C\sin\theta)\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(v'_C=\sqrt{\dfrac{60gr(1-\cos\theta)}{9-2\cos^2\theta}}\)；\par
+\(a'_C=\dfrac{6g\sin\theta(9-4\cos\theta+2\cos^2\theta)}{(9-2\cos^2\theta)^2}\)；\par
+\(a''_C=\dfrac{12g(1-\cos\theta)}{9-2\cos^2\theta}\)；\par
+\(|\omega|=\sqrt{\dfrac{60g(1-\cos\theta)}{r(9-2\cos^2\theta)}}\)；\par
+\(|\alpha|=\dfrac{6g\sin\theta(9-4\cos\theta+2\cos^2\theta)}{r(9-2\cos^2\theta)^2}\)；\par
+\(v=-\dfrac{\cos\theta}{3}\sqrt{\dfrac{60gr(1-\cos\theta)}{9-2\cos^2\theta}}\)；\par
+\(a=-\dfrac13(a'_C\cos\theta-a''_C\sin\theta)\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+这题最容易漏掉“大半圆柱也会动”，一旦把它误当固定轨道，后面的系数都会整体错掉。\par
+\end{tcolorbox}
+
+
+\section{2020 年秋大学物理 A2 期中}
+\begin{tcolorbox}[title=资料说明,colback=yellow!4!white,colframe=orange!60!black]
+正式 PDF 主卷，题面基本完整，个别模糊处按常规命题格式还原。\par
+\end{tcolorbox}
+\subsection*{原题页图}
+先给出这一套试题的原题页图，便于把后面的完整答案和原题一一对应。
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/2020年秋大学物理A2期中王山鹰-1.png}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/2020年秋大学物理A2期中王山鹰-2.png}
+\end{center}
+\vspace{0.5em}
+\begin{tcolorbox}[title=本卷核心公式,colback=green!3!white,colframe=green!45!black]
+\begin{itemize}
+\item $n(h)=n(0)e^{-Mgh/(RT)}$
+\item $TV^{\gamma-1}=\text{const}$
+\item $\Delta S=nR\ln\dfrac{V_2}{V_1}$
+\item $\eta=\dfrac{W}{Q_h}$
+\item $y=2A\cos(kx)\cos(\omega t+\varphi)$
+\item $\dfrac{dN}{dt}=-\dfrac14 n\bar v A$
+\end{itemize}
+\end{tcolorbox}
+\subsection*{逐题完整答案}
+\subsubsection*{第1题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+海平面上氮气和氧气浓度比为 \(4:1\)，大气温度为 \(290\text{ K}\)。求海拔 \(5\text{ km}\) 处氮气和氧气的浓度比。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+各组分在等温重力场中都满足玻尔兹曼分布，先分别写出浓度表达式，再相除。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 对任一气体组分都有 \(n(h)=n(0)\exp\!\left(-\dfrac{Mgh}{RT}\right)\)。
+\item 因此两种气体浓度比为 \(\dfrac{n_{\mathrm N}(h)}{n_{\mathrm O}(h)}=\dfrac{n_{\mathrm N}(0)}{n_{\mathrm O}(0)}\exp\!\left(\dfrac{(M_{\mathrm O}-M_{\mathrm N})gh}{RT}\right)\)。
+\item 已知 \(\dfrac{n_{\mathrm N}(0)}{n_{\mathrm O}(0)}=4\)，且 \(M_{\mathrm O}-M_{\mathrm N}=0.032-0.028=0.004\text{ kg/mol}\)。
+\item 指数项为 \(\dfrac{0.004\times 9.8\times 5000}{8.31\times 290}\approx 0.0813\)。
+\item 故高空中的浓度比为 \(4e^{0.0813}\approx 4.34\)。
+\end{enumerate}
+\textbf{最终答案：}
+海拔 \(5\text{ km}\) 处的 \(\mathrm N_2/\mathrm O_2\) 浓度比为 \(4e^{0.0813}\approx 4.34\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把两种气体都乘同一个指数因子；真正起作用的是摩尔质量差。\par
+\end{tcolorbox}
+
+\subsubsection*{第2题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一定量单原子理想气体绝热压缩到原体积的一半，平均动能变为原来的多少倍。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+单原子理想气体满足 \(TV^{\gamma-1}=\text{常量}\)，而平均平动动能与温度成正比。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 单原子理想气体的绝热指数为 \(\gamma=\dfrac53\)。
+\item 由绝热关系得 \(T_2=T_1\left(\dfrac{V_1}{V_2}\right)^{\gamma-1}=T_1\cdot 2^{2/3}\)。
+\item 分子平均平动动能为 \(\bar\varepsilon_k=\dfrac32 kT\)，故平均动能变化倍数与温度变化倍数相同。
+\end{enumerate}
+\textbf{最终答案：}
+平均动能变为原来的 \(2^{2/3}\) 倍。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+若题目问“平均速率”，才应与 \(\sqrt{T}\) 成正比；本题问的是平均动能。\par
+\end{tcolorbox}
+
+\subsubsection*{第3题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\(\nu\) mol 理想气体等温压缩到原体积的一半，求熵变以及微观状态数之比。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+等温理想气体熵变公式可以直接使用，再由 \(\Delta S=k\ln \dfrac{\Omega_2}{\Omega_1}\) 求微观状态数比。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 熵变为 \(\Delta S=\nu R\ln\dfrac{V_2}{V_1}=\nu R\ln\dfrac12=-\nu R\ln 2\)。
+\item 又有 \(\Delta S=k\ln\dfrac{\Omega_2}{\Omega_1}\)。
+\item 所以 \(\dfrac{\Omega_2}{\Omega_1}=e^{\Delta S/k}=e^{-\nu R\ln 2/k}=2^{-\nu R/k}=2^{-\nu N_A}\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(\Delta S=-\nu R\ln 2\)，微观状态数之比为 \(\dfrac{\Omega_2}{\Omega_1}=2^{-\nu N_A}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+等温压缩时熵减小，不是增大。\par
+\end{tcolorbox}
+
+\subsubsection*{第4题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+温熵图中的一个矩形循环对应什么循环，其效率是多少。\par
+\vspace{0.4em}
+\textbf{说明：}题图中上下边为等温线，左右边为绝热线；面积比按原题图给出。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+\(T-S\) 图中的矩形循环就是卡诺循环，效率等于循环净功除以吸热。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 卡诺循环效率定义为 \(\eta=\dfrac{W}{Q_1}\)。
+\item 在 \(T-S\) 图中，循环所围面积就是净功：\(W=(T_1-T_2)(S_2-S_1)\)。
+\item 吸热发生在高温等温线上，故 \(Q_1=T_1(S_2-S_1)\)。
+\item 所以 \(\eta=\dfrac{(T_1-T_2)(S_2-S_1)}{T_1(S_2-S_1)}=1-\dfrac{T_2}{T_1}\)。
+\item 若按题图给出的面积比直接计算，则有 \(\eta=\dfrac13\)。
+\end{enumerate}
+\textbf{最终答案：}
+该循环是卡诺循环，效率为 \(\dfrac13\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把效率写成 \(W/Q_2\)；在 \(T-S\) 图里，上方等温线下的面积才对应吸热量。\par
+\end{tcolorbox}
+
+\subsubsection*{第5题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+弹簧振子在 \(t=0\) 时从平衡位置向正方向运动，周期为 \(T\)。求它首次到达最大位移一半处的时刻。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+初始条件为 \(x(0)=0,\ v(0)>0\)，因此可以设振动方程为 \(x=A\sin\dfrac{2\pi t}{T}\)。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 写出位移公式 \(x=A\sin\dfrac{2\pi t}{T}\)。
+\item 当振子到达 \(x=\dfrac{A}{2}\) 时，有 \(\sin\dfrac{2\pi t}{T}=\dfrac12\)。
+\item 一周期内对应的角为 \(\dfrac{\pi}{6}\) 和 \(\dfrac{5\pi}{6}\)。
+\item 所以时刻分别为 \(t=\dfrac{T}{12}\) 和 \(t=\dfrac{5T}{12}\)。
+\item 首次到达时取较小者。
+\end{enumerate}
+\textbf{最终答案：}
+首次到达 \(A/2\) 的时刻为 \(\dfrac{T}{12}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要误写成 \(T/6\)；那是把角频率和周期关系少除了一次 2。\par
+\end{tcolorbox}
+
+\subsubsection*{第6题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+长度为 \(L\) 的杆中波速为 \(u\)，一端固定、一端自由。求其简正模式基频。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+这是典型的“一端固定、一端自由”驻波问题，基频时杆长只容纳四分之一波长。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 基频满足 \(L=\dfrac{\lambda_1}{4}\)，故 \(\lambda_1=4L\)。
+\item 再由 \(f=\dfrac{u}{\lambda}\) 得 \(f_1=\dfrac{u}{4L}\)。
+\end{enumerate}
+\textbf{最终答案：}
+基频为 \(\dfrac{u}{4L}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+若两端都固定才是 \(u/(2L)\)；本题是一端自由。\par
+\end{tcolorbox}
+
+\subsubsection*{第7题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+已知声源和反射壁都在运动，求反射壁接收到的频率，以及静止观察者听到的拍频。\par
+\vspace{0.4em}
+\textbf{说明：}按原题给出的数据取 \(f_0=300\text{ Hz},\ c=330\text{ m/s},\ v_s=20\text{ m/s},\ v_w=10\text{ m/s}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+先算反射壁接收到的频率，再把反射壁看成运动次波源，最后与直达波比较求拍频。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 反射壁接收到的频率为 \(f_1=f_0\dfrac{c+v_w}{c+v_s}=300\times \dfrac{340}{350}\approx 291.43\text{ Hz}\)。
+\item 反射后，墙壁相当于运动声源，对中间静止观察者产生的反射波频率为 \(f_r=f_1\dfrac{c}{c-v_w}=291.43\times \dfrac{330}{320}\approx 300.94\text{ Hz}\)。
+\item 观察者直接收到的直达波频率为 \(f_d=f_0\dfrac{c}{c+v_s}=300\times \dfrac{330}{350}\approx 282.86\text{ Hz}\)。
+\item 拍频是观察者处两列波频率之差：\(f_b=|f_r-f_d|\approx 18.08\text{ Hz}\)。
+\end{enumerate}
+\textbf{最终答案：}
+反射壁接收到的频率约为 \(291.4\text{ Hz}\)，拍频约为 \(18.1\text{ Hz}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+拍频不是“入射到墙的频率”和“反射回来的频率”之差，而是观察者处两列波频率之差。\par
+\end{tcolorbox}
+
+\subsubsection*{第8题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+已知两个同方向简谐振动，求合振幅与初相位。\par
+\vspace{0.4em}
+\textbf{说明：}原题给出的两个振动为 \(x_1=6\times 10^{-2}\cos(5t+\pi/2)\)，\(x_2=2\times 10^{-2}\cos(\pi/2-5t)\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+先把两个振动化成同一种三角函数形式，再直接代数相加。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 有 \(x_1=6\times 10^{-2}\cos(5t+\pi/2)=-6\times 10^{-2}\sin 5t\)。
+\item 另一个振动 \(x_2=2\times 10^{-2}\cos(\pi/2-5t)=2\times 10^{-2}\sin 5t\)。
+\item 两者叠加得 \(x=x_1+x_2=-4\times 10^{-2}\sin 5t\)。
+\item 把它写回余弦形式为 \(x=4\times 10^{-2}\cos(5t+\pi/2)\)。
+\end{enumerate}
+\textbf{最终答案：}
+合振幅为 \(4\times 10^{-2}\text{ m}\)，初相位为 \(\pi/2\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+第二个振动要先用 \(\cos(\pi/2-\theta)=\sin\theta\) 化简，否则很容易错号。\par
+\end{tcolorbox}
+
+\subsubsection*{第9题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+由李萨如图判断角频率比；若为左旋正圆，再求振幅比和相位差。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+先由图形在两个方向上的回环数判断频率比；若要求左旋正圆，则必须满足同频同振幅并带固定相位差。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 由图形可读出 \(y\) 方向呈双频特征、\(x\) 方向呈单频特征，所以 \(\omega_y:\omega_x=2:1\)。
+\item 若轨迹是正圆，两个分振动必须同频且振幅相等，因此 \(A_y:A_x=1:1\)。
+\item 对于左旋，常可取 \(\varphi_y-\varphi_x=-\dfrac{\pi}{2}\) 使质点逆时针转动。
+\end{enumerate}
+\textbf{最终答案：}
+\(\omega_y:\omega_x=2:1\)，且若为左旋正圆，则 \(A_y:A_x=1:1\)，相位差可取 \(-\dfrac{\pi}{2}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+顺时针与逆时针对应的相位差符号相反，写相位差时要结合定义说明。\par
+\end{tcolorbox}
+
+\subsubsection*{第10题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+已知驻波函数 \(y=2\cos(\pi x)\cos(90\pi t+\pi/2)\)，求波长和周期。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+从标准驻波表达式中直接读出波数 \(k\) 和角频率 \(\omega\)。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 标准驻波形式是 \(y=2A\cos(kx)\cos(\omega t+\varphi)\)。
+\item 与题式比较可得 \(k=\pi,\ \omega=90\pi\)。
+\item 所以波长 \(\lambda=\dfrac{2\pi}{k}=\dfrac{2\pi}{\pi}=2\text{ m}\)。
+\item 周期 \(T=\dfrac{2\pi}{\omega}=\dfrac{2\pi}{90\pi}=\dfrac{1}{45}\text{ s}\)。
+\end{enumerate}
+\textbf{最终答案：}
+波长为 \(2\text{ m}\)，周期为 \(\dfrac{1}{45}\text{ s}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+这里的 \(90\pi\) 是角频率，不是频率。\par
+\end{tcolorbox}
+
+\subsubsection*{第11题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一维横波沿 \(x\) 轴传播，在 \(x=3\lambda/4\) 处遇到疏到密的界面。写出入射波和反射波方程，并求稳定后 \(x\) 轴上的静止点坐标。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+从图可知入射波沿 \(+x\) 方向传播；疏到密反射会发生相位反转。两列波叠加后形成驻波，节点即静止点。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设 \(\lambda=\dfrac{u}{\nu}\)，则 \(k=\dfrac{2\pi}{\lambda}\)，\(\omega=2\pi\nu\)。
+\item 取入射波为 \(y_i=A\sin(kx-\omega t)\)。
+\item 界面位置为 \(l=\dfrac{3\lambda}{4}\)，反射波向左传播且反相，可写作 \(y_r=A\sin(kx+\omega t-2kl)\)。
+\item 因为 \(2kl=2k\cdot \dfrac{3\lambda}{4}=3\pi\)，故 \(y_r=A\sin(kx+\omega t-3\pi)=-A\sin(kx+\omega t)\)。
+\item 两波叠加得 \(y=y_i+y_r=-2A\cos kx\,\sin\omega t\)。
+\item 节点满足 \(\cos kx=0\)，即 \(kx=\dfrac{(2n+1)\pi}{2}\)，所以 \(x=\dfrac{(2n+1)\lambda}{4}\)。
+\item 在 \(0\le x\le 3\lambda/4\) 内，对应静止点为 \(x=\dfrac{\lambda}{4},\ \dfrac{3\lambda}{4}\)。
+\end{enumerate}
+\textbf{最终答案：}
+入射波可写为 \(y_i=A\sin\!\left(\dfrac{2\pi}{\lambda}x-2\pi\nu t\right)\)，反射波为 \(y_r=A\sin\!\left(\dfrac{2\pi}{\lambda}x+2\pi\nu t-3\pi\right)\)；静止点坐标为 \(x=\dfrac{\lambda}{4},\ \dfrac{3\lambda}{4}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+疏到密反射要反相；若忽略这一点，后面的节点位置会全部错掉。\par
+\end{tcolorbox}
+
+\subsubsection*{第12题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+速率分布函数为 \(f(v)=Av^2\ (0\le v\le v_m)\)，区间外为 0。求归一化常数 \(A\)、总体平均速率以及 \(v\in[v_m/2,v_m]\) 内分子的平均速率。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+先用归一化求 \(A\)，再用加权平均定义求平均速率；第 3 问是条件平均。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 归一化条件为 \(\int_0^{v_m}Av^2\,dv=1\)，故 \(A\dfrac{v_m^3}{3}=1\)，于是 \(A=\dfrac{3}{v_m^3}\)。
+\item 总体平均速率为 \(\bar v=\int_0^{v_m}vf(v)\,dv=A\int_0^{v_m}v^3\,dv=A\dfrac{v_m^4}{4}=\dfrac34 v_m\)。
+\item 区间 \([v_m/2,v_m]\) 上的平均速率为 \(\bar v_{[v_m/2,v_m]}=\dfrac{\int_{v_m/2}^{v_m}vf(v)\,dv}{\int_{v_m/2}^{v_m}f(v)\,dv}\)。
+\item 分子为 \(A\left[\dfrac{v^4}{4}\right]_{v_m/2}^{v_m}=A\dfrac{15}{64}v_m^4\)。
+\item 分母为 \(A\left[\dfrac{v^3}{3}\right]_{v_m/2}^{v_m}=A\dfrac{7}{24}v_m^3\)。
+\item 相除得 \(\bar v_{[v_m/2,v_m]}=\dfrac{15/64}{7/24}v_m=\dfrac{45}{56}v_m\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(A=\dfrac{3}{v_m^3}\)，总体平均速率为 \(\dfrac34 v_m\)，区间平均速率为 \(\dfrac{45}{56}v_m\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+第 3 问的分母不是 1，而是该区间内的总概率。\par
+\end{tcolorbox}
+
+\subsubsection*{第13题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+如图，\(2\text{ mol}\) 水蒸气作 \(abcda\) 热循环，其中 \(b\to c\) 为等温过程。求 \(d\to a\) 做功、\(a\to b\) 内能变化、整个循环做功以及循环效率。\par
+\vspace{0.4em}
+\textbf{说明：}按题图可读出 \(a(25\text{ L},2\text{ atm})\)，\(b(25\text{ L},6\text{ atm})\)，\(d(50\text{ L},2\text{ atm})\)，且 \(b\to c\) 等温，所以 \(c(50\text{ L},3\text{ atm})\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+把水蒸气近似看成刚性非线性分子理想气体，可取 \(U=3nRT=3pV\)。再分别计算各过程的功和热量。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item \(d\to a\) 为等压压缩，所以 \(W_{d\to a}=p(V_a-V_d)=2(25-50)\text{ atm·L}=-50\text{ atm·L}\approx -5.07\times 10^3\text{ J}\)。
+\item \(a\to b\) 为等容过程，故 \(\Delta U_{a\to b}=3\Delta(pV)=3[(6\times 25)-(2\times 25)]\text{ atm·L}=300\text{ atm·L}\approx 3.04\times 10^4\text{ J}\)。
+\item 全循环做功为 \(W_{\rm cyc}=W_{ab}+W_{bc}+W_{cd}+W_{da}\)。其中 \(W_{ab}=0,\ W_{cd}=0\)。
+\item 等温过程 \(b\to c\) 的做功为 \(W_{bc}=p_bV_b\ln \dfrac{V_c}{V_b}=150\ln 2\text{ atm·L}\approx 1.053\times 10^4\text{ J}\)。
+\item 所以 \(W_{\rm cyc}\approx 1.053\times 10^4-5.07\times 10^3\approx 5.47\times 10^3\text{ J}\)。
+\item 吸热发生在 \(a\to b\) 和 \(b\to c\)。其中 \(Q_{ab}=\Delta U_{ab}\approx 3.04\times 10^4\text{ J}\)，\(Q_{bc}=W_{bc}\approx 1.053\times 10^4\text{ J}\)。
+\item 因而总吸热 \(Q_{\rm in}\approx 4.09\times 10^4\text{ J}\)，效率 \(\eta=\dfrac{W_{\rm cyc}}{Q_{\rm in}}\approx 0.134\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(W_{d\to a}\approx -5.07\times 10^3\text{ J}\)，\(\Delta U_{a\to b}\approx 3.04\times 10^4\text{ J}\)，\(W_{\rm cyc}\approx 5.47\times 10^3\text{ J}\)，效率约为 \(13.4\%\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\(b\to c\) 等温时内能变化为 0，不代表做功也为 0；而且 \(\text{atm·L}\) 需要换算成焦耳。\par
+\end{tcolorbox}
+
+\subsubsection*{第14题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+容积为 \(V\) 的容器盛理想气体，分子平均速率为 \(\bar v\)，壁上有面积为 \(A\) 的小孔，漏气过程中温度恒定且容器内压远大于外压。求容器内压强降为初值 \(1/3\) 所需的时间。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+小孔逸出通量满足 \(-\dfrac{dN}{dt}=\dfrac14 n\bar vA\)。温度恒定时 \(p\propto N\)。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 单位时间逸出分子数满足 \(-\dfrac{dN}{dt}=\dfrac14 n\bar vA\)。
+\item 因为 \(n=\dfrac{N}{V}\)，所以 \(\dfrac{dN}{dt}=-\dfrac{A\bar v}{4V}N\)。
+\item 分离变量并积分，得 \(N=N_0e^{-\frac{A\bar v}{4V}t}\)。
+\item 由于温度恒定且 \(pV=NkT\)，故 \(p\propto N\)，于是 \(p=p_0e^{-\frac{A\bar v}{4V}t}\)。
+\item 当 \(p=\dfrac13 p_0\) 时，有 \(\dfrac13=e^{-\frac{A\bar v}{4V}t}\)。
+\item 解得 \(t=\dfrac{4V}{A\bar v}\ln 3\)。
+\end{enumerate}
+\textbf{最终答案：}
+所需时间为 \(\dfrac{4V}{A\bar v}\ln 3\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+压强随时间呈指数衰减，不是线性下降。\par
+\end{tcolorbox}
+
+\subsubsection*{第15题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+两个物体初温都为 \(T_1\)，工质在它们之间工作，两物体定压热容均为 \(C_p\)，压强保持不变。求让其中一个物体温度降为 \(T_2\) 所需的外界最小功。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+最小功对应可逆过程，此时总熵变为 0。先求另一个物体的终温，再用能量守恒求外界做功。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设被冷却物体从 \(T_1\) 降到 \(T_2\)，另一物体从 \(T_1\) 升到 \(T_h\)。
+\item 可逆极限下满足 \(\Delta S_{\rm 总}=0\)，即 \(C_p\ln\dfrac{T_2}{T_1}+C_p\ln\dfrac{T_h}{T_1}=0\)。
+\item 解得 \(T_h=\dfrac{T_1^2}{T_2}\)。
+\item 冷物体放热 \(Q_c=C_p(T_1-T_2)\)，热物体吸热 \(Q_h=C_p(T_h-T_1)\)。
+\item 外界所做最小功为 \(W_{\min}=Q_h-Q_c=C_p(T_h-T_1)-C_p(T_1-T_2)\)。
+\item 代入 \(T_h=\dfrac{T_1^2}{T_2}\) 并整理，得 \(W_{\min}=C_p\left(\dfrac{T_1^2}{T_2}+T_2-2T_1\right)=C_p\dfrac{(T_1-T_2)^2}{T_2}\)。
+\end{enumerate}
+\textbf{最终答案：}
+外界所做最小功为 \(C_p\dfrac{(T_1-T_2)^2}{T_2}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+最小功不是简单热量差，还必须先用“总熵不变”求出另一物体的最终温度。\par
+\end{tcolorbox}
+
+
+\section{大学物理1期中 2022 秋回忆版}
+\begin{tcolorbox}[title=资料说明,colback=yellow!4!white,colframe=orange!60!black]
+回忆版与图片卷联合整理；题面不完整处在每题说明中明确标注。\par
+\end{tcolorbox}
+\subsection*{原题页图}
+先给出这一套试题的原题页图，便于把后面的完整答案和原题一一对应。
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/大学物理1期中-王山鹰-2022秋-wsy回忆版-1.png}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/大学物理1期中-王山鹰-2022秋-wsy回忆版-2.png}
+\end{center}
+\vspace{0.5em}
+\begin{tcolorbox}[title=本卷核心公式,colback=green!3!white,colframe=green!45!black]
+\begin{itemize}
+\item $\rho=\dfrac{v^2}{a_n}$
+\item $\Omega=\dfrac{mgl}{J\omega}$
+\item $I_z=I_x+I_y$
+\item $a=v\dfrac{dv}{dx}$
+\item $\Delta L=\int \tau\,dt$
+\end{itemize}
+\end{tcolorbox}
+\subsection*{逐题完整答案}
+\subsubsection*{第1题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+物体以初速度 \(v_0\)、仰角 \(\theta\) 作斜抛运动，求其在最高点处轨迹的曲率半径。\par
+\vspace{0.4em}
+\textbf{说明：}按回忆版还原，原题图形不影响求解。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+曲率半径公式为 \(\rho=\dfrac{v^2}{a_n}\)。在最高点速度恰好水平，因此重力 \(g\) 全部是法向加速度。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 斜抛体在最高点处的速度只有水平分量，所以 \(v=v_0\cos\theta\)。
+\item 此时加速度仍为重力加速度，且方向竖直向下，与速度垂直，所以 \(a_n=g\)。
+\item 代入曲率半径公式可得 \(\rho=\dfrac{(v_0\cos\theta)^2}{g}\)。
+\end{enumerate}
+\textbf{最终答案：}
+最高点曲率半径为 \(\dfrac{v_0^2\cos^2\theta}{g}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把最高点速度误写成 \(v_0\)；最高点只保留水平分速度。\par
+\end{tcolorbox}
+
+\subsubsection*{第2题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+已知质点的一维势能曲线 \(U(x)\)，总能量为 \(E=0\)。求质点的允许运动范围，并求其在 \(x_0\) 处的动能。\par
+\vspace{0.4em}
+\textbf{说明：}按回忆版还原；具体区间要结合题图读出 \(U(x)\le 0\) 的位置。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+保守力问题满足 \(E=K+U\)。本题 \(E=0\)，因此 \(K(x)=-U(x)\)，允许运动区由 \(K\ge 0\) 决定。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 机械能守恒给出 \(K(x)+U(x)=0\)。
+\item 因为动能必须非负，所以有 \(-U(x)\ge 0\)，即 \(U(x)\le 0\)。
+\item 因而质点只能在势能曲线位于 \(x\) 轴下方或落在 \(x\) 轴上的那些区间内运动。
+\item 在 \(x_0\) 处，若该点可达，则动能 \(K(x_0)=E-U(x_0)=-U(x_0)\)。
+\item 若图上 \(U(x_0)>0\)，则该点实际上不可达。
+\end{enumerate}
+\textbf{最终答案：}
+允许运动范围由 \(U(x)\le 0\) 决定；在 \(x_0\) 处的动能为 \(-U(x_0)\)（前提是该点可达）。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+总能量为 0 不等于动能为 0；真正成立的是 \(K=-U\)。\par
+\end{tcolorbox}
+
+\subsubsection*{第3题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+高速自转陀螺在重力作用下绕竖直轴作稳定进动，求进动角速度。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+稳定进动时，角动量大小近似不变，只改变方向。满足 \(\tau=\dfrac{dL}{dt}=\Omega L\)，且 \(L\approx J\omega\)。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 重力对支点的力矩大小为 \(\tau=mgl\)。
+\item 稳定进动时有 \(\tau=\Omega L\)。
+\item 自转很快时可取 \(L=J\omega\)。
+\item 联立得到 \(mgl=\Omega J\omega\)。
+\item 解得 \(\Omega=\dfrac{mgl}{J\omega}\)。
+\end{enumerate}
+\textbf{最终答案：}
+进动角速度为 \(\dfrac{mgl}{J\omega}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+这里的 \(J\) 是绕自转轴的转动惯量，不是绕进动轴的。\par
+\end{tcolorbox}
+
+\subsubsection*{第4题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+均匀正方形薄板过中心、垂直板面的转动惯量为 \(J\)，求其以对角线为转轴时的转动惯量。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+对薄板用垂直轴定理；正方形关于两条对角线完全对称，所以两条对角线方向上的转动惯量相等。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设两条对角线对应的转动惯量都为 \(J_d\)。
+\item 由垂直轴定理可得 \(J=J_{d1}+J_{d2}\)。
+\item 由对称性知 \(J_{d1}=J_{d2}=J_d\)。
+\item 因此 \(J=2J_d\)，解得 \(J_d=\dfrac{J}{2}\)。
+\end{enumerate}
+\textbf{最终答案：}
+对角线为轴的转动惯量为 \(\dfrac{J}{2}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+这是垂直轴定理配合对称性的题，不要误套平行轴定理。\par
+\end{tcolorbox}
+
+\subsubsection*{第5题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+飞轮受阻力矩 \(M=-k\omega^2\) 减速，转动惯量为 \(J\)，初角速度为 \(\omega_0\)。求当 \(\omega=\omega_0/3\) 时的角加速度与经历时间。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+由转动定律 \(J\dfrac{d\omega}{dt}=-k\omega^2\) 先求角加速度，再分离变量积分求时间。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 角加速度为 \(\alpha=\dfrac{d\omega}{dt}=-\dfrac{k}{J}\omega^2\)。
+\item 当 \(\omega=\omega_0/3\) 时，\(\alpha=-\dfrac{k\omega_0^2}{9J}\)。
+\item 再由 \(\dfrac{d\omega}{\omega^2}=-\dfrac{k}{J}dt\) 两边积分。
+\item 从 \(\omega_0\) 积到 \(\omega_0/3\)，从 0 积到 \(t\)，得到 \(\left[-\dfrac1\omega\right]_{\omega_0}^{\omega_0/3}=-\dfrac{k}{J}t\)。
+\item 化简得 \(t=\dfrac{2J}{k\omega_0}\)。
+\end{enumerate}
+\textbf{最终答案：}
+角加速度为 \(-\dfrac{k\omega_0^2}{9J}\)，所经历时间为 \(\dfrac{2J}{k\omega_0}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+积分时最容易把负号丢掉；阻力矩方向一定与转动方向相反。\par
+\end{tcolorbox}
+
+\subsubsection*{第6题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+质点沿 \(x\) 轴运动，速度满足 \(v=kx\)。求合力 \(F(x)\) 与从 \(x_0\) 到 \(x_1\) 所需时间。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+已知 \(v(x)\) 时，应使用 \(a=v\dfrac{dv}{dx}\)；时间通过 \(dt=\dfrac{dx}{v}\) 求。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 由 \(v=kx\) 得 \(\dfrac{dv}{dx}=k\)。
+\item 所以加速度 \(a=v\dfrac{dv}{dx}=kx\cdot k=k^2x\)。
+\item 合力 \(F=ma=mk^2x\)。
+\item 又有 \(dt=\dfrac{dx}{kx}\)，积分得到 \(t=\dfrac1k\ln\left|\dfrac{x_1}{x_0}\right|\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(F(x)=mk^2x\)，所需时间为 \(\dfrac1k\ln\left|\dfrac{x_1}{x_0}\right|\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+加速度不是 \(dv/dx\)，而是 \(v\,dv/dx\)。\par
+\end{tcolorbox}
+
+\subsubsection*{第7题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+人在光滑水平面上的滑板上行走。滑板长 \(l\)，人起初站在距后端 \(l/4\) 处，后来走到前端。求滑板相对地面的位移。\par
+\vspace{0.4em}
+\textbf{说明：}按回忆版结论“滑板后退 \(3l/8\)”可知，通常默认人和滑板质量相同。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+水平方向无外力，所以系统质心位置不变。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设人质量为 \(m\)，滑板质量为 \(M\)，滑板中心初始坐标为 \(X_0\)，最终为 \(X_0+\Delta X\)。
+\item 人初始位置是 \(X_0-\dfrac l4\)，最终走到前端时位置为 \(X_0+\Delta X+\dfrac l2\)。
+\item 质心守恒给出 \(m\left(X_0-\dfrac l4\right)+MX_0=m\left(X_0+\Delta X+\dfrac l2\right)+M(X_0+\Delta X)\)。
+\item 化简得 \(\Delta X=-\dfrac{3ml}{4(m+M)}\)。
+\item 若 \(m=M\)，则 \(\Delta X=-\dfrac{3l}{8}\)。
+\end{enumerate}
+\textbf{最终答案：}
+一般式为 \(-\dfrac{3ml}{4(m+M)}\)；若人和滑板质量相同，则滑板后退 \(\dfrac{3l}{8}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+人相对滑板实际走过的是 \(3l/4\)，不是整块板长 \(l\)。\par
+\end{tcolorbox}
+
+\subsubsection*{第8题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+小车以恒加速度 \(a\) 向前运动，车顶螺帽突然脱落。求螺帽相对地面和相对小车的加速度。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+在地面惯性系中，螺帽脱落后只受重力；在小车参考系中，还要减去小车自身的加速度。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 在地面系中，螺帽加速度为 \(\vec a_{\text{地}}=-g\,\vec j\)。
+\item 小车的加速度为 \(\vec a_{\text{车}}=a\,\vec i\)。
+\item 相对小车的加速度为 \(\vec a_{\text{相对}}=\vec a_{\text{地}}-\vec a_{\text{车}}=-a\,\vec i-g\,\vec j\)。
+\item 其大小为 \(\sqrt{a^2+g^2}\)，方向指向车后的下方。
+\end{enumerate}
+\textbf{最终答案：}
+相对地面加速度为 \(-g\,\vec j\)；相对小车加速度为 \(-a\,\vec i-g\,\vec j\)，大小 \(\sqrt{a^2+g^2}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+相对小车的加速度不是 \(g-a\) 这种标量相减，而是两个正交分量的矢量合成。\par
+\end{tcolorbox}
+
+\subsubsection*{第9题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+质点轨迹为 \(x=t,\ y=t^2\)，其中某一力为 \(\vec F=5t\,\vec i\)。求该力在 \(t=1\text{ s}\) 到 \(t=2\text{ s}\) 内所做的功。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+直接用 \(W=\int \vec F\cdot \vec v\,dt\)。由于该力只有 \(x\) 分量，所以只与 \(v_x\) 有关。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 速度为 \(\vec v=\dot x\,\vec i+\dot y\,\vec j=\vec i+2t\,\vec j\)。
+\item 点乘得功率 \(\vec F\cdot \vec v=(5t\,\vec i)\cdot(\vec i+2t\,\vec j)=5t\)。
+\item 故做功 \(W=\int_1^2 5t\,dt=\dfrac52(t^2)\big|_1^2=\dfrac{15}{2}\text{ J}\)。
+\end{enumerate}
+\textbf{最终答案：}
+该力所做的功为 \(\dfrac{15}{2}\text{ J}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把 \(y\) 方向运动也算进这个力的做功里；这个力没有 \(y\) 分量。\par
+\end{tcolorbox}
+
+\subsubsection*{第10题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+轻杆长 \(l\)，两端分别固定质量为 \(m\) 与 \(2m\) 的小球，系统绕过中点且与杆垂直的水平轴在竖直面内转动。若从水平位置由静止释放，求转过角 \(\theta\) 时的角加速度和角速度。\par
+\vspace{0.4em}
+\textbf{说明：}按回忆版主干恢复；\(\theta\) 取相对初始水平位置的转角。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+角加速度由重力矩决定；角速度由机械能守恒决定。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 系统对转轴的转动惯量为 \(I=m\left(\dfrac l2\right)^2+2m\left(\dfrac l2\right)^2=\dfrac34 ml^2\)。
+\item 净重力矩大小为 \(\tau=(2m-m)g\dfrac l2\cos\theta=\dfrac12 mgl\cos\theta\)。
+\item 由 \(I\alpha=\tau\) 得 \(\alpha=\dfrac{2g\cos\theta}{3l}\)。
+\item 势能减少量为 \(\Delta U=(2m-m)g\dfrac l2\sin\theta=\dfrac12 mgl\sin\theta\)。
+\item 机械能守恒：\(\dfrac12 I\omega^2=\Delta U\)。
+\item 代入 \(I=\dfrac34 ml^2\) 得 \(\omega=\sqrt{\dfrac{4g\sin\theta}{3l}}\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(\alpha=\dfrac{2g\cos\theta}{3l}\)，\(\omega=\sqrt{\dfrac{4g\sin\theta}{3l}}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不能把整个系统当成质量 \(3m\) 集中在中点；真正起作用的是两端质量差产生的力矩。\par
+\end{tcolorbox}
+
+\subsubsection*{第11题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+已知质点角动量 \(\vec L=6t^2\vec i-(2t+1)\vec j\)，求 \(t=1\text{ s}\) 时所受力矩。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+力矩就是角动量对时间的一阶导数。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 逐分量求导，得 \(\vec M=\dfrac{d\vec L}{dt}=12t\,\vec i-2\,\vec j\)。
+\item 代入 \(t=1\)，得 \(\vec M=12\vec i-2\vec j\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(\vec M=12\vec i-2\vec j\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把“求力矩”误做成“求角动量大小”。\par
+\end{tcolorbox}
+
+\subsubsection*{第12题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+半径为 \(R\) 的均质圆盘中挖去一个半径为 \(r\) 的偏心小圆盘，小孔圆心到大圆盘圆心的距离为 \(d\)，且位于 \(+x\) 方向。求剩余部分的质心坐标。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+用负质量法最直接：把小圆孔看成负质量。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设面密度为 \(\sigma\)，原整圆盘质量 \(M=\sigma\pi R^2\)。
+\item 被挖去小圆盘质量 \(m=\sigma\pi r^2\)。
+\item 原盘质心在 \(x=0\)，小孔圆心在 \(x=d\)。
+\item 剩余部分质心为 \(x_c=\dfrac{M\cdot 0-md}{M-m}\)。
+\item 代入质量表达式后，得 \(x_c=-\dfrac{r^2d}{R^2-r^2}\)。
+\end{enumerate}
+\textbf{最终答案：}
+剩余部分质心坐标为 \(-\dfrac{r^2d}{R^2-r^2}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+小孔在右边，剩余质心一定偏向左边，所以结果应带负号。\par
+\end{tcolorbox}
+
+\subsubsection*{第13题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+质量为 \(m\) 的质点从无穷远处以初速度 \(v_0\) 入射到斥力有心场 \(F(r)=\dfrac{k}{r^2}\) 中，入射瞄准距为 \(b\)。求势能函数 \(U(r)\) 和最近距离 \(r_{\min}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+有心力问题中机械能和角动量都守恒；最近距离处径向速度为 0。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 由 \(F(r)=-\dfrac{dU}{dr}=\dfrac{k}{r^2}\) 可得 \(U(r)=\dfrac{k}{r}+C\)。
+\item 取 \(U(\infty)=0\)，故 \(C=0\)，即 \(U(r)=\dfrac{k}{r}\)。
+\item 总能量为 \(E=\dfrac12 mv_0^2\)，角动量为 \(L=mv_0b\)。
+\item 最近距离处满足 \(E=\dfrac{L^2}{2mr_{\min}^2}+\dfrac{k}{r_{\min}}\)。
+\item 代入并整理，得到关于 \(r_{\min}\) 的二次方程 \(r_{\min}^2-\dfrac{2k}{mv_0^2}r_{\min}-b^2=0\)。
+\item 取正根，得 \(r_{\min}=\dfrac{k}{mv_0^2}+\sqrt{b^2+\left(\dfrac{k}{mv_0^2}\right)^2}\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(U(r)=\dfrac{k}{r}\)，最近距离 \(r_{\min}=\dfrac{k}{mv_0^2}+\sqrt{b^2+\left(\dfrac{k}{mv_0^2}\right)^2}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+斥力场的势能是正的，不要误写成 \(-k/r\)。\par
+\end{tcolorbox}
+
+\subsubsection*{第14题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+带槽圆环可绕竖直直径转动，小球从槽顶端开始下滑。求任意位置的角速度关系，并写出到达侧点时的结果。\par
+\vspace{0.4em}
+\textbf{说明：}按回忆版恢复；设圆环初始角速度为 \(\omega_0\)，对该轴转动惯量为 \(J\)，小球质量为 \(m\)，圆环半径为 \(R\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+取竖直轴为研究轴，则无外力矩，角动量守恒；系统机械能也守恒。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设小球当前位置相对顶点的圆心角为 \(\theta\)，则它到竖直转轴的距离为 \(\rho=R\sin\theta\)。
+\item 系统关于竖直轴的角动量为 \((J+mR^2\sin^2\theta)\Omega\)。
+\item 角动量守恒给出 \((J+mR^2\sin^2\theta)\Omega=J\omega_0\)，因此 \(\Omega(\theta)=\dfrac{J\omega_0}{J+mR^2\sin^2\theta}\)。
+\item 再用机械能守恒：\(\dfrac12J\omega_0^2+mgR=\dfrac12(J+mR^2\sin^2\theta)\Omega^2+\dfrac12mR^2\dot\theta^2+mgR\cos\theta\)。
+\item 由此可得 \(\dot\theta^2=\dfrac{2g}{R}(1-\cos\theta)+\dfrac{J\omega_0^2\sin^2\theta}{J+mR^2\sin^2\theta}\)。
+\item 到达侧点时 \(\theta=\pi/2\)，故 \(\Omega_{\text{侧}}=\dfrac{J\omega_0}{J+mR^2}\)。
+\item 此时小球沿槽速度大小为 \(v_{\text{槽}}=R\dot\theta=\sqrt{2gR+\dfrac{JR^2\omega_0^2}{J+mR^2}}\)。
+\end{enumerate}
+\textbf{最终答案：}
+任意位置有 \(\Omega(\theta)=\dfrac{J\omega_0}{J+mR^2\sin^2\theta}\)；到达侧点时 \(\Omega_{\text{侧}}=\dfrac{J\omega_0}{J+mR^2}\)，且 \(v_{\text{槽}}=\sqrt{2gR+\dfrac{JR^2\omega_0^2}{J+mR^2}}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要漏掉小球自身对竖直轴的角动量项 \(mR^2\sin^2\theta\,\Omega\)。\par
+\end{tcolorbox}
+
+\subsubsection*{第15题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+两个完全相同的圆盘在粗糙地面上运动。圆盘 A 初始作纯滚、速度为 \(v\)，圆盘 B 初始静止。二者发生正碰后，又在地面摩擦作用下重新恢复纯滚。求最终两圆盘的速度。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+全过程分两段：碰撞瞬间先按一维弹性碰撞处理平动；碰后再在地面摩擦作用下分别调整到纯滚状态。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 碰撞瞬间，可忽略地面摩擦的冲量。两个相同圆盘做一维弹性正碰后，平动速度交换，因此 A 瞬时变为 0，B 瞬时得到速度 \(v\)。
+\item 由于碰撞冲量通过圆心，A 的自转角速度暂时仍保持纯滚前的数值，B 仍无自转。
+\item 对 A 而言，碰后它只有转动没有平动，地面对它的摩擦使其重新获得平动，最终恢复纯滚。
+\item 对 B 而言，碰后它只有平动没有转动，地面摩擦使其获得角速度，最终也恢复纯滚。
+\item 分别对两盘列平动方程、转动方程和纯滚条件，并用 \(I=\dfrac12 mr^2\) 消元，可得最终速度。
+\end{enumerate}
+\textbf{最终答案：}
+原先运动的圆盘最终速度为 \(\dfrac{v}{3}\)，原先静止的圆盘最终速度为 \(\dfrac{2v}{3}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+碰撞瞬间可以忽略地面摩擦，不代表碰后恢复纯滚时也能忽略摩擦；这两段过程必须分开处理。\par
+\end{tcolorbox}
+
+
+\section{大学物理 B1 2014 期中}
+\begin{tcolorbox}[title=资料说明,colback=yellow!4!white,colframe=orange!60!black]
+图片卷整理稿；题图参与阅读，缺失条件均在题后说明。\par
+\end{tcolorbox}
+\subsection*{原题页图}
+先给出这一套试题的原题页图，便于把后面的完整答案和原题一一对应。
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/01_正式试题/大学物理B1_2014/大学物理B1-期中-2014-1.jpg}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/01_正式试题/大学物理B1_2014/大学物理B1-期中-2014-2.jpg}
+\end{center}
+\vspace{0.5em}
+\begin{tcolorbox}[title=本卷核心公式,colback=green!3!white,colframe=green!45!black]
+\begin{itemize}
+\item $\theta=\omega_0 t+\dfrac12\alpha t^2$
+\item $x_C=\dfrac{\int x\lambda(x)\,dx}{\int \lambda(x)\,dx}$
+\item $a=v\dfrac{dv}{dx}$
+\item $\tau=\dfrac{dL}{dt}$
+\item $\gamma=\dfrac{E}{E_0},\quad s=v\gamma\tau_0$
+\end{itemize}
+\end{tcolorbox}
+\subsection*{逐题完整答案}
+\subsubsection*{第1题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+半径 \(r=1.5\text{ m}\) 的飞轮，初角速度 \(\omega_0=10\text{ rad/s}\)，角加速度 \(\alpha=-5\text{ rad/s}^2\)。求角位移再次为 0 的时刻，以及该时刻轮缘点的线速度。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+这是匀角变速转动，先由 \(\theta(t)=\omega_0 t+\dfrac12 \alpha t^2\) 求非零时刻，再由 \(v=r\omega\) 求线速度。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 角位移为 \(\theta=10t-\dfrac52 t^2\)。
+\item 令 \(\theta=0\)，得 \(t(10-\dfrac52 t)=0\)，除去 \(t=0\)，有 \(t=4\text{ s}\)。
+\item 此时角速度 \(\omega=\omega_0+\alpha t=10-5\times 4=-10\text{ rad/s}\)。
+\item 轮缘点线速度大小为 \(|v|=r|\omega|=1.5\times 10=15\text{ m/s}\)。
+\end{enumerate}
+\textbf{最终答案：}
+再次回到原角位置的时刻是 \(4\text{ s}\)；线速度大小为 \(15\text{ m/s}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把“角位移为 0”误当成“角速度为 0”；本题求的是回到原角位置的时刻。\par
+\end{tcolorbox}
+
+\subsubsection*{第2题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+总长为 \(L\) 的细杆，线密度 \(\lambda=ax+b\)。求质心坐标 \(x_C\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+直接用质心定义 \(x_C=\dfrac{\int x\,dm}{\int dm}\)，其中 \(dm=\lambda(x)\,dx\)。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 总质量 \(M=\int_0^L (ax+b)\,dx=\dfrac12 aL^2+bL\)。
+\item 对原点的一阶矩为 \(\int_0^L x(ax+b)\,dx=\dfrac13 aL^3+\dfrac12 bL^2\)。
+\item 因此 \(x_C=\dfrac{\frac13 aL^3+\frac12 bL^2}{\frac12 aL^2+bL}\)。
+\item 化简得 \(x_C=\dfrac{L(2aL+3b)}{3(aL+2b)}\)。
+\end{enumerate}
+\textbf{最终答案：}
+质心坐标为 \(\dfrac{L(2aL+3b)}{3(aL+2b)}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+线密度不是常量，不能直接套均匀细杆的 \(L/2\)。\par
+\end{tcolorbox}
+
+\subsubsection*{第3题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+质量为 \(m\) 的质点沿 \(x\) 轴运动，速度满足 \(v=kx\)。求合力与坐标关系，以及从 \(x_0\) 到 \(x_1\) 所需时间。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+已知 \(v(x)\) 时，应使用 \(a=v\dfrac{dv}{dx}\)；时间由 \(dt=\dfrac{dx}{v}\) 积分得到。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 由 \(v=kx\) 得 \(\dfrac{dv}{dx}=k\)。
+\item 因此 \(a=v\dfrac{dv}{dx}=kx\cdot k=k^2x\)。
+\item 合力 \(F=ma=mk^2x\)。
+\item 又 \(dt=\dfrac{dx}{kx}\)，积分得到 \(t=\dfrac1k\ln\left|\dfrac{x_1}{x_0}\right|\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(F=mk^2x\)，所需时间为 \(\dfrac1k\ln\left|\dfrac{x_1}{x_0}\right|\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不能把加速度误写成 \(dv/dx\)。\par
+\end{tcolorbox}
+
+\subsubsection*{第4题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+已知均匀长方形薄板绕边轴的转动惯量，求其绕过中心且垂直板面的轴的转动惯量。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+先利用平行轴定理求过中心的板内主轴转动惯量，再用垂直轴定理。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设板边长为 \(a,b\)，质量为 \(m\)。
+\item 与边平行的中心轴转动惯量分别为 \(I_x=\dfrac{mb^2}{12}\)，\(I_y=\dfrac{ma^2}{12}\)。
+\item 由垂直轴定理可得 \(I_z=I_x+I_y\)。
+\item 因而 \(I_z=\dfrac{m(a^2+b^2)}{12}\)。
+\end{enumerate}
+\textbf{最终答案：}
+过中心且垂直板面的转动惯量为 \(\dfrac{m(a^2+b^2)}{12}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+边轴和中心轴不是同一根轴，中间必须做一次轴平移。\par
+\end{tcolorbox}
+
+\subsubsection*{第5题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+圆锥摆摆锤质量为 \(m\)，在水平面内以角速度 \(\omega\) 匀速转动，转动半径为 \(r\)。求经过 \(1/4\) 周期后，重力对悬点 \(O\) 的冲量矩大小。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+重力矩大小恒为 \(mgr\)，但方向在水平面内随时间转动，因此要做矢量积分。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 经过 \(1/4\) 周期的时间是 \(\Delta t=\dfrac{T}{4}=\dfrac{\pi}{2\omega}\)。
+\item 冲量矩为 \(\vec J_M=\int_0^{\Delta t}\vec M\,dt\)。
+\item 把力矩方向在水平面内分解并积分，可得矢量积分后的模为 \(\dfrac{\sqrt2\,mgr}{\omega}\)。
+\end{enumerate}
+\textbf{最终答案：}
+重力对悬点的冲量矩大小为 \(\dfrac{\sqrt2\,mgr}{\omega}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+冲量矩不是“力矩大小乘时间”这么简单，因为力矩方向在持续变化。\par
+\end{tcolorbox}
+
+\subsubsection*{第6题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+倾角 \(30^\circ\) 的斜面放在水平面上，一质量 \(2\text{ kg}\) 的物体沿斜面下滑，加速度为 \(3.0\text{ m/s}^2\)，取 \(g=10\text{ m/s}^2\)。求物体与斜面间的滑动摩擦系数，以及地面对斜面的静摩擦力。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+先对小物块沿斜面列方程求滑动摩擦力，再对斜面受力分析求地面静摩擦。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 沿斜面方向有 \(mg\sin30^\circ-f_k=ma\)，故 \(f_k=2(5-3)=4\text{ N}\)。
+\item 法向力 \(N=mg\cos30^\circ=10\sqrt3\text{ N}\)。
+\item 所以滑动摩擦系数 \(\mu_k=\dfrac{f_k}{N}=\dfrac{4}{10\sqrt3}=\dfrac{2\sqrt3}{15}\)。
+\item 再对斜面受力分析，地面静摩擦平衡来自物块对斜面的水平作用分量。
+\item 静摩擦力大小为 \(f_s=N\sin30^\circ-f_k\cos30^\circ=3\sqrt3\text{ N}\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(\mu_k=\dfrac{2\sqrt3}{15}\approx 0.231\)，地面对斜面的静摩擦力大小为 \(3\sqrt3\text{ N}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+地面静摩擦要对斜面整体分析，不是重复对物块再列一遍斜面方程。\par
+\end{tcolorbox}
+
+\subsubsection*{第7题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+势能曲线如图，总能量为 \(E=10\text{ J}\)。若粒子开始时位于 \(x=5\text{ m}\)，求运动范围；并判断 \(x=6\text{ m}\) 处的平衡类型。\par
+\vspace{0.4em}
+\textbf{说明：}本题读数来自图片卷和已有整理稿交叉还原，交点约读为 \(x\approx 3\text{ m}\) 与 \(x\approx 8\text{ m}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+允许运动区由 \(U(x)\le E\) 决定；但粒子只会在与初始位置连通的那一段允许区内运动。平衡类型看势能极值。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 从图上读出 \(E=10\text{ J}\) 与势能曲线的交点约在 \(x\approx 1,3,8\text{ m}\)。
+\item 初始位置 \(x=5\text{ m}\) 落在右侧势阱内，因此粒子不会跳到左边区间，而只能在与 \(x=5\) 连通的允许区中运动。
+\item 所以实际运动范围约为 \(3\text{ m}\le x\le 8\text{ m}\)。
+\item 图上 \(x=6\text{ m}\) 处对应势能极小点，因此是稳定平衡位置。
+\end{enumerate}
+\textbf{最终答案：}
+运动范围约为 \(3\text{ m}\le x\le 8\text{ m}\)；\(x=6\text{ m}\) 为稳定平衡位置。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+允许区可能有多个不连通区间，必须结合初始位置判断粒子实际在哪一段运动。\par
+\end{tcolorbox}
+
+\subsubsection*{第8题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一立方体静止时边长为 \(a\)。当它以速度 \(0.6c\) 沿着某一条边的方向相对地面运动时，地面上测得它的体积是多少。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+只有沿运动方向的长度发生洛伦兹收缩，垂直于运动方向的两条边长度不变。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 洛伦兹因子 \(\gamma=\dfrac{1}{\sqrt{1-0.6^2}}=\dfrac{1}{0.8}=1.25\)。
+\item 沿运动方向边长变为 \(\dfrac{a}{\gamma}=0.8a\)。
+\item 另外两条边仍为 \(a\)。
+\item 所以体积 \(V=a\cdot a\cdot 0.8a=0.8a^3\)。
+\end{enumerate}
+\textbf{最终答案：}
+地面上测得体积为 \(0.8a^3=\dfrac45 a^3\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不是三条边都收缩，只有与速度平行的那一条收缩。\par
+\end{tcolorbox}
+
+\subsubsection*{第9题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+飞船以 \(0.6c\) 的速度相对地面飞行，从飞船上沿速度方向抛出一物体，物体相对飞船的速度为 \(0.8c\)。求地面上测得该物体的速度。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+使用一维相对论速度合成公式，不能直接做经典加法。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设飞船相对地面的速度为 \(u=0.6c\)，物体相对飞船速度为 \(u'=0.8c\)。
+\item 地面测得速度为 \(v=\dfrac{u+u'}{1+\frac{uu'}{c^2}}\)。
+\item 代入得 \(v=\dfrac{0.6c+0.8c}{1+0.48}=\dfrac{1.4}{1.48}c=\dfrac{35}{37}c\)。
+\end{enumerate}
+\textbf{最终答案：}
+地面上测得物体速度为 \(\dfrac{35}{37}c\approx 0.946c\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+高速问题不能直接把 \(0.6c\) 与 \(0.8c\) 做普通加法。\par
+\end{tcolorbox}
+
+\subsubsection*{第10题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+屋顶悬挂一定滑轮，A、B 两人从静止开始分别抓住绳两端向上爬。A 比 B 用力大。问：忽略滑轮质量及摩擦时谁先到屋顶；若不忽略，又如何。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+理想滑轮时两侧张力相同；若滑轮有转动惯量或摩擦，两侧张力可不同。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 忽略滑轮质量与摩擦时，绳上张力处处相同，设为 \(T\)。
+\item 两人质量相同，则都满足 \(T-mg=ma\)，故二人的加速度相同。
+\item 由于初始高度和初速度也相同，所以二人同时到屋顶。
+\item 若不忽略滑轮质量或摩擦，滑轮转动需要两侧张力不相等。
+\item 若 A 用力更大，通常表现为 A 侧张力更大，于是 \(a_A>a_B\)，所以 A 先到屋顶。
+\end{enumerate}
+\textbf{最终答案：}
+理想滑轮时 A、B 同时到达；若不忽略滑轮质量或摩擦，则 A 先到。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+在理想模型里，“谁更使劲”不会直接变成“谁受更大的绳拉力”。\par
+\end{tcolorbox}
+
+\subsubsection*{第11题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+半径为 \(R\) 的轮子沿 \(x\) 轴以角速度 \(\omega\) 作纯滚动。轮缘上一点 \(A\) 在 \(t=0\) 时与原点重合。求该点的坐标、速度、加速度与时间关系，并求轨迹最高点处的曲率半径。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+轮缘点轨迹是标准摆线，令参数 \(\varphi=\omega t\) 即可。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 摆线参数方程为 \(x=R(\varphi-\sin\varphi)\)，\(y=R(1-\cos\varphi)\)，其中 \(\varphi=\omega t\)。
+\item 因而 \(x(t)=R(\omega t-\sin\omega t)\)，\(y(t)=R(1-\cos\omega t)\)。
+\item 速度分量为 \(v_x=R\omega(1-\cos\omega t)\)，\(v_y=R\omega\sin\omega t\)。
+\item 加速度分量为 \(a_x=R\omega^2\sin\omega t\)，\(a_y=R\omega^2\cos\omega t\)。
+\item 最高点对应 \(\varphi=\pi\)，用参数曲线曲率半径公式可求得 \(\rho=4R\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(x=R(\omega t-\sin\omega t)\)，\(y=R(1-\cos\omega t)\)；\(v_x=R\omega(1-\cos\omega t)\)，\(v_y=R\omega\sin\omega t\)；\(a_x=R\omega^2\sin\omega t\)，\(a_y=R\omega^2\cos\omega t\)；最高点曲率半径为 \(4R\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+摆线最高点不是速度为 0 的点；速度为 0 的是尖点。\par
+\end{tcolorbox}
+
+\subsubsection*{第12题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+飞船从北极沿地球表面切向飞出，初速度为 \(v_0\)，之后在万有引力作用下运动。已知轨道与 \(y\) 轴再次相交于 \(C\)，且 \(OC=3R\)。求飞船在 \(C\) 点的速度大小和它与初速度的夹角。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+万有引力是中心力，所以机械能守恒和角动量守恒都可用。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 初态半径为 \(R\)，速度与半径垂直，所以角动量 \(L=mRv_0\)。
+\item 在 \(C\) 点半径为 \(3R\)，设速度大小为 \(v\)，与初速度夹角为 \(\theta\)，则 \(L=m(3R)v\sin\theta\)。
+\item 由角动量守恒得 \(\sin\theta=\dfrac{v_0}{3v}\)。
+\item 再由机械能守恒：\(\dfrac12 mv_0^2-\dfrac{GMm}{R}=\dfrac12 mv^2-\dfrac{GMm}{3R}\)。
+\item 解得 \(v=\sqrt{v_0^2-\dfrac{4GM}{3R}}\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(v=\sqrt{v_0^2-\dfrac{4GM}{3R}}\)，且 \(\sin\theta=\dfrac{v_0}{3v}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+只用能量守恒只能求速度大小，求方向还必须结合角动量守恒。\par
+\end{tcolorbox}
+
+\subsubsection*{第13题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+圆柱体从桌边开始滚下，接触过程中静摩擦系数为 \(\mu=0.25\)。求未发生滑动时的支持力与转角关系，以及发生滑动的临界角。\par
+\vspace{0.4em}
+\textbf{说明：}按图可把圆柱视为绕桌边接触点 \(P\) 无滑动转动。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+先用机械能守恒求 \(\dot\theta\)，再列径向方程求支持力，最后用 \(f=\mu N\) 求临界角。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 圆柱对接触点的转动惯量为 \(I_P=I_C+mR^2=\dfrac12 mR^2+mR^2=\dfrac32 mR^2\)。
+\item 由能量守恒有 \(mgR(1-\cos\theta)=\dfrac12 I_P\dot\theta^2\)，故 \(\dot\theta^2=\dfrac{4g}{3R}(1-\cos\theta)\)。
+\item 径向列式可得 \(N-mg\cos\theta=-mR\dot\theta^2\)。
+\item 代入上式得 \(N=\dfrac{mg}{3}(7\cos\theta-4)\)。
+\item 切向方程结合转动方程可得所需静摩擦力 \(f=\dfrac13 mg\sin\theta\)。
+\item 临界滑动条件是 \(f=\mu N\)，代入 \(\mu=0.25\) 后化简为 \(4\sin\theta=7\cos\theta-4\)。
+\item 解得临界角 \(\theta_c=2\arctan\dfrac{3}{11}\approx 30.5^\circ\)。
+\end{enumerate}
+\textbf{最终答案：}
+未滑动时支持力 \(N(\theta)=\dfrac{mg}{3}(7\cos\theta-4)\)，临界角约为 \(30.5^\circ\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+临界条件不是 \(N=0\)，而是“维持无滑动所需的静摩擦力达到最大值”。\par
+\end{tcolorbox}
+
+\subsubsection*{第14题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+质量 \(2m\)、长度 \(l\) 的细杆静止放在光滑水平面上。质量 \(m\) 的小球以速度 \(v_0\) 垂直射向距杆端 \(l/4\) 处，与杆发生弹性碰撞。求碰后小球速度、杆的角速度和杆质心速度。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+碰撞时间极短，外界冲量可忽略，因此沿碰撞方向线动量守恒；对杆质心角动量守恒；又因为是弹性碰撞，机械能守恒。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设碰后小球速度为 \(u\)，杆质心速度为 \(V\)，角速度为 \(\omega\)。
+\item 线动量守恒：\(mv_0=mu+2mV\)，即 \(v_0=u+2V\)。
+\item 对杆质心取角动量守恒：\(mv_0\dfrac l4=mu\dfrac l4+I_C\omega\)，其中 \(I_C=\dfrac1{12}(2m)l^2=\dfrac16 ml^2\)。
+\item 化简得 \(\omega=\dfrac{3}{2l}(v_0-u)\)。
+\item 弹性碰撞满足机械能守恒：\(\dfrac12 mv_0^2=\dfrac12 mu^2+\dfrac12 (2m)V^2+\dfrac12 I_C\omega^2\)。
+\item 联立求解得 \(u=-\dfrac{v_0}{15}\)，\(V=\dfrac{8v_0}{15}\)，\(\omega=\dfrac{8v_0}{5l}\)。
+\end{enumerate}
+\textbf{最终答案：}
+小球反向弹回，速度为 \(-\dfrac{v_0}{15}\)；杆质心速度为 \(\dfrac{8v_0}{15}\)；角速度为 \(\dfrac{8v_0}{5l}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+杆既有平动又有转动，不能只列线动量守恒和能量守恒而漏掉角动量守恒。\par
+\end{tcolorbox}
+
+\subsubsection*{第15题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+快速运动介子的总能量为 \(E=3000\text{ MeV}\)，静止能量为 \(E_0=100\text{ MeV}\)，固有寿命为 \(\tau=2\times 10^{-6}\text{ s}\)。求它在实验室系中的飞行距离。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+先由 \(E=\gamma E_0\) 求出洛伦兹因子，再用时间延缓求实验室寿命，最后乘速度得到距离。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 洛伦兹因子 \(\gamma=\dfrac{E}{E_0}=\dfrac{3000}{100}=30\)。
+\item 所以 \(\beta=\sqrt{1-\dfrac1{\gamma^2}}=\sqrt{1-\dfrac1{900}}=\sqrt{\dfrac{899}{900}}\)。
+\item 实验室系寿命为 \(t=\gamma\tau=30\times 2\times 10^{-6}=6\times 10^{-5}\text{ s}\)。
+\item 飞行距离 \(s=vt=\beta ct=\beta\gamma c\tau\)。
+\item 代入数值可得 \(s\approx 3\times 10^8\times 2\times 10^{-6}\times \sqrt{899}\approx 1.8\times 10^4\text{ m}\)。
+\end{enumerate}
+\textbf{最终答案：}
+实验室系中的飞行距离约为 \(1.8\times 10^4\text{ m}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+固有寿命不是实验室里直接测到的寿命，要先乘时间延缓因子 \(\gamma\)。\par
+\end{tcolorbox}
+
+\end{document}

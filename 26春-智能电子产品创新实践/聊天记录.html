@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>微信聊天记录 - 26春-智能电子产品创新实践</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{background:linear-gradient(180deg,#0f0c29 0%,#1a1a2e 50%,#16213e 100%);
+     color:#eee;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;
+     display:flex;flex-direction:column;align-items:center;padding:30px 20px;min-height:100vh}
+.header{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);
+        padding:25px 40px;border-radius:20px;margin-bottom:30px;text-align:center;
+        border:1px solid rgba(255,255,255,.1);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.header h1{font-size:1.8em;font-weight:700;margin-bottom:8px;
+           background:linear-gradient(135deg,#a8edea,#fed6e3);
+           -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header p{opacity:.7;font-size:.9em}
+.chat-container{width:100%;max-width:800px}
+.page-container{margin:4px 0;border-radius:12px;overflow:hidden;
+                box-shadow:0 4px 20px rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.05);
+                position:relative;max-width:800px}
+.page-container img{display:block;width:100%;height:auto}
+.page-label{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;
+            padding:4px 12px;border-radius:12px;font-size:11px;backdrop-filter:blur(4px)}
+.date-divider{text-align:center;margin:20px 0;color:rgba(255,255,255,.4);
+              font-size:.78em;position:relative}
+.date-divider::before,.date-divider::after{content:'';position:absolute;top:50%;
+  width:30%;height:1px;background:rgba(255,255,255,.1)}
+.date-divider::before{left:0}.date-divider::after{right:0}
+.msg{display:flex;margin:8px 0;gap:10px}
+.msg.me{flex-direction:row-reverse}
+.avatar{width:38px;height:38px;border-radius:8px;background:linear-gradient(135deg,#667eea,#764ba2);
+        display:flex;align-items:center;justify-content:center;font-size:.8em;
+        font-weight:700;flex-shrink:0}
+.avatar.me{background:linear-gradient(135deg,#43c6ac,#191654)}
+.bubble-wrap{max-width:65%;display:flex;flex-direction:column}
+.msg.me .bubble-wrap{align-items:flex-end}
+.sender-name{font-size:.72em;color:rgba(255,255,255,.5);margin-bottom:3px;padding:0 4px}
+.bubble{padding:10px 14px;border-radius:16px;font-size:.92em;line-height:1.5;
+        word-break:break-word;white-space:pre-wrap}
+.bubble.them{background:rgba(255,255,255,.1);border-radius:16px 16px 16px 4px}
+.bubble.me{background:linear-gradient(135deg,#43c6ac,#191654);border-radius:16px 16px 4px 16px}
+.bubble.system{background:transparent;color:rgba(255,255,255,.4);font-size:.8em;
+               text-align:center;padding:4px 10px;font-style:italic}
+.bubble.meta{opacity:.6;font-style:italic}
+.bubble img.chat-img{max-width:100%;max-height:300px;border-radius:8px;margin:4px 0;cursor:pointer}
+.bubble img.chat-img:hover{opacity:.85}
+.bubble.file-msg{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+                 display:flex;align-items:center;gap:8px;padding:10px 14px}
+.bubble.file-msg .file-icon{font-size:1.4em;flex-shrink:0}
+.bubble.file-msg .file-detail{display:flex;flex-direction:column;min-width:0}
+.bubble.file-msg .file-name{font-size:.88em;font-weight:500;overflow:hidden;
+                             text-overflow:ellipsis;white-space:nowrap}
+.bubble.file-msg .file-size{font-size:.72em;opacity:.5;margin-top:2px}
+.bubble.file-msg a{color:inherit;text-decoration:none}
+.bubble.file-msg a:hover .file-name{text-decoration:underline}
+.bubble.voice-msg{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.voice-title{font-weight:700;margin-bottom:8px}
+.voice-audio{width:100%;max-width:280px;margin:4px 0 8px}
+.voice-track{margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.1)}
+.voice-track-label{font-size:.72em;opacity:.65;margin-bottom:3px}
+.voice-track-text{white-space:pre-wrap}
+.voice-track-muted{opacity:.6;font-style:italic}
+.time{font-size:.68em;color:rgba(255,255,255,.3);margin-top:4px;padding:0 4px}
+.stats{margin-top:30px;background:rgba(255,255,255,.05);padding:16px 24px;
+       border-radius:12px;font-size:.85em;opacity:.7;text-align:center;
+       border:1px solid rgba(255,255,255,.08)}
+.footer{margin-top:30px;padding:20px;color:#445;font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>💬 26春-智能电子产品创新实践</h1>
+  <p>聊天记录（数据库模式）· 共 181 条 · 2026-05-17 22:19</p>
+</div>
+<div class="chat-container">
+<div class="date-divider">2026年03月02日</div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">你透過掃描QR Code加入群組。群組成員包括：张琦-课程负责人、王海军、井平安、郭禹志、，、吴俊熙 自强、王璐玥 美57、张海岩美38、杨昕瑶 经32-计38、刘恒旭&amp;Ryan、刘梦阳 自动化、吴博然 机械系、蒋骏 核52、李芊润 日新56、刘卓城 为先54、遥坤、张昊宸 为先51、安嘉民 无56、SC30、温子晗 自动化系、何林璘 经管MBA、曹丰 美47、孙昌勖 助教、美39林子文、杨一鉴美319、刘实、张乐水 为先52、未青烟雨</div></div></div>
+<div class="date-divider">2026年03月05日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 再次提醒大家晚上带自选扫描件，并注意选件要求。</div><div class="time">18:57</div></div></div>
+<div class="date-divider">2026年03月12日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 晚上使用混元3D进行产品设计学习，需要使用逆向扫描仪的同学，我们留了两台在教室东侧，可自行使用。如果对扫描效果不满意的同学，也可以把模型带过来，使用拍照+混元方式进行模型设计制作。</div><div class="time">11:51</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王璐玥 美57</div><div class="bubble them">有同学带了拯救者的充电器吗🥺求借</div><div class="time">19:15</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;「张琦-课程负责人」已回收一則訊息&lt;/content&gt;&lt;revoketime&gt;0&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them">老师没带电脑[難受]座位号17 </div><div class="time">19:18</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">今晚使用混元3D Studio
+官网为3d.hunyuan.tencent.com
+需要先注册，一会儿实操用。</div><div class="time">19:19</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them file-msg"><a href="./文件/腾讯混元3D使用教程——智能电子产品创新实践.pdf" download><span class="file-icon">📎</span><span class="file-detail"><span class="file-name">腾讯混元3D使用教程——智能电子产品创新实践.pdf</span><span class="file-size">5.3MB</span></span></a></div><div class="time">19:50</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them file-msg"><span class="file-icon">📎</span><span class="file-detail"><span class="file-name">腾讯混元3D建模教程.mp4</span><span class="file-size">61.3MB</span></span></div><div class="time">20:00</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them file-msg"><a href="./文件/腾讯混元3D使用教程——智能电子产品创新实践.pdf" download><span class="file-icon">📎</span><span class="file-detail"><span class="file-name">腾讯混元3D使用教程——智能电子产品创新实践.pdf</span><span class="file-size">5.3MB</span></span></a></div><div class="time">20:12</div></div></div>
+<div class="msg them"><div class="avatar them">刘</div><div class="bubble-wrap"><div class="sender-name">刘恒旭&amp;Ryan</div><div class="bubble them"><img class="chat-img" src="./图片/6f46d58c7ec7e508f5f47ec714c21e54.png" alt="图片"></div><div class="time">20:47</div></div></div>
+<div class="date-divider">2026年03月17日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 提醒大家上传自己生成的AIGC模型，明天会请老师们检查大家的模型。有问题会及时反馈进行再修改。</div><div class="time">20:21</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 如果大家用拓竹进行切片，把生成3mf和gcode文件都上传吧。</div><div class="time">20:27</div></div></div>
+<div class="date-divider">2026年03月19日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them meta">[小程序] 智能电子产品创新实践-26春-学生信息</div><div class="time">16:33</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 各位同学，今晚的教学时间安排如下：（1）请同学们上课前先上面腾讯文档中的编号去B136的3D打印实验室看一下自己对应的3D打印机的耗材颜色（我们推荐用黑白紫+其他，如需要更换，现场请罗老师协助），腾讯文档中的序号即为同学们打印机的编号；（2）请同学们从B136房间带U盘到B450进行模型修改（选色上色、切片、拷贝），王海军老师和禹志博士会在现场指导操作；（3）模型完成切片、拷贝到U盘后，回到一层进行3D打印；（4）启动打印后，观察一下，打印正常开始，就可以回到B450教室上课，今晚讲授3D打印技术；同时，会给同学们留出时间准备下周汇报的PPT（1页即可）；（5）预计9点20分后到B136实验室拿自己的模型、拆除支撑，确认模型无误，课程结束。确认后的模型，老师会单独安排时间打印大尺寸模型（不超过10cm*10cm*10cm）。</div><div class="time">16:40</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">3D打印课程内容资料参见清华云盘，内容包括拓竹软件（自己电脑安排可以下载）、3D打印操作手册及视频、阶段汇报PPT材料。
+https://cloud.tsinghua.edu.cn/d/e49f786653aa404e916d/</div><div class="time">17:00</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">同学们作品的反馈意见，已经上传到网络学堂。如有问题或者需要协助修改，可以在B450教室联系王海军老师和禹志博士。</div><div class="time">17:33</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 先来一楼看3D打印机，选择颜色、拍一下打印材料颜色的放置顺序。</div><div class="time">19:10</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them file-msg"><a href="./文件/拓竹3D打印使用教程-智能电子产品创新实践-26春.pdf" download><span class="file-icon">📎</span><span class="file-detail"><span class="file-name">拓竹3D打印使用教程-智能电子产品创新实践-26春.pdf</span><span class="file-size">9.3MB</span></span></a></div><div class="time">19:10</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them file-msg"><span class="file-icon">📎</span><span class="file-detail"><span class="file-name">拓竹切片软件对三维模型上色教程视频20260319.mp4</span><span class="file-size">51.2MB</span></span></div><div class="time">19:34</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 210x118, 45KB]</span></div><div class="time">19:52</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 使用拓竹软件时，一定要选择打印机型号为X1-Carbon，请@王海军 @郭禹志 检查一下。</div><div class="time">19:53</div></div></div>
+<div class="msg them"><div class="avatar them">Y</div><div class="bubble-wrap"><div class="sender-name">You</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 68x120, 61KB]</span></div><div class="time">19:59</div></div></div>
+<div class="msg them"><div class="avatar them">Y</div><div class="bubble-wrap"><div class="sender-name">You</div><div class="bubble them">大家不要勾选延时摄影</div><div class="time">19:59</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 118x210, 37KB]</span></div><div class="time">20:36</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 118x210, 52KB]</span></div><div class="time">20:36</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 118x210, 59KB]</span></div><div class="time">20:36</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 118x210, 57KB]</span></div><div class="time">20:36</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 118x210, 56KB]</span></div><div class="time">20:37</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 118x210, 55KB]</span></div><div class="time">20:37</div></div></div>
+<div class="msg them"><div class="avatar them">K</div><div class="bubble-wrap"><div class="sender-name">Kakura</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 210x157, 38KB]</span></div><div class="time">22:20</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 这五个作品已经打印完了，可以去一楼西北门门卫处取。</div><div class="time">22:22</div></div></div>
+<div class="date-divider">2026年03月23日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 210x157, 105KB]</span></div><div class="time">17:06</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 210x157, 68KB]</span></div><div class="time">17:06</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 各位同学，模型我们周末加班给同学们打印出来了。这十五个模型基本完整。请同学们在周三中午下班前自行安排时间到李兆基科技大楼B450房间，找王蓓蓓、高英老师领取。我会在网络学堂中发布作业，请大家上传自己的文件，我们会在出发前打印出来。模型请同学们上课时带上进行汇报交流。</div><div class="time">17:11</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">这四个模型有较为明显的破面，如果需要重新打印，需要修改模型。同学们有修改需求，今天改完后发给@王海军 王海军老师进行打印。如果不需要修改，也是周四带到腾讯进行交流。今天未提交视为不再改模，不影响课程成绩。模型需要去支撑，教室里有工具。</div><div class="time">17:13</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">「张琦-课程负责人」邀請「高英」加入了群組</div></div></div>
+<div class="date-divider">2026年03月24日</div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="sender-name">小新！</div><div class="bubble them">@高英 老师好 晚上B450开吗</div><div class="time">18:34</div></div></div>
+<div class="msg them"><div class="avatar them">高</div><div class="bubble-wrap"><div class="sender-name">高英</div><div class="bubble them">抱歉啊、我现在不在学校了。实验室的老师都走了</div><div class="time">18:37</div></div></div>
+<div class="msg them"><div class="avatar them">高</div><div class="bubble-wrap"><div class="sender-name">高英</div><div class="bubble them">是取3D打印件吗</div><div class="time">18:38</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="sender-name">小新！</div><div class="bubble them">是的</div><div class="time">18:38</div></div></div>
+<div class="msg them"><div class="avatar them">高</div><div class="bubble-wrap"><div class="sender-name">高英</div><div class="bubble them">那我先问问稍后给你答复哦</div><div class="time">18:40</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="sender-name">小新！</div><div class="bubble them">好的谢谢老师</div><div class="time">18:40</div></div></div>
+<div class="msg them"><div class="avatar them">高</div><div class="bubble-wrap"><div class="sender-name">高英</div><div class="bubble them">同学那你在B450门口等一下，张老师5min后到</div><div class="time">18:43</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="sender-name">小新！</div><div class="bubble them">好的 老师辛苦了</div><div class="time">18:43</div></div></div>
+<div class="msg them"><div class="avatar them">高</div><div class="bubble-wrap"><div class="sender-name">高英</div><div class="bubble them">没事儿～</div><div class="time">18:43</div></div></div>
+<div class="msg them"><div class="avatar them">刘</div><div class="bubble-wrap"><div class="sender-name">刘恒旭&amp;Ryan</div><div class="bubble them">@高英 老师明天早上几点450开门[疑問]</div><div class="time">18:44</div></div></div>
+<div class="msg them"><div class="avatar them">高</div><div class="bubble-wrap"><div class="sender-name">高英</div><div class="bubble them">8:00</div><div class="time">18:44</div></div></div>
+<div class="msg them"><div class="avatar them">刘</div><div class="bubble-wrap"><div class="sender-name">刘恒旭&amp;Ryan</div><div class="bubble them">OK</div><div class="time">18:44</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">我晚上有课九点前在训练中心，需要拿模型的可以过来。</div><div class="time">18:49</div></div></div>
+<div class="msg them"><div class="avatar them">小</div><div class="bubble-wrap"><div class="sender-name">小新！</div><div class="bubble them">@张琦-课程负责人 老师好 我弄好了</div><div class="time">19:09</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">好的，你最后关门。</div><div class="time">19:16</div></div></div>
+<div class="msg them"><div class="avatar them">。</div><div class="bubble-wrap"><div class="sender-name">。。。。。。</div><div class="bubble them">@张琦-课程负责人 老师我现在去450拿可以吗</div><div class="time">19:17</div></div></div>
+<div class="msg them"><div class="avatar them">乐</div><div class="bubble-wrap"><div class="sender-name">乐乐</div><div class="bubble them">我刚刚去拿，走的时候门没关</div><div class="time">19:19</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">可以@刘梦阳 自动化 </div><div class="time">19:20</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@杨昕瑶 经32-计38 好的，我在五楼，一会儿去关门。</div><div class="time">19:20</div></div></div>
+<div class="msg them"><div class="avatar them">：</div><div class="bubble-wrap"><div class="sender-name">：（</div><div class="bubble them">老师我现在可以去拿么</div><div class="time">21:13</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">可以的</div><div class="time">21:18</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">你过来吧。</div><div class="time">21:18</div></div></div>
+<div class="msg them"><div class="avatar them">：</div><div class="bubble-wrap"><div class="sender-name">：（</div><div class="bubble them">好的我2min内赶过来</div><div class="time">21:19</div></div></div>
+<div class="date-divider">2026年03月25日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 【重要提醒】请同学们尽快取回自己打印的实物，并于今晚十点前在网络学堂上传PPT，我们明天会统一给大家打印，实物带到腾讯进行展示。已经上传PPT的同学请注意，部分PPT中没有放打印出来的实物照片。</div><div class="time">08:19</div></div></div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them meta">[表情包]</div><div class="time">09:30</div></div></div>
+<div class="msg them"><div class="avatar them">J</div><div class="bubble-wrap"><div class="sender-name">J</div><div class="bubble them">老师 我刚刚拿到我的模型发现他打印出来身子和腿是分开的 并没有连接上[尷尬]</div><div class="time">09:32</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;「张琦-课程负责人」已回收一則訊息&lt;/content&gt;&lt;revoketime&gt;0&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;「张琦-课程负责人」已回收一則訊息&lt;/content&gt;&lt;revoketime&gt;0&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them">我在B569</div><div class="time">09:37</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them">@蒋骏 核52</div><div class="time">09:37</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@蒋骏 核52 蒋骏，你可以到B569找王海军老师看一下，这种情况可能原因：（1）模型设计缺失；（2）3D打印上色时有遗漏的配色，导致打印时没有对应的材料。
+解决方案：（1）看看今天能不能来得及给你补打印；（2）如果时间紧张，你可以先拍一个带支架的模型放到课程PPT中。我们可以后续给你重新打印。
+大家打印完就完成本阶段考核，不影响课程成绩。</div><div class="time">09:37</div></div></div>
+<div class="msg them"><div class="avatar them">J</div><div class="bubble-wrap"><div class="sender-name">J</div><div class="bubble them">老师不好意思因为我下节课有课所以我现在已经走了</div><div class="time">09:38</div></div></div>
+<div class="msg them"><div class="avatar them">J</div><div class="bubble-wrap"><div class="sender-name">J</div><div class="bubble them">可以线上拍给您看吗[尷尬]</div><div class="time">09:38</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">没事，你把模型发给王老师，请他线上看看。</div><div class="time">09:38</div></div></div>
+<div class="msg them"><div class="avatar them">J</div><div class="bubble-wrap"><div class="sender-name">J</div><div class="bubble them">好的好的</div><div class="time">09:38</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them">最好先不拆支撑</div><div class="time">09:39</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them">拍照用于海报</div><div class="time">09:39</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them">@蒋骏 核52</div><div class="time">09:39</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them">创意的立意是最重要的</div><div class="time">09:39</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 请大家尽快拿自己的模型，有问题可以让王老师看看或者群里发消息问。
+不用担心课程成绩，本阶段大家的工作已经全部完成，成绩都会给到。我们的作品及PPT主要用于明天去腾讯的展示交流和评奖。</div><div class="time">09:40</div></div></div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them">老师我下课了现在去</div><div class="time">16:06</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them">到450教室@曹丰 美47 </div><div class="time">16:08</div></div></div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them">豪德</div><div class="time">16:09</div></div></div>
+<div class="msg them"><div class="avatar them">啵</div><div class="bubble-wrap"><div class="sender-name">啵兜</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 118x210, 30KB]</span></div><div class="time">17:34</div></div></div>
+<div class="msg them"><div class="avatar them">啵</div><div class="bubble-wrap"><div class="sender-name">啵兜</div><div class="bubble them">这位同学的作品放在一楼前台了，记得来拿呀</div><div class="time">17:35</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王璐玥 美57</div><div class="bubble them">谢谢🥹🥹已拿到</div><div class="time">17:45</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them meta">[表情包]</div><div class="time">17:48</div></div></div>
+<div class="date-divider">2026年03月26日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them meta">[位置]</div><div class="time">09:43</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 今天下午四点半，在精仪系9003大楼前坐车，集体去腾讯（北京）总部，车号京AMD207。如果有课五点才能出发的，请联系@高英 高英老师。
+海报我们统一打印带过去，作品请大家自己带上。晚餐在腾讯，今天也会有专家和HR交流，对技术和实习感兴趣的同学可以准备一下。</div><div class="time">09:53</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 118x210, 105KB]</span></div><div class="time">12:28</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 图已经给大家打印出来了，下午我们会带上。模型大家自己带。</div><div class="time">12:28</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 【再次提醒】请大家注意上车时间、地点、车牌，带好自己的模型。如果不能准时出发的同学，联系@高英 老师，你们进入腾讯（北京）总部的信息已经报备。</div><div class="time">15:43</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 157x210, 185KB]</span></div><div class="time">16:23</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 我们出发了，有课同学联系@高英 老师。</div><div class="time">16:32</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;「蒋骏 核52」已回收一則訊息&lt;/content&gt;&lt;revoketime&gt;0&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;「蒋骏 核52」已回收一則訊息&lt;/content&gt;&lt;revoketime&gt;0&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">3.36 下午-北京总部 237 会议室-清华双创中心交流
+
+会议时间：2026/03/26 17:30-18:30 
+
+点击链接入会，或添加至会议列表：
+https://meeting.tencent.com/dm/IF7YksyQY4GE
+
+#腾讯会议：662-934-957</div><div class="time">17:08</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@蒋骏 核52 @张乐水 为先52 </div><div class="time">17:08</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;「高英」已回收一則訊息&lt;/content&gt;&lt;revoketime&gt;0&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them">237 会议室-清华双创中心交流
+请大家回来继续</div><div class="time">19:13</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them"><img class="chat-img" src="./图片/e35d9588bcce5e85b7e3dfc2b71b0f6c.jpg" alt="图片"></div><div class="time">19:16</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 纸质评分表完成后，请大家把评分成绩填到问卷星中。</div><div class="time">19:17</div></div></div>
+<div class="date-divider">2026年04月02日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">请同学们登录https://agent.xfyun.cn/ 注册一个免费账号，并将手机号填写到问卷星中。https://v.wjx.cn/vm/ev3KLQf.aspx#</div><div class="time">09:32</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 请大家提前注册账号并填写问卷星。今晚我们学习使用讯飞开发者平台进行智能体设计开发。</div><div class="time">09:34</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 提醒同学们上课前完成注册并填写问卷星，我们今晚用。</div><div class="time">18:23</div></div></div>
+<div class="msg them"><div class="avatar them">2</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 「曹丰 美47」拍了拍「张琦-课程负责人」</div><div class="time">18:25</div></div></div>
+<div class="msg them"><div class="avatar them">高</div><div class="bubble-wrap"><div class="sender-name">高英</div><div class="bubble them">@张昊宸 为先51 @刘卓城 为先54 上课啦</div><div class="time">19:23</div></div></div>
+<div class="msg them"><div class="avatar them">：</div><div class="bubble-wrap"><div class="sender-name">：（</div><div class="bubble them">sorry我在电梯里</div><div class="time">19:23</div></div></div>
+<div class="msg them"><div class="avatar them">我</div><div class="bubble-wrap"><div class="sender-name">我就是我</div><div class="bubble them">我也是</div><div class="time">19:24</div></div></div>
+<div class="msg them"><div class="avatar them">高</div><div class="bubble-wrap"><div class="sender-name">高英</div><div class="bubble them">好的[愉快]</div><div class="time">19:24</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them file-msg"><a href="./文件/智能电子产品创新实践-26春-6.1.pdf" download><span class="file-icon">📎</span><span class="file-detail"><span class="file-name">智能电子产品创新实践-26春-6.1.pdf</span><span class="file-size">17.8MB</span></span></a></div><div class="time">19:28</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them meta">[链接] 发“龙虾”了，来领🦞！</div><div class="time">19:34</div></div></div>
+<div class="date-divider">2026年04月07日</div>
+<div class="msg them"><div class="avatar them">乐</div><div class="bubble-wrap"><div class="sender-name">乐乐</div><div class="bubble them">@张琦-课程负责人 老师，现在平台上好像没法创建新的智能体QAQ还没有做好一个满意的[難受]</div><div class="time">15:48</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">好的，我一会儿清理一下。</div><div class="time">16:06</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 我已经清理了部分讯飞智能体平台中未发布项目，请同学们在周四上课前把自己的智能体链接复制到腾讯文档中。周四我邀请了讯飞智能体开发平台技术专家跟大家进行交流和项目点评。项目汇报时间每个人不超过3分钟。</div><div class="time">19:53</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them meta">[小程序] 邀请你一起编辑《科大讯飞智能体开发平台项目汇总》</div><div class="time">19:53</div></div></div>
+<div class="date-divider">2026年04月08日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 请同学们在上课前将自己的智能体链接放到腾讯文档中。明天会有技术专家跟大家交流点评。</div><div class="time">21:11</div></div></div>
+<div class="date-divider">2026年04月09日</div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them">老师又满了[流淚]</div><div class="time">01:31</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">好的，我上午再清理一下。</div><div class="time">07:01</div></div></div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them meta">[表情包]</div><div class="time">08:08</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 我清理了一些讯飞开发者平台未发布的项目。请同学们提交自己项目的同时，也把自己不用的项目清理一下。</div><div class="time">09:44</div></div></div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them">老师我们现在有权限了不</div><div class="time">09:45</div></div></div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them meta">[表情包]</div><div class="time">09:45</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">有了，可以继续用了。</div><div class="time">09:45</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@曹丰 美47 </div><div class="time">09:45</div></div></div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them meta">[表情包]</div><div class="time">09:46</div></div></div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them">谢谢老师</div><div class="time">09:46</div></div></div>
+<div class="msg"><div class="bubble-wrap" style="width:100%"><div class="bubble system">&lt;?xml version="1.0"?&gt;&lt;sysmsg type="revokemsg"&gt;&lt;revokemsg&gt;&lt;content&gt;「张琦-课程负责人」已回收一則訊息&lt;/content&gt;&lt;revoketime&gt;0&lt;/revoketime&gt;&lt;/revokemsg&gt;&lt;/sysmsg&gt;</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">不客气，[愉快]</div><div class="time">10:38</div></div></div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them meta">[表情包]</div><div class="time">10:38</div></div></div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them">老师我们要做ppt吗</div><div class="time">10:39</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">不用做PPT，直接介绍展示自己的智能体就行。</div><div class="time">10:40</div></div></div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them">收到</div><div class="time">10:41</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 智能体设置有问题，可以群里问我或者昌勖@孙昌勖 助教 
+我们都有权限协助修改智能体。</div><div class="time">13:09</div></div></div>
+<div class="msg them"><div class="avatar them">e</div><div class="bubble-wrap"><div class="sender-name">eve492</div><div class="bubble them">大家好，如果各位有空余时间或者兴趣的话，希望可以帮忙参与一下这个实验，确实需要有一定的数据支撑来完成后续的工作。时间大致20min，会根据工作时间（时间安排较为自由，如果有空来采数据即可）发放报酬，谢谢大家</div><div class="time">20:17</div></div></div>
+<div class="msg them"><div class="avatar them">e</div><div class="bubble-wrap"><div class="sender-name">eve492</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 502x267, 402KB]</span></div><div class="time">20:17</div></div></div>
+<div class="msg them"><div class="avatar them">e</div><div class="bubble-wrap"><div class="sender-name">eve492</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 502x262, 203KB]</span></div><div class="time">20:17</div></div></div>
+<div class="msg them"><div class="avatar them">e</div><div class="bubble-wrap"><div class="sender-name">eve492</div><div class="bubble them">可以先加我微信，然后加入实验群</div><div class="time">20:18</div></div></div>
+<div class="msg them"><div class="avatar them">e</div><div class="bubble-wrap"><div class="sender-name">eve492</div><div class="bubble them meta">[表情包]</div><div class="time">20:18</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 感兴趣的同学可以联系昌勖。</div><div class="time">20:22</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">讯飞智能体评分问卷星，请完成纸评后填写问卷星
+https://v.wjx.cn/vm/Ys3E1nZ.aspx#</div><div class="time">20:23</div></div></div>
+<div class="date-divider">2026年04月10日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 没有完成评分的同学请今天提交评分结果。我们会在下周给同学们公布。</div><div class="time">17:53</div></div></div>
+<div class="date-divider">2026年04月16日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 今天下午上车的地点还是在9003大楼门口，四点半出发，坐车到科大讯飞（北京）总部。晚上给同学们准备了一份简餐。
+赶不上4点半车的同学联系@高英 老师。</div><div class="time">10:52</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王璐玥 美57</div><div class="bubble them meta">[表情包]</div><div class="time">10:59</div></div></div>
+<div class="msg them"><div class="avatar them">2</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 「曹丰 美47」拍了拍「张琦-课程负责人」</div><div class="time">12:26</div></div></div>
+<div class="msg them"><div class="avatar them">高</div><div class="bubble-wrap"><div class="sender-name">高英</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 118x210, 131KB]</span></div><div class="time">16:25</div></div></div>
+<div class="msg them"><div class="avatar them">高</div><div class="bubble-wrap"><div class="sender-name">高英</div><div class="bubble them">9003，大家到了先上车</div><div class="time">16:25</div></div></div>
+<div class="msg them"><div class="avatar them">高</div><div class="bubble-wrap"><div class="sender-name">高英</div><div class="bubble them">@王璐玥 美57 王同学，我们在9003台阶这等你啊。路上注意安全</div><div class="time">16:31</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王璐玥 美57</div><div class="bubble them">好的，老师，我到了</div><div class="time">16:34</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王璐玥 美57</div><div class="bubble them meta">[表情包]</div><div class="time">16:34</div></div></div>
+<div class="msg them"><div class="avatar them">高</div><div class="bubble-wrap"><div class="sender-name">高英</div><div class="bubble them">好的、快上车吧，车上暖和点</div><div class="time">16:35</div></div></div>
+<div class="msg them"><div class="avatar them">高</div><div class="bubble-wrap"><div class="sender-name">高英</div><div class="bubble them">大家都到餐厅了吗？地下一</div><div class="time">18:17</div></div></div>
+<div class="msg them"><div class="avatar them">刘</div><div class="bubble-wrap"><div class="sender-name">刘恒旭&amp;Ryan</div><div class="bubble them">等会儿在哪集合</div><div class="time">18:35</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 210x118, 41KB]</span></div><div class="time">18:38</div></div></div>
+<div class="date-divider">2026年04月20日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them meta">[链接] 清华师生走进科大讯飞（北京）总部，从产业中汲取智能电子产品实践创新灵感</div><div class="time">10:36</div></div></div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them meta">[表情包]</div><div class="time">10:46</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王璐玥 美57</div><div class="bubble them meta">[表情包]</div><div class="time">10:54</div></div></div>
+<div class="msg them"><div class="avatar them">碎</div><div class="bubble-wrap"><div class="sender-name">碎岁念年</div><div class="bubble them meta">[表情包]</div><div class="time">10:55</div></div></div>
+<div class="msg them"><div class="avatar them">高</div><div class="bubble-wrap"><div class="sender-name">高英</div><div class="bubble them meta">[表情包]</div><div class="time">11:01</div></div></div>
+<div class="date-divider">2026年04月23日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them file-msg"><a href="./文件/PICO 和Apple Vision Pro 使用方法.pdf" download><span class="file-icon">📎</span><span class="file-detail"><span class="file-name">PICO 和Apple Vision Pro 使用方法.pdf</span><span class="file-size">5.3MB</span></span></a></div><div class="time">19:12</div></div></div>
+<div class="date-divider">2026年05月07日</div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them">老师 我骑自行车摔了 要晚点到 </div><div class="time">19:17</div></div></div>
+<div class="msg them"><div class="avatar them">c</div><div class="bubble-wrap"><div class="sender-name">cao</div><div class="bubble them">[流淚]</div><div class="time">19:17</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">好的，路上注意安全。</div><div class="time">19:18</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them file-msg"><a href="./文件/Brainco教学案例配套材料.rar" download><span class="file-icon">📎</span><span class="file-detail"><span class="file-name">Brainco教学案例配套材料.rar</span><span class="file-size">69.7MB</span></span></a></div><div class="time">20:37</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them meta">[小程序] 邀请你一起编辑《智能电子产品创新实践-鲲鹏开发板平台数据统计》</div><div class="time">20:37</div></div></div>
+<div class="date-divider">2026年05月13日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them meta">[链接] 当前微信版本不支持展示该内容，请升级至最新版本。</div><div class="time">12:56</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them meta">[链接] 当前微信版本不支持展示该内容，请升级至最新版本。</div><div class="time">12:56</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 这是明晚课程体验内容，三体。预计出发时间6点30分，出发地点不变。</div><div class="time">12:57</div></div></div>
+<div class="date-divider">2026年05月14日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 5月14日周四，下午6:30 清华9003—朝阳区微博IN跨次元引力场（三体四维空间）
+安师傅电话18501014562车号京AF9112</div><div class="time">07:47</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 210x118, 230KB]</span></div><div class="time">18:25</div></div></div>
+<div class="msg them"><div class="avatar them">王</div><div class="bubble-wrap"><div class="sender-name">王海军</div><div class="bubble them"><span style="opacity:.6;font-style:italic">[图片 210x118, 81KB]</span></div><div class="time">18:27</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 注意新的车牌，车已经到了。</div><div class="time">18:28</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them meta">[小程序] 智能电子产品创新实践结课项目汇报</div><div class="time">19:02</div></div></div>
+<div class="date-divider">2026年05月15日</div>
+<div class="msg them"><div class="avatar them">刘</div><div class="bubble-wrap"><div class="sender-name">刘恒旭&amp;Ryan</div><div class="bubble them">求个没组队的同学组队[難受][難受]，目前加上我只有两个人</div><div class="time">12:06</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 还有三位同学没有组队，可以考虑加入。</div><div class="time">12:10</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">另有两支队伍是3人，也可以考虑吸纳成员。</div><div class="time">12:10</div></div></div>
+<div class="msg them"><div class="avatar them">2</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 「杨昕瑶 经32-计38」拍了拍「刘恒旭&amp;amp;Ryan」干活了</div><div class="time">12:15</div></div></div>
+<div class="msg them"><div class="avatar them">乐</div><div class="bubble-wrap"><div class="sender-name">乐乐</div><div class="bubble them">@刘恒旭&amp;Ryan 我们有两个人</div><div class="time">12:15</div></div></div>
+<div class="msg them"><div class="avatar them">刘</div><div class="bubble-wrap"><div class="sender-name">刘恒旭&amp;Ryan</div><div class="bubble them">[哇][哇]欢迎欢迎</div><div class="time">12:15</div></div></div>
+<div class="msg them"><div class="avatar them">2</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 「刘恒旭&amp;amp;Ryan」拍了拍「杨昕瑶 经32-计38」</div><div class="time">12:16</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">3人组的同学可以考虑吸纳一下新人。</div><div class="time">12:17</div></div></div>
+<div class="date-divider">2026年05月17日</div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 刚才有同学问到结课报告要做什么，统一给大家回复一下。
+简单说，就是提出一个设想，用你们学到的知识来讲这个设想如何实现。举个例子，你们学习过XR技术，也学习过智能体，就可以说做一个融合AI和XR的眼镜，为康复训练提供辅助。
+报告可参考内容模板：（1）项目背景（项目应用在哪个领域，比如康复医学科的肢体恢复训练）；（2）当前技术问题（比如，现有的康复训练场景单一化，也缺乏有效的辅助指导。希望结合XR提供更加丰富的训练场景，比借用智能体技术进行患者咨询问答）；（3）技术方案（你们的产品和功能，用到的技术）；（4）预期成效（产品解决什么问题，有怎样的市场应用前景）；（5）课程收获（每个人列一下自己的）。
+每个小组10分钟，提问5分钟。</div><div class="time">18:41</div></div></div>
+<div class="msg them"><div class="avatar them">2</div><div class="bubble-wrap"><div class="bubble them meta">[链接] 「曹丰 美47」拍了拍「张琦-课程负责人」</div><div class="time">18:46</div></div></div>
+<div class="msg them"><div class="avatar them">张</div><div class="bubble-wrap"><div class="sender-name">张琦-课程负责人</div><div class="bubble them">@所有人 还有三个小组没有选定组长，周四前未选好的话，我们就默认小组成员第一人担任组长了。
+周四晚上汇报完即时选出两个优秀小组，并进行结果公布。</div><div class="time">18:55</div></div></div>
+</div>
+<div class="stats">时间跨度: 2026-03-02 ~ 2026-05-17 &nbsp;|&nbsp; 我: 0 条 &nbsp;|&nbsp; 26春-智能电子产品创新实践: 172 条</div>
+<div class="footer">
+  <p>由 wechat-capture 数据库模式导出 · 2026-05-17 22:19</p>
+</div>
+</body></html>

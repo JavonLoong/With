@@ -1,0 +1,959 @@
+% !TEX program = xelatex
+\documentclass[5pt,a4paper]{article}
+
+% --- 中文支持 ---
+\usepackage[UTF8]{ctex}
+\setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+\setCJKsansfont{SimHei}
+
+% --- 极限边距 ---
+\usepackage[top=5mm,bottom=5mm,left=5mm,right=5mm]{geometry}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5pt}
+\renewcommand{\baselinestretch}{0.88}
+
+% --- 字体 ---
+\usepackage{anyfontsize}
+\usepackage{multicol}
+\setlength{\columnsep}{3.5mm}
+\setlength{\columnseprule}{0.2pt}
+
+% --- 颜色 ---
+\usepackage[dvipsnames]{xcolor}
+\definecolor{h1}{HTML}{0D47A1}
+\definecolor{h2}{HTML}{1565C0}
+\definecolor{h3}{HTML}{E65100}
+\definecolor{warn}{HTML}{C62828}
+\definecolor{tip}{HTML}{2E7D32}
+\definecolor{bg}{HTML}{EEF2FF}
+\definecolor{bgwarn}{HTML}{FFF3E0}
+\definecolor{bgex}{HTML}{F0FFF0}
+
+% --- 数学 ---
+\usepackage{amsmath,amssymb}
+
+% --- 紧凑列表 ---
+\usepackage{enumitem}
+\setlist{nosep,leftmargin=8pt,labelsep=2pt,itemsep=0pt,parsep=0pt,topsep=0pt}
+
+% --- 自定义命令 ---
+\newcommand{\chap}[1]{\vspace{2pt}{\fontsize{7}{8}\selectfont\bfseries\color{white}\colorbox{h1}{\strut\;#1\;}}\par\vspace{0.8pt}}
+\newcommand{\sect}[1]{\vspace{1pt}{\fontsize{6}{7}\selectfont\bfseries\color{h2}$\blacktriangleright$ #1}\par\vspace{0.3pt}}
+\newcommand{\exm}[1]{\vspace{0.5pt}{\fontsize{5.5}{6.5}\selectfont\bfseries\color{tip}$\diamond$ #1}\par\vspace{0.3pt}}
+\newcommand{\key}[1]{{\bfseries\color{h3}#1}}
+\newcommand{\warn}[1]{{\color{warn}\bfseries #1}}
+\newcommand{\fml}[1]{\;\colorbox{bg}{$\displaystyle #1$}\;}
+\newcommand{\wfml}[1]{\;\colorbox{bgwarn}{$\displaystyle #1$}\;}
+
+\begin{document}
+\fontsize{6.2}{7.8}\selectfont
+
+\begin{multicols}{3}
+
+% ============================================================
+\chap{第1章\;流体物理性质}
+% ============================================================
+
+\sect{连续介质假设}
+流体质点：宏观$\infty$小、微观$\infty$大。
+Kn$=\lambda/L\ll1$（$\lambda$=分子自由程，$L$=特征尺度）。
+使物理量成坐标和时间的\key{连续函数}，可用微积分。
+
+\sect{四大力学性质}
+\key{易流动性}、\key{粘性}、\key{压缩性}、\key{表面张力}
+
+\sect{粘性（核心）}
+\key{牛顿内摩擦定律}：\fml{\tau = \mu \dfrac{\partial u}{\partial y}}
+
+$\mu$=动力粘度(Pa$\cdot$s)；$\nu=\mu/\rho$=运动粘度(m$^2$/s)
+
+\warn{$\mu$与$\nu$别搞混}！题目给$\nu$时先算$\mu=\rho\nu$
+
+温度$\uparrow$：\key{液体}$\mu\downarrow$（引力$\downarrow$）；\key{气体}$\mu\uparrow$（热运动$\uparrow$）
+
+牛顿流体：$\tau$-$\partial u/\partial y$线性，$\mu$与速度梯度\key{无关}
+
+\sect{作用力}
+\key{质量力}：$\propto m$，重力/惯性力/离心力\\
+\key{表面力}：$\propto A$。法向=压力；切向=切应力
+
+\sect{切应力计算}
+(1)$du/dy$ (2)$\tau=\mu\cdot du/dy$ (3)壁面($y\!=\!0$)$\tau$最大 (4)代值
+
+\exm{例：$u\!=\!C(50y\!-\!y^2)$，$\mu\!=\!0.05$}
+$du/dy=C(50-2y)$，$\tau=0.05C(50-2y)$\\
+$y\!=\!0$时$\tau_{\max}\!=\!0.05\!\times\!50C\!=\!2.5C$ Pa
+
+\sect{表面张力}
+水滴$\Delta p\!=\!2\sigma/R$；气泡$\Delta p\!=\!4\sigma/R$\\
+润湿$\theta\!<\!90°$凹$\uparrow$；不润湿$\theta\!>\!90°$凸$\downarrow$
+
+单位：1泊=0.1Pa$\cdot$s；1斯=$10^{-4}$m$^2$/s
+
+\exm{例：滑动轴承功率}
+$D$=12cm，$b$=20cm，间隙$t$=0.1cm，$\mu$已知，转速$n$\\
+线速度$v=\pi Dn/60$，$\tau=\mu v/t$\\
+摩擦力$F=\tau\!\cdot\!\pi Db$，功率$P=Fv$
+
+\vspace{0.8pt}\hrule height 0.4pt\vspace{0.8pt}
+
+% ============================================================
+\chap{第2章\;流体静力学}
+% ============================================================
+
+\sect{基本方程}
+\fml{p = p_0 + \rho g h}
+
+\key{等压面}：连通静止同种流体，同深度$p$相等\\
+\warn{不连通或不同液体时不成立}
+
+\sect{三种压强}
+$p_{abs}\!=\!p_a+p_{gage}$；$p_{vac}\!=\!p_a-p_{abs}\!=\!-p_{gage}$\\
+\warn{大题用表压}！开口水面表压$p_0\!=\!0$
+
+\sect{U管测压——爬楼梯法}
+从已知点出发，\key{下$+\rho gh$，上$-\rho gh$}，遇不同液体用等压面跨过
+
+\exm{例：复式U管测压}
+从A点出发逐段推：$p_A+\rho_1 g h_1-\rho_2 g h_2+\rho_3 g h_3-\cdots=p_B$
+
+\sect{平面总压力}
+合力：\fml{F = \rho g h_C \cdot A}
+
+$h_C$=形心\key{垂直}深度，$A$=面积
+
+压力中心：\fml{y_D = y_C + \frac{J_C}{y_C A}}
+
+$y_C$=形心沿斜面距离；$J_C$=对形心轴惯性矩\\
+矩形$J_C\!=\!bh^3\!/12$；圆$J_C\!=\!\pi d^4\!/64$；三角形$J_C\!=\!bh^3\!/36$\\
+\key{压力中心永远在形心下方}
+
+\exm{例：矩形平板受力}
+宽$b$=2m，高$h$=3m，顶边淹深$H$=1m\\
+形心深度$h_C\!=\!H+h/2\!=\!2.5$m\\
+$F\!=\!\rho g h_C\!\cdot\!bh\!=\!1000\!\times\!9.81\!\times\!2.5\!\times\!6\!=\!147.15$kN\\
+$y_C\!=\!h_C\!=\!2.5$m（垂直板），$J_C\!=\!2\!\times\!3^3\!/12\!=\!4.5$m$^4$\\
+$y_D\!=\!2.5+4.5/(2.5\!\times\!6)\!=\!2.8$m
+
+\sect{曲面总压力（压轴大题）}
+\key{水平分力}：\fml{F_x = \rho g h_{Cx} \cdot A_x}
+
+$A_x$=曲面在\key{铅直面投影面积}，$h_{Cx}$=投影形心深度
+
+\key{竖直分力}：\fml{F_y = \rho g V_{\text{压}}}
+
+压力体：曲面边界\key{竖直向上}画到液面围成的体积\\
+\key{实}压力体（水在上压）→$F_y$\key{向下}\\
+\key{虚}压力体（水在下托）→$F_y$\key{向上}
+
+合成：$F\!=\!\sqrt{F_x^2\!+\!F_y^2}$，$\tan\theta\!=\!F_y/F_x$
+
+\warn{圆柱面：合力作用线必过圆心！}
+
+\exm{例：圆弧闸门$r$=0.8m，宽$L$=1m}
+轴在液面下$h$=2.4m，圆心角$90°$\\
+$A_x\!=\!r\!\times\!L\!=\!0.8$m$^2$，$h_{Cx}\!=\!h+r/2\!=\!2.8$m\\
+$F_x\!=\!1000\!\times\!9.81\!\times\!2.8\!\times\!0.8\!=\!21.97$kN\\
+$V_\text{压}\!=\!h\!\cdot\!r\!\cdot\!L-\frac{1}{4}\pi r^2 L\!=\!(1.92\!-\!0.503)\!=\!1.417$m$^3$（或含加减）\\
+$F_y\!=\!\rho g V_\text{压}$，合力$F\!=\!\sqrt{F_x^2+F_y^2}$\\
+作用线过圆心，$\theta\!=\!\arctan(F_y/F_x)$
+
+\sect{易错点}
+\warn{(1)}忘乘宽度$L$！ \warn{(2)}封闭容器等效液面升高$\Delta h\!=\!p_0/(\rho g)$ \warn{(3)}$h_C$=垂直深度$\neq$斜距
+
+\sect{相对平衡}
+匀加速：等压面倾斜$\tan\alpha\!=\!a_x/(g+a_z)$\\
+等角速旋转：$z\!=\!\omega^2r^2/(2g)+C$（旋转抛物面）\\
+\key{旋转抛物体体积=同高圆柱$\times\frac{1}{2}$}
+
+\exm{例：圆柱容器旋转}
+高1.8m，直径0.9m，水深1.35m\\
+无溢出最大转速：液面顶端到容器边缘\\
+$\Delta z=\omega^2 R^2/(2g)=2(H-h_0)$→解出$\omega$→$n=60\omega/(2\pi)$\\
+利用旋转抛物体体积=柱体$\times1/2$
+
+\vspace{0.8pt}\hrule height 0.4pt\vspace{0.8pt}
+
+% ============================================================
+\chap{第3章\;流体运动学}
+% ============================================================
+
+\sect{两种方法}
+\key{拉格朗日}：盯质点追踪→迹线 | \key{欧拉}：固定空间观察（常用）\\
+PIV→\key{欧拉法}
+
+\sect{定常 vs 非定常}
+定常：$\partial\vec{v}/\partial t\!=\!0$ | \warn{定常$\neq$无加速度}（迁移加速度$\neq 0$）\\
+等速直线$\neq$定常 | 定常中质点速度未必与$t$无关
+
+\sect{流线·迹线·脉线}
+流线=某瞬间与$\vec{v}$相切（\key{不相交}）\\
+迹线=质点轨迹 | 脉线=经同一点的质点连线\\
+\warn{定常流三线合一}；一维流也三线合一
+
+\sect{物质导数}
+\fml{\frac{D}{Dt}=\frac{\partial}{\partial t}+u\frac{\partial}{\partial x}+v\frac{\partial}{\partial y}+w\frac{\partial}{\partial z}}
+= 当地导数 + 迁移导数
+
+\sect{加速度公式}
+\fml{a_x=u_t+u u_x+v u_y+w u_z}
+\fml{a_y=v_t+u v_x+v v_y+w v_z}
+
+\warn{$a_x$中有$v\cdot\partial u/\partial y$，$a_y$中有$u\cdot\partial v/\partial x$，别搞反！}
+
+\sect{加速度四步法}
+(1)辨识$u,v$ (2)求6个偏导 (3)组装 (4)代入$(x_0,y_0,t_0)$
+
+\exm{例1：$u\!=\!2x\!+\!t$，$v\!=\!-2y\!+\!3$，$t\!=\!1$，点$(1,2)$}
+$\partial u/\partial t\!=\!1$，$\partial u/\partial x\!=\!2$，$\partial u/\partial y\!=\!0$\\
+$\partial v/\partial t\!=\!0$，$\partial v/\partial x\!=\!0$，$\partial v/\partial y\!=\!-2$\\
+$a_x\!=\!1+(2x\!+\!t)\!\cdot\!2+(-2y\!+\!3)\!\cdot\!0\!=\!1+2u$\\
+$a_y\!=\!0+(2x\!+\!t)\!\cdot\!0+(-2y\!+\!3)\!\cdot\!(-2)\!=\!-2v$\\
+$t\!=\!1$: $u(1,2,1)\!=\!3$, $v(1,2,1)\!=\!-1$\\
+$a_x\!=\!1+6\!=\!7$，$a_y\!=\!-2\!\times\!(-1)\!=\!2$\\
+$a=\sqrt{49+4}=\sqrt{53}\approx7.28$ m/s$^2$
+
+\exm{例2：$u\!=\!3x^2$，$v\!=\!-6xy$，点$(2,1)$}
+$\partial u/\partial x\!=\!6x$, $\partial u/\partial y\!=\!0$, $\partial v/\partial x\!=\!-6y$, $\partial v/\partial y\!=\!-6x$\\
+$a_x\!=\!3x^2\!\cdot\!6x\!=\!18x^3\!=\!144$\\
+$a_y\!=\!3x^2\!\cdot\!(-6y)+(-6xy)\!\cdot\!(-6x)\!=\!18x^2y\!=\!72$\\
+$a\!=\!\sqrt{144^2\!+\!72^2}\!\approx\!161.0$ m/s$^2$
+
+\sect{流线方程}
+\fml{\frac{dx}{u}=\frac{dy}{v}}
+交叉相乘→分离变量→积分→流线族
+
+\warn{非定常：先代$t\!=\!t_0$再积分}；保留$C$
+
+\exm{例：$u\!=\!2x$，$v\!=\!-2y$}
+$dx/(2x)\!=\!dy/(-2y)$→$dx/x\!=\!-dy/y$\\
+$\ln|x|\!=\!-\ln|y|+C_1$→\fml{xy=C}（等轴双曲线）
+
+\exm{例：$u\!=\!Ay$，$v\!=\!Ax$}
+$dx/(Ay)\!=\!dy/(Ax)$→$xdx\!=\!ydy$\\
+$x^2/2\!=\!y^2/2+C_1$→\fml{x^2-y^2=C}
+
+\exm{齐次方程法：$u\!=\!x\!+\!y$，$v\!=\!x\!-\!y$}
+$(x\!-\!y)dx\!=\!(x\!+\!y)dy$，令$y\!=\!sx$→\fml{x^2-2xy-y^2=C}
+
+\sect{微团运动分解}
+\key{4部分}：平移、旋转、线变形、角变形
+
+$\omega_z\!=\!\frac{1}{2}(\frac{\partial v}{\partial x}-\frac{\partial u}{\partial y})$；
+涡量$\vec{\Omega}\!=\!\nabla\times\vec{v}\!=\!2\vec{\omega}$
+
+无旋$\iff\nabla\times\vec{v}\!=\!0$；\warn{直线$\neq$无旋}
+
+线变形率$\varepsilon_{xx}\!=\!\partial u/\partial x$，$\varepsilon_{yy}\!=\!\partial v/\partial y$
+角变形率$\varepsilon_{xy}\!=\!\frac{1}{2}(\partial u/\partial y+\partial v/\partial x)$
+
+\exm{例：$u\!=\!xy$，$v\!=\!x^2\!-\!y^2/2$，在$(2,2)$}
+$\omega_z\!=\!\frac{1}{2}(2x-x)\!=\!x/2\!=\!1$，有旋\\
+$\varepsilon_{xx}\!=\!y\!=\!2$，$\varepsilon_{yy}\!=\!-y\!=\!-2$（不可压$\checkmark$）\\
+$\varepsilon_{xy}\!=\!\frac{1}{2}(x+2x)\!=\!3x/2\!=\!3$
+
+\sect{迹线方程求法}
+$\frac{dx}{dt}\!=\!u$，$\frac{dy}{dt}\!=\!v$→分别积分
+
+\exm{例：$u\!=\!t$，$v\!=\!2t$，初始$(0,0)$}
+$dx/dt\!=\!t$→$x\!=\!t^2/2+C_1$，$x(0)\!=\!0$→$C_1\!=\!0$\\
+$dy/dt\!=\!2t$→$y\!=\!t^2+C_2$，$y(0)\!=\!0$→$C_2\!=\!0$\\
+消参：$y\!=\!2x$（直线）
+
+\exm{例：$u\!=\!2x$，$v\!=\!2y$，$t_0\!=\!0$}
+$dx/dt\!=\!2x$→$x\!=\!x_0 e^{2t}$\\
+$dy/dt\!=\!2y$→$y\!=\!y_0 e^{2t}$\\
+消参$t$：$x/x_0\!=\!y/y_0$→$y\!=\!(y_0/x_0)x$（直线族）\\
+此为定常流→与流线$y/x\!=\!C$完全一致$\checkmark$
+
+\vspace{0.8pt}\hrule height 0.4pt\vspace{0.8pt}
+
+% ============================================================
+\chap{Ch1-3综合速查}
+% ============================================================
+
+\sect{常用面积/体积/惯性矩}
+矩形：$A\!=\!bh$，$J_C\!=\!bh^3/12$\\
+圆：$A\!=\!\pi d^2/4$，$J_C\!=\!\pi d^4/64$\\
+三角形：$A\!=\!bh/2$，$J_C\!=\!bh^3/36$（对底边平行形心轴）\\
+半圆：$A\!=\!\pi R^2/2$，形心距底$\bar{y}\!=\!4R/(3\pi)$
+
+圆柱：$V\!=\!\pi R^2 h$ | 球：$V\!=\!4\pi R^3/3$ | 锥：$V\!=\!\pi R^2h/3$\\
+圆柱面投影面积=直径$\times$高=$dh$
+
+\sect{判断题速查}
+$\bullet$ 静止流体中只存在\key{压力}（无切应力）→$\checkmark$\\
+$\bullet$ 理想流体=无粘性，$\neq$不可压缩\\
+$\bullet$ 粘性系数只随\key{温度}变化→$\checkmark$\\
+$\bullet$ 均质不可压流体静止$\to$质量力有势→$\checkmark$\\
+$\bullet$ 等压面上各点压强相等必须\key{同一种连续静止}流体\\
+$\bullet$ ``理想流体定常流的连续性方程为$\nabla\!\cdot\!\vec{v}\!=\!0$''→\warn{$\times$}\\
+$\bullet$ ``系统的表面会不断变形''→$\checkmark$\\
+$\bullet$ ``定常流动中流体的加速度为零''→\warn{$\times$}有迁移加速度\\
+$\bullet$ ``一维流动中流线、迹线、脉线重合''→$\checkmark$\\
+$\bullet$ 直线运动的流体$\neq$一定无旋
+
+\sect{典型公式快查}
+$\rho_{\text{水}}\!=\!1000$ kg/m$^3$ | $g\!=\!9.81$ m/s$^2$（或10）\\
+$1$atm$\!=\!101325$Pa$\!=\!10.33$mH$_2$O$\!=\!760$mmHg
+
+圆管$A\!=\!\pi d^2/4$；$d$小一半→$A$变$1/4$→$V$变$4$倍
+
+伯努利压强形式：$p+\frac{1}{2}\rho v^2+\rho gz\!=\!$const
+
+动压$q\!=\!\frac{1}{2}\rho v^2$（伯努利压强差项）
+
+\sect{平衡微分方程（欧拉静力学）}
+$\frac{\partial p}{\partial x}\!=\!\rho f_x$，$\frac{\partial p}{\partial y}\!=\!\rho f_y$，$\frac{\partial p}{\partial z}\!=\!\rho(f_z)$
+
+重力场中$f_x\!=\!f_y\!=\!0$，$f_z\!=\!-g$→$dp\!=\!-\rho g\,dz$
+
+\sect{考试计算题结构}
+\key{第1题}(约10分)：求平面/曲面总压力\\
+\key{第2题}(约8分)：加速度或流线计算\\
+\key{第3题}(约10分)：伯努利+连续方程联合求解\\
+\key{第4题}(约8分)：动量方程求弯管/平板受力\\
+填空/判断约30分，选择约10分
+
+\sect{压力体体积速算}
+$\frac{1}{4}$圆柱=$\frac{1}{4}\pi R^2 L$ | $\frac{1}{2}$圆柱=$\frac{1}{2}\pi R^2 L$\\
+长方体$-\frac{1}{4}$圆柱=$rL(h-\frac{\pi r}{4})$（常见压力体）
+
+圆弧闸门典型：上方长方体$V_1\!=\!rLh$减去$\frac{1}{4}$圆柱$V_2\!=\!\frac{\pi r^2L}{4}$
+
+\sect{计算注意事项}
+$\bullet$ 所有面积计算别忘$\pi$和宽度$L$\\
+$\bullet$ $\sin30°\!=\!0.5$, $\cos30°\!=\!\frac{\sqrt{3}}{2}$, $\tan45°\!=\!1$\\
+$\bullet$ $\sin60°\!=\!\frac{\sqrt{3}}{2}$, $\cos60°\!=\!0.5$, $\tan60°\!=\!\sqrt{3}$\\
+$\bullet$ $\frac{\partial}{\partial x}(x^n)\!=\!nx^{n-1}$ | $\int x^n dx\!=\!\frac{x^{n+1}}{n+1}$\\
+$\bullet$ $\frac{\partial}{\partial x}(e^{ax})\!=\!ae^{ax}$ | $\frac{\partial}{\partial x}(\ln x)\!=\!1/x$\\
+$\bullet$ $\int\frac{1}{x}dx\!=\!\ln|x|+C$ | $\int\frac{1}{x^2}dx\!=\!-\frac{1}{x}+C$\\
+$\bullet$ $\int 2\pi r\,dr\!=\!\pi r^2$ | $\int_0^R r(1\!-\!r^2/R^2)dr\!=\!R^2/4$
+
+\sect{倾斜平面计算要点}
+$h_C$=形心\key{垂直}深度；$y_C$=形心沿\key{斜面}距离\\
+两者关系：$h_C\!=\!y_C\sin\theta$（$\theta$=斜面与水平夹角）\\
+正对液面的垂直板：$h_C\!=\!y_C$，$\theta\!=\!90°$
+
+\sect{多层液体问题}
+不同密度液体分层→分段算压强\\
+界面处压强连续：$p_0+\rho_1 g h_1\!=\!$界面$p$\\
+再往下：$p_{\text{界面}}+\rho_2 g h_2$
+
+\sect{容器匀加速运动}
+水平加速$a_x$：等压面倾角$\tan\alpha\!=\!a_x/g$\\
+竖直加减速：$p\!=\!\rho(g\pm a)h$——向上加速用$g\!+\!a$，向下用$g\!-\!a$\\
+自由落体$a\!=\!g$→$p\!=\!0$（失重）
+
+\exm{例：水平加速度$a$=3.27m/s$^2$}
+$\tan\alpha\!=\!3.27/9.81\!=\!1/3$\\
+液面倾斜角$\alpha\!=\!\arctan(1/3)\!=\!18.4°$\\
+前壁增深$\Delta h\!=\!L\tan\alpha/2$，后壁减深同量
+
+\sect{斯托克斯定理}
+$\oint_C \vec{v}\!\cdot\!d\vec{l}\!=\!\iint_S (\nabla\!\times\!\vec{v})\!\cdot\!d\vec{A}$\\
+速度环量$\Gamma\!=\!\oint\vec{v}\!\cdot\!d\vec{l}$\\
+开尔文定理：正压理想流体$\Gamma$不随$t$变
+
+\sect{流量计算集锦}
+矩形截面$A\!=\!bh$，$Q\!=\!Abv$\\
+圆截面$A\!=\!\pi d^2/4$，$Q\!=\!\pi d^2v/4$\\
+梯形截面$A\!=\!(b_1\!+\!b_2)h/2$\\
+层流圆管$Q\!=\!\pi R^4\Delta p/(8\mu L)$（哈根-泊肃叶）
+
+\end{multicols}
+
+\clearpage
+
+\begin{multicols}{3}
+
+% ============================================================
+\chap{第4章\;RTT与连续方程}
+% ============================================================
+
+\sect{系统 vs 控制体}
+\key{系统}：同一批质点，质量不变，边界会变形\\
+\key{控制体}(CV)：固定空间区域，流体穿越边界进出\\
+控制面(CS)：进流面/出流面/固壁面
+
+\sect{雷诺输运方程}
+\fml{\frac{DB_\text{sys}}{Dt}=\frac{\partial}{\partial t}\!\int_{CV}\!\rho b\,dV+\oint_{CS}\!\rho b(\vec{v}\!\cdot\!\vec{n})\,dA}
+
+左=系统随体变化率；右=\key{储存变化+净流出}\\
+$\vec{n}$外法向：流出$+$，流入$-$
+
+\key{必背}：系统随体导数 = CV内偏$t$ + CS净通量
+
+\sect{连续性方程（$B\!=\!m$, $b\!=\!1$）}
+积分：$\frac{\partial}{\partial t}\!\int\!\rho dV+\oint\!\rho(\vec{v}\!\cdot\!\vec{n})dA\!=\!0$
+
+微分：\fml{\frac{\partial\rho}{\partial t}+\nabla\!\cdot\!(\rho\vec{v})=0}
+
+\sect{简化形式}
+不可压缩：\wfml{\nabla\!\cdot\!\vec{v}=0} 即$\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}+\frac{\partial w}{\partial z}=0$
+
+定常可压：$\nabla\!\cdot\!(\rho\vec{v})\!=\!0$ | 一维定常不可压：\fml{A_1V_1\!=\!A_2V_2\!=\!Q}
+
+\warn{$\nabla\!\cdot\!\vec{v}\!=\!0$表示不可压，$\neq$理想流体定常！}
+
+\sect{连续性验证}
+验$\partial u/\partial x+\partial v/\partial y=0$?
+
+\exm{例：$u\!=\!x^2\!+\!y$，$v\!=\!-2xy\!+\!3t$}
+$\partial u/\partial x\!=\!2x$，$\partial v/\partial y\!=\!-2x$→$2x\!-\!2x\!=\!0\;\checkmark$
+
+\exm{由连续方程求$v$：已知$u\!=\!3x^2y$}
+$\partial u/\partial x\!=\!6xy$→$\partial v/\partial y\!=\!-6xy$\\
+$v\!=\!\int(-6xy)dy\!=\!-3xy^2+f(x)$
+
+\sect{管道变截面}
+$V_2\!=\!V_1 d_1^2/d_2^2$；直径缩半→速度$\times4$
+
+\exm{例：$D$=200mm→$d$=100mm，$V_1$=2m/s}
+$V_2\!=\!2\!\times\!200^2/100^2\!=\!8$ m/s
+
+\sect{水箱液面变化率}
+\fml{\frac{dh}{dt}=\frac{A_1V_1-A_2V_2}{A_0}}
+
+封闭有气：$\frac{dh}{dt}\!=\!\frac{\rho(A_1V_1\!-\!A_2V_2)}{(\rho\!-\!\rho_a)A_0}$
+
+\exm{例：$D_0$=2m，出水管$d$=0.1m，$V_{out}$=4m/s，$Q_{in}$=0.02m$^3$/s}
+$Q_{out}\!=\!\pi\!\times\!0.01/4\!\times\!4\!=\!0.0314$\\
+$dh/dt\!=\!(0.02\!-\!0.0314)/\pi\!\approx\!-3.6$mm/s（$\downarrow$）
+
+\sect{抛物线速度求流量}
+$v\!=\!v_0(1\!-\!r^2\!/R^2)$→$Q\!=\!\frac{\pi R^2 v_0}{2}$
+
+\warn{非均匀分布必须积分！}层流$\bar{v}\!=\!v_0/2$
+
+\sect{散度物理含义}
+$\nabla\!\cdot\!\vec{v}$=单位体积膨胀率\\
+$\nabla\!\cdot\!\vec{v}\!>\!0$：流体膨胀（源）；$<\!0$：收缩（汇）\\
+不可压$\nabla\!\cdot\!\vec{v}\!=\!0$：无净体积变化
+
+\sect{RTT三大方程对照}
+$B\!=\!m,b\!=\!1$→\key{连续性方程}\\
+$B\!=\!m\vec{v},b\!=\!\vec{v}$→\key{动量方程}\\
+$B\!=\!E,b\!=\!e$→\key{能量方程}
+
+\sect{动量方程（积分形式）}
+\fml{\sum\vec{F}=\frac{\partial}{\partial t}\!\int_{CV}\rho\vec{v}\,dV+\oint_{CS}\rho\vec{v}(\vec{v}\!\cdot\!\vec{n})\,dA}
+
+定常一进一出常写成：$\sum\vec{F}\!=\!\dot{m}(\beta_2\vec{v}_2-\beta_1\vec{v}_1)$\\
+\warn{外力=压强力+质量力+壁面反力；速度/力都要按\key{矢量}列分量}
+
+\sect{多管汇流/分流}
+$Q_{\text{总}}\!=\!\sum Q_i$；$A_1V_1\!=\!A_2V_2+A_3V_3$
+
+\sect{不连续判断举例}
+$u\!=\!x+y^2,v\!=\!x^2\!-\!y$: $1-1\!=\!0\;\checkmark$\\
+$u\!=\!2xy,v\!=\!x^2\!+\!y^2$: $2y+2y\!=\!4y\;\times$
+
+\vspace{0.8pt}\hrule height 0.4pt\vspace{0.8pt}
+
+% ============================================================
+\chap{第4章补充\;应力张量/微分方程}
+% ============================================================
+
+\sect{任意方位面的应力}
+\fml{\vec{p}_n=\vec{n}\cdot\mathbf{P}}
+
+$\vec{p}_n$通常\key{不与}$\vec{n}$共线；法向应力$p_{nn}\!=\!\vec{p}_n\!\cdot\!\vec{n}$\\
+切向大小：$p_{n\tau}\!=\!\sqrt{|\vec{p}_n|^2-p_{nn}^2}$
+
+\sect{二阶应力张量}
+\fml{\mathbf{P}\!=\!\left[\begin{smallmatrix}p_{xx}&p_{xy}&p_{xz}\\ p_{yx}&p_{yy}&p_{yz}\\ p_{zx}&p_{zy}&p_{zz}\end{smallmatrix}\right]}
+
+动量矩守恒→\key{对称}：$p_{xy}\!=\!p_{yx}$，$p_{yz}\!=\!p_{zy}$，$p_{zx}\!=\!p_{xz}$\\
+故9个分量仅6个独立；$\nabla\!\cdot\!\mathbf{P}$=单位体积表面力
+
+\sect{表面力体积化}
+\fml{\iint_{CS}\vec{p}_n\,dA=\iiint_{CV}\nabla\!\cdot\!\mathbf{P}\,dV}
+
+微分法研究的是\key{全场分布}$(u,v,w,p)$，不是截面平均量\\
+\warn{题目一旦问“空间分布/偏微分方程组/定解条件”就该想到这一套}
+
+\sect{静止/理想流体应力状态}
+静止流体：\fml{\mathbf{P}=-p\mathbf{I}}
+
+故任意面应力$\vec{p}_n\!=\!-p\vec{n}$，\key{只有压应力、无切应力}\\
+无粘理想流体同样无切应力；粘性流体切应力来自速度梯度
+
+\sect{动量微分型基本方程}
+\fml{\rho\frac{D\vec{v}}{Dt}=\rho\vec{f}+\nabla\!\cdot\!\mathbf{P}}
+
+再配合连续方程$\frac{\partial\rho}{\partial t}+\nabla\!\cdot(\rho\vec{v})\!=\!0$才能闭合\\
+未知常为$u,v,w,p$；若可压还要配状态方程/能量方程
+
+\sect{欧拉方程}
+理想流体$\mathbf{P}\!=\!-p\mathbf{I}$→\fml{\rho\frac{D\vec{v}}{Dt}=-\nabla p+\rho\vec{f}}
+
+若$\vec{f}\!=\!\vec{g}$，沿流线可写：\fml{\frac{dp}{\rho}+V\,dV+g\,dz=0}\\
+对定常无粘不可压积分后，才得到伯努利方程
+
+\sect{Navier-Stokes}
+牛顿流体：$\tau_{ij}\!=\!\mu\!\left(\partial u_i/\partial x_j+\partial u_j/\partial x_i\right)$\\
+不可压$\mu$常数：\fml{\rho\frac{D\vec{v}}{Dt}=-\nabla p+\mu\nabla^2\vec{v}+\rho\vec{f}}
+
+\warn{无粘极限→欧拉；低Re粘性项常不可忽略}
+
+\sect{边界与定解条件}
+初始条件：$t\!=\!0$时速度/压强分布\\
+粘性固壁：\key{无滑移}$\vec{v}_L\!=\!\vec{v}_{wall}$；无粘固壁：只需法向速度相等\\
+入口常给速度，出口常给压强/充分发展条件
+
+\vspace{0.8pt}\hrule height 0.4pt\vspace{0.8pt}
+
+% ============================================================
+\chap{第5章\;伯努利/能量/动量}
+% ============================================================
+
+\sect{元流伯努利方程}
+\fml{\frac{p_1}{\rho g}+\frac{v_1^2}{2g}+z_1=\frac{p_2}{\rho g}+\frac{v_2^2}{2g}+z_2}
+
+\key{7条件}：理想/重力/定常/绝热/无轴功/不可压/同一流线
+
+$z$=位置水头，$p/(\rho g)$=压力水头，$v^2/(2g)$=速度水头\\
+总水头$H$=const沿流线；测压管水头$=z+p/(\rho g)$
+
+\sect{理想流体能量方程}
+\fml{h+\frac{V^2}{2}+gz=\text{const}}
+
+适用于定常/无粘/质量力有势/绝热/沿流线\\
+可压流优先记这条；不可压且$dh\!=\!dp/\rho$时才退化为伯努利
+
+\sect{欧拉积分到伯努利}
+\fml{\frac{dp}{\rho}+V\,dV+g\,dz=0}
+
+积分得：$p/\rho+V^2/2+gz=\text{const}$；再除$g$得水头式\\
+静止流体$V\!=\!0$时退化为$p/(\rho g)+z=\text{const}$
+
+\sect{总流伯努利（含损失）}
+\fml{z_1\!+\!\frac{p_1}{\rho g}\!+\!\frac{\alpha_1v_1^2}{2g}\!=\!z_2\!+\!\frac{p_2}{\rho g}\!+\!\frac{\alpha_2v_2^2}{2g}\!+\!h_w}
+
+$\alpha$=动能修正：层流$\alpha\!=\!2$，湍流$\alpha\!\approx\!1.05$\\
+$h_w\!=\!h_f+h_j$；含泵加$H_P$，含水轮机减$H_T$
+
+\sect{总压/驻点/跨流线}
+总压（驻点压）：\fml{p_0=p+\frac{1}{2}\rho v^2}
+
+驻点$v\!=\!0$→该点压强就等于$p_0$；皮托管测的就是总压\\
+\warn{有旋流只能沿同一流线用伯努利；无旋流才可跨流线}
+
+\sect{常见特例}
+大水箱液面：$p\!=\!0$，$v\!\approx\!0$；自由射流出口：$p\!=\!0$（表压）\\
+水平管：$z_1\!=\!z_2$；等径管：$v_1\!=\!v_2$\\
+速度增大$\Rightarrow$静压降低；总压在理想流中保持不变
+
+\sect{解题步骤}
+(1)选截面（一已知一求解）(2)选基准面\\
+(3)列伯努利+连续方程 (4)$p$用\key{表压}，$v$用平均速度
+
+\exm{例：收缩管$D$→$d$，$p_1$=$p_2$+$\Delta p$已知}
+连续：$V_1A_1\!=\!V_2A_2$→$V_1\!=\!V_2 d^2/D^2$\\
+伯努利（水平无损失）：$\frac{p_1}{\rho g}+\frac{V_1^2}{2g}=\frac{p_2}{\rho g}+\frac{V_2^2}{2g}$\\
+代入解$V_2$→$Q\!=\!V_2\!\cdot\!\pi d^2/4$
+
+\exm{例：水箱侧壁小孔出流}
+取(1)液面(2)孔口出口。液面$V_1\!\approx\!0$，$p_1\!=\!0$\\
+孔口$p_2\!=\!0$，$z_1\!-\!z_2\!=\!h$\\
+$h\!=\!V_2^2/(2g)$→$V_2\!=\!\sqrt{2gh}$（托里拆利公式）
+
+\sect{皮托管与文丘里管}
+皮托管测\key{总压}$p_0\!=\!p+\frac{1}{2}\rho v^2$\\
+静压管测\key{静压}$p$（壁面开孔）\\
+流速：\fml{v=\sqrt{\frac{2(p_0-p)}{\rho}}=\sqrt{\frac{2\Delta p}{\rho}}}
+
+U形管差压计：$\Delta p\!=\!(\rho_m\!-\!\rho)g\Delta h$\\
+$v\!=\!\sqrt{2(\rho_m\!-\!\rho)g\Delta h/\rho}$
+
+\key{文丘里管}：收缩段+喉部，利用$\Delta p$测流量\\
+$Q\!=\!\frac{\pi\sqrt{2g}\,d_1^2 d_2^2}{4\sqrt{d_1^4-d_2^4}}\!\sqrt{h}\!=\!k\sqrt{h}$；实测$Q\!=\!\mu k\sqrt{h}$
+
+\sect{孔口出流}
+\fml{v_C\!=\!\varphi\sqrt{2gH_0};\quad Q\!=\!\mu A\sqrt{2gH_0}}
+$\varphi$=速度系数$\approx$0.97；$\varepsilon$=收缩系数$\approx$0.64\\
+$\mu\!=\!\varphi\varepsilon\!\approx\!0.62$（薄壁孔口）\\
+$H_0\!=\!\alpha_0v_0^2/(2g)+H$（有来流速度时）\\
+\warn{管嘴}：$\varepsilon\!=\!1,\mu\!\approx\!0.82$，流量系数比孔口\key{大}
+
+\sect{动量方程}
+\fml{\sum\vec{F}=\rho Q(\beta_2\vec{v}_2-\beta_1\vec{v}_1)}
+
+$\beta$=动量修正：层流$\beta\!=\!4/3$，湍流$\beta\!\approx\!1.02$
+
+\warn{$\vec{v}$带方向！先定正方向}
+
+\exm{例：水柱冲击垂直平板}
+来流$Q$，速度$V$，截后分两侧→板受力$F\!=\!\rho QV$
+
+\exm{例：水柱被平板截取}
+流量$Q$，来流$V$，截取$Q_1$，偏转角$\theta$\\
+$x$：$F_x\!=\!\rho Q V-\rho(Q\!-\!Q_1)V\cos\theta$\\
+$y$：$F_y\!=\!\rho(Q\!-\!Q_1)V\sin\theta$\\
+联合解$F$和$\theta$
+
+\exm{例：弯管受力}
+选CV包围弯管段，进出截面1-2\\
+$x$：$p_1A_1-p_2A_2\cos\alpha-F_{Rx}\!=\!\rho Q(V_2\cos\alpha-V_1)$\\
+$y$：$-p_2A_2\sin\alpha+F_{Ry}\!=\!\rho Q V_2\sin\alpha$\\
+解$F_R$即支座反力
+
+\sect{动量矩}
+$M\!=\!\rho Q(v_2r_2-v_1r_1)$
+
+\sect{三种压强关系}
+静压$p$+动压$\frac{1}{2}\rho v^2$=总压$p_0$\\
+测压管水头$=z+p/(\rho g)$\\
+总水头$H=z+p/(\rho g)+v^2/(2g)$=const
+
+\sect{伯努利能量线图}
+\key{EL}(总水头线)沿流程恒定/下降；\key{HGL}=EL$-v^2/(2g)$\\
+截面缩小→$v\uparrow$→HGL$\downarrow$；\warn{HGL低于管轴}→负压
+
+\exm{例：U管+伯努利（07真题型）}
+油$\rho\!=\!920$，$d_A\!=\!100$mm，$d_B\!=\!200$mm，A静压管B皮托管\\
+U管$\rho_m\!=\!13600$，$\Delta h\!=\!0.3$m。连续$v_A\!=\!4v_B$\\
+伯努利：$p_A-p_B\!=\!\frac{15}{2}\rho v_B^2$\\
+U管：$8\rho v_B^2\!=\!(\rho_m\!-\!\rho)g\Delta h$→$v_B\!\approx\!2.25$m/s
+
+\vspace{0.8pt}\hrule height 0.4pt\vspace{0.8pt}
+
+\end{multicols}
+
+\clearpage
+
+\begin{multicols}{3}
+
+% ============================================================
+\chap{高频母题\;章1-5}
+% ============================================================
+
+{\fontsize{5.4}{6.1}\selectfont
+
+\sect{三年真题最常考}
+06/07/08反复出现：\key{粘性拖板/轴承}、\key{U管测压}、\key{平面/曲面总压力}、\key{加速度/流线/有旋}、\key{旋转容器}、\key{RTT/液面变化率}、\key{伯努利+连续}、\key{皮托/泵}、\key{动量受力}。\\
+提分顺序：\key{Ch2曲面压力}>\key{Ch5伯努利联立}>\key{Ch3加速度流线}>\key{Ch4连续}>\key{Ch1粘性}
+
+\sect{母题1\;粘性拖板/滑动轴承}
+两板距$h$、面积$A$、相对速差$U$：\fml{\tau=\mu U/h,\;F=\tau A,\;P=FU}
+
+滑动轴承：$U=\pi Dn/60$，受剪面积$A=\pi Db$，故\\
+\fml{P=\mu\frac{\pi Dn}{60t}\cdot \pi Db \cdot \frac{\pi Dn}{60}}
+\warn{间隙很小时默认线性分布；题给$\nu$要先算$\mu=\rho\nu$}
+
+\sect{母题2\;U管/封闭容器}
+\key{爬楼梯法}：向下$+\rho gh$，向上$-\rho gh$，同一静止连通液体同水平面压强相等\\
+$p_{abs}=p_a+p_g$，$p_{vac}=p_a-p_{abs}=-p_g$\\
+封闭气腔等效液面：\fml{h_e=p_0/(\rho g)}，后面一律对\key{假想液面}算压力
+
+\sect{母题3\;平面与曲面总压力}
+平面：\fml{F=\rho g h_C A,\qquad y_D=y_C+\frac{I_C}{y_CA}}
+\warn{$h_C$是\key{垂直深度}，$y_C$是沿斜面距离；压力中心总在形心下方}
+
+曲面：\fml{F_x=\rho g h_{Cx}A_x,\qquad F_y=\rho gV_{\text{压}}}
+实压力体$\Rightarrow F_y$向下；虚压力体$\Rightarrow F_y$向上；圆柱曲面\key{合力作用线过圆心}
+
+\sect{母题4\;加速度/有旋/变形率}
+\fml{a_x=u_t+uu_x+vu_y+wu_z,\qquad a_y=v_t+uv_x+vv_y+wv_z}
+\fml{\omega_z=\frac{1}{2}(v_x-u_y),\quad \Omega_z=v_x-u_y}
+\fml{\varepsilon_{xx}=u_x,\;\varepsilon_{yy}=v_y,\;\varepsilon_{xy}=\frac{u_y+v_x}{2}}
+例：$u=2x+t,v=-2y+3$，在$(1,2,1)$：$u=3,v=-1$，故$a_x=7,a_y=2$
+
+\sect{母题5\;流线/迹线}
+流线：\fml{\frac{dx}{u}=\frac{dy}{v}=\frac{dz}{w}}；迹线：\fml{\frac{dx}{dt}=u,\;\frac{dy}{dt}=v}
+非定常流求流线时，先把$t=t_0$代入速度场\\
+例：$u=2x,v=-2y$，流线$\frac{dx}{2x}=\frac{dy}{-2y}\Rightarrow xy=C$；过$(2,2)$即$xy=4$
+
+\sect{母题6\;连续方程/液面变化率}
+\fml{\frac{\partial \rho}{\partial t}+\nabla\cdot(\rho\vec v)=0}
+不可压：$u_x+v_y+w_z=0$；一维定常不可压：\fml{A_1V_1=A_2V_2=Q}
+水箱液面变化：\fml{\frac{dh}{dt}=\frac{A_1V_1-A_2V_2}{A_0}}
+抛物线速度$u=u_0(1-r^2/R^2)$：\fml{Q=\frac{\pi R^2u_0}{2},\;\bar u=\frac{u_0}{2}}
+
+\sect{母题7\;旋转容器}
+自由液面：\fml{z=z_0+\frac{\omega^2r^2}{2g},\qquad \Delta z=\frac{\omega^2R^2}{2g}}
+无溢出时平均液深守恒：\fml{h_0=z_0+\frac{\omega^2R^2}{4g}}
+同一水平面上压差：\fml{p_2-p_1=\rho\frac{\omega^2(r_2^2-r_1^2)}{2}}
+\warn{旋转抛物体体积=同高圆柱体积的一半}
+
+\sect{母题8\;伯努利联立连续}
+\fml{\frac{p}{\rho g}+\frac{V^2}{2g}+z=\text{const}}
+水平变截面：$A_1V_1=A_2V_2$，且\\
+\fml{V_2=\sqrt{\frac{2(p_1-p_2)}{\rho[1-(A_2/A_1)^2]}}=\sqrt{\frac{2(p_1-p_2)}{\rho[1-(d_2/d_1)^4]}}}
+\fml{Q=A_2V_2}
+大水箱小孔：$p_1=p_2=0,\;V_1\approx0$，故\key{托里拆利}：\fml{V=\sqrt{2gH}}
+
+\sect{母题9\;皮托/文丘里/泵功率}
+皮托管：\fml{p_0=p+\frac{1}{2}\rho V^2,\qquad V=\sqrt{\frac{2(p_0-p)}{\rho}}}
+若U管示液密度$\rho_m$：\fml{V=\sqrt{\frac{2(\rho_m-\rho)g\Delta h}{\rho}}}
+泵对流体功率：\fml{N=\rho gQH_p}；若有效率$\eta$，轴功率$N_s=N/\eta$
+
+\sect{母题10\;动量求受力}
+\fml{\sum F_x=\rho Q(V_{2x}-V_{1x}),\qquad \sum F_y=\rho Q(V_{2y}-V_{1y})}
+平板正冲：\fml{F=\rho QV}；若只改变方向不变速，按速度\key{矢量差}算\\
+\warn{先求"壁面对流体"的力，再反号得到"流体对壁/板"的力}
+
+\sect{动量方程符号手术刀（压轴20分）}
+\warn{双重正负号法则}——等号左边每项$=$\;[速度方向]\;$\times$\;[质量流量]
+
+\key{法则1}（括号内$\cdot$质量流量）：\warn{只看进出，不看坐标轴！}\\
+进水$\to(-\rho uS)$（速度与外法向反向带$-$）；出水$\to(+\rho uS)$（同向带$+$）
+
+\key{法则2}（括号外$\cdot$速度投影）：\warn{严格服从坐标系！}\\
+速度投影与正方向同向$\to$正号$+u$；反向$\to$负号$(-u)$
+
+\key{法则3}（等号右边$\cdot$压力）：压力永远\key{推向CV内部}\\
+投影到轴，与正方向同向$\to+pS$；反向$\to-pS$
+
+\key{法则4}（约束力）：先猜方向列式，算出负数就是猜反了
+
+\exm{例：三管水缸（$+x$向左，$+y$向上）}
+A管水平向左进；B管$45°$左上进；C管竖直向下出
+
+$x$方向动量项：\\
+$\overbrace{u_A}^{左=+}\!\!\overbrace{(-\rho u_AS_A)}^{\text{进}=-}\!+\!\overbrace{u_B\cos45°}^{左=+}\!\!\overbrace{(-\rho u_BS_B)}^{\text{进}=-}$\\[0.5pt]
+$=\overbrace{P_AS_A}^{\text{推左}=+}\!+\!\overbrace{P_BS_B\cos45°}^{\text{推左}=+}\!-F_2$
+
+$y$方向动量项：\\
+$\overbrace{u_B\sin45°}^{上=+}\!\!\overbrace{(-\rho u_BS_B)}^{\text{进}=-}\!+\!\overbrace{(-u_C)}^{下=-}\!\!\overbrace{(\rho u_CS_C)}^{\text{出}=+}$\\[0.5pt]
+$=\overbrace{P_BS_B\sin45°}^{\text{推上}=+}\!-F_1$
+
+$F_2$猜向右（$-x$），$F_1$猜向下（$-y$）；正数$=$猜对方向\\
+\warn{口诀：里面管进出、外面管方向，互不干涉！}
+
+\sect{母题11\;应力张量/微分方程}
+\fml{\vec p_n=\vec n\cdot \mathbf P,\qquad \mathbf P=
+\left[\begin{smallmatrix}
+p_{xx}&p_{xy}&p_{xz}\\
+p_{yx}&p_{yy}&p_{yz}\\
+p_{zx}&p_{zy}&p_{zz}
+\end{smallmatrix}\right]}
+$\mathbf P$对称，仅6个独立分量；静止/理想流体：\fml{\mathbf P=-p\mathbf I}
+欧拉：\fml{\rho \frac{D\vec v}{Dt}=-\nabla p+\rho \vec f}
+N-S：\fml{\rho \frac{D\vec v}{Dt}=-\nabla p+\mu\nabla^2\vec v+\rho \vec f}
+边界：粘性流\key{无滑移}；无粘流只需\key{无穿透}
+}
+
+\vspace{0.8pt}\hrule height 0.4pt\vspace{0.8pt}
+
+% ============================================================
+\chap{真题套路\;一眼识别}
+% ============================================================
+
+\sect{看到题目先想什么}
+\key{给速度场}→加速度/流线/有旋/连续性\\
+\key{给液面和曲面}→平曲面总压力，先拆$F_x,F_y$\\
+\key{给管径压差高度差}→连续+伯努利\\
+\key{给进出口方向}→动量方程分$x,y$\\
+\key{给旋转角速度}→抛物面自由液面和同高压差\\
+\key{给多个液柱高度}→U管爬楼梯法
+
+\sect{最容易丢分的5处}
+(1)$h_C$写成斜距而不是垂深；(2)面积/体积忘乘宽度$L$；(3)伯努利跨流线乱用；\\
+(4)动量方程没反号；(5)非定常流线没先代$t=t_0$
+
+\sect{三套万能联立}
+\key{管流测速}：连续+$p/\rho g+V^2/2g+z$\\
+\key{板/弯管受力}：先伯努利求$p$，再动量求$F$\\
+\key{液面升降}：RTT质量方程拆\key{储存项+通量项}
+
+\sect{算到最后必检查}
+$p$统一用表压还是绝压？$Q$用m$^3$/s？直径mm是否化成m？\\
+题目问的是\key{壁对流体}还是\key{流体对壁}？问总压力还是分力？写没写方向？
+
+\sect{定义原句\;考试就这么写}
+\key{理想流体}：没有粘性的流体；当粘性力远小于其他力时可近似看作理想流体\\
+\key{定常流}：流动参数不随时间变；\key{非定常流}：流动参数随时间变\\
+\key{流线}：某瞬时处处与速度矢量相切的曲线；特点：不相交、处处有、定常中与迹线重合\\
+\key{压力中心}：总压力作用点；\key{压力体}：受压面外轮廓向上引垂线至液面围成的体积\\
+\key{连续介质}：把流体视为连续分布于空间的介质，便于使用微积分
+
+\sect{速度场四连问\;综合题}
+若$u=3x^2,\;v=-6xy$，则\\
+连续性：$u_x+v_y=6x-6x=0\;\checkmark$\\
+加速度：$a_x=uu_x+vu_y=18x^3$，$a_y=uv_x+vv_y=18x^2y$\\
+在$(2,1)$：\key{$a_x=144,\;a_y=72$}\\
+有旋：\key{$\omega_z=(v_x-u_y)/2=(-6y-0)/2=-3$}\\
+变形率：\key{$\varepsilon_{xx}=6x,\;\varepsilon_{yy}=-6x,\;\varepsilon_{xy}=-3y$}
+
+\vspace{0.8pt}\hrule height 0.4pt\vspace{0.8pt}
+
+\end{multicols}
+
+\clearpage
+
+\begin{multicols}{3}
+
+% ============================================================
+\chap{必刷题库\;8题带答案}
+% ============================================================
+
+{\fontsize{5.1}{5.7}\selectfont
+\exm{1. 流线题}
+$u=2x,v=-2y$，求过$(2,2)$的流线。答：$\frac{dx}{2x}=\frac{dy}{-2y}\Rightarrow xy=C$，故\key{$xy=4$}
+
+\exm{2. 加速度题}
+$u=2x+t,v=-2y+3$，求$(1,2,1)$处加速度。答：$u=3,v=-1$，\\
+\key{$a_x=1+2u=7,\quad a_y=-2v=2,\quad |a|=\sqrt{53}$}
+
+\exm{3. 连续性反求分量}
+不可压二维流，$u=3x^2y$且$v|_{y=0}=0$。答：$u_x=6xy$，$v_y=-6xy$，\\
+\key{$v=-3xy^2$}
+
+\exm{4. 抛物线速度分布}
+$u=u_0(1-r^2/R^2)$，求流量与平均速度。答：\key{$Q=\pi R^2u_0/2,\;\bar u=u_0/2$}
+
+\exm{5. 液面变化率}
+容器截面$A_0$，进出流量$Q_1,Q_2$。答：\key{$dh/dt=(Q_1-Q_2)/A_0$}；若$Q_2>Q_1$则液面下降
+
+\exm{6. 侧孔出流}
+开口大水箱液面到孔口高差$H$。答：$p_1=p_2=0,V_1\approx0$，\\
+\key{$V=\sqrt{2gH}$}
+
+\exm{7. 皮托+U管}
+示液密度$\rho_m$，被测流体密度$\rho$，液面差$\Delta h$。答：\\
+\key{$V=\sqrt{2(\rho_m-\rho)g\Delta h/\rho}$}
+
+\exm{8. 变截面管流量}
+水平管$d_1\to d_2$，压差$\Delta p=p_1-p_2$。答：\\
+\key{$V_2=\sqrt{\frac{2\Delta p}{\rho[1-(d_2/d_1)^4]}}$}，\key{$Q=\pi d_2^2V_2/4$}
+}
+
+\vspace{0.8pt}\hrule height 0.4pt\vspace{0.8pt}
+
+\chap{填空判断\;考前30分}
+
+{\fontsize{4.9}{5.6}\selectfont
+\sect{定义快背}
+\key{流体质点}：宏观小、微观大、含大量分子的流体微团\\
+\key{连续介质}：把流体视为连续分布介质，物理量可写成空间时间连续函数\\
+\key{压力中心}：总压力作用点；\key{压力体}：受压面外轮廓向上引垂线至液面围成体积\\
+\key{控制体}：流场中某个确定空间区域；\key{系统}：同一批流体质点
+
+\sect{填空原句}
+粘度在普通压强下主要随\key{温度}变；迹线用\key{拉格朗日法}；PIV属\key{欧拉法}\\
+流线处处与速度矢量\key{相切}；定常流三线\key{合一}\\
+RTT文字：系统量随体导数=控制体内偏$t$+\key{通过控制面的净通量}\\
+伯努利7条件：\key{理重定热轴压线}
+
+\sect{判断题秒杀}
+``理想流体不可压''→$\times$，理想只表示\key{无粘}\\
+``定常流加速度必为0''→$\times$，仍可有迁移加速度\\
+``同种液体同深度压强相等''→$\times$，还要\key{连通+静止}\\
+``流线可以相交''→$\times$；``圆柱曲面合力线过圆心''→$\checkmark$\\
+``$\nabla\!\cdot\!\vec v=0$就是理想流体定常式''→$\times$，那是\key{不可压}条件\\
+``伯努利可随便跨流线''→$\times$，除非\key{无旋}
+
+\sect{每章最该背的式子}
+\key{Ch1} $\tau=\mu du/dy$，$\nu=\mu/\rho$，水滴$\Delta p=2\sigma/R$，气泡$\Delta p=4\sigma/R$\\
+\key{Ch2} $p=p_0+\rho gh$，$F=\rho gh_CA$，$y_D=y_C+I_C/(y_CA)$，$F_y=\rho gV_{\text{压}}$\\
+\key{Ch3} $D/Dt=\partial/\partial t+u\partial_x+v\partial_y+w\partial_z$，$\omega_z=(v_x-u_y)/2$\\
+\key{Ch4} $\partial_t\rho+\nabla\!\cdot(\rho\vec v)=0$，$A_1V_1=A_2V_2$，$\vec p_n=\vec n\cdot\mathbf P$\\
+\key{Ch5} $p/\rho g+V^2/2g+z=\text{const}$，$p_0=p+\rho V^2/2$，$\sum\vec F=\rho Q(\beta_2\vec V_2-\beta_1\vec V_1)$
+
+\sect{大题模板压缩版}
+\key{静力学}：先画投影和压力体，再算$F_x,F_y$，最后\key{写方向}\\
+\key{伯努利}：先连续后伯努利，优先选\key{液面/出口/已知量多}截面\\
+\key{动量}：先求进出口速度和压强，再列$x,y$分量，最后\key{反号}\\
+\key{速度场}：先求偏导，再代公式，最后代点值；非定常流线先代$t=t_0$
+
+\sect{临场自测}
+能否闭眼写出：$\tau=\mu du/dy$、$p=p_0+\rho gh$、$a_x$公式、$dx/u=dy/v$、RTT、连续式、\\
+$F_x/F_y$、旋转液面、伯努利、皮托测速、动量方程、$\vec p_n=\vec n\cdot\mathbf P$？\\
+若这12条都能默写，\key{填空判断基本稳}；若8个母题都会算，\key{大题就有90+底子}
+
+\sect{常用数据}
+$\rho_w=1000$，$\rho_{Hg}=13600$，$\gamma_w=9810$N/m$^3$，$p_{atm}=101.3$kPa$=10.33$mH$_2$O\\
+层流：$\alpha=2,\beta=4/3$；湍流近似：$\alpha\approx1.05,\beta\approx1.02$
+
+\vspace{0.8pt}\hrule height 0.4pt\vspace{0.8pt}
+
+\chap{真题地图\;06/07/08}
+
+\sect{2006真题}
+流线+迹线；液面变化率；压力表读数；拖板拉力；旋转容器；复式U管；抛物线速度求流量；\\
+曲面闸门总压力；变截面收缩管流量。\\
+\key{结论}：06年几乎覆盖了\key{Ch1-5全部硬题型}
+
+\sect{2007真题}
+流线过点；三维加速度+有旋；旋转圆柱容器；油管U管+\key{伯努利联立}；泵功率。\\
+\key{结论}：07年最爱把\key{连续+伯努利+测压计}揉在一起
+
+\sect{2008真题}
+轴承功率；封闭容器压强；带顶盖旋转容器；半球面堵头；\\
+连续/加速度/旋转角速度/变形率四连问；流线+迹线；平板截水柱受力。\\
+\key{结论}：08年偏爱\key{综合题和细节判定}
+
+\vspace{0.8pt}\hrule height 0.4pt\vspace{0.8pt}
+
+\chap{再刷8结论\;最后冲刺}
+
+\exm{9. 平面总压力中心}
+矩形板高$h$、宽$b$、顶边淹深$H$。答：$h_C=H+h/2$，$F=\rho gh_Cbh$，\\
+\key{$y_D=y_C+\frac{bh^3/12}{y_C\cdot bh}$}
+
+\exm{10. 曲面总压力}
+先算$F_x$和$F_y$，最后$F=\sqrt{F_x^2+F_y^2}$；若为圆弧门，\key{作用线必过圆心}
+
+\exm{11. 封闭容器题}
+液面上方气体表压$p_0$不为零时，先把液面抬高\key{$\Delta h=p_0/(\rho g)$}，再做静力学
+
+\exm{12. 旋转容器无溢出}
+边缘刚到容器口：先用$z=z_0+\omega^2r^2/(2g)$，再用\key{平均液深不变}解$\omega$
+
+\exm{13. 层流圆管}
+$u=u_{max}(1-r^2/R^2)$，平均速度永远\key{$u_{max}/2$}，动能修正\key{$\alpha=2$}
+
+\exm{14. 弯管支反力}
+若已知$Q,d,p,\theta$，先算$V$、再算截面压强力、再列动量；\\
+求得的是\key{壁对流体}，题目要支座受力就\key{整体反号}
+
+\exm{15. 泵功率}
+忽略损失时，泵扬程$H_p$就是两截面总水头差；功率\key{$N=\rho gQH_p$}
+
+\exm{16. 考前最后5分钟}
+能否默写：$F=\rho gh_CA$、$F_y=\rho gV$、$dx/u=dy/v$、$a_x$、RTT、连续式、伯努利、\\
+皮托测速、动量方程、$\vec p_n=\vec n\cdot\mathbf P$？不能就先背这些
+
+\vspace{0.8pt}\hrule height 0.4pt\vspace{0.8pt}
+
+\chap{口袋问答\;闭眼会写}
+
+\sect{为什么题}
+为什么常用欧拉法？答：\key{便于描述整个流场空间分布}。\\
+为什么定常流加速度可不为0？答：因\key{迁移加速度}仍可能存在。\\
+为什么压力中心在形心下方？答：$y_D=y_C+I_C/(y_CA)$，后项恒正。\\
+为什么圆柱曲面合力线过圆心？答：各点压力法线都\key{通过圆心}。\\
+为什么大水面速度近似0？答：由连续方程，$A_{tank}\gg A_{hole}$。
+
+\sect{再问5个}
+为什么皮托管测总压？答：迎流口\key{驻点}速度降为0。\\
+为什么伯努利不能乱跨流线？答：一般只沿流线积分；跨流线需\key{无旋}。\\
+为什么$\nabla\!\cdot\!\vec v=0$不是“理想流体条件”？答：它表征\key{不可压}。\\
+为什么封闭容器要加假想液面？答：液面上已有气体压强，需先折算成\key{等效液柱}。\\
+为什么动量题最后常要反号？答：方程求出多是\key{壁对流体}，题目常问\key{流体对壁}。
+
+\vspace{0.8pt}\hrule height 0.4pt\vspace{0.8pt}
+
+\chap{错题清单\;最后看一遍}
+
+\sect{必查9项}
+(1)单位统一：mm$\to$m，kPa$\to$Pa；(2)$p$统一表压/绝压；(3)$g$取9.80还是9.81；\\
+(4)$h_C$是不是垂深；(5)面积体积是否乘宽度$L$；(6)流线题是否先代$t=t_0$；\\
+(7)连续性是否联立；(8)动量力方向是否标清；(9)答案有没有\key{大小+方向+作用线}
+
+\vspace{0.8pt}\hrule height 0.4pt\vspace{0.8pt}
+
+\chap{12个一眼答案}
+
+\sect{临场秒扫}
+直径缩半$\Rightarrow$速度\key{4倍}；层流圆管$\bar u=u_{max}/2$；静止流体切应力\key{为0}\\
+自由射流出口表压\key{为0}；壁面切应力\key{最大在壁面}；圆柱曲面合力线\key{过圆心}\\
+定常流中流线/迹线/脉线\key{合一}；大水箱液面速度\key{约为0}；皮托管测\key{总压}\\
+液体$T\uparrow\Rightarrow \mu\downarrow$；气体$T\uparrow\Rightarrow \mu\uparrow$；粘性流固壁\key{无滑移}
+}
+
+\end{multicols}
+\end{document}

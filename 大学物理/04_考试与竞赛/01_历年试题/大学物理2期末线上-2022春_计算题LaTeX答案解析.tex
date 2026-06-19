@@ -1,0 +1,333 @@
+\documentclass[12pt,a4paper]{ctexart}
+
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{left=2.2cm,right=2.2cm,top=2.2cm,bottom=2.2cm}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\title{大学物理（2）期末线上 2022 春\\计算题答案与解析}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{第 1 题：椭圆偏振光通过偏振片}
+
+\subsection*{题目模型}
+
+设椭圆偏振光由 $x$ 方向和 $y$ 方向两束相干线偏振光合成。题目给出 $y$ 方向振幅与 $x$ 方向振幅之比为 $2:1$，因此可设
+\[
+E_x=A\cos\omega t,\qquad
+E_y=2A\cos(\omega t+\varphi).
+\]
+
+偏振片通光方向与 $x$ 轴夹角为 $\theta$，所以通过偏振片后的电场是原电场在通光方向上的投影：
+\[
+E=E_x\cos\theta+E_y\sin\theta.
+\]
+
+\subsection*{光强计算}
+
+光强正比于电场平方的时间平均：
+\[
+I\propto \langle E^2\rangle.
+\]
+
+展开：
+\[
+\begin{aligned}
+\langle E^2\rangle
+&=\langle E_x^2\rangle\cos^2\theta
+ +\langle E_y^2\rangle\sin^2\theta
+ +2\langle E_xE_y\rangle\sin\theta\cos\theta.
+\end{aligned}
+\]
+
+分别计算三个平均值：
+\[
+\langle E_x^2\rangle=\frac{A^2}{2},
+\]
+\[
+\langle E_y^2\rangle=\frac{(2A)^2}{2}=2A^2,
+\]
+\[
+\langle E_xE_y\rangle
+=2A^2\langle \cos\omega t\cos(\omega t+\varphi)\rangle
+=A^2\cos\varphi.
+\]
+
+因此
+\[
+\langle E^2\rangle
+=\frac{A^2}{2}\cos^2\theta
++2A^2\sin^2\theta
++2A^2\cos\varphi\sin\theta\cos\theta.
+\]
+
+原椭圆偏振光总光强为 $I_0$，而
+\[
+I_0\propto \langle E_x^2\rangle+\langle E_y^2\rangle
+=\frac{A^2}{2}+2A^2
+=\frac{5A^2}{2}.
+\]
+
+所以通过偏振片后的光强为
+\[
+\boxed{
+I=\frac{I_0}{5}
+\left(
+\cos^2\theta+4\sin^2\theta+4\sin\theta\cos\theta\cos\varphi
+\right)
+}
+\]
+
+也可写成
+\[
+\boxed{
+I=\frac{I_0}{5}
+\left(
+\cos^2\theta+4\sin^2\theta+2\sin2\theta\cos\varphi
+\right)
+}.
+\]
+
+\subsection*{得分点}
+
+\begin{itemize}
+  \item 写出 $E_x=A\cos\omega t,\ E_y=2A\cos(\omega t+\varphi)$。
+  \item 写出偏振片投影 $E=E_x\cos\theta+E_y\sin\theta$。
+  \item 光强必须取时间平均 $\langle E^2\rangle$。
+  \item 最后要用总光强 $I_0\propto 5A^2/2$ 归一化。
+\end{itemize}
+
+\section*{第 2 题：动量本征态展开}
+
+\subsection*{题目模型}
+
+题给波函数
+\[
+\Psi(x)=\frac{4\cos^2kx+\sqrt{2}-2}{2\sqrt{2\pi\hbar}},
+\]
+动量本征函数为
+\[
+\Phi_{p_x}(x)=\frac{1}{\sqrt{2\pi\hbar}}e^{\frac{i}{\hbar}p_xx}.
+\]
+
+要求测量动量时可能得到的取值、对应概率，以及动量平均值。
+
+\subsection*{化简波函数}
+
+利用恒等式
+\[
+\cos^2kx=\frac{1+\cos2kx}{2}.
+\]
+
+于是
+\[
+\begin{aligned}
+4\cos^2kx+\sqrt{2}-2
+&=4\cdot\frac{1+\cos2kx}{2}+\sqrt{2}-2\\
+&=2+2\cos2kx+\sqrt{2}-2\\
+&=\sqrt{2}+2\cos2kx.
+\end{aligned}
+\]
+
+因此
+\[
+\Psi(x)=\frac{\sqrt{2}+2\cos2kx}{2\sqrt{2\pi\hbar}}
+=\frac{1}{\sqrt{2}}\frac{1}{\sqrt{2\pi\hbar}}
++\frac{\cos2kx}{\sqrt{2\pi\hbar}}.
+\]
+
+再用
+\[
+\cos2kx=\frac{e^{i2kx}+e^{-i2kx}}{2}.
+\]
+
+所以
+\[
+\Psi(x)
+=\frac{1}{\sqrt{2}}\frac{1}{\sqrt{2\pi\hbar}}
++\frac{1}{2}\frac{e^{i2kx}}{\sqrt{2\pi\hbar}}
++\frac{1}{2}\frac{e^{-i2kx}}{\sqrt{2\pi\hbar}}.
+\]
+
+和动量本征函数比较：
+\[
+\frac{1}{\sqrt{2\pi\hbar}}=\Phi_0(x),
+\]
+\[
+\frac{e^{i2kx}}{\sqrt{2\pi\hbar}}=\Phi_{2\hbar k}(x),
+\]
+\[
+\frac{e^{-i2kx}}{\sqrt{2\pi\hbar}}=\Phi_{-2\hbar k}(x).
+\]
+
+因此
+\[
+\boxed{
+\Psi(x)=
+\frac{1}{\sqrt{2}}\Phi_0(x)
++\frac{1}{2}\Phi_{2\hbar k}(x)
++\frac{1}{2}\Phi_{-2\hbar k}(x)
+}.
+\]
+
+\subsection*{动量可能值和概率}
+
+展开系数的模平方就是测得对应动量的概率：
+\[
+P(p_x=0)=\left|\frac{1}{\sqrt{2}}\right|^2=\frac{1}{2},
+\]
+\[
+P(p_x=2\hbar k)=\left|\frac{1}{2}\right|^2=\frac{1}{4},
+\]
+\[
+P(p_x=-2\hbar k)=\left|\frac{1}{2}\right|^2=\frac{1}{4}.
+\]
+
+所以可能动量为
+\[
+\boxed{
+p_x=0,\quad 2\hbar k,\quad -2\hbar k
+}
+\]
+对应概率为
+\[
+\boxed{
+\frac{1}{2},\quad \frac{1}{4},\quad \frac{1}{4}
+}.
+\]
+
+\subsection*{动量平均值}
+
+\[
+\begin{aligned}
+\langle p_x\rangle
+&=0\cdot\frac{1}{2}
++2\hbar k\cdot\frac{1}{4}
++(-2\hbar k)\cdot\frac{1}{4}\\
+&=0.
+\end{aligned}
+\]
+
+因此
+\[
+\boxed{\langle p_x\rangle=0}.
+\]
+
+\subsection*{得分点}
+
+\begin{itemize}
+  \item 先把 $\cos^2kx$ 化成 $\frac{1+\cos2kx}{2}$。
+  \item 再把 $\cos2kx$ 化成指数形式。
+  \item 和 $e^{ip_xx/\hbar}$ 对比，读出动量。
+  \item 概率是展开系数模平方，不是系数本身。
+\end{itemize}
+
+\section*{第 3 题：$N$ 缝光栅夫琅禾费衍射光强公式}
+
+\subsection*{定义}
+
+设单缝宽度为 $a$，光栅常数为 $d$，正入射，衍射角为 $\theta$。
+
+定义
+\[
+\beta=\frac{\pi a\sin\theta}{\lambda},
+\qquad
+\alpha=\frac{\pi d\sin\theta}{\lambda}.
+\]
+
+其中：
+\begin{itemize}
+  \item $\beta$ 由单缝宽度 $a$ 决定，控制单缝衍射包络；
+  \item $\alpha$ 由光栅常数 $d$ 决定，控制多缝干涉因子。
+\end{itemize}
+
+\subsection*{（1）单缝衍射振幅公式}
+
+题目给单缝中央明纹中心处振幅为 $E_0$，强度为 $I_0$。
+
+单缝夫琅禾费衍射在衍射角 $\theta$ 方向的振幅为
+\[
+\boxed{
+E_1(\theta)=E_0\frac{\sin\beta}{\beta}
+}.
+\]
+
+因此单缝光强为
+\[
+\boxed{
+I_1(\theta)=I_0\left(\frac{\sin\beta}{\beta}\right)^2
+}.
+\]
+
+\subsection*{（2）$N$ 缝光栅衍射光强公式}
+
+相邻两缝在方向 $\theta$ 上的光程差为
+\[
+\Delta=d\sin\theta.
+\]
+
+对应相位差为
+\[
+\delta=\frac{2\pi}{\lambda}d\sin\theta=2\alpha.
+\]
+
+$N$ 个等振幅、等相位差的波叠加，其振幅因子为
+\[
+\frac{\sin N\alpha}{\sin\alpha}.
+\]
+
+因此 $N$ 缝光栅的总振幅为
+\[
+\boxed{
+E(\theta)=
+E_0\frac{\sin\beta}{\beta}
+\frac{\sin N\alpha}{\sin\alpha}
+}.
+\]
+
+光强与振幅平方成正比，所以
+\[
+\boxed{
+I(\theta)=
+I_0
+\left(\frac{\sin\beta}{\beta}\right)^2
+\left(\frac{\sin N\alpha}{\sin\alpha}\right)^2
+}.
+\]
+
+\subsection*{补充结论}
+
+主极大条件：
+\[
+d\sin\theta=k\lambda.
+\]
+
+单缝暗纹条件：
+\[
+a\sin\theta=m\lambda.
+\]
+
+缺级条件：
+\[
+d\sin\theta=k\lambda
+\quad\text{且}\quad
+a\sin\theta=m\lambda
+\]
+同时成立。
+
+\subsection*{得分点}
+
+\begin{itemize}
+  \item 写清楚 $\beta=\frac{\pi a\sin\theta}{\lambda}$，$\alpha=\frac{\pi d\sin\theta}{\lambda}$。
+  \item 单缝因子是 $\frac{\sin\beta}{\beta}$。
+  \item 多缝干涉因子是 $\frac{\sin N\alpha}{\sin\alpha}$。
+  \item 光强公式中两个因子都要平方。
+\end{itemize}
+
+\end{document}

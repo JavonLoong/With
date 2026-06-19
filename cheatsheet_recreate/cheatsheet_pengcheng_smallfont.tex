@@ -1,0 +1,25 @@
+\documentclass{article}
+
+\usepackage[
+  paperwidth=612bp,
+  paperheight=803.25bp,
+  margin=0pt
+]{geometry}
+\usepackage{pdfpages}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+
+% Change this value to tune the visual font/content size.
+% 1.00 = original size, 0.88 = about 12% smaller.
+\newcommand{\ContentScale}{0.88}
+
+\begin{document}
+
+\includepdf[
+  pages=-,
+  scale=\ContentScale,
+  pagecommand={}
+]{cheatsheet_source.pdf}
+
+\end{document}

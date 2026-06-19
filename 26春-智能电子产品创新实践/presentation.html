@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NeuroSync 神经多模态交互平台</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Reveal.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    
+    <style>
+        /* Base and Background */
+        body {
+            background-color: #050505;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(20, 29, 64, 1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, rgba(31, 10, 54, 1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, rgba(9, 44, 59, 1) 0, transparent 50%);
+            background-attachment: fixed;
+            background-size: cover;
+            color: #e0e0e0;
+            font-family: 'Outfit', 'Noto Sans SC', sans-serif;
+            overflow: hidden;
+        }
+        
+        /* Animated Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
+        }
+        .orb-1 {
+            width: 400px; height: 400px;
+            background: rgba(0, 242, 254, 0.15);
+            top: -100px; left: -100px;
+        }
+        .orb-2 {
+            width: 500px; height: 500px;
+            background: rgba(255, 0, 128, 0.15);
+            bottom: -100px; right: -100px;
+            animation-delay: -5s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(30px, -50px); }
+            66% { transform: translate(-20px, 20px); }
+        }
+
+        /* Typography */
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+            font-family: 'Outfit', 'Noto Sans SC', sans-serif;
+            text-transform: none;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .reveal h1 { font-size: 3.5em; font-weight: 900; letter-spacing: 2px; }
+        .reveal h2 { font-size: 2.2em; }
+        .reveal h3 { font-size: 1.6em; }
+        
+        .text-gradient-cyan {
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-purple {
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-warning {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            text-align: left;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(0, 242, 254, 0.15);
+            border-color: rgba(0, 242, 254, 0.3);
+        }
+        
+        /* Layout Utilities */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: stretch;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        /* Badges & Tags */
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.6em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            background: rgba(0, 242, 254, 0.1);
+            color: #00f2fe;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+        }
+        .badge-warning {
+            background: rgba(255, 94, 94, 0.1);
+            color: #ff5e5e;
+            border: 1px solid rgba(255, 94, 94, 0.3);
+        }
+
+        /* Lists */
+        .reveal ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .reveal li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+            font-size: 0.85em;
+            color: #b0b0b0;
+        }
+        .reveal li::before {
+            content: "\f111";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 6px;
+            font-size: 0.5em;
+            color: #4facfe;
+        }
+        
+        /* Icon box */
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(79, 172, 254, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: #00f2fe;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2), inset 0 0 20px rgba(0, 242, 254, 0.1);
+        }
+
+        /* Specific slide styles */
+        .hero-subtitle {
+            font-size: 1.2em;
+            color: #8892b0;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+        .press-space {
+            font-size: 0.5em;
+            color: rgba(255,255,255,0.3);
+            margin-top: 60px;
+            letter-spacing: 4px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.3; }
+        }
+
+        /* Progress Bar Override */
+        .reveal .progress {
+            height: 4px;
+            background: rgba(255,255,255,0.05);
+        }
+        .reveal .progress span {
+            background: linear-gradient(90deg, #00f2fe, #4facfe);
+        }
+
+        /* Controls Override */
+        .reveal .controls {
+            color: #00f2fe;
+        }
+
+        /* Highlights */
+        .hl-red { color: #ff6b6b; font-weight: 600; }
+        .hl-cyan { color: #00f2fe; font-weight: 600; }
+        .hl-purple { color: #b55cff; font-weight: 600; }
+
+        .number-bg {
+            position: absolute;
+            right: 20px;
+            bottom: -20px;
+            font-size: 150px;
+            font-weight: 900;
+            color: rgba(255,255,255,0.02);
+            line-height: 1;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Title Slide -->
+            <section>
+                <div class="glass-card" style="padding: 80px 40px; text-align: center; border-radius: 30px;">
+                    <i class="fa-solid fa-brain" style="font-size: 60px; color: #00f2fe; margin-bottom: 30px; filter: drop-shadow(0 0 20px #00f2fe);"></i>
+                    <h1 class="text-gradient-cyan">NeuroSync</h1>
+                    <h3 style="letter-spacing: 8px; font-weight: 400; margin-top: 10px;">神经多模态交互平台</h3>
+                    <p class="hero-subtitle">从“设备辅助”走向“人体状态理解”</p>
+                    
+                    <div style="margin-top: 40px; display: inline-flex; gap: 15px;">
+                        <span class="badge"><i class="fa-solid fa-microchip"></i> BCI 脑机</span>
+                        <span class="badge"><i class="fa-solid fa-vr-cardboard"></i> XR 空间计算</span>
+                        <span class="badge"><i class="fa-solid fa-robot"></i> AI 智能体</span>
+                    </div>
+                </div>
+                <div class="press-space">PRESS SPACE TO EXPLORE</div>
+            </section>
+
+            <!-- Pain Points Section -->
+            <section>
+                <h2 class="text-gradient-warning" style="text-align: left;">传统方案的“盲区”</h2>
+                <p style="text-align: left; color: #8892b0; margin-bottom: 40px; font-size: 0.9em;">现有的康复训练场景单一化，且缺乏有效的辅助指导。</p>
+                
+                <div class="grid-3">
+                    <!-- Pain point 1 -->
+                    <div class="glass-card" style="padding: 30px; position: relative; overflow: hidden;">
+                        <div class="number-bg">1</div>
+                        <div class="card-content">
+                            <span class="badge badge-warning">康复期</span>
+                            <h4 style="font-size: 1.1em; color: #fff;">想走但迈不开腿</h4>
+                            <p style="font-size: 0.7em; color: #8892b0; margin-bottom: 20px;">帕金森冻结步态 / 偏瘫</p>
+                            <ul>
+                                <li><strong>现有方案：</strong>激光拐杖、节拍器</li>
+                                <li><strong class="hl-red">太被动：</strong>设备是死的，无法预判发病</li>
+                                <li><strong class="hl-red">高风险：</strong>占用双手，极易导致摔倒</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Pain point 2 -->
+                    <div class="glass-card" style="padding: 30px; position: relative; overflow: hidden;">
+                        <div class="number-bg">2</div>
+                        <div class="card-content">
+                            <span class="badge badge-warning">运动中</span>
+                            <h4 style="font-size: 1.1em; color: #fff;">动作做完，发力错</h4>
+                            <p style="font-size: 0.7em; color: #8892b0; margin-bottom: 20px;">易造成运动损伤与拉伤</p>
+                            <ul>
+                                <li><strong>现有方案：</strong>智能手表、AI健身镜</li>
+                                <li><strong class="hl-red">盲区：</strong>“只看形，不懂力”</li>
+                                <li><strong class="hl-red">隐患：</strong>看不到深层肌肉的错误代偿</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Pain point 3 -->
+                    <div class="glass-card" style="padding: 30px; position: relative; overflow: hidden;">
+                        <div class="number-bg">3</div>
+                        <div class="card-content">
+                            <span class="badge badge-warning">状态监测</span>
+                            <h4 style="font-size: 1.1em; color: #fff;">紧张、疲劳看不见</h4>
+                            <p style="font-size: 0.7em; color: #8892b0; margin-bottom: 20px;">心理与生理状态断层</p>
+                            <ul>
+                                <li><strong>现有方案：</strong>心率测算、肉眼观察</li>
+                                <li><strong class="hl-red">滞后：</strong>心率变化比情绪慢好几秒</li>
+                                <li><strong class="hl-red">痛点：</strong>无法做到真正的零延迟预警</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Architecture Overview -->
+            <section>
+                <h2 class="text-gradient-cyan" style="text-align: left;">四层融合闭环架构</h2>
+                <p style="text-align: left; color: #8892b0; font-size: 0.9em; margin-bottom: 40px;">打通“神经状态采集 - 动作理解 - 空间反馈”的完整路径</p>
+                
+                <div class="grid-2">
+                    <div class="glass-card flex-col" style="border-left: 4px solid #00f2fe;">
+                        <div style="display:flex; align-items:center; gap: 15px; margin-bottom: 15px;">
+                            <i class="fa-solid fa-wave-square" style="color:#00f2fe; font-size:24px;"></i>
+                            <h3 style="margin:0; font-size:1.3em;">1. 人体感知层</h3>
+                        </div>
+                        <p style="font-size:0.7em; color:#aaa; margin:0;">BrainCo 脑机接口 + 八点式 IMU + EMG肌电<br>同步精准采集脑电、姿态、肌肉发力等多模态数据。</p>
+                    </div>
+                    
+                    <div class="glass-card flex-col" style="border-left: 4px solid #b55cff;">
+                        <div style="display:flex; align-items:center; gap: 15px; margin-bottom: 15px;">
+                            <i class="fa-solid fa-network-wired" style="color:#b55cff; font-size:24px;"></i>
+                            <h3 style="margin:0; font-size:1.3em;">2. AI 分析层</h3>
+                        </div>
+                        <p style="font-size:0.7em; color:#aaa; margin:0;">多模态数据深度融合，执行动作识别、姿态评分与发力检测。<br>充当“系统大脑”，完成智能预警与决策。</p>
+                    </div>
+
+                    <div class="glass-card flex-col" style="border-left: 4px solid #ff007f;">
+                        <div style="display:flex; align-items:center; gap: 15px; margin-bottom: 15px;">
+                            <i class="fa-brands fa-unity" style="color:#ff007f; font-size:24px;"></i>
+                            <h3 style="margin:0; font-size:1.3em;">3. XR 交互层</h3>
+                        </div>
+                        <p style="font-size:0.7em; color:#aaa; margin:0;">基于 PICO / Apple Vision Pro 的空间计算平台。<br>将训练信息无缝叠加至真实空间，使运动问题完全可视化。</p>
+                    </div>
+
+                    <div class="glass-card flex-col" style="border-left: 4px solid #00ff88;">
+                        <div style="display:flex; align-items:center; gap: 15px; margin-bottom: 15px;">
+                            <i class="fa-solid fa-shield-halved" style="color:#00ff88; font-size:24px;"></i>
+                            <h3 style="margin:0; font-size:1.3em;">4. 智能护具层</h3>
+                        </div>
+                        <p style="font-size:0.7em; color:#aaa; margin:0;">微型传感器嵌入手腕/膝盖，配合柔性3D打印结构。<br>打造无感化穿戴体验与极低门槛的家庭化部署方案。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tech Details 1 & 2 -->
+            <section>
+                <div class="grid-2" style="align-items: center; height: 70vh;">
+                    <div style="text-align: left;">
+                        <span class="badge">Sensing & AI</span>
+                        <h2 class="text-gradient-cyan">极致的人体数据洞察</h2>
+                        <p style="font-size: 0.9em; color: #8892b0; margin-bottom: 30px;">
+                            从神经元到骨骼肌的全面覆盖，通过“感知 → 理解 → 决策 → 反馈”构成强大的智能数据流转体系。
+                        </p>
+                    </div>
+                    <div class="flex-col" style="gap: 20px;">
+                        <div class="glass-card" style="padding: 25px;">
+                            <h4 style="font-size:1.1em; margin-bottom:10px;"><i class="fa-solid fa-satellite-dish" style="color:#00f2fe; margin-right:10px;"></i>多模态协同采集</h4>
+                            <ul>
+                                <li><strong class="hl-cyan">EEG 脑电：</strong>捕捉注意力、情绪、疲劳度及运动意图</li>
+                                <li><strong class="hl-cyan">IMU 节点：</strong>8个核心追踪点，精准获取空间方位与步态</li>
+                                <li><strong class="hl-cyan">EMG 肌电：</strong>毫秒级监测肌肉群激活顺序与发力强度</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card" style="padding: 25px;">
+                            <h4 style="font-size:1.1em; margin-bottom:10px;"><i class="fa-solid fa-brain" style="color:#b55cff; margin-right:10px;"></i>AI 动态决策与预警</h4>
+                            <ul>
+                                <li><strong class="hl-purple">提前预警：</strong>在患者失衡前实现毫秒级零延迟安全干预</li>
+                                <li><strong class="hl-purple">错误纠正：</strong>快速定位运动员挥拍时代偿及问题肌群</li>
+                                <li><strong class="hl-purple">自适应调节：</strong>感知疲劳或紧张时，自动切换舒缓模式</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Tech Details 3 & 4 -->
+            <section>
+                <div class="grid-2" style="align-items: center; height: 70vh;">
+                    <div class="flex-col" style="gap: 20px;">
+                        <div class="glass-card" style="padding: 25px;">
+                            <h4 style="font-size:1.1em; margin-bottom:10px;"><i class="fa-solid fa-vr-cardboard" style="color:#ff007f; margin-right:10px;"></i>全息运动镜像反馈</h4>
+                            <ul>
+                                <li>在真实环境中投射动态发光脚印与虚拟平衡基准线</li>
+                                <li>利用视觉高亮精准标记错误发力热区，直观纠正</li>
+                                <li>基于真实空间构建全息动作轨迹预测及影分身</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card" style="padding: 25px;">
+                            <h4 style="font-size:1.1em; margin-bottom:10px;"><i class="fa-solid fa-layer-group" style="color:#00ff88; margin-right:10px;"></i>极简低门槛部署</h4>
+                            <ul>
+                                <li>彻底告别繁琐的光学动捕服及昂贵的摄像头阵列</li>
+                                <li>无感微型硬件与柔性仿生穿戴设计的完美融合</li>
+                                <li>真正从实验室走向家庭与社区的普惠级轻量化方案</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span class="badge" style="background:rgba(255,0,127,0.1); color:#ff007f; border-color:#ff007f;">XR & Hardware</span>
+                        <h2 class="text-gradient-purple">让抽象发力变得可视</h2>
+                        <p style="font-size: 0.9em; color: #8892b0; margin-bottom: 30px;">
+                            通过超低门槛的智能护具硬件，结合先进的空间计算能力，实现媲美专业实验室级的高维、沉浸式运动交互。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Outcomes -->
+            <section>
+                <h2 style="text-align: left; font-size: 2em; margin-bottom: 40px;">核心预期成效</h2>
+                <div class="grid-2">
+                    <div class="glass-card" style="text-align: center; padding: 40px 30px;">
+                        <div class="icon-box" style="margin: 0 auto 20px auto;">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </div>
+                        <h3 style="font-size: 1.3em; color:#fff;">重塑康复训练体验</h3>
+                        <p style="font-size: 0.75em; color: #aaa; text-align: left; margin-top: 20px;">
+                            利用 XR 沉浸场景与精巧的游戏化机制，将枯燥痛苦的机械重复转变为引人入胜的互动任务。视觉奖励与 AI 语音双重正反馈交织，极大提升了帕金森、中风偏瘫等长期康复患者的依从性与恢复信心。
+                        </p>
+                    </div>
+                    
+                    <div class="glass-card" style="text-align: center; padding: 40px 30px;">
+                        <div class="icon-box" style="margin: 0 auto 20px auto; background: linear-gradient(135deg, rgba(181, 92, 255, 0.2), rgba(181, 92, 255, 0.05)); color: #b55cff; border-color: rgba(181, 92, 255, 0.2); box-shadow: 0 0 20px rgba(181, 92, 255, 0.2), inset 0 0 20px rgba(181, 92, 255, 0.1);">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+                        <h3 style="font-size: 1.3em; color:#fff;">全天候 AI 数字陪伴</h3>
+                        <p style="font-size: 0.75em; color: #aaa; text-align: left; margin-top: 20px;">
+                            打破医院物理界限，构建大模型智能体与可穿戴设备的无缝联动。自动记录康复进程、跟踪状态波动、实时语音纠正并支持流畅的自然语言互动，让专业医生能够远程、高效地监督居家康复进展。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Market & Future -->
+            <section>
+                <div class="glass-card" style="padding: 50px; text-align: left; border: 1px solid rgba(0, 242, 254, 0.3); background: rgba(0, 242, 254, 0.02);">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px;">
+                        <div>
+                            <span class="badge">Future Value</span>
+                            <h2 class="text-gradient-cyan" style="margin-bottom: 0;">广阔市场与深远社会价值</h2>
+                        </div>
+                        <i class="fa-solid fa-globe" style="font-size: 60px; color: rgba(255,255,255,0.1);"></i>
+                    </div>
+                    
+                    <div class="grid-3" style="margin-top: 40px; gap: 30px;">
+                        <div>
+                            <h4 style="color: #00f2fe; border-bottom: 1px solid rgba(0,242,254,0.3); padding-bottom: 10px; font-size: 1em;">
+                                <i class="fa-solid fa-hospital" style="margin-right: 10px;"></i>医疗康复
+                            </h4>
+                            <p style="font-size: 0.7em; color: #aaa;">涵盖帕金森步态训练、中风偏瘫恢复、骨科术后重建、老年防跌倒预警等，完美填补居家高端康复指导的巨大空白。</p>
+                        </div>
+                        <div>
+                            <h4 style="color: #b55cff; border-bottom: 1px solid rgba(181,92,255,0.3); padding-bottom: 10px; font-size: 1em;">
+                                <i class="fa-solid fa-running" style="margin-right: 10px;"></i>体育训练
+                            </h4>
+                            <p style="font-size: 0.7em; color: #aaa;">应用于网球挥拍精准纠错、力量训练深层发力优化、电竞选手专注力评估，大幅降低专业级动作捕捉系统的门槛与成本。</p>
+                        </div>
+                        <div>
+                            <h4 style="color: #ff007f; border-bottom: 1px solid rgba(255,0,127,0.3); padding-bottom: 10px; font-size: 1em;">
+                                <i class="fa-solid fa-vr-cardboard" style="margin-right: 10px;"></i>XR 与元宇宙
+                            </h4>
+                            <p style="font-size: 0.7em; color: #aaa;">拓展至虚拟数字人肢体控制驱动、AI数字运动陪练、元宇宙全息社交会议，致力于构建下一代人体空间计算的通用级交互入口。</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 40px; padding-top: 30px; border-top: 1px dashed rgba(255,255,255,0.1); text-align: center;">
+                        <p style="font-size: 0.9em; font-weight: 300; color: #e0e0e0; font-style: italic;">
+                            “关注老龄化社会的真实需求，推动高端设备家用化，具备从课程原型走向真实产业化的强大潜力。”
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            center: true,
+            transition: 'convex', // convex/zoom/concave/fade/slide
+            backgroundTransition: 'fade',
+            margin: 0.1,
+            disableLayout: false
+        });
+    </script>
+</body>
+</html>

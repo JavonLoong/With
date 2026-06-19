@@ -1,0 +1,352 @@
+\documentclass[10.5pt,a4paper]{ctexart}
+\usepackage[margin=1.35cm]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs,longtable,array,multicol}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\renewcommand{\arraystretch}{1.45}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ii}{\mathrm{i}}
+
+\title{\vspace{-1.2em}第6章：平面不可压无旋势流叠加公式总表}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-2.2em}
+
+\begin{tcolorbox}[colback=blue!3,colframe=blue!45!black,title=统一约定]
+二维平面、不可压、无旋。极坐标为 $(r,\theta)$，课件中有时把角度写作 $\varepsilon$，本表统一写作 $\theta$。
+\[
+A=\frac{Q}{2\pi},\qquad k=\frac{\Gamma}{2\pi}.
+\]
+\[
+v_r=\frac{\partial\varphi}{\partial r}
+=\frac{1}{r}\frac{\partial\psi}{\partial\theta},
+\qquad
+v_\theta=\frac{1}{r}\frac{\partial\varphi}{\partial\theta}
+=-\frac{\partial\psi}{\partial r}.
+\]
+做题主线：
+\[
+\boxed{\text{写 } \varphi/\psi \rightarrow \text{求速度} \rightarrow \text{验证边界} \rightarrow \text{伯努利求压强}}
+\]
+\end{tcolorbox}
+
+\section*{一、基本流动公式表}
+
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{2.0cm}
+>{\centering\arraybackslash}p{2.35cm}
+>{\centering\arraybackslash}p{2.35cm}
+>{\centering\arraybackslash}p{3.25cm}
+>{\centering\arraybackslash}p{3.25cm}
+>{\centering\arraybackslash}p{2.5cm}}
+\toprule
+流动 & $v_r$ & $v_\theta$ & 势函数 $\varphi$ & 流函数 $\psi$ & 复势 $W(z)$\\
+\midrule
+\endfirsthead
+\toprule
+流动 & $v_r$ & $v_\theta$ & 势函数 $\varphi$ & 流函数 $\psi$ & 复势 $W(z)$\\
+\midrule
+\endhead
+
+均匀流，$+x$ 方向
+& $U_\infty\cos\theta$
+& $-U_\infty\sin\theta$
+& $U_\infty r\cos\theta$
+& $U_\infty r\sin\theta$
+& $U_\infty z$\\
+
+均匀流，与 $x$ 轴夹角 $\alpha$
+& -- & --
+& $U_\infty(x\cos\alpha+y\sin\alpha)$
+& $U_\infty(y\cos\alpha-x\sin\alpha)$
+& $U_\infty e^{-\ii\alpha}z$\\
+
+点源
+& $\ds \frac{A}{r}$
+& $0$
+& $A\ln r$
+& $A\theta$
+& $A\ln z$\\
+
+点汇
+& $\ds -\frac{A}{r}$
+& $0$
+& $-A\ln r$
+& $-A\theta$
+& $-A\ln z$\\
+
+点涡，逆时针为正
+& $0$
+& $\ds \frac{k}{r}$
+& $k\theta$
+& $-k\ln r$
+& $-\ii k\ln z$\\
+
+偶极子，负 $x$ 向
+& $\ds -\frac{m\cos\theta}{r^2}$
+& $\ds -\frac{m\sin\theta}{r^2}$
+& $\ds \frac{m\cos\theta}{r}$
+& $\ds -\frac{m\sin\theta}{r}$
+& $\ds \frac{m}{z}$\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\begin{tcolorbox}[colback=yellow!5,colframe=orange!70!black,title=奇点不在原点时]
+若奇点在 $(x_0,y_0)$，则把 $r,\theta,z$ 换成
+\[
+r'=\sqrt{(x-x_0)^2+(y-y_0)^2},\qquad
+\theta'=\tan^{-1}\frac{y-y_0}{x-x_0},\qquad
+z-z_0.
+\]
+\end{tcolorbox}
+
+\section*{二、常考叠加模型表}
+
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{3.4cm}
+>{\centering\arraybackslash}p{7.2cm}
+>{\raggedright\arraybackslash}p{6.6cm}}
+\toprule
+模型 & 总势函数/流函数 & 常考结论\\
+\midrule
+\endfirsthead
+\toprule
+模型 & 总势函数/流函数 & 常考结论\\
+\midrule
+\endhead
+
+均匀流 $+$ 点源
+&
+$\varphi=U_\infty r\cos\theta+A\ln r$；
+$\psi=U_\infty r\sin\theta+A\theta$
+& Rankine 半无限体；驻点在负 $x$ 轴。\\
+
+均匀流 $+$ 点汇
+&
+$\varphi=U_\infty r\cos\theta-A\ln r$；
+$\psi=U_\infty r\sin\theta-A\theta$
+& 壁面抽吸、小缝隙抽水常用。若是半平面壁面抽吸，等价于点汇加镜像点汇，常出现分母 $\pi$。\\
+
+点源 $+$ 点汇
+&
+$W=A\ln(z+a)-A\ln(z-a)$
+& 源汇间距趋于 $0$ 且保持强度矩不变，得到偶极子。\\
+
+均匀流 $+$ 偶极子
+&
+$\varphi=U_\infty\left(r+\dfrac{a^2}{r}\right)\cos\theta$；
+$\psi=U_\infty\left(r-\dfrac{a^2}{r}\right)\sin\theta$
+& 零环量圆柱绕流，$r=a$ 是固体边界。\\
+
+均匀流 $+$ 偶极子 $+$ 点涡
+&
+$\varphi=U_\infty\left(r+\dfrac{a^2}{r}\right)\cos\theta+k\theta$；
+$\psi=U_\infty\left(r-\dfrac{a^2}{r}\right)\sin\theta-k\ln r$
+& 环量圆柱绕流；速度上下不对称，产生升力。\\
+
+边角绕流
+&
+$\varphi=A r^n\cos n\theta$；
+$\psi=A r^n\sin n\theta$
+& 夹角 $\alpha$ 与 $n$ 的关系为 $n=\pi/\alpha$。边界 $\theta=0,\pi/n$ 均为流线。\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\section*{三、圆柱绕流必背}
+
+\begin{multicols}{2}
+\[
+\varphi=U_\infty\left(r+\frac{a^2}{r}\right)\cos\theta
+\]
+\[
+\psi=U_\infty\left(r-\frac{a^2}{r}\right)\sin\theta
+\]
+\[
+v_r=U_\infty\left(1-\frac{a^2}{r^2}\right)\cos\theta
+\]
+\[
+v_\theta=-U_\infty\left(1+\frac{a^2}{r^2}\right)\sin\theta
+\]
+\[
+r=a:\quad v_r=0,\qquad v_\theta=-2U_\infty\sin\theta
+\]
+\[
+p=p_\infty+\frac12\rho U_\infty^2(1-4\sin^2\theta)
+\]
+\[
+C_p=1-4\sin^2\theta
+\]
+\[
+\boxed{D=0,\qquad L=0}
+\]
+\end{multicols}
+
+\begin{tcolorbox}[colback=red!3,colframe=red!55!black,title=达朗贝尔佯谬]
+理想无粘势流绕圆柱，压力分布前后对称，积分后阻力为零：
+\[
+D=0.
+\]
+现实圆柱有阻力，是因为粘性边界层分离造成尾迹和压差阻力。
+\end{tcolorbox}
+
+\section*{四、环量圆柱与升力}
+
+\begin{multicols}{2}
+\[
+\varphi=U_\infty\left(r+\frac{a^2}{r}\right)\cos\theta+k\theta
+\]
+\[
+\psi=U_\infty\left(r-\frac{a^2}{r}\right)\sin\theta-k\ln r
+\]
+\[
+r=a:\quad v_\theta=-2U_\infty\sin\theta+\frac{k}{a}
+\]
+\[
+\Gamma=2\pi k
+\]
+\[
+\sin\theta=\frac{k}{2aU_\infty}
+=\frac{\Gamma}{4\pi aU_\infty}
+\]
+\[
+\boxed{L'=\rho U_\infty \Gamma}
+\]
+\end{multicols}
+
+上式是库塔--儒可夫斯基升力定理。方向用右手法则判断；课件常用说法是：
+\[
+\bm F=\rho\,\bm V_\infty\times \bm\Gamma.
+\]
+
+\section*{五、镜像法速查}
+
+\begin{tcolorbox}[colback=blue!3,colframe=blue!45!black,title=镜像法核心]
+固壁条件是
+\[
+v_n=0.
+\]
+二维势流中，只要固壁是流线，即
+\[
+\psi=\text{常数},
+\]
+就满足不穿透条件。镜像法的目的就是构造一个总流函数，使固壁变成流线。
+\end{tcolorbox}
+
+\small
+\begin{longtable}{>{\centering\arraybackslash}p{2.6cm}
+>{\centering\arraybackslash}p{3.0cm}
+>{\centering\arraybackslash}p{4.4cm}
+>{\raggedright\arraybackslash}p{6.4cm}}
+\toprule
+固壁 & 真实奇点 & 镜像奇点 & 验证方式\\
+\midrule
+\endfirsthead
+\toprule
+固壁 & 真实奇点 & 镜像奇点 & 验证方式\\
+\midrule
+\endhead
+
+$y=0$ & 点源 & 关于 $y=0$ 对称，同号点源 & 代入 $y=0$，证明 $\psi=\text{常数}$。\\
+$y=0$ & 点汇 & 关于 $y=0$ 对称，同号点汇 & 同上。\\
+$y=0$ & 点涡 & 关于 $y=0$ 对称，反号点涡 & 同上。\\
+$x=0$ & 点源/点汇 & 关于 $x=0$ 对称，同号 & 代入 $x=0$，证明 $\psi=\text{常数}$。\\
+$x=0$ & 点涡 & 关于 $x=0$ 对称，反号点涡 & 同上。\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\paragraph{例：点涡在 $(0,a)$，固壁 $y=0$。}
+\[
+\psi_1=-k\ln\sqrt{x^2+(y-a)^2},\qquad
+\psi_2=+k\ln\sqrt{x^2+(y+a)^2}.
+\]
+\[
+\psi=\psi_1+\psi_2.
+\]
+代入 $y=0$：
+\[
+\psi=-k\ln\sqrt{x^2+a^2}+k\ln\sqrt{x^2+a^2}=0.
+\]
+因此 $y=0$ 是流线，满足固壁不穿透。
+
+\paragraph{双壁面第一象限。}
+若实际区域为 $x>0,y>0$，真实点源在 $(b,a)$，则补三个镜像：
+\[
+(b,a),\quad (-b,a),\quad (b,-a),\quad (-b,-a).
+\]
+点源/点汇为同号；点涡每镜像一次换一次符号。
+
+\section*{六、边角绕流速查}
+
+设夹角为 $\alpha$，则
+\[
+n=\frac{\pi}{\alpha},\qquad
+\varphi=A r^n\cos n\theta,\qquad
+\psi=A r^n\sin n\theta.
+\]
+速度为
+\[
+v_r=Anr^{n-1}\cos n\theta,\qquad
+v_\theta=-Anr^{n-1}\sin n\theta,\qquad
+V=Anr^{n-1}.
+\]
+
+\small
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+夹角 $\alpha$ & $n$ & 速度特征\\
+\midrule
+$60^\circ$ & $3$ & 角点速度趋于 $0$\\
+$90^\circ$ & $2$ & 角点速度趋于 $0$\\
+$120^\circ$ & $3/2$ & 角点速度趋于 $0$\\
+$180^\circ$ & $1$ & 均匀流\\
+$270^\circ$ & $2/3$ & 角点速度趋于无穷\\
+$360^\circ$ & $1/2$ & 角点速度趋于无穷\\
+\bottomrule
+\end{tabular}
+\end{center}
+\normalsize
+
+\section*{七、压强计算统一公式}
+
+定常、理想、不可压、无旋时：
+\[
+p+\frac12\rho V^2=p_\infty+\frac12\rho U_\infty^2.
+\]
+\[
+\boxed{p=p_\infty+\frac12\rho(U_\infty^2-V^2)}
+\]
+\[
+\boxed{C_p=\frac{p-p_\infty}{\frac12\rho U_\infty^2}
+=1-\frac{V^2}{U_\infty^2}}
+\]
+
+\begin{tcolorbox}[colback=green!3,colframe=green!40!black,title=考试时最稳的写法]
+不要只背最终答案。按下面四行写，基本就不会丢结构分：
+\[
+1.\ \text{由基本流动叠加写出 }\varphi\text{ 或 }\psi;
+\]
+\[
+2.\ \text{由 }\varphi\text{ 或 }\psi\text{ 求 }v_r,v_\theta;
+\]
+\[
+3.\ \text{代入边界，验证 }\psi=\text{常数}\text{ 或 }v_n=0;
+\]
+\[
+4.\ \text{若求压强，用伯努利。}
+\]
+\end{tcolorbox}
+
+\end{document}

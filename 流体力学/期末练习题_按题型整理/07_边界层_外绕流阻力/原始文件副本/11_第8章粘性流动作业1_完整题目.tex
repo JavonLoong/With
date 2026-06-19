@@ -1,0 +1,101 @@
+﻿\documentclass[12pt,a4paper]{ctexart}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\geometry{left=2.2cm,right=2.2cm,top=2.2cm,bottom=2.2cm}
+\graphicspath{{第8章粘性流动作业1_素材/}}
+\setlist[enumerate]{itemsep=0.9em,topsep=0.5em}
+
+\title{第八章 粘性流动 作业-1：完整题目}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent 说明：原作业清单中没有第2题，本文按原编号保留。
+
+\begin{enumerate}
+\item 判断下列流动状态是层流还是湍流？
+\begin{enumerate}
+  \item 很长的水管，直径 \(d=200\mathrm{mm}\)，流速 \(V=1\mathrm{m/s}\)，运动粘性系数
+  \(\nu=1\times10^{-6}\mathrm{m^2/s}\)；
+  \item 很长的油管，直径 \(d=150\mathrm{mm}\)，流速 \(V=0.2\mathrm{m/s}\)，运动粘性系数
+  \(\nu=2\times10^{-5}\mathrm{m^2/s}\)。
+\end{enumerate}
+
+\setcounter{enumi}{2}
+\item 书 8.4。
+
+\begin{center}
+\includegraphics[width=0.96\linewidth]{book_8_4.png}
+\end{center}
+
+转写：油在水平圆管内作定常层流运动，已知
+\[
+d=75\mathrm{mm},\quad Q=7\mathrm{L/s},\quad \rho=800\mathrm{kg/m^3},\quad
+\tau_w=48\mathrm{N/m^2},
+\]
+求油的粘性系数。
+
+\item 书 8.5（小球 \(Re<1\)）。
+
+\begin{center}
+\includegraphics[width=0.96\linewidth]{book_8_5.png}
+\end{center}
+
+转写：直径为 \(1.5\mathrm{mm}\)、质量为 \(13.7\mathrm{mg}\) 的钢球，在一个盛有油的直桶中垂直等速下降，
+在 \(56\mathrm{s}\) 内下落 \(500\mathrm{mm}\)，油的比重为 \(0.95\)，圆桶的直径和长度足够大，可以忽略圆桶的端部和壁面效应，求油的粘性系数。
+
+\item 书 8.6。
+
+\begin{center}
+\includegraphics[width=0.96\linewidth]{book_8_6.png}
+\end{center}
+
+转写：在两块无限大的平行平板间充满两种互不相混的不可压缩牛顿流体。
+上层流体厚度为 \(h_2\)，粘度为 \(\mu_2\)；
+下层流体厚度为 \(h_1\)，粘度为 \(\mu_1\)。
+上板面向右作匀速直线运动，速度为 \(U\)，下板面固定，全流场压强为常数，并不计质量力，求流场速度及剪应力分布。
+
+\item 书 8.10（小球 \(Re<1\)）。
+
+\begin{center}
+\includegraphics[width=0.96\linewidth]{book_8_10.png}
+\end{center}
+
+转写：半径为 \(a\) 的小球在粘度很大的不可压缩牛顿流体中下落，证明其最终速度为
+\[
+U_t=\frac{2a^2(\rho_s-\rho)g}{9\mu}.
+\]
+其中 \(\rho\) 和 \(\mu\) 分别为流体密度和粘度，\(\rho_s\) 为小球的质量密度。
+
+\item 密度是 \(1.24\mathrm{kg/m^3}\)、\(\mu=0.001\mathrm{kg/(m\cdot s)}\) 的流体，在直径 \(8\mathrm{cm}\) 的管内作层流定常流动，
+壁面剪切力为 \(0.72\mathrm{N/m^2}\)。若轴向流动方向为 \(x\) 方向，求：
+水平管内流动、向上垂直流动、向下垂直流动时，沿轴向压降 \((dp/dx)\) 及 \(Re\) 数分别是多少？
+
+\item 倾角为 \(\theta=15^\circ\)、间隔为 \(H=3\mathrm{cm}\) 的无限大平行平板间，
+有密度 \(\rho=1.25\mathrm{kg/m^3}\)、粘性系数 \(\mu=0.0001\mathrm{kg/(m\cdot s)}\) 的流体向下流动。
+下平板不动，上平板以 \(U_0\) 向上拉动。假设流动为层流，沿流动方向没有压力差。
+若 \(H/2\) 处流体速度为零，求 \(U_0\) 以及上下壁面的切应力大小。
+
+\item 证明粘性流动在静止不动物面上满足物面条件
+\[
+\bm\Omega\cdot\bm n=0,
+\]
+式中 \(\bm n\) 为物面上单位法向向量，\(\bm\Omega\) 为涡量。
+
+\item 质量力有势，\(x-y\) 平面不可压粘性流体流动，涡量为
+\[
+\bm\Omega=\Omega(x,y)\bm k.
+\]
+证明流函数满足
+\[
+\nabla^2\psi=-\Omega.
+\]
+\end{enumerate}
+
+\end{document}

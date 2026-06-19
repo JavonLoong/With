@@ -1,0 +1,440 @@
+\documentclass[12pt,a4paper]{ctexart}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{setspace}
+\setstretch{1.12}
+\setlength{\parindent}{2em}
+\setlist[itemize]{leftmargin=2.2em,itemsep=0.35em,topsep=0.35em}
+\setlist[enumerate]{leftmargin=2.5em,itemsep=0.35em,topsep=0.35em}
+\title{大学物理二期中逐题完整讲义}
+\author{Codex 重建}
+\date{2026-04-21}
+\begin{document}
+\maketitle
+
+\begin{tcolorbox}[title=讲义定位,colback=yellow!4!white,colframe=orange!60!black]
+这份讲义只保留大学物理二期中的 2020 年秋 A2 这一套题。
+按原始 PDF 页图重建完整题干，并把每道题整理成“题目 + 题图 + 分析 + 解答步骤 + 最终答案”的单份 PDF。
+\end{tcolorbox}
+
+\tableofcontents
+\clearpage
+
+\section{原题页图}
+先给出这套大学物理二期中试题的原题页图，便于和后面的逐题答案一一对应。
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/2020年秋大学物理A2期中王山鹰-1.png}
+\end{center}
+\vspace{0.5em}
+\begin{center}
+\includegraphics[width=0.92\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/04_页图/2020年秋大学物理A2期中王山鹰-2.png}
+\end{center}
+\vspace{0.5em}
+
+\section{核心公式}
+\begin{tcolorbox}[title=本卷核心公式,colback=green!3!white,colframe=green!45!black]
+\begin{itemize}
+\item $n(h)=n(0)e^{-Mgh/(RT)}$
+\item $TV^{\gamma-1}=\mathrm{const}$
+\item $\Delta S=nR\ln\dfrac{V_2}{V_1},\quad \Delta S=k\ln\dfrac{\Omega_2}{\Omega_1}$
+\item $\eta=\dfrac{W}{Q_h}$
+\item $f' = f\dfrac{c\pm v_o}{c\mp v_s}$
+\item $y=2A\cos(kx)\cos(\omega t+\varphi)$
+\item $-\dfrac{dN}{dt}=\dfrac14 n\bar v A$
+\end{itemize}
+\end{tcolorbox}
+
+\section{逐题完整答案}
+\subsection*{一、填空题}
+
+\subsubsection*{第1题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+设海平面上氮气和氧气的浓度比为 4:1，大气温度为 290K，氮气、氧气摩尔质量分别为 28g、32g，则海拔 5km 处氮气和氧气浓度比值为\_\_\_\_\_\_\_\_\_\_。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+各组分在等温重力场中都满足玻尔兹曼分布，先分别写出浓度表达式，再相除。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 对任一气体组分都有 \(n(h)=n(0)\exp\!\left(-\dfrac{Mgh}{RT}\right)\)。
+\item 因此两种气体浓度比为 \(\dfrac{n_{\mathrm N}(h)}{n_{\mathrm O}(h)}=\dfrac{n_{\mathrm N}(0)}{n_{\mathrm O}(0)}\exp\!\left(\dfrac{(M_{\mathrm O}-M_{\mathrm N})gh}{RT}\right)\)。
+\item 已知 \(\dfrac{n_{\mathrm N}(0)}{n_{\mathrm O}(0)}=4\)，且 \(M_{\mathrm O}-M_{\mathrm N}=0.032-0.028=0.004\text{ kg/mol}\)。
+\item 指数项为 \(\dfrac{0.004\times 9.8\times 5000}{8.31\times 290}\approx 0.0813\)。
+\item 故高空中的浓度比为 \(4e^{0.0813}\approx 4.34\)。
+\end{enumerate}
+\textbf{最终答案：}
+海拔 \(5\text{ km}\) 处的 \(\mathrm N_2/\mathrm O_2\) 浓度比为 \(4e^{0.0813}\approx 4.34\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把两种气体都乘同一个指数因子；真正起作用的是摩尔质量差。\par
+\end{tcolorbox}
+
+
+\subsubsection*{第2题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一定量的单原子理想气体经过绝热压缩，体积变为原来的一半，则其平均速度变为原来的\_\_\_\_\_\_\_\_\_\_倍。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+单原子理想气体满足 \(TV^{\gamma-1}=\text{常量}\)，而分子平均速率与 \(\sqrt{T}\) 成正比。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 单原子理想气体的绝热指数为 \(\gamma=\dfrac53\)。
+\item 由绝热关系得 \(T_2=T_1\left(\dfrac{V_1}{V_2}\right)^{\gamma-1}=T_1\cdot 2^{2/3}\)。
+\item 对理想气体分子，平均速度的量级满足 \(\bar v\propto \sqrt{T}\)。
+\item 因而 \(\dfrac{\bar v_2}{\bar v_1}=\sqrt{\dfrac{T_2}{T_1}}=\sqrt{2^{2/3}}=2^{1/3}\)。
+\end{enumerate}
+\textbf{最终答案：}
+平均速度变为原来的 \(2^{1/3}\) 倍。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把“平均速度”误读成“平均动能”；动能与 \(T\) 成正比，而速率与 \(\sqrt{T}\) 成正比。\par
+\end{tcolorbox}
+
+
+\subsubsection*{第3题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+\(\nu\mathrm{mol}\) 的理想气体经过等温压缩，体积变为原来一半，其熵变为\_\_\_\_\_\_\_\_\_\_，末状态与初状态的微观状态数之比为\_\_\_\_\_\_\_\_\_\_。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+等温理想气体熵变公式可以直接使用，再由 \(\Delta S=k\ln \dfrac{\Omega_2}{\Omega_1}\) 求微观状态数比。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 熵变为 \(\Delta S=\nu R\ln\dfrac{V_2}{V_1}=\nu R\ln\dfrac12=-\nu R\ln 2\)。
+\item 又有 \(\Delta S=k\ln\dfrac{\Omega_2}{\Omega_1}\)。
+\item 所以 \(\dfrac{\Omega_2}{\Omega_1}=e^{\Delta S/k}=e^{-\nu R\ln 2/k}=2^{-\nu R/k}=2^{-\nu N_A}\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(\Delta S=-\nu R\ln 2\)，微观状态数之比为 \(\dfrac{\Omega_2}{\Omega_1}=2^{-\nu N_A}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+等温压缩时熵减小，不是增大。\par
+\end{tcolorbox}
+
+
+\subsubsection*{第4题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+在如图所示的温熵图中，有沿矩形 abcda 方向的循环，这个循环通常被称为\_\_\_\_\_\_\_\_\_\_循环。若矩形 abcd 的面积与矩形 abS\_2S\_1 的面积之比为 1:3，则此循环的效率为\_\_\_\_\_\_\_\_\_\_。\par
+\vspace{0.4em}
+\textbf{题图：}\par
+\begin{center}
+\includegraphics[width=0.42\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/11_大学物理二期中逐题完整讲义_题图/q4_ts图.png}
+\end{center}
+\vspace{0.2em}
+\textbf{说明：}
+题图中上下边为等温线，左右边为绝热线；面积比按原题图给出。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+\(T-S\) 图中的矩形循环就是卡诺循环，效率等于循环净功除以吸热。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 卡诺循环效率定义为 \(\eta=\dfrac{W}{Q_1}\)。
+\item 在 \(T-S\) 图中，循环所围面积就是净功：\(W=(T_1-T_2)(S_2-S_1)\)。
+\item 吸热发生在高温等温线上，故 \(Q_1=T_1(S_2-S_1)\)。
+\item 所以 \(\eta=\dfrac{(T_1-T_2)(S_2-S_1)}{T_1(S_2-S_1)}=1-\dfrac{T_2}{T_1}\)。
+\item 若按题图给出的面积比直接计算，则有 \(\eta=\dfrac13\)。
+\end{enumerate}
+\textbf{最终答案：}
+该循环是卡诺循环，效率为 \(\dfrac13\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要把效率写成 \(W/Q_2\)；在 \(T-S\) 图里，上方等温线下的面积才对应吸热量。\par
+\end{tcolorbox}
+
+
+\subsubsection*{第5题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一弹簧振子零时刻从平衡位置向 \(x\) 正方向运动，振动周期为 \(T\)，则它到达最大位移的一半位置的时刻为\_\_\_\_\_\_\_\_\_\_。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+初始条件为 \(x(0)=0,\ v(0)>0\)，因此可以设振动方程为 \(x=A\sin\dfrac{2\pi t}{T}\)。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 写出位移公式 \(x=A\sin\dfrac{2\pi t}{T}\)。
+\item 当振子到达 \(x=\dfrac{A}{2}\) 时，有 \(\sin\dfrac{2\pi t}{T}=\dfrac12\)。
+\item 一周期内对应的角为 \(\dfrac{\pi}{6}\) 和 \(\dfrac{5\pi}{6}\)。
+\item 所以时刻分别为 \(t=\dfrac{T}{12}\) 和 \(t=\dfrac{5T}{12}\)。
+\item 首次到达时取较小者。
+\end{enumerate}
+\textbf{最终答案：}
+首次到达 \(A/2\) 的时刻为 \(\dfrac{T}{12}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+不要误写成 \(T/6\)；那是把角频率和周期关系少除了一次 2。\par
+\end{tcolorbox}
+
+
+\subsubsection*{第6题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一根杆长为 \(L\)，波在其中传播速度为 \(u\)，一端固定，其简正模式基频为\_\_\_\_\_\_\_\_\_\_。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+这是典型的“一端固定、一端自由”驻波问题，基频时杆长只容纳四分之一波长。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 基频满足 \(L=\dfrac{\lambda_1}{4}\)，故 \(\lambda_1=4L\)。
+\item 再由 \(f=\dfrac{u}{\lambda}\) 得 \(f_1=\dfrac{u}{4L}\)。
+\end{enumerate}
+\textbf{最终答案：}
+基频为 \(\dfrac{u}{4L}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+若两端都固定才是 \(u/(2L)\)；本题是一端自由。\par
+\end{tcolorbox}
+
+
+\subsubsection*{第7题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一波源发出频率为 \(\nu_0=300\mathrm{Hz}\) 的声波，向左以 \(20\mathrm{m/s}\) 的速度运动。一反射壁在其右方以 \(10\mathrm{m/s}\) 的速度向左运动。空气中的声速为 \(330\mathrm{m/s}\)，则反射壁接收到的声波频率为\_\_\_\_\_\_\_\_\_\_Hz，位于反射壁和波源之间的静止的观测者听到的拍频为\_\_\_\_\_\_\_\_\_\_Hz。\par
+\textbf{说明：}
+按原题给出的数据取 \(f_0=300\text{ Hz},\ c=330\text{ m/s},\ v_s=20\text{ m/s},\ v_w=10\text{ m/s}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+先算反射壁接收到的频率，再把反射壁看成运动次波源，最后与直达波比较求拍频。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 反射壁接收到的频率为 \(f_1=f_0\dfrac{c+v_w}{c+v_s}=300\times \dfrac{340}{350}\approx 291.43\text{ Hz}\)。
+\item 反射后，墙壁相当于运动声源，对中间静止观察者产生的反射波频率为 \(f_r=f_1\dfrac{c}{c-v_w}=291.43\times \dfrac{330}{320}\approx 300.94\text{ Hz}\)。
+\item 观察者直接收到的直达波频率为 \(f_d=f_0\dfrac{c}{c+v_s}=300\times \dfrac{330}{350}\approx 282.86\text{ Hz}\)。
+\item 拍频是观察者处两列波频率之差：\(f_b=|f_r-f_d|\approx 18.08\text{ Hz}\)。
+\end{enumerate}
+\textbf{最终答案：}
+反射壁接收到的频率约为 \(291.4\text{ Hz}\)，拍频约为 \(18.1\text{ Hz}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+拍频不是“入射到墙的频率”和“反射回来的频率”之差，而是观察者处两列波频率之差。\par
+\end{tcolorbox}
+
+
+\subsubsection*{第8题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+已知 \(x_1=6\times10^{-2}\cos(5t+\pi/2)\)，\(x_2=2\times10^{-2}\cos(\pi/2-5t)\)，（SI）这两个同一方向上的振动合成后，振幅为\_\_\_\_\_\_\_\_\_\_m，初相位为\_\_\_\_\_\_\_\_\_\_。\par
+\textbf{说明：}
+原题给出的两个振动为 \(x_1=6\times 10^{-2}\cos(5t+\pi/2)\)，\(x_2=2\times 10^{-2}\cos(\pi/2-5t)\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+先把两个振动化成同一种三角函数形式，再直接代数相加。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 有 \(x_1=6\times 10^{-2}\cos(5t+\pi/2)=-6\times 10^{-2}\sin 5t\)。
+\item 另一个振动 \(x_2=2\times 10^{-2}\cos(\pi/2-5t)=2\times 10^{-2}\sin 5t\)。
+\item 两者叠加得 \(x=x_1+x_2=-4\times 10^{-2}\sin 5t\)。
+\item 把它写回余弦形式为 \(x=4\times 10^{-2}\cos(5t+\pi/2)\)。
+\end{enumerate}
+\textbf{最终答案：}
+合振幅为 \(4\times 10^{-2}\text{ m}\)，初相位为 \(\pi/2\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+第二个振动要先用 \(\cos(\pi/2-\theta)=\sin\theta\) 化简，否则很容易错号。\par
+\end{tcolorbox}
+
+
+\subsubsection*{第9题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+右图是两个方向相互垂直的振动李萨如图，则角速度之比 \(\omega_y:\omega_x=\)\_\_\_\_\_\_\_\_\_\_；若李萨如图为一个左旋的正圆，则振幅之比 \(A_y:A_x=\)\_\_\_\_\_\_\_\_\_\_，相差 \(\varphi_y-\varphi_x=\)\_\_\_\_\_\_\_\_\_\_。\par
+\vspace{0.4em}
+\textbf{题图：}\par
+\begin{center}
+\includegraphics[width=0.42\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/11_大学物理二期中逐题完整讲义_题图/q9_李萨如图.png}
+\end{center}
+\vspace{0.2em}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+先由图形在两个方向上的回环数判断频率比；若要求左旋正圆，则必须满足同频同振幅并带固定相位差。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 由图形可读出 \(y\) 方向呈双频特征、\(x\) 方向呈单频特征，所以 \(\omega_y:\omega_x=2:1\)。
+\item 若轨迹是正圆，两个分振动必须同频且振幅相等，因此 \(A_y:A_x=1:1\)。
+\item 对于左旋，常可取 \(\varphi_y-\varphi_x=-\dfrac{\pi}{2}\) 使质点逆时针转动。
+\end{enumerate}
+\textbf{最终答案：}
+\(\omega_y:\omega_x=2:1\)，且若为左旋正圆，则 \(A_y:A_x=1:1\)，相位差可取 \(-\dfrac{\pi}{2}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+顺时针与逆时针对应的相位差符号相反，写相位差时要结合定义说明。\par
+\end{tcolorbox}
+
+
+\subsubsection*{第10题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+沿 \(x\) 轴传播的一维简谐横波与其反射波叠加后的波函数为 \(y=2\cos(\pi x)\cos(90t+\pi/2)\)（SI），则这列波的波长为\_\_\_\_\_\_\_\_\_\_m，周期为\_\_\_\_\_\_\_\_\_\_s。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+从标准驻波表达式中直接读出波数 \(k\) 和角频率 \(\omega\)。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 标准驻波形式是 \(y=2A\cos(kx)\cos(\omega t+\varphi)\)。
+\item 与题式比较可得 \(k=\pi,\ \omega=90\)。
+\item 所以波长 \(\lambda=\dfrac{2\pi}{k}=\dfrac{2\pi}{\pi}=2\text{ m}\)。
+\item 周期 \(T=\dfrac{2\pi}{\omega}=\dfrac{2\pi}{90}=\dfrac{\pi}{45}\text{ s}\)。
+\end{enumerate}
+\textbf{最终答案：}
+波长为 \(2\text{ m}\)，周期为 \(\dfrac{\pi}{45}\text{ s}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+这里的角频率是 \(90\)，不是 \(90\pi\)；不要多读出一个 \(\pi\)。\par
+\end{tcolorbox}
+
+
+\subsection*{二、计算题}
+
+\subsubsection*{第11题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一维横波沿 \(x\) 轴传播，波源位于 \(x=0\) 处，界面位于 \(x=\dfrac{3\lambda}{4}\) 处，（\(\lambda\) 未知）界面左侧为波疏介质，右侧为波密介质。波在波疏介质中传播速度为 \(u\)，频率为 \(\nu\)。\par
+(1) 写出入射波的波动方程；\par
+(2) 写出反射波的波动方程，求出稳定后 \(x\) 轴上保持静止的点的坐标。\par
+\vspace{0.4em}
+\textbf{题图：}\par
+\begin{center}
+\includegraphics[width=0.66\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/11_大学物理二期中逐题完整讲义_题图/q11_波疏波密图.png}
+\end{center}
+\vspace{0.2em}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+从图可知入射波沿 \(+x\) 方向传播；疏到密反射会发生相位反转。两列波叠加后形成驻波，节点即静止点。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设 \(\lambda=\dfrac{u}{\nu}\)，则 \(k=\dfrac{2\pi}{\lambda}\)，\(\omega=2\pi\nu\)。
+\item 取入射波为 \(y_i=A\sin(kx-\omega t)\)。
+\item 界面位置为 \(l=\dfrac{3\lambda}{4}\)，反射波向左传播且反相，可写作 \(y_r=A\sin(kx+\omega t-2kl)\)。
+\item 因为 \(2kl=2k\cdot \dfrac{3\lambda}{4}=3\pi\)，故 \(y_r=A\sin(kx+\omega t-3\pi)=-A\sin(kx+\omega t)\)。
+\item 两波叠加得 \(y=y_i+y_r=-2A\cos kx\,\sin\omega t\)。
+\item 节点满足 \(\cos kx=0\)，即 \(kx=\dfrac{(2n+1)\pi}{2}\)，所以 \(x=\dfrac{(2n+1)\lambda}{4}\)。
+\item 在 \(0\le x\le 3\lambda/4\) 内，对应静止点为 \(x=\dfrac{\lambda}{4},\ \dfrac{3\lambda}{4}\)。
+\end{enumerate}
+\textbf{最终答案：}
+入射波可写为 \(y_i=A\sin\!\left(\dfrac{2\pi}{\lambda}x-2\pi\nu t\right)\)，反射波为 \(y_r=A\sin\!\left(\dfrac{2\pi}{\lambda}x+2\pi\nu t-3\pi\right)\)；静止点坐标为 \(x=\dfrac{\lambda}{4},\ \dfrac{3\lambda}{4}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+疏到密反射要反相；若忽略这一点，后面的节点位置会全部错掉。\par
+\end{tcolorbox}
+
+
+\subsubsection*{第12题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一群分子的速率分布函数为 \(f(v)=\begin{cases}Av^2, & 0\leq v\leq v_m \\ 0, & v>v_m\end{cases}\)，求：\par
+(1) 常数 \(A\)；\par
+(2) 分子平均速率；\par
+(3) 速度在 \(\dfrac{v_m}{2}\sim v_m\) 区间内的分子的平均速率。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+先用归一化求 \(A\)，再用加权平均定义求平均速率；第 3 问是条件平均。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 归一化条件为 \(\int_0^{v_m}Av^2\,dv=1\)，故 \(A\dfrac{v_m^3}{3}=1\)，于是 \(A=\dfrac{3}{v_m^3}\)。
+\item 总体平均速率为 \(\bar v=\int_0^{v_m}vf(v)\,dv=A\int_0^{v_m}v^3\,dv=A\dfrac{v_m^4}{4}=\dfrac34 v_m\)。
+\item 区间 \([v_m/2,v_m]\) 上的平均速率为 \(\bar v_{[v_m/2,v_m]}=\dfrac{\int_{v_m/2}^{v_m}vf(v)\,dv}{\int_{v_m/2}^{v_m}f(v)\,dv}\)。
+\item 分子为 \(A\left[\dfrac{v^4}{4}\right]_{v_m/2}^{v_m}=A\dfrac{15}{64}v_m^4\)。
+\item 分母为 \(A\left[\dfrac{v^3}{3}\right]_{v_m/2}^{v_m}=A\dfrac{7}{24}v_m^3\)。
+\item 相除得 \(\bar v_{[v_m/2,v_m]}=\dfrac{15/64}{7/24}v_m=\dfrac{45}{56}v_m\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(A=\dfrac{3}{v_m^3}\)，总体平均速率为 \(\dfrac34 v_m\)，区间平均速率为 \(\dfrac{45}{56}v_m\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+第 3 问的分母不是 1，而是该区间内的总概率。\par
+\end{tcolorbox}
+
+
+\subsubsection*{第13题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+如图，\(2\mathrm{mol}\) 水蒸气进行 \(abcda\) 的热循环，其中 \(b\to c\) 为等温过程。求：\par
+(1) \(d\to a\) 过程中水蒸气做的功；\par
+(2) \(a\to b\) 过程气体内能变化；\par
+(3) 整个循环中水蒸气做的功；\par
+(4) 该循环的效率。\par
+\vspace{0.4em}
+\textbf{题图：}\par
+\begin{center}
+\includegraphics[width=0.42\textwidth]{D:/虚拟C盘/大学物理/04_考试与竞赛/01_历年试题/期中试题剥离版_2026-04-21/11_大学物理二期中逐题完整讲义_题图/q13_pv图.png}
+\end{center}
+\vspace{0.2em}
+\textbf{说明：}
+按题图可读出 \(a(25\text{ L},2\text{ atm})\)，\(b(25\text{ L},6\text{ atm})\)，\(d(50\text{ L},2\text{ atm})\)，且 \(b\to c\) 等温，所以 \(c(50\text{ L},3\text{ atm})\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+把水蒸气近似看成刚性非线性分子理想气体，可取 \(U=3nRT=3pV\)。再分别计算各过程的功和热量。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item \(d\to a\) 为等压压缩，所以 \(W_{d\to a}=p(V_a-V_d)=2(25-50)\text{ atm·L}=-50\text{ atm·L}\approx -5.07\times 10^3\text{ J}\)。
+\item \(a\to b\) 为等容过程，故 \(\Delta U_{a\to b}=3\Delta(pV)=3[(6\times 25)-(2\times 25)]\text{ atm·L}=300\text{ atm·L}\approx 3.04\times 10^4\text{ J}\)。
+\item 全循环做功为 \(W_{\rm cyc}=W_{ab}+W_{bc}+W_{cd}+W_{da}\)。其中 \(W_{ab}=0,\ W_{cd}=0\)。
+\item 等温过程 \(b\to c\) 的做功为 \(W_{bc}=p_bV_b\ln \dfrac{V_c}{V_b}=150\ln 2\text{ atm·L}\approx 1.053\times 10^4\text{ J}\)。
+\item 所以 \(W_{\rm cyc}\approx 1.053\times 10^4-5.07\times 10^3\approx 5.47\times 10^3\text{ J}\)。
+\item 吸热发生在 \(a\to b\) 和 \(b\to c\)。其中 \(Q_{ab}=\Delta U_{ab}\approx 3.04\times 10^4\text{ J}\)，\(Q_{bc}=W_{bc}\approx 1.053\times 10^4\text{ J}\)。
+\item 因而总吸热 \(Q_{\rm in}\approx 4.09\times 10^4\text{ J}\)，效率 \(\eta=\dfrac{W_{\rm cyc}}{Q_{\rm in}}\approx 0.134\)。
+\end{enumerate}
+\textbf{最终答案：}
+\(W_{d\to a}\approx -5.07\times 10^3\text{ J}\)，\(\Delta U_{a\to b}\approx 3.04\times 10^4\text{ J}\)，\(W_{\rm cyc}\approx 5.47\times 10^3\text{ J}\)，效率约为 \(13.4\%\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+\(b\to c\) 等温时内能变化为 0，不代表做功也为 0；而且 \(\text{atm·L}\) 需要换算成焦耳。\par
+\end{tcolorbox}
+
+
+\subsubsection*{第14题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+一体积为 \(V\) 的容器中装有一定量的理想气体，平均速度为 \(\bar v\)，容器壁上有面积为 \(A\) 的小孔，漏气过程气体温度恒定，容器内压强远大于容器外压强，求容器内压强降为初始状态的 \(1/3\) 所需的时间。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+小孔逸出通量满足 \(-\dfrac{dN}{dt}=\dfrac14 n\bar vA\)。温度恒定时 \(p\propto N\)。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 单位时间逸出分子数满足 \(-\dfrac{dN}{dt}=\dfrac14 n\bar vA\)。
+\item 因为 \(n=\dfrac{N}{V}\)，所以 \(\dfrac{dN}{dt}=-\dfrac{A\bar v}{4V}N\)。
+\item 分离变量并积分，得 \(N=N_0e^{-\frac{A\bar v}{4V}t}\)。
+\item 由于温度恒定且 \(pV=NkT\)，故 \(p\propto N\)，于是 \(p=p_0e^{-\frac{A\bar v}{4V}t}\)。
+\item 当 \(p=\dfrac13 p_0\) 时，有 \(\dfrac13=e^{-\frac{A\bar v}{4V}t}\)。
+\item 解得 \(t=\dfrac{4V}{A\bar v}\ln 3\)。
+\end{enumerate}
+\textbf{最终答案：}
+所需时间为 \(\dfrac{4V}{A\bar v}\ln 3\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+压强随时间呈指数衰减，不是线性下降。\par
+\end{tcolorbox}
+
+
+\subsubsection*{第15题}
+\begin{tcolorbox}[colback=gray!2!white,colframe=black!60,title={题目}]
+两个物体初始温度为 \(T_i\)，工质在其间工作，两物体定压热容为 \(C_p\)，温度变化过程中压强保持不变，求让其中一个物体温度降为 \(T_f\) 所需外界做的最小功。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=blue!2!white,colframe=blue!55!black,title={完整答案}]
+\textbf{分析：}
+最小功对应可逆过程，此时总熵变为 0。先求另一个物体的终温，再用能量守恒求外界做功。\par
+\textbf{解答步骤：}
+\begin{enumerate}
+\item 设被冷却物体从 \(T_i\) 降到 \(T_f\)，另一物体从 \(T_i\) 升到 \(T_h\)。
+\item 可逆极限下满足 \(\Delta S_{\text{总}}=0\)，即 \(C_p\ln\dfrac{T_f}{T_i}+C_p\ln\dfrac{T_h}{T_i}=0\)。
+\item 解得 \(T_h=\dfrac{T_i^2}{T_f}\)。
+\item 冷物体放热 \(Q_c=C_p(T_i-T_f)\)，热物体吸热 \(Q_h=C_p(T_h-T_i)\)。
+\item 外界所做最小功为 \(W_{\min}=Q_h-Q_c=C_p(T_h-T_i)-C_p(T_i-T_f)\)。
+\item 代入 \(T_h=\dfrac{T_i^2}{T_f}\) 并整理，得 \(W_{\min}=C_p\left(\dfrac{T_i^2}{T_f}+T_f-2T_i\right)=C_p\dfrac{(T_i-T_f)^2}{T_f}\)。
+\end{enumerate}
+\textbf{最终答案：}
+外界所做最小功为 \(C_p\dfrac{(T_i-T_f)^2}{T_f}\)。\par
+\end{tcolorbox}
+\begin{tcolorbox}[colback=red!2!white,colframe=red!55!black,title={易错点}]
+最小功不是简单热量差，还必须先用“总熵不变”求出另一物体的最终温度。\par
+\end{tcolorbox}
+
+
+\end{document}

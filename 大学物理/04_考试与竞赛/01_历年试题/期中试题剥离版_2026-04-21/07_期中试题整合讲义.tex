@@ -1,0 +1,752 @@
+
+\documentclass[12pt,a4paper]{ctexart}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{setspace}
+\setstretch{1.18}
+\setlength{\parindent}{2em}
+\setlist[itemize]{leftmargin=2.2em,itemsep=0.45em,topsep=0.45em}
+\tcbset{
+  colback=blue!4!white,
+  colframe=blue!45!black,
+  boxrule=0.5pt,
+  arc=1mm,
+  left=1mm,right=1mm,top=1mm,bottom=1mm
+}
+
+\title{大学物理期中试题分类讲义}
+\author{Codex 整理}
+\date{2026-04-21}
+
+\begin{document}
+\maketitle
+\begin{tcolorbox}[title=讲义定位]
+这是一份\textbf{正常 PDF 讲义}，不是技能模板输出。内容整合了期中试题资料、按主题分类的学习提纲，以及逐题讲解。
+\end{tcolorbox}
+
+\tableofcontents
+\clearpage
+
+\section*{使用说明}
+
+这是一份普通 PDF 讲义，整合了目前已整理出的期中试题分类、主讲材料优先级与逐题讲解。
+
+讲解优先使用完整正式 PDF；扫描图和回忆版只作为补充参考。
+
+\section{期中试题剥离说明}
+
+这个目录从 \texttt{01\_历年试题} 中单独整理出与“期中”相关的资料，便于集中复习和逐题讲解。
+
+\subsection{目录结构}
+
+\begin{itemize}
+
+\item \texttt{01\_正式试题}：保留的期中真题原件
+
+\item \texttt{01\_正式试题/00\_PDF主讲材料}：后续主题讲解优先使用的完整正式 PDF
+
+\item \texttt{02\_参考答案与说明}：答案、通知等辅助材料
+
+\item \texttt{03\_文本提取}：能直接从 PDF 抽出的文本
+
+\item \texttt{04\_页图}：为扫描版 PDF 生成的页图，便于看图读题
+
+\item \texttt{05\_逐题讲解.md}：后续汇总的逐题讲解
+
+\item \texttt{06\_PDF优先\_主题讲解提纲.md}：按知识主题整理的 PDF 优先讲解入口
+
+\end{itemize}
+
+\subsection{去重情况}
+
+\begin{itemize}
+
+\item \texttt{2020年秋大学物理A2期中王山鹰.pdf} 与 \texttt{大学物理A2期中-2020年秋-王山鹰.pdf} 内容相同，这里只保留前者
+
+\item \texttt{大学物理B1-期中-2014-1.jpg} 与 \texttt{大物B1期中-20140422上.jpg} 内容相同，这里只保留前者
+
+\item \texttt{大学物理B1-期中-2014-2.jpg} 与 \texttt{大物B1期中-20140422下.jpg} 内容相同，这里只保留前者
+
+\end{itemize}
+
+\subsection{当前整理范围}
+
+已纳入的正式试题：
+
+\begin{itemize}
+
+\item 大学物理1期中试题
+
+\item 大学物理1期中-王山鹰-2022秋-wsy回忆版
+
+\item 大物1期中wsy2022 图片版
+
+\item 2020年秋大学物理A2期中王山鹰
+
+\item 大学物理B1-期中-2014
+
+\end{itemize}
+
+辅助材料：
+
+\begin{itemize}
+
+\item 大学物理1期中试题答案
+
+\item 大学物理B1期中考试答案\_20180601
+
+\item 大学物理B（2）期中考试通知
+
+\end{itemize}
+
+\subsection{主题讲解使用原则}
+
+后续如果做“主题讲解”，优先级按下面执行：
+
+1. 完整正式 PDF 2. 完整但扫描版 PDF 3. JPG 图片卷 4. 回忆版 PDF
+
+当前可直接作为“主讲材料”的正常 PDF：
+
+\begin{itemize}
+
+\item \texttt{01\_正式试题/00\_PDF主讲材料/大学物理1期中试题.pdf}
+
+\item \texttt{01\_正式试题/00\_PDF主讲材料/2020年秋大学物理A2期中王山鹰.pdf}
+
+\end{itemize}
+
+说明：
+
+\begin{itemize}
+
+\item \texttt{2022 秋回忆版} 和 \texttt{B1 2014} 目前只保留为补充参考，不作为主题讲解的一手来源
+
+\item 如果后面找到对应的完整正式 PDF，可以再把它们升级到主讲材料
+
+\end{itemize}
+
+
+\section{PDF 优先主题讲解提纲}
+
+这份提纲只基于当前已有的“正常 PDF”主讲材料整理：
+
+\begin{itemize}
+
+\item 大学物理1期中试题.pdf
+
+\item 2020年秋大学物理A2期中王山鹰.pdf
+
+\end{itemize}
+
+\subsection{主题 1：刚体转动与角动量}
+
+建议先讲这些题：
+
+\begin{itemize}
+
+\item \texttt{大学物理1期中试题}：6、13、18、19、20、23、24、25
+
+\item \texttt{2020 秋 A2}：计算题 3
+
+\end{itemize}
+
+主线：
+
+\begin{itemize}
+
+\item 转动惯量的建立与变换
+
+\item 力矩、角动量、角冲量
+
+\item 角动量守恒
+
+\item 刚体平面运动与滚动约束
+
+\item 转动系统中的能量守恒
+
+\end{itemize}
+
+\subsection{主题 2：力学基础与质点运动}
+
+建议先讲这些题：
+
+\begin{itemize}
+
+\item \texttt{大学物理1期中试题}：1、3、4、5、8、9、10、11、12、21、22
+
+\item \texttt{2020 秋 A2}：计算题 5
+
+\end{itemize}
+
+主线：
+
+\begin{itemize}
+
+\item 参考系与等效重力
+
+\item 动量变化与冲量方向
+
+\item 势能曲线和运动范围
+
+\item 动能定理与功能关系
+
+\item 约束运动和几何关系
+
+\end{itemize}
+
+\subsection{主题 3：热学与统计物理}
+
+建议先讲这些题：
+
+\begin{itemize}
+
+\item \texttt{2020 秋 A2}：填空 1、2、3、4
+
+\item \texttt{2020 秋 A2}：计算题 2、3、4、5
+
+\end{itemize}
+
+主线：
+
+\begin{itemize}
+
+\item 等温大气与分子分布
+
+\item 绝热、等温过程
+
+\item 熵与微观状态数
+
+\item 热机效率
+
+\item 漏气模型与分子通量
+
+\end{itemize}
+
+\subsection{主题 4：振动与波动}
+
+建议先讲这些题：
+
+\begin{itemize}
+
+\item \texttt{2020 秋 A2}：填空 5、6、7、8、9、10
+
+\item \texttt{2020 秋 A2}：计算题 1
+
+\end{itemize}
+
+主线：
+
+\begin{itemize}
+
+\item 简谐振动相位法
+
+\item 驻波与边界条件
+
+\item 多普勒效应
+
+\item 李萨如图形
+
+\item 反射与驻波节点
+
+\end{itemize}
+
+\subsection{主题 5：相对论}
+
+建议先讲这些题：
+
+\begin{itemize}
+
+\item \texttt{大学物理1期中试题}：14、15、16
+
+\end{itemize}
+
+主线：
+
+\begin{itemize}
+
+\item 长度收缩
+
+\item 相对论速度合成
+
+\item 动量、能量与速度关系
+
+\end{itemize}
+
+\subsection{使用建议}
+
+如果后面要正式开始“主题讲解”，建议按下面顺序讲：
+
+1. 热学与统计物理 2. 振动与波动 3. 刚体转动与角动量 4. 力学基础与质点运动 5. 相对论
+
+原因：
+
+\begin{itemize}
+
+\item \texttt{2020 秋 A2} 这份 PDF 的题面最完整、文本最好整理，适合作为第一轮主讲材料
+
+\item \texttt{大学物理1期中试题} 覆盖面广，适合第二轮做综合提升
+
+\end{itemize}
+
+
+\section{期中试题逐题讲解}
+
+这份文档按试卷分别整理题目，并给出逐题讲解思路。
+
+使用约定：
+
+\begin{itemize}
+
+\item 正式完整 PDF 是主来源
+
+\item 扫描图、JPG、回忆版只作补充
+
+\item 如果某一节只来自非正式 PDF 或图片卷，我会在标题或正文里明确说明
+
+\end{itemize}
+
+\subsection{大学物理1期中试题}
+
+\begin{itemize}
+
+\item 1. 木板自由下落时，板上单摆相对木板如何运动 题意：木板可沿无摩擦导轨自由下落，木板下落时问摆球相对板怎样运动。 思路：取木板为参考系，自由下落意味着有效重力为 0，摆球只受绳张力，没有切向力，所以相对板作匀速圆周运动。 易错点：别把它继续当普通单摆。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 2. 半球碗匀速转动，小球在碗内某高度处相对碗静止，求角速度 题意：半径 10 cm 的半球碗绕竖直轴转动，小球停在高于碗底 4 cm 处。 思路：在转动参考系里，重力和离心力的合力必须沿碗面法线；由几何关系得球的位置参数，再列平衡条件。 结论：角速度约为 12.9 rad/s。 易错点：别把“高于碗底 4 cm”直接当成到圆心的坐标。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 3. 砂子落到向右运动的传送带上，求传送带对砂子的作用方向 题意：砂子自高处落下后，被速度为 3 m/s 的传送带带走。 思路：先求落下瞬间竖直速度，再看传送带要把速度改成“向右且无竖直分量”，作用力方向与动量改变量方向一致。 结论：与水平方向成 53° 向上。 易错点：不要把重力和接触力混在一起。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 4. 椭圆轨道卫星在近地点和远地点的角动量与动能比较 题意：比较近地点 A 和远地点 B 的角动量与动能。 思路：万有引力是中心力，所以角动量守恒；近地点速度更大，所以动能更大。 结论：\texttt{L\_A=L\_B}，\texttt{E\_\{kA\}>E\_\{kB\}}。 易错点：别以为“半径变了角动量就变”。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 5. 小球与远重于它、同向滑行的小车完全弹碰后的小球速度 题意：小车质量远大于小球，二者同向运动，发生完全弹性碰撞。 思路：把小车视为“移动墙”，直接用反射公式。 结论：小球碰后速度为 \texttt{2v-v\_0}。 易错点：符号方向最容易错。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 6. 有转动惯量的定滑轮两侧张力大小比较 题意：滑轮有质量，绳两端挂 \texttt{m\_1,m\_2}，比较左右张力。 思路：对滑轮列转动方程，张力差提供角加速度。 结论：右侧张力大于左侧张力。 易错点：题目给的是某一瞬时角速度，不是角加速度方向。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 7. 圆锥摆运动半周时重力冲量大小 题意：圆锥摆球在水平圆轨道上运动半周，求重力冲量。 思路：重力恒定竖直向下，冲量大小等于 \texttt{mgΔt}；半周时间为 \texttt{πR/v}。 结论：\texttt{J\_g=πRmg/v}。 易错点：别把重力冲量误写成合冲量。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 8. 已知质点平面运动方程，求一段时间内外力做功 题意：由 \texttt{x=5t, y=0.5t\textasciicircum{}2} 求从 2 s 到 4 s 外力做功。 思路：直接用动能定理，先求速度，再算动能变化。 结论：外力做功为 3 J。 易错点：不要多此一举先求合力再积分。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 9. 一对滑动摩擦力分别作用在两物体上时，作功之和如何 题意：问一对滑动摩擦力的总功可能是什么符号。 思路：总功率写成 \texttt{f·(v\_A-v\_B)}，滑动摩擦总是反向于相对运动。 结论：总功恒为负。 易错点：不要套“相互作用力做功和为零”。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 10. 两球跨过光滑圆柱，A 落地后 B 还能再升多高 题意：等效阿特伍德系统，A 落地后 B 继续上升。 思路：先求联动阶段加速度和落地瞬间速度，再把 B 看作竖直上抛。 结论：B 还能再升 \texttt{R/3}。 易错点：别把“总上升高度”和“落地后再升高度”混了。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 11. 由势能曲线判断运动范围与平衡稳定性 题意：给出势能曲线和总能量，判断运动范围。 思路：允许运动区满足 \texttt{E\_p≤E}；稳定平衡看势能极小点。 结论：若初始在 \texttt{x\_A} 与 \texttt{x\_B} 之间，则范围就是 \texttt{x\_A\textasciitilde{}x\_B}。 易错点：平衡位置不是看势能值大小，而是看导数。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 12. 桌面上小物体绕孔转动，缓慢拉绳后哪些量改变 题意：小物体在桌面上绕孔转，缓慢收绳。 思路：拉力始终过孔，所以关于孔的角动量守恒；但拉力做功，动能改变，动量大小和方向也改变。 结论：角动量不变，动能和动量都改变。 易错点：角动量守恒不等于动量守恒。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 13. 挖去偏心圆孔后的圆盘，对原圆心轴的转动惯量 题意：整圆盘挖去一个偏心小圆孔，求剩余部分对原圆心轴的转动惯量。 思路：整盘减去小盘，小孔部分还要用平行轴定理。 结论：\texttt{I=13MR\textasciicircum{}2/32}。 易错点：要先分清题中的 \texttt{M} 是原整圆盘质量。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 14. 相对论尺的倾角变换，求 \texttt{K'} 相对 \texttt{K} 的速度 题意：已知同一根尺在两个惯性系里的倾角，求相对速度。 思路：只有平行于运动方向的长度收缩，垂直分量不变；用倾角关系反推 \texttt{γ}。 结论：\texttt{v=√(2/3)c}。 易错点：不要把两条边都按同样比例收缩。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 15. 狭义相对论四个说法的正误判断 题意：判断相对论若干命题组合。 思路：按本卷的教材口径，逐个判断哪些成立。 结论：选 \texttt{(1)(2)(4)}。 易错点：本卷沿用“相对论质量”旧表述，不要和现代理解混着判。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 16. 已知三维动量和总能量，求粒子速率 题意：给出动量分量和总能量，求速度。 思路：先求动量模，再用 \texttt{v/c=pc/E}。 结论：\texttt{v=0.6c}。 易错点：先求模长再代公式。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 17. 竖直圆环绕竖直直径转动时，小珠离开底部并停在别处的最小角速度 题意：小珠原来在底部，圆环转得够快后会在其他位置平衡。 思路：在旋转系里列切向平衡条件，要求非底部解存在。 结论：最小角速度阈值为 \texttt{√(g/R)}，题意通常表述为“大于这个值”。 易错点：别把“出现其他平衡点”和“底部失稳”割裂开。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 18. 两钢球缩短到轴的距离后角速度变多少 题意：转台上两球沿杆向轴靠近。 思路：关于竖直轴无外力矩，角动量守恒。 结论：角速度变为 36 rad/s。 易错点：守恒的是 \texttt{mr\textasciicircum{}2ω}，不是 \texttt{rω}。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 19. 已知角动量矢量随时间变化，求 \texttt{t=1 s} 时力矩 题意：直接由角动量函数求力矩。 思路：\texttt{M=dL/dt}，对每个分量分别求导。 结论：若末项读作 \texttt{12t\textasciicircum{}3-8t\textasciicircum{}2}，则 \texttt{t=1 s} 时 \texttt{M=12i-2j+20k}。 易错点：这题主要是 OCR 略糊，思路本身很直。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 20. 皮带传动中主动轮在 4 s 内转过多少圈 题意：已知被动轮末角速度，求主动轮在 4 s 内的转数。 思路：无滑动有线速度相等；先由半径比换算角速度，再用匀角加速角位移公式。 结论：主动轮转过 20 圈。 易错点：别直接拿被动轮角位移当主动轮角位移。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 21. 水平释放的匀质细杆下摆到某角度时的角速度 题意：细杆从水平释放后下摆。 思路：绕铰点用机械能守恒，重心下降势能转为转动动能。 结论：\texttt{ω=√(3g sinθ/l)}。 易错点：先看清图里的 \texttt{θ} 是相对水平还是相对竖直。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 22. 同轴挖孔后的圆柱体质心坐标 题意：圆柱一部分被同轴挖空，求剩余质心位置。 思路：把挖去部分视为负质量，做一维质心计算。 结论：在常见读图下有 \texttt{x\_C=-H/28}。 易错点：这题题面分数和几何标注偏糊，符号方向要靠图判断。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 23. 水平自转轴回转仪的进动与冲量矩 题意：已知初末角动量方向，求外力矩方向和冲量矩。 思路：用 \texttt{τ=dL/dt} 和 \texttt{∫τdt=ΔL}。 结论：若末态为 \texttt{Lj}，则冲量矩为 \texttt{L(j-i)}。 易错点：区分进动角速度方向和力矩方向。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 24. 转动圆锥上有一条母线槽，小珠由顶端滑到槽底 题意：圆锥初始自转，小珠沿槽下滑到边缘离开。 思路：关于竖直轴角动量守恒，整体机械能守恒；先求末角速度，再求小珠离开时实验室系速率。 结论：\texttt{ω\_f=Iω\_0/(I+mR\textasciicircum{}2)}，小珠末速由能量式给出。 易错点：别漏掉小珠对轴的角动量。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 25. 小圆柱在可平移半圆柱外侧纯滚下落 题意：要求一组量，包括相对速度、切向/法向加速度、自转角速度与角加速度，以及大半圆柱的速度与加速度。 思路：先用水平方向动量守恒，再用无滑动条件和机械能守恒，最后对时间求导得到加速度。 说明：这是一道综合约束题，推导很长，关键是不能把大半圆柱错当固定轨道。 易错点：漏掉“大半圆柱可以平移”会导致所有系数都错。
+
+\end{itemize}
+
+\subsection{大学物理1期中 2022 秋回忆版}
+
+这部分只作为补充材料，不建议拿来做主题主讲。
+
+\begin{itemize}
+
+\item 一-1. 斜抛体在最高点求曲率半径 思路：最高点速度只剩水平分量 \texttt{v\_0 cosθ}，法向加速度就是 \texttt{g}，所以 \texttt{ρ=v\textasciicircum{}2/g}。 结论：\texttt{ρ=v\_0\textasciicircum{}2 cos\textasciicircum{}2θ/g}。 易错点：别把初速度 \texttt{v\_0} 直接代进去。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-2. 已知势能曲线和总能量 \texttt{E=0}，求运动范围与 \texttt{x\_0} 处动能 思路：用 \texttt{K=E-U=-U}，可达区间由 \texttt{U≤0} 决定。 说明：右端图形有些模糊，严格范围要结合回忆版理解。 易错点：总能量为 0 不等于动能也为 0。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-3. 高速自转陀螺在水平面内进动，求进动角速度 思路：稳定进动满足 \texttt{Ω=τ/L=mgl/(Jω)}。 易错点：不要把 \texttt{J} 误认成进动轴的转动惯量。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-4. 正方形均匀薄板已知过中心垂直板面的转动惯量为 \texttt{J}，求以对角线为轴的转动惯量 思路：由垂直轴定理和两条对角线对称性，\texttt{J=2J\_d}。 结论：\texttt{J\_d=J/2}。 易错点：别误用平行轴定理。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-5. 飞轮受阻力矩 \texttt{M∝ω\textasciicircum{}2} 减速，求 \texttt{ω=ω\_0/3} 时的角加速度和已历时间 思路：由 \texttt{J dω/dt=-kω\textasciicircum{}2} 先求角加速度，再积分求时间。 结论：\texttt{α=-kω\_0\textasciicircum{}2/(9J)}，\texttt{t=2J/(kω\_0)}。 易错点：积分时最容易漏负号。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-6. 质点沿 \texttt{x} 轴运动且 \texttt{v=kx}，求合力与 \texttt{x} 的关系及从 \texttt{x\_0} 到 \texttt{x\_1} 的时间 思路：用 \texttt{a=v dv/dx} 得 \texttt{a=k\textasciicircum{}2x}，时间用 \texttt{dt=dx/(kx)}。 结论：\texttt{F=mk\textasciicircum{}2x}，\texttt{t=(1/k)ln|x\_1/x\_0|}。 易错点：别把 \texttt{a} 写成 \texttt{dv/dx}。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-7. 光滑地面上，人站在滑板上从距后端 \texttt{l/4} 走到前端 思路：系统水平方向无外力，质心不变。 结论：滑板后退 \texttt{3l/8}。 易错点：人相对滑板的位移是 \texttt{3l/4}，不是 \texttt{l}。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-8. 小车以恒加速度前进时，车顶螺帽脱落 思路：对地只受重力；对车系还要叠加惯性加速度 \texttt{-a}。 结论：对地加速度竖直向下，大小 \texttt{g}；对车加速度大小 \texttt{√(a\textasciicircum{}2+g\textasciicircum{}2)}。 易错点：不能把相对车加速度写成标量 \texttt{g-a}。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-9. 已知轨迹 \texttt{x=t, y=t\textasciicircum{}2}，其中一力 \texttt{F=5t i}，求该力在 \texttt{1 s} 到 \texttt{2 s} 内做功 思路：\texttt{W=∫F·v dt}，这里只有 \texttt{x} 分量做功。 结论：\texttt{W=15/2 J}。 易错点：别把 \texttt{y} 方向也算到这一个力头上。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-10. 轻杆两端固定 \texttt{m} 与 \texttt{2m} 小球，绕过中点且与杆垂直的水平轴在竖直面内转动 思路：先由重力矩和转动惯量求角加速度，再由机械能守恒求角速度。 说明：PDF 与 JPG 的题号略有错位，这里按 JPG 正式题号整理。 易错点：重心到轴的距离别写错。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-11. 已知质点角动量 \texttt{L=6t\textasciicircum{}2 i-(2t+1)j}，求 \texttt{t=1 s} 时所受力矩 思路：直接用 \texttt{M=dL/dt}。 说明：这题与上一题在回忆版中题号有互换。 易错点：分量求导别漏。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-12. 半径 \texttt{R} 的均质圆盘挖去半径 \texttt{r} 的偏心小圆盘 思路：用“负质量法”求剩余部分质心。 结论：若小孔圆心在 \texttt{+x} 方向，则 \texttt{x\_c=-r\textasciicircum{}2d/(R\textasciicircum{}2-r\textasciicircum{}2)}。 易错点：符号方向由孔的位置决定。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 二-1. 斥力有心场 \texttt{F(r)=k/r\textasciicircum{}2}，求势能与最近距离 思路：先由 \texttt{F=-dU/dr} 得 \texttt{U=k/r}，再用机械能和角动量守恒处理有效势。 易错点：斥力场的势能符号别写反。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 二-2. 细杆从桌边滑落，在持续接触阶段求支持力与转角关系 思路：对杆列平动和转动方程，结合几何约束与摩擦条件。 说明：题面不完整，主要依赖回忆版恢复。 易错点：不能把桌角直接当固定转轴。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 二-3. 带槽圆环可绕竖直直径转动，小球从槽顶端滑下 思路：关于竖直轴角动量守恒，整体机械能守恒。 说明：题面仍有一些缺失，但“顶端滑到图示侧点”的框架是清楚的。 易错点：别漏圆环自身转动惯量。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 二-4. 两个相同圆盘碰撞后重新恢复纯滚 思路：先做一维弹性碰撞，再考虑碰后地面摩擦让两个圆盘重新达到纯滚条件。 结论：原先运动盘最终速度变为 \texttt{v/3}，原先静止盘变为 \texttt{2v/3}。 易错点：碰撞瞬间无摩擦，不代表之后地面也无摩擦。
+
+\end{itemize}
+
+\subsection{2020 年秋大学物理 A2 期中}
+
+\begin{itemize}
+
+\item 一-1. 海平面上氮气与氧气浓度比为 4:1，求海拔 5 km 处的浓度比 思路：对两种气体分别用等温大气公式，再相除。 结论：高处的 \texttt{N\_2/O\_2} 比值约为 \texttt{4.34:1}。 易错点：氧气更重，衰减更快，所以比值应增大。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-2. 单原子理想气体绝热压缩到原体积一半，求平均速率变化倍数 思路：先用绝热关系求温度变化，再利用平均速率与 \texttt{√T} 成正比。 结论：平均速率变为原来的 \texttt{2\textasciicircum{}(1/3)} 倍。 易错点：别直接按体积比推平均速率。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-3. \texttt{ν mol} 理想气体等温压缩到原体积一半，求熵变和微观状态数之比 思路：\texttt{ΔS=νR ln(V\_2/V\_1)}，再用 \texttt{ΔS=k ln(Ω\_2/Ω\_1)}。 结论：\texttt{ΔS=-νR ln2}，\texttt{Ω\_2/Ω\_1=2\textasciicircum{}(-νN\_A)}。 易错点：等温压缩不代表熵变为 0。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-4. 温熵图中矩形循环的名称与效率 思路：矩形 T-S 循环对应卡诺循环，效率用面积比。 结论：这是卡诺循环，效率为 \texttt{1/3}。 易错点：吸热量对应上方等温线下的面积，不是整个矩形面积。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-5. 弹簧振子从平衡位置向 \texttt{+x} 方向出发，求首次到达 \texttt{A/2} 的时刻 思路：设 \texttt{x=A sin(ωt)}，解 \texttt{sin(ωt)=1/2}。 结论：\texttt{t=T/12}。 易错点：很容易误写成 \texttt{T/6}。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-6. 长为 \texttt{L} 的杆中波速为 \texttt{u}，一端固定，求基频 思路：按“一端固定、一端自由”的基模处理。 结论：\texttt{f\_1=u/(4L)}。 易错点：别误当成两端固定。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-7. 运动波源与运动反射壁的多普勒效应 思路：先算反射壁接收到的频率，再把反射壁当移动波源算反射波频率。 结论：反射壁接收频率约为 \texttt{291.43 Hz}，静止观察者听到的拍频约为 \texttt{17.68 Hz}。 易错点：第二次变换时反射壁已经是波源，不再是观察者。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-8. 两同方向简谐振动合成的振幅与初相位 思路：先把两个余弦式化成同一相位形式，再合成。 结论：振幅 \texttt{4×10\textasciicircum{}-2 m}，初相位 \texttt{π/2}。 易错点：三角变形时最容易把相位号搞错。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-9. 根据李萨如图判断角速度比；若为左旋正圆再求振幅比和相位差 思路：从图形回环数判断频率比；左旋正圆要求同频同振幅并满足特定相位差。 结论：图中 \texttt{ω\_y:ω\_x=2:1}；若为左旋正圆，则 \texttt{A\_y:A\_x=1:1}，相位差可写为 \texttt{-π/2}。 易错点：不同教材对“左旋”符号约定可能不同。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-10. 已知驻波 \texttt{y=2cos(πx)cos(90t+π/2)}，求原波波长和周期 思路：从标准驻波式直接读出 \texttt{k,ω}。 结论：\texttt{λ=2 m}，\texttt{T=π/45 s}。 易错点：别把 90 当频率而不是角频率。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 二-1. 一维横波从波疏介质入射到波密界面，写入射波、反射波并求静止点 思路：先写右行入射波，再利用“疏到密反相”写反射波，合成后求驻波节点。 结论：静止点满足 \texttt{x=λ/4+nλ/2}。 易错点：反射反相这一点非常关键。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 二-2. 已知速率分布 \texttt{f(v)=Av\textasciicircum{}2 (0≤v≤v\_m)}，求归一化常数、平均速率和区间平均速率 思路：分别做归一化积分、平均值积分和条件平均积分。 结论：\texttt{A=3/v\_m\textasciicircum{}3}，平均速率 \texttt{3v\_m/4}，区间 \texttt{v\_m/2\textasciitilde{}v\_m} 的平均速率为 \texttt{45v\_m/56}。 易错点：第 3 问不能只算分子，还要除以该区间的概率。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 二-3. \texttt{2 mol} 水蒸气作热循环，求各段功、内能变化、循环功和效率 思路：先从图上读出各状态点，\texttt{b→c} 是等温过程；循环功等于 P-V 图面积，效率为 \texttt{W/Q\_in}。 结论：\texttt{W\_\{d→a\}≈-5.07×10\textasciicircum{}3 J}，\texttt{ΔU\_\{a→b\}≈3.04×10\textasciicircum{}4 J}，\texttt{W\_cycle≈5.47×10\textasciicircum{}3 J}，效率约 \texttt{13.4\%}。 易错点：别把等温段错当成等压段。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 二-4. 理想气体经小孔漏气，温度恒定，求压强降到初值 \texttt{1/3} 的时间 思路：用分子通量 \texttt{dN/dt=-(1/4)n v̄ A} 建微分方程，再由 \texttt{p∝N} 转成压强关系。 结论：\texttt{t=(4V/(A v̄))ln3}。 易错点：漏掉通量公式里的 \texttt{1/4}。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 二-5. 两个定压热容均为 \texttt{C\_p} 的物体，通过工质使其中一个降温，求最小外功 思路：最小外功对应可逆过程，所以总熵变为 0，再联立能量关系。 结论：\texttt{W\_min=C\_p(T\_i-T\_f)\textasciicircum{}2/T\_f}。 易错点：如果不加“可逆”条件，就做不出最小功。
+
+\end{itemize}
+
+\subsection{大学物理 B1 2014 期中}
+
+这部分目前主要来自图片卷，适合查题，不适合作为主题主讲材料。
+
+\begin{itemize}
+
+\item 一-1. 半径 \texttt{1.5 m} 的飞轮，初角速度 \texttt{10 rad/s}，角加速度 \texttt{-5 rad/s\textasciicircum{}2}，求角位移再次为 0 的时刻及线速度 思路：用匀角变速公式求 \texttt{θ=0} 的非零时刻，再求轮缘线速度。 易错点：别把“角位移为 0”误认成“角速度为 0”。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-2. 线密度 \texttt{λ=ax+b} 的细杆，求质心坐标 思路：先求总质量，再求一阶矩。 易错点：线密度不是常量，要积分。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-3. 质点沿 \texttt{x} 轴运动且 \texttt{v=kx}，求合力与从 \texttt{x\_0} 到 \texttt{x\_1} 的时间 思路：\texttt{a=v dv/dx}，再对 \texttt{dt=dx/v} 积分。 易错点：\texttt{a} 不是 \texttt{dv/dx}。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-4. 矩形薄板已知边轴转动惯量，求过中心垂直板面的转动惯量 思路：平行轴定理配合垂直轴定理。 易错点：边轴与中心轴别混。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-5. 圆锥摆在 1/4 周期内，重力对悬点 \texttt{O} 的冲量矩 思路：对力矩矢量积分，或直接用角动量定理。 易错点：冲量矩不是简单标量 \texttt{τΔt}。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-6. 物块沿 30° 斜面下滑，求滑动摩擦系数和地面对斜面的静摩擦 思路：先写物块沿斜面方向方程，再单独分析斜面受力。 易错点：地面静摩擦要分析斜面，不是重复写物块方程。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-7. 给定势能曲线与总能量，求运动范围并判断平衡类型 思路：先找 \texttt{U≤E} 的允许区，再看极值点稳定性。 易错点：别把不同连通区间混成一段。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-8. 边长 \texttt{a} 的立方体以 \texttt{0.6c} 运动，求地面测得体积 思路：只有沿运动方向的一条边收缩。 结论：体积变为原来的 \texttt{1/γ}。 易错点：不是三条边都缩。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 一-9. 飞船以 \texttt{0.6c} 飞行，向前抛出 \texttt{0.8c} 物体，求地面测得速度 思路：用一维相对论速度合成。 易错点：不能做经典相加。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 二-1. 两人分别抓住滑轮两端上爬，A 用力更大，讨论谁先到屋顶 思路：理想滑轮下先看张力是否相同；若考虑滑轮质量和摩擦，则再写转动方程。 易错点：直觉上“A 用力更大就先到”在理想模型里并不成立。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 三-1. 纯滚轮缘点轨迹是摆线，求坐标、速度、加速度及最高点曲率半径 思路：写摆线参数方程，逐次求导。 易错点：最高点不是速度为 0 的点。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 三-2. 飞船从北极沿切向飞出，轨道与 \texttt{y} 轴再交于 \texttt{C}，求 \texttt{C} 点速度与初速夹角 思路：用机械能守恒和角动量守恒。 易错点：中心力问题一定要想到角动量守恒。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 三-3. 圆柱从桌边滚下，求支持力与转角关系及开始滑动的临界角 思路：无滑动时用能量和接触约束，再令所需静摩擦达到极限。 易错点：临界条件不是 \texttt{N=0}，而是摩擦到上限。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 三-4. 小球与杆弹性碰撞，求碰后小球速度、杆角速度和杆质心速度 思路：联立线动量守恒、角动量守恒和动能守恒。 易错点：杆的转动惯量用的是关于质心的。
+
+\end{itemize}
+
+\begin{itemize}
+
+\item 三-5. 相对论介子总能量已知，求飞行距离 思路：先求 \texttt{γ}，再求实验室系寿命和飞行距离。 易错点：固有寿命要乘时间延缓因子。
+
+\end{itemize}
+
+
+\end{document}

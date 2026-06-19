@@ -1,0 +1,371 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt]{article}
+\usepackage[UTF8]{ctex}
+\setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+\setCJKsansfont{SimHei}
+
+% 页面布局与页边距
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+
+% 数学公式与符号
+\usepackage{amsmath,amssymb,bm}
+\usepackage{mathrsfs}
+
+% 插图与绘图
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
+
+% 表格与版面美化
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+% 定义颜色
+\definecolor{primary}{HTML}{0D47A1}
+\definecolor{secondary}{HTML}{1565C0}
+\definecolor{accent}{HTML}{E65100}
+\definecolor{bglight}{HTML}{F7FAFF}
+\definecolor{border}{HTML}{D2ECD3}
+
+% 页眉页脚设置
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\fontsize{9}{11}\selectfont 可压缩流体力学专题解析}
+\fancyhead[R]{\fontsize{9}{11}\selectfont 激波与膨胀波流动}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% 自定义环境
+\newtcolorbox{problembox}[1]{
+  colback=bglight,
+  colframe=primary,
+  fonttitle=\bfseries\large,
+  title=#1,
+  boxrule=1pt,
+  arc=4pt,
+  breakable
+}
+
+\newtcolorbox{keypointbox}[1]{
+  colback=orange!5,
+  colframe=accent,
+  fonttitle=\bfseries,
+  title=#1,
+  boxrule=0.8pt,
+  arc=3pt,
+  breakable
+}
+
+\begin{document}
+
+\title{\textbf{\Large 可压缩流动与气体动力学经典真题解析：\\ 激波与膨胀波的组合流动}}
+\author{流体力学学习笔记}
+\date{\today}
+\maketitle
+
+\thispagestyle{plain}
+
+\begin{problembox}{原题重现}
+在拍摄纹影图像有限大小的圆形窗口中，发现壁面 $A$ 处有极小划痕，显示出一道 $30^\circ$ 的波；拐角 $B$ 处有 $50^\circ$ 的波。如图 \ref{fig:problem_diagram} 所示。
+\begin{enumerate}
+    \item 求壁面偏折角 $\theta$；
+    \item 已知 $CD$ 上的静压为 $p_3 = 1.0 \times 10^5 \text{ N/m}^2$，求来流高压大储气罐内的压力 $p_0$。
+\end{enumerate}
+\textbf{已知条件：} 气体为无粘常比热完全气体（比热比 $\gamma = 1.4$），$AB$、$CD$ 段壁面与水平来流速度平行。
+\end{problembox}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[scale=1.3, >=Stealth]
+  % 定义坐标
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (1.5,0);
+  \coordinate (B) at (4.5,0);
+  \coordinate (C) at (6.5,0.6548);
+  \coordinate (D) at (8.5,0.6548);
+  
+  % 绘制壁面
+  \draw[line width=1.5pt, line cap=rect] (O) -- (A) -- (B) -- (C) -- (D);
+  
+  % 壁面下方的阴影线
+  \foreach \x in {0.0, 0.2, ..., 4.4} {
+    \draw[thin, gray] (\x, 0) -- (\x-0.15, -0.15);
+  }
+  \foreach \t in {0.0, 0.1, ..., 1.0} {
+    \coordinate (P) at ($(B)!\t!(C)$);
+    \draw[thin, gray] (P) -- ($(P) + (-0.1,-0.15)$);
+  }
+  \foreach \x in {6.5, 6.7, ..., 8.5} {
+    \draw[thin, gray] (\x, 0.6548) -- (\x-0.15, 0.5048);
+  }
+  
+  % 辅助虚线
+  \draw[dashed, gray] (B) -- ++(2.5, 0);
+  \draw[dashed, gray] (C) -- ++(-1.5, 0);
+  \draw[dashed, gray] (C) -- ++(2.0, 0);
+  
+  % 壁面偏折角 theta 标注
+  \draw[draw=black, thin, ->] (4.5+1.2, 0) arc (0:18.13:1.2);
+  \node[right] at (4.5+1.25, 0.2) {$\theta$};
+  
+  % A处划痕
+  \fill[red] (A) circle (1.5pt) node[below=2pt] {A (划痕)};
+  
+  % A处的马赫波 (30度)
+  \draw[orange, thick, ->] (A) -- ++(30:2.8) node[above right] {马赫波 ($30^\circ$)};
+  \draw[thin] (A) ++(0.8, 0) arc (0:30:0.8);
+  \node[right] at ($(A)+(30:0.8)$) {\fontsize{8}{10}\selectfont $30^\circ$};
+  
+  % B处的斜激波 (50度)
+  \draw[red, thick, ->] (B) -- ++(50:2.8) node[above right] {斜激波 ($50^\circ$)};
+  \draw[thin] (B) ++(0.8, 0) arc (0:50:0.8);
+  \node[above right] at ($(B)+(0.8,0.1)$) {\fontsize{8}{10}\selectfont $50^\circ$};
+  
+  % 拐角标注
+  \node[below=2pt] at (B) {B};
+  \node[above=2pt] at (C) {C};
+  
+  % C处的膨胀扇形区
+  \draw[blue, thin] (C) -- ++(68.01:2.0);
+  \draw[blue, thin] (C) -- ++(58.6:2.0);
+  \draw[blue, thin] (C) -- ++(49.2:2.0);
+  \draw[blue, thin] (C) -- ++(39.8:2.0);
+  \draw[blue, thin] (C) -- ++(31.17:2.0);
+  \node[blue, right] at ($(C)+(39.8:2.0)$) {膨胀波};
+  
+  % 区域标注
+  \node at (0.8, 0.8) {\textbf{区域 \uppercase\expandafter{\romannumeral1}}};
+  \node at (0.8, 0.5) {$M_1 = 2$};
+  \node at (0.8, 0.2) {$p_1, p_{01}$};
+  
+  \node at (5.0, 1.2) {\textbf{区域 \uppercase\expandafter{\romannumeral2}}};
+  \node at (5.0, 0.9) {$M_2 \approx 1.31$};
+  \node at (5.0, 0.6) {$p_2, p_{02}$};
+  
+  \node at (8.0, 1.8) {\textbf{区域 \uppercase\expandafter{\romannumeral3}}};
+  \node at (8.0, 1.5) {$M_3 \approx 1.93$};
+  \node at (8.0, 1.2) {$p_3, p_{03}$};
+  
+  % 纹影圆形窗口
+  \draw[dashed, black!60, thick] (3.0, 0.5) circle (1.8);
+  \node[black!60] at (3.0, 2.5) {拍摄区域（圆形窗口）};
+
+\end{tikzpicture}
+\caption{流动结构与物理区域划分示意图}
+\label{fig:problem_diagram}
+\end{figure}
+
+\section{核心物理模型与基础公式}
+
+本题属于典型的\textbf{超声速气体动力学流动问题}，主要涉及以下三个核心物理过程：
+
+\begin{keypointbox}{物理过程分解与公式链}
+\begin{enumerate}
+    \item \textbf{微弱扰动与马赫波 (A 处)：}
+    壁面上的极小划痕仅引起微弱扰动，因此在超声速流场中会产生一条马赫线。马赫线与来流方向的夹角为马赫角 $\mu$，其与来流马赫数 $M$ 的关系为：
+    \begin{equation}
+        \sin \mu = \frac{1}{M}
+    \end{equation}
+    
+    \item \textbf{压缩拐角与斜激波 (B 处)：}
+    超声速流通过内折角（压缩拐角）时，会产生斜激波以偏转气流。偏折角 $\theta$、斜激波角 $\beta$ 和激波前马赫数 $M_1$ 满足经典的 $\theta-\beta-M$ 关系式：
+    \begin{equation}
+        \tan \theta = 2 \cot \beta \frac{M_1^2 \sin^2 \beta - 1}{M_1^2 (\gamma + \cos 2\beta) + 2}
+    \end{equation}
+    激波前后的法向马赫数分别为 $M_{n1} = M_1 \sin \beta$ 和 $M_{n2}$，其中 $M_{n2}$ 的关系式为：
+    \begin{equation}
+        M_{n2} = \sqrt{\frac{1 + \frac{\gamma-1}{2} M_{n1}^2}{\gamma M_{n1}^2 - \frac{\gamma-1}{2}}}
+    \end{equation}
+    激波后的实际马赫数 $M_2$ 为：
+    \begin{equation}
+        M_2 = \frac{M_{n2}}{\sin(\beta - \theta)}
+    \end{equation}
+    激波前后的总压（滞止压强）之比 $\frac{p_{02}}{p_{01}}$ 可以根据滞止压强的定义以及激波前后的静压比直接推导。因为：
+    \begin{equation}
+        p_0 = p \left( 1 + \frac{\gamma-1}{2} M^2 \right)^{\frac{\gamma}{\gamma-1}}
+    \end{equation}
+    因此，激波后的总压 $p_{02}$ 与激波前的总压 $p_{01}$ 之比为：
+    \begin{equation}
+        \frac{p_{02}}{p_{01}} = \frac{p_2}{p_1} \times \left( \frac{1 + \frac{\gamma-1}{2} M_2^2}{1 + \frac{\gamma-1}{2} M_1^2} \right)^{\frac{\gamma}{\gamma-1}}
+    \end{equation}
+    其中，激波前后的静压比 $\frac{p_2}{p_1}$ 可以由正激波静压比公式（以法向马赫数 $M_{n1} = M_1 \sin \beta$ 为自变量）决定：
+    \begin{equation}
+        \frac{p_2}{p_1} = 1 + \frac{2\gamma}{\gamma+1} (M_{n1}^2 - 1)
+    \end{equation}
+    对于空气（常比热比 $\gamma = 1.4$），上述总压比公式可简写为极具物理意义且易于记忆的式子：
+    \begin{equation}
+        \frac{p_{02}}{p_{01}} = \frac{p_2}{p_1} \times \left( \frac{1 + 0.2 M_2^2}{1 + 0.2 M_1^2} \right)^{3.5}
+    \end{equation}
+    
+    \item \textbf{膨胀拐角与 Prandtl-Meyer 膨胀波 (C 处)：}
+    超声速流通过外折角（膨胀拐角）时，会通过 Prandtl-Meyer 膨胀扇形区进行无旋等熵膨胀。膨胀角 $\Delta \theta$ 与马赫数的关系为：
+    \begin{equation}
+        \nu(M_3) = \nu(M_2) + \Delta \theta
+    \end{equation}
+    其中 $\nu(M)$ 为 Prandtl-Meyer 函数（对于 $\gamma = 1.4$ 的空气）：
+    \begin{equation}
+        \nu(M) = \sqrt{6} \arctan \left( \sqrt{\frac{M^2-1}{6}} \right) - \arctan \left( \sqrt{M^2-1} \right)
+    \end{equation}
+    由于膨胀过程为等熵过程，气流的滞止压力保持不变：
+    \begin{equation}
+        p_{03} = p_{02}
+    \end{equation}
+    气流在任意马赫数 $M$ 下的静压 $p$ 与滞止压强 $p_0$ 满足等熵关系：
+    \begin{equation}
+        \frac{p_0}{p} = \left( 1 + \frac{\gamma-1}{2} M^2 \right)^{\frac{\gamma}{\gamma-1}}
+    \end{equation}
+\end{enumerate}
+\end{keypointbox}
+
+\section{详细求解步骤}
+
+\subsection{第一步：求解来流马赫数 $M_1$}
+
+在壁面 $A$ 处，极小划痕产生的微弱波属于马赫波。因为壁面 $AB$ 平行于来流方向，所以马赫波与水平面夹角即为马赫角：
+\[
+\mu_1 = 30^\circ
+\]
+由此可以求得来流马赫数 $M_1$：
+\begin{equation}
+    M_1 = \frac{1}{\sin \mu_1} = \frac{1}{\sin 30^\circ} = 2.0
+\end{equation}
+
+\subsection{第二步：求解壁面偏折角 $\theta$ （第一问）}
+
+在拐角 $B$ 处，壁面向上折角 $\theta$，气流受到压缩产生斜激波。斜激波与水平来流的夹角为激波角：
+\[
+\beta = 50^\circ
+\]
+将 $M_1 = 2.0$, $\beta = 50^\circ$, $\gamma = 1.4$ 代入 $\theta-\beta-M$ 关系式中：
+\begin{align*}
+    \tan \theta &= 2 \cot 50^\circ \frac{2.0^2 \sin^2 50^\circ - 1}{2.0^2 (1.4 + \cos 100^\circ) + 2}
+\end{align*}
+计算各个分项：
+\begin{itemize}
+    \item $\cot 50^\circ \approx 0.8391$
+    \item $\sin 50^\circ \approx 0.7660 \implies \sin^2 50^\circ \approx 0.5868$
+    \item $\cos 100^\circ \approx -0.1736$
+\end{itemize}
+代入分子与分母：
+\begin{align*}
+    \text{分子} &= 2 \times 0.8391 \times (4.0 \times 0.5868 - 1) = 1.6782 \times 1.3473 \approx 2.2610 \\
+    \text{分母} &= 4.0 \times (1.4 - 0.1736) + 2 = 4.0 \times 1.2264 + 2 = 6.9056 \\
+    \tan \theta &= \frac{2.2610}{6.9056} \approx 0.3274
+\end{align*}
+由此解得壁面偏折角 $\theta$ 为：
+\begin{equation}
+    \theta = \arctan(0.3274) \approx 18.13^\circ
+\end{equation}
+
+\subsection{第三步：求解斜激波后的流动状态（区域 \uppercase\expandafter{\romannumeral2}）}
+
+为了向下游反推，首先需要求得区域 \uppercase\expandafter{\romannumeral2} 的法向马赫数 $M_{n1}$：
+\[
+M_{n1} = M_1 \sin \beta = 2.0 \sin 50^\circ \approx 1.5321
+\]
+激波后法向马赫数 $M_{n2}$：
+\[
+M_{n2} = \sqrt{\frac{1 + 0.2 M_{n1}^2}{1.4 M_{n1}^2 - 0.2}} = \sqrt{\frac{1 + 0.2 \times 2.3473}{1.4 \times 2.3473 - 0.2}} = \sqrt{\frac{1.4695}{3.0862}} \approx 0.6900
+\]
+则激波后区域 \uppercase\expandafter{\romannumeral2} 的实际马赫数 $M_2$ 为：
+\begin{equation}
+    M_2 = \frac{M_{n2}}{\sin(\beta - \theta)} = \frac{0.6900}{\sin(50^\circ - 18.13^\circ)} = \frac{0.6900}{\sin(31.87^\circ)} \approx \frac{0.6900}{0.5280} \approx 1.3069
+\end{equation}
+
+首先计算激波前后的静压比为：
+\begin{equation}
+    \frac{p_2}{p_1} = 1 + \frac{2 \times 1.4}{1.4 + 1} (M_{n1}^2 - 1) = 1 + \frac{7}{6} (1.5321^2 - 1) \approx 2.5718
+\end{equation}
+接着根据滞止压强的定义比值计算激波前后的总压比为：
+\begin{align}
+    \frac{p_{02}}{p_{01}} &= \frac{p_2}{p_1} \times \left( \frac{1 + 0.2 M_2^2}{1 + 0.2 M_1^2} \right)^{3.5} \nonumber \\
+    &= 2.5718 \times \left( \frac{1 + 0.2 \times 1.3069^2}{1 + 0.2 \times 2.0^2} \right)^{3.5} \nonumber \\
+    &= 2.5718 \times \left( \frac{1 + 0.2 \times 1.7080}{1 + 0.2 \times 4.0} \right)^{3.5} \nonumber \\
+    &= 2.5718 \times \left( \frac{1.3416}{1.8000} \right)^{3.5} \approx 2.5718 \times 0.7453^{3.5} \nonumber \\
+    &\approx 2.5718 \times 0.3574 \approx 0.9193
+\end{align}
+（斜激波导致了约 $8.07\%$ 的总压损失。）
+
+\begin{tcolorbox}[colback=yellow!5,colframe=orange,title=学习与考场提示：如何快速获取此总压比值？]
+在实际计算中，该方法不仅极具物理意义（直接源于滞止压强定义），而且计算量明显小于记忆复杂的正激波总压公式。
+\begin{itemize}
+    \item \textbf{推荐方法：查《正激波表》（Normal Shock Table）}。在超声速空气动力学考试中，也可以直接通过查正激波表快速获得此值。以激波的法向马赫数分量 $M_{n1} = 1.5321$ 查正激波表：
+    \[
+    \text{查表得：} \quad M_{n1} = 1.53 \implies \frac{p_{02}}{p_{01}} \approx 0.9200; \quad M_{n1} = 1.54 \implies \frac{p_{02}}{p_{01}} \approx 0.9166
+    \]
+    对其进行简单的线性插值：
+    \[
+    \frac{p_{02}}{p_{01}} \approx 0.9200 - 0.21 \times (0.9200 - 0.9166) = 0.9193
+    \]
+    这与解析公式计算得出的 $0.9193$ 完全一致。
+\end{itemize}
+\end{tcolorbox}
+
+\subsection{第四步：求解膨胀波后的流动状态（区域 \uppercase\expandafter{\romannumeral3}）}
+
+在拐角 $C$ 处，壁面水平偏折角从上倾 $\theta$ 回归到水平 $CD$，气流向下偏折了：
+\[
+\Delta \theta = \theta = 18.13^\circ \approx 0.3164 \text{ rad}
+\]
+首先计算区域 \uppercase\expandafter{\romannumeral2} 的 Prandtl-Meyer 函数值 $\nu(M_2)$：
+\begin{align*}
+    \nu(M_2) &= \sqrt{6} \arctan \left( \sqrt{\frac{1.3069^2-1}{6}} \right) - \arctan \left( \sqrt{1.3069^2-1} \right) \\
+    &= \sqrt{6} \arctan \left( \sqrt{\frac{0.7080}{6}} \right) - \arctan \left( \sqrt{0.7080} \right) \\
+    &= \sqrt{6} \arctan(0.3435) - \arctan(0.8414) \\
+    &\approx 2.4495 \times 0.3308 \text{ rad} - 0.6994 \text{ rad} \\
+    &\approx 0.8103 \text{ rad} - 0.6994 \text{ rad} = 0.1109 \text{ rad} \approx 6.359^\circ
+\end{align*}
+通过 Prandtl-Meyer 膨胀，区域 \uppercase\expandafter{\romannumeral3} 的函数值为：
+\begin{equation}
+    \nu(M_3) = \nu(M_2) + \Delta \theta = 6.359^\circ + 18.13^\circ = 24.489^\circ \approx 0.4274 \text{ rad}
+\end{equation}
+根据 $\nu(M_3) = 24.489^\circ$，反查 Prandtl-Meyer 函数表或通过数值迭代求解 $M_3$：
+\begin{equation}
+    M_3 \approx 1.9320
+\end{equation}
+
+\subsection{第五步：反推来流滞止压强 $p_0$ （第二问）}
+
+由于 $C$ 处的膨胀流动是等熵的，区域 \uppercase\expandafter{\romannumeral2} 到区域 \uppercase\expandafter{\romannumeral3} 的总压守恒：
+\[
+p_{03} = p_{02}
+\]
+已知 $CD$ 上的静压 $p_3 = 1.0 \times 10^5 \text{ N/m}^2$，根据等熵关系求区域 \uppercase\expandafter{\romannumeral3} 的总压 $p_{03}$：
+\begin{align}
+    p_{03} &= p_3 \left( 1 + \frac{\gamma-1}{2} M_3^2 \right)^{\frac{\gamma}{\gamma-1}} \nonumber \\
+    &= 1.0 \times 10^5 \times \left( 1 + 0.2 \times 1.9320^2 \right)^{3.5} \nonumber \\
+    &= 1.0 \times 10^5 \times (1 + 0.7465)^{3.5} \nonumber \\
+    &= 1.0 \times 10^5 \times 7.0411 = 7.0411 \times 10^5 \text{ N/m}^2
+\end{align}
+因为等熵膨胀，故区域 \uppercase\expandafter{\romannumeral2} 的总压为：
+\[
+p_{02} = p_{03} = 7.0411 \times 10^5 \text{ N/m}^2
+\]
+由来流大储气罐的压力即来流滞止压力 $p_{01}$：
+\begin{equation}
+    p_{01} = \frac{p_{02}}{0.9193} = \frac{7.0411 \times 10^5}{0.9193} \approx 7.659 \times 10^5 \text{ N/m}^2
+\end{equation}
+
+因此，来流高压大储气罐内的压力为：
+\begin{equation*}
+    \bm{p_{01} \approx 7.66 \times 10^5 \text{ N/m}^2}
+\end{equation*}
+
+\section{方法学总结与知识点拓展}
+
+\begin{enumerate}
+    \item \textbf{为什么这不像“常见”的流体力学题？}
+    普通流体力学课（如土木、水利、市政方向）通常只讲到\textbf{不可压缩流}（液体和低速气体，马赫数 $M < 0.3$）。这类课程的核心是伯努利方程、管路水头损失、粘性阻力等。
+    本题是典型的\textbf{气体动力学 (Gas Dynamics) / 可压缩流体力学}问题，核心是气流的“波关系”。
+    
+    \item \textbf{马赫波与划痕的妙用：}
+    纹影法 (Schlieren photography) 是利用光在不同密度流体中的折射率差异来显影波纹的技术。壁面上的微小划痕（极小扰动）在超声速气流中天然地产生一条马赫线，成了测量来流马赫数 $M_1$ 的“无源测量计”。
+    
+    \item \textbf{总压损失的实质：}
+    等熵膨胀（C处）是不损失总压的，但是激波（B处）是强烈的非等熵过程。超声速气流经过激波时，由于强烈的粘性与热传导，机械能耗散，使得总压降低。因此在反推来流总压时，必须乘上激波总压恢复系数的倒数。
+\end{enumerate}
+
+\end{document}

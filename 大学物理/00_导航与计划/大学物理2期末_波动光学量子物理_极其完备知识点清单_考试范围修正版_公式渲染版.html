@@ -1,0 +1,1201 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>大学物理2期末_波动光学量子物理_极其完备知识点清单_考试范围修正版 - formula rendered</title>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+      chtml: { matchFontHeight: false }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    :root { --ink:#111827; --muted:#64748b; --line:#d7dee8; --bg:#f7f5ef; --card:#ffffff; --accent:#c64632; }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:"Microsoft YaHei", "Segoe UI", Arial, sans-serif; line-height:1.65; }
+    main { max-width:1180px; margin:0 auto; padding:34px 42px 80px; background:var(--card); min-height:100vh; box-shadow:0 0 0 1px rgba(15,23,42,.06); }
+    h1 { font-size:34px; line-height:1.25; border-bottom:4px solid var(--accent); padding-bottom:12px; margin:0 0 24px; }
+    h2 { font-size:24px; margin:34px 0 14px; padding-left:12px; border-left:6px solid var(--accent); }
+    h3 { font-size:19px; margin-top:28px; }
+    p, li { font-size:16px; }
+    table { border-collapse:collapse; width:100%; margin:14px 0 24px; table-layout:auto; }
+    th, td { border:1px solid var(--line); padding:9px 11px; vertical-align:top; }
+    th { background:#eef2f6; text-align:left; font-weight:700; }
+    tr:nth-child(even) td { background:#fbfcfe; }
+    code { background:#eef2f6; border:1px solid #dbe3ee; padding:1px 5px; border-radius:4px; font-family:Consolas, "Cascadia Mono", monospace; }
+    pre { background:#101827; color:#f8fafc; padding:14px 18px; overflow:auto; border-radius:8px; }
+    pre code { background:transparent; border:0; padding:0; color:inherit; }
+    .math-inline { font-size:1.04em; white-space:nowrap; }
+    .notice { margin:0 0 24px; padding:12px 16px; border-left:6px solid #2563eb; background:#eff6ff; color:#1e3a8a; }
+    a { color:#1d4ed8; }
+  </style>
+</head>
+<body>
+<main>
+  <div class="notice">?????? Markdown ??????????????????????? MathJax ????????????? MathJax?</div>
+  <h1>大学物理（2）期末：波动光学与量子物理极其完备知识点清单（考试范围修正版）</h1>
+<p>更新时间：2026-06-13</p>
+<p>本文件按最新更正执行：期末考试内容范围为“波动光学、量子物理”。题型按你给出的更正记为：填空题约 70 分，计算题约 30 分。本地旧版 <code>大学物理B（2）期末考试通知.pdf</code> 写的是填空 16 题约 64 分、计算 4 题约 36 分；两者不矛盾于复习策略，核心都是“填空概念和短公式占大头，计算题占小头”。</p>
+<h2>0. 本清单的判定规则</h2>
+<ol>
+<li>期末只按“波动光学、量子物理”组织，不把作业 PDF 前 5 页的振动、波动、热学纳入期末主范围。</li>
+<li>作业题 PDF 中仍有早期章节，但本修正版只保留第 6-13 页中属于考试范围的作业：22、23、24、26、27、28。</li>
+<li>第 29 章“固体中的电子”在教学进度表中出现，属于量子物理，但作业 PDF 没有对应编号；本清单放在“低优先补充”，防止填空题漏概念。</li>
+<li>排除规则：教学进度表和电子教案中打 <code>*</code> 的内容不作为期末主复习内容。</li>
+<li>特别注意：电子课本中打 <code>*</code>，但电子教案/进度表没有打 <code>*</code> 的内容，仍按会考处理。</li>
+<li>带 <code>△</code> 的旧进度表内容不是本次排除依据；除非同时被当前进度表或电子教案打 <code>*</code>，否则不直接删除。</li>
+</ol>
+<h2>1. 证据与文件入口</h2>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>作业题文件</td>
+<td><code>D:\虚拟C盘\学习\大学物理\02_作业与答案\大学物理（2）作业题.pdf</code></td>
+</tr>
+<tr>
+<td>作业页截图</td>
+<td><code>D:\虚拟C盘\学习\大学物理\06_图片与临时文件\作业题_pdf_pages</code></td>
+</tr>
+<tr>
+<td>当前教学进度/通知</td>
+<td><code>D:\虚拟C盘\学习\大学物理\00_导航与计划\大学物理（2）教学进度表和教学通知.pdf</code></td>
+</tr>
+<tr>
+<td>期末考试通知</td>
+<td><code>D:\虚拟C盘\学习\大学物理\04_考试与竞赛\01_历年试题\大学物理B（2）期末考试通知.pdf</code></td>
+</tr>
+<tr>
+<td>电子课本</td>
+<td><code>D:\虚拟C盘\学习\大学物理\05_教材与参考\01_电子课本\大学物理学. 电磁学、光学、量子物理（第4版）.pdf</code></td>
+</tr>
+<tr>
+<td>光学课件</td>
+<td><code>D:\虚拟C盘\学习\大学物理\01_课程课件\01_主课件（原课件）\光学课件</code></td>
+</tr>
+<tr>
+<td>第 22 章课件</td>
+<td><code>D:\虚拟C盘\学习\大学物理\01_课程课件\01_主课件（原课件）\光学课件\光学.第22章.光的干涉.pdf</code></td>
+</tr>
+<tr>
+<td>第 23 章课件</td>
+<td><code>D:\虚拟C盘\学习\大学物理\01_课程课件\01_主课件（原课件）\光学课件\光学.第23章.光的衍射.pdf</code></td>
+</tr>
+<tr>
+<td>第 24 章课件</td>
+<td><code>D:\虚拟C盘\学习\大学物理\01_课程课件\01_主课件（原课件）\光学课件\光学.第24章.光的偏振.pdf</code></td>
+</tr>
+<tr>
+<td>量子课件</td>
+<td><code>D:\虚拟C盘\学习\大学物理\01_课程课件\01_主课件（原课件）\量子力学课件</code></td>
+</tr>
+<tr>
+<td>第 26 章课件</td>
+<td><code>D:\虚拟C盘\学习\大学物理\01_课程课件\01_主课件（原课件）\量子力学课件\量子物理.第26章.波粒二象性.pdf</code></td>
+</tr>
+<tr>
+<td>第 27 章课件</td>
+<td><code>D:\虚拟C盘\学习\大学物理\01_课程课件\01_主课件（原课件）\量子力学课件\量子物理.第27章.薛定谔方程.pdf</code></td>
+</tr>
+<tr>
+<td>第 28 章课件</td>
+<td><code>D:\虚拟C盘\学习\大学物理\01_课程课件\01_主课件（原课件）\量子力学课件\量子物理.第28章.原子中的电子.pdf</code></td>
+</tr>
+<tr>
+<td>第 29 章课件</td>
+<td><code>D:\虚拟C盘\学习\大学物理\01_课程课件\01_主课件（原课件）\量子力学课件\量子物理.第29章.固体中的电子.pdf</code></td>
+</tr>
+<tr>
+<td>题库入口</td>
+<td><code>D:\虚拟C盘\学习\大学物理\03_题库与练习\01_章节习题\series03</code></td>
+</tr>
+<tr>
+<td>光学/量子考试题入口</td>
+<td><code>D:\虚拟C盘\学习\大学物理\03_题库与练习\01_章节习题\series07-光学 量子</code></td>
+</tr>
+<tr>
+<td>已做原题截图版 PPT</td>
+<td><code>D:\虚拟C盘\学习\大学物理\00_导航与计划\大学物理22-27知识点原题训练课_原题截图版.pptx</code></td>
+</tr>
+</tbody>
+</table>
+<h2>2. 星号内容判定表</h2>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>电子课本是否打星</th>
+<th>电子教案/当前进度是否打星</th>
+<th>本清单处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>22.3 光的非单色性对干涉条纹的影响</td>
+<td>书上打星</td>
+<td>课件/当前进度未打星</td>
+<td>保留，可能考时间相干性填空</td>
+</tr>
+<tr>
+<td>22.4 光源大小对干涉条纹的影响</td>
+<td>书上打星</td>
+<td>课件/当前进度未打星</td>
+<td>保留，可能考空间相干性填空</td>
+</tr>
+<tr>
+<td>第 23 章 X 射线衍射</td>
+<td>书上未打星</td>
+<td>课件/当前进度未打星</td>
+<td>保留，作业 23.20、23.21 覆盖</td>
+</tr>
+<tr>
+<td>23.3 内“光栅的色散本领”</td>
+<td>书上未单独标出</td>
+<td>课件小标题为 <code>*2. 光栅的色散本领</code></td>
+<td>排除主线，只保留概念备注</td>
+</tr>
+<tr>
+<td>24.4 散射光的偏振</td>
+<td>书上未打星</td>
+<td>课件和当前进度明确打星</td>
+<td>排除主线</td>
+</tr>
+<tr>
+<td>24.6 圆/椭圆偏振光</td>
+<td>书上打星</td>
+<td>课件未打星，作业 24.11/24.13 覆盖</td>
+<td>保留</td>
+</tr>
+<tr>
+<td>24.7 偏振光的干涉</td>
+<td>书上打星</td>
+<td>课件未打星</td>
+<td>保留低优先，偏填空概念</td>
+</tr>
+<tr>
+<td>24.8 人工双折射</td>
+<td>书上打星</td>
+<td>课件未打星</td>
+<td>保留低优先，作业 24.16 相关</td>
+</tr>
+<tr>
+<td>24.9 旋光现象</td>
+<td>书上打星</td>
+<td>当前进度未打星，作业 24.15 覆盖</td>
+<td>保留</td>
+</tr>
+<tr>
+<td>27.3 势垒穿透</td>
+<td>书上未打星</td>
+<td>当前进度只把“扫描隧道显微镜”打星</td>
+<td>势垒穿透保留，扫描隧道显微镜排除</td>
+</tr>
+<tr>
+<td>27.5 力学量算符</td>
+<td>电子课本第 27 章无对应独立目录项</td>
+<td>当前进度未打星，课件有 §27.5</td>
+<td>保留低优先</td>
+</tr>
+<tr>
+<td>28.3 微观粒子不可分辨性/泡利原理</td>
+<td>书上打星</td>
+<td>第 28 章课件未打星</td>
+<td>保留</td>
+</tr>
+<tr>
+<td>28.5 X 射线</td>
+<td>书上打星</td>
+<td>第 28 章课件未打星</td>
+<td>保留，作业 28.22/28.25 覆盖</td>
+</tr>
+<tr>
+<td>28.7 分子结构</td>
+<td>书上打星</td>
+<td>第 28 章课件未打星</td>
+<td>只保留与分子光谱有关的最低概念</td>
+</tr>
+<tr>
+<td>第 29 章固体中的电子</td>
+<td>课本后续内容</td>
+<td>当前进度有第 29 章，无作业覆盖</td>
+<td>低优先补充</td>
+</tr>
+</tbody>
+</table>
+<p>复习结论：</p>
+<pre><code class="language-text">真正排除主线：散射光的偏振、光栅角色散本领、扫描隧道显微镜的应用细节。
+不要误删：时间相干性、空间相干性、旋光、X 射线、分子光谱、泡利原理。
+</code></pre>
+<h2>3. 作业页与考试范围对应</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">作业页</th>
+<th>编号</th>
+<th>章节</th>
+<th>是否期末主范围</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">第 1 页</td>
+<td>编号 6</td>
+<td>振动</td>
+<td>否</td>
+<td>不纳入本修正版主线</td>
+</tr>
+<tr>
+<td style="text-align: right;">第 2 页</td>
+<td>编号 7</td>
+<td>波动</td>
+<td>否</td>
+<td>不纳入本修正版主线</td>
+</tr>
+<tr>
+<td style="text-align: right;">第 3 页</td>
+<td>编号 9</td>
+<td>温度和气体动理论</td>
+<td>否</td>
+<td>不纳入本修正版主线</td>
+</tr>
+<tr>
+<td style="text-align: right;">第 4 页</td>
+<td>编号 10</td>
+<td>热力学第一定律</td>
+<td>否</td>
+<td>不纳入本修正版主线</td>
+</tr>
+<tr>
+<td style="text-align: right;">第 5 页</td>
+<td>编号 11</td>
+<td>热力学第二定律</td>
+<td>否</td>
+<td>不纳入本修正版主线</td>
+</tr>
+<tr>
+<td style="text-align: right;">第 6 页</td>
+<td>编号 22</td>
+<td>光的干涉</td>
+<td>是</td>
+<td>必学</td>
+</tr>
+<tr>
+<td style="text-align: right;">第 7-8 页</td>
+<td>编号 23</td>
+<td>光的衍射</td>
+<td>是</td>
+<td>必学</td>
+</tr>
+<tr>
+<td style="text-align: right;">第 9-10 页</td>
+<td>编号 24</td>
+<td>光的偏振</td>
+<td>是</td>
+<td>必学，排除散射光偏振</td>
+</tr>
+<tr>
+<td style="text-align: right;">第 11 页</td>
+<td>编号 26</td>
+<td>波粒二象性</td>
+<td>是</td>
+<td>必学</td>
+</tr>
+<tr>
+<td style="text-align: right;">第 12 页</td>
+<td>编号 27</td>
+<td>薛定谔方程</td>
+<td>是</td>
+<td>必学，扫描隧道显微镜排除</td>
+</tr>
+<tr>
+<td style="text-align: right;">第 13 页</td>
+<td>编号 28</td>
+<td>原子中的电子</td>
+<td>是</td>
+<td>必学，X 射线/激光/分子光谱按作业覆盖保留</td>
+</tr>
+</tbody>
+</table>
+<h2>4. 考试策略：按 70/30 分配复习</h2>
+<table>
+<thead>
+<tr>
+<th>题型</th>
+<th style="text-align: right;">分值权重</th>
+<th>要求</th>
+<th>复习动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>填空题</td>
+<td style="text-align: right;">约 70 分</td>
+<td>公式入口、概念定义、条件判断、符号含义、数量级和结论</td>
+<td>每个知识点必须能闭卷写“关键词 -&gt; 公式 -&gt; 条件 -&gt; 易错点”</td>
+</tr>
+<tr>
+<td>计算题</td>
+<td style="text-align: right;">约 30 分</td>
+<td>多步建模、单位换算、代入计算、结果解释</td>
+<td>只重点训练作业题和题库中高频模型</td>
+</tr>
+</tbody>
+</table>
+<p>最现实的拿分顺序：</p>
+<pre><code class="language-text">先保填空：定义、条件、公式、星号排除、符号含义。
+再保计算：干涉/衍射/偏振强度/光电康普顿/势阱/氢原子跃迁。
+最后补低优先：29 章和量子拓展概念。
+</code></pre>
+<h2>5. 总判别树</h2>
+<table>
+<thead>
+<tr>
+<th>题目关键词</th>
+<th>归类</th>
+<th>第一行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>光程差、相位差、干涉条纹</td>
+<td>干涉</td>
+<td><span class="math-inline">\(\Delta \phi = 2 \pi \delta / \lambda\)</span></td>
+</tr>
+<tr>
+<td>双缝、相邻明纹、屏距</td>
+<td>杨氏双缝</td>
+<td><span class="math-inline">\(\delta = d \sin \theta \approx d x / D\)</span></td>
+</tr>
+<tr>
+<td>薄膜、增透、反射明暗</td>
+<td>薄膜干涉</td>
+<td>先判断半波损失，再写 <code>2 n e</code></td>
+</tr>
+<tr>
+<td>劈尖、等厚、牛顿环</td>
+<td>等厚干涉</td>
+<td><span class="math-inline">\(\Delta e = \lambda/(2n)\)</span></td>
+</tr>
+<tr>
+<td>迈克耳孙、动镜、条纹移动</td>
+<td>迈克耳孙</td>
+<td><span class="math-inline">\(2 \Delta d = N \lambda\)</span></td>
+</tr>
+<tr>
+<td>单缝、中央明纹宽度</td>
+<td>单缝衍射</td>
+<td><span class="math-inline">\(a \sin \theta = k \lambda\)</span></td>
+</tr>
+<tr>
+<td>光栅、最高级次、缺级</td>
+<td>光栅</td>
+<td><span class="math-inline">\(d \sin \theta = k \lambda\)</span>，缺级联立 <span class="math-inline">\(a \sin \theta=m \lambda\)</span></td>
+</tr>
+<tr>
+<td>孔径、分辨率、望远镜</td>
+<td>瑞利判据</td>
+<td><span class="math-inline">\(\\theta_{\min} = 1.22 \lambda/D\)</span></td>
+</tr>
+<tr>
+<td>X 射线、晶体、电子衍射</td>
+<td>布拉格</td>
+<td><span class="math-inline">\(2 d \sin \phi = k \lambda\)</span></td>
+</tr>
+<tr>
+<td>自然光、偏振片、夹角</td>
+<td>偏振强度</td>
+<td><span class="math-inline">\(I_{1}=I_{0}/2\)</span>，后续 <span class="math-inline">\(I=I_{\rm in} \cos^2 \alpha\)</span></td>
+</tr>
+<tr>
+<td>反射完全偏振</td>
+<td>布儒斯特</td>
+<td><span class="math-inline">\(\tan i_{B}=n_{2}/n_{1}\)</span></td>
+</tr>
+<tr>
+<td>方解石、o/e 光</td>
+<td>双折射</td>
+<td>判断光轴、主截面、o/e 振动方向</td>
+</tr>
+<tr>
+<td>四分之一波片、二分之一波片</td>
+<td>波片</td>
+<td><span class="math-inline">\(\Delta \phi=2\pi(n_{o}-n_{e})d/\lambda\)</span></td>
+</tr>
+<tr>
+<td>黑体、峰值波长、辐出度</td>
+<td>黑体辐射</td>
+<td><span class="math-inline">\(\\lambda_{m} T=b\)</span>，<span class="math-inline">\(M=\sigma T^4\)</span></td>
+</tr>
+<tr>
+<td>光电效应、截止电压、逸出功</td>
+<td>光电效应</td>
+<td><span class="math-inline">\(h \nu = W + K_{\max} = W + e U_{s}\)</span></td>
+</tr>
+<tr>
+<td>康普顿、散射角</td>
+<td>康普顿</td>
+<td><span class="math-inline">\(\Delta \lambda=\\lambda_{C}(1-\cos \phi)\)</span></td>
+</tr>
+<tr>
+<td>德布罗意、电子加速</td>
+<td>物质波</td>
+<td><span class="math-inline">\(\lambda=h/p\)</span>，电子加速 <span class="math-inline">\(\lambda=h/\sqrt{2meU}\)</span></td>
+</tr>
+<tr>
+<td>波函数、概率密度、归一化</td>
+<td>概率波</td>
+<td><span class="math-inline">\(\rho=|\Psi|^2\)</span>，<span class="math-inline">\(\int |\Psi|^2 dx=1\)</span></td>
+</tr>
+<tr>
+<td>无限深势阱</td>
+<td>势阱本征态</td>
+<td><span class="math-inline">\(\psi(0)=\psi(a)=0\)</span></td>
+</tr>
+<tr>
+<td>氢原子光谱、巴耳末</td>
+<td>原子能级</td>
+<td><span class="math-inline">\(E_{n}=-13.6/n^2\,\mathrm{eV}\)</span>，<span class="math-inline">\(h \nu=|\Delta E|\)</span></td>
+</tr>
+<tr>
+<td>四个量子数、泡利</td>
+<td>原子态</td>
+<td><span class="math-inline">\(n,l,m_{l},m_{s}\)</span> 合法范围</td>
+</tr>
+<tr>
+<td>X 射线截止波长</td>
+<td>原子中电子/X 射线</td>
+<td><span class="math-inline">\(\\lambda_{\min}=hc/(eU)\)</span></td>
+</tr>
+<tr>
+<td>激光、粒子数反转</td>
+<td>激光</td>
+<td>受激辐射 + 粒子数反转 + 谐振腔</td>
+</tr>
+</tbody>
+</table>
+<h2>6. 第 22 章 光的干涉</h2>
+<p>考试状态：必学。电子课本 22.3、22.4 虽打星，但课件/进度表未排除，所以时间相干性、空间相干性仍保留。</p>
+<p>作业覆盖：22.2、22.3、22.10、22.14、22.19、22.22。</p>
+<p>题库入口：波动光学干涉上/下、光的干涉_基外、清华大学光学量子试题。</p>
+<table>
+<thead>
+<tr>
+<th>小知识点</th>
+<th>填空题要会</th>
+<th>计算题要会</th>
+<th>作业/题库绑定</th>
+<th>易错点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>相干条件</td>
+<td>频率相同、相位差恒定、光矢量有平行分量</td>
+<td>判断能否有稳定条纹</td>
+<td>22.3、22.10；题库 3162</td>
+<td>只写频率相同不够</td>
+</tr>
+<tr>
+<td>光程与相位差</td>
+<td><span class="math-inline">\(\Delta \phi=2\pi \delta/\lambda\)</span>，光程 <span class="math-inline">\(\sum n r\)</span></td>
+<td>由相位差反推光程差</td>
+<td>22.3、22.14；题库 3162</td>
+<td>几何路程和光程混淆</td>
+</tr>
+<tr>
+<td>双缝/劳埃德镜</td>
+<td><span class="math-inline">\(\delta=d \sin \theta\approxd x/D\)</span></td>
+<td>求波长、条纹间距、第一明纹位置</td>
+<td>22.2、22.3；题库 3502</td>
+<td>劳埃德镜有反射半波损失</td>
+</tr>
+<tr>
+<td>条纹衬比度</td>
+<td><span class="math-inline">\(V=(I_{\max}-I_{\min})/(I_{\max}+I_{\min})=2A_{1A}_2/(A_{1}^2+A_{2}^2)\)</span></td>
+<td>已知振幅比求衬比度</td>
+<td>22.10；题库同类干涉强度题</td>
+<td>强度和振幅平方关系</td>
+</tr>
+<tr>
+<td>时间相干性</td>
+<td><span class="math-inline">\(k_{M}\approxlambda/\Delta \lambda\)</span>，<span class="math-inline">\(L_{c}\approxlambda^2/\Delta \lambda\)</span></td>
+<td>判断高级次条纹是否消失</td>
+<td>书上星号但课件未排除</td>
+<td>不可误删</td>
+</tr>
+<tr>
+<td>空间相干性</td>
+<td>光源宽度会洗掉条纹</td>
+<td>求极限宽度/相干间隔</td>
+<td>书上星号但课件未排除</td>
+<td><code>R</code> 光源距和 <code>D</code> 屏距混淆</td>
+</tr>
+<tr>
+<td>薄膜干涉</td>
+<td>反射半波损失先判，正入射几何光程 <span class="math-inline">\(2ne\)</span></td>
+<td>增透膜、等厚条纹、膜厚</td>
+<td>22.14、22.19；题库 3163</td>
+<td>明暗条件会因半波损失互换</td>
+</tr>
+<tr>
+<td>劈尖/牛顿环/等厚</td>
+<td><span class="math-inline">\(\Delta e=\lambda/(2n)\)</span></td>
+<td>条纹间距、膜厚、暗纹数</td>
+<td>22.14；题库 3349</td>
+<td>中央暗亮取决于观察方式</td>
+</tr>
+<tr>
+<td>迈克耳孙</td>
+<td><span class="math-inline">\(2 \Delta d=N \lambda\)</span></td>
+<td>动镜位移、测波长、介质片</td>
+<td>22.22；题库 3201</td>
+<td>漏掉往返因子 2</td>
+</tr>
+</tbody>
+</table>
+<p>本章闭卷最低输出：</p>
+<pre><code class="language-text">1. 光程差不是路程差，先写 sum n r。
+2. 明纹/暗纹前必须判断半波损失。
+3. 动镜移动一定想到 2 Delta d。
+4. 时间相干性、空间相干性虽然书上星号，但不能删。
+</code></pre>
+<h2>7. 第 23 章 光的衍射</h2>
+<p>考试状态：必学。第 23 章电子课件目录无整体星号；<code>*2. 光栅的色散本领</code> 排除主线。X 射线衍射不打星，作业也覆盖，必须保留。</p>
+<p>作业覆盖：23.1、23.6、23.9、23.13、23.16、23.18、23.20、23.21。</p>
+<p>题库入口：波动光学衍射上/下、基外衍射、清华大学光学量子试题。</p>
+<table>
+<thead>
+<tr>
+<th>小知识点</th>
+<th>填空题要会</th>
+<th>计算题要会</th>
+<th>作业/题库绑定</th>
+<th>易错点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>惠更斯-菲涅耳原理</td>
+<td>波前各点是次波源，空间点由相干叠加决定</td>
+<td>概念判断</td>
+<td>23.1 前置</td>
+<td>不是几何漏光</td>
+</tr>
+<tr>
+<td>单缝暗纹</td>
+<td><span class="math-inline">\(a \sin \theta=k \lambda\)</span>，<span class="math-inline">\(k=1,2,...\)</span></td>
+<td>暗纹角、中央明纹宽</td>
+<td>23.1；题库 3715</td>
+<td>中央明纹全宽要乘 2</td>
+</tr>
+<tr>
+<td>单缝光强</td>
+<td><span class="math-inline">\(I=I_{0}(\sin \alpha/\alpha)^2\)</span></td>
+<td>只做概念和极值判断</td>
+<td>23.1 延伸</td>
+<td>次极大半波带法只是近似</td>
+</tr>
+<tr>
+<td>微波天线/主瓣</td>
+<td>天线口径等效单缝</td>
+<td>主瓣角宽、覆盖直径</td>
+<td>23.6</td>
+<td>半角/全角混淆</td>
+</tr>
+<tr>
+<td>光栅主极大</td>
+<td><span class="math-inline">\(d \sin \theta=k \lambda\)</span></td>
+<td>最高级次、角位置</td>
+<td>23.16；题库 3636</td>
+<td>d 是光栅常数，不是缝宽</td>
+</tr>
+<tr>
+<td>缺级</td>
+<td>联立 <span class="math-inline">\(d \sin \theta=k \lambda\)</span> 和 <span class="math-inline">\(a \sin \theta=m \lambda\)</span></td>
+<td>求缺级序列、<span class="math-inline">\(d/a\)</span></td>
+<td>23.13；题库 7908</td>
+<td>k 和 m 含义不同</td>
+</tr>
+<tr>
+<td>N 缝阵列</td>
+<td>中央强度 <span class="math-inline">\(N^2\)</span>，主极大变窄</td>
+<td>阵列极大/极小角</td>
+<td>23.18；题库 7913</td>
+<td>振幅 N 倍，强度 N^2 倍</td>
+</tr>
+<tr>
+<td>瑞利判据</td>
+<td><span class="math-inline">\(\\theta_{\min}=1.22\lambda/D\)</span></td>
+<td>卫星/望远镜分辨</td>
+<td>23.9；题库 3954</td>
+<td>1.22 只属于圆孔</td>
+</tr>
+<tr>
+<td>布拉格衍射</td>
+<td><span class="math-inline">\(2d \sin \phi=k \lambda\)</span></td>
+<td>X 射线/电子衍射波长</td>
+<td>23.20、23.21；题库 7953</td>
+<td>phi 是掠射角；第一极大 <span class="math-inline">\(k=1\)</span></td>
+</tr>
+<tr>
+<td>光栅色散本领</td>
+<td><span class="math-inline">\(D_\theta=k/(d \cos \theta)\)</span></td>
+<td>电子教案小标题打星</td>
+<td>非主线</td>
+<td>按排除处理，只保概念</td>
+</tr>
+</tbody>
+</table>
+<p>本章闭卷最低输出：</p>
+<pre><code class="language-text">1. 单缝暗纹从 k=1 开始。
+2. 光栅主极大从 k=0 中央开始，最高级次看 |sin theta|&lt;=1。
+3. 缺级必须同时满足单缝暗纹和光栅主极大。
+4. 布拉格题先判角是掠射角还是法线角。
+</code></pre>
+<h2>8. 第 24 章 光的偏振</h2>
+<p>考试状态：必学。排除主线：<code>*§24.4 散射光的偏振</code>。书上打星的圆/椭圆偏振、偏振光干涉、人工双折射、旋光，如果课件未打星且作业覆盖，不可删。</p>
+<p>作业覆盖：24.1、24.2、24.4、24.5、24.8、24.9、24.10、24.11、24.13、24.15、24.16。</p>
+<p>题库入口：波动光学偏振上/下、偏振基外、清华大学光学量子试题。</p>
+<table>
+<thead>
+<tr>
+<th>小知识点</th>
+<th>填空题要会</th>
+<th>计算题要会</th>
+<th>作业/题库绑定</th>
+<th>易错点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>偏振态分类</td>
+<td>自然光、线偏振、圆/椭圆、部分偏振</td>
+<td>检偏表现判断</td>
+<td>24.1、24.11</td>
+<td>自然光与圆偏振单靠一片偏振片都可能不变</td>
+</tr>
+<tr>
+<td>自然光过偏振片</td>
+<td>第一片 <span class="math-inline">\(I=I_{0}/2\)</span></td>
+<td>两片/三片强度链</td>
+<td>24.1、24.2；题库 3368/3369</td>
+<td>后面不要再除以 2</td>
+</tr>
+<tr>
+<td>马吕斯定律</td>
+<td><span class="math-inline">\(I=I_{\rm in} \cos^2 \alpha\)</span></td>
+<td>多片相邻夹角连乘</td>
+<td>24.1、24.2</td>
+<td>角度是入射线偏振方向与通光方向夹角</td>
+</tr>
+<tr>
+<td>部分偏振与偏振度</td>
+<td><span class="math-inline">\(P=(I_{\max}-I_{\min})/(I_{\max}+I_{\min})\)</span></td>
+<td>极值光强求偏振度</td>
+<td>24.15、24.16；题库 3246</td>
+<td>偏振度不是透过率</td>
+</tr>
+<tr>
+<td>布儒斯特角</td>
+<td><span class="math-inline">\(\tan i_{B}=n_{2}/n_{1}\)</span>，<span class="math-inline">\(i_{B}+r=90^\circ\)</span></td>
+<td>水/玻璃反射起偏角</td>
+<td>24.4、24.5、24.8；题库 3544</td>
+<td>空气入射才可简写 <span class="math-inline">\(\tan i_{B}=n\)</span></td>
+</tr>
+<tr>
+<td>双折射</td>
+<td>o 光/e 光都是线偏振，o 光遵从折射定律</td>
+<td>方解石图中画 o/e</td>
+<td>24.9、24.10；题库 5330</td>
+<td>光轴不是光线</td>
+</tr>
+<tr>
+<td>波片相位延迟</td>
+<td><span class="math-inline">\(\Delta \phi=2\pi(n_{o}-n_{e})d/\lambda\)</span></td>
+<td>四分之一/二分之一波片</td>
+<td>24.11、24.13；题库 1795</td>
+<td>四分之一波片不一定出圆偏振</td>
+</tr>
+<tr>
+<td>圆/椭圆偏振</td>
+<td>振幅比 + 相位差决定偏振态</td>
+<td>判断输出态</td>
+<td>24.11、24.13</td>
+<td>只看相位差不够</td>
+</tr>
+<tr>
+<td>偏振光干涉</td>
+<td>正交偏振片 + 晶片使分量重新投影后干涉</td>
+<td>低优先填空</td>
+<td>24.11 延伸</td>
+<td>书上打星但课件未排除，保留概念</td>
+</tr>
+<tr>
+<td>人工双折射/偏振梯度</td>
+<td>外场或应力导致双折射/偏振状态周期变化</td>
+<td>偏振梯度题</td>
+<td>24.16</td>
+<td>保留作业相关部分</td>
+</tr>
+<tr>
+<td>旋光</td>
+<td><span class="math-inline">\(\theta=\alpha l\)</span> 或按题给旋光率</td>
+<td>旋光率求厚度/角度</td>
+<td>24.15；题库 3987</td>
+<td>书上打星但作业覆盖，不删</td>
+</tr>
+<tr>
+<td>散射光偏振</td>
+<td>瑞利散射、天空偏振</td>
+<td>排除主线</td>
+<td>课件 <code>*§24.4</code></td>
+<td>不作为主要复习内容</td>
+</tr>
+</tbody>
+</table>
+<p>本章闭卷最低输出：</p>
+<pre><code class="language-text">1. 自然光第一次过偏振片才除以 2。
+2. 线偏振光过检偏器用 cos^2，不是 cos。
+3. 布儒斯特角时反射光和折射光垂直。
+4. 波片只改相位差，最后偏振态看振幅比和相位差。
+</code></pre>
+<h2>9. 第 26 章 波粒二象性</h2>
+<p>考试状态：必学。第 26 章课件/进度无星号排除。</p>
+<p>作业覆盖：26.4、26.6、26.11、26.15、26.22、26.30。</p>
+<p>题库入口：量子1-4、量子基外、清华大学光学量子试题。</p>
+<table>
+<thead>
+<tr>
+<th>小知识点</th>
+<th>填空题要会</th>
+<th>计算题要会</th>
+<th>作业/题库绑定</th>
+<th>易错点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>黑体辐射</td>
+<td>紫外灾难、普朗克能量子</td>
+<td><span class="math-inline">\(\\lambda_{m} T=b\)</span>，<span class="math-inline">\(M=\sigma T^4\)</span></td>
+<td>26.4、26.6；题库 5707</td>
+<td>峰值波长与温度反比</td>
+</tr>
+<tr>
+<td>光电效应</td>
+<td>光强管光子数，频率管能量</td>
+<td><span class="math-inline">\(h \nu=W+K_{\max}=W+eU_{s}\)</span></td>
+<td>26.11；题库 4183</td>
+<td><span class="math-inline">\(eU_{s}\)</span> 才是能量</td>
+</tr>
+<tr>
+<td>光子能量动量</td>
+<td><span class="math-inline">\(E=hnu=hc/\lambda\)</span>，<span class="math-inline">\(p=h/\lambda\)</span></td>
+<td>光子能量/动量换算</td>
+<td>26.11、28 章接口</td>
+<td>实物粒子不能默认 <span class="math-inline">\(\lambda \nu=c\)</span></td>
+</tr>
+<tr>
+<td>康普顿散射</td>
+<td>光子与自由电子碰撞</td>
+<td><span class="math-inline">\(\Delta \lambda=\\lambda_{C}(1-\cos \phi)\)</span></td>
+<td>26.15；题库 4187</td>
+<td>改变量只与散射角有关</td>
+</tr>
+<tr>
+<td>德布罗意波</td>
+<td><span class="math-inline">\(\lambda=h/p\)</span></td>
+<td>电子加速 <span class="math-inline">\(\lambda=h/\sqrt{2meU}\)</span></td>
+<td>26.22、23.21；题库 4429</td>
+<td>忘记平方根</td>
+</tr>
+<tr>
+<td>概率波</td>
+<td><span class="math-inline">\(\Psi\)</span> 是概率幅，<span class="math-inline">\(|\Psi|^2\)</span> 是概率密度</td>
+<td>双缝概率幅叠加</td>
+<td>26.22/27 前置</td>
+<td>不可直接加概率</td>
+</tr>
+<tr>
+<td>不确定关系</td>
+<td><span class="math-inline">\(\Delta x \Delta p \ge \hbar/2\)</span></td>
+<td>估算零点能/轨道适用性</td>
+<td>26.30；题库 4435</td>
+<td>不是仪器误差</td>
+</tr>
+</tbody>
+</table>
+<p>本章闭卷最低输出：</p>
+<pre><code class="language-text">1. 光电效应：频率决定最大动能，光强决定电流。
+2. 康普顿散射：散射后波长变长，phi=180 deg 改变量最大。
+3. 德布罗意波：动量越大，波长越短。
+4. 不确定关系：算完 Delta p 要和实际 p 比较。
+</code></pre>
+<h2>10. 第 27 章 薛定谔方程</h2>
+<p>考试状态：必学。扫描隧道显微镜应用细节被当前进度打星，排除主线；势垒穿透本身、谐振子、力学量算符在课件中有正式小节，保留。</p>
+<p>作业覆盖：27.2、27.3、27.6、27.8、27.11。</p>
+<p>题库入口：量子4-7、量子基外、清华大学光学量子试题。</p>
+<table>
+<thead>
+<tr>
+<th>小知识点</th>
+<th>填空题要会</th>
+<th>计算题要会</th>
+<th>作业/题库绑定</th>
+<th>易错点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>薛定谔方程</td>
+<td><span class="math-inline">\(i \hbar \partial_{t} \Psi=\hat H \Psi\)</span></td>
+<td>写一维定态方程</td>
+<td>27.2、27.8；题库 5813</td>
+<td>非相对论，不能从牛顿定律推导</td>
+</tr>
+<tr>
+<td>概率密度</td>
+<td><span class="math-inline">\(|\Psi|^2\)</span> 是概率密度</td>
+<td>区间概率积分</td>
+<td>27.2、27.6；题库 4203</td>
+<td>积分 Psi 本身是错的</td>
+</tr>
+<tr>
+<td>定态方程</td>
+<td><span class="math-inline">\(\hat H \Phi=E \Phi\)</span></td>
+<td>分离变量和时间因子</td>
+<td>27.2、27.8</td>
+<td>定态概率密度不随时间变</td>
+</tr>
+<tr>
+<td>无限深势阱</td>
+<td><span class="math-inline">\(\psi(0)=\psi(a)=0\)</span></td>
+<td><span class="math-inline">\(\psi_{n}=\sqrt{2/a}\sin(npi x/a)\)</span>，<span class="math-inline">\(E_{n}=n^2h^2/(8ma^2)\)</span></td>
+<td>27.2、27.8；题库 4434</td>
+<td>没有 n=0</td>
+</tr>
+<tr>
+<td>节点与波形</td>
+<td>第 n 态有 <code>n-1</code> 个内部节点</td>
+<td>画 n=5 波函数形状</td>
+<td>27.3、27.2；题库 4526</td>
+<td>节点数和半波数混淆</td>
+</tr>
+<tr>
+<td>正交归一</td>
+<td><span class="math-inline">\(\int \psi_{m}^* \psi_{n} dx=0 (m\nen)\)</span></td>
+<td>证明正交、求归一化常数</td>
+<td>27.6；题库 1901</td>
+<td>积分区间必须对</td>
+</tr>
+<tr>
+<td>势垒穿透</td>
+<td><span class="math-inline">\(E&lt;U_{0}\)</span> 仍可有非零穿透概率</td>
+<td>只做概念/低优先公式</td>
+<td>课件 §27.3</td>
+<td>扫描隧道显微镜排除</td>
+</tr>
+<tr>
+<td>一维谐振子</td>
+<td><span class="math-inline">\(E_{n}=(n+1/2)\hbar \omega\)</span></td>
+<td>振动能级差、发射光子</td>
+<td>27.11；题库 5816</td>
+<td>和势阱 <span class="math-inline">\(n^2\)</span> 混淆</td>
+</tr>
+<tr>
+<td>力学量算符</td>
+<td>测量值是本征值</td>
+<td>低优先填空</td>
+<td>课件 §27.5</td>
+<td>若旧进度冲突，按当前进度/课件保留低优先</td>
+</tr>
+</tbody>
+</table>
+<p>本章闭卷最低输出：</p>
+<pre><code class="language-text">1. Psi 不是概率，|Psi|^2 才是概率密度。
+2. 无限深势阱由边界条件导致能量量子化。
+3. n 从 1 开始，零点能不为 0。
+4. 谐振子能级等间隔，势阱能级按 n^2 增长。
+</code></pre>
+<h2>11. 第 28 章 原子中的电子</h2>
+<p>考试状态：必学。电子课本 28.3、28.5、28.7 有星号，但第 28 章课件目录未打星，且作业覆盖 X 射线、激光、分子转动谱，所以不能删。</p>
+<p>作业覆盖：28.5、28.8、28.9、28.19、28.22、28.25、28.27、28.32。</p>
+<p>题库入口：量子5-7、量子基外、清华大学光学量子试题。</p>
+<table>
+<thead>
+<tr>
+<th>小知识点</th>
+<th>填空题要会</th>
+<th>计算题要会</th>
+<th>作业绑定</th>
+<th>易错点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>氢原子光谱</td>
+<td>里德伯公式 <span class="math-inline">\(1/\lambda=R(1/n_{l}^2-1/n_{u}^2)\)</span></td>
+<td>由能级公式推出 R 或波长</td>
+<td>28.5</td>
+<td>上下能级写反</td>
+</tr>
+<tr>
+<td>氢原子能级</td>
+<td><span class="math-inline">\(E_{n}=-13.6/n^2\,\mathrm{eV}\)</span></td>
+<td>跃迁能量、波长</td>
+<td>28.5、28.8</td>
+<td>光子能量取正值</td>
+</tr>
+<tr>
+<td>红移/多普勒</td>
+<td>远处星系光谱波长变长</td>
+<td>由谱线倍率求速度</td>
+<td>28.8</td>
+<td>红移是远离，蓝移是接近</td>
+</tr>
+<tr>
+<td>自然宽度</td>
+<td><span class="math-inline">\(\Delta E \Delta t \ge \hbar/2\)</span>，<span class="math-inline">\(\Delta \nu ~ 1/(\Delta t)\)</span></td>
+<td>激发态寿命求谱线宽度</td>
+<td>28.9</td>
+<td>寿命越短，线宽越大</td>
+</tr>
+<tr>
+<td>自旋磁矩与磁共振</td>
+<td><span class="math-inline">\(\Delta E=2 \mu_{z} B\)</span>，<span class="math-inline">\(h \nu=\Delta E\)</span></td>
+<td>频率、波长</td>
+<td>28.19</td>
+<td>磁矩方向分量别漏</td>
+</tr>
+<tr>
+<td>X 射线截止波长</td>
+<td><span class="math-inline">\(\\lambda_{\min}=hc/(eU)\)</span></td>
+<td>由加速电压求普朗克常量或截止波长</td>
+<td>28.22</td>
+<td>截止波长与靶材无关</td>
+</tr>
+<tr>
+<td>特征 X 射线</td>
+<td>内层空位由外层电子填补</td>
+<td>K_alpha 波长反推能级差/元素</td>
+<td>28.25</td>
+<td>连续谱和特征谱混淆</td>
+</tr>
+<tr>
+<td>激光</td>
+<td>受激辐射、粒子数反转、亚稳态</td>
+<td>CO2 激光波长与能级差</td>
+<td>28.27</td>
+<td>只写高能级跃迁不够</td>
+</tr>
+<tr>
+<td>分子转动谱</td>
+<td>相邻转动谱线频差与转动惯量有关</td>
+<td>由频率差求原子间距</td>
+<td>28.32</td>
+<td>转动能级和振动能级混淆</td>
+</tr>
+<tr>
+<td>量子数</td>
+<td><span class="math-inline">\(n,l,m_{l},m_{s}\)</span> 范围</td>
+<td>态数、壳层容量</td>
+<td>作业未显式但高频填空</td>
+<td><span class="math-inline">\(l=0,...,n-1\)</span></td>
+</tr>
+<tr>
+<td>泡利不相容</td>
+<td>电子不能四个量子数全同</td>
+<td>亚层容量 <code>2(2l+1)</code>，壳层容量 <span class="math-inline">\(2n^2\)</span></td>
+<td>课件/题库</td>
+<td>不是经典排斥力</td>
+</tr>
+</tbody>
+</table>
+<p>本章闭卷最低输出：</p>
+<pre><code class="language-text">1. 可见氢谱优先想到巴耳末系 n -&gt; 2。
+2. 光谱线就是能级差，h nu = |Delta E|。
+3. 四个量子数范围必须背熟。
+4. X 射线连续谱看加速电压，特征谱看元素。
+5. 激光必须有受激辐射和粒子数反转。
+</code></pre>
+<h2>12. 第 29 章 固体中的电子（低优先补充）</h2>
+<p>考试状态：低优先。作业题文件没有编号 29，但当前教学进度包含第 29 章，属于量子物理范围。若时间不足，只背填空概念。</p>
+<p>课件入口：<code>量子物理.第29章.固体中的电子.pdf</code></p>
+<table>
+<thead>
+<tr>
+<th>小知识点</th>
+<th>填空题要会</th>
+<th>计算题要会</th>
+<th>优先级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>能带形成</td>
+<td>孤立原子能级在固体中分裂成大量密集能级</td>
+<td>基本不算</td>
+<td>低</td>
+</tr>
+<tr>
+<td>满带/不满带</td>
+<td>满带不导电是因为电流贡献抵消</td>
+<td>基本不算</td>
+<td>低</td>
+</tr>
+<tr>
+<td>导体/半导体/绝缘体</td>
+<td>由能带填充和禁带宽度区分</td>
+<td>低优先</td>
+<td>低</td>
+</tr>
+<tr>
+<td>本征半导体</td>
+<td>热/光激发产生电子-空穴对</td>
+<td><span class="math-inline">\(h \nu &gt; E_{g}\)</span>，<span class="math-inline">\(\\lambda_{max}=hc/E_{g}\)</span></td>
+<td>低</td>
+</tr>
+<tr>
+<td>n 型/p 型</td>
+<td>施主给电子，受主给空穴</td>
+<td>杂质补偿判断</td>
+<td>低</td>
+</tr>
+<tr>
+<td>p-n 结</td>
+<td>正偏降低势垒，反偏升高势垒</td>
+<td>不主动套二极管方程</td>
+<td>低</td>
+</tr>
+</tbody>
+</table>
+<h2>13. 必刷清单</h2>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>题目</th>
+<th>训练目标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>22.2、22.3、22.10、22.14、22.19、22.22</td>
+<td>干涉光程差、半波损失、衬比度、迈克耳孙</td>
+</tr>
+<tr>
+<td>A</td>
+<td>23.1、23.13、23.16、23.20、23.21</td>
+<td>单缝、光栅、缺级、布拉格、电子衍射</td>
+</tr>
+<tr>
+<td>A</td>
+<td>24.1、24.2、24.4、24.5、24.8、24.11、24.13</td>
+<td>偏振片、布儒斯特角、波片</td>
+</tr>
+<tr>
+<td>A</td>
+<td>26.11、26.15、26.22、26.30</td>
+<td>光电、康普顿、德布罗意、不确定关系</td>
+</tr>
+<tr>
+<td>A</td>
+<td>27.2、27.6、27.8、27.11</td>
+<td>势阱、归一化、正交性、谐振子</td>
+</tr>
+<tr>
+<td>A</td>
+<td>28.5、28.8、28.9、28.22、28.25、28.27、28.32</td>
+<td>氢光谱、红移、线宽、X 射线、激光、分子谱</td>
+</tr>
+<tr>
+<td>B</td>
+<td>23.6、23.9、23.18、24.9、24.10、24.15、24.16</td>
+<td>孔径分辨、阵列、双折射、旋光、偏振梯度</td>
+</tr>
+<tr>
+<td>C</td>
+<td>第 29 章低优先概念</td>
+<td>防填空题冷门</td>
+</tr>
+</tbody>
+</table>
+<h2>14. 易错点总表</h2>
+<table>
+<thead>
+<tr>
+<th>错因</th>
+<th>高风险题</th>
+<th>纠正口令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>差一个 2</td>
+<td>迈克耳孙、中央明纹、自然光第一片</td>
+<td>往返乘 2；中央全宽乘 2；自然光第一片除 2</td>
+</tr>
+<tr>
+<td>半波损失漏判</td>
+<td>薄膜、劳埃德镜</td>
+<td>先看低到高反射是否相位反转</td>
+</tr>
+<tr>
+<td>角度定义错</td>
+<td>布拉格、布儒斯特、偏振片</td>
+<td>先标“和谁夹角”</td>
+</tr>
+<tr>
+<td>a/d/k/m 混</td>
+<td>光栅、缺级</td>
+<td>a 是缝宽，d 是缝距，k 是主极大，m 是单缝暗纹</td>
+</tr>
+<tr>
+<td>强度/振幅混</td>
+<td>干涉衬比度、多缝、马吕斯</td>
+<td>振幅投影/叠加后，强度再平方</td>
+</tr>
+<tr>
+<td>eV/J 混</td>
+<td>光电、X 射线、氢原子</td>
+<td>用 <span class="math-inline">\(hc=1240\,\mathrm{eV\,nm}\)</span> 可减少换算</td>
+</tr>
+<tr>
+<td>h/hbar 混</td>
+<td>德布罗意、不确定、势阱</td>
+<td>德布罗意多用 h；不确定和薛定谔多用 hbar</td>
+</tr>
+<tr>
+<td>星号误删</td>
+<td>22.3/22.4、24.6-24.9、28.5</td>
+<td>书上星号不等于排除，课件/进度星号才排除</td>
+</tr>
+</tbody>
+</table>
+<h2>15. 最终掌握标准</h2>
+<p>完成本清单后，你应该能做到：</p>
+<ol>
+<li>对 22-24 章，每个题先判干涉、衍射、偏振模型，再写第一行公式。</li>
+<li>对 26-28 章，每个题先判光子、电子、波函数、能级还是量子数模型。</li>
+<li>对填空题，能闭卷写出定义、公式、条件、符号含义和易错点。</li>
+<li>对计算题，能闭卷完成作业题中的 A 级题型，并用题库/PPT 截图题做迁移。</li>
+<li>知道哪些内容真正被星号排除，哪些只是书上打星但课件未排除、仍要会。</li>
+</ol>
+<p>最低闭卷口令：</p>
+<pre><code class="language-text">干涉：光程差 + 半波损失。
+衍射：a 管单缝，d 管光栅，D 管孔径。
+偏振：自然光第一片除 2，线偏振后面 cos^2。
+量子：能量差给光子，边界条件给能级，模平方给概率。
+原子：氢光谱看 n，电子态看四个量子数，X 射线分连续谱和特征谱。
+</code></pre>
+</main>
+</body>
+</html>

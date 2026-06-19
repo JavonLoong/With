@@ -1,0 +1,394 @@
+\documentclass[UTF8]{article}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage[font=small]{caption}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{geometry}
+\geometry{a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\setCJKmainfont{SimSun}
+\usepackage{siunitx}
+\sisetup{per-mode=symbol}
+\usepackage{float}
+\usepackage{hyperref}
+
+% headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{热导热电实验报告}
+\chead{}
+\rhead{基础物理实验}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{14pt}
+
+\title{热导热电实验报告}
+\author{王子轩 \quad 行健-能源4 \quad 2024012848}
+\date{2026年3月22日}
+
+\begin{document}
+
+\maketitle
+
+%%% 一、实验目的 %%%
+\section{实验目的}
+\begin{enumerate}
+    \item 掌握稳态法基本原理，测量不良导体的导热系数，了解散热速率与传热速率的关系。
+    \item 掌握准稳态法原理，测量不良导体的导热系数和比热，理解一维热传导模型。
+    \item 观察塞贝克效应（热$\to$电），理解帕尔帖效应（电$\to$热），估算半导体制冷效率。
+\end{enumerate}
+
+%%% 二、实验原理 %%%
+\section{实验原理}
+
+\subsection{稳态法测量不良导体导热系数}
+
+固体内部相邻区域之间存在温度差异时，微观粒子（分子、原子、自由电子）的热运动将驱动能量从高温区域向低温区域转移，这一过程称为\textbf{热传导}。1822年，法国数学家傅里叶在其专著《热的解析理论》中系统建立了描述该过程的基本定律。对于一维稳态导热情形，单位时间内垂直穿过面积$S$的热流量$I_Q$与温度梯度成正比：
+\begin{equation}\label{eq:fourier}
+    I_Q = -\lambda S \frac{\partial T}{\partial x}
+\end{equation}
+式中$\lambda$称为\textbf{导热系数}（亦称热导率），物理意义为单位温度梯度下的热流密度，单位为$\mathrm{W/(m\cdot K)}$。负号体现了热流方向与温度升高方向相反的物理事实。
+
+1898年，C.\,H.\,Lees提出利用平板法测定不良导体导热系数的方案。将待测样品加工为薄圆盘形（直径$d_U$，厚度$h_U$），置于上方加热盘~A 与下方散热铜盘~B 之间。由于圆盘侧面面积远小于端面面积，可忽略侧面散热，将问题简化为一维热传导模型。稳态时通过样品的传热速率为
+\begin{equation}
+    \frac{\Delta Q}{\Delta t} = \lambda \frac{T_1 - T_2}{h_U} \cdot \frac{\pi d_U^2}{4}
+\end{equation}
+
+持续加热至系统各处温度不再随时间变化后，记录样品上下表面温度$T_1$和$T_2$。此时经由样品的传热速率与散热盘~B 向外界的散热速率达到\textbf{动态平衡}。实验的关键思想在于：直接测量传热速率困难，转而测量散热盘的散热能力。
+
+具体做法是：稳态测温完毕后抽去样品，将散热盘升温至$T_2 + 10\,^{\circ}\mathrm{C}$以上，再令其在风扇辅助下自然冷却，记录温度随时间的变化曲线。在$T_2$附近对冷却曲线作线性拟合得冷却速率$\left.\dfrac{dT}{dt}\right|_{T=T_2}$。由于冷却实验中散热盘全部表面暴露（总面积$2\pi R^2 + 2\pi R h_B$），而稳态时上表面被样品覆盖（实际散热面积$\pi R^2 + 2\pi R h_B$），需作面积修正。联立得：
+\begin{equation}\label{eq:lambda-steady}
+    \lambda = cm\left|\frac{dT}{dt}\right|_{T=T_2} \cdot \frac{R + 2h_B}{R + h_B} \cdot \frac{2h_U}{(T_1 - T_2)\pi d_U^2}
+\end{equation}
+其中$c = 385\,\mathrm{J/(kg\cdot K)}$为紫铜散热盘比热容，$m$为散热盘质量，$R$和$h_B$分别为散热盘半径与厚度。
+
+\subsection{准稳态法测量不良导体导热系数与比热}
+
+稳态法原理直观但耗时较长。\textbf{准稳态法}提供了更高效的替代方案：不要求系统温度处处恒定，而是利用介于稳态与非稳态之间的特殊状态——\textbf{准稳态}。
+
+考虑厚度为$2L$的无限大平板，初始温度均匀为$T_0$。自$t=0$起在两端面施加恒定对称热流密度$J_c$。以中心面为原点、半厚度方向为$x$轴，由能量守恒可得一维热传导方程：
+\begin{equation}\label{eq:heat-eq}
+    \frac{\partial T}{\partial t} = \frac{\lambda}{\rho c} \frac{\partial^2 T}{\partial x^2}
+\end{equation}
+其中$\rho$为密度，$\lambda/(\rho c)$记为热扩散率$k$。结合初始条件$T(x,0)=T_0$、边界条件$J_c = \lambda\,\partial T/\partial x|_{x=L}$以及中心面绝热对称条件$\partial T/\partial x|_{x=0}=0$，利用分离变量法可得温度场的级数解。当无量纲\textbf{傅里叶数}$F_0 = kt/L^2 > 0.5$后，级数解中指数衰减项可略去，温度场简化为
+\begin{equation}
+    T(x,t) - T_0 = \frac{J_c L}{\lambda}\left(\frac{kt}{L^2} + \frac{x^2}{2L^2} - \frac{1}{6}\right)
+\end{equation}
+此式揭示准稳态三个核心特征：(1)\,各点温度沿厚度方向呈抛物线分布；(2)\,所有位置温升速率$\partial T/\partial t$相同且恒定；(3)\,任意两固定位置间温差不随时间改变。实验中表现为加热面与中心面的温度--时间曲线呈\textbf{两条平行直线}。
+
+令$x=L$和$x=0$代入相减，得加热面与中心面温差$\Delta T = J_c L/(2\lambda)$，由此解出导热系数和比热：
+\begin{equation}\label{eq:lambda-quasi}
+    \lambda = \frac{J_c L}{2\Delta T} \;,\qquad
+    c = \frac{J_c}{\rho L \cdot (dT/dt)}
+\end{equation}
+式中$dT/dt$为准稳态阶段中心面温升速率，可由温度--时间曲线线性拟合获得。热流密度$J_c$可由电学方法确定：采用\textbf{电阻测量法}时
+\begin{equation}\label{eq:Jc1}
+    J_c = \frac{U^2}{2Sr}
+\end{equation}
+采用\textbf{恒流源法}时
+\begin{equation}\label{eq:Jc2}
+    J_c = \frac{IV}{4S}
+\end{equation}
+准稳态法无需等待完全热平衡，仅在温差稳定、温升近似线性的窗口内读取数据，测量周期短、重复性好。
+
+\subsection{热电效应与半导体制冷}
+
+\textbf{塞贝克效应}(Seebeck Effect)：1822年，德国科学家塞贝克发现，将铜板与铋板首尾相连组成闭合回路，当一个接点被加热使两接点间产生温差$\Delta T$时，回路内出现电流。温差电势$\Delta V$与温差之比定义为塞贝克系数：
+\begin{equation}
+    \alpha = \frac{\Delta V}{\Delta T}
+\end{equation}
+微观上，温度差使载流子在热端获得更高动能并向冷端扩散，由此在材料内部建立起电场。
+
+\textbf{帕尔帖效应}(Peltier Effect)：1834年，法国科学家帕尔帖发现塞贝克效应的逆过程——当直流电流流经两种不同材料结合处时，除焦耳热外，接点还会额外吸收或释放热量。改变电流方向后，原来放热的接点转为吸热。
+
+\textbf{半导体制冷}利用帕尔帖效应：将$N$型和$P$型半导体元件通过金属导体串联成热电偶对并接通直流电源。当电子从$P$型侧穿越结点进入$N$型侧时电势能增大，从外界吸收热量，该接点降温成为冷端；另一接点处电子释放能量，温度升高成为热端。多个热电偶对以电串联、热并联方式组装成热电堆模块，构成半导体制冷片。改变电流方向后冷热端互换。
+
+\textbf{制冷效率估算}：设水的体积$V$，密度$\rho_w=1000\,\mathrm{kg/m^3}$，比热容$c_w=4200\,\mathrm{J/(kg\cdot{^{\circ}C})}$，通电前后水温$T_i$、$T_f$，则水释放热量
+\begin{equation}
+    Q = c_w \rho_w V(T_f - T_i)
+\end{equation}
+制冷片电功通过示波器采集电压、电流逐区间累加$W = \sum_i I_i V_i \Delta t$，制冷效率$\eta = |Q|/W$。该估算忽略了制冷杯与外界热交换、杯体热容及水体对流不均匀等因素。
+
+%%% 三、实验仪器 %%%
+\section{实验仪器}
+
+\begin{itemize}
+    \item \textbf{稳态法导热测量装置}：加热盘、散热铜盘（$c=385\,\mathrm{J/(kg\cdot K)}$）、待测样品、风扇$\times 2$、热电偶温度计、电子天平、游标卡尺、导热硅脂、恒温加热台。
+    \item \textbf{准稳态法导热测量装置}：有机玻璃样品（密度$1006.9\,\mathrm{kg/m^3}$，$100\times 100\times 10\,\mathrm{mm}$）、加热薄膜、热电偶温度计、直流稳压电源、数字万用表、隔热泡沫层、$U$型螺杆旋钮。
+    \item \textbf{热电实验装置}：热电转化演示仪、半导体制冷机、示波器、采样电阻（$0.05\,\Omega$）、烧杯、温度计、纯净水、蜡烛、打火机。
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.65\textwidth]{image13.jpeg}
+\caption{稳态法导热测量装置}
+\label{fig:steady}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.65\textwidth]{image14.jpeg}
+\caption{准稳态法导热测量装置}
+\label{fig:quasi}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.65\textwidth]{image15.jpeg}
+\caption{热电实验装置}
+\label{fig:thermo}
+\end{figure}
+
+%%% 四、实验任务及步骤 %%%
+\section{实验任务及步骤}
+
+\subsection{稳态法测不良导体导热系数}
+\begin{enumerate}
+    \item \textbf{几何参数测量}：用游标卡尺测量样品和散热盘的厚度、直径（各测6次取平均）；用电子天平称量散热盘质量。
+    \item \textbf{装置安装}：将样品置于加热盘与散热盘之间，确保三者同轴对齐；在温度传感器表面涂抹导热硅脂优化热接触。
+    \item \textbf{加热与稳态建立}：开启加热台和风扇，当加热盘与散热盘温度在10分钟内基本稳定时，记录稳态温度$T_1$、$T_2$。
+    \item \textbf{冷却速率测量}：移除样品，让散热盘升温至$T_2+10\,^{\circ}\mathrm{C}$后停止加热；在风扇作用下记录冷却过程温度--时间数据，对$T_2$附近数据线性拟合求冷却速率，代入式~\eqref{eq:lambda-steady}计算$\lambda$。
+\end{enumerate}
+
+\subsection{准稳态法测不良导体导热系数和比热}
+\begin{enumerate}
+    \item \textbf{仪器准备}：直流稳压电源预热，设置电压$6.0\,\mathrm{V}$、电流$1.5\,\mathrm{A}$；万用表测加热膜实验前后电阻取平均；测量实验前后加热电压取平均。
+    \item \textbf{装置安装}：调节样品装置对齐，夹紧热电偶（确保接触良好）；连接加热电路、温度测量电路、电压测量电路。
+    \item \textbf{数据采集}：运行数字温度计软件，开启直流电源加热；记录中心面与加热面温度--时间曲线，约5分钟后进入准稳态（两条曲线平行，温差稳定）。
+    \item \textbf{数据处理}：保存温度数据，在准稳态阶段取平均温差$\Delta T$；对中心面温度--时间曲线线性拟合求温升速率$dT/dt$。
+\end{enumerate}
+
+\subsection{热电与半导体制冷实验}
+\begin{enumerate}
+    \item \textbf{塞贝克效应观察}：点燃蜡烛置于热电散热片下方，连接LED灯，观察发光现象。
+    \item \textbf{制冷实验}：量取水（记录体积$V$），倒入制冷杯放入温度探头，记录初始水温$T_i$。
+    \item \textbf{电功测量}：示波器CH1测采样电阻电压（$200\,\mathrm{mV}$档），CH2测制冷片电压（$5\,\mathrm{V}$档），时基$10\,\mathrm{s}$。开启制冷片电源，按"Single"触发。
+    \item \textbf{制冷量测量}：制冷过程中搅拌水体，记录最终水温$T_f$。
+\end{enumerate}
+
+%%% 五、数据处理 %%%
+\section{数据处理}
+
+\subsection{稳态法部分}
+
+已测得样品及散热盘几何参数如下：
+
+\begin{table}[h]
+\centering
+\caption{稳态法几何参数测量结果}
+\label{tab:geo}
+\begin{tabular}{lc}
+\toprule
+物理量 & 测量平均值 \\
+\midrule
+样品厚度 $h_U$ & $5.42\,\mathrm{mm}$ \\
+样品直径 $d_U$ & $99.62\,\mathrm{mm}$ \\
+散热盘厚度 $h_B$ & $10.30\,\mathrm{mm}$ \\
+散热盘直径 $d_B$ & $100.12\,\mathrm{mm}$ \\
+散热盘质量 $m$ & $699.2\,\mathrm{g}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+稳态时测得：$T_1 = 66.3\,^{\circ}\mathrm{C}$，$T_2 = 41.0\,^{\circ}\mathrm{C}$。
+
+根据散热盘冷却曲线在$T_2$附近线性拟合得：$\left.\dfrac{dT}{dt}\right|_{T=T_2} = 0.035\,^{\circ}\mathrm{C/s}$。
+
+将数据代入式~\eqref{eq:lambda-steady}，注意统一单位（$h_U$、$d_U$、$R$、$h_B$均换算为m，$m$换算为kg）：
+\begin{align}
+    R &= d_B/2 = 50.06\times10^{-3}\,\mathrm{m},\quad h_B = 10.30\times10^{-3}\,\mathrm{m} \notag\\[4pt]
+    \lambda &= 385 \times 0.6992 \times 0.035 \times
+    \frac{50.06\times10^{-3} + 2\times 10.30\times10^{-3}}{50.06\times10^{-3} + 10.30\times10^{-3}} \times
+    \frac{2\times 5.42\times10^{-3}}{(66.3-41.0)\times\pi\times(99.62\times10^{-3})^2} \notag\\[4pt]
+    &= 385\times 0.6992\times 0.035\times 1.170\times\frac{10.84\times10^{-3}}{788.6\times10^{-3}} \notag\\[4pt]
+    &\approx 0.1516\,\mathrm{W/(m\cdot K)}
+\end{align}
+
+\subsection{准稳态法部分}
+
+实验前后测得加热膜电阻：$R_{\text{前}}=5.67\,\Omega$，$R_{\text{后}}=5.73\,\Omega$，故平均电阻$r = (R_{\text{前}}+R_{\text{后}})/2 = 5.70\,\Omega$。
+
+实验前后测得加热电压：$U_{\text{前}}=4.377\,\mathrm{V}$，$U_{\text{后}}=4.175\,\mathrm{V}$，故平均电压$U = 4.276\,\mathrm{V}$。
+
+样品密度$\rho = 1006.9\,\mathrm{kg/m^3}$，样品半厚度$L = 5\,\mathrm{mm} = 5\times10^{-3}\,\mathrm{m}$。
+
+热流通过面积$S = (0.1)^2 = 0.01\,\mathrm{m^2}$。
+
+在准稳态区间由温度曲线得到：
+\begin{itemize}
+    \item 加热面与中心面平均温差：$\Delta T = 3.6\,^{\circ}\mathrm{C}$
+    \item 中心面温升速率：$dT/dt = 0.012\,^{\circ}\mathrm{C/s}$
+\end{itemize}
+
+采用电阻测量法计算热流密度（式~\eqref{eq:Jc1}）：
+\begin{equation}
+    J_c = \frac{U^2}{2Sr} = \frac{(4.276)^2}{2\times 0.01\times 5.70} = \frac{18.28}{0.114} = 160.39\,\mathrm{W/m^2}
+\end{equation}
+
+由式~\eqref{eq:lambda-quasi}计算导热系数：
+\begin{equation}
+    \lambda = \frac{J_c L}{2\Delta T} = \frac{160.39\times 5\times10^{-3}}{2\times 3.6} = \frac{0.8020}{7.2} \approx 0.2228\,\mathrm{W/(m\cdot K)}
+\end{equation}
+
+由式~\eqref{eq:lambda-quasi}计算比热：
+\begin{equation}
+    c = \frac{J_c}{\rho L \cdot (dT/dt)} = \frac{160.39}{1006.9\times 5\times10^{-3}\times 0.012} = \frac{160.39}{0.06041} \approx 1327.42\,\mathrm{J/(kg\cdot{^{\circ}C})}
+\end{equation}
+
+从温度曲线形态来看，实验开始时中心面与加热面温度均快速上升，加热面升温更快，温差逐渐增大；进入准稳态后两条曲线近似平行，温差趋于稳定，说明样品内部温度分布形状保持不变、仅整体随时间上移，这是准稳态传热的典型特征。
+
+\subsection{热电与半导体制冷部分}
+
+已测得：水体积$V = 125\,\mathrm{mL} = 125\times10^{-6}\,\mathrm{m^3}$，初温$T_i = 27.9\,^{\circ}\mathrm{C}$，末温$T_f = 24.2\,^{\circ}\mathrm{C}$。
+
+水的热量变化：
+\begin{equation}
+    Q = c_w\rho_w V(T_f - T_i) = 4200\times 1000\times 125\times10^{-6}\times(24.2-27.9) = -1942.5\,\mathrm{J}
+\end{equation}
+
+由示波器数据（采样电阻$R_s=0.05\,\Omega$），第$i$时刻电流$I_i = U_{\mathrm{CH1},i}/0.05$，总电功：
+\begin{equation}
+    W = \sum_i I_i \cdot V_{\mathrm{CH2},i}\cdot\Delta t = 5040.51\,\mathrm{J}
+\end{equation}
+
+制冷效率：
+\begin{equation}
+    \eta = \frac{|Q|}{W} = \frac{1942.5}{5040.51} \approx 0.3854
+\end{equation}
+
+%%% 六、实验结果分析与讨论 %%%
+\section{实验结果分析与讨论}
+
+\subsection{稳态法结果评价}
+
+稳态法测得样品导热系数$\lambda = 0.1516\,\mathrm{W/(m\cdot K)}$。查阅文献，有机玻璃（亚克力/PMMA）在室温下的导热系数典型值为$0.17$--$0.25\,\mathrm{W/(m\cdot K)}$，本实验结果略偏低。分析其原因：
+
+\begin{enumerate}
+    \item \textbf{散热盘冷却速率偏小}：冷却实验中散热盘上表面完全暴露，与稳态时被样品覆盖的边界条件不同。面积修正公式假设散热速率严格与面积成正比，但实际对流散热并非纯线性关系，修正可能不完全。
+    \item \textbf{热接触不理想}：尽管涂了导热硅脂，样品与铜盘之间仍可能存在微小气隙，等效于增大了样品热阻，导致$T_1-T_2$偏大，$\lambda$偏小。
+    \item \textbf{稳态判据的主观性}：实验中以"10分钟内温度基本不变"作为稳态判据，若实际尚未完全达到稳态，温差数据不准确。
+\end{enumerate}
+
+\subsection{准稳态法结果评价}
+
+准稳态法测得$\lambda = 0.2228\,\mathrm{W/(m\cdot K)}$，$c = 1327.42\,\mathrm{J/(kg\cdot{^{\circ}C})}$。与文献值（亚克力$\lambda\approx 0.19\,\mathrm{W/(m\cdot K)}$，$c\approx 1464\,\mathrm{J/(kg\cdot{^{\circ}C})}$）对比：$\lambda$偏高约17\%，$c$偏低约9\%。
+
+$\lambda$偏高的可能原因：准稳态区间判定不够精确。若温差$\Delta T$的取值偏小（例如在温差尚未完全稳定时读取数据），由$\lambda = J_c L/(2\Delta T)$可知$\lambda$会偏大。
+
+$c$偏低的可能原因：温升速率$dT/dt$偏大。这可能与热电偶安装位置偏离中心面有关——若测温点更靠近加热面，测得的$dT/dt$会略大于中心面的真实值，导致$c$偏小。
+
+\subsection{两种方法的比较}
+
+\begin{table}[h]
+\centering
+\caption{两种方法测量结果比较}
+\label{tab:compare}
+\begin{tabular}{lccc}
+\toprule
+方法 & 测得$\lambda$ / $\mathrm{W/(m\cdot K)}$ & 文献值 & 相对偏差 \\
+\midrule
+稳态法 & 0.1516 & $\sim$0.19 & $-$20\% \\
+准稳态法 & 0.2228 & $\sim$0.19 & $+$17\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+两种方法的测量结果一高一低地分布在文献值两侧，且偏差量级相当（$\sim$20\%）。这提示实验中主导误差并非随机误差，而是系统性偏差。稳态法中散热面积修正和热接触不良倾向使$\lambda$偏小；准稳态法中温差取值偏小使$\lambda$偏大。若综合两者取平均$\bar{\lambda}=(0.1516+0.2228)/2 = 0.1872\,\mathrm{W/(m\cdot K)}$，与文献值$\sim 0.19$更为接近。
+
+\subsection{热电实验结果评价}
+
+制冷效率$\eta = 0.3854$，即制冷片消耗的电功中约38.5\%被用于冷却水。该值较理想卡诺制冷系数偏低（理想情况下温差仅$3.7\,^{\circ}\mathrm{C}$时COP远大于1），这是因为：(1)\,大量电功以焦耳热形式耗散在半导体材料内部；(2)\,实验中制冷杯与环境有热交换（包括对流和辐射），实际从水中吸走的热量$|Q|$大于测得值；(3)\,计算中忽略了杯体自身热容。若考虑这些因素，实际制冷COP应高于0.39。
+
+%%% 七、实验误差分析 %%%
+\section{实验误差分析}
+
+本实验涉及热学测量的多个环节，误差来源可系统归纳为以下五类：
+
+\begin{enumerate}
+    \item \textbf{温度测量误差}：热电偶若未完全插入测温孔或未涂导热硅脂，接触热阻增大，导致测温值偏低、响应滞后。铜-康铜热电偶灵敏度为$40\,\mathrm{\mu V/{^{\circ}C}}$，测温精度约$\pm 0.1\,^{\circ}\mathrm{C}$。对于稳态法中$T_1-T_2=25.3\,^{\circ}\mathrm{C}$的温差，$0.1\,^{\circ}\mathrm{C}$的误差引起$\lambda$约0.4\%的相对误差；而准稳态法中$\Delta T=3.6\,^{\circ}\mathrm{C}$，同样$0.1\,^{\circ}\mathrm{C}$的误差将导致$\lambda$约2.8\%的偏差——准稳态法对温度测量精度的要求更高。
+
+    \item \textbf{热接触误差}：样品与加热盘/散热盘之间的气隙增大等效热阻，导致测得温差大于样品内部真实温差，使$\lambda$系统性偏小。准稳态法中样品夹持松紧也会影响热流传递。
+
+    \item \textbf{环境散热}：稳态法和准稳态法均假设一维热传导，但实际样品有限尺寸，侧面散热不可完全忽略。室温波动、空气对流变化会改变散热条件，影响稳态温差和冷却速率。实验过程中风扇应持续开启以维持散热条件稳定。
+
+    \item \textbf{电学测量误差}：准稳态实验中应用万用表测量加热膜两端实际电压（而非电源面板读数），电源内阻导致二者存在差异。热电实验中电流由$I = U_{\text{CH1}}/R_s$换算，$R_s$的标称值误差及示波器采样精度均会传递到电功计算中。$\Delta t = 0.1\,\mathrm{s}$的时基下，离散累加导致的截断误差较小。
+
+    \item \textbf{模型近似}：实验原理建立在无限大平板假设上（准稳态法要求横向尺寸$\geq 6$倍厚度，本实验满足$100/10=10>6$）。散热面积修正假设冷却速率与面积成正比（牛顿冷却近似），在温差不太大时成立。制冷效率估算忽略了容器热容与环境热交换，为简化模型。
+\end{enumerate}
+
+%%% 八、实验小结 %%%
+\section{实验小结}
+
+本次实验通过三种不同方法探究热传导与热电效应，在实际操作中有几点深刻体会：
+
+\textbf{关于方法选择}——稳态法概念清晰（"散热速率$=$传热速率"），但建立稳态耗时约30分钟，且冷却速率测量引入了额外的面积修正，增加了误差环节。准稳态法仅需$\sim$5分钟即可获取有效数据，且直接从温度曲线的斜率和截距同时得到$\lambda$和$c$两个参数，信息密度更高。从结果来看，两种方法各自偏向文献值的两侧，单独使用时精度有限，但互相印证可增强结果的可信度。
+
+\textbf{关于热接触}——实验中涂抹导热硅脂看似简单，实际对结果影响显著。稳态法测量初期就因硅脂涂抹不均导致$T_2$读数波动较大，重新处理后才获得稳定数据。这让我意识到，热学实验中"看不见"的接触热阻往往是精度的瓶颈。
+
+\textbf{关于热电实验}——蜡烛加热点亮LED的简单演示比数据计算更令人印象深刻：它直观地将"温差$\to$电势$\to$发光"的能量转换链呈现出来。而制冷实验中改变电流方向后冷热端互换的现象，则清楚地展示了帕尔帖效应的可逆性。这种定性观察与定量测量相结合的实验设计，有助于建立对热电效应的完整认知。
+
+%%% 九、思考题 %%%
+\section{思考题}
+
+\textbf{1. 应用稳态法是否可以测量良导体的导热系数？有什么要求？与测不良导体有何区别？}
+
+可以，但需解决"良导体热阻过小导致温差难以测量"的核心问题。良导体（如铜、铝）的$\lambda$远大于不良导体，若沿用薄圆板样品，内部温度梯度极小、无法准确测量。因此需将样品制成\textbf{细长圆棒}（增大长度、减小截面积）以增大轴向热阻，使热量沿轴向传递时形成可测量的温度梯度；同时严格绝热侧面，避免径向散热破坏一维假设。与不良导体的关键区别在于：不良导体热阻大，制成薄圆板即可获得足够温差；良导体需通过"加长+缩截面+侧面绝热"来强制形成温差，对样品形状和绝热条件要求更苛刻。
+
+\textbf{2. 测量散热盘冷却速率时为什么要在稳态温度$T_2$附近选值？}
+
+两个原因：(1)\,\textbf{物理一致性}——冷却速率需反映稳态时散热盘在$T_2$处的散热能力，因为稳态下传热速率$=$散热速率仅在$T_2$处成立。(2)\,\textbf{精度保证}——$T_2$附近冷却曲线变化缓慢、近似线性，拟合精度高；远离$T_2$时冷却速率随温度非线性变化，线性拟合误差增大。
+
+\textbf{3. 实验时如何判定导热已处于稳定状态？}
+
+判定标准：当加热盘和散热盘温度曲线趋于水平（温度变化速率$\to 0$），且温差不再随时间变化时，可判定为稳态。经验性标准是10分钟内温度波动小于$0.1\,^{\circ}\mathrm{C}$。
+
+\textbf{4. 待测圆盘是厚一点好，还是薄一点好？为什么？}
+
+需权衡：薄样品热阻小、温差难测（$\Delta T < 0.5\,^{\circ}\mathrm{C}$时相对误差$>10\%$）；厚样品温差大但稳态建立时间随厚度平方增加，且侧面散热影响加剧。实际选取中等厚度（$5$--$10\,\mathrm{mm}$），使温差在$1$--$5\,^{\circ}\mathrm{C}$、稳态建立时间约$10$--$20\,\mathrm{min}$。
+
+\textbf{5. 环境温度变化对实验有无影响？为什么？}
+
+有显著影响。环境温升$\to$散热盘与环境温差减小$\to$散热速率变化$\to$稳态条件破坏$\to$ $\lambda$计算偏差。环境温度波动还会使冷却曲线非线性，降低拟合精度。实验应在环境温度波动$<0.5\,^{\circ}\mathrm{C}$时进行。
+
+\textbf{6. 什么是传热速率、散热速率、冷却速率？三者关系？}
+
+\textbf{传热速率}$=\lambda S\Delta T/h$，单位时间通过样品的热量；\textbf{散热速率}$=mc(dT/dt)|_{T_2}$，单位时间散热盘散出的热量；\textbf{冷却速率}$=(dT/dt)|_{T_2}$，散热盘温度下降的快慢。稳态下，传热速率$=$散热速率（能量守恒），散热速率$=mc\times$冷却速率。
+
+\textbf{7. 样品导热系数与温度有何关系？如何测同一试样在不同温度下的$\lambda$？}
+
+多数固体$\lambda$随温度升高而减小（声子散射增加），气体$\lambda$随温度升高而增大（分子碰撞频率增加）。测量方法：改变加热功率使样品在不同平均温度下分别达到稳态/准稳态，测量各温度点的$\lambda$，绘制$\lambda$--$T$曲线。
+
+\textbf{8. 样品几何尺寸应在实验前还是实验后测量？}
+
+\textbf{实验前}。原因：实验后样品温度高（$60$--$80\,^{\circ}\mathrm{C}$），热膨胀使尺寸偏大；部分材料（如橡胶）受压后变形不可逆。室温下测量确保尺寸稳定，游标卡尺精度$0.02\,\mathrm{mm}$可保证误差$<0.1\%$。
+
+%%% 十、附录 %%%
+\section{附录}
+
+\subsection{原始数据}
+原始实验数据如下图所示。
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.85\textwidth]{image16.jpeg}
+\caption{原始数据记录（稳态法及热电部分）}
+\label{fig:raw1}
+\end{figure}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=0.85\textwidth]{image17.jpeg}
+\caption{原始数据记录（准稳态法部分）}
+\label{fig:raw2}
+\end{figure}
+
+\end{document}

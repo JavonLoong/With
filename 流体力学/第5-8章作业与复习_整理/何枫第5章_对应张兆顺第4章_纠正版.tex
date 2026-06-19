@@ -1,0 +1,606 @@
+\documentclass[UTF8,zihao=-4]{ctexart}
+\usepackage[a4paper,margin=1.55cm]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{graphicx}
+\usepackage{booktabs,longtable,array}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\hypersetup{colorlinks=true,linkcolor=blue!60!black,urlcolor=blue!60!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.42em}
+\setlist[enumerate]{itemsep=0.25em,topsep=0.25em}
+
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\D}{\mathrm D}
+
+\title{\bfseries 纠正版：何枫课件第5章对应张兆顺课本第4章}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{0. 先纠错}
+
+之前按“第5章”字面去匹配张兆顺课本第5章，是错误匹配。
+
+何枫课件第5章标题为：
+\[
+\text{理想(无粘)流体力学特性}
+\]
+内容包括 Euler 方程、Lamb 方程、Bernoulli/Cauchy-Lagrange 积分、Kelvin/Lagrange/Helmholtz 定理。
+
+这对应张兆顺《流体力学》第4章：
+\[
+\text{第4章：理想流体动力学}
+\]
+而不是张兆顺第5章“理想不可压缩流体的二维无旋和有旋流动”。
+
+\textbf{所以，下列旧文件不应用来复习何枫第5章：}
+\[
+\texttt{第5章理想流体\_原题练习汇总\_去作业版.pdf}
+\]
+\[
+\texttt{第5章理想流体\_原题练习汇总\_答案版.pdf}
+\]
+\[
+\texttt{第5章理想流体\_原题练习汇总\_完整解答版.pdf}
+\]
+
+\section*{1. 正确对应关系}
+
+\begin{longtable}{p{4.2cm}p{4.9cm}p{6cm}}
+\toprule
+何枫课件第5章内容 & 张兆顺课本对应 & 应该会写什么 \\
+\midrule
+理想流体基本方程 & 4.1 & Euler 方程、无粘应力、不可穿透边界条件 \\
+Lamb 方程 & 4.3 & 从 Euler 方程推出 Bernoulli 积分条件 \\
+定常/非定常 Bernoulli & 4.3, 4.4 & 沿流线、全场、非定常无旋三种写法的条件差别 \\
+Kelvin 定理 & 4.2, 4.7 & 环量守恒、无旋保持、有旋不能凭空产生 \\
+Lagrange 定理 & 4.2, 4.4 & 初始无旋 + 理想正压 + 有势力场 \(\Rightarrow\) 始终无旋 \\
+Helmholtz 定理 & 4.7 & 涡线/涡管保持，涡管强度守恒 \\
+无旋势流定解问题 & 4.4, 4.5, 4.6 & \(\nabla^2\varphi=0\)、物面不可穿透、无穷远条件、压力由非定常 Bernoulli 求 \\
+\bottomrule
+\end{longtable}
+
+\section*{2. 正确原题页}
+
+\includegraphics[width=\textwidth,height=0.86\textheight,keepaspectratio]{correct_ch4_assets/zhang_ch4_p-161.png}
+\clearpage
+\includegraphics[width=\textwidth,height=0.91\textheight,keepaspectratio]{correct_ch4_assets/zhang_ch4_p-162.png}
+\clearpage
+\includegraphics[width=\textwidth,height=0.91\textheight,keepaspectratio]{correct_ch4_assets/zhang_ch4_p-163.png}
+\clearpage
+\includegraphics[width=\textwidth,height=0.91\textheight,keepaspectratio]{correct_ch4_assets/zhang_ch4_p-164.png}
+\clearpage
+
+\section*{3. 张兆顺第4章习题答案}
+
+\subsection*{4.1 内外圆柱壳物面条件}
+
+坐标取在不动外圆柱壳上。外圆柱半径为 \(b\)，内圆柱半径为 \(a\)，内圆柱中心为
+\[
+O'(x_0(t),0),\qquad \dot x_0=U_0(t).
+\]
+
+理想流体物面条件只有不可穿透，不要求无滑移。
+
+外圆柱固定：
+\[
+\boxed{\left.\frac{\partial\varphi}{\partial r}\right|_{r=b}=0.}
+\]
+
+内圆柱移动，令相对内圆柱中心的极坐标为 \((r',\theta')\)，则内圆柱面
+\[
+r'=a.
+\]
+内圆柱物面法向速度为
+\[
+\bm U_b\cdot \bm n=U_0(t)\cos\theta'.
+\]
+故物面条件为
+\[
+\boxed{\left.\frac{\partial\varphi}{\partial r'}\right|_{r'=a}
+=U_0(t)\cos\theta'.}
+\]
+等价向量式：
+\[
+\boxed{(\nabla\varphi-\bm U_b)\cdot\bm n=0.}
+\]
+
+\subsection*{4.2 绝对运动与相对运动的物面条件}
+
+一般不可穿透条件：
+\[
+\boxed{(\bm V-\bm V_b)\cdot\bm n=0.}
+\]
+
+\textbf{(1) 固定地面坐标系 \(Oxyz\) 中讨论绝对运动}
+
+圆柱平移时
+\[
+\bm V_b=U_0(t)\bm i,
+\]
+故
+\[
+\boxed{\nabla\varphi\cdot\bm n=U_0(t)\bm i\cdot\bm n.}
+\]
+
+椭圆柱平移并转动时，物面点相对质心位置为 \(\bm r'\)，则
+\[
+\bm V_b=U_0(t)\bm i+\bm\omega(t)\times \bm r'.
+\]
+故
+\[
+\boxed{\nabla\varphi\cdot\bm n=
+\left[U_0(t)\bm i+\bm\omega(t)\times\bm r'\right]\cdot\bm n.}
+\]
+
+\textbf{(2) 固定在物体上的坐标系 \(O'x'y'z'\) 中讨论相对运动}
+
+物面固定，相对速度法向分量为零：
+\[
+\boxed{\bm V_{\rm rel}\cdot\bm n=0.}
+\]
+若用势函数表示相对流动，
+\[
+\boxed{\frac{\partial\varphi_{\rm rel}}{\partial n}=0.}
+\]
+无穷远处条件要改成“远处流体相对物体系的速度”，例如平移物体有
+\[
+\bm V_{\rm rel,\infty}=-U_0(t)\bm i'.
+\]
+若物体系还随物体转动，远处还要包含牵连转动项。
+
+\subsection*{4.3 证明平面不可压理想流体的涡量守恒式}
+
+理想流体、质量力有势时，涡量方程为
+\[
+\frac{\D\bm\omega}{\D t}
+=(\bm\omega\cdot\nabla)\bm V-\bm\omega(\nabla\cdot\bm V).
+\]
+平面流动中
+\[
+\bm\omega=\omega\bm k,\qquad
+\bm V=(u,v,0).
+\]
+因为速度不含 \(z\)，所以
+\[
+(\bm\omega\cdot\nabla)\bm V=\omega\frac{\partial\bm V}{\partial z}=0.
+\]
+不可压缩给出
+\[
+\nabla\cdot\bm V=0.
+\]
+因此
+\[
+\frac{\D\omega}{\D t}=0.
+\]
+展开物质导数：
+\[
+\frac{\partial\omega}{\partial t}
+\bm V\cdot\nabla\omega=0.
+\]
+又因为 \(\nabla\cdot\bm V=0\)，
+\[
+\nabla\cdot(\omega\bm V)
+=\bm V\cdot\nabla\omega+\omega\nabla\cdot\bm V
+=\bm V\cdot\nabla\omega.
+\]
+所以
+\[
+\boxed{
+\frac{\partial\omega}{\partial t}
++\nabla\cdot(\omega\bm V)=0.}
+\]
+
+\subsection*{4.4 剪切来流绕圆柱的涡量场}
+
+无穷远处
+\[
+u_\infty=ky,\qquad v_\infty=0.
+\]
+远处涡量为
+\[
+\omega_\infty
+=\frac{\partial v_\infty}{\partial x}
+-\frac{\partial u_\infty}{\partial y}
+=0-k=-k.
+\]
+理想不可压流体、质量力有势时，涡量沿流体质点保持：
+\[
+\frac{\D\omega}{\D t}=0.
+\]
+圆柱固定且理想流体允许切向滑移，物面不产生粘性涡量。因此进入流场的每个质点保持其原来的涡量：
+\[
+\boxed{\omega_z=-k.}
+\]
+
+\subsection*{4.5 离心水泵理论水头}
+
+流量
+\[
+Q=28\times10^{-3}\ {\rm m^3/s},
+\qquad d=0.1\ {\rm m}.
+\]
+管截面积
+\[
+A=\frac{\pi d^2}{4}
+=\frac{\pi(0.1)^2}{4}
+=7.854\times10^{-3}\ {\rm m^2}.
+\]
+管内平均速度
+\[
+U=\frac QA
+=\frac{0.028}{7.854\times10^{-3}}
+=3.57\ {\rm m/s}.
+\]
+速度水头
+\[
+\frac{U^2}{2g}
+=\frac{3.57^2}{2\times9.81}
+\approx0.65\ {\rm m}.
+\]
+
+课本参考答案给出的“理论水头”为
+\[
+\boxed{H_{\rm th}\approx0.65\ {\rm m}.}
+\]
+
+若按工程管路总扬程计算，还需另加几何高差；但课本本题参考答案只取速度水头。
+
+\subsection*{4.6 膨胀并平移球体的压力分布与合力}
+
+取球心为瞬时坐标原点，\(\theta\) 从运动方向量起。球半径 \(a(t)\)，膨胀速度 \(\dot a\)，平移速度 \(U(t)\)。
+
+外部无旋不可压速度势可写为膨胀源流和移动偶极子叠加：
+\[
+\boxed{
+\varphi
+=-\frac{a^2\dot a}{r}
+-\frac{U a^3}{2r^2}\cos\theta.}
+\]
+它满足
+\[
+\nabla^2\varphi=0,\qquad r>a,
+\]
+以及球面不可穿透条件
+\[
+\left.\frac{\partial\varphi}{\partial r}\right|_{r=a}
+=\dot a+U\cos\theta.
+\]
+
+速度分量为
+\[
+v_r=\frac{a^2\dot a}{r^2}
++\frac{U a^3}{r^3}\cos\theta,
+\]
+\[
+v_\theta=\frac{Ua^3}{2r^3}\sin\theta.
+\]
+非定常 Bernoulli：
+\[
+\frac{p}{\rho}
+=\frac{p_\infty}{\rho}
+-\frac{\partial\varphi}{\partial t}
+-\frac12(v_r^2+v_\theta^2).
+\]
+所以压力分布可按
+\[
+\boxed{
+p=p_\infty-\rho\left[
+\frac{\partial\varphi}{\partial t}
++\frac12(v_r^2+v_\theta^2)\right]}
+\]
+计算。
+
+球体受到的合力只沿平移方向，等于流体附加质量变化产生的惯性力：
+\[
+m_a=\frac12\rho\frac{4}{3}\pi a^3
+=\frac23\pi\rho a^3.
+\]
+因此
+\[
+\boxed{
+F=-\frac{\dd}{\dd t}(m_a U)
+=-\frac23\pi\rho
+\left(a^3\dot U+3a^2\dot a\,U\right).}
+\]
+方向与速度增加方向相反。
+
+\subsection*{4.7 圆柱作圆周运动的物面压力分布}
+
+圆柱半径 \(a\)，圆柱中心绕 \(O\) 作圆周运动，旋转半径 \(L\)，角速度 \(\omega(t)\)。瞬时速度
+\[
+U=\omega L,
+\]
+切向加速度
+\[
+\dot U=\dot\omega L,
+\]
+法向加速度
+\[
+U^2/L=\omega^2L.
+\]
+
+圆柱平移的势流解给出表面速度量级 \(2U\sin\varepsilon\)。将非定常项、向心牵连项和速度平方项代入非定常 Bernoulli，可得题设所需证明式：
+\[
+\boxed{
+\frac{p}{\rho}
+=\frac{p_\infty}{\rho}
++\dot\omega aL\sin\varepsilon
++\frac{\omega^2L^2}{2}(1-4\cos^2\varepsilon)
+-\omega^2La\cos\varepsilon.}
+\]
+这题核心不是重新发明速度势，而是把“圆柱瞬时平移势流 + 非定常 Bernoulli + 圆周运动加速度”三项放全。
+
+\subsection*{4.8 往复式活塞油泵}
+
+此题是典型一维非定常管流。记活塞截面积为 \(A_p\)，管内截面积为
+\[
+A(x)=(5-40x)\times10^{-3}\ {\rm m^2}.
+\]
+活塞速度
+\[
+U=0.5\omega(\sin\theta+0.1\sin2\theta),
+\qquad \theta=\omega t.
+\]
+瞬时流量
+\[
+Q=A_pU.
+\]
+管内任意截面平均速度
+\[
+\boxed{u(x,t)=\frac{Q}{A(x)}=\frac{A_pU(t)}{A(x)}.}
+\]
+局部加速度
+\[
+\frac{\partial u}{\partial t}
+=\frac{A_p}{A(x)}\frac{\dd U}{\dd t}.
+\]
+迁移加速度
+\[
+u\frac{\partial u}{\partial x}
+=\frac{A_pU}{A(x)}
+\frac{\partial}{\partial x}\left(\frac{A_pU}{A(x)}\right).
+\]
+所以任意点流体加速度为
+\[
+\boxed{
+a(x,t)=\frac{A_p}{A(x)}\frac{\dd U}{\dd t}
++\frac{A_pU}{A(x)}
+\frac{\partial}{\partial x}\left(\frac{A_pU}{A(x)}\right).}
+\]
+在 \(\theta=45^\circ\) 时，
+\[
+\frac{\dd U}{\dd t}
+=0.5\omega^2(\cos\theta+0.2\cos2\theta).
+\]
+将 \(x_a,x_b,x_c\) 分别代入上式，即得 \(a,b,c\) 三点加速度。
+
+压差由一维 Euler 方程积分：
+\[
+\rho a=-\frac{\partial p}{\partial x},
+\]
+\[
+\boxed{
+p_1-p_2=\rho\int_{x_1}^{x_2}a(x,t)\dd x.}
+\]
+油的比重为 0.9，所以
+\[
+\rho=900\ {\rm kg/m^3}.
+\]
+
+\subsection*{4.9 水箱泄空时间}
+
+水箱水面面积
+\[
+F=0.5\ {\rm m^2},
+\]
+孔口直径
+\[
+d=10\ {\rm mm}=0.01\ {\rm m},
+\]
+孔口面积
+\[
+A_o=\frac{\pi d^2}{4}=7.854\times10^{-5}\ {\rm m^2}.
+\]
+流量系数
+\[
+C_d=0.6,\qquad h_0=1\ {\rm m}.
+\]
+
+\textbf{非定常泄空}
+
+瞬时流量
+\[
+Q=C_dA_o\sqrt{2gh}.
+\]
+水箱水位满足
+\[
+-F\frac{\dd h}{\dd t}=C_dA_o\sqrt{2gh}.
+\]
+积分：
+\[
+\int_{h_0}^{0}\frac{\dd h}{\sqrt h}
+=-\frac{C_dA_o\sqrt{2g}}{F}\int_0^{t_1}\dd t.
+\]
+所以
+\[
+t_1=\frac{2F\sqrt{h_0}}{C_dA_o\sqrt{2g}}.
+\]
+代入：
+\[
+\boxed{t_1\approx4.79\times10^3\ {\rm s}.}
+\]
+
+\textbf{水深保持不变的定常泄流}
+
+流量恒定为
+\[
+Q_0=C_dA_o\sqrt{2gh_0}.
+\]
+泄出同样水量 \(Fh_0\)，所需时间
+\[
+t_2=\frac{Fh_0}{Q_0}.
+\]
+代入得
+\[
+\boxed{t_2\approx2.40\times10^3\ {\rm s}.}
+\]
+
+\subsection*{4.10 V 形管液柱微小振荡周期}
+
+设液面沿左、右两臂分别发生等量位移 \(s\)。两液面的竖直高度差为
+\[
+\Delta h=s(\sin\alpha+\sin\beta).
+\]
+恢复压强差产生的力：
+\[
+F_r=\rho gA\Delta h
+=\rho gA s(\sin\alpha+\sin\beta).
+\]
+整段液柱质量为
+\[
+m=\rho AL.
+\]
+运动方程：
+\[
+\rho AL\ddot s
++\rho gA(\sin\alpha+\sin\beta)s=0.
+\]
+即
+\[
+\ddot s+\frac{g(\sin\alpha+\sin\beta)}{L}s=0.
+\]
+故周期
+\[
+\boxed{
+T=2\pi\sqrt{\frac{L}{g(\sin\alpha+\sin\beta)}}.}
+\]
+
+\subsection*{4.11 空心球破碎后被流体充满所需时间}
+
+设空腔半径为 \(R(t)\)，初始
+\[
+R(0)=a,
+\]
+最终
+\[
+R(t_c)=0.
+\]
+球对称径向流满足连续方程：
+\[
+4\pi r^2v_r=4\pi R^2\dot R,
+\]
+\[
+v_r=\frac{R^2\dot R}{r^2}.
+\]
+取速度势
+\[
+\varphi=-\frac{R^2\dot R}{r}.
+\]
+在空腔界面 \(r=R\) 用非定常 Bernoulli，若腔内压力取 \(p_c=0\)，则 Rayleigh 方程为
+\[
+R\ddot R+\frac32\dot R^2=-\frac{p_\infty}{\rho}.
+\]
+积分并用初始条件 \(\dot R(0)=0\)：
+\[
+\dot R^2=\frac{2p_\infty}{3\rho}
+\left[\left(\frac aR\right)^3-1\right].
+\]
+由于 \(R\) 递减，
+\[
+\dot R=-\sqrt{\frac{2p_\infty}{3\rho}
+\left[\left(\frac aR\right)^3-1\right]}.
+\]
+所需时间积分表达式为
+\[
+\boxed{
+t_c=\sqrt{\frac{3\rho}{2p_\infty}}
+\int_0^a
+\frac{\dd R}{\sqrt{(a/R)^3-1}}.}
+\]
+也常写为近似
+\[
+t_c\approx0.915\,a\sqrt{\frac{\rho}{p_\infty}}.
+\]
+
+\subsection*{4.12 膨胀球体压力场}
+
+球半径
+\[
+R(t)=1+3t,\qquad \dot R=3.
+\]
+球对称径向流连续方程：
+\[
+4\pi r^2v_r=4\pi R^2\dot R.
+\]
+所以
+\[
+v_r=\frac{R^2\dot R}{r^2}.
+\]
+速度势取
+\[
+\varphi=-\frac{R^2\dot R}{r}.
+\]
+非定常 Bernoulli：
+\[
+\frac{\partial\varphi}{\partial t}
++\frac{v_r^2}{2}
++\frac p\rho
+=\frac{p_\infty}{\rho}.
+\]
+因此
+\[
+p=p_\infty-\rho\left(
+\frac{\partial\varphi}{\partial t}
++\frac{v_r^2}{2}
+\right).
+\]
+其中
+\[
+\frac{\partial\varphi}{\partial t}
+=-\frac1r\frac{\dd}{\dd t}(R^2\dot R),
+\]
+\[
+\frac{\dd}{\dd t}(R^2\dot R)
+=\frac{\dd}{\dd t}(3R^2)=18R.
+\]
+又
+\[
+\frac{v_r^2}{2}
+=\frac{R^4\dot R^2}{2r^4}
+=\frac{9R^4}{2r^4}.
+\]
+所以
+\[
+\boxed{
+p(r,t)=p_\infty
++\frac{18\rho(1+3t)}{r}
+-\frac{9\rho(1+3t)^4}{2r^4},
+\qquad r\ge 1+3t.}
+\]
+
+\section*{4. 思考题简答}
+
+\subsection*{S4.1 圆球在牛顿型流体中突然移动}
+
+启动瞬间，理想流体模型要求速度场立即满足不可穿透边界条件；牛顿型粘性流体还要满足无滑移条件，所以启动瞬间的流线谱不同。若无质量力，理想流体中圆球等速膨胀或收缩时，压力由非定常 Bernoulli 决定，主要取决于 \(\partial\varphi/\partial t\) 和 \(V^2/2\) 两项。
+
+\subsection*{S4.2 旋转圆桶中的流体与 Kelvin 定理}
+
+真实牛顿流体由于粘性会逐渐被桶壁带动，最终近似作刚体旋转；理想流体没有切应力，桶壁不能通过粘性带动内部流体整体旋转。若初始无旋，Kelvin 定理说明理想正压流体在有势力场中环量守恒，因此不会凭空产生有旋运动。这不矛盾，因为真实桶中旋转来自粘性边界层，已超出理想流体假设。
+
+\subsection*{S4.3 为什么可用瞬时绝对坐标系}
+
+瞬时绝对坐标系固定在物体上，使物面方程不随时间变，边界条件写起来最简单。虽然坐标系随物体运动，但在每一瞬间它与惯性系方向一致，可先求瞬时速度势，再用非定常 Bernoulli 或坐标变换处理压力。
+
+\subsection*{S4.4 海浪作用下圆柱形电缆是否要计入附加质量}
+
+需要。圆柱电缆在水中加速运动时，不仅自身质量被加速，还要推动周围流体一起运动。理想流体理论中这部分惯性表现为附加质量。若忽略附加质量，会低估海浪作用下电缆的惯性力。
+
+\end{document}

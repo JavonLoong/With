@@ -1,0 +1,369 @@
+\documentclass[UTF8]{article}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{enumitem} % 用于自定义列表环境
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{subcaption} % 用于子图标注
+\usepackage{caption}
+\usepackage[font=small]{caption}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{geometry}
+\geometry{a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+% headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{宋飞 $ $ 清华大学物理系}
+\chead{}
+\rhead{EuPhO 2025国家集训队}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{14pt}
+
+\title{RLC电路实验}
+\author{宋飞 \\ 清华大学物理系}
+\date{2025年9月16日}
+
+\begin{document}
+
+\maketitle
+
+\section{目的}
+观察 RLC 电路的振荡现象以及对正弦电压的反应。
+
+\section{原理}
+
+\subsection{LC 振荡器}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{Fig1}
+\caption{$LC$电路}
+\end{figure}
+
+假设图1的 LC 串联电路上没有电阻存在，而且电容器上带有电量 \( Q_0 \)。在 \( t = 0 \) 时，将开关 S 接到接通 (ON) 的位置，使电路成为通路。由 KVL 定律，在时间为 \( t \) 时，电路方程为
+\[
+L \frac{d^2 q}{dt^2} + \frac{1}{C} q = 0 \tag{1}
+\]
+
+电容器上的电量 \( q \) 为：
+\[
+q = Q_0 \cos \omega_0 t
+\]
+
+电路上的电流 \( i \) 则为
+\[
+i = -I_0 \sin \omega_0 t
+\]
+其中 \(\omega_0 = \frac{1}{\sqrt{LC}}\) 是电路的振荡角频率，\(I_0 = \omega_0 Q_0\) 是电路的最大电流。在这个电路里，电容器所储存的能量为 \(q^2 / 2C\)，电感器所储存的能量则为 \(L i^2 / 2\)。图2表示在 LC 电路上能量转移的情形，并与力学系统作比较（力学部分请读者自行练习分析）。
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Fig2}
+\caption{$LC$振荡与力学简谐振动的对比}
+\end{figure}
+
+\subsection{阻尼振荡器电路}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{Fig3}
+\caption{具有损耗的$LC$电路}
+\end{figure}
+
+上面所讨论的 LC 振荡电路实际上并不存在，一般的 LC 振荡电路多少都会含有电阻，如图3所示。假设开关未接通时电容器上的电量为 \(Q_0\)，开关接通后电路电流为 \(i(t)\)，由 KVL 定律可得
+\[
+v_R(t) + v_L(t) + v_C(t) = 0
+\]
+或
+\[
+Ri(t) + L \frac{di(t)}{dt} + v_C(t) = 0 \tag{2}
+\]
+
+由于 \(i(t) = C \frac{dv_C(t)}{dt}\)，把它代入(2)式，可得
+\[
+\frac{d^2 v_C(t)}{dt^2} + \frac{R}{L} \frac{dv_C(t)}{dt} + \frac{v_C(t)}{LC} = 0 \tag{3}
+\]
+
+\(v_C(t)\) 之通解为
+\[
+v_C(t) = e^{-\beta t} \left[ A e^{j\omega t} + B e^{-j\omega t} \right] \tag{4}
+\]
+其中 \(\omega = \sqrt{\frac{1}{LC} - \left( \frac{R}{2L} \right)^2}\)，\(\beta = \frac{R}{2L}\)，\(A\)、\(B\) 为常数。由于 \(R\)、\(C\)、\(L\) 值的不同，会有三种不同的振荡情形：
+
+\begin{enumerate}
+    \item \(\left(\frac{R}{2L}\right)^2 > \frac{1}{LC}\) 时，电路无法振荡，称为过阻尼（Overdamping）。
+    \item \(\left(\frac{R}{2L}\right)^2 = \frac{1}{LC}\) 时，\(v_C(t)\) 的解为
+    \[
+    v_C(t) = (A + Bt) e^{-\beta t}
+    \]
+    其中 \(A\)、\(B\) 为常数。这种情形称为临界阻尼（Critical damping）。
+    \item \(\left(\frac{R}{2L}\right)^2 < \frac{1}{LC}\) 时，\(v_C(t)\) 的解为
+    \[
+    v_C(t) = A e^{-\beta t} \cos(\omega t + \phi)
+    \]
+    这种情形称为欠阻尼（Underdamping）。
+\end{enumerate}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Fig4-1}
+	\caption{}
+        \label{fig4a}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Fig4-2}
+	\caption{}
+        \label{fig4b}
+    \end{subfigure}
+    \caption{$RLC$阻尼振荡电路：(a)欠阻尼； (b临界阻尼和过阻尼}
+    \label{fig4}
+\end{figure}
+
+图4是在上述三种 RLC 条件下，\(v_C(t)\) 随时间变化的情形。
+
+\subsection{RLC 电路对正弦电压的反应（强迫振荡）}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{Fig5}
+\caption{$RLC$电路}
+\end{figure}
+
+图5是以正弦电压驱动的 RLC 串联电路。电路的总阻抗为 \(Z = R + j(\omega L - 1/\omega C)\)，回路电流 \(i(t)\) 为
+\[
+i(t) = \text{Re} \left[ \frac{V_m e^{j\omega t}}{R + j\left( \omega L - \frac{1}{\omega C} \right)} \right] = I_m \cos \left( \omega t + \phi \right) \tag{5}
+\]
+其中
+\[
+I_m = \frac{V_m}{\sqrt{R^2 + \left( \omega L - \frac{1}{\omega C} \right)^2}} \tag{6}
+\]
+\[
+\phi = -\tan^{-1} \left( \frac{\omega L - \frac{1}{\omega C}}{R} \right) \tag{7}
+\]
+
+\begin{figure}[htbp]
+    \centering
+    % 图8
+    \begin{minipage}[t]{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Fig6} % 替换为图8的实际路径
+        \caption{阻抗随频率$\omega$的变化图}
+        \label{fig:6}
+    \end{minipage}
+    \hfill
+    % 图9
+    \begin{minipage}[t]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Fig7} % 替换为图9的实际路径
+        \caption{$I_m$-$\omega$图}
+        \label{fig:7}
+    \end{minipage}
+    \hfill
+    % 图9
+    \begin{minipage}[t]{0.33\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Fig8} % 替换为图9的实际路径
+        \caption{$V_Rm$、$V_Lm$、$V_Cm$随频率$\omega$的变化图}
+        \label{fig:8}
+    \end{minipage}
+
+\end{figure}
+
+
+从(5)-(7)式可以看出，RLC 串联电路有如下的性质：
+\begin{enumerate}
+    \item 电路总阻抗：图5电路的总阻抗 \(Z\) 为
+    \[
+    Z = R + j\left( \omega L - \frac{1}{\omega C} \right)
+    \]
+    阻抗的大小为
+    \[
+    |Z| = \sqrt{R^2 + \left( \omega L - \frac{1}{\omega C} \right)^2}
+    \]
+    图6表示电路阻抗值随 \(\omega\) 而变化的情形。
+    \item 电流振幅：因为
+    \[
+    I_m = \frac{V_m}{\sqrt{R^2 + \left( \omega L - \frac{1}{\omega C} \right)^2}}
+    \]
+    所以，当 \(\omega L - 1/\omega C = 0\) 时，\(I_m\) 有极大值 \(V_m / R\)，电路处于共振状态，这时 \(v_C(t)\) 的频率 \(\omega_0 (=1/\sqrt{LC})\) 称为此 RLC 串联电路的自然共振频率。图7表示 \(I_m\) 随频率而变化的情形。
+    \item 电压方面：在图5的电路中，各元件的电压如图8所示。电阻器上的电压 \(v_R(t)\) 为
+    \[
+    v_R(t) = R i(t) = R I_m \cos(\omega t + \phi) = V_{Rm} \cos(\omega t + \phi)
+    \]
+    同理，电容器和电感器上的电压 \(v_C(t)\)、\(v_L(t)\) 分别为
+    \[
+    v_C(t) = V_{Cm} \cos\left( \omega t + \phi - \frac{\pi}{2} \right)
+    \]
+    \[
+    v_L(t) = V_{Lm} \cos\left( \omega t + \phi + \frac{\pi}{2} \right)
+    \]
+    当 \(\omega = \omega_0 = 1/\sqrt{LC}\) 时，电路呈共振状态，\(I_m = V_m / R\)，因此 \(V_{Cm} = V_{Lm} = (V_m / R) \sqrt{L/C}\)。如圖8中的共振情形 (\(\omega = \omega_0\))，这时候 \(v_C(t) + v_L(t) = 0\)，\(v_R(t) = v_i(t)\)，且 \(V_{Rm} = V_m\)。值得一提的是 \(V_{Lm}\) 与 \(V_{Cm}\) 达到最大值的频率 \(\omega_L\) 和 \(\omega_C\) 与 \(\omega_0\) 并不重合。
+
+
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Fig9} % 替换为图8的实际路径
+        \caption{$RLC$谐振时的等效电路}
+        \label{fig:6}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.4\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Fig10} % 替换为图9的实际路径
+        \caption{$\phi$-$\omega$图}
+        \label{fig:7}
+    \end{minipage}
+    \hfill
+\end{figure}
+
+    \item 相位差方面：当 \(\omega L - 1 / \omega C = 0\) 时，\(\phi = 0\)，电流 \(i(t)\) 和电源电压 \(v_i(t)\) 同相。此时电路为一纯电阻性电路，图5的电感器和电容器可看成短路，如图9所示。当 \(\omega L - 1 / \omega C < 0\) 时，\(\phi > 0\)，电流领先电源电压的相位角为 \(\phi\)，电路呈电容性；当 \(\omega L - 1 / \omega C > 0\) 时，\(\phi < 0\)，电流落后电源电压的相位角为 \(\phi\)，电路呈电感性。图10表示 \(\phi\) 随 \(\omega\) 而变化的情形。
+    \item RLC 电路的频宽：从图7可以看出：在 \(I_m\) 的峰值两侧各有一个半功率点 \(\omega_+\) 及 \(\omega_-\) (\(\omega_- < \omega_0 < \omega_+\))。因为
+    \[
+    I_m = \frac{V_m}{\sqrt{R^2 + \left( \omega L - \frac{1}{\omega C} \right)^2}}
+    \]
+    所以 \(\omega\) 值满足下式
+    \[
+    \frac{V_m}{\sqrt{R^2 + \left( \omega L - \frac{1}{\omega C} \right)^2}} = \frac{V_m}{\sqrt{2} R}
+    \]
+    解出 \(\omega\) 可得
+    \[
+    \omega_\pm = \frac{\pm R + \sqrt{R^2 + \frac{4L}{C}}}{2L}
+    \]
+    我们把电路的频宽定义为 \(\Delta \omega = \omega_+ - \omega_-\)，则 RLC 电路的 \(\Delta \omega\) 值为
+    \[
+    \Delta \omega = \frac{R}{L}
+    \]
+    因频率在 \(\omega_0\) 的附近，LC 几乎可看成短路，所以 RLC 串联电路可做为一个简单的“带通滤波器”，如图11所示。
+\end{enumerate}
+
+同理，RLC 串联电路也可做成在 \(\Delta \omega\) 范围内输出很小，在 \(\Delta \omega\) 以外输出很大的“带阻滤波器”，如图12所示。这种滤波器可以用来去掉不要的频率，称为“陷波器”。
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{Fig11}
+\caption{$RLC$带通滤波器：(a)电路图； (b)频率响应}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Fig12-1}
+	\caption{}
+        \label{fig12a}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Fig12-2}
+	\caption{}
+        \label{fig12b}
+    \end{subfigure}
+    \caption{$RLC$带阻滤波器：(a)电路图； (b)频率响应}
+    \label{fig12}
+\end{figure}
+
+\subsection{RLC 并联共振电路}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.45\textwidth]{Fig13}
+\caption{$RLC$并联电路}
+\end{figure}
+
+RLC 共振电路并联的方式很多，图13的电路是常见的并联共振电路之一，其总阻抗 \(Z\) 为
+\[
+Z = R - j \frac{L}{C} \left( \omega L - \frac{1}{\omega C} \right)
+\]
+
+从(8)式可知：当 \(\omega = 1/\sqrt{LC}\) 时，\(Z\) 的虚数项为无穷大，ab两端可看成断路，所以 \(v_0(t) = v_i(t)\)。这种现象正好与 RLC 串联共振电路相反。
+
+\subsection{RLC 电路的能量消耗}
+在 RLC 串联（或并联）电路里，电容器和电感器分别以电场和磁场的形式储存能量，只有电阻器会将能量以“热”的方式消耗掉，因此电源供应器所供应的平均功率（请参考 RL 实验自行证明）\(P_v\) 为
+\[
+P_v = \frac{V_m^2}{2 \left[ R^2 + \left( \omega L - \frac{1}{\omega C} \right)^2 \cos \phi \right]} = \frac{V_m^2}{2 \left[ R^2 + \left( \omega L - \frac{1}{\omega C} \right)^2 \right]}
+\]
+全部都会消耗在电阻器上。
+
+\section{实验仪器和设备}
+示波器，信号发生器，5kΩ 可变电阻 ×1，20mH 电感 ×1，0.01μF 电容 ×1，数字万用表。
+
+\section{实验内容与实验步骤}
+
+\subsection{阻尼振荡}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.45\textwidth]{Fig14}
+\caption{实验用$RLC$串联电路}
+\end{figure}
+
+\begin{enumerate}
+    \item 以方波驱动图14的电路，以 CH1 观察方波，CH2 观察电容器两端的电压。调整可变电阻的大小，观察欠阻尼、临界阻尼和过阻尼的波形。
+    \item 把可变电阻调整到临界阻尼条件，取下可变电阻器，量取电阻值，检验是否符合 \((R/2L)^2 = 1/LC\)。
+    \item 把可变电阻调到数百欧姆，观察阻尼振荡振幅衰减的情形，由示波器测出 \(\tau\)，并与 \(2L/R\) 相比较。
+    \item 把可变电阻和电容器的位置互换，观察 \(v_R(t)\) 的波形。
+\end{enumerate}
+
+\subsection{RLC 电路的受迫振动}
+\begin{enumerate}
+    \item 以正弦波驱动图14所示的电路，将可变电阻调到约 2.5kΩ。
+    \item 改变正弦波频率，但不改变振幅及可变电阻的阻值，观察 \(V_{Rm}\) 及 \(V_{Cm}\) 随频率而变化的情形。描绘频率响应曲线（参看图8）。
+    \item 由此曲线定出共振频率 \(f_0\) 及频宽 \(\Delta f\)，并与计算值作比较。
+    \item 观察相位角随频率变化的情形，描出相位角和频率的关系曲线。
+    \item 将可变电阻调为 1.25kΩ 及 4kΩ，重复上述步骤 2-4。
+    \item 以图15的电路，观察 L-C 的电压随频率而变化的情形，绘出 L-C 的电压对频率的响应图。
+    \item 以图16的电路，观察 \(v_0(t)\) 的峰值 \(V_{0m}\) 随频率而变化的情形，绘出 \(V_{0m}\) 的频率响应图。
+\end{enumerate}
+
+\subsection{能量消耗}
+\begin{enumerate}
+    \item 以正弦波推动图14的 RLC 电路。
+    \item 测量电流和波形产生器电压的相位差，计算波形产生器的消耗功率（注意正、负号）。
+    \item 测量电流与电阻器、电容器及电感器的相位差，计算各元件的消耗功率。
+    \item 验证整个电路的“能量守恒”。
+\end{enumerate}
+
+\section{思考题}
+\begin{enumerate}
+    \item 证明 \( \sqrt{L/C} \) 的量纲和电阻的量纲相同。
+    \item 进行步骤(一)的实验时，在信号发生器未接上 RLC 电路前，以示波器观察波形产生器的输出波形，示波器上会显示完整的方波；将 RLC 接成如图14的电路后，再以示波器观察波形产生器的输出波形，发现示波器上所显示的波形不再是完美的方波，请解释为什么会有这种现象（提示：考虑波形产生器的内阻）。
+    \item 请仔细比较实验操作步骤4.2中，不同电阻值的频率响应曲线。找出这些曲线的相异处，并说明原因。（提示：\( V_{Lm} \) 是否有最大值与临界阻尼条件有关吗？）
+    \item 试推测：如果改变实验操作步骤4.2的6、7的电阻值，频率响应曲线将会有什麽变化，请说明其原因。
+    \item 在力学简谐振动实验特别要求“等振荡稳定后，记录振幅……”，本实验为何不做相同要求？试解释之。
+\end{enumerate}
+
+\section{参考文献}
+\begin{enumerate}
+    \item J. B. Marion：Classical Dynamics of Particles and Systems, 2nd ed.
+    \item S. Karni：Applied Circuit Analysis (John. Wiley \& Sons Inc. 1988), §8-4~§8-5, p.220~p.233.
+\end{enumerate}
+
+	\end{document}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

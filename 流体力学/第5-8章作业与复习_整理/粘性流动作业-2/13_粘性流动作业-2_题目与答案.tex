@@ -1,0 +1,719 @@
+\documentclass[11pt,a4paper]{ctexart}
+\usepackage[margin=1.55cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array,longtable}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=blue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\renewcommand{\arraystretch}{1.35}
+\newcommand{\dd}{\mathrm{d}}
+
+\title{\vspace{-1.3em}粘性流动作业-2：题目与答案}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-2.2em}
+
+\begin{tcolorbox}[colback=blue!3,colframe=blue!50!black,title=说明]
+本文件按作业顺序整理，共 8 题。每题先列题目，再给答案。计算中取水密度未注明时为
+\(\rho=1000\ \mathrm{kg/m^3}\)，重力加速度 \(g=9.81\ \mathrm{m/s^2}\)。
+\end{tcolorbox}
+
+\section*{1. 圆管湍流近壁分层}
+
+\subsection*{题目}
+
+直径为 \(50\ \mathrm{mm}\) 的管道内，流动的管截面平均的时均速度
+\(\bar u_m\) 为 \(1.7\ \mathrm{m/s}\)，已知运动粘性系数
+\[
+\nu=1.006\ \mathrm{mm^2/s},
+\]
+计算壁面的线性底层、缓冲过渡层和完全湍流的厚度。提示：
+\[
+\frac{\bar u_m}{u_\tau}=2.5\ln\frac{Ru_\tau}{\nu}+1.75,
+\]
+\(R\) 是管半径。
+
+\subsection*{解答}
+
+\[
+d=0.05\ \mathrm{m},\qquad R=\frac d2=0.025\ \mathrm{m}.
+\]
+
+\[
+\nu=1.006\times10^{-6}\ \mathrm{m^2/s}.
+\]
+
+由平均速度公式反求摩擦速度 \(u_\tau\)：
+\[
+\frac{1.7}{u_\tau}
+=2.5\ln\frac{0.025u_\tau}{1.006\times10^{-6}}+1.75.
+\]
+
+解得
+\[
+u_\tau\approx0.0818\ \mathrm{m/s}.
+\]
+
+近壁分层用
+\[
+y^+=\frac{yu_\tau}{\nu}.
+\]
+
+线性底层边界取 \(y^+=5\)：
+\[
+y_1=\frac{5\nu}{u_\tau}
+=\frac{5\times1.006\times10^{-6}}{0.0818}
+=0.0615\ \mathrm{mm}.
+\]
+
+缓冲层到完全湍流区的边界取 \(y^+=30\)：
+\[
+y_2=\frac{30\nu}{u_\tau}
+=0.369\ \mathrm{mm}.
+\]
+
+所以从管壁向管心量距离 \(y\)：
+\[
+\boxed{0<y<0.0615\ \mathrm{mm}\quad\text{线性底层}}
+\]
+
+\[
+\boxed{0.0615<y<0.369\ \mathrm{mm}\quad\text{缓冲过渡层}}
+\]
+
+\[
+\boxed{0.369<y<25\ \mathrm{mm}\quad\text{完全湍流区}}
+\]
+
+若按“厚度”写：
+\[
+\boxed{\delta_{\text{线性底层}}=0.0615\ \mathrm{mm}}
+\]
+\[
+\boxed{\delta_{\text{缓冲层}}=0.3075\ \mathrm{mm}}
+\]
+\[
+\boxed{\delta_{\text{完全湍流区}}=24.63\ \mathrm{mm}}
+\]
+
+\section*{2. 泵吸水管最大安装高度}
+
+\subsection*{题目}
+
+如图离心泵的吸水管采用镀锌钢管，粗糙度 \(e=0.15\ \mathrm{mm}\)，长 \(6\ \mathrm{m}\)，直径 \(100\ \mathrm{mm}\)，有一个弯头
+（局部阻力系数 \(\zeta=0.29\)）和一个进口阀（\(\zeta=2.5\)）。工作流量
+\[
+Q=50\ \mathrm{m^3/h},
+\]
+对应水温的汽化压力为 \(19.6\ \mathrm{kPa}\)，大气压力为 \(101.3\ \mathrm{kPa}\)。若要求水泵入口压力至少比汽化压力大 \(20\ \mathrm{kPa}\)，求水泵中心位置高于水面的最大安装高度 \(h\)。已知
+\[
+\nu=1.0\times10^{-6}\ \mathrm{m^2/s}.
+\]
+
+\subsection*{解答}
+
+选水池自由液面为 A，泵入口中心为 B。取水面为零高度：
+\[
+z_A=0,\qquad z_B=h.
+\]
+
+水面速度近似为零：
+\[
+V_A\approx0.
+\]
+
+水面压强为大气压：
+\[
+p_A=p_a.
+\]
+
+泵入口最低允许压强：
+\[
+p_B=p_v+20\ \mathrm{kPa}=19.6+20=39.6\ \mathrm{kPa}.
+\]
+
+对 A 到 B 写机械能方程：
+\[
+p_a=p_B+\rho gh+\frac12\rho V^2+\Delta p_f+\sum\Delta p_\zeta.
+\]
+
+化为水头形式：
+\[
+h=\frac{p_a-p_B}{\rho g}
+-\frac{V^2}{2g}
+-\left(\lambda\frac{L}{d}+\sum\zeta\right)\frac{V^2}{2g}.
+\]
+
+流量：
+\[
+Q=\frac{50}{3600}=0.01389\ \mathrm{m^3/s}.
+\]
+
+管内平均速度：
+\[
+V=\frac{Q}{\pi d^2/4}
+=\frac{0.01389}{\pi(0.1)^2/4}
+=1.77\ \mathrm{m/s}.
+\]
+
+雷诺数：
+\[
+Re=\frac{Vd}{\nu}
+=\frac{1.77\times0.1}{1.0\times10^{-6}}
+=1.77\times10^5.
+\]
+
+相对粗糙度：
+\[
+\frac{e}{d}=\frac{0.15\ \mathrm{mm}}{100\ \mathrm{mm}}=0.0015.
+\]
+
+由 \(Re\) 和 \(e/d\) 查莫迪图，取
+\[
+\lambda\approx0.023.
+\]
+
+局部阻力系数和：
+\[
+\sum\zeta=0.29+2.5=2.79.
+\]
+
+\[
+\frac{V^2}{2g}=\frac{1.77^2}{2\times9.81}=0.159\ \mathrm{m}.
+\]
+
+\[
+\lambda\frac{L}{d}=0.023\times\frac{6}{0.1}=1.38.
+\]
+
+\[
+\frac{p_a-p_B}{\rho g}
+=\frac{(101.3-39.6)\times10^3}{1000\times9.81}
+=6.29\ \mathrm{m}.
+\]
+
+因此：
+\[
+h=6.29-0.159-(1.38+2.79)\times0.159.
+\]
+
+\[
+\boxed{h_{\max}\approx5.47\ \mathrm{m}}
+\]
+
+\section*{3. 水轮机输出功率}
+
+\subsection*{题目}
+
+如图，管路系统中有一水轮机，水温 \(10^\circ\mathrm{C}\)，对应运动粘度
+\[
+\nu=1.3\times10^{-6}\ \mathrm{m^2/s}.
+\]
+水管为铸铁管，粗糙度 \(e=0.25\ \mathrm{mm}\)。忽略局部损失，斜管中水流平均流速 \(2\ \mathrm{m/s}\)，试求水轮机输出功率。
+
+图示条件：斜管内径 \(20\ \mathrm{cm}\)、长度 \(30\ \mathrm{m}\)；水平管内径 \(30\ \mathrm{cm}\)、长度 \(15\ \mathrm{m}\)；压力表读数 \(70\ \mathrm{kPa}\)；上游水面比压力表截面高 \(30\ \mathrm{m}\)。
+
+\subsection*{解答}
+
+斜管：
+\[
+d_1=0.20\ \mathrm{m},\quad L_1=30\ \mathrm{m},\quad v_1=2\ \mathrm{m/s}.
+\]
+
+水平管：
+\[
+d_2=0.30\ \mathrm{m},\quad L_2=15\ \mathrm{m}.
+\]
+
+流量：
+\[
+Q=\frac{\pi d_1^2}{4}v_1
+=\frac{\pi(0.20)^2}{4}\times2
+=0.0628\ \mathrm{m^3/s}.
+\]
+
+水平管速度：
+\[
+v_2=\frac{Q}{\pi d_2^2/4}
+=\frac{0.0628}{\pi(0.30)^2/4}
+=0.889\ \mathrm{m/s}.
+\]
+
+雷诺数：
+\[
+Re_1=\frac{v_1d_1}{\nu}
+=\frac{2\times0.20}{1.3\times10^{-6}}
+=3.08\times10^5.
+\]
+
+\[
+Re_2=\frac{v_2d_2}{\nu}
+=\frac{0.889\times0.30}{1.3\times10^{-6}}
+=2.05\times10^5.
+\]
+
+相对粗糙度：
+\[
+\frac{e}{d_1}=0.00125,\qquad
+\frac{e}{d_2}=0.000833.
+\]
+
+查莫迪图：
+\[
+\lambda_1\approx0.0216,\qquad
+\lambda_2\approx0.0203.
+\]
+
+沿程损失：
+\[
+h_{f1}
+=0.0216\times\frac{30}{0.20}\times\frac{2^2}{2\times9.81}
+=0.659\ \mathrm{m}.
+\]
+
+\[
+h_{f2}
+=0.0203\times\frac{15}{0.30}\times\frac{0.889^2}{2\times9.81}
+=0.041\ \mathrm{m}.
+\]
+
+\[
+h_f=0.659+0.041=0.700\ \mathrm{m}.
+\]
+
+对上游水面 1 到压力表截面 2 写机械能方程：
+\[
+z_1=z_2+\frac{p_2}{\rho g}+\frac{v_2^2}{2g}+h_f+H_T.
+\]
+
+所以水轮机取走的水头：
+\[
+H_T=z_1-z_2-\frac{p_2}{\rho g}-\frac{v_2^2}{2g}-h_f.
+\]
+
+代入：
+\[
+H_T=30-\frac{70000}{1000\times9.81}
+-\frac{0.889^2}{2\times9.81}
+-0.700.
+\]
+
+\[
+H_T=22.12\ \mathrm{m}.
+\]
+
+水轮机输出功率：
+\[
+P=\rho gQH_T.
+\]
+
+\[
+P=1000\times9.81\times0.0628\times22.12.
+\]
+
+\[
+\boxed{P\approx13.6\ \mathrm{kW}}
+\]
+
+\section*{4. 书 10.2：平板层流边界层}
+
+\subsection*{题目}
+
+\[
+\mu=0.731\ \mathrm{Pa\cdot s},\qquad \rho=925\ \mathrm{kg/m^3}
+\]
+的油，以 \(0.6\ \mathrm{m/s}\) 的速度平行地流过一块长为 \(0.5\ \mathrm{m}\)、宽为 \(0.15\ \mathrm{m}\) 的光滑平板。求边界层最大厚度及平板所受的阻力。
+
+\subsection*{解答}
+
+运动粘度：
+\[
+\nu=\frac{\mu}{\rho}=\frac{0.731}{925}
+=7.90\times10^{-4}\ \mathrm{m^2/s}.
+\]
+
+雷诺数：
+\[
+Re_L=\frac{UL}{\nu}
+=\frac{0.6\times0.5}{7.90\times10^{-4}}
+=3.80\times10^2.
+\]
+
+为层流。
+
+边界层最大厚度：
+\[
+\delta_{\max}=\frac{5L}{\sqrt{Re_L}}
+=\frac{5\times0.5}{\sqrt{3.80\times10^2}}
+=0.128\ \mathrm{m}.
+\]
+
+平均摩擦系数：
+\[
+\bar C_f=\frac{1.328}{\sqrt{Re_L}}=0.0682.
+\]
+
+动压：
+\[
+\frac12\rho U^2=\frac12\times925\times0.6^2=166.5\ \mathrm{Pa}.
+\]
+
+平板两面面积：
+\[
+2S=2Lb=2\times0.5\times0.15=0.15\ \mathrm{m^2}.
+\]
+
+阻力：
+\[
+D=\bar C_f\frac12\rho U^2(2S)
+=0.0682\times166.5\times0.15.
+\]
+
+\[
+\boxed{\delta_{\max}=0.128\ \mathrm{m}}
+\]
+
+\[
+\boxed{D=1.7\ \mathrm{N}}
+\]
+
+\section*{5. 书 10.3：排挤厚度和动量损失厚度}
+
+\subsection*{题目}
+
+假定层流边界层的速度分布如下，请计算边界层的排挤厚度 \(\delta_1\) 和动量损失厚度 \(\delta_2\)。
+
+\[
+(1)\quad u=U\frac{y}{\delta},\quad y<\delta;\qquad u=U,\quad y>\delta.
+\]
+
+\[
+(2)\quad u=U\left[\frac{3}{2}\frac{y}{\delta}
+-\frac{1}{2}\left(\frac{y}{\delta}\right)^3\right],
+\quad y<\delta;\qquad u=U,\quad y>\delta.
+\]
+
+\subsection*{解答}
+
+定义：
+\[
+\delta_1=\int_0^\infty\left(1-\frac{u}{U}\right)\dd y,\qquad
+\delta_2=\int_0^\infty\frac{u}{U}\left(1-\frac{u}{U}\right)\dd y.
+\]
+
+令
+\[
+\eta=\frac{y}{\delta},\qquad \dd y=\delta\dd\eta.
+\]
+
+(1) \(\frac{u}{U}=\eta\)：
+\[
+\delta_1=\delta\int_0^1(1-\eta)\dd\eta=\frac{\delta}{2}.
+\]
+
+\[
+\delta_2=\delta\int_0^1\eta(1-\eta)\dd\eta=\frac{\delta}{6}.
+\]
+
+(2) \(\frac{u}{U}=f=\frac32\eta-\frac12\eta^3\)：
+\[
+\delta_1=\delta\int_0^1(1-f)\dd\eta=\frac{3}{8}\delta.
+\]
+
+\[
+\delta_2=\delta\int_0^1f(1-f)\dd\eta=\frac{39}{280}\delta.
+\]
+
+\[
+\boxed{(1)\quad \delta_1=\frac{\delta}{2},\quad \delta_2=\frac{\delta}{6}}
+\]
+
+\[
+\boxed{(2)\quad \delta_1=\frac38\delta,\quad \delta_2=\frac{39}{280}\delta}
+\]
+
+\section*{6. 书 10.5：正弦速度分布}
+
+\subsection*{题目}
+
+假设平板层流边界层内速度分布为
+\[
+\frac{u}{U_e}=a+b\sin\left(\frac{cy}{\delta}\right),
+\]
+式中 \(a,b,c\) 为待定常数，试用动量积分关系式方法求 \(\delta_1/\delta_2\) 和 \(C_D\)。
+
+\subsection*{解答}
+
+由边界条件：
+\[
+y=0:\quad u=0\Rightarrow a=0.
+\]
+
+\[
+y=\delta:\quad u=U_e\Rightarrow b\sin c=1.
+\]
+
+\[
+y=\delta:\quad \frac{\partial u}{\partial y}=0
+\Rightarrow \cos c=0.
+\]
+
+故
+\[
+c=\frac{\pi}{2},\qquad b=1.
+\]
+
+速度分布为：
+\[
+\frac{u}{U_e}=\sin\left(\frac{\pi y}{2\delta}\right).
+\]
+
+令
+\[
+\eta=\frac{y}{\delta},\qquad f=\sin\frac{\pi\eta}{2}.
+\]
+
+\[
+\delta_1=\delta\int_0^1(1-f)\dd\eta
+=\delta\left(1-\frac{2}{\pi}\right).
+\]
+
+\[
+\delta_2=\delta\int_0^1f(1-f)\dd\eta
+=\delta\left(\frac{2}{\pi}-\frac12\right).
+\]
+
+\[
+\boxed{\frac{\delta_1}{\delta_2}
+=\frac{1-\frac{2}{\pi}}{\frac{2}{\pi}-\frac12}
+\approx2.66}
+\]
+
+动量积分关系式：
+\[
+\frac{\tau_w}{\rho U_e^2}=\frac{\dd\delta_2}{\dd x}.
+\]
+
+壁面切应力：
+\[
+\tau_w=\mu\left(\frac{\partial u}{\partial y}\right)_0
+=\mu U_e\frac{\pi}{2\delta}.
+\]
+
+设
+\[
+\delta_2=A\delta,\qquad A=\frac{2}{\pi}-\frac12.
+\]
+
+代入并积分得：
+\[
+C_D=\frac{2\delta_2(L)}{L}
+=2\sqrt{\frac{A\pi}{Re_L}}.
+\]
+
+因为
+\[
+2\sqrt{A\pi}=1.31,
+\]
+
+\[
+\boxed{C_D=\frac{1.31}{\sqrt{Re_L}}}
+\]
+
+\section*{7. 书 10.10：火车摩擦阻力功率}
+
+\subsection*{题目}
+
+流线型火车长 \(110\ \mathrm{m}\)、宽 \(2.75\ \mathrm{m}\)、高 \(2.75\ \mathrm{m}\)，假定顶部及所有侧面的表面摩擦力相当于长 \(110\ \mathrm{m}\)、宽 \(8.25\ \mathrm{m}\) 的光滑平板的一个表面。火车以 \(160\ \mathrm{km/h}\) 的速度在空气中等速行驶，空气密度
+\[
+\rho=1.22\ \mathrm{kg/m^3},
+\]
+粘度
+\[
+\mu=1.79\times10^{-5}\ \mathrm{Pa\cdot s},
+\]
+如临界 \(Re\) 为 \(5\times10^5\)，问层流边界层能维持多长？火车为克服风的摩擦阻力，消耗的功率为多少？
+
+\subsection*{解答}
+
+\[
+U=\frac{160}{3.6}=44.44\ \mathrm{m/s}.
+\]
+
+等效平板面积：
+\[
+S=110\times8.25=907.5\ \mathrm{m^2}.
+\]
+
+层流边界层维持长度：
+\[
+x_{cr}=\frac{Re_{cr}\mu}{\rho U}
+=\frac{5\times10^5\times1.79\times10^{-5}}{1.22\times44.44}.
+\]
+
+\[
+\boxed{x_{cr}=0.165\ \mathrm{m}}
+\]
+
+全长雷诺数：
+\[
+Re_L=\frac{\rho UL}{\mu}
+=\frac{1.22\times44.44\times110}{1.79\times10^{-5}}
+=3.33\times10^8.
+\]
+
+转捩修正平均摩擦系数：
+\[
+\bar C_f=\frac{0.074}{Re_L^{1/5}}-\frac{1742}{Re_L}
+=0.001456.
+\]
+
+摩擦阻力：
+\[
+D=\bar C_f\frac12\rho U^2S
+=0.001456\times\frac12\times1.22\times44.44^2\times907.5.
+\]
+
+\[
+D=1.59\times10^3\ \mathrm{N}.
+\]
+
+功率：
+\[
+P=DU=1.59\times10^3\times44.44.
+\]
+
+\[
+\boxed{P\approx70.8\ \mathrm{kW}}
+\]
+
+\section*{8. 平板单面摩擦阻力和尾部边界层厚度}
+
+\subsection*{题目}
+
+已知来流 \(2.5\ \mathrm{m/s}\) 绕过零攻角平板，平板长 \(L=50\ \mathrm{cm}\)，宽 \(b=3\ \mathrm{m}\)，计算并比较不同流体绕流下，平板单面摩擦阻力及平板尾部的边界层名义厚度。临界
+\[
+Re_{cr}=5\times10^5.
+\]
+
+(a) 空气：
+\[
+\rho=1.2\ \mathrm{kg/m^3},\qquad \nu=1.5\times10^{-5}\ \mathrm{m^2/s}.
+\]
+
+(b) 水：
+\[
+\rho=998\ \mathrm{kg/m^3},\qquad \nu=1.005\times10^{-6}\ \mathrm{m^2/s}.
+\]
+
+\subsection*{解答}
+
+\[
+U=2.5\ \mathrm{m/s},\qquad L=0.5\ \mathrm{m},\qquad b=3\ \mathrm{m}.
+\]
+
+\[
+S=Lb=1.5\ \mathrm{m^2}.
+\]
+
+\subsubsection*{(a) 空气}
+
+\[
+Re_L=\frac{UL}{\nu}
+=\frac{2.5\times0.5}{1.5\times10^{-5}}
+=8.33\times10^4.
+\]
+
+\[
+Re_L<5\times10^5,
+\]
+所以全层流。
+
+\[
+\bar C_f=\frac{1.328}{\sqrt{Re_L}}
+=0.00460.
+\]
+
+\[
+D=\bar C_f\frac12\rho U^2S
+=0.00460\times\frac12\times1.2\times2.5^2\times1.5.
+\]
+
+\[
+\boxed{D_{\mathrm{air}}\approx0.0259\ \mathrm{N}}
+\]
+
+\[
+\delta_L=\frac{5L}{\sqrt{Re_L}}
+=\frac{5\times0.5}{\sqrt{8.33\times10^4}}
+=8.66\times10^{-3}\ \mathrm{m}.
+\]
+
+\[
+\boxed{\delta_{\mathrm{air}}\approx8.66\ \mathrm{mm}}
+\]
+
+\subsubsection*{(b) 水}
+
+\[
+Re_L=\frac{UL}{\nu}
+=\frac{2.5\times0.5}{1.005\times10^{-6}}
+=1.24\times10^6.
+\]
+
+\[
+Re_L>5\times10^5,
+\]
+发生转捩。
+
+转捩位置：
+\[
+x_{cr}=\frac{Re_{cr}\nu}{U}
+=\frac{5\times10^5\times1.005\times10^{-6}}{2.5}
+=0.201\ \mathrm{m}.
+\]
+
+平均摩擦系数：
+\[
+\bar C_f=\frac{0.074}{Re_L^{1/5}}-\frac{1742}{Re_L}
+=0.00307.
+\]
+
+\[
+D=\bar C_f\frac12\rho U^2S
+=0.00307\times\frac12\times998\times2.5^2\times1.5.
+\]
+
+\[
+\boxed{D_{\mathrm{water}}\approx14.4\ \mathrm{N}}
+\]
+
+尾部为湍流边界层，名义厚度：
+\[
+\delta_L=\frac{0.37L}{Re_L^{1/5}}
+=\frac{0.37\times0.5}{(1.24\times10^6)^{1/5}}.
+\]
+
+\[
+\boxed{\delta_{\mathrm{water}}\approx11.2\ \mathrm{mm}}
+\]
+
+\begin{center}
+\begin{tabular}{lllll}
+\toprule
+流体 & \(Re_L\) & 状态 & 单面摩擦阻力 & 尾部边界层厚度\\
+\midrule
+空气 & \(8.33\times10^4\) & 全层流 & \(0.0259\ \mathrm{N}\) & \(8.66\ \mathrm{mm}\)\\
+水 & \(1.24\times10^6\) & 转捩后湍流 & \(14.4\ \mathrm{N}\) & \(11.2\ \mathrm{mm}\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

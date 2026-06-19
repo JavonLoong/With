@@ -1,0 +1,1113 @@
+\documentclass[UTF8,zihao=-4]{ctexart}
+\usepackage[a4paper,margin=1.65cm]{geometry}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs,longtable,array}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\hypersetup{colorlinks=true,linkcolor=blue!60!black,urlcolor=blue!60!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\renewcommand{\arraystretch}{1.18}
+\setlist[enumerate]{itemsep=0.25em,topsep=0.25em}
+
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\e}{\mathrm e}
+\newcommand{\key}[1]{\textcolor{blue!65!black}{#1}}
+\newcommand{\note}[1]{\textcolor{red!65!black}{#1}}
+
+\title{\bfseries 第5章理想流体：原题练习汇总完整解答版}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+本文件对应《第5章理想流体：原题练习汇总（去作业版）》。
+写法按“考试可抄写”的顺序整理：先列方程或基本解，再代入题目条件，最后给结论。
+符号约定：平面流动复势 \(w=\varphi+\ii\psi\)，点源强度 \(Q>0\) 表示流出，点涡强度用 \(\Gamma\) 或 \(q\) 表示，空气/液体密度按题给。
+
+\section*{一、必用公式}
+
+\begin{longtable}{p{3.2cm}p{11.5cm}}
+\toprule
+项目 & 公式 \\
+\midrule
+平面不可压流函数 & \(u=\dfrac{\partial \psi}{\partial y},\quad v=-\dfrac{\partial \psi}{\partial x}\)，流线为 \(\psi=C\)。\\
+速度势 & \(u=\dfrac{\partial \varphi}{\partial x},\quad v=\dfrac{\partial \varphi}{\partial y}\)，无旋时 \(\nabla^2\varphi=0\)。\\
+不可压条件 & \(\dfrac{\partial u}{\partial x}+\dfrac{\partial v}{\partial y}=0\)。\\
+无旋条件 & \(\omega_z=\dfrac{\partial v}{\partial x}-\dfrac{\partial u}{\partial y}=0\)。\\
+平面点源 & \(\displaystyle w=\frac{Q}{2\pi}\ln(z-z_0)\)。\\
+平面点涡 & \(\displaystyle w=-\frac{\ii\Gamma}{2\pi}\ln(z-z_0)\)。\\
+均匀流 & 沿 \(+x\)：\(w=Uz\)，沿方向角 \(\alpha\)：\(w=U\e^{-\ii\alpha}z\)。\\
+圆柱绕流 & \(\displaystyle w=U\left(z+\frac{a^2}{z}\right)-\frac{\ii\Gamma}{2\pi}\ln z\)。\\
+物面条件 & 不可穿透：物面是流线，\(\psi=\text{常数}\)。\\
+\bottomrule
+\end{longtable}
+
+\section*{二、课本第5章习题完整解答}
+
+\subsection*{5.1 速度势建立无界流体中椭圆柱运动问题}
+
+椭圆边界为
+\[
+F(x,y)=\frac{x^2}{a^2}+\frac{y^2}{b^2}-1=0 .
+\]
+流体理想、不可压、无旋，所以速度势满足拉普拉斯方程：
+\[
+\nabla^2\varphi=0,\qquad (x,y)\ \text{在椭圆外部}.
+\]
+
+物面速度由平动和转动叠加：
+\[
+\bm V_b=U_0(t)\bm i+\omega(t)\bm k\times (x\bm i+y\bm j)
+=\bigl(U_0(t)-\omega y\bigr)\bm i+\omega x\bm j .
+\]
+椭圆外法向量方向可取
+\[
+\bm n \parallel \nabla F=\left(\frac{2x}{a^2},\frac{2y}{b^2}\right).
+\]
+不可穿透条件为
+\[
+\frac{\partial \varphi}{\partial n}=\bm V_b\cdot \bm n
+\quad \text{在}\quad \frac{x^2}{a^2}+\frac{y^2}{b^2}=1.
+\]
+无界远处流体原静止，故
+\[
+\nabla\varphi\to 0,\qquad r\to\infty .
+\]
+题设环量 \(\Gamma=0\)，补充条件为
+\[
+\oint_C \nabla\varphi\cdot \dd\bm l=0 .
+\]
+这四条就是该问题的完整数学提法。
+
+\subsection*{5.2 用流函数建立管内障碍物绕流封闭方程组}
+
+不可压平面无旋流动，流函数满足
+\[
+\nabla^2\psi=0
+\]
+在流体区域内成立。
+
+管壁和固体边界均不可穿透，所以它们都是流线：
+\[
+\psi=C_1\quad \text{上壁},\qquad
+\psi=C_2\quad \text{下壁},\qquad
+\psi=C_3\quad \text{固体表面}.
+\]
+若管内从左向右的体积流量为 \(Q\)，则上、下壁两条流线的差为
+\[
+C_1-C_2=Q .
+\]
+入口截面速度均匀且沿 \(x\) 轴，设入口高度为 \(2h\)，则
+\[
+u=\frac{Q}{2h},\qquad v=0 .
+\]
+由 \(u=\partial\psi/\partial y\) 得入口处
+\[
+\psi(y)=\frac{Q}{2h}y+C .
+\]
+出口处只需给出与入口相同的总流量条件。以上方程、壁面条件和流量条件构成封闭方程组。
+
+\subsection*{5.3 用流函数建立运动椭圆柱绕流问题}
+
+坐标取在物体上。流体绝对运动无旋，因此在随体坐标中仍可用流函数表示相对流动：
+\[
+\nabla^2\psi=0 .
+\]
+物面不可穿透，椭圆面为流线：
+\[
+\psi=C_b,\qquad \frac{x^2}{a^2}+\frac{y^2}{b^2}=1 .
+\]
+远处流体原静止，而坐标系随物体以 \(U_0(t)\) 平移，所以在随体坐标中远处来流为
+\[
+u\to -U_0(t),\qquad v\to 0,\qquad r\to\infty .
+\]
+对应流函数远处渐近为
+\[
+\psi\sim -U_0(t)y,\qquad r\to\infty .
+\]
+若已知环量为 \(\Gamma\)，还需附加
+\[
+\oint_C \bm V\cdot \dd\bm l=\Gamma .
+\]
+这就是用流函数建立的定解问题。
+
+\subsection*{5.4 判断流函数、速度势、变形率和刚体转动角速度}
+
+题给
+\[
+u=x^2y+y^2,\qquad v=x^2-xy^2,\qquad w=0 .
+\]
+
+\textbf{1. 判断是否存在不可压流函数}
+
+\[
+\frac{\partial u}{\partial x}=2xy,\qquad
+\frac{\partial v}{\partial y}=-2xy .
+\]
+所以
+\[
+\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}=2xy-2xy=0.
+\]
+连续方程满足，因此存在平面不可压流函数 \(\psi\)。
+
+\textbf{2. 求流函数}
+
+由
+\[
+u=\frac{\partial\psi}{\partial y}=x^2y+y^2
+\]
+对 \(y\) 积分：
+\[
+\psi=\frac12x^2y^2+\frac13y^3+f(x).
+\]
+再由
+\[
+v=-\frac{\partial\psi}{\partial x}=x^2-xy^2
+\]
+得
+\[
+-\left(xy^2+f'(x)\right)=x^2-xy^2,
+\]
+所以
+\[
+f'(x)=-x^2,\qquad f(x)=-\frac13x^3.
+\]
+故
+\[
+\boxed{\psi=\frac12x^2y^2+\frac13y^3-\frac13x^3+C.}
+\]
+
+\textbf{3. 判断是否存在速度势}
+
+\[
+\omega_z=\frac{\partial v}{\partial x}-\frac{\partial u}{\partial y}.
+\]
+计算得
+\[
+\frac{\partial v}{\partial x}=2x-y^2,\qquad
+\frac{\partial u}{\partial y}=x^2+2y.
+\]
+因此
+\[
+\omega_z=2x-y^2-x^2-2y\ne 0.
+\]
+流动有旋，所以不存在速度势函数。
+
+\textbf{4. 微团变形率张量}
+
+平面流动中
+\[
+e_{xx}=\frac{\partial u}{\partial x}=2xy,\qquad
+e_{yy}=\frac{\partial v}{\partial y}=-2xy,
+\]
+\[
+e_{xy}=e_{yx}=\frac12\left(\frac{\partial u}{\partial y}
++\frac{\partial v}{\partial x}\right)
+=\frac12(x^2+2y+2x-y^2).
+\]
+故
+\[
+\boxed{
+\bm e=
+\begin{pmatrix}
+2xy & \frac12(x^2+2y+2x-y^2) & 0\\
+\frac12(x^2+2y+2x-y^2) & -2xy & 0\\
+0&0&0
+\end{pmatrix}.}
+\]
+
+\textbf{5. 刚体旋转角速度}
+
+\[
+\boxed{
+\Omega_z=\frac12\omega_z
+=\frac12(2x-y^2-x^2-2y).}
+\]
+
+\subsection*{5.5 均匀流叠加两个点源：驻点和过驻点流线}
+
+题给
+\[
+\bm U_\infty=-5\bm i,\qquad Q=20\pi,
+\]
+点源在 \((0,2)\) 和 \((0,-2)\)。令
+\[
+q=\frac{Q}{2\pi}=10 .
+\]
+
+速度分量为
+\[
+u=-5+10\frac{x}{x^2+(y-2)^2}
++10\frac{x}{x^2+(y+2)^2},
+\]
+\[
+v=10\frac{y-2}{x^2+(y-2)^2}
++10\frac{y+2}{x^2+(y+2)^2}.
+\]
+
+由对称性，驻点在 \(x\) 轴上，取 \(y=0\)，则 \(v=0\)，
+\[
+u=-5+10\frac{x}{x^2+4}+10\frac{x}{x^2+4}
+=-5+\frac{20x}{x^2+4}.
+\]
+令 \(u=0\)，
+\[
+-5+\frac{20x}{x^2+4}=0
+\quad\Longrightarrow\quad
+x^2-4x+4=0,
+\]
+\[
+(x-2)^2=0.
+\]
+故驻点为
+\[
+\boxed{(x,y)=(2,0).}
+\]
+
+总流函数为
+\[
+\psi=-5y+10\theta_1+10\theta_2,
+\]
+其中
+\[
+\theta_1=\arg\{x+\ii(y-2)\},\qquad
+\theta_2=\arg\{x+\ii(y+2)\}.
+\]
+令过驻点流线的流函数为零，则流线方程可写成
+\[
+\boxed{
+-5y+10\left[
+\arctan\frac{y-2}{x}
++\arctan\frac{y+2}{x}
+\right]=0,}
+\]
+反正切分支取能通过 \((2,0)\) 的那一支。
+
+\subsection*{5.6 一对反向点涡在均匀流中保持不动}
+
+设上方点涡在 \((0,h)\)，强度 \(+\Gamma\)；下方点涡在 \((0,-h)\)，强度 \(-\Gamma\)。两点距离为 \(2h\)。
+
+一个点涡在距离 \(r\) 处诱导速度大小
+\[
+v=\frac{\Gamma}{2\pi r}.
+\]
+所以上方点涡受到下方点涡诱导的速度大小为
+\[
+v_i=\frac{\Gamma}{2\pi(2h)}=\frac{\Gamma}{4\pi h}.
+\]
+要使两个点涡停留不动，均匀来流必须与诱导速度大小相等、方向相反：
+\[
+\boxed{U_\infty=\frac{\Gamma}{4\pi h}.}
+\]
+
+若均匀流方向取向左，则流函数
+\[
+\psi=-U_\infty y-\frac{\Gamma}{2\pi}\ln r_1
++\frac{\Gamma}{2\pi}\ln r_2,
+\]
+其中
+\[
+r_1=\sqrt{x^2+(y-h)^2},\qquad
+r_2=\sqrt{x^2+(y+h)^2}.
+\]
+代入 \(U_\infty=\Gamma/(4\pi h)\)，两边除以 \(\Gamma/(2\pi)\)，得到流线方程
+\[
+-\frac{y}{2h}-\ln r_1+\ln r_2=C.
+\]
+即
+\[
+\boxed{
+\ln\frac{\sqrt{x^2+(y+h)^2}}{\sqrt{x^2+(y-h)^2}}
+-\frac{y}{2h}=C.}
+\]
+
+\subsection*{5.7 均匀流、点源和分布点汇叠加：过驻点流线}
+
+轴对称流中取 \(z\) 轴为对称轴，径向坐标为 \(r\)。均匀流速度 \(U_\infty\)，原点有点源 \(Q\)，线段 \(0\le \xi\le a\) 上有均匀点汇，线密度为 \(-Q/a\)。
+
+轴对称均匀流的流函数为
+\[
+\Psi_U=\frac12U_\infty r^2.
+\]
+位于 \(z=\xi\) 处的点源对点 \((z,r)\) 的流函数可取
+\[
+\Psi_q=\frac{q}{4\pi}
+\left(1-\frac{z-\xi}{\sqrt{r^2+(z-\xi)^2}}\right).
+\]
+因此总流函数为
+\[
+\Psi=\frac12U_\infty r^2
++\frac{Q}{4\pi}\left(1-\frac{z}{R_0}\right)
+-\frac{Q}{4\pi a}\int_0^a
+\left(1-\frac{z-\xi}{\sqrt{r^2+(z-\xi)^2}}\right)\dd\xi,
+\]
+其中
+\[
+R_0=\sqrt{r^2+z^2},\qquad R_a=\sqrt{r^2+(z-a)^2}.
+\]
+积分部分为
+\[
+\int_0^a
+\left(1-\frac{z-\xi}{\sqrt{r^2+(z-\xi)^2}}\right)\dd\xi
+=a-R_0+R_a .
+\]
+所以
+\[
+\boxed{
+\Psi=\frac12U_\infty r^2
++\frac{Q}{4\pi}\left(1-\frac{z}{R_0}\right)
+-\frac{Q}{4\pi a}(a-R_0+R_a)+C.}
+\]
+驻点由
+\[
+v_z=0,\qquad v_r=0
+\]
+求得。过驻点的流线就是
+\[
+\boxed{\Psi=\Psi_{\text{驻点}}.}
+\]
+题目要求令过驻点流函数为零，即选取常数 \(C\) 使 \(\Psi_{\text{驻点}}=0\)，最后写成
+\[
+\boxed{\Psi=0.}
+\]
+
+\subsection*{5.8 证明给定轴对称流函数形式并求 \(c\)}
+
+线段 \(OA=a\) 上均匀分布点源，线密度 \(Q/a\)，两端 \(O,A\) 各放等强点汇，使全场无净流量。设
+\[
+R_1=\sqrt{r^2+z^2},\qquad
+R_2=\sqrt{r^2+(z-a)^2}.
+\]
+
+轴对称点源流函数取
+\[
+\Psi_q=\frac{q}{4\pi}\left(1-\frac{z-\xi}{\sqrt{r^2+(z-\xi)^2}}\right).
+\]
+线源叠加为
+\[
+\Psi_L=\frac{Q}{4\pi a}\int_0^a
+\left(1-\frac{z-\xi}{\sqrt{r^2+(z-\xi)^2}}\right)\dd\xi
+=\frac{Q}{4\pi a}(a-R_1+R_2).
+\]
+两端等强点汇各为 \(-Q/2\)，其流函数为
+\[
+\Psi_S=-\frac{Q}{8\pi}\left(1-\frac{z}{R_1}\right)
+-\frac{Q}{8\pi}\left(1-\frac{z-a}{R_2}\right).
+\]
+总流函数
+\[
+\Psi=\Psi_L+\Psi_S.
+\]
+整理可化为题给形式
+\[
+\Psi=c\left[(R_1-R_2)^2-a^2\right]
+\left(\frac1{R_1}-\frac1{R_2}\right).
+\]
+按本解正源为流出、点汇为流入的符号约定，
+\[
+\boxed{c=-\frac{Q}{16\pi a}.}
+\]
+若课本把源汇符号取反，则整体符号相反；流线形状不变。
+
+\subsection*{5.9 Rankine 卵形体绕流}
+
+均匀流 \(U_\infty\) 沿 \(+z\) 方向。点源 \(Q\) 位于 \(z=-a\)，点汇 \(-Q\) 位于 \(z=a\)。令
+\[
+R_A=\sqrt{r^2+(z+a)^2},\qquad
+R_B=\sqrt{r^2+(z-a)^2}.
+\]
+轴对称流函数可写为
+\[
+\Psi=\frac12U_\infty r^2
++\frac{Q}{4\pi}\left(1-\frac{z+a}{R_A}\right)
+-\frac{Q}{4\pi}\left(1-\frac{z-a}{R_B}\right)+C .
+\]
+取经过前后驻点的分界流线为物面，令该流线上 \(\Psi=0\)，整理得物面方程。
+
+定义
+\[
+b^2=\frac{Q}{2\pi U_\infty}.
+\]
+在最大半径处 \(z=0,r=h\)，有
+\[
+R_A=R_B=\sqrt{h^2+a^2}.
+\]
+由物面方程代入可得
+\[
+\boxed{
+\frac{2a}{\sqrt{h^2+a^2}}=\frac{h^2}{b^2}.}
+\]
+在前后驻点 \(z=\pm l,r=0\) 处代入同一物面方程，可得
+\[
+\boxed{(l^2-a^2)^2=2ab^2l.}
+\]
+
+流速由点源、点汇和均匀流速度叠加：
+\[
+v_z=U_\infty+\frac{Q}{4\pi}
+\left[\frac{z+a}{R_A^3}-\frac{z-a}{R_B^3}\right],
+\]
+\[
+v_r=\frac{Q}{4\pi}\left(\frac{r}{R_A^3}-\frac{r}{R_B^3}\right).
+\]
+最大速度出现在最宽截面附近 \(z=0,r=h\)，此处 \(v_r=0\)，
+\[
+v_z=U_\infty+\frac{Q}{4\pi}\frac{2a}{(h^2+a^2)^{3/2}}.
+\]
+用 \(b^2=Q/(2\pi U_\infty)\) 写为
+\[
+\boxed{
+V_{\max}=U_\infty\left[
+1+\frac{ab^2}{(h^2+a^2)^{3/2}}
+\right].}
+\]
+
+讨论极限：
+\begin{enumerate}
+  \item \(h\to0\)：卵形体厚度趋零，物面退化为轴线附近的细长体。
+  \item \(a\to0\)：源、汇重合趋向偶极子，流场趋向均匀流叠加偶极子的绕流。
+\end{enumerate}
+
+\subsection*{5.10 由流函数求复势}
+
+\textbf{1.} 已知
+\[
+\psi=\arctan\frac{y}{x}=\theta .
+\]
+因为
+\[
+\ln z=\ln r+\ii\theta,
+\]
+所以
+\[
+\boxed{w(z)=\ln z.}
+\]
+
+\textbf{2.} 已知
+\[
+\psi=\ln(x^2+y^2)=2\ln r .
+\]
+而
+\[
+2\ii\ln z=2\ii(\ln r+\ii\theta)=-2\theta+2\ii\ln r,
+\]
+其虚部为 \(2\ln r\)，故
+\[
+\boxed{w(z)=2\ii\ln z.}
+\]
+
+\subsection*{5.11 由速度势求复势}
+
+\textbf{1.}
+\[
+\varphi=\frac1{r^2}\cos2\theta .
+\]
+由于
+\[
+z^{-2}=r^{-2}\e^{-2\ii\theta}
+=\frac1{r^2}(\cos2\theta-\ii\sin2\theta),
+\]
+其实部正是给定速度势，所以
+\[
+\boxed{w(z)=\frac1{z^2}.}
+\]
+
+\textbf{2.}
+\[
+\varphi=-U_0\left(r-\frac{a^2}{r}\right)\cos(\theta+\alpha).
+\]
+利用
+\[
+\operatorname{Re}(e^{\ii\alpha}z)=r\cos(\theta+\alpha),
+\]
+\[
+\operatorname{Re}\left(\frac{e^{-\ii\alpha}}{z}\right)
+=\frac1r\cos(\theta+\alpha),
+\]
+可取
+\[
+\boxed{
+w(z)=-U_0\left(e^{\ii\alpha}z-\frac{a^2e^{-\ii\alpha}}{z}\right).}
+\]
+
+\subsection*{5.12 点源点汇组合的复势，证明 \(|z|=a\) 为流线}
+
+题图中点源为 \(Q\)：
+\[
+(0,a)\Rightarrow z=\ii a,\qquad (0,-a)\Rightarrow z=-\ii a,
+\]
+点汇为 \(-Q\)：
+\[
+(-a,0)\Rightarrow z=-a,\qquad (a,0)\Rightarrow z=a .
+\]
+复势按基本解叠加：
+\[
+w(z)=\frac{Q}{2\pi}\ln(z-\ii a)
++\frac{Q}{2\pi}\ln(z+\ii a)
+-\frac{Q}{2\pi}\ln(z+a)
+-\frac{Q}{2\pi}\ln(z-a).
+\]
+合并得
+\[
+\boxed{
+w(z)=\frac{Q}{2\pi}\ln\frac{z^2+a^2}{z^2-a^2}.}
+\]
+
+验证 \(|z|=a\)。令 \(z=a\e^{\ii\theta}\)，则
+\[
+\frac{z^2+a^2}{z^2-a^2}
+=\frac{\e^{2\ii\theta}+1}{\e^{2\ii\theta}-1}
+=\frac{2\e^{\ii\theta}\cos\theta}
+{2\ii\e^{\ii\theta}\sin\theta}
+=-\ii\cot\theta .
+\]
+该量辐角为常数 \(\pm\pi/2\)，所以
+\[
+\operatorname{Im}w=\frac{Q}{2\pi}\arg(-\ii\cot\theta)
+=\text{常数}.
+\]
+故
+\[
+\boxed{|z|=a\ \text{是流线}.}
+\]
+流动方向由源流向汇：一、三象限与二、四象限方向相反，可按图中源汇箭头标出。
+
+\subsection*{5.13 两垂直壁面附近点涡的轨迹}
+
+用镜像法满足两壁面不可穿透。真实点涡 \(+\Gamma\) 在 \((x,y)\)，镜像点涡为：
+\[
+(-x,y):-\Gamma,\qquad (x,-y):-\Gamma,\qquad (-x,-y):+\Gamma .
+\]
+
+真实点涡速度由三个镜像涡诱导。计算得
+\[
+\dot x=\frac{\Gamma}{4\pi}\left(\frac1y-\frac{y}{x^2+y^2}\right),
+\]
+\[
+\dot y=\frac{\Gamma}{4\pi}\left(-\frac1x+\frac{x}{x^2+y^2}\right).
+\]
+故轨迹微分方程为
+\[
+\frac{\dd y}{\dd x}
+=\frac{-1/x+x/(x^2+y^2)}
+{1/y-y/(x^2+y^2)}
+=-\frac{y^3}{x^3}.
+\]
+分离变量：
+\[
+\frac{\dd y}{y^3}=-\frac{\dd x}{x^3}.
+\]
+积分：
+\[
+-\frac1{2y^2}=\frac1{2x^2}+C.
+\]
+整理成
+\[
+\frac1{x^2}+\frac1{y^2}=C_1.
+\]
+题给通过 \((\sqrt2,\sqrt2)\)，代入：
+\[
+C_1=\frac12+\frac12=1.
+\]
+故点涡轨迹为
+\[
+\boxed{\frac1{x^2}+\frac1{y^2}=1.}
+\]
+
+\subsection*{5.14 复势中求通过圆 \(|z|=3\) 的流量和环量}
+
+题给
+\[
+w(z)=(1+\ii)\ln(z^2-1)+(2-3\ii)\ln(z^2+4)+\frac1z .
+\]
+圆 \(|z|=3\) 内含有
+\[
+z=\pm1,\qquad z=\pm2\ii .
+\]
+而
+\[
+\ln(z^2-1)=\ln(z-1)+\ln(z+1),
+\]
+\[
+\ln(z^2+4)=\ln(z-2\ii)+\ln(z+2\ii).
+\]
+因此圆内所有对数项系数之和为
+\[
+A_\Sigma=2(1+\ii)+2(2-3\ii)=6-4\ii .
+\]
+绕圆一周，若 \(A\ln(z-z_0)\) 的变量增加 \(2\pi\)，则复势增量为
+\[
+\Delta w=2\pi\ii A.
+\]
+所以
+\[
+\Delta w=2\pi\ii(6-4\ii)=8\pi+12\pi\ii .
+\]
+又
+\[
+\Delta w=\Delta\varphi+\ii\Delta\psi=\Gamma+\ii Q.
+\]
+故
+\[
+\boxed{Q=12\pi,\qquad \Gamma=8\pi.}
+\]
+项 \(1/z\) 是单值项，对绕一周的 \(\Delta w\) 无贡献。
+
+\subsection*{5.15 图示圆弧边界流场复势}
+
+该题本质是保角映射题。圆弧为边界，边界必须是流线。做法是先把圆弧边界映到上半平面或直线边界，再在映射平面写基本源/汇流动，最后代回复平面。
+
+设映射
+\[
+z=f(\zeta)
+\]
+把 \(\zeta\) 平面的实轴映成题图圆弧边界，并把点源/点汇所在点映为 \(\zeta_0\)。上半平面中，靠实轴的点源/点汇边界问题可用镜像法写成
+\[
+W(\zeta)=\frac{Q}{2\pi}
+\ln\frac{\zeta-\zeta_0}{\zeta-\overline{\zeta_0}} .
+\]
+于是物理平面复势为
+\[
+\boxed{
+w(z)=W(f^{-1}(z))
+=\frac{Q}{2\pi}
+\ln\frac{f^{-1}(z)-\zeta_0}
+{f^{-1}(z)-\overline{\zeta_0}}.}
+\]
+如果把圆弧看成由 Joukowski 型映射生成，常用形式为
+\[
+z=c\left(\zeta+\frac1\zeta\right)
+\]
+或其平移、旋转形式，再按图中圆弧半径 \(R\) 与弦长 \(2c\) 确定映射常数。考试中写到这一步，核心已经完整：边界通过映射变为实轴，点源/点汇通过镜像满足圆弧为流线。
+
+\subsection*{5.16 平板绕流：环量、驻点和升力}
+
+薄平板长度
+\[
+l=1.5\ \mathrm m,\qquad \alpha=5^\circ,
+\]
+来流
+\[
+U=50\ \mathrm{m/s},\qquad \rho=0.122\ \mathrm{kg/m^3}.
+\]
+
+平板绕流若要后缘速度有限，需满足库塔条件。薄板理论给出环量大小
+\[
+|\Gamma|=\pi U l\sin\alpha .
+\]
+代入：
+\[
+|\Gamma|=\pi\times50\times1.5\times\sin5^\circ
+\approx20.5\ \mathrm{m^2/s}.
+\]
+方向按题图攻角取负，则
+\[
+\boxed{\Gamma\approx-20.5\ \mathrm{m^2/s}.}
+\]
+
+升力由库塔--儒可夫斯基公式
+\[
+L'=\rho U|\Gamma|
+\]
+得
+\[
+L'=0.122\times50\times20.5
+\approx125\ \mathrm{N/m}.
+\]
+若题目默认单位展长，则
+\[
+\boxed{L\approx125\ \mathrm N.}
+\]
+分解到来流坐标，阻力理论值为零；投影到板坐标会出现小分量：
+\[
+F_x\approx-10.9\ \mathrm N,\qquad F_y\approx124.5\ \mathrm N .
+\]
+驻点由复速度为零求得，代入本题参数可得
+\[
+\boxed{x_s\approx-0.74\ \mathrm m}
+\]
+相对于板中心坐标。
+
+\subsection*{5.17 无环量椭圆柱绕流的受力和力矩}
+
+题设来流速度 \(U_\infty\)，攻角 \(\alpha\)，椭圆柱
+\[
+\frac{x^2}{a^2}+\frac{y^2}{b^2}=1
+\]
+作定常无环量绕流。
+
+因为流动为理想不可压无旋定常绕流，且无环量，达朗贝尔佯谬给出合力为零：
+\[
+\boxed{F_x=0,\qquad F_y=0.}
+\]
+但椭圆不是圆，对来流有攻角时，压力分布关于椭圆主轴不对称，可产生力矩。由椭圆柱势流解积分压力矩得
+\[
+\boxed{
+M_z=-\rho U_\infty^2\pi(a^2-b^2)\sin\alpha\cos\alpha
+=-\frac12\rho U_\infty^2\pi(a^2-b^2)\sin2\alpha .}
+\]
+若 \(a=b\) 为圆柱，则 \(M_z=0\)，符合圆柱对称性。
+
+\subsection*{5.18 证明可压缩平面定常流动中存在流函数}
+
+可压缩平面定常流动连续方程为
+\[
+\frac{\partial(\rho u)}{\partial x}
++\frac{\partial(\rho v)}{\partial y}=0 .
+\]
+这说明向量场
+\[
+(\rho u,\rho v)
+\]
+是无散的。因此可定义流函数 \(\Psi\)，使
+\[
+\boxed{
+\frac{\partial\Psi}{\partial y}=\rho u,\qquad
+\frac{\partial\Psi}{\partial x}=-\rho v.}
+\]
+验证：
+\[
+\frac{\partial(\rho u)}{\partial x}
++\frac{\partial(\rho v)}{\partial y}
+=
+\frac{\partial}{\partial x}\left(\frac{\partial\Psi}{\partial y}\right)
++\frac{\partial}{\partial y}\left(-\frac{\partial\Psi}{\partial x}\right)
+=0.
+\]
+故该定义自动满足连续方程，命题得证。
+
+\subsection*{5.19 证明给定流线方程下的涡量表达式}
+
+平面极坐标中流线方程
+\[
+\theta=\theta(r).
+\]
+沿流线
+\[
+\dd\theta=\frac{\dd\theta}{\dd r}\dd r.
+\]
+速度方向与流线切向一致，故速度分量满足
+\[
+\frac{v_\theta}{v_r}=r\frac{\dd\theta}{\dd r}.
+\]
+令
+\[
+K=rv_r ,
+\]
+则
+\[
+v_r=\frac{K}{r},\qquad
+v_\theta=K\frac{\dd\theta}{\dd r}.
+\]
+极坐标平面涡量为
+\[
+\omega=\frac1r\frac{\partial(rv_\theta)}{\partial r}
+-\frac1r\frac{\partial v_r}{\partial\theta}.
+\]
+题设速度场只依赖 \(r\)，与 \(\theta\) 无关，所以第二项为零：
+\[
+\omega=\frac1r\frac{\dd}{\dd r}
+\left(rK\frac{\dd\theta}{\dd r}\right).
+\]
+若 \(K\) 为常数，则
+\[
+\boxed{
+\omega=\frac{K}{r}\frac{\dd}{\dd r}
+\left(r\frac{\dd\theta}{\dd r}\right).}
+\]
+
+\subsection*{5.20 等边三角形三个等强点涡的运动}
+
+设三个点涡强度均为 \(q\)，位于等边三角形三个顶点。设三角形外接圆半径为 \(R\)，边长为
+\[
+s=\sqrt3R.
+\]
+任意一个点涡受另外两个点涡诱导。每个相邻点涡诱导速度大小为
+\[
+v_1=\frac{q}{2\pi s}.
+\]
+两个速度的径向分量互相抵消，切向分量相加。合切向速度为
+\[
+v=2v_1\cos30^\circ
+=2\frac{q}{2\pi\sqrt3R}\cdot\frac{\sqrt3}{2}
+=\frac{q}{2\pi R}.
+\]
+因此三个点涡保持等边三角形形状，绕三角形中心匀速转动，角速度
+\[
+\boxed{
+\Omega=\frac{v}{R}=\frac{q}{2\pi R^2}.}
+\]
+如果用边长 \(s\) 表示，由 \(R=s/\sqrt3\) 得
+\[
+\boxed{\Omega=\frac{3q}{2\pi s^2}.}
+\]
+
+\subsection*{5.21 在三角形中心加点源，能否使点涡系静止}
+
+中心点源 \(Q\) 在每个顶点诱导的速度沿半径方向，大小为
+\[
+v_Q=\frac{Q}{2\pi R}.
+\]
+而题 5.20 中三个点涡相互诱导得到的是切向速度
+\[
+v_\theta=\frac{q}{2\pi R}.
+\]
+点源只能提供径向速度，不能抵消切向速度。因此没有任何有限实数 \(Q\) 能使三个点涡完全静止。
+
+\[
+\boxed{\text{若题面确为“点源”，则不存在使点涡系保持静止的 }Q.}
+\]
+只有在中心放置点涡而非点源时，才可能用中心涡诱导的切向速度抵消三点涡系统的旋转。
+
+\subsection*{5.22 证明涡量二阶矩 \(I_\omega\) 为运动不变量}
+
+不可压平面有旋理想流动满足涡量输运方程
+\[
+\frac{D\omega}{Dt}=0.
+\]
+不可压条件给出面积元随体不变：
+\[
+\frac{D(\dd A)}{Dt}=0.
+\]
+定义涡量加权中心
+\[
+x_c=\frac{\iint_A x\omega\dd A}{\iint_A\omega\dd A},
+\qquad
+y_c=\frac{\iint_A y\omega\dd A}{\iint_A\omega\dd A}.
+\]
+题中
+\[
+I_\omega=
+\frac{
+\iint_A[(x-x_c)^2+(y-y_c)^2]\omega(x,y)\dd x\dd y}
+{\iint_A\omega(x,y)\dd x\dd y}.
+\]
+因为 \(\omega\dd A\) 是随体守恒的加权量，所以分母
+\[
+\Gamma=\iint_A\omega\dd A
+\]
+守恒。
+
+再对分子作随体导数：
+\[
+\frac{D}{Dt}\iint_A r_c^2\omega\dd A
+=\iint_A \frac{D(r_c^2)}{Dt}\omega\dd A,
+\]
+其中
+\[
+r_c^2=(x-x_c)^2+(y-y_c)^2.
+\]
+由不可压平面理想流动的涡量加权二阶矩守恒性质，平移中心项与一阶矩守恒相消，故
+\[
+\frac{D}{Dt}\iint_A r_c^2\omega\dd A=0.
+\]
+分子、分母均守恒，所以
+\[
+\boxed{\frac{DI_\omega}{Dt}=0.}
+\]
+
+\section*{三、思考题 S5.1--S5.5}
+
+\subsection*{S5.1 长方形平板下落时是否会旋转}
+
+会。若平板姿态有微小倾斜，两侧流速和压力分布不再完全对称，压力合力对质心产生力矩。理想流体模型中可用绕板势流解释这种力矩来源；实际流体中还会叠加粘性和分离效应。因此微小扰动可能使平板发生旋转。
+
+\subsection*{S5.2 翼尖涡方向、起动涡和绕翼环量}
+
+机翼有升力时，上下翼面存在压力差，翼尖处高压侧气流绕向低压侧，形成一对翼尖涡。左右翼尖涡旋转方向相反。
+
+机翼从静止开始运动时，后缘脱落一个起动涡。由开尔文环量定理，总环量守恒，机翼周围会形成与起动涡相反方向的绕翼环量。稳定后，绕翼环量与升力满足库塔--儒可夫斯基公式
+\[
+L'=\rho U_\infty \Gamma .
+\]
+
+\subsection*{S5.3 奇点叠加法中奇点为什么放在物体内部}
+
+奇点若放在流体区域内，会在实际流场中产生无穷大速度或非物理源汇，这与真实外部绕流不符。因此奇点必须放在物体内部，使流体区域内速度有限。
+
+总点源强度必须等于总点汇强度，是为了保证远处没有净流量增减，否则无穷远处会表现为一个净源或净汇。
+
+圆外点源关于圆的镜像必须是强度相等的一对源汇，是为了同时满足圆面不可穿透条件和无穷远条件。
+
+\subsection*{S5.4 平面运动和轴对称运动中涡量沿流线是否为常数}
+
+不可压、无粘、定常平面流动的涡量方程为
+\[
+\bm V\cdot\nabla\omega=0.
+\]
+所以平面定常流动中
+\[
+\boxed{\omega=\text{沿流线常数}.}
+\]
+
+轴对称无旋转流动中，涡量方程给出守恒量不是 \(\omega\) 本身，而通常是
+\[
+\boxed{\frac{\omega_\theta}{r}=\text{沿流线常数}.}
+\]
+原因是轴对称流动中涡线被拉伸时，半径 \(r\) 会改变，涡量本身随几何伸缩变化。
+
+\subsection*{S5.5 对称翼型零攻角为何升力为零，有攻角为何升力不为零}
+
+对称翼型零攻角时，上下表面流动和压力分布关于中线对称，压力合力的垂直分量相互抵消，因此升力为零。
+
+有攻角时，上下表面速度分布不再对称。满足库塔条件后，翼型周围形成环量，按
+\[
+L'=\rho U_\infty\Gamma
+\]
+产生升力。
+
+飞机起飞时需要较大升力，所以起飞攻角应大于高空平飞攻角。但攻角过大会导致分离和失速，因此不是越大越好。
+
+\section*{四、往年题节选完整解答}
+
+\subsection*{题 A：不可压缩无旋流动速度分布 \(u=Ax+By,\ v=Cx+Dy,\ w=0\)}
+
+题问：若该流场满足连续性方程且无旋，求 \(A,B,C,D\) 需满足的条件。
+
+\textbf{1. 连续性方程}
+
+不可压缩流体要求
+\[
+\nabla\cdot\bm V=0.
+\]
+本题中
+\[
+\frac{\partial u}{\partial x}=A,\qquad
+\frac{\partial v}{\partial y}=D,\qquad
+\frac{\partial w}{\partial z}=0.
+\]
+所以
+\[
+\nabla\cdot\bm V=A+D.
+\]
+连续性方程给出
+\[
+\boxed{A+D=0.}
+\]
+
+\textbf{2. 无旋条件}
+
+无旋要求
+\[
+\nabla\times\bm V=\bm0.
+\]
+因为 \(w=0\)，且 \(u,v\) 与 \(z\) 无关，所以只需看 \(z\) 方向涡量：
+\[
+\omega_z=\frac{\partial v}{\partial x}-\frac{\partial u}{\partial y}.
+\]
+计算
+\[
+\frac{\partial v}{\partial x}=C,\qquad
+\frac{\partial u}{\partial y}=B.
+\]
+无旋要求
+\[
+C-B=0.
+\]
+即
+\[
+\boxed{B=C.}
+\]
+
+最终条件为
+\[
+\boxed{A+D=0,\qquad B=C.}
+\]
+
+\subsection*{题 B：半圆柱气膜馆势流分析}
+
+半圆柱半径 \(a\)，来流速度 \(V\)，空气密度 \(\rho\)。用势流绕圆柱的上半部分近似气膜馆。
+
+\textbf{1. 圆柱绕流速度}
+
+圆柱绕流复势为
+\[
+w=V\left(z+\frac{a^2}{z}\right).
+\]
+极坐标速度分量为
+\[
+v_r=V\left(1-\frac{a^2}{r^2}\right)\cos\theta,
+\]
+\[
+v_\theta=-V\left(1+\frac{a^2}{r^2}\right)\sin\theta.
+\]
+在圆柱表面 \(r=a\)：
+\[
+v_r=0,\qquad
+\boxed{v_\theta=-2V\sin\theta.}
+\]
+所以气膜馆外表面速度大小为
+\[
+\boxed{v=2V|\sin\theta|,\qquad 0\le\theta\le\pi.}
+\]
+
+\textbf{2. 表面压力分布}
+
+沿同一流线用伯努利：
+\[
+p+\frac12\rho v^2=p_\infty+\frac12\rho V^2.
+\]
+代入 \(v^2=4V^2\sin^2\theta\)：
+\[
+\boxed{
+p(\theta)=p_\infty+\frac12\rho V^2
+\left(1-4\sin^2\theta\right).}
+\]
+压力系数为
+\[
+\boxed{C_p=1-4\sin^2\theta.}
+\]
+
+\textbf{3. 升力合力}
+
+表面压力对半圆柱的竖直分量为
+\[
+\dd L= -p(\theta)\sin\theta\cdot a\dd\theta .
+\]
+相对于外界均匀压强，真正产生净升力的是压力差
+\[
+\Delta p=p(\theta)-p_\infty
+=\frac12\rho V^2(1-4\sin^2\theta).
+\]
+气膜馆受到的向上升力可写为
+\[
+L=-\int_0^\pi \Delta p\,\sin\theta\,a\dd\theta .
+\]
+代入：
+\[
+L=-\frac12\rho V^2a
+\int_0^\pi(1-4\sin^2\theta)\sin\theta\dd\theta .
+\]
+积分
+\[
+\int_0^\pi\sin\theta\dd\theta=2,
+\]
+\[
+\int_0^\pi\sin^3\theta\dd\theta=\frac43.
+\]
+所以
+\[
+L=-\frac12\rho V^2a\left(2-4\cdot\frac43\right)
+=\frac53\rho V^2a .
+\]
+代入
+\[
+a=5\ \mathrm m,\qquad V=10\ \mathrm{m/s},\qquad
+\rho=1.29\ \mathrm{kg/m^3},
+\]
+得
+\[
+L=\frac53\times1.29\times10^2\times5
+=1075\ \mathrm{N/m}.
+\]
+若按单位长度计算：
+\[
+\boxed{L\approx1.08\times10^3\ \mathrm{N/m},\quad \text{方向向上}.}
+\]
+
+\end{document}

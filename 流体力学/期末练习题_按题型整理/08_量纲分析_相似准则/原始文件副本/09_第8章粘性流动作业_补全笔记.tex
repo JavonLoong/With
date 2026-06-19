@@ -1,0 +1,621 @@
+﻿\documentclass[12pt,a4paper]{ctexart}
+
+\usepackage{amsmath,amssymb,bm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\geometry{left=2.1cm,right=2.1cm,top=2.0cm,bottom=2.0cm}
+\setlist[itemize]{itemsep=0.25em,topsep=0.25em}
+\setlist[enumerate]{itemsep=0.35em,topsep=0.35em}
+
+\newcommand{\dd}{\mathrm d}
+\newcommand{\Rey}{\mathrm{Re}}
+\newcommand{\blue}[1]{\textcolor{blue!70!black}{#1}}
+\newcommand{\red}[1]{\textcolor{red!75!black}{#1}}
+
+\title{第8章 粘性流动：作业补全笔记}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{0. 这次作业为什么你的原笔记不够}
+
+你原来的笔记主要覆盖了“圆管层流”，也就是泊肃叶流动：
+\[
+u(r)=\frac{1}{4\mu}\left(-\frac{\dd p}{\dd x}\right)(R^2-r^2),
+\qquad
+\tau_w=\frac{R}{2}\left(-\frac{\dd p}{\dd x}\right),
+\qquad
+\lambda=\frac{64}{\Rey}.
+\]
+
+这能解决圆管压降、管内层流、阻力系数等题。
+但这次作业还需要另外三块：
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+知识块 & 典型题 & 核心公式 \\
+\midrule
+圆管层流 & 1、8.4、7 & \(\Rey=\dfrac{Vd}{\nu}\)，\(\tau_w=\dfrac{8\mu \bar V}{D}\) \\
+小球低雷诺数 & 8.5、8.10 & \(F_D=6\pi\mu aU\) \\
+平板剪切流 & 8.6、8 & \(\mu u''=\dfrac{\dd p}{\dd x}\)，\(\tau=\mu u'\) \\
+涡量与流函数 & 9、10 & \(\Omega_z=v_x-u_y\)，\(u=\psi_y,\ v=-\psi_x\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{1. 圆管层流：你原笔记的主线}
+
+\subsection*{1.1 判断层流还是湍流}
+
+圆管雷诺数：
+\[
+\boxed{
+\Rey=\frac{Vd}{\nu}=\frac{\rho Vd}{\mu}
+}
+\]
+
+常用判断：
+\[
+\Rey<2000\Rightarrow \text{层流},
+\qquad
+\Rey>4000\Rightarrow \text{湍流}.
+\]
+
+中间区域为过渡区，作业里一般按题目提示或常用界限判断。
+
+\subsection*{1.2 圆管泊肃叶流动}
+
+圆管半径为 \(R\)，直径为 \(D=2R\)。若流动为定常、充分发展、水平圆管层流，则
+\[
+\boxed{
+u(r)=\frac{1}{4\mu}\left(-\frac{\dd p}{\dd x}\right)(R^2-r^2)
+}
+\]
+
+最大速度：
+\[
+\boxed{
+u_{\max}=\frac{R^2}{4\mu}\left(-\frac{\dd p}{\dd x}\right)
+}
+\]
+
+平均速度：
+\[
+\boxed{
+\bar V=\frac{u_{\max}}{2}
+=\frac{R^2}{8\mu}\left(-\frac{\dd p}{\dd x}\right)
+}
+\]
+
+流量：
+\[
+\boxed{
+Q=\bar V\pi R^2
+=\frac{\pi R^4}{8\mu}\left(-\frac{\dd p}{\dd x}\right)
+}
+\]
+
+\subsection*{1.3 壁面剪应力与平均速度}
+
+圆管层流中最常用的一条：
+\[
+\boxed{
+\tau_w=\frac{8\mu \bar V}{D}
+}
+\]
+
+所以如果已知 \(\tau_w,D,\bar V\)，求粘度：
+\[
+\boxed{
+\mu=\frac{\tau_wD}{8\bar V}
+}
+\]
+
+其中
+\[
+\bar V=\frac{Q}{A}=\frac{4Q}{\pi D^2}.
+\]
+
+\subsection*{1.4 圆管压降}
+
+水平圆管：
+\[
+\boxed{
+\tau_w=\frac{D}{4}\left(-\frac{\dd p}{\dd x}\right)
+}
+\]
+
+所以
+\[
+\boxed{
+-\frac{\dd p}{\dd x}=\frac{4\tau_w}{D}
+}
+\]
+
+若是竖直管，还要考虑重力沿流动方向的分量。
+取 \(x\) 沿流动方向，则
+\[
+\boxed{
+\frac{\dd p}{\dd x}
+=\rho g_x-\frac{4\tau_w}{D}
+}
+\]
+
+其中：
+\[
+\begin{cases}
+g_x=0, & \text{水平流动},\\
+g_x=-g, & \text{向上流动},\\
+g_x=+g, & \text{向下流动}.
+\end{cases}
+\]
+
+\section*{2. 小球低雷诺数：补充你缺的第一块}
+
+\subsection*{2.1 什么时候用}
+
+看到“小球”“很慢”“粘度很大”“\(Re<1\)”时，优先想到斯托克斯阻力。
+
+\[
+\boxed{
+\text{小球低雷诺数} \Rightarrow F_D=6\pi\mu aU
+}
+\]
+
+其中 \(a\) 是小球半径，不是直径。
+
+\subsection*{2.2 斯托克斯阻力}
+
+小球半径 \(a\)，速度 \(U\)，流体粘度 \(\mu\)，阻力为
+\[
+\boxed{
+F_D=6\pi\mu aU
+}
+\]
+
+低雷诺数判断：
+\[
+\boxed{
+\Rey=\frac{\rho Ud}{\mu}
+=\frac{2\rho Ua}{\mu}<1
+}
+\]
+
+\subsection*{2.3 小球匀速下落}
+
+小球受三种力：
+\[
+\text{重力}=G=\frac43\pi a^3\rho_s g,
+\]
+\[
+\text{浮力}=B=\frac43\pi a^3\rho g,
+\]
+\[
+\text{阻力}=D=6\pi\mu aU.
+\]
+
+匀速时合力为零：
+\[
+G-B-D=0.
+\]
+
+因此
+\[
+\frac43\pi a^3(\rho_s-\rho)g=6\pi\mu aU.
+\]
+
+解得最终速度：
+\[
+\boxed{
+U_t=\frac{2a^2(\rho_s-\rho)g}{9\mu}
+}
+\]
+
+\subsection*{2.4 反过来求粘度}
+
+若已知小球匀速下落速度 \(U\)，求流体粘度：
+\[
+\boxed{
+\mu=
+\frac{\frac43\pi a^3(\rho_s-\rho)g}{6\pi aU}
+}
+\]
+
+如果题目直接给质量 \(m\)，不要先算 \(\rho_s\) 也可以：
+\[
+\boxed{
+\mu=
+\frac{mg-\rho gV_s}{6\pi aU},
+\qquad
+V_s=\frac43\pi a^3
+}
+\]
+
+\section*{3. 平板剪切流：补充你缺的第二块}
+
+\subsection*{3.1 基本方程}
+
+平板间一维平行流：
+\[
+u=u(y),\qquad v=0.
+\]
+
+若定常、不可压、牛顿流体，则 \(x\) 方向动量方程常化为
+\[
+\boxed{
+\mu\frac{\dd^2u}{\dd y^2}
+=\frac{\dd p}{\dd x}-\rho g_x
+}
+\]
+
+也常写成
+\[
+\boxed{
+\mu u''-\frac{\dd p}{\dd x}+\rho g_x=0
+}
+\]
+
+具体符号取决于 \(x\) 正方向怎么选，考试时只要前后一致。
+
+\subsection*{3.2 无压力差、无体力：速度是直线}
+
+如果
+\[
+\frac{\dd p}{\dd x}=0,\qquad g_x=0,
+\]
+则
+\[
+\mu u''=0.
+\]
+
+所以
+\[
+\boxed{
+u=Ay+B
+}
+\]
+
+这就是简单库埃特流。
+
+\subsection*{3.3 两层流体夹在两平板之间}
+
+下层厚度 \(h_1\)，粘度 \(\mu_1\)；
+上层厚度 \(h_2\)，粘度 \(\mu_2\)。
+下板静止，上板速度为 \(U\)。
+
+关键不是从头解微分方程，而是记住：
+\[
+\boxed{
+\text{两层剪应力相等}
+}
+\]
+
+即
+\[
+\boxed{
+\tau=\mu_1\frac{\dd u_1}{\dd y}
+=\mu_2\frac{\dd u_2}{\dd y}
+}
+\]
+
+每层速度差分别为
+\[
+\Delta u_1=\frac{\tau h_1}{\mu_1},
+\qquad
+\Delta u_2=\frac{\tau h_2}{\mu_2}.
+\]
+
+总速度差为
+\[
+U=\frac{\tau h_1}{\mu_1}+\frac{\tau h_2}{\mu_2}.
+\]
+
+所以
+\[
+\boxed{
+\tau=
+\frac{U}{h_1/\mu_1+h_2/\mu_2}
+=
+\frac{U\mu_1\mu_2}{\mu_2h_1+\mu_1h_2}
+}
+\]
+
+取 \(y=0\) 为下板，\(y=h_1\) 为交界面，\(y=h_1+h_2\) 为上板，则
+\[
+\boxed{
+u_1(y)=\frac{U\mu_2y}{\mu_2h_1+\mu_1h_2},
+\qquad 0\le y\le h_1
+}
+\]
+
+\[
+\boxed{
+u_2(y)=
+\frac{U\left[\mu_2h_1+\mu_1(y-h_1)\right]}
+{\mu_2h_1+\mu_1h_2},
+\qquad h_1\le y\le h_1+h_2
+}
+\]
+
+\subsection*{3.4 倾斜平板，有重力沿斜面分量}
+
+取 \(x\) 沿斜面向下，\(y\) 从下板指向上板。
+
+若沿流动方向无压力差：
+\[
+\frac{\dd p}{\dd x}=0,
+\]
+则
+\[
+\boxed{
+\mu\frac{\dd^2u}{\dd y^2}+\rho g\sin\theta=0
+}
+\]
+
+令
+\[
+A=\frac{\rho g\sin\theta}{\mu}.
+\]
+
+则
+\[
+u''=-A.
+\]
+
+积分：
+\[
+u=-\frac{A}{2}y^2+C_1y+C_2.
+\]
+
+如果下板不动：
+\[
+u(0)=0\Rightarrow C_2=0.
+\]
+
+如果中面速度为零：
+\[
+u(H/2)=0\Rightarrow C_1=\frac{AH}{4}.
+\]
+
+所以
+\[
+\boxed{
+u=-\frac{A}{2}y^2+\frac{AH}{4}y
+}
+\]
+
+若上板向上运动，与 \(x\) 正方向相反，则
+\[
+u(H)=-U_0.
+\]
+
+代入可得
+\[
+\boxed{
+U_0=\frac{AH^2}{4}
+=\frac{\rho gH^2\sin\theta}{4\mu}
+}
+\]
+
+剪应力：
+\[
+\boxed{
+\tau=\mu\frac{\dd u}{\dd y}
+=\rho g\sin\theta\left(\frac H4-y\right)
+}
+\]
+
+下壁面：
+\[
+\boxed{
+|\tau_{\text{下}}|
+=\frac{\rho gH\sin\theta}{4}
+}
+\]
+
+上壁面：
+\[
+\boxed{
+|\tau_{\text{上}}|
+=\frac{3\rho gH\sin\theta}{4}
+}
+\]
+
+\section*{4. 涡量与流函数证明题：补充你缺的第三块}
+
+\subsection*{4.1 涡量定义}
+
+三维涡量：
+\[
+\boxed{
+\bm\Omega=\nabla\times\bm V
+}
+\]
+
+二维 \(x-y\) 平面流动：
+\[
+\bm V=(u,v,0).
+\]
+
+此时涡量只有 \(z\) 方向：
+\[
+\boxed{
+\Omega_z=\frac{\partial v}{\partial x}
+-\frac{\partial u}{\partial y}
+}
+\]
+
+\subsection*{4.2 静止壁面上的涡量法向分量}
+
+静止固体壁面上满足无滑移条件：
+\[
+u=v=w=0.
+\]
+
+取壁面局部坐标：\(x,y\) 为切向，\(z\) 为法向。
+则
+\[
+\bm n=\bm k.
+\]
+
+法向涡量为
+\[
+\bm\Omega\cdot\bm n=\Omega_z
+=\frac{\partial v}{\partial x}
+-\frac{\partial u}{\partial y}.
+\]
+
+因为壁面上 \(u,v\) 沿壁面处处为零，所以切向导数为零：
+\[
+\frac{\partial v}{\partial x}=0,
+\qquad
+\frac{\partial u}{\partial y}=0.
+\]
+
+故
+\[
+\boxed{
+\bm\Omega\cdot\bm n=0
+}
+\]
+
+\subsection*{4.3 流函数定义}
+
+二维不可压缩流动可以引入流函数 \(\psi\)。
+本笔记采用约定：
+\[
+\boxed{
+u=\frac{\partial\psi}{\partial y},
+\qquad
+v=-\frac{\partial\psi}{\partial x}
+}
+\]
+
+这个约定自动满足不可压连续方程：
+\[
+\frac{\partial u}{\partial x}
++\frac{\partial v}{\partial y}
+=
+\frac{\partial^2\psi}{\partial x\partial y}
+-
+\frac{\partial^2\psi}{\partial y\partial x}
+=0.
+\]
+
+\subsection*{4.4 流函数与涡量的关系}
+
+由
+\[
+\Omega_z=v_x-u_y,
+\]
+代入
+\[
+u=\psi_y,\qquad v=-\psi_x,
+\]
+得
+\[
+\Omega_z
+=(-\psi_x)_x-(\psi_y)_y
+=-\psi_{xx}-\psi_{yy}.
+\]
+
+所以
+\[
+\boxed{
+\Omega=-\nabla^2\psi
+}
+\]
+
+即
+\[
+\boxed{
+\nabla^2\psi=-\Omega
+}
+\]
+
+\section*{5. 作业题号对照表}
+
+\begin{center}
+\begin{tabular}{cll}
+\toprule
+题号 & 题型 & 你该用什么 \\
+\midrule
+1 & 判断层流/湍流 & \(\Rey=Vd/\nu\) \\
+3：书8.4 & 圆管层流求粘度 & \(\tau_w=8\mu\bar V/D\) \\
+4：书8.5 & 小球匀速下落求粘度 & \(mg-\rho gV_s=6\pi\mu aU\) \\
+5：书8.6 & 两层平板剪切流 & \(\tau=\mu_1u_1'=\mu_2u_2'\) \\
+6：书8.10 & 小球终速证明 & \(G-B-D=0\) \\
+7 & 圆管层流加重力方向 & \(dp/dx=\rho g_x-4\tau_w/D\) \\
+8 & 倾斜平板剪切流 & \(\mu u''+\rho g\sin\theta=0\) \\
+9 & 静止壁面涡量证明 & 无滑移 \(u=v=0\Rightarrow\Omega\cdot n=0\) \\
+10 & 流函数与涡量 & \(u=\psi_y,\ v=-\psi_x\Rightarrow\nabla^2\psi=-\Omega\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{6. 最短背诵版}
+
+\[
+\boxed{
+\Rey=\frac{Vd}{\nu}=\frac{\rho Vd}{\mu}
+}
+\]
+
+\[
+\boxed{
+\tau_w=\frac{8\mu \bar V}{D},
+\qquad
+\tau_w=\frac{D}{4}\left(-\frac{\dd p}{\dd x}\right)
+}
+\]
+
+\[
+\boxed{
+F_D=6\pi\mu aU
+}
+\]
+
+\[
+\boxed{
+U_t=\frac{2a^2(\rho_s-\rho)g}{9\mu}
+}
+\]
+
+\[
+\boxed{
+\tau=\mu\frac{\dd u}{\dd y}
+}
+\]
+
+\[
+\boxed{
+\text{平板无压差无体力： }u''=0,\quad u=Ay+B
+}
+\]
+
+\[
+\boxed{
+\text{倾斜平板： }\mu u''+\rho g\sin\theta=0
+}
+\]
+
+\[
+\boxed{
+\Omega_z=v_x-u_y
+}
+\]
+
+\[
+\boxed{
+u=\psi_y,\qquad v=-\psi_x,\qquad \nabla^2\psi=-\Omega
+}
+\]
+
+\end{document}

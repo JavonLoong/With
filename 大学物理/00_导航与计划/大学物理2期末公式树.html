@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大学物理2期末公式树脑图</title>
+
+  <!-- 引入 Google 字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+SC:wght@300;400;700;900&display=swap"
+    rel="stylesheet">
+
+  <!-- 引入 MathJax 用于动态渲染公式 -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      startup: {
+        pageReady: () => {
+          return MathJax.startup.defaultPageReady().then(() => {
+            console.log('MathJax initial typesetting complete');
+          });
+        }
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    :root {
+      --bg-dark: #070a13;
+      --bg-grid: #0f1322;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+
+      /* 章节发光颜色 */
+      --color-interference: #06b6d4;
+      /* 蓝绿 */
+      --color-diffraction: #a855f7;
+      /* 紫色 */
+      --color-polarization: #f97316;
+      /* 橙色 */
+      --color-quantum: #22c55e;
+      /* 绿色 */
+      --color-atomic: #eab308;
+      /* 黄色 */
+
+      --card-bg: rgba(18, 25, 41, 0.75);
+      --card-border: rgba(255, 255, 255, 0.07);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Outfit', 'Noto Sans SC', sans-serif;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      user-select: none;
+    }
+
+    /* 顶部面板 */
+    header {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 10;
+      background: rgba(15, 20, 35, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 16px 24px;
+      pointer-events: auto;
+      max-width: 420px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      font-size: 20px;
+      font-weight: 900;
+      background: linear-gradient(to right, #00f2fe, #4facfe);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
+    }
+
+    header p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .search-box {
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    .search-box input {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 6px 14px 6px 32px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 13px;
+      width: 100%;
+      transition: all 0.3s;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: #06b6d4;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .search-box::before {
+      content: "🔍";
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 12px;
+      opacity: 0.6;
+    }
+
+    .action-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 6px 14px;
+      color: #cbd5e1;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .btn.active {
+      background: #0f766e;
+      border-color: #0d9488;
+      box-shadow: 0 0 10px rgba(13, 148, 136, 0.4);
+    }
+
+    /* 悬浮操作指引 */
+    .guide-tip {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      z-index: 10;
+      background: rgba(15, 20, 35, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 8px 16px;
+      font-size: 11px;
+      color: var(--text-muted);
+      pointer-events: none;
+      line-height: 1.5;
+    }
+
+    /* 画布与网格背景 */
+    .viewport {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      cursor: grab;
+      background-color: var(--bg-dark);
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 40px 40px;
+      background-position: center;
+    }
+
+    .viewport:active {
+      cursor: grabbing;
+    }
+
+    /* 脑图承载容器 */
+    .mindmap-container {
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: 0 0;
+      pointer-events: none;
+      /* 穿透到节点 */
+    }
+
+    /* SVG 连线层 */
+    #svg-connections {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 10000px;
+      height: 10000px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .connection-line {
+      fill: none;
+      stroke-width: 2px;
+      stroke-linecap: round;
+      transition: d 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* 节点树卡片层 */
+    .nodes-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .node {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      pointer-events: auto;
+      /* 允许点击与悬停 */
+      transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s;
+      z-index: 10;
+    }
+
+    /* 各种层级节点的设计样式 */
+
+    /* 根节点 */
+    .node-root {
+      background: linear-gradient(135deg, #06b6d4, #a855f7);
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      border-radius: 30px;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: 900;
+      color: #fff;
+      box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    /* 章节节点 */
+    .node-chapter {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 800;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      white-space: nowrap;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .node-chapter::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      background-color: var(--node-color);
+    }
+
+    .node-chapter.active-node {
+      box-shadow: 0 0 15px var(--node-color);
+      border-color: var(--node-color);
+    }
+
+    /* 小节节点 */
+    .node-section {
+      background: rgba(18, 25, 41, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #cbd5e1;
+      white-space: nowrap;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .node-section.active-node {
+      border-color: var(--node-color);
+    }
+
+    /* 公式叶子节点（最丰富） */
+    .node-leaf {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      width: 320px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-left: 4px solid var(--node-color, var(--card-border));
+    }
+
+    .node-leaf.active-node {
+      border-color: var(--node-color);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.05), inset 0 0 10px rgba(255, 255, 255, 0.02);
+    }
+
+    .leaf-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .leaf-title::after {
+      content: "公式卡";
+      font-size: 9px;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+    }
+
+    /* 公式公式盒 */
+    .formula-box {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 6px;
+      padding: 10px 6px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 48px;
+      cursor: pointer;
+      position: relative;
+      transition: filter 0.3s, opacity 0.3s;
+    }
+
+    .formula-box:hover {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .formula-box:hover::after {
+      content: "📋 点击复制 LaTeX";
+      position: absolute;
+      bottom: 2px;
+      right: 6px;
+      font-size: 8px;
+      color: var(--text-muted);
+      opacity: 0.8;
+    }
+
+    /* 默写自测模式 */
+    .quiz-mode .formula-box {
+      filter: blur(5px);
+      opacity: 0.4;
+    }
+
+    .quiz-mode .formula-box:hover {
+      filter: blur(0);
+      opacity: 1;
+    }
+
+    .leaf-mnemonic {
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 2px solid var(--node-color);
+      padding: 6px 8px;
+      font-size: 11px;
+      color: #ffedd5;
+      margin-bottom: 8px;
+      border-radius: 0 4px 4px 0;
+      line-height: 1.4;
+    }
+
+    /* 绑定关联真题题型（核心需求） */
+    .leaf-problems {
+      background: rgba(239, 68, 68, 0.05);
+      border-left: 2px solid #ef4444;
+      padding: 6px 8px;
+      font-size: 11px;
+      color: #fecdd3;
+      border-radius: 0 4px 4px 0;
+      line-height: 1.45;
+    }
+
+    /* 收起状态圆点标识 */
+    .toggle-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #334155;
+      border: 2px solid var(--node-color, #64748b);
+      position: absolute;
+      cursor: pointer;
+      z-index: 15;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s;
+      transform: translate(-50%, -50%);
+    }
+
+    .toggle-dot::before {
+      content: "+";
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .toggle-dot.expanded::before {
+      content: "−";
+    }
+
+    /* 复制成功浮层 */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0d9488;
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+
+    /* 被搜索命中的高亮效果 */
+    .match-highlight {
+      animation: pulse-border 1.5s infinite alternate;
+    }
+
+    @keyframes pulse-border {
+      from {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      }
+
+      to {
+        box-shadow: 0 0 25px var(--node-color, #06b6d4), inset 0 0 8px var(--node-color, #06b6d4);
+        border-color: var(--node-color, #06b6d4);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>大学物理 2 期末公式树脑图</h1>
+    <p>点击小圆圈收起/展开分支。鼠标拖拽背景移动，滚轮缩放画布。点击公式卡片可直接复制 LaTeX 代码。绑定了对应的常见真题题型，助你精准解题！</p>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="搜索公式、对应真题、口诀...">
+    </div>
+
+    <div class="action-row">
+      <button class="btn" id="toggleQuizBtn">
+        👁️ 切换默写自测模式 (公式模糊)
+      </button>
+      <button class="btn" onclick="resetView();">
+        🎯 居中重置视图
+      </button>
+    </div>
+  </header>
+
+  <div class="guide-tip">
+    💡 <b>操作小贴士</b>：<br>
+    • 左键拖拽背景：平移画布<br>
+    • 鼠标滚轮滑动：放大 / 缩小<br>
+    • 点击带数字的圆点：快速展开或收缩子树
+  </div>
+
+  <div class="viewport" id="viewport">
+    <div class="mindmap-container" id="mindmapContainer">
+      <!-- 连线画布 -->
+      <svg id="svg-connections">
+        <defs>
+          <!-- 渐变线定义 -->
+          <linearGradient id="grad-left" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0%" stop-color="#a855f7" stop-opacity="0.1" />
+            <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.8" />
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <!-- 节点卡片容器 -->
+      <div class="nodes-layer" id="nodesLayer"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">LaTeX 公式复制成功！</div>
+
+  <script>
+    // 树结构数据源
+    const treeData = {
+      id: "root",
+      name: "大学物理二下半学期复习",
+      isRoot: true,
+      expanded: true,
+      children: [
+        {
+          id: "c1",
+          name: "光的干涉",
+          color: "var(--color-interference)",
+          side: "left",
+          expanded: true,
+          children: [
+            {
+              id: "c1_s1",
+              name: "双缝干涉",
+              expanded: true,
+              children: [
+                {
+                  id: "c1_s1_l1",
+                  name: "相邻条纹间距",
+                  formula: "\\Delta x = \\frac{D}{d}\\lambda",
+                  mnemonic: "相邻亮条纹或暗条纹间距与屏幕距离、波长成正比，与双缝间距成反比",
+                  problems: "【期末真题演练】题库第一页第10题：双缝间距为零点二毫米，屏距离双缝一米，用波长为六百纳米的红光照射。计算相邻明条纹间距。答：条纹间距为三毫米。解法：直接代入公式计算，一乘六百纳米除以零点二毫米，结果为三毫米。若改用四百纳米的紫光，条纹间距变为两毫米。"
+                },
+                {
+                  id: "c1_s1_l2",
+                  name: "空间相干性极限",
+                  formula: "L = \\frac{bd}{\\lambda}",
+                  mnemonic: "口诀：L拉姆等于东北，即 L·λ = b·d（b为北，d为东，所以bd是东北）。条纹刚消失的临界条件。",
+                  problems: "【期末真题演练】填空题第二题/题库第一页第七题：发光钨丝宽度为一毫米，用绿色滤光片（波长为五百纳米），双缝间距为二毫米。要使屏上能看到干涉条纹，钨丝与双缝的距离至少为多少？答：至少为四米。解法：条纹刚消失的临界距离等于宽度乘间距除以波长，即一毫米乘以二毫米，再除以五百纳米，得到四米。"
+                },
+                {
+                  id: "c1_s1_l3",
+                  name: "干涉条纹衬比度",
+                  formula: "V = \\frac{I_{max} - I_{min}}{I_{max} + I_{min}} = \\frac{2\\sqrt{I_1 I_2}}{I_1 + I_2} = \\frac{2 A_1 A_2}{A_1^2 + A_2^2}",
+                  mnemonic: "条纹清晰度指标。两强度相等时V=1，其中一个振幅为0时V=0。已知振幅比可用第三式计算。",
+                  problems: "【期末真题演练】已知两相干光束的振幅之比为二比一，求相干干涉条纹的衬比度。答：衬比度为五分之四（零点八）。解法：直接代入公式，二乘以二乘以一，除以二的平方加一的平方，得到五分之四。"
+                }
+              ]
+            },
+            {
+              id: "c1_s2",
+              name: "薄膜干涉",
+              expanded: true,
+              children: [
+                {
+                  id: "c1_s2_l1",
+                  name: "介质片额外光程差",
+                  formula: "\\Delta = (n-1)e",
+                  mnemonic: "在一侧光路中插入折射率为n、厚度为e的透明介质片，光程差改变量为(n-1)e，中央条纹向插入侧移动",
+                  problems: "【期末真题演练】填空题第五题/题库第二页第四十题：在双缝干涉的一条缝后插一块折射率为一点五的云母片，中央明纹移到了原来第五级明纹处，求云母片厚度。答：云母片厚度为六微米。解法：光程差改变量等于五倍波长，即(一点五减一)乘以厚度等于五乘以六百纳米，解得厚度为六微米。"
+                },
+                {
+                  id: "c1_s2_l2",
+                  name: "薄膜反射光程差",
+                  formula: "\\delta = 2n_2 e \\pm \\frac{\\lambda}{2}",
+                  mnemonic: "垂直入射。光从疏介质向密介质表面反射时产生半波损失。上下两个表面只有一个有半波损失时才加减半个波长，都有或都没有则抵消",
+                  problems: "【期末真题演练】填空题第九题：白光垂直照射空气中折射率为一点四的油膜，油膜厚度为两百五十纳米。求反射光中哪些可见光波长得到增强。答：波长为七百纳米的红光。解法：由于油膜上下表面都是由光疏到光密反射，均有半波损失，所以反射光程差直接等于两倍折射率乘厚度。相长干涉（增强）条件为两倍折射率乘厚度等于级数乘波长。当级数为一时，波长为七百纳米，属于可见光范围；当级数为二时，波长为三百五十纳米，超出了可见光范围。"
+                },
+                {
+                  id: "c1_s2_l3",
+                  name: "劈尖条纹间距",
+                  formula: "l = \\frac{\\lambda}{2n\\theta}",
+                  mnemonic: "相邻同级明纹或暗纹之间的物理距离与波长成正比，与夹角和介质折射率成反比",
+                  problems: "【期末真题演练】填空题第四题：折射率为一点四的劈尖，夹角为万分之二弧度，垂直照射波长为五百六十纳米的光，求条纹间距。答：条纹间距为一毫米。解法：波长除以（两倍折射率乘夹角），即五百六十纳米除以（二乘以一点四乘以万分之二），结果为一毫米。"
+                },
+                {
+                  id: "c1_s2_l4",
+                  name: "劈尖厚度变化与测微",
+                  formula: "\\Delta h = \\frac{\\lambda}{2n}",
+                  mnemonic: "条纹每移动一个，劈尖对应的厚度改变量为半个波长。夹角变大，条纹变密；夹角变小，条纹变稀",
+                  problems: "【期末真题演练】平晶测细丝直径：两玻璃板一端叠放，另一端夹直径为D的细丝，形成劈尖。若数得明纹总数为N个，求细丝直径。答：直径为N乘以半个波长。解法：细丝处劈尖厚度即为直径，等于明纹级数乘半个波长。若用手轻按平晶表面，夹角变小，条纹间距变宽，表现为条纹变稀疏。"
+                },
+                {
+                  id: "c1_s2_l5",
+                  name: "反射暗环半径",
+                  formula: "r_k = \\sqrt{k R \\lambda}",
+                  mnemonic: "平凸透镜与平板玻璃接触，反射牛顿环中心为暗点。暗环半径与曲率半径、波长、级数开根号成正比",
+                  problems: "【期末真题演练】题库第二页第三十题：透镜曲率半径为一米，用波长为六百纳米的单色光垂直照射，求反射光第五个暗环的半径。答：半径为一点七三毫米.解法：第五个暗环对应级数为五（中心暗点为第零个）。半径等于根号下五乘一米乘六百纳米，结果为根号下三乘以十的负三次方米，约等于一点七三毫米。"
+                }
+              ]
+            },
+            {
+              id: "c1_s3",
+              name: "迈克耳孙",
+              expanded: true,
+              children: [
+                {
+                  id: "c1_s3_l1",
+                  name: "动臂平移与条纹移动",
+                  formula: "2\\Delta d = N\\lambda",
+                  mnemonic: "反射镜往返多走两倍距离。动镜移动距离与视野中移过的明纹个数N成正比",
+                  problems: "【期末真题演练】填空题第五题、计算题第二十二题：迈克耳孙干涉仪的动镜移动了零点三毫米，求视野中移过波长为六百纳米的单色光的条纹数。答：移过一千条明纹。解法：两倍的移动距离除以波长，即两乘以零点三毫米除以六百纳米，得到一千条。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "c2",
+          name: "光的衍射",
+          color: "var(--color-diffraction)",
+          side: "left",
+          expanded: true,
+          children: [
+            {
+              id: "c2_s1",
+              name: "单缝衍射",
+              expanded: true,
+              children: [
+                {
+                  id: "c2_s1_l1",
+                  name: "暗纹条件",
+                  formula: "a \\sin\\theta = \\pm k\\lambda",
+                  mnemonic: "口诀：ac = ±kλ，其中c代表sinθ（暗纹条件）。注意：考场别记成正弦！单缝暗纹用a，光栅明纹用d。",
+                  problems: "【期末真题演练】题库第三页第十题：单缝宽度为零点一毫米，用波长为五百纳米的光垂直照射。求第一级暗纹的衍射角。答：衍射角为千分之五弧度。解法：正弦值等于波长除以缝宽，即五百纳米除以零点一毫米，结果为千分之五。由于角度极小，正弦值学术上近似等于角度值。"
+                },
+                {
+                  id: "c2_s1_l2",
+                  name: "中央明纹线宽度",
+                  formula: "\\Delta x_0 = \\frac{2f\\lambda}{a}",
+                  mnemonic: "焦平面上中央明条纹的物理宽度。中央明条纹被限制在左右两侧第一级暗纹之间，因此宽度是两倍",
+                  problems: "【期末真题演练】填空题第六题：单缝宽度为零点二毫米，透镜焦距为一米，用波长为六百纳米的光垂直照射，求焦平面上中央明纹的物理线宽度。答：物理宽度为六毫米。解法：两倍焦距乘波长除以缝宽，即二乘以一米乘以六百纳米，除以零点二毫米，结果为六毫米。"
+                }
+              ]
+            },
+            {
+              id: "c2_s2",
+              name: "光学分辨率",
+              expanded: true,
+              children: [
+                {
+                  id: "c2_s2_l1",
+                  name: "瑞利判据最小分辨角",
+                  formula: "\\theta_{min} = 1.22 \\frac{\\lambda}{D}",
+                  mnemonic: "光学透镜或瞳孔孔径D越大，最小分辨角越小，分辨本领越高，分辨本领等于分辨角的倒数",
+                  problems: "【期末真题演练】填空题第三题：人眼瞳孔直径为三毫米，对于波长为五百五十纳米的光，求人眼的最小分辨角。答：分辨角为二点二四乘以十的负四次方弧度。解法：一点二二乘波长除以瞳孔直径，即一点二二乘以五百五十纳米，除以三毫米。"
+                }
+              ]
+            },
+            {
+              id: "c2_s3",
+              name: "光栅衍射",
+              expanded: true,
+              children: [
+                {
+                  id: "c2_s3_l1",
+                  name: "主极大方程",
+                  formula: "d \\sin\\theta = k\\lambda",
+                  mnemonic: "光栅常数d乘正弦等于亮条纹级数乘波长。多缝干涉加强形成极其明亮狭窄的亮纹",
+                  problems: "【期末真题演练】光栅常数为两微米，在第二级明条纹出现在三十度衍射角方向。求入射光波长.答：波长为五百纳米。解法：波长等于光栅常数乘正弦三十度，再除以二级，即两微米乘以零点五除以二，结果为半微米，即五百纳米。"
+                },
+                {
+                  id: "c2_s3_l2",
+                  name: "缺级条件",
+                  formula: "a k = d m \\quad \\left(k = \\frac{d}{a} m\\right)",
+                  mnemonic: "口诀：ak = dm (爱看动漫/AK等于DM)，明级(k)比暗级(m)等于d比a。当比值为整数时该级次缺级消失",
+                  problems: "【期末真题演练】题库第四页缺级计算题：光栅常数为三微米，缝宽为一微米。求哪些级次的亮条纹会发生缺级消失。答：三的整数倍级次（正负三、正负六、正负九等）亮条纹消失。解法：光栅常数比缝宽为三比一。所以级数等于三乘以任意整数时发生缺级。"
+                },
+                {
+                  id: "c2_s3_l3",
+                  name: "最高级数限制",
+                  formula: "k_{max} \\le \\frac{d}{\\lambda}",
+                  mnemonic: "衍射角正弦值绝对值不可能大于一，从而限制了屏幕上能出现的最大亮条纹级数。总条纹数是两倍最大级数加一",
+                  problems: "【期末真题演练】求光谱条纹数：已知光栅常数为一点五微米，入射光波长为五百纳米。求实际能看到的明条纹总数。答：最多能看到七条明纹。解法：最大级数小于等于一点五微米除以五百纳米，得到最大级数为三。级数可取零、正负一、正负二、正负三，共七条。"
+                },
+                {
+                  id: "c2_s3_l4",
+                  name: "光栅分辨本领",
+                  formula: "R = k N",
+                  mnemonic: "口诀：分辨本领kN（看你）。光栅分辨本领等于明纹级数乘总缝数。缝数越多，分辨越精细",
+                  problems: "【期末真题演练】若光栅有五千条缝，在第二级明纹上，求该光栅的分辨本领。答：分辨本领为一万。解法：级数二乘以总缝数五千，直接相乘得到一万。"
+                },
+                {
+                  id: "c2_s3_l5",
+                  name: "多缝中央主极大强度",
+                  formula: "I_{max} = N^2 I_0",
+                  mnemonic: "N个缝发出的相干光在主极大处同相叠加，振幅变为N倍，光强变为N的平方倍",
+                  problems: "【期末真题演练】单缝衍射中央极大光强为I0。若由四个相同的单缝构成光栅，求多缝干涉主极大的光强。答：为十六倍的I0。解法：主极大强度正比于缝数N的平方，这里N=4，四的平方为十六。"
+                }
+              ]
+            },
+            {
+              id: "c2_s4",
+              name: "晶体衍射",
+              expanded: true,
+              children: [
+                {
+                  id: "c2_s4_l1",
+                  name: "布拉格公式",
+                  formula: "2d \\sin\\theta = k\\lambda",
+                  mnemonic: "掠射角是光线与晶面切线的夹角。若一维晶格给的是与法线夹角，必须用九十度减去它",
+                  problems: "【期末真题演练】X射线垂直入射到晶体，在掠射角为三十度方向上测得第一级衍射极大，已知波长为零点一纳米，求晶面间距。答：晶面间距为零点一纳米。解法：两倍间距乘正弦三十度等于一倍波长，正弦三十度为二分之一，所以间距直接等于波长，为零点一纳米。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "c3",
+          name: "光的偏振",
+          color: "var(--color-polarization)",
+          side: "left",
+          expanded: true,
+          children: [
+            {
+              id: "c3_s1",
+              name: "起偏与检偏",
+              expanded: true,
+              children: [
+                {
+                  id: "c3_s1_l1",
+                  name: "起偏器强度减半",
+                  formula: "I_1 = \\frac{1}{2} I_0",
+                  mnemonic: "自然光通过偏振片后变为线偏振光，过滤了垂直分量，透射强度恰好剩下一半",
+                  problems: "【期末真题演练】强度为初始值的自然光垂直入射第一块偏振片，求出射光强。答：出射光强为初始强度的一半。"
+                },
+                {
+                  id: "c3_s1_l2",
+                  name: "马吕斯定律",
+                  formula: "I = I_0 \\cos^2\\alpha",
+                  mnemonic: "偏振光通过偏振片，透射强度等于入射强度乘夹角余弦的平方",
+                  problems: "【期末真题演练】填空题第七题：三块偏振片叠放，第一块与第三块垂直。第二块与第一块夹角为三十度。自然光垂直入射，求最终出射强度比例。答：出射强度为初始强度的三十二分之三。解法：自然光过第一块剩二分之一；过第二块乘余弦三十度的平方（即四分之三）；过第三块与第二块夹角为六十度，乘余弦六十度的平方（即四分之一）。相乘得到三十二分之三。"
+                },
+                {
+                  id: "c3_s1_l3",
+                  name: "部分偏振光的偏振度",
+                  formula: "P = \\frac{I_{max} - I_{min}}{I_{max} + I_{min}}",
+                  mnemonic: "衡量线偏振成分在光强中所占比例。线偏振光P=1，自然光P=0",
+                  problems: "【期末真题演练】部分偏振光垂直通过偏振片，旋转偏振片一周，测得透射光强的最大值为最小值的三倍。求偏振度。答：偏振度为百分之浅十（零点五）。解法：最大值减最小值除以两者之和，即（三减一）除以（三加一），结果为二分之四，即零点五。"
+                }
+              ]
+            },
+            {
+              id: "c3_s2",
+              name: "反射起偏",
+              expanded: true,
+              children: [
+                {
+                  id: "c3_s2_l1",
+                  name: "布儒斯特定律",
+                  formula: "\\tan i_p = \\frac{n_2}{n_1}",
+                  mnemonic: "入射角正切等于两折射率之比。此时反射光为完全线偏振光，且折射角与反射角相加为九十度",
+                  problems: "【期末真题演练】填空题第八题：光从空气射向玻璃，当反射光为完全偏振光时，测得反射角为六十度。求玻璃折射率及折射角。答：折射率为根号三，折射角为三十度。解法：入射角等于反射角为六十度。折射角与入射角互余，所以是三十度。折射率等于正切六十度，即根号三。"
+                }
+              ]
+            },
+            {
+              id: "c3_s3",
+              name: "双折射与波片",
+              expanded: true,
+              children: [
+                {
+                  id: "c3_s3_l1",
+                  name: "寻常o光与非常e光",
+                  formula: "n_o \\ne n_e",
+                  mnemonic: "在晶体中，o光在各方向速度相同，遵循折射定律，振动限制在主平面之外；e光速度随方向改变，不遵循折射定律，振动在主平面内",
+                  problems: "【核心概念点拨】o光与e光：入射光线在晶体中分裂为两束折射光。沿着晶体特有的光轴方向传播时，两光的速度和折射率完全相同，不发生双折射。在其他方向上，两光振动方向互相垂直，折射率不同。"
+                },
+                {
+                  id: "c3_s3_l2",
+                  name: "波片厚度与相位差",
+                  formula: "\\Delta\\varphi = \\frac{2\\pi}{\\lambda_0} |n_o - n_e| d",
+                  mnemonic: "光程差等于折射率差乘晶体厚度。四分之一波片相位差为九十度，二分之一波片相位差为一百八十度",
+                  problems: "【期末真题演练】填空题第十题：一束线偏振光通过两个光轴平行的四分之一波片，求出射光的偏振状态。答：出射光仍为线偏振光。解法：由于两个波片光轴平行，相位差直接相加，得到九十度加九十度等于一百八十度。这等效于一个二分之一波片，线偏振光通过二分之一波片后偏振方向旋转，但仍为线偏振光。"
+                },
+                {
+                  id: "c3_s3_l3",
+                  name: "旋光效应",
+                  formula: "\\theta = [\\alpha] l C",
+                  mnemonic: "偏振光通过旋光物质时，振动面旋转的角度与旋光率、长度和浓度乘积成正比",
+                  problems: "【期末真题演练】已知某糖溶液的比旋光率为十度每分米百分比。用长度为两分米的管子，测得振动面旋转了二十度，求溶液浓度。答：浓度为百分之百。解法：角度除以（比旋光率乘长度），即二十除以（十乘二），结果为一（即百分之百）。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "c4",
+          name: "早期量子与物质波",
+          color: "var(--color-quantum)",
+          side: "right",
+          expanded: true,
+          children: [
+            {
+              id: "c4_s1",
+              name: "黑体辐射",
+              expanded: true,
+              children: [
+                {
+                  id: "c4_s1_l1",
+                  name: "维恩位移定律",
+                  formula: "\\lambda_m T = b",
+                  mnemonic: "最大辐射能量对应的波长与绝对温度的乘积为维恩常数。温度越高，辐射峰值波长越短",
+                  problems: "【期末真题演练】填空题第十一题：已知人体的温度为三百一十开尔文，辐射最强波长为九点三五微米。若核爆炸表面的辐射最强波长为零点八微米，求核爆炸表面温度。答：约为六千开尔文。解法：利用波长比的倒数乘温度，即九点三五除以零点四八，再乘以三百一十，约等于六千开尔文。"
+                },
+                {
+                  id: "c4_s1_l2",
+                  name: "斯特藩定律",
+                  formula: "M(T) = \\sigma T^4",
+                  mnemonic: "总辐射出射度与绝对温度的四次方成正比。温度翻倍，辐射能量增加为原来的十六倍",
+                  problems: "【期末真题演练】黑体温度从三百开尔文升高到六百开尔文，求辐射能量变化比例。答：辐射能量增大为原来的十六倍。解法：温度变为两倍，两倍的四次方为十六。"
+                }
+              ]
+            },
+            {
+              id: "c4_s2",
+              name: "光电效应",
+              expanded: true,
+              children: [
+                {
+                  id: "c4_s2_l1",
+                  name: "光电效应方程",
+                  formula: "h\\nu = W + e U_c",
+                  mnemonic: "入射光子能量等于红限能量（逸出功）加上电子最大初动能，最大初动能等于截止电压乘电荷量",
+                  problems: "【期末真题演练】已知某金属的逸出功为两点零电子伏特。用能量为三点五电子伏特的光子照射该金属表面，求截止电压。答：截止电压为一点五伏特。解法：截止电压等于（入射光子能量减去逸出功）除以电子电量，即三点五减去二点零，结果为一点五伏特。"
+                }
+              ]
+            },
+            {
+              id: "c4_s3",
+              name: "康普顿散射",
+              expanded: true,
+              children: [
+                {
+                  id: "c4_s3_l1",
+                  name: "波长漂移公式",
+                  formula: "\\Delta\\lambda = \\frac{h}{m_e c}(1 - \\cos\\theta)",
+                  mnemonic: "光子与静止电子弹性碰撞。散射后波长变长，改变量与散射角的余弦有关。常数项称为康普顿波长，约为零点零零二四纳米",
+                  problems: "【期末真题演练】填空题第十二题：求散射角分别为四十五度和六十度时，康普顿波长偏移量之比。答：比值为二减去根号二。解法：（一减去余弦四十五度）除以（一减去余弦六十度），即（一减去二分之根号二）除以二分之一，结果为二减根号二。"
+                }
+              ]
+            },
+            {
+              id: "c4_s4",
+              name: "物质波与不确定",
+              expanded: true,
+              children: [
+                {
+                  id: "c4_s4_l1",
+                  name: "德布罗意波长",
+                  formula: "\\lambda = \\frac{h}{p}",
+                  mnemonic: "任何运动的微观粒子都具有波粒二象性。如果是被电压V加速的非相对论电子，快捷波长公式为根号下（一百五十除以电压）埃",
+                  problems: "【期末真题演练】一个静止电子经过一百伏特电压加速，求其对应的德布罗意波长。答：零点一二二六纳米。解法：使用低速加速电子快捷公式，一点二二六除以根号一百，结果为零点一二二六纳米。"
+                },
+                {
+                  id: "c4_s4_l2",
+                  name: "海森堡不确定关系",
+                  formula: "\\Delta x \\Delta p_x \\ge \\frac{\\hbar}{2}",
+                  mnemonic: "微观粒子的位置与动量不可能同时精确测定。位置限制得越窄，动量的涨落范围就越大",
+                  problems: "【期末真题演练】填空题第一题：已知光子的波长为六百纳米，波长测定精度为百万分之一。测算光子位置不确定度。答：位置不确定度为零点六米。解法：根据海森堡关系式，位置不确定度乘以动量不确定度大于等于约化普朗克常数除以二。"
+                },
+                {
+                  id: "c4_s4_l3",
+                  name: "能量-时间不确定关系",
+                  formula: "\\Delta E \\Delta t \\ge \\frac{\\hbar}{2}",
+                  mnemonic: "粒子的能量状态寿命越短，其能量的涨落范围（谱线自然宽度）就越大。用于计算能级寿命与谱线线宽限制。",
+                  problems: "【期末真题演练】已知某激发态原子的平均寿命为十的负八次方秒，求其谱线的自然宽度（能量不确定度）。答：约为五点三乘以十的负八次方电子伏特。解法：直接用约化普朗克常数除以二倍的寿命。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "c5",
+          name: "薛定谔与势阱",
+          color: "var(--color-quantum)",
+          side: "right",
+          expanded: true,
+          children: [
+            {
+              id: "c5_s1",
+              name: "薛定谔方程",
+              expanded: true,
+              children: [
+                {
+                  id: "c5_s1_l1",
+                  name: "一维定态方程",
+                  formula: "-\\frac{\\hbar^2}{2m} \\frac{d^2\\psi}{dx^2} + U\\psi = E\\psi",
+                  mnemonic: "口诀：动能项（负约常平方比2m，波函数二次偏导） + 势能项（Uψ） = 总能项（Eψ，即E-psi/Ep）。",
+                  problems: "【期末真题演练】大题第六十二题：写出阱内薛定谔方程并求通解。解法：阱内势能为零，方程化为二阶常系数微分方程。通解为正弦和余弦的线性叠加。代入边界条件，左端点为零，余弦项系数为零；右端点为零，确定波数k取值为n倍的派除以阱宽a。"
+                },
+                {
+                  id: "c5_s1_l2",
+                  name: "归一化条件",
+                  formula: "\\int_{-\\infty}^{\\infty} |\\psi(x)|^2 dx = 1",
+                  mnemonic: "粒子在全空间出现的总概率必须为百分之百，用于确定波函数的未知振幅系数",
+                  problems: "【期末真题演练】计算题第五十八题：确定一维波函数在正负无穷区间为C乘自然对数的负绝对值次幂的归一化系数C。答：归一化常数C为一。"
+                },
+                {
+                  id: "c5_s1_l3",
+                  name: "动量算符",
+                  formula: "\\hat{p}_x = -i\\hbar \\frac{\\partial}{\\partial x}",
+                  mnemonic: "口诀：动量算符等于负i乘约化普朗克常数乘关于x的偏导。自由粒子波函数 A·e^(i·p·x/ħ) 作用后即得测量值 p",
+                  problems: "【期末真练】若一维自由粒子的波函数为 A·exp(i·p·x/ħ)，用动量算符对其求导。答：解得本征值即为动量p。公式中负i乘i为1，抵消分母的ħ，得到p倍的波函数。"
+                },
+                {
+                  id: "c5_s1_l4",
+                  name: "一维量子谐振子能级",
+                  formula: "E_n = (n + \\frac{1}{2})\\hbar\\omega \\quad (n=0, 1, 2, \\dots)",
+                  mnemonic: "能级等间距分布。基态（零点能）为半个约化普朗克常数乘角频率，注意量子数n从0开始！",
+                  problems: "【期末真题演练】一维量子谐振子的基态能量为零点一电子伏特，求其第一激发态能量。答：为零点三电子伏特。解法：谐振子能级差恒定。基态n=0能级为二分之一；第一激发态n=1为二分之三。所以第一激发态是基态的三倍。"
+                }
+              ]
+            },
+            {
+              id: "c5_s2",
+              name: "无限深方势阱",
+              expanded: true,
+              children: [
+                {
+                  id: "c5_s2_l1",
+                  name: "能级公式",
+                  formula: "E_n = n^2 \\frac{h^2}{8ma^2}",
+                  mnemonic: "阱内粒子能量是量子化的，与阱宽的平方成反比。基态n等于一，第一激发态n等于二",
+                  problems: "【期末真题演练】选择题第一题：一维无限深方势阱中的电子，若阱宽由十纳米缩减到两纳米，求基态能量变化。答：能量变为原来的二十五倍。解法：能量与阱宽平方成反比，阱宽变为五分之一，能量变为二十五倍。"
+                },
+                {
+                  id: "c5_s2_l2",
+                  name: "势阱发现概率",
+                  formula: "\\psi_n(x) = \\sqrt{\\frac{2}{a}} \\sin\\frac{n\\pi x}{a}",
+                  mnemonic: "口诀：振幅根号下二比a，乘正弦sin(n·π·x/a)（考场别漏写π和x！）。发现粒子概率等于波函数的模平方在目标区间积分",
+                  problems: "【期末真题演练】大题第十题：处于基态（级数为一）的粒子在一维无限深方势阱中，求在区间零到三分之一阱宽发现粒子的概率。答：概率约为百分之十九点五。解法：在零到三分之一阱宽区间积分波函数的模平方，利用倍角公式展开积分解出，结果为三分之一减去（根号三除以四倍的派），约等于百分之十九点五。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: "c6",
+          name: "原子物理基础",
+          color: "var(--color-atomic)",
+          side: "right",
+          expanded: true,
+          children: [
+            {
+              id: "c6_s1",
+              name: "能级跃迁",
+              expanded: true,
+              children: [
+                {
+                  id: "c6_s1_l1",
+                  name: "跃迁辐射光谱线条数",
+                  formula: "N = \\frac{n(n-1)}{2}",
+                  mnemonic: "一群处于特定激发态n of 原子向低能级跃迁时，最多能辐射出的光谱线条数",
+                  problems: "【期末真题演练】填空题第十三题：一群处于第四激发态的氢原子向低能级跃迁，最多可辐射出多少条不同波长的光谱线？答：共十条光谱线。解法：第四激发态对应主量子数等于五（基态为主量子数等于一）。代入公式，五乘四除以二，得到十条。"
+                },
+                {
+                  id: "c6_s1_l2",
+                  name: "氢原子能级公式",
+                  formula: "E_n = -\\frac{13.6}{n^2} \\text{ eV} \\quad (n=1, 2, \\dots)",
+                  mnemonic: "基态能级为负十三点六电子伏特。能级值与量子数平方成反比。跃迁能量为能级差绝对值。",
+                  problems: "【期末真题演练】电子从n=4能级跃迁到n=2能级时，求辐射光子的能量。答：为二点五五电子伏特。解法：负十三点六除以十六与负十三点六除以四之差，取绝对值得二点五五。"
+                },
+                {
+                  id: "c6_s1_l3",
+                  name: "里德伯公式",
+                  formula: "\\frac{1}{\\lambda} = R \\left( \\frac{1}{n_f^2} - \\frac{1}{n_i^2} \\right)",
+                  mnemonic: "巴耳末系终点为二。波长最长对应能量最小（即相邻能级跃迁，如3到2）。",
+                  problems: "【期末真题演练】计算巴耳末系中波长最长的谱线的波长。答：约为六百五十六纳米。解法：里德伯常数R约为一点零九七乘以十的七次方每米。将终点n_f=2，起点n_i=3代入公式计算得六百五十六纳米。"
+                }
+              ]
+            },
+            {
+              id: "c6_s2",
+              name: "空间量子化",
+              expanded: true,
+              children: [
+                {
+                  id: "c6_s2_l1",
+                  name: "四个量子数取值限制",
+                  formula: "n \\ge 1, \\quad l < n, \\quad |m_l| \\le l, \\quad m_s = \\pm \\frac{1}{2}",
+                  mnemonic: "口诀：主量子数n>=1；角量子数l<n，spdf对应l=0,1,2,3（PDF格式，s为0）；磁量子数|m_l|<=l可取正负含0；自旋m_s固定为±1/2（注意：是m_l可负含0，不是m_s！）",
+                  problems: "【期末真题演练】填空题第十四题：主量子数等于三的能级壳层，最多可以容纳多少个电子？答：十八个电子。解法：每个壳层最大容纳电子数为两倍的主量子数平方，两乘以三的平方等于十八。"
+                }
+              ]
+            },
+            {
+              id: "c6_s3",
+              name: "角动量大小",
+              expanded: true,
+              children: [
+                {
+                  id: "c6_s3_l1",
+                  name: "轨道角动量大小",
+                  formula: "L = \\sqrt{l(l+1)}\\hbar",
+                  mnemonic: "电子轨道角动量的大小仅由角量子数l决定。公式带有根号下l乘l加一",
+                  problems: "【期末真题演练】已知状态为3d的电子，求其轨道角动量大小。答：大小为根号六倍的约化普朗克常数。解法：3d对应的角量子数l等于二。代入公式得到根号下二乘三，即根号六。"
+                },
+                {
+                  id: "c6_s3_l2",
+                  name: "角动量投影与空间方向",
+                  formula: "L_z = m_l\\hbar",
+                  mnemonic: "角动量在磁场方向（Z轴）的投影等于磁量子数乘约化普朗克常数。夹角余弦为投影除以总大小",
+                  problems: "【期末真题演练】求角量子数l等于二的状态下，轨道角动量矢量与磁场方向（Z轴）的最小夹角。答：最小夹角为三十五点三度。解法：最小夹角对应投影最大，即磁量子数等于二。夹角余弦等于二除以根号六（约为零点八一六），反余弦解出角度为三十五点三度。"
+                }
+              ]
+            },
+            {
+              id: "c6_s4",
+              name: "X射线与分子光谱",
+              expanded: true,
+              children: [
+                {
+                  id: "c6_s4_l1",
+                  name: "X 射线短波截止波长",
+                  formula: "\\lambda_{min} = \\frac{hc}{eU}",
+                  mnemonic: "连续X射线谱的最小波长仅决定于管电压，与靶极金属材料无关。快捷计算公式为一千两百四十除以电压（伏特）纳米。",
+                  problems: "【期末真题演练】连续X射线的短波极限为零点零六二纳米，求X射线管的加速电压。答：管电压为二万伏特。解法：截止波长等于hc/(eU)，即管电压等于一千两百四十纳米电子伏特除以零点零六二纳米，得二万伏特。"
+                },
+                {
+                  id: "c6_s4_l2",
+                  name: "分子转动能级与光谱",
+                  formula: "E_J = J(J+1)\\frac{\\hbar^2}{2I} \\quad \\Delta\\nu = \\frac{h}{4\\pi^2 I}",
+                  mnemonic: "分子转动能级由转动惯量I和转动量子数J决定。转动光谱相邻谱线的频率差为常数。",
+                  problems: "【期末真题演练】已知某双原子分子转动光谱相邻谱线的频率差为六十吉赫兹，求该分子的转动惯量。答：转动惯量约为八点四乘以十的负四十七次方千克平方米。解法：转动惯量I等于h除以（四倍的派平方与频率差的乘积）。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+    // 脑图逻辑
+    let scale = 0.85;
+    let translateX = window.innerWidth / 2 - 5000 * scale;
+    let translateY = window.innerHeight / 2 - 5000 * scale;
+    let isDragging = false;
+    let startX, startY;
+
+    const viewport = document.getElementById('viewport');
+    const container = document.getElementById('mindmapContainer');
+    const nodesLayer = document.getElementById('nodesLayer');
+    const svgConnections = document.getElementById('svg-connections');
+
+    // 监听拖拽与缩放
+    viewport.addEventListener('mousedown', (e) => {
+      // 只有点击背景或线时，才启动画布拖拽
+      if (e.target === viewport || e.target.id === 'svg-connections' || e.target.tagName === 'svg' || e.target.tagName === 'path') {
+        isDragging = true;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+      }
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        translateX = e.clientX - startX;
+        translateY = e.clientY - startY;
+        updateTransform();
+      }
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    viewport.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const zoomFactor = 1.08;
+      const oldScale = scale;
+      if (e.deltaY < 0) {
+        scale *= zoomFactor;
+      } else {
+        scale /= zoomFactor;
+      }
+      scale = Math.min(Math.max(0.25, scale), 2);
+
+      const mouseX = e.clientX - viewport.getBoundingClientRect().left;
+      const mouseY = e.clientY - viewport.getBoundingClientRect().top;
+
+      translateX = mouseX - (mouseX - translateX) * (scale / oldScale);
+      translateY = mouseY - (mouseY - translateY) * (scale / oldScale);
+
+      updateTransform();
+    });
+
+    function updateTransform() {
+      container.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+    }
+
+    // 重置视图居中
+    function resetView() {
+      scale = 0.85;
+      translateX = window.innerWidth / 2 - 5000 * scale;
+      translateY = window.innerHeight / 2 - 5000 * scale;
+      updateTransform();
+    }
+
+    // 计算每个节点的位置
+    function computeLayout(node, parentX, parentY, side = 'left') {
+      node.x = parentX;
+      node.y = parentY;
+
+      if (node.isRoot) {
+        node.x = 0;
+        node.y = 0;
+
+        // 分发左右子节点
+        const leftChildren = node.children.filter(c => c.side === 'left');
+        const rightChildren = node.children.filter(c => c.side === 'right');
+
+        layoutSubtree(leftChildren, 0, 0, -250, 'left');
+        layoutSubtree(rightChildren, 0, 0, 250, 'right');
+      }
+    }
+
+    // 布局某一侧的子树
+    function layoutSubtree(siblings, startX, startY, deltaX, side) {
+      // 记录高度以方便居中排列
+      siblings.forEach(node => {
+        node.subHeight = getSubtreeHeight(node);
+      });
+
+      const totalHeight = siblings.reduce((sum, n) => sum + n.subHeight, 0);
+      let currentY = startY - totalHeight / 2;
+
+      siblings.forEach(node => {
+        const nodeY = currentY + node.subHeight / 2;
+        node.x = startX + deltaX;
+        node.y = nodeY;
+
+        if (node.expanded && node.children) {
+          layoutChildren(node.children, node.x, node.y, deltaX * 1.2, side);
+        }
+
+        currentY += node.subHeight;
+      });
+    }
+
+    // 布局深层子代节点
+    function layoutChildren(children, parentX, parentY, deltaX, side) {
+      children.forEach(node => {
+        node.subHeight = getSubtreeHeight(node);
+      });
+
+      const totalHeight = children.reduce((sum, n) => sum + n.subHeight, 0);
+      let currentY = parentY - totalHeight / 2;
+
+      children.forEach(node => {
+        const nodeY = currentY + node.subHeight / 2;
+        node.x = parentX + deltaX;
+        node.y = nodeY;
+
+        if (node.expanded && node.children) {
+          const nextDeltaX = side === 'left' ? -380 : 380;
+          layoutChildren(node.children, node.x, node.y, nextDeltaX, side);
+        }
+
+        currentY += node.subHeight;
+      });
+    }
+
+    // 递归获取子树所需的总像素高度
+    function getSubtreeHeight(node) {
+      if (!node.expanded || !node.children || node.children.length === 0) {
+        // 叶子卡片占的高度
+        if (node.formula) return 400; // 公式卡片高度设置为 400px 以留出足够的间距防止重叠
+        return 70; // 章节、小节单行节点高
+      }
+
+      // 子节点所需高度之和
+      const sum = node.children.reduce((acc, child) => acc + getSubtreeHeight(child), 0);
+      return Math.max(sum, 70);
+    }
+
+    // 展开并缓存所有节点关系
+    let allNodesMap = new Map();
+    let parentChildLinks = [];
+
+    function flattenTree(node, parent = null, chapterColor = '') {
+      node.chapterColor = chapterColor || node.color || '';
+      allNodesMap.set(node.id, node);
+
+      if (parent) {
+        parentChildLinks.push({
+          parent: parent.id,
+          child: node.id,
+          color: node.chapterColor || parent.chapterColor
+        });
+      }
+
+      if (node.children) {
+        node.children.forEach(child => {
+          flattenTree(child, node, node.chapterColor);
+        });
+      }
+    }
+
+    // 绘制脑图
+    function renderMindmap() {
+      // 1. 清空图层
+      nodesLayer.innerHTML = '';
+
+      // 2. 重新计算每个坐标
+      computeLayout(treeData);
+
+      // 3. 渲染卡片
+      allNodesMap.forEach((node) => {
+        // 假如父节点被收起来，子节点隐藏不画
+        if (!isNodeVisible(node)) return;
+
+        const div = document.createElement('div');
+        div.className = `node`;
+        div.id = `el-${node.id}`;
+
+        // 设置对应发光配色
+        if (node.chapterColor) {
+          div.style.setProperty('--node-color', node.chapterColor);
+        }
+
+        // 填充层级样式
+        if (node.isRoot) {
+          div.classList.add('node-root');
+          div.innerHTML = node.name;
+        } else if (node.children && node.id.startsWith('c') && !node.id.includes('_')) {
+          div.classList.add('node-chapter');
+          div.innerHTML = node.name;
+          addToggleButton(node, div);
+        } else if (node.children) {
+          div.classList.add('node-section');
+          div.innerHTML = node.name;
+          addToggleButton(node, div);
+        } else {
+          // 公式叶子节点
+          div.classList.add('node-leaf');
+          div.innerHTML = `
+            <div class="leaf-title">${node.name}</div>
+            <div class="formula-box" data-latex="${node.formula}">
+              $$${node.formula}$$
+            </div>
+            ${node.mnemonic ? `<div class="leaf-mnemonic">💡 <b>记忆口诀：</b>${node.mnemonic}</div>` : ''}
+            <div class="leaf-problems">${node.problems}</div>
+          `;
+        }
+
+        // 定位卡片
+        div.style.left = `${node.x + 5000}px`; // 偏移防止负坐标
+        div.style.top = `${node.y + 5000}px`;
+
+        // 绑定点击复制公式
+        const box = div.querySelector('.formula-box');
+        if (box) {
+          box.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const latex = box.getAttribute('data-latex');
+            navigator.clipboard.writeText(latex).then(() => {
+              showToast();
+            });
+          });
+        }
+
+        // 绑定节点收起展开
+        if (node.children) {
+          div.addEventListener('click', (e) => {
+            // 点击节点文字也可以展开收缩
+            node.expanded = !node.expanded;
+            renderMindmap();
+          });
+        }
+
+        nodesLayer.appendChild(div);
+      });
+
+      // 4. 画连线
+      drawConnections();
+
+      // 5. 触发MathJax动态解析生成公式
+      if (window.MathJax && MathJax.typesetPromise) {
+        MathJax.typesetPromise();
+      }
+    }
+
+    // 检查节点是否因为祖先收起而被隐藏
+    function isNodeVisible(node) {
+      if (node.isRoot) return true;
+      let parent = getParentNode(node.id);
+      while (parent) {
+        if (!parent.expanded) return false;
+        parent = getParentNode(parent.id);
+      }
+      return true;
+    }
+
+    function getParentNode(childId) {
+      const link = parentChildLinks.find(l => l.child === childId);
+      return link ? allNodesMap.get(link.parent) : null;
+    }
+
+    // 添加卡片侧边的收拢小圆圈按钮
+    function addToggleButton(node, element) {
+      const dot = document.createElement('div');
+      dot.className = `toggle-dot ${node.expanded ? 'expanded' : ''}`;
+
+      if (node.chapterColor) {
+        dot.style.setProperty('--node-color', node.chapterColor);
+      }
+
+      // 根据左侧/右侧，把圆圈放在卡片的右端或左端
+      const side = getSubtreeSide(node.id);
+      if (side === 'left') {
+        dot.style.left = '-12px';
+      } else {
+        dot.style.right = '-12px';
+      }
+      dot.style.top = '50%';
+
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation(); // 阻止穿透
+        node.expanded = !node.expanded;
+        renderMindmap();
+      });
+
+      element.appendChild(dot);
+    }
+
+    function getSubtreeSide(nodeId) {
+      let current = allNodesMap.get(nodeId);
+      while (current) {
+        if (current.side) return current.side;
+        current = getParentNode(current.id);
+      }
+      return 'left';
+    }
+
+    // 绘制SVG三次贝塞尔曲线
+    function drawConnections() {
+      // 清空SVG
+      const paths = svgConnections.querySelectorAll('path');
+      paths.forEach(p => p.remove());
+
+      parentChildLinks.forEach(link => {
+        const parent = allNodesMap.get(link.parent);
+        const child = allNodesMap.get(link.child);
+
+        // 只有当两个节点都可见时，才画连线
+        if (isNodeVisible(parent) && isNodeVisible(child)) {
+          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+
+          const startX = parent.x + 5000;
+          const startY = parent.y + 5000;
+          const endX = child.x + 5000;
+          const endY = child.y + 5000;
+
+          // 贝塞尔控制点横向拉伸弯曲
+          const controlX1 = startX + (endX - startX) * 0.45;
+          const controlY1 = startY;
+          const controlX2 = startX + (endX - startX) * 0.55;
+          const controlY2 = endY;
+
+          const dAttribute = `M ${startX} ${startY} C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${endX} ${endY}`;
+
+          path.setAttribute('d', dAttribute);
+          path.setAttribute('class', 'connection-line');
+
+          const strokeColor = link.color || '#334155';
+          path.setAttribute('stroke', strokeColor);
+
+          // 给连线加上漂亮的柔和光晕
+          path.style.filter = `drop-shadow(0 0 3px ${strokeColor})`;
+          path.style.opacity = '0.55';
+
+          svgConnections.appendChild(path);
+        }
+      });
+    }
+
+    // 成功复制浮层提示
+    function showToast() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 1500);
+    }
+
+    // 切换模糊状态
+    const toggleQuizBtn = document.getElementById('toggleQuizBtn');
+    let quizMode = false;
+    toggleQuizBtn.addEventListener('click', () => {
+      quizMode = !quizMode;
+      if (quizMode) {
+        document.body.classList.add('quiz-mode');
+        toggleQuizBtn.classList.add('active');
+        toggleQuizBtn.innerHTML = '👁️ 退出默写自测模式';
+      } else {
+        document.body.classList.remove('quiz-mode');
+        toggleQuizBtn.classList.remove('active');
+        toggleQuizBtn.innerHTML = '👁️ 切换默写自测模式 (公式模糊)';
+      }
+    });
+
+    // 搜索过滤与高亮
+    const searchInput = document.getElementById('searchInput');
+
+    searchInput.addEventListener('input', function () {
+      const query = this.value.toLowerCase().trim();
+
+      // 去掉之前所有节点的高亮
+      allNodesMap.forEach(node => {
+        const el = document.getElementById(`el-${node.id}`);
+        if (el) el.classList.remove('match-highlight');
+      });
+
+      if (query === '') return;
+
+      // 递归寻找包含查找内容的叶子，自动展开它们的路径
+      allNodesMap.forEach(node => {
+        if (!node.children) {
+          const matchTitle = node.name.toLowerCase().includes(query);
+          const matchFormula = node.formula.toLowerCase().includes(query);
+          const matchMnemonic = node.mnemonic ? node.mnemonic.toLowerCase().includes(query) : false;
+          const matchProblems = node.problems.toLowerCase().includes(query);
+
+          if (matchTitle || matchFormula || matchMnemonic || matchProblems) {
+            // 亮起叶子本身
+            const leafEl = document.getElementById(`el-${node.id}`);
+            if (leafEl) leafEl.classList.add('match-highlight');
+
+            // 逆向强行将祖先都展开，使该公式能被看见
+            let parent = getParentNode(node.id);
+            while (parent) {
+              if (!parent.expanded) {
+                parent.expanded = true;
+                renderMindmap(); // 重新渲染刷新视图
+              }
+              parent = getParentNode(parent.id);
+            }
+          }
+        }
+      });
+    });
+
+    // 初始化运行
+    flattenTree(treeData);
+    resetView();
+    renderMindmap();
+
+    // 缩放窗口时重定大小
+    window.addEventListener('resize', () => {
+      updateTransform();
+    });
+  </script>
+</body>
+
+</html>

@@ -136,19 +136,10 @@
 {无轴力；正应力合力；一次矩；形心}
 
 \qitem{13}{截面系数的意义}
-{解释截面系数 \(W=I/y_{\max}\) 为什么能衡量抗弯能力？在实际多向或组合受力状态下，单独使用 \(W\) 是否足够？如何求取真正的主应力？}
-{1. \textbf{抗弯几何量}：纯弯曲时，横截面上最大弯曲正应力为 \(\sigma_{\max} = \frac{M y_{\max}}{I} = \frac{M}{W}\)。在给定的弯矩 \(M\) 下，\(W\) 越大，最大正应力越小。因此 \(W\) 纯粹从几何形状上表征了横截面抵抗弯曲正应力的能力。\\
-2. \textbf{组合应力下的局限性}：在实际工程中，构件往往承受组合变形（如拉弯、弯扭、弯剪等）。此时单独的弯曲正应力 \(\sigma = M/W\) 并不能代表材料所受的最大应力：
-   \begin{itemize}
-     \item \textbf{拉弯/压弯}：正应力为轴力与弯矩的叠加：\(\sigma = \frac{N}{A} \pm \frac{M}{W}\)。
-     \item \textbf{弯扭组合}：截面上同时存在弯曲正应力 \(\sigma\) 和扭转剪应力 \(\tau\)。
-   \end{itemize}
-3. \textbf{主平面与主应力（真正极值）}：
-   \begin{itemize}
-     \item \textbf{概念}：为了寻找材料在某点各方向上的最大正应力，必须通过应力状态变换找到\textbf{主平面}（剪应力 \(\tau = 0\) 的平面）。该平面上的正应力即为\textbf{主应力}（\(\sigma_1 \ge \sigma_2 \ge \sigma_3\)）。
-     \item \textbf{主平面用途}：主应力是评估结构是否破坏的基石（如用于 Tresca 或 Von Mises 强度理论）。对于弯扭组合的圆轴，第三强度理论等效应力为 \(\sigma_{eq3} = \sqrt{\sigma^2 + 4\tau^2} = \frac{\sqrt{M^2 + T^2}}{W}\)，可见截面系数 \(W\) 仍是决定组合强度的核心几何量。
-   \end{itemize}}
-{截面系数；弯曲正应力；组合变形；主应力；强度理论}
+{解释截面系数 \(W=I/y_{\max}\) 为什么能衡量抗弯能力。}
+{1. \textbf{定义与公式}：纯弯曲梁横截面上最大正应力为 \(\sigma_{\max} = \frac{M y_{\max}}{I} = \frac{M}{W}\)。\\
+2. \textbf{物理意义}：在弯矩 \(M\) 相同的情况下，\(W\) 越大，最大拉应力和压应力 \(\sigma_{\max}\) 就越小。因此，\(W\) 是一个纯粹的几何描述量，直接表征了横截面抵抗弯曲正应力破坏的能力。}
+{最大纤维；抗弯能力；截面优化}
 
 \qitem{14}{圆轴扭转公式来源}
 {从圆轴扭转的“平截面假设”及“圆截面保持平面且无半径伸缩假设”，推导剪应力公式 \(\tau=\frac{T\rho}{I_p}\) 的三个基本关系（几何、物理、平衡关系），并解释平截面假设的物理图景。}
@@ -312,24 +303,33 @@
 {几何：确定 \(y,z\) 坐标和 \(I_y,I_z\)；物理：双向弯曲正应力叠加；平衡：求 \(M_y,M_z\)。}
 {双向弯曲；角点比较；符号}
 
-\qitem{39}{弯扭组合圆轴}
-{一根圆截面直轴同时承受弯矩 \(M\) 和扭矩 \(T\)，试求其危险点的应力状态、主应力以及第一、二、三、四强度理论相当应力。}
-{1. \textbf{危险应力分量}：圆轴最外表面的危险点上，弯曲正应力 \(\sigma = \frac{M}{W_z}\)；扭转剪应力 \(\tau = \frac{T}{W_p} = \frac{T}{2W_z}\)（极截面系数 \(W_p = 2W_z\)）。\\
-2. \textbf{主应力计算}：处于平面应力状态（\(\sigma_x = \sigma\), \(\sigma_y = 0\), \(\tau_{xy} = \tau\)），其主应力为：
-   \(\sigma_{1,3} = \frac{\sigma}{2} \pm \sqrt{\left(\frac{\sigma}{2}\right)^2 + \tau^2}\)，\(\sigma_2 = 0\)。\\
-3. \textbf{主方向方位（正切公式）}：
-   主平面的方位角 \(\theta_0\) 满足正切公式：
-   \(\tan 2\theta_0 = \frac{2\tau_{xy}}{\sigma_x - \sigma_y}\)。
-   代入本题应力分量得：\(\tan 2\theta_0 = \frac{2\tau}{\sigma} = \frac{2(T/2W_z)}{M/W_z} = \frac{T}{M}\)。\\
-4. \textbf{第一强度理论（最大拉应力）}：
-   \(\sigma_{r1} = \sigma_1 = \frac{\sigma}{2} + \sqrt{\left(\frac{\sigma}{2}\right)^2 + \tau^2} = \frac{M + \sqrt{M^2 + T^2}}{2W_z}\)。\\
-5. \textbf{第二强度理论（最大伸长线应变）}：
-   \(\sigma_{r2} = \sigma_1 - \nu\sigma_3 = \frac{1-\nu}{2}\sigma + \frac{1+\nu}{2}\sqrt{\sigma^2 + 4\tau^2} = \frac{(1-\nu)M + (1+\nu)\sqrt{M^2 + T^2}}{2W_z}\)（\(\nu\) 为泊松比）。\\
-6. \textbf{第三强度理论（最大剪应力）}：
-   \(\sigma_{r3} = \sigma_1 - \sigma_3 = \sqrt{\sigma^2 + 4\tau^2} = \frac{\sqrt{M^2 + T^2}}{W_z}\)。\\
-7. \textbf{第四强度理论（畸变能密度）}：
-   \(\sigma_{r4} = \sqrt{\sigma^2 + 3\tau^2} = \frac{\sqrt{M^2 + 0.75T^2}}{W_z}\)。}
-{抗弯截面系数；极截面系数；主应力；强度理论}
+\qitem{39}{弯扭组合圆轴与多向应力叠加}
+{一根圆轴（或一般构件）同时承受轴力 \(N\)、弯矩 \(M\)、扭矩 \(T\) 和剪力 \(V\)，试说明这些载荷产生的应力如何叠加？如何确定危险点的主应力和主平面方位？它们在强度设计中有什么用途？}
+{1. \textbf{应力分量的全面叠加规律}：
+   对于横截面上任意一点，各载荷产生的应力分量按其方向分别进行代数叠加：
+   \begin{itemize}
+     \item \textbf{轴向正应力 \(\sigma_x\)}：由轴力 \(N\) 和弯矩 \(M\) 叠加而成：
+           \[ \sigma_x = \sigma_N \pm \sigma_M = \frac{N}{A} \pm \frac{M y}{I_z} \]
+     \item \textbf{剪应力 \(\tau\)}：由扭矩 \(T\) 和横向剪力 \(V\) 叠加而成：
+           \[ \tau = \tau_T \pm \tau_V = \frac{T \rho}{I_p} \pm \frac{V Q}{I_z b} \]
+   \end{itemize}
+   \warn{【考场注：通常在最外侧纤维（\(y = y_{\max}\)）处，弯曲正应力最大，但剪力的剪应力 \(\tau_V = 0\)（因为该处静矩 \(Q=0\)），此时剪应力仅由扭转产生（\(\tau = \tau_T\)）；而在中性轴处，弯曲正应力 \(\sigma_M = 0\)，但 \(\tau_V\) 达到最大，此时需叠加 \(\tau_T \pm \tau_{V,\max}\)。】}
+2. \textbf{主应力与主平面计算}：
+   危险点通常处于平面应力状态（\(\sigma_x = \sigma\), \(\sigma_y = 0\), \(\tau_{xy} = \tau\)），其主应力为：
+   \[ \sigma_{1,3} = \frac{\sigma_x}{2} \pm \sqrt{\left(\frac{\sigma_x}{2}\right)^2 + \tau^2}, \quad \sigma_2 = 0 \]
+   主平面的方位角 \(\theta_0\)（即剪应力为 0 的主轴方向）满足正切公式：
+   \[ \tan 2\theta_0 = \frac{2\tau_{xy}}{\sigma_x - \sigma_y} = \frac{2\tau}{\sigma_x} \]
+3. \textbf{主平面与主应力的核心用途}：
+   \begin{itemize}
+     \item \textbf{寻找极限应力}：最大主应力 \(\sigma_1\) 代表该点所有方向上的最大拉应力，用于校核脆性材料拉伸断裂；
+     \item \textbf{强度理论计算}：对于复杂应力状态，不能直接用单向正应力与屈服极限比较，必须通过主应力计算等效应力：
+           \begin{itemize}
+             \item \textbf{第三强度理论（Tresca 最大剪应力）}：\(\sigma_{r3} = \sigma_1 - \sigma_3 = \sqrt{\sigma_x^2 + 4\tau^2}\)；对于无轴向力圆轴，\(\sigma_{r3} = \frac{\sqrt{M^2 + T^2}}{W_z}\)。
+             \item \textbf{第四强度理论（Von Mises 畸变能）}：\(\sigma_{r4} = \sqrt{\sigma_x^2 + 3\tau^2}\)；对于无轴向力圆轴，\(\sigma_{r4} = \frac{\sqrt{M^2 + 0.75T^2}}{W_z}\)。
+           \end{itemize}
+     \item \textbf{预测破坏面角度}：脆性材料受扭转时，在 \(\theta_0 = 45^\circ\) 主平面上拉应力 \(\sigma_1\) 最大，故沿 \(45^\circ\) 螺旋面断裂。
+   \end{itemize}}
+{抗弯截面系数；剪应力叠加；主应力；强度理论；主平面方位}
 
 \qitem{40}{梁剪应力}
 {工字形截面梁受剪力，说明剪应力主要由腹板承担并求腹板中性轴处剪应力。}
@@ -409,23 +409,19 @@
 {反对称载荷导致某些对称量为零；中点位移或转角按奇偶性判断。}
 {反对称；奇偶性；边界简化}
 
-\qitem{54}{圆环对称切开}
-{圆环受一对垂直对径集中力 \(F_P\)，请画出其简化模型，并说明如何利用结构和载荷的对称性选择合理的切开位置、分析切口截面上的内力分量并判定哪些内力为零。}
-{1. \textbf{对称轴分析}：圆环在几何形状、边界约束及垂直对径集中力下，具有两条互相垂直的对称轴：过力作用点的垂直对称轴 \(AB\) 和垂直于力作用线的水平对称轴 \(CD\)（如右图所示）。\\
-2. \textbf{切口选择}：取水平对称截面 \(C\) 和 \(D\) 作为切开位置（将其简化为一次超静定结构）。\\
-3. \textbf{内力分析与零内力判定}：
-   \begin{itemize}
-     \item \textbf{对称截面上的内力特性}：对称截面上只能存在对称的内力分量（轴力 \(F_{N0}\) 和弯矩 \(M_0\)），而反对称的内力分量（剪力 \(V_0\)）必须为零。
-     \item \textbf{静力平衡确定轴力}：利用半环（或四分之一环）在垂直方向的静力平衡：\(\sum F_y = 0 \implies 2 F_{N0} = F_P \implies F_{N0} = \frac{F_P}{2}\)（拉力）。
-     \item \textbf{多余冗余力}：此时仅剩唯一一个未知的对称冗余力——弯矩 \(M_0\)。通过对称切开，我们将结构简化为了仅含一个未知弯矩 \(M_0\) 的超静定系统。
-   \end{itemize}
+\qitem{54}{圆环对称分析与弯矩图}
+{圆环受一对垂直对径集中力 \(F_P\)，请画出其简化模型，并说明如何利用结构和载荷的对称性选择合理的切开位置、分析切口截面上的内力并画出弯矩图。}
+{1. \textbf{对称轴分析}：圆环在几何形状、边界约束及垂直对径力下具有垂直对称轴 \(AB\) 和水平对称轴 \(CD\)（见下方图）。\\
+2. \textbf{切口选择与零内力判定}：取水平截面 \(C, D\) 切开。根据对称性，反对称剪力 \(V_0 = 0\)。由垂直方向静力平衡，对称轴力 \(F_{N0} = F_P/2\)（拉力）。结构简化为仅含唯一未知对称冗余弯矩 \(M_0\) 的超静定系统。\\
+3. \textbf{弯矩分布规律}：最大弯矩发生在加载点 \(A, B\) 处。
    \begin{center}
-     \includegraphics[width=0.35\textwidth]{ring_problem.png}
+     \includegraphics[width=0.42\textwidth]{ring_problem.png} \hfill
+     \includegraphics[width=0.42\textwidth]{ring_moment.png}
    \end{center}}
-{对称轴；对称内力；剪力为零；轴力平衡；冗余弯矩}
+{对称轴；剪力为零；轴力平衡；冗余弯矩；弯矩图}
 
-\qitem{55}{超静定圆环}
-{对于受垂直对径力 \(F_P\) 的闭合圆环，说明如何建立变形协调方程求解冗余弯矩 \(M_0\)，写出任意截面的弯矩函数表达式，并画出其弯矩图（标明极值与受拉边）。}
+\qitem{55}{超静定圆环求解}
+{对于受垂直对径力 \(F_P\) 的闭合圆环，说明如何建立变形协调方程求解冗余弯矩 \(M_0\)，写出任意截面的弯矩函数表达式，并求极值弯矩（弯矩分布图见上题图）。}
 {1. \textbf{建立弯矩函数}：以水平对称截面 \(C\) 为起点（\(\theta=0\)），截取任意角度 \(\theta\)（\(0 \le \theta \le \pi/2\)）的圆弧段，其横截面上的弯矩为：
    \[ M(\theta) = M_0 - F_{N0} R (1 - \cos\theta) = M_0 - \frac{F_P}{2} R (1 - \cos\theta) \]
 2. \textbf{变形协调方程（卡氏第二定理）}：由于对称性，水平切口 \(C\) 处的两侧截面没有相对转角 \(\theta_{rel} = 0\)。对 4 个 \(\pi/2\) 圆弧段的总弯曲应变能 \(U\) 应用卡氏第二定理：
@@ -438,13 +434,9 @@
    \[ M(\theta) = F_P R \left( \frac{\cos\theta}{2} - \frac{1}{\pi} \right) \quad \left(0 \le \theta \le \frac{\pi}{2}\right) \]
    \begin{itemize}
      \item 在 \(\theta = 0\)（水平侧面处）：\(M(0) = M_0 \approx 0.182 F_P R\)（外侧受拉）。
-     \item 在 \(\theta = \pi/2\)（垂直顶端加载点处）：\(M(\pi/2) = F_P R \left(\frac{0}{2} - \frac{1}{\pi}\right) = -\frac{F_P R}{\pi} \approx -0.318 F_P R\)（内侧受拉）。
-     \item 最大弯矩发生在加载点处，其绝对值为 \(\frac{F_P R}{\pi}\)。
-   \end{itemize}
-4. \textbf{弯矩图特点}：弯矩图如右图所示（画在受拉边，内侧/外侧镜像对称），在水平两侧向外凸出（正值），在顶底两端向内凹进（负值）。
-   \begin{center}
-     \includegraphics[width=0.35\textwidth]{ring_moment.png}
-   \end{center}}
+     \item 在 \(\theta = \pi/2\)（垂直顶端加载点处）：\(M(\pi/2) = -F_P R/\pi \approx -0.318 F_P R\)（内侧受拉）。
+     \item 最大弯矩绝对值为 \(\frac{F_P R}{\pi}\)（发生在加载点 \(A, B\) 处）。
+   \end{itemize}}
 {协调方程；卡氏定理；对称性；弯矩函数；极值弯矩}
 
 

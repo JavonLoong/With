@@ -985,15 +985,25 @@
    不能死记 \(b\) 和 \(h\) 的字母，要记住“\textbf{三次方的那一项必须是垂直于所求惯性轴的截面尺寸}”。}
 {定义；坐标；三次方方向}
 
-\qitem{94}{平面应力误解}
-{“平面应力就是 \(\varepsilon_z=0\)”是否正确？}
-{1. \textbf{平面应力的定义判定}：平面应力状态的根本物理假设是纵向应力完全为零：\(\sigma_z = \tau_{zx} = \tau_{zy} = 0\)。\\
-2. \textbf{泊松效应引起的轴向应变}：根据广义胡克定律，沿轴向的应变为：
-   \[ \varepsilon_z = \frac{1}{E} \left[ \sigma_z - \nu(\sigma_x + \sigma_y) \right] \]
-   代入 \(\sigma_z = 0\) 得：\(\varepsilon_z = -\frac{\nu}{E}(\sigma_x + \sigma_y)\)。
-   由于面内正应力 \(\sigma_x + \sigma_y\) 一般不为零，因此轴向应变 \(\varepsilon_z \neq 0\)。这说明薄板在拉伸时由于泊松缩水，厚度必定变薄。\\
-3. \textbf{平面应变的定义对标}：只有平面应变状态下才满足 \(\varepsilon_z = 0\)。该同学混淆了应力和应变的概念。}
-{平面应力；平面应变；胡克定律}
+\qitem{94}{广义胡克定律与应力应变解耦}
+{阐述一般三维应力状态下广义胡克定律的物理意义与数学表达式；说明其推导过程及所依赖的基本力学原理；并剖析“某方向上有应力是否一定有应变，有应变是否一定有应力”这一核心概念。}
+{1. \textbf{数学表达式与物理定义}：\\
+   在各向同性线弹性体中，正应力与正应变满足广义胡克定律：
+   \[ \varepsilon_x = \frac{1}{E} \left[ \sigma_x - \nu(\sigma_y + \sigma_z) \right], \quad \varepsilon_y = \frac{1}{E} \left[ \sigma_y - \nu(\sigma_z + \sigma_x) \right], \quad \varepsilon_z = \frac{1}{E} \left[ \sigma_z - \nu(\sigma_x + \sigma_y) \right] \]
+   剪切方向应力与应变独立成正比：\(\gamma_{xy} = \frac{\tau_{xy}}{G}, \gamma_{yz} = \frac{\tau_{yz}}{G}, \gamma_{zx} = \frac{\tau_{zx}}{G}\)。这表明任意方向的变形不仅取决于该方向的应力，还受到垂直方向应力的泊松效应（横向收缩）的叠加影响。\\
+2. \textbf{推导步骤与物理原理}：\\
+   - \textbf{依赖原理}：连续介质公设、材料各向同性与均匀性假设、以及小变形线弹性下的\textbf{线性叠加原理}。\\
+   - \textbf{推导步骤}：
+     1) 当仅有单向拉应力 \(\sigma_x\) 作用时，由一维胡克定律，产生同向拉应变 \(\varepsilon_x^{(1)} = \frac{\sigma_x}{E}\)，并引起横向收缩 \(\varepsilon_y^{(1)} = \varepsilon_z^{(1)} = -\nu \frac{\sigma_x}{E}\)。
+     2) 当 \(\sigma_y, \sigma_z\) 分别单独作用时，同理产生各自方向的拉伸应变和横向收缩应变。
+     3) 根据线性叠加原理，当三向正应力同时作用时，\(x\) 方向的总正应变为上述三种状态独立作用时产生应变之代数和，即 \(\varepsilon_x = \varepsilon_x^{(1)} + \varepsilon_x^{(2)} + \varepsilon_x^{(3)} = \frac{1}{E}[\sigma_x - \nu(\sigma_y + \sigma_z)]\)。同理可外推至其他主方向。\\
+3. \textbf{应力与应变的强解耦关系剖析}：\\
+   - \textbf{某方向上有应力，不一定有应变}：如在三向受力状态下，若 \(x\) 方向受到拉应力 \(\sigma_x > 0\)，而垂直方向拉应力满足 \(\sigma_x = \nu(\sigma_y + \sigma_z)\)，此时由公式计算得 \(\varepsilon_x = 0\)。即该方向虽然受拉力，但被横向拉应力产生的泊松收缩刚好完全抵消，呈现“受力而不变形”的奇异状态。\\
+   - \textbf{某方向上有应变，不一定有应力}：
+     - \textbf{力学状态}：在平面应力状态下（如薄板拉伸），厚度方向完全不受力（\(\sigma_z = 0\)），但由于面内拉应力产生的泊松效应，厚度方向仍会发生缩水变薄，即应变 \(\varepsilon_z = -\frac{\nu}{E}(\sigma_x + \sigma_y) \neq 0\)。
+     - \textbf{热力状态}：在无约束温升 \(\Delta T\) 状态下，物体自由热膨胀产生热应变 \(\varepsilon = \alpha\Delta T \neq 0\)，但由于没有受到任何约束阻碍，构件内热应力 \(\sigma = 0\)。
+     - \textbf{约束状态}：在双端完全受限的温升杆中，由于边界强行限制，杆件总应变 \(\varepsilon = 0\)，但内部却激发起极大的热压应力 \(\sigma = -E\alpha\Delta T \neq 0\)。}
+{广义胡克定律；叠加原理；泊松比；应力应变解耦；受力无变形；变形无受力}
 
 \qitem{95}{静不定漏协调}
 {为什么静不定题只列平衡方程不能求解？}
